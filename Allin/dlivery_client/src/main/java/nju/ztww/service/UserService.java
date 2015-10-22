@@ -1,5 +1,9 @@
 package nju.ztww.service;
 
+import nju.ztww.ui.finance.Position;
+import nju.ztww.vo.MemberVO;
+import nju.ztww.vo.OrderVO;
+
 public interface UserService {
 /*
  * 用户输入账号密码验证身份
@@ -20,5 +24,5 @@ public interface UserService {
  * 用户处理某践行需要权限的事件时调用该函数，返回目前操作的用户的身份
  * 输出：MemberVO : 该页面操作的用户身份	
  */
-	public position getState();
+	public Position getState();
 }
