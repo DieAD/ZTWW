@@ -19,7 +19,7 @@ public interface FinanceService {
 	
 	/*
 	 * 在受到鼠标键入审判单据时调出单据概述
-	 * 输出： ArrayList<ListPO> : 返回的单据                    //分类显示？？复用代码？？继承多态？？
+	 * 输出： ArrayList<ListPO> : 返回的单据                    
 	 */
-	public ArrayList<ListPO> viewList();
+	public ArrayList<OrderVO> viewList();
 }
