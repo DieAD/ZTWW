@@ -1,6 +1,6 @@
 package nju.ztww.vo;
 
-public class StorageListVO {
+public class SalaryVO {
     public final String id;
     public final String name;
     public final pattern type;
