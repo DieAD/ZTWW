@@ -1,6 +1,10 @@
 package nju.ztww.service;
 
+import java.util.ArrayList;
+
+import nju.ztww.vo.AccountVO;
 import nju.ztww.vo.OrderVO;
+import nju.ztww.vo.SalaryVO;
 
 public interface FinanceService {
 	/*
