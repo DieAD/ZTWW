@@ -8,14 +8,11 @@ import nju.ztww.common.OrderInfo;
 
 
 public class OrderVO {
-	public final String idOfOrder;
-	public final Customer customer;
-	public final OrderInfo info;
+	public static int idOfOrder;
 	
-	public OrderVO(String idOfOrder,Customer customer,OrderInfo info){
+	public OrderVO(int idOfOrder){
 		this.idOfOrder = idOfOrder;
-		this.customer=  customer;
-		this.info = info;
+		
 	}
 	
 
