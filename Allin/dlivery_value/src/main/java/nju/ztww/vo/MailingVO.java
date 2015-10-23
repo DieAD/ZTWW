@@ -5,7 +5,7 @@ import nju.ztww.common.OrderInfo;
 
 public class MailingVO extends OrderVO{
 	
-	private int idOfOrde;
+	private int idOfOrder;
 	private String sendName;
 	private String sendLocation;
 	private int sendTelephone;
@@ -18,16 +18,16 @@ public class MailingVO extends OrderVO{
 	private int StripNumber;
 
 	public MailingVO(int idOfOrde) {
-		super(idOfOrder);
-		this.idOfOrde=idOfOrde;
+		super(idOfOrde);
+		this.idOfOrder=idOfOrde;
 	}
 
 	public int getIdOfOrde() {
-		return idOfOrde;
+		return idOfOrder;
 	}
 
 	public void setIdOfOrde(int idOfOrde) {
-		this.idOfOrde = idOfOrde;
+		this.idOfOrder = idOfOrde;
 	}
 
 	public String getSendName() {
