@@ -25,5 +25,6 @@
   <modules>
   	<module>order</module>
     <module>dlivery_client</module>
+    <module>dlivery_server</module>
   </modules>
 </project>
