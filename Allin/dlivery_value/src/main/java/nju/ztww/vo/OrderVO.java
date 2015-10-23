@@ -3,6 +3,10 @@ package nju.ztww.vo;
 import nju.ztww.common.Customer;
 import nju.ztww.common.OrderInfo;
 
+
+
+
+
 public class OrderVO {
 	public final String idOfOrder;
 	public final Customer customer;

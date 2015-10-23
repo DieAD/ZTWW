@@ -8,9 +8,9 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   <groupId>nju.ztww.Deliver</groupId>
-  <artifactId>dlivery_server</artifactId>
+  <artifactId>dlivery_value</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <name>dlivery_server</name>
+  <name>dlivery_value</name>
   <url>http://maven.apache.org</url>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -21,11 +21,6 @@
       <artifactId>junit</artifactId>
       <version>3.8.1</version>
       <scope>test</scope>
-    </dependency>
-    <dependency>
-    <groupId>nju.ztww.Deliver</groupId>
-    <artifactId>dlivery_value</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
     </dependency>
   </dependencies>
 </project>
