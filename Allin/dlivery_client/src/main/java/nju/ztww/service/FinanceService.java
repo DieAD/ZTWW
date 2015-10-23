@@ -1,7 +1,13 @@
 package nju.ztww.service;
 
+<<<<<<< HEAD
+=======
+import java.util.ArrayList;
+
+>>>>>>> refs/remotes/DieAD/master
 import nju.ztww.vo.AccountVO;
 import nju.ztww.vo.OrderVO;
+import nju.ztww.vo.SalaryVO;
 
 public interface FinanceService {
 	/*
