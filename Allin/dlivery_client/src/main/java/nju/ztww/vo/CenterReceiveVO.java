@@ -1,5 +1,11 @@
 package nju.ztww.vo;
 
+/**
+ * 中转中心到达单
+ * 
+ * @author TQ
+ * */
+
 public class CenterReceiveVO extends OrderVO{
 	
 	private int idOfOrde;

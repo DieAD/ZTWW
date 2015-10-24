@@ -1,5 +1,11 @@
 package nju.ztww.vo;
 
+/**
+ * 派件单
+ * 
+ * @author TQ
+ * */
+
 public class SendVO extends OrderVO{
 	
 	private int idOfOrde;

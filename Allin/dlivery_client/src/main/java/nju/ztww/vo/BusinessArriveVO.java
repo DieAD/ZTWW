@@ -1,5 +1,11 @@
 package nju.ztww.vo;
 
+/**
+ * 营业厅到达单
+ * 
+ * @author TQ
+ * */
+
 public class BusinessArriveVO extends OrderVO{
 	
 	private int idOfOrde;

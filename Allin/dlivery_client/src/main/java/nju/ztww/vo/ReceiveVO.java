@@ -2,6 +2,12 @@ package nju.ztww.vo;
 
 import java.util.ArrayList;
 
+/**
+ * 收款单
+ * 
+ * @author TQ
+ * */
+
 public class ReceiveVO extends OrderVO{
 	
 	private int idOfOrde;

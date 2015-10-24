@@ -2,7 +2,13 @@ package nju.ztww.vo;
 
 import java.util.ArrayList;
 
-public class ShippingVO extends OrderVO{
+/**
+ * 中转中心装车单
+ * 
+ * @author TQ
+ * */
+
+public class CenterLoadingVO extends OrderVO{
 	
 	private int idOfOrde;
 	private String data;
@@ -14,7 +20,7 @@ public class ShippingVO extends OrderVO{
 	private ArrayList<Integer> orderNumber;
 	private int money;
 
-	public ShippingVO(int idOfOrder) {
+	public CenterLoadingVO(int idOfOrder) {
 		super(idOfOrder);
 		this.idOfOrde=idOfOrder;
 	}

@@ -3,6 +3,12 @@ package nju.ztww.vo;
 import nju.ztww.common.Customer;
 import nju.ztww.common.OrderInfo;
 
+/**
+ * 寄件单
+ * 
+ * @author TQ
+ * */
+
 public class MailingVO extends OrderVO{
 	
 	private int idOfOrde;

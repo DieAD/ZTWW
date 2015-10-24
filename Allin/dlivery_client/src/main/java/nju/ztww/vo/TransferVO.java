@@ -2,6 +2,12 @@ package nju.ztww.vo;
 
 import java.util.ArrayList;
 
+/**
+ * 中转单
+ * 
+ * @author TQ
+ * */
+
 public class TransferVO extends OrderVO{
 	
 	private int idOfOrde;
