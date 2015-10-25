@@ -1,4 +1,9 @@
-package nju.ztww.vo;
+package nju.ztww.po;
+
+import java.io.Serializable;
+
+import nju.ztww.vo.OrderVO;
+
 
 /**
  * 营业厅到达单
@@ -7,7 +12,7 @@ package nju.ztww.vo;
  * 
  * */
 
-public class BusinessArriveVO extends OrderVO{
+public class BusinessArrivePO extends OrderPO implements Serializable{
 	
 	private int idOfOrde;
 	private String data;
@@ -15,7 +20,7 @@ public class BusinessArriveVO extends OrderVO{
 	private String Send;
 	private String state;
 
-	public BusinessArriveVO(int idOfOrder) {
+	public BusinessArrivePO(int idOfOrder) {
 		super(idOfOrder);
 		this.idOfOrde=idOfOrde;
 	}

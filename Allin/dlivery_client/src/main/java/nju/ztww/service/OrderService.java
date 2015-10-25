@@ -21,34 +21,7 @@ public interface OrderService {
      * 
      * */
 	public OrderVO getOrder(int number);
-	
-    /**
-     * 获得库存信息（输入对应的ID，返回库存信息）
-     * 
-     * @param id 货物库存对应的id号码
-     * @return 返回一个对应的库存信息vo
-     * 
-     * */
-	public StorageListVO getCommodity(int id);
-	
-	/**
-	 * 增加一条库存信息
-	 * 
-	 * @param idOfCenter 货物ID
-	 * @param date 存储日期（格式：2015-10-22）
-	 * @param location 储存地点
-	 * @return ResultMessage
-	 * 
-	 * */
-	public ResultMessage addCommodity(int idOfCenter,String data,String location );
-	
-	/**
-	 * 审判所有单据
-	 * 
-	 * @return ArrayList<OrderVO>所有orderVO的list
-	 * 
-	 * */
-	public ArrayList getAllOrders();
+
 	
 	/**
 	 * 结束输入

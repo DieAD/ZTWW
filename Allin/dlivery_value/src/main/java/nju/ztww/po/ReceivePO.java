@@ -1,4 +1,4 @@
-package nju.ztww.vo;
+package nju.ztww.po;
 
 /**
  * 收款单
@@ -7,9 +7,10 @@ package nju.ztww.vo;
  * 
  * */
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class ReceiveVO extends OrderVO{
+public class ReceivePO extends OrderPO implements Serializable{
 	
 	private int idOfOrde;
 	private String data;
@@ -17,7 +18,7 @@ public class ReceiveVO extends OrderVO{
 	private String receiverName;
 	private ArrayList<Integer> orderNumber;
 
-	public ReceiveVO(int idOfOrder) {
+	public ReceivePO(int idOfOrder) {
 		super(idOfOrder);
 		this.idOfOrde=idOfOrder;
 	}

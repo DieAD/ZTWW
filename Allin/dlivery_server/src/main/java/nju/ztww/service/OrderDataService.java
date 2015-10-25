@@ -1,10 +1,19 @@
 package nju.ztww.service;
-/*
- * Date:
- * Author:
+
+import nju.ztww.po.OrderPO;
+
+/**
+ * OrderData模块Service
+ * @author TQ
  * 
- */
+ * */
 
 public interface OrderDataService {
-//TODO
+	
+	public void insert(OrderPO orderPO);
+	
+	public void delete(OrderPO orderPO);
+	
+	public void find(int id);
+
 }

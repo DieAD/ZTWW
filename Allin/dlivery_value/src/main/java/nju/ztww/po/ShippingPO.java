@@ -1,4 +1,4 @@
-package nju.ztww.vo;
+package nju.ztww.po;
 
 /**
  * 中转中心装车单
@@ -7,9 +7,10 @@ package nju.ztww.vo;
  * 
  * */
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class ShippingVO extends OrderVO{
+public class ShippingPO extends OrderPO implements Serializable{
 	
 	private int idOfOrde;
 	private String data;
@@ -21,7 +22,7 @@ public class ShippingVO extends OrderVO{
 	private ArrayList<Integer> orderNumber;
 	private int money;
 
-	public ShippingVO(int idOfOrder) {
+	public ShippingPO(int idOfOrder) {
 		super(idOfOrder);
 		this.idOfOrde=idOfOrder;
 	}
@@ -99,3 +100,4 @@ public class ShippingVO extends OrderVO{
 	}
 
 }
+
