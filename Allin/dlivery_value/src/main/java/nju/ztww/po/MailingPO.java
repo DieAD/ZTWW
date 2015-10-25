@@ -1,4 +1,4 @@
-package nju.ztww.vo;
+package nju.ztww.po;
 
 /**
  * 寄件单
@@ -7,10 +7,12 @@ package nju.ztww.vo;
  * 
  * */
 
+import java.io.Serializable;
+
 import nju.ztww.common.Customer;
 import nju.ztww.common.OrderInfo;
 
-public class MailingVO extends OrderVO{
+public class MailingPO extends OrderPO implements Serializable{
 	
 	private int idOfOrder;
 	private String sendName;
@@ -24,7 +26,7 @@ public class MailingVO extends OrderVO{
 	private int count;
 	private int StripNumber;
 
-	public MailingVO(int idOfOrde) {
+	public MailingPO(int idOfOrde) {
 		super(idOfOrde);
 		this.idOfOrder=idOfOrde;
 	}
@@ -119,3 +121,4 @@ public class MailingVO extends OrderVO{
 	
 
 }
+

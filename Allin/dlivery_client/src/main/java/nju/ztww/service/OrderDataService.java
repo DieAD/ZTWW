@@ -1,5 +1,19 @@
 package nju.ztww.service;
 
-public class OrderDataService {
+import nju.ztww.po.OrderPO;
+
+/**
+ * OrderData模块Service
+ * @author TQ
+ * 
+ * */
+
+public interface OrderDataService {
+	
+	public void insert(OrderPO orderPO);
+	
+	public void delete(OrderPO orderPO);
+	
+	public void find(int id);
 
 }

@@ -1,4 +1,4 @@
-package nju.ztww.vo;
+package nju.ztww.po;
 
 /**
  * 中转单
@@ -7,9 +7,10 @@ package nju.ztww.vo;
  * 
  * */
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class TransferVO extends OrderVO{
+public class TransferPO extends OrderPO implements Serializable{
 	
 	private int idOfOrde;
 	private String method;
@@ -23,7 +24,7 @@ public class TransferVO extends OrderVO{
 	private ArrayList<Integer> sendNumber;
 	private int money;
 
-	public TransferVO(int idOfOrder) {
+	public TransferPO(int idOfOrder) {
 		super(idOfOrder);
 		this.idOfOrde=idOfOrde;
 	}
@@ -117,3 +118,4 @@ public class TransferVO extends OrderVO{
 	}
 
 }
+
