@@ -54,7 +54,7 @@ public class OrderService_stub implements OrderService {
 
 	public void endSales(OrderVO order) {
 		// TODO Auto-generated method stub
-		
+		System.out.println("END Sale!");
 	}
 
 }
