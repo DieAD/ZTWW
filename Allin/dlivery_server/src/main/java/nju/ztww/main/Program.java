@@ -11,8 +11,8 @@ public class Program {
          public static void main(String[] args){
         	 try{
         		 UserDataService userdataservice = new UserDataService_stub();
-        		 LocateRegistry.createRegistry(6060);
-        		 Naming.rebind("rmi://"+IP+":6060/UserDataService", userdataservice);
+        		 LocateRegistry.createRegistry(1010);
+        		 Naming.rebind("rmi://"+IP+":1010/UserDataService", userdataservice);
         		 System.out.println("Server strated!");
         	 }catch(Exception e){
         		 e.printStackTrace();

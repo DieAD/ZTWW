@@ -3,6 +3,7 @@ package nju.ztww.ui.user;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.GridLayout;
+import java.awt.TextArea;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -23,6 +24,7 @@ public class UserGuiTest extends JFrame {
     private JTextField input;
     private JButton submitButton;
     private JLabel infoLabel;
+    private TextArea textArea;
     private Container contentPane;
     private UserService_stub userbl = new UserService_stub();
     public UserGuiTest(){
@@ -39,21 +41,22 @@ public class UserGuiTest extends JFrame {
     	
     	input = new JTextField();
     	submitButton = new JButton("submit");
-    	infoLabel = new JLabel("");
+    	textArea = new TextArea("");
     	submitButton.addActionListener(new ActionListener(){
 
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				OrderVO order = userbl.checkOrder(input.getText());
 				StateVO stateVO = (StateVO)order;
-				submitButton.setText(stateVO.getCurrentPlace()+"\n"+stateVO.getHistoryPlace()+"\n");
+				textArea.setText(stateVO.getCurrentPlace()+"\n"+stateVO.getHistoryPlace()+"\n");
+				//infoLabel.setText(stateVO.getHistoryPlace()+"\n");
 			}
     		
     	});
     	
     	panel.add(input);
     	panel.add(submitButton);
-    	panel.add(infoLabel);
+    	panel.add(textArea);
     	
     }
     

@@ -1,5 +1,7 @@
 package nju.ztww.po;
 
+import java.io.Serializable;
+
 public class StatePO extends OrderPO {
 	public StatePO(int idOfOrder) {
 		super(idOfOrder);

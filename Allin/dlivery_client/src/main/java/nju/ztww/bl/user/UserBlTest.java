@@ -16,6 +16,7 @@ public class UserBlTest {
       
       
       public OrderVO checkOrder(String order){
+    	this.setUpRMI();
     	OrderPO  orderPO  = userdataservice.checkOrder(order);
     	StatePO  statePO = (StatePO)orderPO;
     	StateVO  stateVO = new StateVO(1);
@@ -26,7 +27,7 @@ public class UserBlTest {
       }
       public void setUpRMI(){
     	  try{
-    		  userdataservice = (UserDataService)Naming.lookup("rmi://"+IP+":6060/UserDataService");
+    		  userdataservice = (UserDataService)Naming.lookup("rmi://"+IP+":1010/UserDataService");
     		 
     	  }catch(Exception e){
     		  e.printStackTrace();
