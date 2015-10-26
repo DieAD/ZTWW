@@ -20,12 +20,12 @@ public class UserDataService_stub extends UnicastRemoteObject implements UserDat
 		// TODO Auto-generated constructor stub
 	}
 
-	//public MemberPO checkMember(String id, String password) {
+	public MemberPO checkMember(String id, String password)throws RemoteException {
 		// TODO Auto-generated method stub
-		//return null;
-	//}
+		return null;
+	}
 
-	public OrderPO checkOrder(String id) {
+	public OrderPO checkOrder(String id) throws RemoteException {
 		// TODO Auto-generated method stub
 		OrderPO orderPO = userData.findOrder(id);
 		return orderPO;
