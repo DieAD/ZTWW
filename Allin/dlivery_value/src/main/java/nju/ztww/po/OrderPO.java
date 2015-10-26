@@ -1,6 +1,8 @@
 package nju.ztww.po;
 
-public class OrderPO {
+import java.io.Serializable;
+
+public class OrderPO implements Serializable{
 	
 public static int idOfOrder;
 	
