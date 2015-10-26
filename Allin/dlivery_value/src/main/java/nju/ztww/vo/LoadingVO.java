@@ -1,5 +1,12 @@
 package nju.ztww.vo;
 
+/**
+ * 营业厅装车单
+ * 
+ * @author TQ
+ * 
+ * */
+
 import java.util.ArrayList;
 
 public class LoadingVO extends OrderVO{

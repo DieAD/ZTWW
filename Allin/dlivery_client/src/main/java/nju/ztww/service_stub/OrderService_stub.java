@@ -35,7 +35,7 @@ public class OrderService_stub implements OrderService {
 		/*
 		 * 默认返回一个StorageListVO的实例，具体参数值未定
 		 */
-		return new StorageListVO(idOfCenter,date,location);
+		return null;
 	}
 
 	public ResultMessage addCommodity(int idOfCenter, String data,

@@ -1,27 +1,29 @@
-package nju.ztww.vo;
+package nju.ztww.po;
 
 /**
- * 中转中心装车单
+ * 营业厅装车单
  * 
  * @author TQ
  * 
  * */
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class ShippingVO extends OrderVO{
+public class LoadingPO extends OrderPO implements Serializable{
 	
 	private int idOfOrde;
 	private String data;
-	private int transferNumber;
-	private String arrivePlace;
+	private int YingYeNumber;
+	private int QiYunNumber;
+	private String arrive;
 	private int carNumber;
 	private String JianZhuangName;
 	private String YaYunName;
 	private ArrayList<Integer> orderNumber;
 	private int money;
 
-	public ShippingVO(int idOfOrder) {
+	public LoadingPO(int idOfOrder) {
 		super(idOfOrder);
 		this.idOfOrde=idOfOrder;
 	}
@@ -42,20 +44,28 @@ public class ShippingVO extends OrderVO{
 		this.data = data;
 	}
 
-	public int getTransferNumber() {
-		return transferNumber;
+	public int getYingYeNumber() {
+		return YingYeNumber;
 	}
 
-	public void setTransferNumber(int transferNumber) {
-		this.transferNumber = transferNumber;
+	public void setYingYeNumber(int yingYeNumber) {
+		YingYeNumber = yingYeNumber;
 	}
 
-	public String getArrivePlace() {
-		return arrivePlace;
+	public int getQiYunNumber() {
+		return QiYunNumber;
 	}
 
-	public void setArrivePlace(String arrivePlace) {
-		this.arrivePlace = arrivePlace;
+	public void setQiYunNumber(int qiYunNumber) {
+		QiYunNumber = qiYunNumber;
+	}
+
+	public String getArrive() {
+		return arrive;
+	}
+
+	public void setArrive(String arrive) {
+		this.arrive = arrive;
 	}
 
 	public int getCarNumber() {

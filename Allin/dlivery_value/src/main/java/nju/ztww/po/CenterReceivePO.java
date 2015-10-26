@@ -1,4 +1,8 @@
-package nju.ztww.vo;
+package nju.ztww.po;
+
+import java.io.Serializable;
+
+import nju.ztww.vo.OrderVO;
 
 /**
  * 中转中心到达单
@@ -7,7 +11,7 @@ package nju.ztww.vo;
  * 
  * */
 
-public class CenterReceiveVO extends OrderVO{
+public class CenterReceivePO extends OrderPO implements Serializable{
 	
 	private int idOfOrde;
 	private int CenterNumber;
@@ -16,7 +20,7 @@ public class CenterReceiveVO extends OrderVO{
 	private String sendPlace;
 	private String state;
 
-	public CenterReceiveVO(int idOfOrder) {
+	public CenterReceivePO(int idOfOrder) {
 		super(idOfOrder);
 	    this.idOfOrde=	idOfOrder;
 	}

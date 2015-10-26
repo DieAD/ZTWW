@@ -1,4 +1,8 @@
-package nju.ztww.vo;
+package nju.ztww.po;
+
+import java.io.Serializable;
+
+import nju.ztww.vo.OrderVO;
 
 /**
  * 派件单
@@ -7,14 +11,14 @@ package nju.ztww.vo;
  * 
  * */
 
-public class SendVO extends OrderVO{
+public class SendPO extends OrderPO implements Serializable{
 	
 	private int idOfOrde;
 	private String data;
 	private int orderNumber;
 	private String senderName;
 
-	public SendVO(int idOfOrder) {
+	public SendPO(int idOfOrder) {
 		super(idOfOrder);
 		this.idOfOrde=idOfOrde;
 	}

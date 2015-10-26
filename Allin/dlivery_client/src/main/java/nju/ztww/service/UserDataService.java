@@ -1,10 +1,12 @@
 package nju.ztww.service;
 
+import java.rmi.Remote;
+
 import nju.ztww.po.MemberPO;
 import nju.ztww.po.OrderPO;
 
 
-public interface UserDataService {
+public interface UserDataService extends Remote{
 	/*
 	 * 用户输入账号密码验证身份
 	 * 输入：String id : 用户的ID
