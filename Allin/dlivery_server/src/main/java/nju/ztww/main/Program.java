@@ -16,7 +16,7 @@ public class Program {
         		 /*
         		  * DataService List:
         		  * 
-        		  * 
+        		  * 、
         		  */
         		 LocateRegistry.createRegistry(1010);
         		 Naming.rebind("rmi://"+IP+":"+PORT+"/UserDataService", userdataservice);
