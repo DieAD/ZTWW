@@ -9,6 +9,7 @@ import nju.ztww.po.SuperviseePO;
  * Date:
  * Author:
  */
+
 public interface ManageDataService extends Remote {
 //TODO// 插入一个订单信息
 	public void insert(SuperviseePO po) throws RemoteException;
@@ -18,4 +19,5 @@ public interface ManageDataService extends Remote {
 	public SuperviseePO find(String id) throws RemoteException;
 	//更新一个订单的具体信息
 	public void update(SuperviseePO po) throws RemoteException;
+
 }
