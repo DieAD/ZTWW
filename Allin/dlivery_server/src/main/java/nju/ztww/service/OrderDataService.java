@@ -16,6 +16,7 @@ public interface OrderDataService extends Remote  {
 	public void insert(OrderPO orderPO) throws RemoteException;
 	
 	public void delete(OrderPO orderPO)throws RemoteException;
+
 	
 	public void find(int id)throws RemoteException;
 

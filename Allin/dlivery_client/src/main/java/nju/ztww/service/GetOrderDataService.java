@@ -1,5 +1,6 @@
 package nju.ztww.service;
 
+import java.rmi.Remote;
 import java.util.ArrayList;
 
 import nju.ztww.po.OrderPO;
@@ -10,7 +11,7 @@ import nju.ztww.po.OrderPO;
  * 
  * */
 
-public interface GetOrderDataService {
+public interface GetOrderDataService extends Remote{
 	
 	public ArrayList<OrderPO> finds();
 
