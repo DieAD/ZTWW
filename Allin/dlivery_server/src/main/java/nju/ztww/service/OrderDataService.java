@@ -11,12 +11,20 @@ import nju.ztww.po.OrderPO;
  * 
  * */
 
+<<<<<<< HEAD
 public interface OrderDataService  extends Remote{
 	
 	public void insert(OrderPO orderPO) throws RemoteException;
 	
 	public void delete(OrderPO orderPO) throws RemoteException;
+=======
+public interface OrderDataService extends Remote  {
 	
-	public void find(int id);
+	public void insert(OrderPO orderPO) throws RemoteException;
+	
+	public void delete(OrderPO orderPO)throws RemoteException;
+>>>>>>> refs/remotes/DieAD/master
+	
+	public void find(int id)throws RemoteException;
 
 }
