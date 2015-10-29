@@ -1,6 +1,7 @@
 package nju.ztww.service;
 
 import java.rmi.Remote;
+import java.rmi.RemoteException;
 
 import nju.ztww.po.OrderPO;
 
@@ -10,12 +11,12 @@ import nju.ztww.po.OrderPO;
  * 
  * */
 
-public interface OrderDataService  {
+public interface OrderDataService extends Remote  {
 	
-	public void insert(OrderPO orderPO);
+	public void insert(OrderPO orderPO) throws RemoteException;
 	
-	public void delete(OrderPO orderPO);
+	public void delete(OrderPO orderPO)throws RemoteException;
 	
-	public void find(int id);
+	public void find(int id)throws RemoteException;
 
 }

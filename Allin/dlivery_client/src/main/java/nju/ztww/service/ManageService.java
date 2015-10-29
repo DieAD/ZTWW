@@ -6,6 +6,7 @@ import nju.ztww.vo.SuperviseeVO;
 
 public interface ManageService {
 	//通过id（指的是区别车辆信息，司机以及机构的编号）来获取一张信息表
+	//id的末尾几位标识标记处被管理者的不同类型
      public ArrayList<SuperviseeVO> getSuperviseeList(String id);
      
     //通过id（指的是具体的某个被管理者的身份编号）得到原有被管理者的信息
