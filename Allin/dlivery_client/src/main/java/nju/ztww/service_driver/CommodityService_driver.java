@@ -15,5 +15,8 @@ public class CommodityService_driver {
     	   Commodity_stub  commodity_stub = new Commodity_stub("00001", 1, 1, 1);
     	   commodity_stub.addOrder("0000000001");
     	   commodity_stub.deleteOrder("0000000001");
+    	   commodity_stub.getList("001");
+    	   commodity_stub.getOrder("000000000001");
+    	   commodity_stub.getTotal(1);
        }
 }
