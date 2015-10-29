@@ -1,5 +1,7 @@
 package nju.ztww.service;
 
+import java.rmi.Remote;
+
 import nju.ztww.po.OrderPO;
 
 /**
@@ -8,7 +10,7 @@ import nju.ztww.po.OrderPO;
  * 
  * */
 
-public interface OrderDataService {
+public interface OrderDataService extends Remote{
 	
 	public void insert(OrderPO orderPO);
 	
