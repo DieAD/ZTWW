@@ -30,8 +30,9 @@ public class WorkerOfCenterUI extends JPanel {
 		labelpanel2=new JPanel();
 		labelpanel2.add(Center);
 		
+		
 		frame.add(labelpanel2);
-		frame.setBackground(Color.BLUE);
+		frame.setBackground(Color.BLACK);
 		
 	}
 	private void addLabel(String name,int x,int y) {
