@@ -8,6 +8,7 @@ public class TextBussinessUI {
 	
 	JFrame frame=new JFrame();
 	BusinessUI panel =new BusinessUI();
+	BusinessLableUI lablePanel=new BusinessLableUI();
 	CarLoadingUI carLoadingPanel=new CarLoadingUI();
 	
 	public void init(){
@@ -20,11 +21,13 @@ public class TextBussinessUI {
 		frame.setResizable(false);
 		
 		panel.setBounds(0, 0, 210, 600);
-		carLoadingPanel.setBounds(210,60,690,500);
+		lablePanel.setBounds(210, 0, 690, 60);
+		carLoadingPanel.setBounds(210,60,690,480);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		frame.getContentPane().add(panel);
 		frame.getContentPane().add(carLoadingPanel);
+		frame.getContentPane().add(lablePanel);
 		frame.setVisible(true);
 	}
 
