@@ -20,7 +20,7 @@ public class TextBussinessUI {
 		frame.setResizable(false);
 		
 		panel.setBounds(0, 0, 210, 600);
-		carLoadingPanel.setBounds(210,60,690,500);
+		carLoadingPanel.setBounds(210,60,900,600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		frame.getContentPane().add(panel);
