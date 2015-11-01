@@ -125,6 +125,7 @@ public class CarLoadingUI extends JPanel{
 			            orderNumber.setIcon(OrderNumber);
 			            orderNumber.setBounds(0, 250, 100, 40);
 			            
+			            
 			            dlg.add(orderNumber);
 			            dlg.add(orderNumbertextArea);
 			            dlg.add(carNumber);
@@ -162,9 +163,12 @@ public class CarLoadingUI extends JPanel{
 			//增加行
 			Vector<String> row = new Vector(6);
 			row.add(datatextArea.getText());
+			datatextArea.setText("");
 			defaultTableModel.addRow(row);
+		    System.out.println("dsadsad");
 		    table.revalidate();
 		    dlg.dispose();
+		    sureButton.removeActionListener(listener);
 		}
 		
 	};
