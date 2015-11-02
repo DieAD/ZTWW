@@ -1,6 +1,7 @@
 package nju.ztww.ui.finance;
 
 import java.awt.Toolkit;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 
@@ -12,6 +13,7 @@ public class FinanceUI  {
     
     HeaderPanel headerPanel = new HeaderPanel();
     MenuePanel menuePanel = new MenuePanel();
+    ArrayList<EditPanel> panelList = new ArrayList<EditPanel>();
     
     
     public void setUp(){
@@ -24,7 +26,7 @@ public class FinanceUI  {
 		//add panel;
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		frame.getContentPane().add(accountPanel);
+		//frame.getContentPane().add(accountPanel);
 		frame.getContentPane().add(headerPanel);
 		frame.getContentPane().add(menuePanel);
 		frame.setVisible(true);
@@ -37,8 +39,13 @@ public class FinanceUI  {
     	benefitPanel.setBounds(210,60,690,480);
     }
     public void setPanelListener(){
-    	menuePanel.accountButton.addActionListener(new Tablecontroller(frame,accountPanel));
-    	menuePanel.benefitButton.addActionListener(new Tablecontroller(frame,benefitPanel));
+    	panelList.add(accountPanel);
+    	panelList.add(benefitPanel);
+    	for(EditPanel p : panelList){
+    		frame.getContentPane().add(p);
+    	}
+    	menuePanel.accountButton.addActionListener(new Tablecontroller(frame,accountPanel,panelList));
+    	menuePanel.benefitButton.addActionListener(new Tablecontroller(frame,benefitPanel,panelList));
     }
     public FinanceUI(){
     	setPanelBounds();
