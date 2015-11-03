@@ -1,4 +1,4 @@
-package nju.ztww.ui.user;
+package nju.ztww.ui.finance;
 
 import java.awt.Graphics;
 import java.awt.Image;
@@ -6,13 +6,10 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-public class BusinessLableUI extends JPanel{
-	
-
-	public BusinessLableUI(){
+public class HeaderPanel extends JPanel{
+	public HeaderPanel(){
 		
 	}
-	
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
 		
