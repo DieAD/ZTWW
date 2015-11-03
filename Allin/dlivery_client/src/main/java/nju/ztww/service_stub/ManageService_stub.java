@@ -8,7 +8,7 @@ import nju.ztww.vo.SuperviseeVO;
 public class ManageService_stub implements ManageService {
          String id;//id指的是营业厅的编号(末尾区分了不同的被管理者种类)
 	public ArrayList<SuperviseeVO> getSuperviseeList(String id) {
-		ArrayList<SuperviseeVO>arraylist=new ArrayList<SuperviseeVO>();
+		ArrayList<SuperviseeVO> arraylist=new ArrayList<SuperviseeVO>();
 		// TODO Auto-generated method stub
 		return arraylist;
 	}
