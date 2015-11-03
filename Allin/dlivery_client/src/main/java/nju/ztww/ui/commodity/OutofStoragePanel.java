@@ -1,4 +1,4 @@
-package nju.ztww.ui.user;
+package nju.ztww.ui.commodity;
 
 import java.awt.Dimension;
 import java.awt.Graphics;

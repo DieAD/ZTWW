@@ -1,13 +1,12 @@
 package nju.ztww.ui.user;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class NavigationPanel extends JPanel {
+import nju.ztww.ui.commodity.InofStoragePanel;
+import nju.ztww.ui.commodity.OutofStoragePanel;
+
+public class ClerkOfCenterNavigationPanel extends JPanel {
 	JButton IDbutton;//ID
 	JButton Outbutton;//出库
 	JButton Inbutton;//入库
@@ -15,7 +14,7 @@ public class NavigationPanel extends JPanel {
 	JButton Checkbutton;//库存查看；
 	InofStoragePanel inofStoragePanel;
 	OutofStoragePanel outofstoragePanl;
-  public NavigationPanel() {
+  public ClerkOfCenterNavigationPanel() {
 	// TODO Auto-generated constructor stub
 	  
 	  setup();
@@ -46,4 +45,6 @@ public class NavigationPanel extends JPanel {
 	
 	 
  }
+}
+
 }

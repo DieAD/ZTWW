@@ -1,9 +1,9 @@
-package nju.ztww.ui.user;
+package nju.ztww.ui.commodity;
 
 import javax.swing.JFrame;
 
 public class StorageUi extends JFrame {
-	NavigationPanel navigationpanel;
+	StorageNavigationPanel navigationpanel;
     TopPanel toppanel;
     OutofStoragePanel sheetpanel;
 	public StorageUi() {
@@ -16,7 +16,7 @@ public class StorageUi extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		}
 	public  void setup(){
-		navigationpanel=new NavigationPanel();
+		navigationpanel=new StorageNavigationPanel();
 		toppanel=new TopPanel();
 		sheetpanel=new OutofStoragePanel();
 	}
