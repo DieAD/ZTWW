@@ -2,6 +2,8 @@ package nju.ztww.ui.user;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -32,21 +34,52 @@ public class BusinessUI extends JPanel{
 		this.setLayout(null);
 		CarLoadingButton.setIcon(CarLoading);
 		CarLoadingButton.setBounds(0,60,209,58);
+		CarLoadingButton.addActionListener(new ActionListener(){
+
+			public void actionPerformed(ActionEvent e) {
+				TextBussinessUI.changePanel(1);
+			}});
 		
 		receiveAndSendButton.setIcon(receiveAndSend);
 		receiveAndSendButton.setBounds(0,118,209,58);
+		receiveAndSendButton.addActionListener(new ActionListener(){
+
+					public void actionPerformed(ActionEvent e) {
+						TextBussinessUI.changePanel(2);
+					}});
 		
 		ReceiveBillButton.setIcon(ReceiveBill);
 		ReceiveBillButton.setBounds(0,176,209,58);
+		ReceiveBillButton.addActionListener(new ActionListener(){
+
+			public void actionPerformed(ActionEvent e) {
+				TextBussinessUI.changePanel(3);
+			}});
+		
 		
 		CarManageButton.setIcon(CarManage);
 		CarManageButton.setBounds(0,234,209,58);
+		CarManageButton.addActionListener(new ActionListener(){
+
+			public void actionPerformed(ActionEvent e) {
+				TextBussinessUI.changePanel(4);
+			}});
 		
 		DriverManageButton.setIcon(DriverManage);
 		DriverManageButton.setBounds(0,292,209,58);
+		DriverManageButton.addActionListener(new ActionListener(){
+
+			public void actionPerformed(ActionEvent e) {
+				TextBussinessUI.changePanel(5);
+			}});
 		
 		YourMessageButton.setIcon(YourMessage);
 		YourMessageButton.setBounds(0,350,209,58);
+		YourMessageButton.addActionListener(new ActionListener(){
+
+			public void actionPerformed(ActionEvent e) {
+				TextBussinessUI.changePanel(6);
+			}});
 	
 		this.add(CarLoadingButton);
 		this.add(receiveAndSendButton);
