@@ -11,13 +11,13 @@ public class TextBussinessUI {
 	BusinessUI panel =new BusinessUI();
 	ThemeLabelUI lablePanel=new ThemeLabelUI();
 
-//	static CarLoadingUI carLoadingPanel=new CarLoadingUI();
-//	static ReceiveAndSendUI receiveAndSendPabel=new ReceiveAndSendUI();
-//	static RecieiveMoneyUI recieveMoneyUI=new RecieiveMoneyUI();
-//	static CarManageUI carManageUI=new CarManageUI();
-//	static DriverManage driverManageUI=new DriverManage();
-//	static PersonalInformationUI personalInformation=new PersonalInformationUI();
-//	private static int type=1;
+	static CarLoadingUI carLoadingPanel=new CarLoadingUI();
+	static ReceiveAndSendUI receiveAndSendPabel=new ReceiveAndSendUI();
+	static RecieiveMoneyUI recieveMoneyUI=new RecieiveMoneyUI();
+	static CarManageUI carManageUI=new CarManageUI();
+	static DriverManage driverManageUI=new DriverManage();
+	static PersonalInformationUI personalInformation=new PersonalInformationUI();
+	private static int type=1;
 
 	public void init(){
 
@@ -31,7 +31,14 @@ public class TextBussinessUI {
 		panel.setBounds(0, 0, 210, 600);
 
 		lablePanel.setBounds(210, 0, 690, 60);
+		
 		carLoadingPanel.setBounds(210,60,690,480);
+		receiveAndSendPabel.setBounds(210,60,690,480);
+		recieveMoneyUI.setBounds(210,60,690,480);
+		carManageUI.setBounds(210,60,690,480);
+		driverManageUI.setBounds(210,60,690,480);
+		personalInformation.setBounds(210,60,690,480);
+		
 
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
