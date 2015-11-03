@@ -8,7 +8,7 @@ public class TextBussinessUI {
 	
 	JFrame frame=new JFrame();
 	BusinessUI panel =new BusinessUI();
-	BusinessLableUI lablePanel=new BusinessLableUI();
+	ThemeLabelUI lablePanel=new ThemeLabelUI();
 	CarLoadingUI carLoadingPanel=new CarLoadingUI();
 	
 	public void init(){
