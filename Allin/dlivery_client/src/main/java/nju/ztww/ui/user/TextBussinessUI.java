@@ -10,14 +10,15 @@ public class TextBussinessUI {
 	static JFrame frame=new JFrame();
 	BusinessUI panel =new BusinessUI();
 	ThemeLabelUI lablePanel=new ThemeLabelUI();
-	static CarLoadingUI carLoadingPanel=new CarLoadingUI();
-	static ReceiveAndSendUI receiveAndSendPabel=new ReceiveAndSendUI();
-	static RecieiveMoneyUI recieveMoneyUI=new RecieiveMoneyUI();
-	static CarManageUI carManageUI=new CarManageUI();
-	static DriverManage driverManageUI=new DriverManage();
-	static PersonalInformationUI personalInformation=new PersonalInformationUI();
-	private static int type=1;
-	
+
+//	static CarLoadingUI carLoadingPanel=new CarLoadingUI();
+//	static ReceiveAndSendUI receiveAndSendPabel=new ReceiveAndSendUI();
+//	static RecieiveMoneyUI recieveMoneyUI=new RecieiveMoneyUI();
+//	static CarManageUI carManageUI=new CarManageUI();
+//	static DriverManage driverManageUI=new DriverManage();
+//	static PersonalInformationUI personalInformation=new PersonalInformationUI();
+//	private static int type=1;
+
 	public void init(){
 
 		frame.setSize(900, 600);

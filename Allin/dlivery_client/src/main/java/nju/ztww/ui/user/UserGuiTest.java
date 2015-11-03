@@ -73,6 +73,9 @@ public class UserGuiTest extends JFrame {
         user.setJPanel();
         user.initJFrame();
     	
+    
+    	
+    	
     	
     }
 }
