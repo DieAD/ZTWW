@@ -9,7 +9,7 @@ public class TextBussinessUI {
 	
 	static JFrame frame=new JFrame();
 	BusinessUI panel =new BusinessUI();
-	BusinessLableUI lablePanel=new BusinessLableUI();
+	ThemeLabelUI lablePanel=new ThemeLabelUI();
 	static CarLoadingUI carLoadingPanel=new CarLoadingUI();
 	static ReceiveAndSendUI receiveAndSendPabel=new ReceiveAndSendUI();
 	static RecieiveMoneyUI recieveMoneyUI=new RecieiveMoneyUI();

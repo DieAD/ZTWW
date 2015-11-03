@@ -6,10 +6,10 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-public class BusinessLableUI extends JPanel{
+public class ThemeLabelUI extends JPanel{
 	
 
-	public BusinessLableUI(){
+	public ThemeLabelUI(){
 		
 	}
 	
