@@ -16,8 +16,8 @@ public class ThemeLabelUI extends JPanel{
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
 		
-		Image label=new ImageIcon("photo/lable.gif").getImage();
-		g.drawImage(label, 0,0,null);
+		Image lable=new ImageIcon("photo/lable.gif").getImage();
+		g.drawImage(lable, 0,0,null);
 		
 	}
 }
