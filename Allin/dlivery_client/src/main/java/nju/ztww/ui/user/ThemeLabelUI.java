@@ -6,18 +6,18 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-public class BusinessLableUI extends JPanel{
+public class ThemeLabelUI extends JPanel{
 	
 
-	public BusinessLableUI(){
+	public ThemeLabelUI(){
 		
 	}
 	
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
 		
-		Image lable=new ImageIcon("photo/lable.gif").getImage();
-		g.drawImage(lable, 0,0,null);
+		Image label=new ImageIcon("photo/lable.gif").getImage();
+		g.drawImage(label, 0,0,null);
 		
 	}
 }
