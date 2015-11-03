@@ -50,6 +50,7 @@ public class CarLoadingUI extends JPanel{
 			.getScreenSize();
 	
 	public CarLoadingUI(){
+
 		
 		final ImageIcon BusinessNumber=new ImageIcon("photo/businessNumberLabel.gif");
 		final ImageIcon CarNumber=new ImageIcon("photo/carNumberLabel.gif");
@@ -65,6 +66,7 @@ public class CarLoadingUI extends JPanel{
 		addButton.setBounds(500, 420, 110, 38);
 		addButton.setIcon(add);
 		
+
 		this.setLayout(null);
 
         this.add(addButton);

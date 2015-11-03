@@ -28,12 +28,10 @@ public class TextBussinessUI {
 		frame.setResizable(false);
 		
 		panel.setBounds(0, 0, 210, 600);
+
 		lablePanel.setBounds(210, 0, 690, 60);
 		carLoadingPanel.setBounds(210,60,690,480);
-		receiveAndSendPabel.setBounds(210,60,690,480);
-		recieveMoneyUI.setBounds(210,60,690,480);
-		carManageUI.setBounds(210,60,690,480);
-		driverManageUI.setBounds(210,60,690,480);
+
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		frame.getContentPane().add(panel);
