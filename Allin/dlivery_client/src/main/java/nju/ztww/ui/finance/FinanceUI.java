@@ -39,13 +39,16 @@ public class FinanceUI  {
     	benefitPanel.setBounds(210,60,690,480);
     }
     public void setPanelListener(){
+    	//dialog button;
+        accountPanel.button3.addActionListener(new ListenerDialog(new Dialog()));
+    	//menuebutton
     	panelList.add(accountPanel);
     	panelList.add(benefitPanel);
     	for(EditPanel p : panelList){
     		frame.getContentPane().add(p);
     	}
-    	menuePanel.accountButton.addActionListener(new Tablecontroller(frame,accountPanel,panelList));
-    	menuePanel.benefitButton.addActionListener(new Tablecontroller(frame,benefitPanel,panelList));
+    	menuePanel.accountButton.addActionListener(new ListenerTable(frame,accountPanel,panelList));
+    	menuePanel.benefitButton.addActionListener(new ListenerTable(frame,benefitPanel,panelList));
     }
     public FinanceUI(){
     	setPanelBounds();

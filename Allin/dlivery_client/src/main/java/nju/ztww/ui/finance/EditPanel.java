@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -17,6 +18,10 @@ public class EditPanel extends JPanel {
        protected Object[][] initInfo = {{new String("000000001"),new Double(1000.23)}};
        protected int nodeHeight =30;
        protected int rowHeight  =25;
+       protected JButton button1 = new JButton("提交");
+       protected JButton button2 = new JButton("保存");
+       protected JButton button3 = new JButton("添加");
+       
        java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit()
    			.getScreenSize();
        
@@ -24,6 +29,7 @@ public class EditPanel extends JPanel {
        public EditPanel(){
     	  
     	   this.setUp();
+    	   this.setButton();
        }
        public EditPanel(String[] columnNames,Object[][] initInfo){
     	   this.columnNames = columnNames;
@@ -48,7 +54,19 @@ public class EditPanel extends JPanel {
 	      
 		  scrollPane.setBounds(0, 0, 690, 420);
 		  this.add(scrollPane);
+		  this.setButton();
 		  
+		  
+       }
+       
+       public void setButton(){
+    	   this.setLayout(null);
+    	   button1.setBounds(145,450,100,20);
+    	   button2.setBounds(295,450, 100, 20);
+    	   button3.setBounds(445,450, 100, 20);
+    	   this.add(button1);
+    	   this.add(button2);
+    	   this.add(button3);
        }
        
        
@@ -56,7 +74,7 @@ public class EditPanel extends JPanel {
    		super.paintComponent(g);
    		
    		Image background=new ImageIcon("photo/background2.gif").getImage();
-   		g.drawImage(background, 0,0,null);
+   		//g.drawImage(background, 0,0,null);
    		
    	}
        

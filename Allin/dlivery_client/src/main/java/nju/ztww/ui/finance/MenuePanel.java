@@ -8,17 +8,18 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 public class MenuePanel extends JPanel {
-       JButton accountButton = new JButton("账户查询");
-       JButton collectionButton = new JButton("查看收款单");
-       JButton paymentButton = new JButton("成本管理");
-       JButton benefitButton = new JButton("成本收益表");
-       JButton businessButton = new JButton("经营情况表");
-       JButton initButton = new JButton("期初建账");
+       JButton accountButton = new JButton("");
+       JButton collectionButton = new JButton("");
+       JButton paymentButton = new JButton("");
+       JButton benefitButton = new JButton("");
+       JButton businessButton = new JButton("");
+       JButton initButton = new JButton("");
        public static int width = 209;
        public static int height = 58;
        
        
        public MenuePanel(){
+    	   this.setPicture();
     	   this.setBorder(new javax.swing.border.TitledBorder(null, "",
    				javax.swing.border.TitledBorder.CENTER,
    				javax.swing.border.TitledBorder.DEFAULT_POSITION));
@@ -37,6 +38,21 @@ public class MenuePanel extends JPanel {
     	   this.add(initButton);
     	   this.add(paymentButton);
     	  
+       }
+       public void setPicture(){
+    	   final ImageIcon accout = new ImageIcon("finance/account.png");
+    	   final ImageIcon collection = new ImageIcon("finance/collection.png");
+    	   final ImageIcon payment = new ImageIcon("finance/business.png");
+    	   final ImageIcon benefit = new ImageIcon("finance/benefit.png");
+    	   final ImageIcon init = new ImageIcon("finance/init.png");
+    	   final ImageIcon business = new ImageIcon("finance/business2.png");
+    	   
+    	   accountButton.setIcon(accout);
+    	   collectionButton.setIcon(collection);
+    	   paymentButton.setIcon(payment);
+    	   benefitButton.setIcon(benefit);
+    	   initButton.setIcon(init);
+    	   businessButton.setIcon(business);
        }
        public void paintComponent(Graphics g){
    		super.paintComponent(g);
