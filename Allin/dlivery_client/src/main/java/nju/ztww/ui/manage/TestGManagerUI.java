@@ -1,14 +1,16 @@
-package nju.ztww.ui.user;
+package nju.ztww.ui.manage;
 
 import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 
+import nju.ztww.ui.user.ThemeLabelUI;
+
 public class TestGManagerUI {
 	JFrame frame = new JFrame();
 	GManagerMenuUI MenuPanel = new GManagerMenuUI();
 	ThemeLabelUI Theme = new ThemeLabelUI();
-	Courier_AcceptUI OrderInput = new Courier_AcceptUI();
+	GManager_ViewFormsUI viewFormsUI = new GManager_ViewFormsUI();
 	
 
 	public void init(){
@@ -21,13 +23,13 @@ public class TestGManagerUI {
 		
 		MenuPanel.setBounds(0, 0, 210, 600);
 		Theme.setBounds(210, 0, 690, 60);
-		OrderInput.setBounds(210,60,690,480);
+		viewFormsUI.setBounds(210,60,690,480);
 		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		frame.getContentPane().add(MenuPanel);
 		frame.getContentPane().add(Theme);
-		frame.getContentPane().add(OrderInput);
+		frame.getContentPane().add(viewFormsUI);
 		frame.setVisible(true);
 	}
 	
