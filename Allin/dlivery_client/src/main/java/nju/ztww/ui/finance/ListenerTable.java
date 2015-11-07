@@ -7,12 +7,12 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class Tablecontroller implements ActionListener {
+public class ListenerTable implements ActionListener {
 	 private JFrame frame;
 	 private JPanel panel;
 	 private ArrayList<EditPanel> list;
 	
-	public Tablecontroller(JFrame frame,JPanel panel,ArrayList<EditPanel> list){
+	public ListenerTable(JFrame frame,JPanel panel,ArrayList<EditPanel> list){
 		this.panel = panel;
 		this.list = list;
 	   
