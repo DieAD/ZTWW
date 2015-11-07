@@ -21,6 +21,7 @@ public class EditPanel extends JPanel {
        protected JButton button1 = new JButton("提交");
        protected JButton button2 = new JButton("保存");
        protected JButton button3 = new JButton("添加");
+       protected JScrollPane scrollPane;
        
        java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit()
    			.getScreenSize();
@@ -29,7 +30,7 @@ public class EditPanel extends JPanel {
        public EditPanel(){
     	  
     	   this.setUp();
-    	   this.setButton();
+    	   //this.setButton();
        }
        public EditPanel(String[] columnNames,Object[][] initInfo){
     	   this.columnNames = columnNames;
@@ -50,7 +51,7 @@ public class EditPanel extends JPanel {
 		  editTable.setAutoResizeMode(JTable.AUTO_RESIZE_NEXT_COLUMN);
 		  editTable.setRowHeight( rowHeight);
 		  
-		  JScrollPane scrollPane = new JScrollPane(editTable);
+		  scrollPane = new JScrollPane(editTable);
 	      
 		  scrollPane.setBounds(0, 0, 690, 420);
 		  this.add(scrollPane);
@@ -73,7 +74,7 @@ public class EditPanel extends JPanel {
        public void paintComponent(Graphics g){
    		super.paintComponent(g);
    		
-   		Image background=new ImageIcon("photo/background2.gif").getImage();
+   		//Image background=new ImageIcon("photo/background2.gif").getImage();
    		//g.drawImage(background, 0,0,null);
    		
    	}

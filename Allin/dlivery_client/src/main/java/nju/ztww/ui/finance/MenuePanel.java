@@ -35,8 +35,8 @@ public class MenuePanel extends JPanel {
     	   this.add(benefitButton);
     	   this.add(businessButton);
     	   this.add(collectionButton);
-    	   this.add(initButton);
     	   this.add(paymentButton);
+    	   this.add(initButton);
     	  
        }
        public void setPicture(){
