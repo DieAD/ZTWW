@@ -1,8 +1,11 @@
-package nju.ztww.ui.user;
+package nju.ztww.ui.order;
 
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -30,15 +33,43 @@ public class CourierMenuUI extends JPanel{
 		
 		OrderInputButton.setIcon(OrderInput);
 		OrderInputButton.setBounds(0,60,209,58);
+		OrderInputButton.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				TestCourierUI.changePanel(1);
+			}
+		});
 		
 		AcceptButton.setIcon(Accept);
 		AcceptButton.setBounds(0,118,209,58);
+		AcceptButton.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				TestCourierUI.changePanel(2);
+			}
+		});
 		
 		CheckOrderButton.setIcon(CheckOrder);
 		CheckOrderButton.setBounds(0,176,209,58);
+		CheckOrderButton.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				TestCourierUI.changePanel(3);
+			}
+		});
 		
 		YourMessageButton.setIcon(YourMessage);
 		YourMessageButton.setBounds(0,234,209,58);
+		YourMessageButton.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				TestCourierUI.changePanel(4);
+			}
+		});
 		
 		LogoutButton.setIcon(Logout);
 		LogoutButton.setBounds(0,292,209,58);
