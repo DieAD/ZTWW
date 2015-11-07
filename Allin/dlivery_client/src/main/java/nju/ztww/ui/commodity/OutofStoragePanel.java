@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Vector;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
@@ -20,18 +21,20 @@ public class OutofStoragePanel extends JPanel {
    public JButton addbutton;
    public OutofStoragePanel() {
 	   this.setLayout(null);
-	   addbutton=new JButton("添加");
-	   addbutton.setBounds(450, 400, 100, 30);
+	   addbutton=new JButton();
+	   ImageIcon add=new ImageIcon("photo/add.gif");
+	   addbutton.setBounds(500, 420, 110, 38);
+	   addbutton.setIcon(add);
 	   this.add(addbutton);
 	// TODO Auto-generated constructor stub
 	   Object[][] playerInfo =
 {
-	{ "0000000001", "2015年11月1日", "南京", "A",14,2,4 },
-	{ "0000000002", "2015年11月2日", "上海", "B", 15 ,3,6}, 
+	{ "0000000007", "2015年11月1日", "南京", "A",14,2,4 },
+	{ "0000000008", "2015年11月2日", "上海", "B", 15 ,3,6}, 
 			  };
 
 	//字段名称
-  String[] Names = { "快件编号", "入库日期", "目的地", "区号", "排号" ,"架号","位号"};
+  String[] Names = { "快件编号", "出库日期", "目的地", "区号", "排号" ,"架号","位号"};
 
 			  
   //创建表格: 建立一个显示二维数组数据的表格，且可以显示列的名称。 

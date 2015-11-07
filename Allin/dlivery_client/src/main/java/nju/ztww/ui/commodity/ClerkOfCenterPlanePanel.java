@@ -13,27 +13,28 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-public class InofStoragePanel extends JPanel{
-	public JTable table;
+public class ClerkOfCenterPlanePanel extends JPanel {
+	 public JTable table;
 	   public JDialog dlg;
 	   DefaultTableModel defaultTableModel ;
 	   public JButton addbutton;
-	   public InofStoragePanel() {
+	   public ClerkOfCenterPlanePanel() {
 		   this.setLayout(null);
 		   addbutton=new JButton();
 		   ImageIcon add=new ImageIcon("photo/add.gif");
 		   addbutton.setBounds(500, 420, 110, 38);
 		   addbutton.setIcon(add);
+		  
 		   this.add(addbutton);
 		// TODO Auto-generated constructor stub
 		   Object[][] playerInfo =
 	{
-		{ "0000000003", "2015年11月1日", "南京", "A",14,2,4 },
-		{ "0000000004", "2015年11月2日", "上海", "B", 15 ,3,6}, 
+		{ "2015年11月12日", "555", "02", "上海","日本",2,"sb","00000000004"},
+		
 				  };
 
 		//字段名称
-	  String[] Names = { "快件编号", "入库日期", "目的地", "区号", "排号" ,"架号","位号"};
+	  String[] Names = { "装运日期", "航运编号", "航班号", "出发地", "到达地" ,"货柜号","监装员","单号"};
 
 				  
 	  //创建表格: 建立一个显示二维数组数据的表格，且可以显示列的名称。 
@@ -57,5 +58,4 @@ public class InofStoragePanel extends JPanel{
 				});
 		   
 	}
-	  
 }

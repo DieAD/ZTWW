@@ -3,6 +3,7 @@ package nju.ztww.ui.commodity;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -13,8 +14,10 @@ public class StorageNavigationPanel extends JPanel {
 	JButton Inbutton;//入库
 	JButton Panbutton;//库存盘点
 	JButton Checkbutton;//库存查看；
-	InofStoragePanel inofStoragePanel;
-	OutofStoragePanel outofstoragePanl;
+	final ImageIcon In=new ImageIcon("photo/In.jpg");
+	final ImageIcon Out=new ImageIcon("photo/Out.jpg");
+	final ImageIcon Check=new ImageIcon("photo/check.jpg");
+	final ImageIcon pan=new ImageIcon("photo/pan.jpg");
   public StorageNavigationPanel() {
 	// TODO Auto-generated constructor stub
 	  
@@ -23,18 +26,23 @@ public class StorageNavigationPanel extends JPanel {
 }
   public void setup(){//初始化部件对象
 	  IDbutton=new JButton("ID");
-	  Outbutton=new JButton("出库");
-	  Inbutton=new JButton("入库");
-	  Panbutton=new JButton("库存盘点");
-	  Checkbutton=new JButton("库存查看");
+	  
+	  Outbutton=new JButton();
+	  Outbutton.setIcon(Out);
+	  Inbutton=new JButton();
+	  Inbutton.setIcon(In);
+	  Panbutton=new JButton();
+	  Panbutton.setIcon(pan);
+	  Checkbutton=new JButton();
+	  Checkbutton.setIcon(Check);
   }
  public void setPosition(){//设置位置
 	 this.setLayout(null);
 	 IDbutton.setBounds(0, 0, 150, 100);
-	 Checkbutton.setBounds(0, 100, 150, 60);
-	 Panbutton.setBounds(0, 160, 150, 60);
-	 Inbutton.setBounds(0, 220, 150, 60);
-	 Outbutton.setBounds(0, 280, 150, 60);
+	 Checkbutton.setBounds(0, 100, 150, 80);
+	 Panbutton.setBounds(0, 180, 150, 80);
+	 Inbutton.setBounds(0, 260, 150, 80);
+	 Outbutton.setBounds(0, 340, 150, 80);
 	 this.add(IDbutton);
 	 this.add(Checkbutton);
 	 this.add(Panbutton);
@@ -42,8 +50,5 @@ public class StorageNavigationPanel extends JPanel {
 	 this.add(Outbutton);
 	 
  }
- public void setListener(){
-	
-	 
- }
+ 
 }
