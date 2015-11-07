@@ -19,8 +19,7 @@ public class OrderVO {
 	
 	public OrderVO(int idOfOrder){
 		this.idOfOrder = idOfOrder;
-		
-	}
+		}
 	
 
 }
