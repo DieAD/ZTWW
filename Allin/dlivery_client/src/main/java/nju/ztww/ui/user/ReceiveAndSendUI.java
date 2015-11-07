@@ -32,7 +32,8 @@ public class ReceiveAndSendUI extends JPanel{
 	private JButton addButton=new JButton();
 	private JButton sureButton=new JButton("确定");
 	DefaultTableModel defaultTableModel ;
-	 JTable table;
+	 JTable receiveTable;
+	 JTable sendTable;
 	 JDialog dlg;
 	 java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit()
 				.getScreenSize();
@@ -53,18 +54,18 @@ public class ReceiveAndSendUI extends JPanel{
 			  
 			  //创建表格: 建立一个显示二维数组数据的表格，且可以显示列的名称。 
 			  defaultTableModel = new DefaultTableModel( playerInfo,Names); 
-			  table = new JTable( defaultTableModel);       //字段名称
-			  Dimension size = table.getTableHeader().getPreferredSize();
+			  receiveTable = new JTable( defaultTableModel);       //字段名称
+			  Dimension size = receiveTable.getTableHeader().getPreferredSize();
 		
 			  size.height = 30;//设置新的表头高度40
-			  table.getTableHeader().setPreferredSize(size);
-			  table.setAutoResizeMode(JTable.AUTO_RESIZE_NEXT_COLUMN);
+			  receiveTable.getTableHeader().setPreferredSize(size);
+			  receiveTable.setAutoResizeMode(JTable.AUTO_RESIZE_NEXT_COLUMN);
 			//  table.setPreferredScrollableViewportSize(new Dimension( 550,
 //			                60));
 			  
 			  //绑定滚动条
-			  JScrollPane scrollPane = new JScrollPane(table);
-		      table.setRowHeight(25);
+			  JScrollPane scrollPane = new JScrollPane(receiveTable);
+			  receiveTable.setRowHeight(25);
 			  scrollPane.setBounds(0, 0, 690, 420);
 			  this.add(scrollPane);
 			  addButton.addActionListener(new ActionListener(){
@@ -145,7 +146,7 @@ public class ReceiveAndSendUI extends JPanel{
 			carNumbertextArea.setText("");
 			orderNumbertextArea.setText("");
 			defaultTableModel.addRow(row);
-		    table.revalidate();
+			receiveTable.revalidate();
 		    dlg.dispose();
 		    sureButton.removeActionListener(listener);
 		}

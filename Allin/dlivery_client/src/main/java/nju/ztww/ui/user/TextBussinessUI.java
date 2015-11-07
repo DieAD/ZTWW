@@ -16,7 +16,7 @@ public class TextBussinessUI {
 	static RecieiveMoneyUI recieveMoneyUI=new RecieiveMoneyUI();
 	static CarManageUI carManageUI=new CarManageUI();
 	static DriverManage driverManageUI=new DriverManage();
-	static PersonalInformationUI personalInformation=new PersonalInformationUI();
+	static PersonalMesageUI personalMessagePanel=new PersonalMesageUI();
 	private static int type=1;
 
 	public void init(){
@@ -37,8 +37,8 @@ public class TextBussinessUI {
 		recieveMoneyUI.setBounds(210,60,690,480);
 		carManageUI.setBounds(210,60,690,480);
 		driverManageUI.setBounds(210,60,690,480);
-		personalInformation.setBounds(210,60,690,480);
-		
+		personalMessagePanel.setBounds(210,60,690,480);
+	
 
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
@@ -58,22 +58,29 @@ public class TextBussinessUI {
 	public static void changePanel(int i){
 		removePanel();
 		if(i==1){
+			carLoadingPanel.setVisible(true);
 			frame.getContentPane().add(carLoadingPanel);
+
 			type=1;
 		}else if(i==2){
+			receiveAndSendPabel.setVisible(true);
 			frame.getContentPane().add(receiveAndSendPabel);
 			type=2;
 		}else if(i==3){
+			recieveMoneyUI.setVisible(true);
 			frame.getContentPane().add(recieveMoneyUI);
 			type=3;
 		}else if(i==4){
+			carManageUI.setVisible(true);
 			frame.getContentPane().add(carManageUI);
 			type=4;
 		}else if(i==5){
+			driverManageUI.setVisible(true);
 			frame.getContentPane().add(driverManageUI);
 			type=5;
-		}else{
-			frame.getContentPane().add(personalInformation);
+		}else if(i==6){
+			personalMessagePanel.setVisible(true);
+			frame.getContentPane().add(personalMessagePanel);
 			type=6;
 		}
 	
@@ -81,17 +88,17 @@ public class TextBussinessUI {
 	
 	public static void removePanel(){
 		if(type==1){
-			frame.remove(carLoadingPanel);
+			carLoadingPanel.setVisible(false);
 		}else if(type==2){
-			frame.remove(receiveAndSendPabel);
+			receiveAndSendPabel.setVisible(false);
 		}else if(type==3){
-			frame.remove(recieveMoneyUI);
+			recieveMoneyUI.setVisible(false);
 		}else if(type==4){
-			frame.remove(carManageUI);
+			carManageUI.setVisible(false);
 		}else if(type==5){
-			frame.remove(driverManageUI);
-		}else{
-			frame.remove(personalInformation);
+			driverManageUI.setVisible(false);
+		}else if(type==6){
+			personalMessagePanel.setVisible(false);
 		}
 	}
 
