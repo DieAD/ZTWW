@@ -1,4 +1,4 @@
-package nju.ztww.ui.user;
+package nju.ztww.ui.manage;
 
 import java.awt.Graphics;
 import java.awt.Image;
