@@ -9,13 +9,13 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class StorageNavigationPanel extends JPanel {
-	JButton IDbutton;//ID
+	
 	JButton Outbutton;//出库
 	JButton Inbutton;//入库
 	JButton Panbutton;//库存盘点
 	JButton Checkbutton;//库存查看；
-	final ImageIcon In=new ImageIcon("photo/In.jpg");
-	final ImageIcon Out=new ImageIcon("photo/Out.jpg");
+	final ImageIcon In=new ImageIcon("photo/in.jpg");
+	final ImageIcon Out=new ImageIcon("photo/out.jpg");
 	final ImageIcon Check=new ImageIcon("photo/check.jpg");
 	final ImageIcon pan=new ImageIcon("photo/pan.jpg");
   public StorageNavigationPanel() {
@@ -25,7 +25,7 @@ public class StorageNavigationPanel extends JPanel {
 	  setPosition();
 }
   public void setup(){//初始化部件对象
-	  IDbutton=new JButton("ID");
+	  
 	  
 	  Outbutton=new JButton();
 	  Outbutton.setIcon(Out);
@@ -38,12 +38,12 @@ public class StorageNavigationPanel extends JPanel {
   }
  public void setPosition(){//设置位置
 	 this.setLayout(null);
-	 IDbutton.setBounds(0, 0, 150, 100);
-	 Checkbutton.setBounds(0, 100, 150, 80);
-	 Panbutton.setBounds(0, 180, 150, 80);
-	 Inbutton.setBounds(0, 260, 150, 80);
-	 Outbutton.setBounds(0, 340, 150, 80);
-	 this.add(IDbutton);
+	
+	 Checkbutton.setBounds(0, 60, 150, 60);
+	 Panbutton.setBounds(0, 120, 150, 60);
+	 Inbutton.setBounds(0, 180, 150, 60);
+	 Outbutton.setBounds(0, 240, 150, 60);
+	 
 	 this.add(Checkbutton);
 	 this.add(Panbutton);
 	 this.add(Inbutton);

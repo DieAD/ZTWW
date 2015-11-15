@@ -1,6 +1,8 @@
 package nju.ztww.ui.commodity;
 
 import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Vector;
@@ -13,12 +15,12 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-public class ClerkOfCenterBusPanel extends JPanel {
+public class ClerkOfCenterArriveEndPanel extends JPanel {
 	public JTable table;
 	   public JDialog dlg;
 	   DefaultTableModel defaultTableModel ;
 	   public JButton addbutton;
-	   public ClerkOfCenterBusPanel() {
+	   public ClerkOfCenterArriveEndPanel() {
 		   this.setLayout(null);
 		   addbutton=new JButton();
 		   ImageIcon add=new ImageIcon("photo/add.gif");
@@ -29,25 +31,25 @@ public class ClerkOfCenterBusPanel extends JPanel {
 		// TODO Auto-generated constructor stub
 		   Object[][] playerInfo =
 	{
-		{ "2015年11月12日", "555", "02", "上海","日本",2,"sb","sss","00000000004",150},
+		{ "025001245", "11月21日", "0216", "上海","完整"},
 		
 				  };
 
-		//字段名称
-	  String[] Names = { "装运日期", "货运编号", "车次号", "出发地", "到达地" ,"监装员","押运员","单号","运费"};
+		//瀛楁鍚嶇О
+	  String[] Names = { "中转中心编号", "到达日期", "中转单编号", "出发地", "货物到达状态"};
 
 				  
-	  //创建表格: 建立一个显示二维数组数据的表格，且可以显示列的名称。 
+	  
 		defaultTableModel = new DefaultTableModel( playerInfo,Names); 
-		table = new JTable( defaultTableModel);       //字段名称
+		table = new JTable( defaultTableModel);       
 		Dimension size = table.getTableHeader().getPreferredSize();
-		size.height = 30;//设置新的表头高度40
+		size.height = 30;
 		table.getTableHeader().setPreferredSize(size);
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_NEXT_COLUMN);
-		//绑定滚动条
+		
 		JScrollPane scrollPane = new JScrollPane(table);
 		 table.setRowHeight(25);
-		scrollPane.setBounds(0, 0, 700, 400);
+		scrollPane.setBounds(0, 0, 690, 420);
 		this.add(scrollPane); 
 		addbutton.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent arg0) {
@@ -58,4 +60,12 @@ public class ClerkOfCenterBusPanel extends JPanel {
 				});
 		   
 	}
+	   
+	   public void paintComponent(Graphics g){
+			super.paintComponent(g);
+			
+			Image background=new ImageIcon("photo/bbbackground2.gif").getImage();
+			g.drawImage(background, 0,0,null);
+			
+		}
 }
