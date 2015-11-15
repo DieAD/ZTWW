@@ -1,6 +1,7 @@
 package nju.ztww.ui.commodity;
 
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Vector;
@@ -8,9 +9,11 @@ import java.util.Vector;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 public class InofStoragePanel extends JPanel{
@@ -18,6 +21,23 @@ public class InofStoragePanel extends JPanel{
 	   public JDialog dlg;
 	   DefaultTableModel defaultTableModel ;
 	   public JButton addbutton;
+	   public JLabel ordernumber=new JLabel("快递编号");
+	   public JLabel data=new JLabel("入库日期");
+	   public JLabel arrive=new JLabel("目的地");
+	   public JLabel qu=new JLabel("区号");
+	   public JLabel pai=new JLabel("排号");
+	   public JLabel jia=new JLabel("架号");
+	   public JLabel wei=new JLabel("位号");
+	   public JTextField ordernumberfield=new JTextField();
+	   public JTextField datafield=new JTextField();
+	   public JTextField arrivefield=new JTextField();
+	   public JTextField qufield=new JTextField();
+	   public JTextField paifield=new JTextField();
+	   public JTextField jiafield=new JTextField();
+	   public JTextField weifield=new JTextField();
+	   public JButton  surebutton=new JButton("确定");
+	   java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit()
+				.getScreenSize();
 	   public InofStoragePanel() {
 		   this.setLayout(null);
 		   addbutton=new JButton();
@@ -51,11 +71,90 @@ public class InofStoragePanel extends JPanel{
 		addbutton.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent arg0) {
 			// TODO Auto-generated method stub
-		defaultTableModel.addRow(new Vector());
-			table.revalidate();
+			dlg=new JDialog();
+			dlg.setSize(new Dimension(350, 550));
+            dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
+            ordernumberfield.setBounds(100, 5, 150, 30);
+            ordernumber.setFont(new Font("黑体",0,18));
+            ordernumber.setBounds(0, 0, 100, 40);;
+            datafield.setBounds(100, 55, 150, 30);
+            data.setFont(new Font("黑体",0,18));
+            data.setBounds(0, 50,100, 40);
+            arrivefield.setBounds(100, 105, 150, 30);
+            arrive.setFont(new Font("黑体",0,18));
+            arrive.setBounds(0, 100, 100, 40);
+            qufield.setBounds(100, 155, 150, 30);
+            qu.setFont(new Font("黑体",0,18));
+            qu.setBounds(0, 150, 100, 40);
+            paifield.setBounds(100, 205, 150, 30);
+            pai.setFont(new Font("黑体",0,18));
+            pai.setBounds(0, 200, 100, 40);
+            jiafield.setBounds(100, 255, 150, 30);
+            
+            jia.setBounds(0, 250, 100, 40);
+            jia.setFont(new Font("黑体",0,18));
+            weifield.setBounds(100, 305, 150, 30);
+            wei.setFont(new Font("黑体",0,18));
+            wei.setBounds(0, 300, 100, 40);
+            dlg.setLayout(null);
+            dlg.add(ordernumberfield);
+            dlg.add(ordernumber);
+            dlg.add(arrive);
+            dlg.add(arrivefield);
+            dlg.add(data);
+            dlg.add(datafield);
+            dlg.add(jia);
+            dlg.add(jiafield);
+            dlg.add(pai);
+            dlg.add(paifield);
+            dlg.add(qu);
+            dlg.add(qufield);
+            dlg.add(wei);
+            dlg.add(weifield);
+           
+            surebutton.setBounds(200, 350, 80, 40);
+            dlg.add(surebutton);
+            surebutton.addActionListener(surelistener);
+            dlg.setVisible(true);
+            
+      
+		
 					}
 				});
-		   
-	}
-	  
+		
+	   }
+
+    ActionListener surelistener=new ActionListener() {
+		
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			Vector<String> row = new Vector(7);
+			
+			row.add(ordernumberfield.getText());
+			row.add(datafield.getText());
+			row.add(arrivefield.getText());
+			row.add(qufield.getText());
+			row.add(paifield.getText());
+			row.add(jiafield.getText());
+			row.add(weifield.getText());
+			ordernumberfield.setText(null);
+			datafield.setText(null);
+			arrivefield.setText(null);
+			qufield.setText(null);
+			paifield.setText(null);
+			jiafield.setText(null);
+			weifield.setText(null);
+			defaultTableModel.addRow(row);
+		    table.revalidate();
+		    dlg.dispose();
+		    surebutton.removeActionListener(surelistener);
+		    
+		}
+	};
 }
+	
+
+
+
+
+

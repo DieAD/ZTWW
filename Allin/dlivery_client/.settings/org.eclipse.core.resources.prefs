@@ -1,4 +1,8 @@
 eclipse.preferences.version=1
 encoding//src/main/java=UTF-8
+encoding//src/main/java/nju/ztww/ui/commodity/ClerkOfCenterArriveEndPanel.java=UTF-8
+encoding//src/main/java/nju/ztww/ui/commodity/ClerkOfCenterArriveMidPanel.java=UTF-8
+encoding//src/main/java/nju/ztww/ui/commodity/ClerkOfCenterNavigationPanel.java=UTF-8
+encoding//src/main/java/nju/ztww/ui/commodity/ClerkOfCenterTransferPanel.java=UTF-8
 encoding//src/test/java=UTF-8
 encoding/<project>=UTF-8

@@ -1,6 +1,7 @@
 package nju.ztww.ui.commodity;
 
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,16 +10,31 @@ import java.util.Vector;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 public class OutofStoragePanel extends JPanel {
    public JTable table;
-   public JDialog dlg;
+   public JDialog dlg=new JDialog();
    DefaultTableModel defaultTableModel ;
    public JButton addbutton;
+   public JButton surebutton;
+   java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit()
+			.getScreenSize();
+   public JLabel ordernumber=new JLabel("快递编号");
+   public JLabel data=new JLabel("出库日期");
+   public JLabel arrive=new JLabel("目的地");
+   public JLabel zhuangyun=new JLabel("装运形式");
+   public JLabel yunshu=new JLabel("运输编号");
+   public JTextField ordernumberfield=new JTextField();
+   public JTextField datafield=new JTextField();
+   public JTextField arrivefield=new JTextField();
+   public JTextField zhuangyunfield=new JTextField();
+   public JTextField yunshufield=new JTextField();
    public OutofStoragePanel() {
 	   this.setLayout(null);
 	   addbutton=new JButton();
@@ -51,12 +67,66 @@ public class OutofStoragePanel extends JPanel {
 	this.add(scrollPane); 
 	addbutton.addActionListener(new ActionListener() {
 	public void actionPerformed(ActionEvent arg0) {
+		dlg.setLayout(null);
+		dlg.setSize(new Dimension(350, 550));
+        dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
+        surebutton=new JButton("确定");
+        surebutton.setBounds(200, 250, 80, 40);
+        
+        ordernumberfield.setBounds(100, 5, 150, 30);
+        ordernumber.setFont(new Font("黑体",0,18));
+        ordernumber.setBounds(0, 0, 100, 40);;
+        datafield.setBounds(100, 55, 150, 30);
+        data.setFont(new Font("黑体",0,18));
+        data.setBounds(0, 50,100, 40);
+        arrivefield.setBounds(100, 105, 150, 30);
+        arrive.setFont(new Font("黑体",0,18));
+        arrive.setBounds(0, 100, 100, 40);
+        zhuangyunfield.setBounds(100, 155, 150, 30);
+        zhuangyun.setFont(new Font("黑体",0,18));
+        zhuangyun.setBounds(0, 150, 100, 40);
+        yunshufield.setBounds(100, 205, 150, 30);
+        yunshu.setFont(new Font("黑体",0,18));
+        yunshu.setBounds(0, 200, 100, 40);
+        
+        dlg.add(surebutton);
+        dlg.add(arrive);
+        dlg.add(arrivefield);
+        dlg.add(data);
+        dlg.add(datafield);
+        dlg.add(ordernumber);
+        dlg.add(ordernumberfield);
+        dlg.add(yunshu);
+        dlg.add(yunshufield);
+        dlg.add(zhuangyun);
+        dlg.add(zhuangyunfield);
+        surebutton.addActionListener(listener);
+        dlg.setVisible(true);
 		// TODO Auto-generated method stub
-	defaultTableModel.addRow(new Vector());
-		table.revalidate();
+	
 				}
 			});
 	   
 }
-  
+ ActionListener listener=new ActionListener() {
+	
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		Vector<String> row = new Vector(5);
+		row.add(ordernumberfield.getText());
+		row.add(datafield.getText());
+		row.add(arrivefield.getText());
+		row.add(zhuangyunfield.getText());
+		row.add(yunshufield.getText());
+		ordernumberfield.setText(null);
+		datafield.setText(null);
+		arrivefield.setText(null);
+		zhuangyunfield.setText(null);
+		yunshufield.setText(null);
+		defaultTableModel.addRow(row);
+	    table.revalidate();
+	    dlg.dispose();
+	    surebutton.removeActionListener(listener);
+	}
+}; 
 }
