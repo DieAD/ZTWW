@@ -5,6 +5,7 @@ import java.awt.Toolkit;
 import javax.swing.JFrame;
 
 import nju.ztww.ui.user.CheckOrdersUI;
+
 import nju.ztww.ui.user.ThemeLabelUI;
 
 public class TestCourierUI{
@@ -16,7 +17,7 @@ public class TestCourierUI{
 	
 	static Courier_OrderInputUI OrderInput = new Courier_OrderInputUI();
 	static Courier_AcceptUI Accept = new Courier_AcceptUI();
-	//static PersonalInformationUI personalInformation = new PersonalInformationUI();
+
 	static CheckOrdersUI checkOrder = new CheckOrdersUI();
 	
 	public void init(){
