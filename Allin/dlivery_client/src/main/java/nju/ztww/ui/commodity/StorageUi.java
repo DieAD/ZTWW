@@ -10,6 +10,8 @@ public class StorageUi extends JFrame {
     TopPanel toppanel;
     OutofStoragePanel outofStoragepanel;
     InofStoragePanel  inofStoragepanel;
+    StorageCheckPanel storagecheckpanel;
+    StoragePanPanel storagepanpanel;
     ArrayList<JPanel>arraylist=new ArrayList<JPanel>();
 	public StorageUi() {
 		// TODO Auto-generated constructor stub
@@ -26,25 +28,34 @@ public class StorageUi extends JFrame {
 		toppanel=new TopPanel();
 		outofStoragepanel=new OutofStoragePanel();
 		inofStoragepanel=new InofStoragePanel();
-		
+		storagecheckpanel=new StorageCheckPanel();
+		storagepanpanel=new StoragePanPanel();
 	}
 	public void setPosition(){
 		this.setLayout(null);
 		navigationpanel.setBounds(0, 0, 150, 600);
-		toppanel.setBounds(150, 0, 750, 100);
-		outofStoragepanel.setBounds(150, 100, 750, 500);
-		inofStoragepanel.setBounds(150, 100, 750, 500);
+		toppanel.setBounds(150, 0, 750, 60);
+		outofStoragepanel.setBounds(150, 60, 750, 500);
+		inofStoragepanel.setBounds(150, 60, 750, 500);
+		storagecheckpanel.setBounds(150, 60, 750, 500);
+		storagepanpanel.setBounds(150, 60, 750, 500);
 		this.add(navigationpanel);
 		this.add(toppanel);
+		this.add(storagecheckpanel);
 		this.add(outofStoragepanel);
 		this.add(inofStoragepanel);
+		this.add(storagepanpanel);
 		
 	}
 	public void setController(){
 		arraylist.add(outofStoragepanel);
 		arraylist.add(inofStoragepanel);
+		arraylist.add(storagecheckpanel);
+		arraylist.add(storagepanpanel);
 		navigationpanel.Inbutton.addActionListener(new StorageControllerUi(this, inofStoragepanel, arraylist));
 		navigationpanel.Outbutton.addActionListener(new StorageControllerUi(this, outofStoragepanel, arraylist));
+		navigationpanel.Panbutton.addActionListener(new StorageControllerUi(this, storagepanpanel, arraylist));
+		navigationpanel.Checkbutton.addActionListener(new StorageControllerUi(this, storagecheckpanel, arraylist));
 	}
 
 	public static void main(String[] args) {

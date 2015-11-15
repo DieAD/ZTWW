@@ -1,5 +1,7 @@
 package nju.ztww.ui.commodity;
 
+import java.awt.Graphics;
+import java.awt.Image;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
@@ -7,54 +9,61 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import nju.ztww.ui.commodity.InofStoragePanel;
-import nju.ztww.ui.commodity.OutofStoragePanel;
+
 
 public class ClerkOfCenterNavigationPanel extends JPanel {
-	JButton IDbutton;//ID
-	JButton Planebutton;//飞机
-	JButton Trainbutton;//火车
-	JButton Busbutton;//汽车
-	JButton Receivebutton;//中转接收
-	final ImageIcon Plane=new ImageIcon("photo/plane.jpg");
-	final ImageIcon Train=new ImageIcon("photo/Train.jpg");
-	final ImageIcon Bus=new ImageIcon("photo/Bus.jpg");
-	final ImageIcon Receive=new ImageIcon("photo/Receive.jpg");
+	
+	JButton ArriveMid;//椋炴満
+	JButton ArriveEnd;//鐏溅
+	JButton Transfer;//姹借溅
+	JButton CarLoadbutton;//涓浆鎺ユ敹
+	final ImageIcon Plane=new ImageIcon("photo/arriveMid.gif");
+	final ImageIcon Train=new ImageIcon("photo/arriveEnd.gif");
+	final ImageIcon Bus=new ImageIcon("photo/zhongzhuan.gif");
+	final ImageIcon Receive=new ImageIcon("photo/CarLoading2.gif");
   public ClerkOfCenterNavigationPanel() {
 	// TODO Auto-generated constructor stub
 	  
 	  setup();
 	  setPosition();
 }
-  public void setup(){//初始化部件对象
-	  IDbutton=new JButton("ID");
-	  Planebutton=new JButton();
-	  Planebutton.setIcon(Plane);
-	  Trainbutton=new JButton();
-	  Trainbutton.setIcon(Train);
-	  Busbutton=new JButton();
-	  Busbutton.setIcon(Bus);
-	  Receivebutton=new JButton("接收单");
-	  Receivebutton.setIcon(Receive);
+  public void setup(){//鍒濆鍖栭儴浠跺璞�
+	  
+	  ArriveMid=new JButton();
+	  ArriveMid.setIcon(Plane);
+	  ArriveEnd=new JButton();
+	  ArriveEnd.setIcon(Train);
+	  Transfer=new JButton();
+	  Transfer.setIcon(Bus);
+	  CarLoadbutton=new JButton();
+	  CarLoadbutton.setIcon(Receive);
   }
- public void setPosition(){//设置位置
+ public void setPosition(){//璁剧疆浣嶇疆
 	 this.setLayout(null);
-	 IDbutton.setBounds(0, 0, 150, 100);
-	 Planebutton.setBounds(0, 100, 150, 80);
-	 Trainbutton.setBounds(0, 180, 150, 80);
-	 Busbutton.setBounds(0, 260, 150, 80);
-	 Receivebutton.setBounds(0, 340, 150, 80);
-	 this.add(IDbutton);
-	 this.add(Planebutton);
-	 this.add(Trainbutton);
-	 this.add( Busbutton);
-	 this.add(Receivebutton);
+	 
+	 ArriveMid.setBounds(0, 60, 210, 58);
+	 ArriveEnd.setBounds(0, 118, 210, 58);
+	 Transfer.setBounds(0, 176, 210, 58);
+	 CarLoadbutton.setBounds(0, 234, 210, 58);
+	// this.add(IDbutton);
+	 this.add(ArriveMid);
+	 this.add(ArriveEnd);
+	 this.add( Transfer);
+	 this.add(CarLoadbutton);
 	 
  }
  public void setListener(){
 	
 	 
  }
+ 
+ public void paintComponent(Graphics g){
+		super.paintComponent(g);
+		
+		Image background=new ImageIcon("photo/bbbackground.gif").getImage();
+		g.drawImage(background, 0,0,null);
+		
+	}
 }
 
 
