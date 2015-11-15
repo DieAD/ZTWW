@@ -1,5 +1,8 @@
 package StorageTester;
-import junit.framework.*;
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
 import nju.ztww.Mock_Storage.MockOrderVO;
 import nju.ztww.bl.commodity.StorageLineItem;
 import nju.ztww.bl.commodity.StorageList;
