@@ -1,12 +1,11 @@
 package nju.ztww.ui.order;
 
-import java.awt.Frame;
 import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 
 import nju.ztww.ui.user.CheckOrdersUI;
-import nju.ztww.ui.user.PersonalInformationUI;
+
 import nju.ztww.ui.user.ThemeLabelUI;
 
 public class TestCourierUI{
@@ -18,7 +17,7 @@ public class TestCourierUI{
 	
 	static Courier_OrderInputUI OrderInput = new Courier_OrderInputUI();
 	static Courier_AcceptUI Accept = new Courier_AcceptUI();
-	static PersonalInformationUI personalInformation = new PersonalInformationUI();
+
 	static CheckOrdersUI checkOrder = new CheckOrdersUI();
 	
 	public void init(){
@@ -33,7 +32,7 @@ public class TestCourierUI{
 		Theme.setBounds(210, 0, 690, 60);
 		OrderInput.setBounds(210,60,690,480);
 		Accept.setBounds(210,60,690,480);
-		personalInformation.setBounds(210,60,690,480);
+	//	personalInformation.setBounds(210,60,690,480);
 		checkOrder.setBounds(210,60,690,480);
 		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -60,7 +59,7 @@ public static void changePanel(int i){
     	frame.getContentPane().add(checkOrder);
     	type = 3;
     }else if(i == 4){
-    	frame.getContentPane().add(personalInformation);
+    	//frame.getContentPane().add(personalInformation);
     	type = 4;
     }
 }
@@ -76,7 +75,7 @@ public static void removePanel(){
 		frame.remove(checkOrder);
 	}else if (type == 4) {
 
-		frame.remove(personalInformation);
+		//frame.remove(personalInformation);
 	}
 }
 }
