@@ -30,8 +30,10 @@ public class ReceiveAndSendUI extends JPanel{
 	private JTextField orderNumbertextArea=new JTextField("");
 	private  JLabel orderNumber=new  JLabel("备注");
 	private JButton addButton=new JButton();
+	private JButton addSendButton=new JButton();
 	private JButton sureButton=new JButton("确定");
 	DefaultTableModel defaultTableModel ;
+	DefaultTableModel defaultTableModel2 ;
 	 JTable receiveTable;
 	 JTable sendTable;
 	 JDialog dlg;
@@ -42,6 +44,8 @@ public class ReceiveAndSendUI extends JPanel{
 		ImageIcon add=new ImageIcon("photo/add.gif");
 		addButton.setBounds(500, 420, 110, 38);
 		addButton.setIcon(add);
+		addSendButton.setBounds(300, 420, 110, 38);
+		addSendButton.setIcon(add);
 		Object[][] playerInfo =
 			  {
 			    { "阿s呆", new Integer(69), new Integer(32), new Integer(98),  new Boolean(false) },
@@ -66,8 +70,36 @@ public class ReceiveAndSendUI extends JPanel{
 			  //绑定滚动条
 			  JScrollPane scrollPane = new JScrollPane(receiveTable);
 			  receiveTable.setRowHeight(25);
-			  scrollPane.setBounds(0, 0, 690, 420);
+			  scrollPane.setBounds(0, 0, 690, 210);
 			  this.add(scrollPane);
+			  
+			  //设置派件单
+			  Object[][] playerInfo2 =
+				  {
+				    { "阿s呆", new Integer(69), new Integer(32),  new Boolean(false) },
+				    { "阿呆", new Integer(82), new Integer(69),  new Boolean(true)}, 
+				  };
+
+				  //字段名称
+				  String[] Names2 = { "到达日期", "托运订单号", "派送员",  "备注"};
+
+				  
+				  //创建表格: 建立一个显示二维数组数据的表格，且可以显示列的名称。 
+				  defaultTableModel2 = new DefaultTableModel( playerInfo2,Names2); 
+				  sendTable = new JTable( defaultTableModel2);       //字段名称
+				  Dimension size2 = sendTable.getTableHeader().getPreferredSize();
+			
+				  size2.height = 30;//设置新的表头高度40
+				  sendTable.getTableHeader().setPreferredSize(size2);
+				  sendTable.setAutoResizeMode(JTable.AUTO_RESIZE_NEXT_COLUMN);
+				//  table.setPreferredScrollableViewportSize(new Dimension( 550,
+//				                60));
+				  
+				  //绑定滚动条
+				  JScrollPane scrollPane2 = new JScrollPane(sendTable);
+				  sendTable.setRowHeight(25);
+				  scrollPane2.setBounds(0, 210, 690, 210);
+				  this.add(scrollPane2);
 			  addButton.addActionListener(new ActionListener(){
 
 					public void actionPerformed(ActionEvent e) {
@@ -117,6 +149,7 @@ public class ReceiveAndSendUI extends JPanel{
 					}
 					});
 			  this.add(addButton);
+			  this.add(addSendButton);
 			  this.setLayout(null);
 	}
 
