@@ -16,6 +16,8 @@ public class StorageCheckPanel extends JPanel {
  public JTextField  textfield2=new JTextField(10);
  public JTextField  textfieldin=new JTextField(5);
  public JTextField  textfieldout=new JTextField(5);
+ public JTextField  textfieldBegin=new JTextField(10);
+ public JTextField  textfieldEnd=new JTextField(10);
  DefaultTableModel defaultTableModel1 ;
  DefaultTableModel defaultTableModel2;
  public JTable table1;
@@ -27,8 +29,16 @@ public class StorageCheckPanel extends JPanel {
  public void setup(){
 	   //入库的表格
 	 this.setLayout(null);
-	   labelin.setBounds(300, 0, 100, 30);
+	   label1.setBounds(0, 0, 70, 20);
+	   textfieldBegin.setBounds(70, 0, 50, 20);
+	   label2.setBounds(130, 0, 70, 20);
+	   labelin.setBounds(300, 20, 100, 30);
+	   textfieldEnd.setBounds(200, 0, 50, 20);
+	   this.add(label1);
+	   this.add(textfieldBegin);
+	   this.add(label2);
 	   this.add(labelin);
+	   this.add(textfieldEnd);
 	   labelinnumber.setBounds(500, 200, 60, 20);
 	   this.add(labelinnumber);
 	   textfieldin.setBounds(570, 200, 60, 20);
@@ -53,7 +63,7 @@ public class StorageCheckPanel extends JPanel {
 				//绑定滚动条
 				JScrollPane scrollPane = new JScrollPane(table1);
 				 table1.setRowHeight(25);
-				scrollPane.setBounds(0, 30, 700, 150);
+				scrollPane.setBounds(0, 50, 700, 150);
 				this.add(scrollPane); 
 				
 				

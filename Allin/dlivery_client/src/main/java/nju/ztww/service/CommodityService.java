@@ -14,7 +14,7 @@ public interface CommodityService {
     //id ： 库存分区的代号
     public int getTotal(int id);
      //根据订单号在库存中添加订单
-    public void addOrder(String idofOrder);
+    public void addOrder(OrderVO order);
     // 根据订单号在库存中删除此订单
     public void deleteOrder(String idofOrder);
     
