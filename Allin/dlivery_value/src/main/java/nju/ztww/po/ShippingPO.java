@@ -14,9 +14,9 @@ public class ShippingPO extends OrderPO implements Serializable{
 	
 	private int idOfOrde;
 	private String data;
-	private int transferNumber;
+	private String transferNumber;
 	private String arrivePlace;
-	private int carNumber;
+	private String carNumber;
 	private String JianZhuangName;
 	private String YaYunName;
 	private ArrayList<Integer> orderNumber;
@@ -43,11 +43,11 @@ public class ShippingPO extends OrderPO implements Serializable{
 		this.data = data;
 	}
 
-	public int getTransferNumber() {
+	public String getTransferNumber() {
 		return transferNumber;
 	}
 
-	public void setTransferNumber(int transferNumber) {
+	public void setTransferNumber(String transferNumber) {
 		this.transferNumber = transferNumber;
 	}
 
@@ -59,11 +59,11 @@ public class ShippingPO extends OrderPO implements Serializable{
 		this.arrivePlace = arrivePlace;
 	}
 
-	public int getCarNumber() {
+	public String getCarNumber() {
 		return carNumber;
 	}
 
-	public void setCarNumber(int carNumber) {
+	public void setCarNumber(String carNumber) {
 		this.carNumber = carNumber;
 	}
 

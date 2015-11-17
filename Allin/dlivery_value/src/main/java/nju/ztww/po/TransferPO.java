@@ -15,11 +15,11 @@ public class TransferPO extends OrderPO implements Serializable{
 	private int idOfOrde;
 	private String method;
 	private String carData;
-	private int transferData;
-	private int methodNumber;
+	private String transferData;
+	private String methodNumber;
 	private String sendPlace;
 	private String arrivePlace;
-	private int counterNumber;
+	private String counterNumber;
 	private String JianZhuangName;
 	private ArrayList<Integer> sendNumber;
 	private int money;
@@ -53,19 +53,19 @@ public class TransferPO extends OrderPO implements Serializable{
 		this.carData = carData;
 	}
 
-	public int getTransferData() {
+	public String getTransferData() {
 		return transferData;
 	}
 
-	public void setTransferData(int transferData) {
+	public void setTransferData(String transferData) {
 		this.transferData = transferData;
 	}
 
-	public int getMethodNumber() {
+	public String getMethodNumber() {
 		return methodNumber;
 	}
 
-	public void setMethodNumber(int methodNumber) {
+	public void setMethodNumber(String methodNumber) {
 		this.methodNumber = methodNumber;
 	}
 
@@ -85,11 +85,11 @@ public class TransferPO extends OrderPO implements Serializable{
 		this.arrivePlace = arrivePlace;
 	}
 
-	public int getCounterNumber() {
+	public String getCounterNumber() {
 		return counterNumber;
 	}
 
-	public void setCounterNumber(int counterNumber) {
+	public void setCounterNumber(String counterNumber) {
 		this.counterNumber = counterNumber;
 	}
 

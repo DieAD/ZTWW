@@ -15,14 +15,14 @@ public class MailingVO extends OrderVO{
 	private int idOfOrder;
 	private String sendName;
 	private String sendLocation;
-	private int sendTelephone;
+	private String sendTelephone;
 	private String receiveName;
 	private String receiveLocation;
-	private int receiveTelephone;
+	private String receiveTelephone;
 	private String infortation;
 	private String method;
 	private int count;
-	private int StripNumber;
+	private String StripNumber;
 
 	public MailingVO(int idOfOrde) {
 		super(idOfOrde);
@@ -53,11 +53,11 @@ public class MailingVO extends OrderVO{
 		this.sendLocation = sendLocation;
 	}
 
-	public int getSendTelephone() {
+	public String getSendTelephone() {
 		return sendTelephone;
 	}
 
-	public void setSendTelephone(int sendTelephone) {
+	public void setSendTelephone(String sendTelephone) {
 		this.sendTelephone = sendTelephone;
 	}
 
@@ -77,11 +77,11 @@ public class MailingVO extends OrderVO{
 		this.receiveLocation = receiveLocation;
 	}
 
-	public int getReceiveTelephone() {
+	public String getReceiveTelephone() {
 		return receiveTelephone;
 	}
 
-	public void setReceiveTelephone(int receiveTelephone) {
+	public void setReceiveTelephone(String receiveTelephone) {
 		this.receiveTelephone = receiveTelephone;
 	}
 
@@ -109,11 +109,11 @@ public class MailingVO extends OrderVO{
 		this.count = count;
 	}
 
-	public int getStripNumber() {
+	public String getStripNumber() {
 		return StripNumber;
 	}
 
-	public void setStripNumber(int stripNumber) {
+	public void setStripNumber(String stripNumber) {
 		StripNumber = stripNumber;
 	}
 	
