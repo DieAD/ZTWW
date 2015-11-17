@@ -26,11 +26,11 @@ public interface OrderService {
 	/**
 	 * 结束输入
 	 * 
-	 * @param order OrderVO要保存的vo
+	 * @param order OrderVO要保存的vo,vo对应的编号
 	 * @return
 	 * 
 	 * */
-	public void endSales(OrderVO order);
+	public void endSales(OrderVO order,int number);
 	
 	
 	

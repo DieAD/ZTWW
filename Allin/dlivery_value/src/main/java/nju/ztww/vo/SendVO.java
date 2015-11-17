@@ -11,7 +11,7 @@ public class SendVO extends OrderVO{
 	
 	private int idOfOrde;
 	private String data;
-	private int orderNumber;
+	private String orderNumber;
 	private String senderName;
 
 	public SendVO(int idOfOrder) {
@@ -35,11 +35,11 @@ public class SendVO extends OrderVO{
 		this.data = data;
 	}
 
-	public int getOrderNumber() {
+	public String getOrderNumber() {
 		return orderNumber;
 	}
 
-	public void setOrderNumber(int orderNumber) {
+	public void setOrderNumber(String orderNumber) {
 		this.orderNumber = orderNumber;
 	}
 

@@ -11,7 +11,7 @@ public class BusinessArriveVO extends OrderVO{
 	
 	private int idOfOrde;
 	private String data;
-	private int number;
+	private String number;
 	private String Send;
 	private String state;
 
@@ -36,11 +36,11 @@ public class BusinessArriveVO extends OrderVO{
 		this.data = data;
 	}
 
-	public int getNumber() {
+	public String getNumber() {
 		return number;
 	}
 
-	public void setNumber(int number) {
+	public void setNumber(String number) {
 		this.number = number;
 	}
 
