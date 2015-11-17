@@ -17,12 +17,22 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
+import nju.ztww.service.CommodityService;
+import nju.ztww.serviceimpl.CommodityServiceImp;
+import nju.ztww.vo.OrderVO;
+import nju.ztww.vo.StorageListLineofOutVO;
+import nju.ztww.vo.StorageListVO;
+
 public class OutofStoragePanel extends JPanel {
    public JTable table;
    public JDialog dlg=new JDialog();
    DefaultTableModel defaultTableModel ;
    public JButton addbutton;
    public JButton surebutton;
+   public StorageListLineofOutVO  storagelineout;
+   public CommodityService commodity=new CommodityServiceImp();
+	
+	
    java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit()
 			.getScreenSize();
    public JLabel ordernumber=new JLabel("快递编号");
@@ -118,6 +128,8 @@ public class OutofStoragePanel extends JPanel {
 		row.add(arrivefield.getText());
 		row.add(zhuangyunfield.getText());
 		row.add(yunshufield.getText());
+		storagelineout=new StorageListLineofOutVO(ordernumberfield.getText(), datafield.getText(), arrivefield.getText(), yunshufield.getText());
+		commodity.addOrder(storagelineout);
 		ordernumberfield.setText(null);
 		datafield.setText(null);
 		arrivefield.setText(null);

@@ -23,7 +23,7 @@ public class TransferVO extends OrderVO{
 	private ArrayList<Integer> sendNumber;
 	private int money;
 
-	public TransferVO(int idOfOrder) {
+	public TransferVO(int idOfOrde) {
 		super(idOfOrder);
 		this.idOfOrde=idOfOrde;
 	}

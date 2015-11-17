@@ -28,9 +28,9 @@ public int getTotal(int id) {
 
 public void addOrder(OrderVO order) {
 	// TODO Auto-generated method stub
-	StorageListLineofOutVO storagelineoutvo=(StorageListLineofOutVO)order;
-    StorageListLineofOutPO storagelistlinepo=new StorageListLineofOutPO( )
-   dataservice.insert(po);
+  StorageListLineofOutVO storagelineoutvo=(StorageListLineofOutVO)order;
+   StorageListLineofOutPO storagelistlinepo=new StorageListLineofOutPO(1,storagelineoutvo.getId(),storagelineoutvo.getData(),)
+   dataservice.insert(storagelistlinepo);
 	
 }
 
