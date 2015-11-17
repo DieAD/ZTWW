@@ -17,14 +17,14 @@ public class MailingPO extends OrderPO implements Serializable{
 	private int idOfOrder;
 	private String sendName;
 	private String sendLocation;
-	private int sendTelephone;
+	private String sendTelephone;
 	private String receiveName;
 	private String receiveLocation;
-	private int receiveTelephone;
+	private String receiveTelephone;
 	private String infortation;
 	private String method;
 	private int count;
-	private int StripNumber;
+	private String StripNumber;
 
 	public MailingPO(int idOfOrde) {
 		super(idOfOrde);
@@ -55,11 +55,11 @@ public class MailingPO extends OrderPO implements Serializable{
 		this.sendLocation = sendLocation;
 	}
 
-	public int getSendTelephone() {
+	public String getSendTelephone() {
 		return sendTelephone;
 	}
 
-	public void setSendTelephone(int sendTelephone) {
+	public void setSendTelephone(String sendTelephone) {
 		this.sendTelephone = sendTelephone;
 	}
 
@@ -79,11 +79,11 @@ public class MailingPO extends OrderPO implements Serializable{
 		this.receiveLocation = receiveLocation;
 	}
 
-	public int getReceiveTelephone() {
+	public String getReceiveTelephone() {
 		return receiveTelephone;
 	}
 
-	public void setReceiveTelephone(int receiveTelephone) {
+	public void setReceiveTelephone(String receiveTelephone) {
 		this.receiveTelephone = receiveTelephone;
 	}
 
@@ -111,11 +111,11 @@ public class MailingPO extends OrderPO implements Serializable{
 		this.count = count;
 	}
 
-	public int getStripNumber() {
+	public String getStripNumber() {
 		return StripNumber;
 	}
 
-	public void setStripNumber(int stripNumber) {
+	public void setStripNumber(String stripNumber) {
 		StripNumber = stripNumber;
 	}
 	

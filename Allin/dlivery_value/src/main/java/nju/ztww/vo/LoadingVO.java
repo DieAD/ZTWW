@@ -13,10 +13,10 @@ public class LoadingVO extends OrderVO{
 	
 	private int idOfOrde;
 	private String data;
-	private int YingYeNumber;
-	private int QiYunNumber;
+	private String YingYeNumber;
+	private String QiYunNumber;
 	private String arrive;
-	private int carNumber;
+	private String carNumber;
 	private String JianZhuangName;
 	private String YaYunName;
 	private ArrayList<Integer> orderNumber;
@@ -43,19 +43,19 @@ public class LoadingVO extends OrderVO{
 		this.data = data;
 	}
 
-	public int getYingYeNumber() {
+	public String getYingYeNumber() {
 		return YingYeNumber;
 	}
 
-	public void setYingYeNumber(int yingYeNumber) {
+	public void setYingYeNumber(String yingYeNumber) {
 		YingYeNumber = yingYeNumber;
 	}
 
-	public int getQiYunNumber() {
+	public String getQiYunNumber() {
 		return QiYunNumber;
 	}
 
-	public void setQiYunNumber(int qiYunNumber) {
+	public void setQiYunNumber(String qiYunNumber) {
 		QiYunNumber = qiYunNumber;
 	}
 
@@ -67,11 +67,11 @@ public class LoadingVO extends OrderVO{
 		this.arrive = arrive;
 	}
 
-	public int getCarNumber() {
+	public String getCarNumber() {
 		return carNumber;
 	}
 
-	public void setCarNumber(int carNumber) {
+	public void setCarNumber(String carNumber) {
 		this.carNumber = carNumber;
 	}
 

@@ -15,7 +15,7 @@ public class SendPO extends OrderPO implements Serializable{
 	
 	private int idOfOrde;
 	private String data;
-	private int orderNumber;
+	private String orderNumber;
 	private String senderName;
 
 	public SendPO(int idOfOrder) {
@@ -39,11 +39,11 @@ public class SendPO extends OrderPO implements Serializable{
 		this.data = data;
 	}
 
-	public int getOrderNumber() {
+	public String getOrderNumber() {
 		return orderNumber;
 	}
 
-	public void setOrderNumber(int orderNumber) {
+	public void setOrderNumber(String orderNumber) {
 		this.orderNumber = orderNumber;
 	}
 
