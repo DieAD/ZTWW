@@ -6,7 +6,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+
+//最近修改： 王焕 11-17
 public class Login extends JFrame{
+	//
+	
+	//
 	JLabel theme = new JLabel();
 	JLabel bg = new JLabel();
 	JLabel idlLabel= new JLabel();
@@ -16,17 +21,19 @@ public class Login extends JFrame{
 	JLabel loginbButton = new JLabel();
 	JTextField order = new JTextField();
 	JLabel searchButton = new JLabel();
+	private ListenerUI uiListener;
 	
 	public Login(){
+		this.setLayout(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setVisible(true);
+		
 		this.setSize(900, 600);
 		this.setResizable(false);
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
 		panel.setVisible(true);
 		panel.setBounds(0, 0, 900, 600);
-		this.add(panel);
+		
 		
 		theme.setIcon(new ImageIcon("photo/system.png"));
 		theme.setBounds(200, 20, 300, 100);
@@ -56,6 +63,13 @@ public class Login extends JFrame{
 		panel.add(order);
 		panel.add(searchButton);
 		panel.add(bg);
+		//
+		uiListener = new ListenerUI(this);
+		loginbButton.addMouseListener(uiListener);
+
+		//移动了 add() setVisible 方法
+		this.add(panel);
+		this.setVisible(true);
 	}
 	
 	public static void main(String[] args) {

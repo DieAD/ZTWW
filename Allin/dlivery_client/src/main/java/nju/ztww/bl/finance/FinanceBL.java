@@ -4,7 +4,9 @@ import nju.ztww.vo.AccountVO;
 
 public class FinanceBL {
 
-	public boolean addDiag(){
-		return true;
+	public double getFund(double fund){
+		
+		return 0;
 	}
+	
 }

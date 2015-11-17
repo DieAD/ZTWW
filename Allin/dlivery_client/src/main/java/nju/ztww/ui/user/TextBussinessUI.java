@@ -2,12 +2,14 @@ package nju.ztww.ui.user;
 
 import java.awt.Component;
 import java.awt.Toolkit;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
-
+import javax.swing.JPanel;
+//最近修改 王焕 11-17
 public class TextBussinessUI {
 	
-	static JFrame frame=new JFrame();
+	static JFrame frame;
 	BusinessUI panel =new BusinessUI();
 	ThemeLabelUI lablePanel=new ThemeLabelUI();
 
@@ -18,15 +20,17 @@ public class TextBussinessUI {
 	static DriverManage driverManageUI=new DriverManage();
 	static PersonalMesageUI personalMessagePanel=new PersonalMesageUI();
 	private static int type=1;
+	
+	private ArrayList<JPanel> panelList  = new ArrayList<JPanel>();
 
 	public void init(){
 
-		frame.setSize(900, 600);
-		frame.setTitle("Bussiness");
-		int width=Toolkit.getDefaultToolkit().getScreenSize().width;
-		int height=Toolkit.getDefaultToolkit().getScreenSize().height;
-		frame.setLocation((width-900)/2, (height-600)/2);
-		frame.setResizable(false);
+//		frame.setSize(900, 600);
+//		frame.setTitle("Bussiness");
+//		int width=Toolkit.getDefaultToolkit().getScreenSize().width;
+//		int height=Toolkit.getDefaultToolkit().getScreenSize().height;
+//		frame.setLocation((width-900)/2, (height-600)/2);
+//		frame.setResizable(false);
 		
 		panel.setBounds(0, 0, 210, 600);
 
@@ -39,21 +43,21 @@ public class TextBussinessUI {
 		driverManageUI.setBounds(210,60,690,480);
 		personalMessagePanel.setBounds(210,60,690,480);
 	
-
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
-		frame.getContentPane().add(panel);
-		frame.getContentPane().add(carLoadingPanel);
-		frame.getContentPane().add(lablePanel);
-		frame.setVisible(true);
+//
+//		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		frame.getContentPane().setLayout(null);
+//		frame.getContentPane().add(panel);
+//		frame.getContentPane().add(carLoadingPanel);
+//		frame.getContentPane().add(lablePanel);
+//		frame.setVisible(true);
 	}
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-		new TextBussinessUI().init();
-		
-	}
+//	public static void main(String[] args) {
+//		// TODO Auto-generated method stub
+//
+//		new TextBussinessUI().init();
+//		
+//	}
 	
 	public static void changePanel(int i){
 		removePanel();
@@ -101,5 +105,20 @@ public class TextBussinessUI {
 			personalMessagePanel.setVisible(false);
 		}
 	}
+	
+	// 新建addArrayList()
+		public ArrayList<JPanel> getPanelList() {
+			
+			panelList.add(panel);
+			panelList.add(carLoadingPanel);
+			panelList.add(lablePanel);
+
+			return panelList;
+		}
+		
+		public TextBussinessUI(JFrame frame){
+			this.frame = frame;
+			init();
+		}
 
 }
