@@ -11,6 +11,7 @@ public class TestGManagerUI {
 	GManagerMenuUI MenuPanel = new GManagerMenuUI();
 	ThemeLabelUI Theme = new ThemeLabelUI();
 	GManager_ViewFormsUI viewFormsUI = new GManager_ViewFormsUI();
+	GManager_CheckOrders checkOrdersUI = new GManager_CheckOrders();
 	
 
 	public void init(){
@@ -29,7 +30,7 @@ public class TestGManagerUI {
 		frame.getContentPane().setLayout(null);
 		frame.getContentPane().add(MenuPanel);
 		frame.getContentPane().add(Theme);
-		frame.getContentPane().add(viewFormsUI);
+		frame.getContentPane().add(checkOrdersUI);
 		frame.setVisible(true);
 	}
 	
