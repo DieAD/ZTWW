@@ -12,7 +12,8 @@ public class TestGManagerUI {
 	ThemeLabelUI Theme = new ThemeLabelUI();
 	GManager_ViewFormsUI viewFormsUI = new GManager_ViewFormsUI();
 	GManager_CheckOrders checkOrdersUI = new GManager_CheckOrders();
-	
+	GManager_ManageOrgaUI manageOrgaUI = new GManager_ManageOrgaUI();
+	GManager_ManageSalaryUI manageSalaryUI = new GManager_ManageSalaryUI();
 
 	public void init(){
 		frame.setSize(900, 600);
@@ -24,13 +25,13 @@ public class TestGManagerUI {
 		
 		MenuPanel.setBounds(0, 0, 210, 600);
 		Theme.setBounds(210, 0, 690, 60);
-		viewFormsUI.setBounds(210,60,690,480);
+		manageSalaryUI.setBounds(210,60,690,480);
 		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		frame.getContentPane().add(MenuPanel);
 		frame.getContentPane().add(Theme);
-		frame.getContentPane().add(checkOrdersUI);
+		frame.getContentPane().add(manageSalaryUI);
 		frame.setVisible(true);
 	}
 	
