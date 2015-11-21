@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-
+//date 11-18 name wh
 public class StorageUi extends JFrame {
 	StorageNavigationPanel navigationpanel;
     TopPanel toppanel;
@@ -13,15 +13,18 @@ public class StorageUi extends JFrame {
     StorageCheckPanel storagecheckpanel;
     StoragePanPanel storagepanpanel;
     ArrayList<JPanel>arraylist=new ArrayList<JPanel>();
+    //modify
+    private ArrayList<JPanel> list = new ArrayList<JPanel>();
+    
 	public StorageUi() {
 		// TODO Auto-generated constructor stub
 		setup();
 		setPosition();
 		setController();
-		setTitle("Worker of Center!");
-		setSize(900,600);
-		setVisible(true);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		setTitle("Worker of Center!");
+//		setSize(900,600);
+//		setVisible(true);
+//		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		}
 	public  void setup(){
 		navigationpanel=new StorageNavigationPanel();
@@ -58,9 +61,18 @@ public class StorageUi extends JFrame {
 		navigationpanel.Checkbutton.addActionListener(new StorageControllerUi(this, storagecheckpanel, arraylist));
 	}
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		new StorageUi();
-       
-}
+//	public static void main(String[] args) {
+//		// TODO Auto-generated method stub
+//		new StorageUi();
+//       
+//}
+	public ArrayList<JPanel> getPanelList(){
+		list.add(navigationpanel);
+		list.add(toppanel);
+		list.add(storagecheckpanel);
+		list.add(outofStoragepanel);
+		list.add(inofStoragepanel);
+		list.add(storagepanpanel);
+		return list;
+	}
 }

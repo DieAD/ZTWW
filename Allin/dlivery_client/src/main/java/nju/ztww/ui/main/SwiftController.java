@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import nju.ztww.ui.commodity.ClerkOfCenterUi;
+import nju.ztww.ui.commodity.StorageUi;
+import nju.ztww.ui.finance.FinanceUI;
 import nju.ztww.ui.order.TestCourierUI;
 import nju.ztww.ui.user.TextBussinessUI;
 
@@ -14,6 +17,9 @@ public class SwiftController {
 	//
 	private TestCourierUI courierUI;
 	private TextBussinessUI businessUI;
+	private StorageUi storageUI;
+	private FinanceUI financeUI;
+	private ClerkOfCenterUi ccUI;
 	//
 	private JFrame frame;
 	private int id;
@@ -21,13 +27,16 @@ public class SwiftController {
 		this.frame = frame;
 		courierUI = new TestCourierUI(frame);
 		businessUI = new TextBussinessUI(frame);
+		financeUI =  new FinanceUI(frame);
+		storageUI = new StorageUi();
+		ccUI = new ClerkOfCenterUi();
 	}
 	
 	
 	public void switchUI(){
 		if(true){
-			//panelList = courierUI.getPanelList();
-			panelList = businessUI.getPanelList();
+			
+			panelList = ccUI.getPanelList();
 		}
 	}
 	

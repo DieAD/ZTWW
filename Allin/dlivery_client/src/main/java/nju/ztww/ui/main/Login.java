@@ -8,9 +8,10 @@ import javax.swing.JTextField;
 
 
 //最近修改： 王焕 11-17
+//date 11-18 name wh
 public class Login extends JFrame{
 	//
-	
+	//
 	//
 	JLabel theme = new JLabel();
 	JLabel bg = new JLabel();
@@ -70,6 +71,7 @@ public class Login extends JFrame{
 		//移动了 add() setVisible 方法
 		this.add(panel);
 		this.setVisible(true);
+		this.getContentPane().repaint();
 	}
 	
 	public static void main(String[] args) {
