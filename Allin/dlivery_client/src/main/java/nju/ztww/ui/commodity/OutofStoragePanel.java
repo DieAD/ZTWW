@@ -25,7 +25,7 @@ import nju.ztww.vo.StorageListVO;
 
 public class OutofStoragePanel extends JPanel {
    public JTable table;
-   public JDialog dlg=new JDialog();
+   public JDialog dlg;
    DefaultTableModel defaultTableModel ;
    public JButton addbutton;
    public JButton surebutton;
@@ -55,12 +55,11 @@ public class OutofStoragePanel extends JPanel {
 	// TODO Auto-generated constructor stub
 	   Object[][] playerInfo =
 {
-	{ "0000000007", "2015年11月1日", "南京", "A",14,2,4 },
-	{ "0000000008", "2015年11月2日", "上海", "B", 15 ,3,6}, 
+	
 			  };
 
 	//字段名称
-  String[] Names = { "快件编号", "出库日期", "目的地", "区号", "排号" ,"架号","位号"};
+  String[] Names = { "快件编号", "出库日期", "目的地", "装运形式", "货运编号" };
 
 			  
   //创建表格: 建立一个显示二维数组数据的表格，且可以显示列的名称。 
@@ -77,6 +76,7 @@ public class OutofStoragePanel extends JPanel {
 	this.add(scrollPane); 
 	addbutton.addActionListener(new ActionListener() {
 	public void actionPerformed(ActionEvent arg0) {
+		dlg=new JDialog();
 		dlg.setLayout(null);
 		dlg.setSize(new Dimension(350, 550));
         dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);

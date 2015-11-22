@@ -1,5 +1,6 @@
 package nju.ztww.serviceimpl;
 //@ auther Wj
+import nju.ztww.bl.commodity.StorageOutofListTest;
 import nju.ztww.po.OrderPO;
 import nju.ztww.po.StorageListLineofOutPO;
 import nju.ztww.service.CommodityDataService;
@@ -9,7 +10,7 @@ import nju.ztww.vo.StorageListLineofOutVO;
 import nju.ztww.vo.StorageListVO;
 
 public class CommodityServiceImp implements CommodityService {
-  public CommodityDataService dataservice=new CommodityDataServiceImp() ;
+  
 	
 public StorageListVO getList(String idOfCenter) {
 	// TODO Auto-generated method stub
@@ -29,8 +30,9 @@ public int getTotal(int id) {
 public void addOrder(OrderVO order) {
 	// TODO Auto-generated method stub
   StorageListLineofOutVO storagelineoutvo=(StorageListLineofOutVO)order;
-   StorageListLineofOutPO storagelistlinepo=new StorageListLineofOutPO(1,storagelineoutvo.getId(),storagelineoutvo.getData(),)
-   dataservice.insert(storagelistlinepo);
+   StorageListLineofOutPO storagelistlinepo=storagelineoutvo.changetopo();
+   StorageOutofListTest storagelistout=new StorageOutofListTest(); 
+   storagelistout.addorder(storagelistlinepo);
 	
 }
 

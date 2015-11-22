@@ -1,4 +1,7 @@
 package nju.ztww.vo;
+
+import nju.ztww.po.StorageListLineofOutPO;
+
 // WJ  auther
 //库存中记录order的类
 public class StorageListLineofOutVO extends OrderVO {
@@ -37,6 +40,10 @@ public String getNumber() {
 }
 public void setNumber(String number) {
 	this.number = number;
+}
+//将此vo装换成po
+public StorageListLineofOutPO changetopo(){
+	return new StorageListLineofOutPO(id,data,way,number);
 }
  
  

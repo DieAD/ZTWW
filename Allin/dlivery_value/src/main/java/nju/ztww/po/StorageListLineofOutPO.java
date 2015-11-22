@@ -1,24 +1,25 @@
 package nju.ztww.po;
 //@WJ auther
 //出库的行order对象
-public class StorageListLineofOutPO { 
+public class StorageListLineofOutPO extends OrderPO { 
 	// TODO Auto-generated constructor stub
-	String idOfOrder;
+	String id;
 	String data;
 	String way;
 	String number;//具体实现时要分两种情况
-  public StorageListLineofOutPO(String idOfOrder,String data,String way,String number) {
+  public StorageListLineofOutPO(String id,String data,String way,String number) {
+	  super(idOfOrder);
 	  this.idOfOrder=idOfOrder;
 	  this.data=data;
 	  this.way=way;
 	  this.number=number;
 	// TODO Auto-generated constructor stub
 }
-public String getIdOfOrder() {
-	return idOfOrder;
+public String getId() {
+	return id;
 }
-public void setIdOfOrder(String idOfOrder) {
-	this.idOfOrder = idOfOrder;
+public void setIdOfOrder(String id) {
+	this.id = id;
 }
 public String getData() {
 	return data;

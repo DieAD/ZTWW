@@ -1,19 +1,24 @@
 package nju.ztww.serviceimpl;
-
+/*
+ * @Wj
+ */
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
+import nju.ztww.data.commodity.StorageListOut;
 import nju.ztww.po.OrderPO;
 import nju.ztww.service.CommodityDataService;
 
 public class CommodityDataServiceImpl extends UnicastRemoteObject implements CommodityDataService {
 
-	protected CommodityDataServiceImpl() throws RemoteException {
+	public CommodityDataServiceImpl() throws RemoteException {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
 	public void insert(OrderPO po) throws RemoteException {
+		StorageListOut storagelistlineout=new StorageListOut();
+		storagelistlineout.insert(po);
 		// TODO Auto-generated method stub
 		
 	}
