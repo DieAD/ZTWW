@@ -16,6 +16,8 @@ public class UserLogin {
 		this.id = member.getID();
 		this.password = member.getPassword(); //从传过来的MemberVO中得到id和password
 		MemberPO mem = new MemberPO(id, password);    //新建一个MemberPO对象，把id和password传过去，让数据层做判断
+		//TODO
+		
 		this.isLegal = mem.getLegal();
 		this.isRight = mem.getRight();
 		this.position = mem.getPostion();     //判断这个账号是否存在、账户密码是否匹配、职位

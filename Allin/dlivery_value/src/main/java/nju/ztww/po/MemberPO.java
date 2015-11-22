@@ -9,7 +9,8 @@ public class MemberPO{
 
 	public MemberPO(String id, String password){
 		this.id = id;
-		this.password = password;	
+		this.password = password;
+		
 	}
 	
 	public void setPosition(String position) {
