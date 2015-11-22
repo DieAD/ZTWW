@@ -1,12 +1,12 @@
 package nju.ztww.ui.finance;
 
-import java.awt.Toolkit;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
-
+import javax.swing.JPanel;
+//date 11-18 name wh
 public class FinanceUI  {
-    JFrame frame = new JFrame("Finance");
+    JFrame frame ;
     EditPanel accountPanel = new EditPanel();
     EditPanel paymentPanel = new EditPanel(new String[]{"付款日期","付款金额","付款人","付款账号","条目","备注"},new Object[][]{{new String("2015/11/1"),new Double(35.5),new String("Manager"),
     	new String("000000001"),new String("人员工资"),new String("11月")}});
@@ -17,22 +17,24 @@ public class FinanceUI  {
     HeaderPanel headerPanel = new HeaderPanel();
     MenuePanel menuePanel = new MenuePanel();
     ArrayList<EditPanel> panelList = new ArrayList<EditPanel>();
+    //modify
+    private ArrayList<JPanel> list = new ArrayList<JPanel>();
     
     
     public void setUp(){
-    	frame.setSize(900, 600);
-		frame.setTitle("Bussiness");
-		int width=Toolkit.getDefaultToolkit().getScreenSize().width;
-		int height=Toolkit.getDefaultToolkit().getScreenSize().height;
-		frame.setLocation((width-900)/2, (height-600)/2);
-		frame.setResizable(false);
-		//add panel;
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+//    	frame.setSize(900, 600);
+//		frame.setTitle("Bussiness");
+//		int width=Toolkit.getDefaultToolkit().getScreenSize().width;
+//		int height=Toolkit.getDefaultToolkit().getScreenSize().height;
+//		frame.setLocation((width-900)/2, (height-600)/2);
+//		frame.setResizable(false);
+//		//add panel;
+//		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		frame.getContentPane().setLayout(null);
 		//frame.getContentPane().add(accountPanel);
-		frame.getContentPane().add(headerPanel);
-		frame.getContentPane().add(menuePanel);
-		frame.setVisible(true);
+//		frame.getContentPane().add(headerPanel);
+//		frame.getContentPane().add(menuePanel);
+//		frame.setVisible(true);
     }
     
     public void setPanelBounds(){
@@ -54,7 +56,8 @@ public class FinanceUI  {
     	panelList.add(initPanel);
     	for(EditPanel p : panelList){
     		p.setBounds(210,60,690,520);
-    		frame.getContentPane().add(p);
+    		//frame.getContentPane().add(p);
+    		//p.setVisible(false);
     		
     	}
     	menuePanel.accountButton.addActionListener(new ListenerTable(frame,accountPanel,panelList));
@@ -64,14 +67,24 @@ public class FinanceUI  {
     	menuePanel.businessButton.addActionListener(new ListenerTable(frame,businessPanel,panelList));
     	menuePanel.initButton.addActionListener(new ListenerTable(frame,initPanel,panelList));
     }
-    public FinanceUI(){
+    public FinanceUI(JFrame frame){
+    	this.frame = frame;
     	setPanelBounds();
     	setPanelListener();
     	setUp();
     	//setPanelListener();
     }
     
-    public static void main(String[] args){
-    	new FinanceUI();
+    public ArrayList<JPanel> getPanelList(){
+    	list.add(headerPanel);
+    	list.add(menuePanel);
+    	for(EditPanel p : panelList){
+    		list.add(p);
+    	}
+    	return list;
     }
+    
+//    public static void main(String[] args){
+//    	new FinanceUI();
+//    }
 }
