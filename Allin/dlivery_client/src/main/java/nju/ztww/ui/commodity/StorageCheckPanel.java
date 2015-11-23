@@ -1,13 +1,23 @@
 package nju.ztww.ui.commodity;
 
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Vector;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
+import nju.ztww.service.CommodityListService;
+import nju.ztww.serviceimpl.CommodityListServiceImpl;
+import nju.ztww.vo.StorageListLineofInVO;
+import nju.ztww.vo.StorageListLineofOutVO;
+
 public class StorageCheckPanel extends JPanel {
  public JLabel label1=new JLabel("开始时间");
  public JLabel label2=new JLabel("截止时间");
+ public JButton surebutton=new JButton("确定");
  public JLabel labelin=new JLabel("入库信息");
  public JLabel labelout=new JLabel("出库信息");
  public JLabel labelinnumber=new JLabel("入库数量");
@@ -20,6 +30,9 @@ public class StorageCheckPanel extends JPanel {
  public JTextField  textfieldEnd=new JTextField(10);
  DefaultTableModel defaultTableModel1 ;
  DefaultTableModel defaultTableModel2;
+ public ArrayList<StorageListLineofInVO>arraylistin;//盘点时所需的入库信息
+ public ArrayList<StorageListLineofOutVO>arraylistout;
+ public CommodityListService commoditylistservice=new CommodityListServiceImpl();
  public JTable table1;
  public JTable table2;
  public StorageCheckPanel() {
@@ -34,6 +47,9 @@ public class StorageCheckPanel extends JPanel {
 	   label2.setBounds(130, 0, 70, 20);
 	   labelin.setBounds(300, 20, 100, 30);
 	   textfieldEnd.setBounds(200, 0, 50, 20);
+	   surebutton.setBounds(600,0, 70, 20);//确认时要加监听
+	   surebutton.addActionListener(listener);
+	   this.add(surebutton);
 	   this.add(label1);
 	   this.add(textfieldBegin);
 	   this.add(label2);
@@ -96,16 +112,50 @@ public class StorageCheckPanel extends JPanel {
 				table2.setRowHeight(25);
 				scrollPane1.setBounds(0, 280, 700, 150);
 				this.add(scrollPane1);
+				
 	
 }
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
+ ActionListener listener=new ActionListener(){
+   public void actionPerformed(ActionEvent e) {
+	   arraylistin=commoditylistservice.getInListbytime(textfieldBegin.getText(), textfieldEnd.getText());
+	   for(int i=0;i<arraylistin.size();i++){
+			Vector<String> row = new Vector(7);
+			row.add(arraylistin.get(i).getId());
+			row.add(arraylistin.get(i).getData());
+			row.add(arraylistin.get(i).getDestination());
+			row.add(arraylistin.get(i).getQu());
+			row.add(arraylistin.get(i).getPai());
+			row.add(arraylistin.get(i).getJia());
+			row.add(arraylistin.get(i).getWei());
+			defaultTableModel1.addRow(row);
+		    table1.revalidate();
+		}
+	   textfieldin.setText(String.valueOf(arraylistin.size()));
+	   arraylistout=commoditylistservice.getOutListbytime(textfieldBegin.getText(), textfieldEnd.getText());
+	   for(int i=0;i<arraylistout.size();i++){
+		   Vector<String> row = new Vector(5);
+		   row.add(arraylistout.get(i).getId());
+		   row.add(arraylistout.get(i).getData());
+		   row.add(arraylistout.get(i).getDestination());
+		   row.add(arraylistout.get(i).getWay());
+		   row.add(arraylistout.get(i).getNumber());
+		   defaultTableModel2.addRow(row);
+		    table2.revalidate();
+	   }
+	   textfieldout.setText(String.valueOf(arraylistout.size()));
+ }
+   
+	 };
 }
+	 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+

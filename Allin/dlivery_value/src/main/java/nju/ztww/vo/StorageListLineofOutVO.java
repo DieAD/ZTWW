@@ -8,14 +8,22 @@ public class StorageListLineofOutVO extends OrderVO {
 	String id;//快递的编号
 	String data;
 	String way;
+	String destination;
 	String number;//具体实现时要分两种情况
-  public StorageListLineofOutVO(String id,String data,String way,String number) {
+  public StorageListLineofOutVO(String id,String data,String way,String number,String destination) {
 	  super(idOfOrder);
 	  this.id=id;
 	  this.data=data;
 	  this.way=way;
 	  this.number=number;
+	  this.destination=destination;
 	// TODO Auto-generated constructor stub
+}
+public String getDestination() {
+	return destination;
+}
+public void setDestination(String destination) {
+	this.destination = destination;
 }
 public String getId() {
 	return id;

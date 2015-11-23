@@ -7,23 +7,14 @@ import nju.ztww.po.OrderPO;
 import nju.ztww.service.CommodityDataService;
 import nju.ztww.service.UserDataService;
 
-public class StorageOutofListTest {
+public class StorageOutofListBL {
 	private static String IP = "127.0.0.1";
-    private  String order;
     private RMIHelper rhelper = new RMIHelper(IP,"1010");
     private CommodityDataService commoditydata;
     
     public void addorder(OrderPO po){
-    	this.setUpRMI();
     	commoditydata = (CommodityDataService)rhelper.findService("CommodityDataService");
     	commoditydata.insert(po);
     }
-    public void setUpRMI(){
-    	  try{
-    	commoditydata = (CommodityDataService)Naming.lookup("rmi://"+IP+":1010/CommodityDataService");
-  		 
-  	  }catch(Exception e){
-  		  e.printStackTrace();
-  	  }
-}
+   
 }

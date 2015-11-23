@@ -1,13 +1,15 @@
 package nju.ztww.bl.commodity;
-
+//WJ 用来测试Mock的一个类
 public class StorageList {
-	//计算有多少个快递
-	public int total;
-  public int gettotal(){
-	  return total;
-  }
-  //加上一个库存行
-  public void addStorageLineItem(StorageLineItem storageLineItem){
-	  
-  }
+
+	public void addStorageLineItem(StorageLineItem salesLineItem1) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public int gettotal() {
+		// TODO Auto-generated method stub
+		return  4;
+	}
+
 }

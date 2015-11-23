@@ -1,4 +1,8 @@
 package nju.ztww.po;
+
+import nju.ztww.vo.StorageListLineofInVO;
+import nju.ztww.vo.StorageListLineofOutVO;
+
 //@WJ auther
 //出库的行order对象
 public class StorageListLineofOutPO extends OrderPO { 
@@ -9,7 +13,7 @@ public class StorageListLineofOutPO extends OrderPO {
 	String number;//具体实现时要分两种情况
   public StorageListLineofOutPO(String id,String data,String way,String number) {
 	  super(idOfOrder);
-	  this.idOfOrder=idOfOrder;
+	  this.id=id;
 	  this.data=data;
 	  this.way=way;
 	  this.number=number;
@@ -39,5 +43,13 @@ public String getNumber() {
 public void setNumber(String number) {
 	this.number = number;
 }
-  
+//这个change to vo 要分情况讨论
+public StorageListLineofOutVO changetovo() {
+	// TODO Auto-generated method stub
+	return null;
+}
+ 
+
+	
+
 }

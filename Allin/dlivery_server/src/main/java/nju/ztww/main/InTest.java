@@ -1,22 +1,18 @@
 package nju.ztww.main;
 
 import java.rmi.Naming;
-import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 
-import nju.ztww.po.OrderPO;
 import nju.ztww.service.CommodityDataService;
-import nju.ztww.service.UserDataService;
-import nju.ztww.service_stub.UserDataService_stub;
-import nju.ztww.serviceimpl.CommodityDataServiceImpl;
+import nju.ztww.serviceimpl.StorageInOfListDataServiceImpl;
 import nju.ztww.serviceimpl.StorageOutOfListDataServiceImpl;
 
-public class CommodityTest {
+public class InTest {
 	public static String IP = "127.0.0.1";
     public static String PORT = "1010";
     public static void main(String[] args){
    	 try{
-   		CommodityDataService commoditydataservice=new StorageOutOfListDataServiceImpl();
+   		CommodityDataService commoditydataservice=new StorageInOfListDataServiceImpl();
 			
 	//	 UserDataService userdataservice = new UserDataServiceImpl();
    		 /*

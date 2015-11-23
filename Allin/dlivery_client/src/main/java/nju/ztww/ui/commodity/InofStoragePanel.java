@@ -16,6 +16,12 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
+import nju.ztww.service.CommodityService;
+import nju.ztww.serviceimpl.CommodityServiceImp;
+import nju.ztww.serviceimpl.StorageInListServiceImpl;
+import nju.ztww.vo.StorageListLineofInVO;
+import nju.ztww.vo.StorageListLineofOutVO;
+
 public class InofStoragePanel extends JPanel{
 	public JTable table;
 	   public JDialog dlg;
@@ -36,14 +42,19 @@ public class InofStoragePanel extends JPanel{
 	   public JTextField jiafield=new JTextField();
 	   public JTextField weifield=new JTextField();
 	   public JButton  surebutton=new JButton("确定");
+	   public JButton  sureofbutton=new JButton("确定");
+	   public CommodityService commodity=new StorageInListServiceImpl();
+	   public StorageListLineofInVO  storagelineIn;
 	   java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit()
 				.getScreenSize();
 	   public InofStoragePanel() {
 		   this.setLayout(null);
 		   addbutton=new JButton();
 		   ImageIcon add=new ImageIcon("photo/add.gif");
-		   addbutton.setBounds(500, 420, 110, 38);
+		   addbutton.setBounds(450, 420, 110, 38);
 		   addbutton.setIcon(add);
+		   sureofbutton.setBounds(580, 420, 110,38);
+		   this.add(sureofbutton);
 		   this.add(addbutton);
 		// TODO Auto-generated constructor stub
 		   Object[][] playerInfo =
@@ -114,6 +125,7 @@ public class InofStoragePanel extends JPanel{
            
             surebutton.setBounds(200, 350, 80, 40);
             dlg.add(surebutton);
+            
             surebutton.addActionListener(surelistener);
             dlg.setVisible(true);
             
@@ -137,6 +149,9 @@ public class InofStoragePanel extends JPanel{
 			row.add(paifield.getText());
 			row.add(jiafield.getText());
 			row.add(weifield.getText());
+			//idoforder 不知道怎么用  用1替代。
+			storagelineIn=new StorageListLineofInVO(1, ordernumberfield.getText(), datafield.getText(), arrivefield.getText(), qufield.getText(), paifield.getText(), jiafield.getText(), weifield.getText());
+			commodity.addOrder(storagelineIn);
 			ordernumberfield.setText(null);
 			datafield.setText(null);
 			arrivefield.setText(null);
