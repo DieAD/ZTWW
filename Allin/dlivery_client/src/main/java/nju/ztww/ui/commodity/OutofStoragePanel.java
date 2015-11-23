@@ -17,12 +17,24 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
+import nju.ztww.service.CommodityService;
+import nju.ztww.serviceimpl.CommodityServiceImp;
+import nju.ztww.serviceimpl.StorageOutListServiceImpl;
+import nju.ztww.vo.OrderVO;
+import nju.ztww.vo.StorageListLineofOutVO;
+import nju.ztww.vo.StorageListVO;
+
 public class OutofStoragePanel extends JPanel {
    public JTable table;
-   public JDialog dlg=new JDialog();
+   public JDialog dlg;
    DefaultTableModel defaultTableModel ;
    public JButton addbutton;
    public JButton surebutton;
+   public StorageListLineofOutVO  storagelineout;
+   public JButton  sureofbutton=new JButton("确定");
+   public CommodityService commodity=new StorageOutListServiceImpl();
+	
+	
    java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit()
 			.getScreenSize();
    public JLabel ordernumber=new JLabel("快递编号");
@@ -39,18 +51,19 @@ public class OutofStoragePanel extends JPanel {
 	   this.setLayout(null);
 	   addbutton=new JButton();
 	   ImageIcon add=new ImageIcon("photo/add.gif");
-	   addbutton.setBounds(500, 420, 110, 38);
+	   addbutton.setBounds(450, 420, 110, 38);
 	   addbutton.setIcon(add);
+	   sureofbutton.setBounds(580, 420, 110,38);
+	   this.add(sureofbutton);
 	   this.add(addbutton);
 	// TODO Auto-generated constructor stub
 	   Object[][] playerInfo =
 {
-	{ "0000000007", "2015年11月1日", "南京", "A",14,2,4 },
-	{ "0000000008", "2015年11月2日", "上海", "B", 15 ,3,6}, 
+	
 			  };
 
 	//字段名称
-  String[] Names = { "快件编号", "出库日期", "目的地", "区号", "排号" ,"架号","位号"};
+  String[] Names = { "快件编号", "出库日期", "目的地", "装运形式", "货运编号" };
 
 			  
   //创建表格: 建立一个显示二维数组数据的表格，且可以显示列的名称。 
@@ -67,6 +80,7 @@ public class OutofStoragePanel extends JPanel {
 	this.add(scrollPane); 
 	addbutton.addActionListener(new ActionListener() {
 	public void actionPerformed(ActionEvent arg0) {
+		dlg=new JDialog();
 		dlg.setLayout(null);
 		dlg.setSize(new Dimension(350, 550));
         dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
@@ -118,6 +132,8 @@ public class OutofStoragePanel extends JPanel {
 		row.add(arrivefield.getText());
 		row.add(zhuangyunfield.getText());
 		row.add(yunshufield.getText());
+		storagelineout=new StorageListLineofOutVO(ordernumberfield.getText(), datafield.getText(), arrivefield.getText(),zhuangyunfield.getText(), yunshufield.getText());
+		commodity.addOrder(storagelineout);
 		ordernumberfield.setText(null);
 		datafield.setText(null);
 		arrivefield.setText(null);

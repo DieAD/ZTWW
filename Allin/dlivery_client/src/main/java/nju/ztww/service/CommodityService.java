@@ -6,7 +6,7 @@ import nju.ztww.vo.StorageListVO;
 public interface CommodityService {
 	//根据中转中心编号，得到中转中心库存列表
     public StorageListVO getList(String idOfCenter);
-      
+    
     //根据订单号显示订单信息
     public OrderVO getOrder(String idOfOrder);
        
@@ -14,7 +14,7 @@ public interface CommodityService {
     //id ： 库存分区的代号
     public int getTotal(int id);
      //根据订单号在库存中添加订单
-    public void addOrder(String idofOrder);
+    public void addOrder(OrderVO order);
     // 根据订单号在库存中删除此订单
     public void deleteOrder(String idofOrder);
     
