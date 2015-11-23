@@ -80,7 +80,7 @@ public class StoragePanPanel extends JPanel implements ActionListener{
 public void actionPerformed(ActionEvent e) {
 	// TODO Auto-generated method stub
 	//实现接口 需要传一个满足要求的arraylist
-	arraylist=commoditylistservice.getInListbytime(timefield.getText());
+	arraylist=commodityservice
 	for(int i=0;i<arraylist.size();i++){
 		Vector<String> row = new Vector(7);
 		row.add(arraylist.get(i).getId());

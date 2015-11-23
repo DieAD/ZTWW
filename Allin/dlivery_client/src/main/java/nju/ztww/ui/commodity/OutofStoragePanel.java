@@ -132,8 +132,10 @@ public class OutofStoragePanel extends JPanel {
 		row.add(arrivefield.getText());
 		row.add(zhuangyunfield.getText());
 		row.add(yunshufield.getText());
+		//构造了一个vo
 		storagelineout=new StorageListLineofOutVO(ordernumberfield.getText(), datafield.getText(), arrivefield.getText(),zhuangyunfield.getText(), yunshufield.getText());
 		commodity.addOrder(storagelineout);
+		
 		ordernumberfield.setText(null);
 		datafield.setText(null);
 		arrivefield.setText(null);
