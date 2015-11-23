@@ -35,7 +35,7 @@ public class StoragePanPanel extends JPanel implements ActionListener{
 	Date data=new Date(l);
 	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	public ArrayList<StorageListLineofInVO> arraylist;//存储一个入库单行的信息
-	public CommodityListService commoditylistservice=new CommodityListServiceImpl();
+	public CommodityService commodityservice=new CommodityServiceImp();
   public StoragePanPanel() {
 	  this.setLayout(null);
 	  Font font11=new Font("楷体",Font.BOLD,20);
@@ -80,7 +80,7 @@ public class StoragePanPanel extends JPanel implements ActionListener{
 public void actionPerformed(ActionEvent e) {
 	// TODO Auto-generated method stub
 	//实现接口 需要传一个满足要求的arraylist
-	arraylist=commodityservice
+	arraylist=commodityservice.getList(idOfCenter)
 	for(int i=0;i<arraylist.size();i++){
 		Vector<String> row = new Vector(7);
 		row.add(arraylist.get(i).getId());

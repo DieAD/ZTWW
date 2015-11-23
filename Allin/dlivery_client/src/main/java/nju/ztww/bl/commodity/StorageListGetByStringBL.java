@@ -14,27 +14,27 @@ public class StorageListGetByStringBL {
 	private RMIHelper rhelper = new RMIHelper(IP,"1010");
 	private CommodityListDataService commoditylistdata;//??注意是个全局变量
 	
-	public ArrayList<StorageListLineofInPO> getInList(String time) {
+	public ArrayList<StorageListLineofInPO> getInList(String time,String idofcenter) {
 		// TODO Auto-generated method stub
 		commoditylistdata = (CommodityListDataService)rhelper.findService("CommodityListDataService");
-	ArrayList<StorageListLineofInPO>arraylist=commoditylistdata.findInList(time);
+	ArrayList<StorageListLineofInPO>arraylist=commoditylistdata.findInList(time,idofcenter);
 		return arraylist;
 	}
-	public ArrayList<StorageListLineofInPO> getInList(String timebegin,String timeend){
+	public ArrayList<StorageListLineofInPO> getInList(String timebegin,String timeend,String idofcenter){
 		commoditylistdata = (CommodityListDataService)rhelper.findService("CommodityListDataService");
-		ArrayList<StorageListLineofInPO>arraylist=commoditylistdata.findInList(timebegin, timeend);
-		return arraylist;
-		
-	}
-	public ArrayList<StorageListLineofOutPO> getOutList(String time){
-		commoditylistdata = (CommodityListDataService)rhelper.findService("CommodityListDataService");
-		ArrayList<StorageListLineofOutPO>arraylist=commoditylistdata.findOutList(time);
+		ArrayList<StorageListLineofInPO>arraylist=commoditylistdata.findInList(timebegin, timeend,idofcenter);
 		return arraylist;
 		
 	}
-	public ArrayList<StorageListLineofOutPO> getOutList(String timebegin,String timeend){ 
+	public ArrayList<StorageListLineofOutPO> getOutList(String time,String idofcenter){
 		commoditylistdata = (CommodityListDataService)rhelper.findService("CommodityListDataService");
-		ArrayList<StorageListLineofOutPO>arraylist=commoditylistdata.findOutList(timebegin,timeend);
+		ArrayList<StorageListLineofOutPO>arraylist=commoditylistdata.findOutList(time,idofcenter);
+		return arraylist;
+		
+	}
+	public ArrayList<StorageListLineofOutPO> getOutList(String timebegin,String timeend,String idofcenter){ 
+		commoditylistdata = (CommodityListDataService)rhelper.findService("CommodityListDataService");
+		ArrayList<StorageListLineofOutPO>arraylist=commoditylistdata.findOutList(timebegin,timeend,idofcenter);
 		return arraylist;
 	}
 	    

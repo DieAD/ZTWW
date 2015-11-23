@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 //date 11-18 name wh
+//需要根据中转中心业务员身份知道中转中心的id
 public class StorageUi extends JFrame {
 	StorageNavigationPanel navigationpanel;
     TopPanel toppanel;
