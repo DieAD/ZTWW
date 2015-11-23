@@ -36,20 +36,25 @@ public class UserData{
 		// TODO Auto-generated method stub
 		dbHelper.init();
 		list = dbHelper.queryByID(id, "userstable");
+		if(list.size()!=0){
 		UserDO user = list.get(0);
 		MemberPO member;
 		member = new MemberPO(user.getId(), user.getPsw());
 		
-//		if(user==null){
-//			member.setLegal(false);
-//		}else{
-//			member.setLegal(true);
-//		}
+	
+			member.setLegal(true);
+			dbHelper.close();
+			return member;
+		}else{
+			MemberPO member = new MemberPO(id, password);
+			member.setLegal(false);
+			member.setRight(true);
+			dbHelper.close();
+			return member;
+		}
+
 		
-		member.setLegal(true);
-		member.setRight(true);
-		dbHelper.close();
-		return member;
+		
 	}
 	
 //	public static void main(String[] args){
