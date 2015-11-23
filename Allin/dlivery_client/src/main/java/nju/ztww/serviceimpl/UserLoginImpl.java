@@ -14,6 +14,7 @@ public class UserLoginImpl implements UserService{
 		// TODO Auto-generated method stub
 		MemberVO Nmember = new MemberVO(id, password);
 		MemberVO Rmember = login.checkMember(Nmember);
+//		System.out.println(Rmember.getID());
 		return Rmember;
 	}
 

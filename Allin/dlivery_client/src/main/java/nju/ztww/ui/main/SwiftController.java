@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import nju.ztww.service.UserService;
+import nju.ztww.serviceimpl.UserLoginImpl;
 import nju.ztww.ui.commodity.ClerkOfCenterUi;
 import nju.ztww.ui.commodity.StorageUi;
 import nju.ztww.ui.finance.FinanceUI;
@@ -12,6 +14,7 @@ import nju.ztww.ui.manage.TestGManagerUI;
 import nju.ztww.ui.manage.TextManageUI;
 import nju.ztww.ui.order.TestCourierUI;
 import nju.ztww.ui.user.TextBussinessUI;
+import nju.ztww.vo.MemberVO;
 
 public class SwiftController {
     
@@ -26,6 +29,10 @@ public class SwiftController {
 	private TextManageUI   MUI;
 	//
 	private JFrame frame;
+	private MemberVO member; 
+	private String ID;
+	private String password;
+	private UserService userService = new UserLoginImpl();//by zyz
 	private int id;
 	public SwiftController(JFrame frame){
 		this.frame = frame;
@@ -40,9 +47,21 @@ public class SwiftController {
 	
 	
 	public void switchUI(){
-		if(true){
-			
-			panelList = MUI.getPanelList();
+//		if(true){
+//			
+//			panelList = MUI.getPanelList();
+//		}
+		
+		switch(id){
+		case 0: break;
+		case 1: panelList = courierUI.getPanelList();break;
+		case 2: panelList = businessUI.getPanelList();break;
+		case 3: panelList = ccUI.getPanelList();break;
+		case 4: panelList = storageUI.getPanelList();break;
+		case 5: panelList = financeUI.getPanelList();break;
+		case 6: panelList = GMUI.getPanelList();break;
+		case 7: panelList = MUI.getPanelList();break;
+		default:System.out.println("Switch UI error!");break;
 		}
 	}
 	
@@ -58,6 +77,21 @@ public class SwiftController {
 	}
 	
 	public void getID(){
-		this.id = 0;
+		member = userService.login(ID, password); //by zyz
+//		System.out.println("!");
+		if(member!=null&&member.getRight()){
+			System.out.println(member.getID());
+			String str = member.getID().charAt(8)+"";
+			this.id = Integer.valueOf(str)+1;
+//		
+			System.out.println("position = " + id);
+		}else{
+			this.id = 0;
+		} //by zyz
 	}
+	
+	public void setMember(String ID, String password){
+		this.ID = ID;
+		this.password = password;
+	}	//by zyz
 }

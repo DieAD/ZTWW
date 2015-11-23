@@ -1,6 +1,8 @@
 package nju.ztww.po;
 
-public class MemberPO{
+import java.io.Serializable;
+
+public class MemberPO implements Serializable{
 	private final String id;
 	private final String password;
 	private String position;
