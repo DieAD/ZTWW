@@ -11,7 +11,7 @@ import nju.ztww.vo.MemberVO;
 //专用于登录时鉴定账号和密码
 public class UserLogin {
 	private static String IP = "127.0.0.1";
-	private static String port = "1020";
+	private static String port = "1010";
 	private RMIHelper rHelper;
 	private String id;
 	private String password;
@@ -28,10 +28,16 @@ public class UserLogin {
 		//TODO
 		rHelper = new RMIHelper(IP, port);
 		userDataService = (UserDataService)rHelper.findService("UserDataService");
-		mem = userDataService.checkMember(id, password);
-		if(mem==null) System.out.println("!!!!!!!!!!!!!!");
+		mem = userDataService.checkMember(id, password);//其实传过去的password并没有用
 		this.isLegal = mem.getLegal();
-		this.isRight = mem.getRight();     //判断这个账号是否存在、账户密码是否匹配、职位
+//		System.out.println("PRE password = "+password);
+//		System.out.println("GET password = "+mem.getPassword());
+		if(password.equals(mem.getPassword())){   
+			this.isRight = true;
+		}
+		else{
+			this.isRight = false;
+		}
 		return this.returnMember();
 	}
 	
@@ -43,6 +49,7 @@ public class UserLogin {
 			return myMember;
 		}
 		else{
+			System.out.println("不存在该用户");
 			return null;
 		}
 	}

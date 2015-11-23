@@ -67,8 +67,7 @@ public class Login extends JFrame{
 		//
 		uiListener = new ListenerUI(this);
 		loginbButton.addMouseListener(uiListener);
-		password.setText("");   //by zyz at 11/22
-
+		
 		//移动了 add() setVisible 方法
 		this.add(panel);
 		this.setVisible(true);
@@ -76,13 +75,13 @@ public class Login extends JFrame{
 	}
 	
 	public String getID(){
-//		System.out.println("!!！！！！");
-//		System.out.println(id.getText().toString());
 		return id.getText();
 	}
 	
 	public String getPassword(){
+		password.setText("");   //by zyz at 11/22
 		return password.getText();
+		
 	}
 	public static void main(String[] args) {
 		new Login();
