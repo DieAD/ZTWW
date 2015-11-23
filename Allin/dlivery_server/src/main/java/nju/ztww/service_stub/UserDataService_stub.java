@@ -21,7 +21,7 @@ public class UserDataService_stub extends UnicastRemoteObject implements UserDat
 	}
 
 	public MemberPO checkMember(String id, String password)throws RemoteException {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub		
 		return null;
 	}
 

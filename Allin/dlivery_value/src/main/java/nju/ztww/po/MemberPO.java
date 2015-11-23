@@ -1,6 +1,8 @@
 package nju.ztww.po;
 
-public class MemberPO{
+import java.io.Serializable;
+
+public class MemberPO implements Serializable{
 	private final String id;
 	private final String password;
 	private String position;
@@ -9,7 +11,8 @@ public class MemberPO{
 
 	public MemberPO(String id, String password){
 		this.id = id;
-		this.password = password;	
+		this.password = password;
+		
 	}
 	
 	public void setPosition(String position) {
