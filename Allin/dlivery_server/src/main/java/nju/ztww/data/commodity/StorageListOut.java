@@ -31,6 +31,6 @@ public class StorageListOut {
 	}
 	public void insertout(ArrayList<StorageListLineofOutPO> arraylist,String idofcenter) {
 		// TODO Auto-generated method stub
-		
+		System.out.println("成功了！");
 	}
 }

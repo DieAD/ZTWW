@@ -13,7 +13,10 @@ public class StorageInofListBL {
     private RMIHelper rhelper = new RMIHelper(IP,"1010");
     private CommodityDataService commoditydata;
     
-    public void addorder(ArrayList<StorageListLineofInPO> arraylist,String idofcenter){
+    ArrayList<ArrayList<StorageListLineofInPO>>arraylistin=new ArrayList<ArrayList<StorageListLineofInPO>>();
+    //bl这边执行一个方法  data需要将库存列表信息增加，入库信息列表增加
+   public void addorder(ArrayList<StorageListLineofInPO> arraylist,String idofcenter){
+    	
     	commoditydata = (CommodityDataService)rhelper.findService("CommodityDataService");
     	commoditydata.insertIn(arraylist,idofcenter);
     }
@@ -22,5 +25,7 @@ public class StorageInofListBL {
 		// TODO Auto-generated method stub
 		
 	}
+	//装了所有的入库单信息
    
+	 
 }

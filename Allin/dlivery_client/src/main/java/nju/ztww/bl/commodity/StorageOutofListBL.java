@@ -13,7 +13,7 @@ public class StorageOutofListBL {
 	private static String IP = "127.0.0.1";
     private RMIHelper rhelper = new RMIHelper(IP,"1010");
     private CommodityDataService commoditydata;
-    
+    //两个操作 增加信息到出库列表， 在库存中删除信息
     public void addorder(ArrayList<StorageListLineofOutPO> arraylist,String idofcenter){
     	commoditydata = (CommodityDataService)rhelper.findService("CommodityDataService");
     	commoditydata.insertOut(arraylist, idofcenter);

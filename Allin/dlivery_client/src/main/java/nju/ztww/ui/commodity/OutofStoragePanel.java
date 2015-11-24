@@ -35,8 +35,8 @@ public class OutofStoragePanel extends JPanel {
    public JButton  sureofbutton=new JButton("确定");
    public JButton  submitofbutton=new JButton("提交");
    public CommodityService commodity=new StorageOutListServiceImpl();
-	
-java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit()
+   public JLabel submitlabel=new JLabel();
+   java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit()
 			.getScreenSize();
    public JLabel ordernumber=new JLabel("快递编号");
    public JLabel data=new JLabel("出库日期");
@@ -57,9 +57,14 @@ java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit()
 	   addbutton.setIcon(add);
 	   sureofbutton.setBounds(580, 420, 110,38);
 	   submitofbutton.setBounds(300, 420, 110, 38);
+	   submitlabel.setFont(new Font("楷体",0,20));
+	   submitlabel.setText("提交成功");
+	   submitlabel.setBounds(20, 420, 200, 38);
 	   this.add(sureofbutton);
 	   this.add(addbutton);
 	   this.add(submitofbutton);
+	   this.add(submitlabel);
+	   submitlabel.setVisible(false);
 	// TODO Auto-generated constructor stub
 	   Object[][] playerInfo =
 {
@@ -157,7 +162,9 @@ ActionListener listener2=new ActionListener(){
 	public void actionPerformed(ActionEvent e) {
 		String idofcenter="0001";
 		// TODO Auto-generated method stub
-		commodity.addoutOrder(arraylist,idofcenter);
+	 commodity.addoutOrder(arraylist,idofcenter);
+	 submitlabel.setVisible(true);
+	 
 	}
 	
 };

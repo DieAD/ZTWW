@@ -3,6 +3,7 @@ package nju.ztww.serviceimpl;
 import java.util.ArrayList;
 
 import nju.ztww.bl.commodity.StorageInofListBL;
+import nju.ztww.bl.commodity.StorageListOutbeforecheckBL;
 import nju.ztww.bl.commodity.StorageOutofListBL;
 import nju.ztww.po.StorageListLineofInPO;
 import nju.ztww.po.StorageListLineofOutPO;
@@ -32,10 +33,7 @@ public class StorageOutListServiceImpl implements CommodityService {
 
 	public void addOrder(OrderVO order) {
 		// TODO Auto-generated method stub
-		StorageListLineofOutVO storagelineoutvo=(StorageListLineofOutVO)order;
-		   StorageListLineofOutPO storagelistlinepo=storagelineoutvo.changetopo();
-		   StorageOutofListBL storagelistoutbl=new StorageOutofListBL(); 
-		   storagelistoutbl.addorder(storagelistlinepo);
+		
 
 	}
 
@@ -63,7 +61,7 @@ public class StorageOutListServiceImpl implements CommodityService {
 			for(int i=0;i< arraylist.size();i++){
 				arraylistinpo.add(arraylist.get(i).changetopo());
 			}
-			StorageOutofListBL storagelistoutbl=new StorageOutofListBL(); 
+			StorageListOutbeforecheckBL storagelistoutbl=new StorageListOutbeforecheckBL(); 
 			storagelistoutbl.addorder(arraylistinpo,idofcneter);
 	}
 

@@ -3,6 +3,7 @@ package nju.ztww.serviceimpl;
 import java.util.ArrayList;
 
 import nju.ztww.bl.commodity.StorageInofListBL;
+import nju.ztww.bl.commodity.StorageListInbeforecheckBL;
 import nju.ztww.bl.commodity.StorageOutofListBL;
 import nju.ztww.po.StorageListLineofInPO;
 import nju.ztww.po.StorageListLineofOutPO;
@@ -65,14 +66,14 @@ public class StorageInListServiceImpl implements CommodityService {
 		// TODO Auto-generated method stub
 		
 	}
-
+    //将添加的信息加到所有入库单中
 	public void addinOrder(
 			ArrayList<StorageListLineofInVO> arraylist,String idofcneter) {
 		ArrayList<StorageListLineofInPO>arraylistinpo=new ArrayList<StorageListLineofInPO>();
 		for(int i=0;i< arraylist.size();i++){
 			arraylistinpo.add(arraylist.get(i).changetopo());
 		}
-		StorageInofListBL storagelistinbl=new StorageInofListBL(); 
+		StorageListInbeforecheckBL storagelistinbl=new StorageListInbeforecheckBL(); 
 		storagelistinbl.addorder(arraylistinpo,idofcneter);
 		// TODO Auto-generated method stub
 	
