@@ -4,6 +4,7 @@ import java.io.FileReader;
 import java.io.Reader;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -68,12 +69,129 @@ public class DBForGoods {
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
 			
+			while(rs.next()){
+				GoodsDO good = new GoodsDO();
+				good.setIndex(rs.getInt(1));
+				good.setHoll(rs.getString(2));
+				good.setOrdernumber(rs.getString(3));
+				good.setSender(rs.getString(4));
+				good.setPhone(rs.getString(5));
+				good.setUnit(rs.getString(6));
+				good.setTelephone(rs.getString(7));
+				good.setRecip(rs.getString(8));
+				good.setRphone(rs.getString(9));
+				good.setAddress(rs.getString(10));
+				good.setGoodsinfo(rs.getString(11));
+				good.setCost(rs.getDouble(12));
+				good.setGoodscat(rs.getString(13));
+				good.setPretime(rs.getString(14));
+				good.setLmis(rs.getString(15));
+				good.setRealtime(rs.getString(16));
+				good.setRealreci(rs.getString(17));
+				
+				list.add(good);
+			}
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		return null;
+		return list;
 	}
+	
+	public void update(ArrayList<GoodsDO> list,String tableName){
+		String sql = "update "+tableName+" set holl=?,ordernumber=?,sender=?,phone=?,unit=?,"
+				+ "telephone=?,recip=?,rphone=?,address=?,goodsinfo=?,cost=?,goodscat=?,pretime=?,"
+				+ "lmis=?,realtime=?,realreci=? where ordernumber=?";
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			for(GoodsDO good : list){
+				pstmt.setString(1, good.getHoll());
+				pstmt.setString(2, good.getOrdernumber());
+				pstmt.setString(3, good.getSender());
+				pstmt.setString(4, good.getPhone());
+				pstmt.setString(5, good.getUnit());
+				pstmt.setString(6, good.getTelephone());
+				pstmt.setString(7, good.getRecip());
+				pstmt.setString(8, good.getRphone());
+				pstmt.setString(9, good.getAddress());
+				pstmt.setString(10, good.getGoodsinfo());
+				pstmt.setDouble(11, good.getCost());
+				pstmt.setString(12, good.getGoodscat());
+				pstmt.setString(13, good.getPretime());
+				pstmt.setString(14, good.getLmis());
+				pstmt.setString(15, good.getRealtime());
+				pstmt.setString(16, good.getRealreci());
+				pstmt.setString(17, good.getOrdernumber());
+				
+				pstmt.executeUpdate();
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+//	String sql = "update "+tableName+"set holl=?,ordernumber=?,sender=?,phone=?,unit=?"
+//			+ ",telephone=?,recip=?,rphone=?,address=?,goodsinfo=?,cost=?,goodscat=?,pretime=?,"
+//			+ "lmis=?,realtime=?,realreci=? where id=?";
+//	
+	 public void insert(ArrayList<GoodsDO>  list,String tableName){
+		 String sql  = "insert into "+tableName+"(holl,ordernumber,sender,phone,unit,telephone,recip,rphone,address,goodsinfo,cost,goodscat,pretime,"
+		 		+ "lmis,realtime,realreci)values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		 
+		 try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			for(GoodsDO good : list){
+				pstmt.setString(1, good.getHoll());
+				pstmt.setString(2, good.getOrdernumber());
+				pstmt.setString(3, good.getSender());
+				pstmt.setString(4, good.getPhone());
+				pstmt.setString(5, good.getUnit());
+				pstmt.setString(6, good.getTelephone());
+				pstmt.setString(7, good.getRecip());
+				pstmt.setString(8, good.getRphone());
+				pstmt.setString(9, good.getAddress());
+				pstmt.setString(10, good.getGoodsinfo());
+				pstmt.setDouble(11, good.getCost());
+				pstmt.setString(12, good.getGoodscat());
+				pstmt.setString(13, good.getPretime());
+				pstmt.setString(14, good.getLmis());
+				pstmt.setString(15, good.getRealtime());
+				pstmt.setString(16, good.getRealreci());
+				
+				pstmt.executeUpdate();
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			 
+		}
+	 
+	 public void delete(String ID,String tableName){
+		 String sql = "delete from "+tableName+" where ordernumber="+ID;
+		 try {
+			Statement stmt = conn.createStatement();
+			stmt.executeUpdate(sql);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		 
+	 }
+	 
+	 public static void main(String[] args){
+		 DBForGoods db = new DBForGoods();
+		 db.init();
+		 ArrayList<GoodsDO> list = db.queryByID("2015112301", "goodstable");
+	     for(GoodsDO good:list){
+	    	 good.setAddress("beijing");
+	     }
+		 db.update(list, "goodstable");
+		 db.close();
+	 }
+		
+	
 }
