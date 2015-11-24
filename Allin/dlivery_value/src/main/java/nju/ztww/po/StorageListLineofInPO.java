@@ -2,6 +2,7 @@ package nju.ztww.po;
 
 import java.io.Serializable;
 
+import nju.ztww.dao.EntryFormDO;
 import nju.ztww.vo.StorageListLineofInVO;
 
 public class StorageListLineofInPO extends OrderPO implements Serializable {
@@ -70,6 +71,7 @@ public class StorageListLineofInPO extends OrderPO implements Serializable {
 		return new StorageListLineofInVO(idOfOrder, id, data, destination, qu, pai, jia, wei);
 		
 	}
+	
 	
 
 }
