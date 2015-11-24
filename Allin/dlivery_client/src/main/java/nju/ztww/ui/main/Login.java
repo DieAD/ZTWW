@@ -80,6 +80,7 @@ public class Login extends JFrame{
 	
 	public String getPassword(){
 		//password.setText("");   //by zyz at 11/22
+
 		return password.getText();
 		
 	}
