@@ -1,7 +1,12 @@
 package nju.ztww.bl.order;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import nju.ztww.RMI.RMIHelper;
+import nju.ztww.po.BusinessArrivePO;
+import nju.ztww.po.OrderPO;
 import nju.ztww.po.ReceivePO;
 import nju.ztww.service.OrderDataService;
 import nju.ztww.vo.ReceiveVO;
@@ -23,6 +28,8 @@ public class ReceiveOrderBl {
 		 
 		private OrderDataService orderDataService;
 		
+		 private List<OrderPO> list=new ArrayList<OrderPO>();
+		
 		public ReceiveOrderBl(){
 			
 		}
@@ -35,6 +42,22 @@ public class ReceiveOrderBl {
 			orderDataService=(OrderDataService)rhelper.findService("OrderDataService");
 			String result=orderDataService.insert(receivePO,5);
 			return result;
+		}
+		
+		/**
+		 * 修改物流数据库
+		 * 
+		 * @param list
+		 * @return
+		 */
+		public String handleAllVO(List<ReceivePO> list){
+			for(ReceivePO temp:list){
+				this.list.add(temp);
+			}
+			orderDataService=(OrderDataService)rhelper.findService("OrderDataService");
+			String result=orderDataService.insertToDateFactory(this.list,5);
+			return result;
+			
 		}
 
 }

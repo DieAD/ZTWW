@@ -2,6 +2,7 @@ package nju.ztww.serviceimpl;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.List;
 
 import nju.ztww.data.order.OrderHandler;
 import nju.ztww.po.OrderPO;
@@ -32,6 +33,13 @@ public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDa
 	public String find(int id) throws RemoteException {
 		// TODO Auto-generated method stub
 		String result=orderHandler.find(id);
+		return result;
+	}
+
+
+	public String insertToDateFactory(List<OrderPO> list, int type)
+			throws RemoteException {
+		String result=orderHandler.insertToDateFactory(list, type);
 		return result;
 	}
 

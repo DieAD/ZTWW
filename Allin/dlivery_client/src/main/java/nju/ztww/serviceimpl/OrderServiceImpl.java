@@ -6,8 +6,11 @@ package nju.ztww.serviceimpl;
  * @author TQ
   */
 
+
 import nju.ztww.bl.order.BusinessArriveOrderBl;
+import nju.ztww.bl.order.CarManageBl;
 import nju.ztww.bl.order.CenterReceiveOrderBl;
+import nju.ztww.bl.order.DriverMessageBl;
 import nju.ztww.bl.order.LoadingOrderBl;
 import nju.ztww.bl.order.MailingOrderBl;
 import nju.ztww.bl.order.ReceiveOrderBl;
@@ -16,7 +19,9 @@ import nju.ztww.bl.order.ShipingOrderBl;
 import nju.ztww.bl.order.TransferOrderBl;
 import nju.ztww.service.OrderService;
 import nju.ztww.vo.BusinessArriveVO;
+import nju.ztww.vo.CarManageVO;
 import nju.ztww.vo.CenterReceiveVO;
+import nju.ztww.vo.DriverMessageVO;
 import nju.ztww.vo.LoadingVO;
 import nju.ztww.vo.MailingVO;
 import nju.ztww.vo.OrderVO;
@@ -35,6 +40,8 @@ public class OrderServiceImpl implements OrderService{
 	SendOrderBl sendOrderBl=new SendOrderBl();
 	ShipingOrderBl shipingOrderBl=new ShipingOrderBl();
 	TransferOrderBl transferOrderBl=new TransferOrderBl();
+	CarManageBl carManageBl=new CarManageBl();
+	DriverMessageBl driverMessageBl=new DriverMessageBl();
 	
 	public OrderServiceImpl(){
 		
@@ -66,6 +73,12 @@ public class OrderServiceImpl implements OrderService{
 		case 8:
 			TransferVO transferVO=new TransferVO(8);
 			return transferVO;
+		case 9:
+			CarManageVO carManageVO=new CarManageVO(9);
+			return carManageVO;
+		case 10:
+			DriverMessageVO driverMessageVO=new DriverMessageVO(10);
+			return driverMessageVO;
 		}
 		return null;
 	}
@@ -105,6 +118,14 @@ public class OrderServiceImpl implements OrderService{
 			TransferVO transferVO=(TransferVO) order;
 			result=transferOrderBl.handleVO(transferVO);
 			return result;
+		case 9:
+			CarManageVO carManageVO=(CarManageVO) order;
+			result=carManageBl.handleVO(carManageVO);
+			return result;
+		case 10:
+			DriverMessageVO driverMessageVO=(DriverMessageVO) order;
+			result=driverMessageBl.handleVO(driverMessageVO);
+			return result;
 		}
 		return null;
 	}
@@ -129,7 +150,7 @@ public class OrderServiceImpl implements OrderService{
 
 	public String getDate(String city, String city2,int type) {
 		// TODO Auto-generated method stub
-		return null;
+		return "2015-11-11";
 	}
 
 	public double calculate(double distance,int type){

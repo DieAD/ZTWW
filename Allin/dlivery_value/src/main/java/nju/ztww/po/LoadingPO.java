@@ -20,8 +20,8 @@ public class LoadingPO extends OrderPO implements Serializable{
 	private String carNumber;
 	private String JianZhuangName;
 	private String YaYunName;
-	private ArrayList<Integer> orderNumber;
-	private int money;
+	private ArrayList<String> orderNumber;
+	private double money;
 
 	public LoadingPO(int idOfOrder) {
 		super(idOfOrder);
@@ -92,19 +92,19 @@ public class LoadingPO extends OrderPO implements Serializable{
 		YaYunName = yaYunName;
 	}
 
-	public ArrayList<Integer> getOrderNumber() {
+	public ArrayList<String> getOrderNumber() {
 		return orderNumber;
 	}
 
-	public void setOrderNumber(ArrayList<Integer> orderNumber) {
+	public void setOrderNumber(ArrayList<String> orderNumber) {
 		this.orderNumber = orderNumber;
 	}
 
-	public int getMoney() {
+	public double getMoney() {
 		return money;
 	}
 
-	public void setMoney(int money) {
+	public void setMoney(double money) {
 		this.money = money;
 	}
 

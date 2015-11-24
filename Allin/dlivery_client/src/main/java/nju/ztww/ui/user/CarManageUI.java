@@ -17,6 +17,15 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
+import nju.ztww.serviceimpl.OrderServiceImpl;
+import nju.ztww.vo.CarManageVO;
+import nju.ztww.vo.LoadingVO;
+
+/**
+ * 车辆管理ui
+ * @author TQ
+ *
+ */
 public class CarManageUI extends JPanel{
 
 
@@ -32,6 +41,10 @@ public class CarManageUI extends JPanel{
 	private  JLabel orderNumber=new  JLabel("备注");
 	private JButton addButton=new JButton();
 	private JButton sureButton=new JButton("确定");
+	
+	private OrderServiceImpl orderServiceImpl=new OrderServiceImpl();
+	private CarManageVO carManageVO;
+	
 	DefaultTableModel defaultTableModel ;
 	 JTable table;
 	 JDialog dlg;
@@ -71,6 +84,7 @@ public class CarManageUI extends JPanel{
 			  addButton.addActionListener(new ActionListener(){
 
 					public void actionPerformed(ActionEvent e) {
+						carManageVO=(CarManageVO) orderServiceImpl.getOrder(9);
 						dlg= new JDialog(); 
 						dlg.setSize(new Dimension(350, 550));
 			            dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
@@ -131,7 +145,13 @@ public class CarManageUI extends JPanel{
 	ActionListener listener = new ActionListener(){
 
 		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
+			carManageVO.setCarNumber(businesstextArea.getText());
+			carManageVO.setCarState(arrivetextArea.getText());
+			carManageVO.setPlateNUmber(cartextArea.getText());
+			carManageVO.setServiceTime(carNumbertextArea.getText());
+			
+			 String result=orderServiceImpl.endSales(carManageVO, 9);
+			 System.out.println(result);
 			//增加行
 			Vector<String> row = new Vector(5);
 			row.add(businesstextArea.getText());

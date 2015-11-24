@@ -1,10 +1,14 @@
 package nju.ztww.bl.order;
 
 
-import nju.ztww.RMI.RMIHelper;
-import nju.ztww.po.LoadingPO;
-import nju.ztww.service.OrderDataService;
+import java.util.ArrayList;
+import java.util.List;
 
+import nju.ztww.RMI.RMIHelper;
+import nju.ztww.po.CenterReceivePO;
+import nju.ztww.po.LoadingPO;
+import nju.ztww.po.OrderPO;
+import nju.ztww.service.OrderDataService;
 import nju.ztww.vo.LoadingVO;
 
 /**
@@ -23,6 +27,8 @@ public class LoadingOrderBl {
 		 private RMIHelper rhelper = new RMIHelper(IP,"1010");
 		 
 		 private OrderDataService orderDataService;
+		 
+		 private List<OrderPO> list=new ArrayList<OrderPO>();
 		
 		public LoadingOrderBl(){
 			
@@ -42,6 +48,22 @@ public class LoadingOrderBl {
 			orderDataService=(OrderDataService)rhelper.findService("OrderDataService");
 			String result=orderDataService.insert(loadingPO,4);
 			return result;
+		}
+		
+		/**
+		 * 修改物流数据库
+		 * 
+		 * @param list
+		 * @return
+		 */
+		public String handleAllVO(List<LoadingPO> list){
+			for(LoadingPO temp:list){
+				this.list.add(temp);
+			}
+			orderDataService=(OrderDataService)rhelper.findService("OrderDataService");
+			String result=orderDataService.insertToDateFactory(this.list,4);
+			return result;
+			
 		}
 
 }

@@ -23,7 +23,7 @@ public class MailingPO extends OrderPO implements Serializable{
 	private String receiveTelephone;
 	private String infortation;
 	private String method;
-	private int count;
+	private double count;
 	private String StripNumber;
 	private String arriveDate;
 
@@ -111,11 +111,11 @@ public class MailingPO extends OrderPO implements Serializable{
 		this.method = method;
 	}
 
-	public int getCount() {
+	public double getCount() {
 		return count;
 	}
 
-	public void setCount(int count) {
+	public void setCount(double count) {
 		this.count = count;
 	}
 
