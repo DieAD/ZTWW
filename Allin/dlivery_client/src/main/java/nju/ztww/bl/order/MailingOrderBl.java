@@ -31,7 +31,12 @@ public class MailingOrderBl {
 		mailingPO.setMethod(mailingVO.getMethod());
 		mailingPO.setCount(mailingVO.getCount());
 		mailingPO.setStripNumber(mailingVO.getStripNumber());
-		
+	
+		mailingPO.setBusinID(mailingVO.getBusinID());
+		mailingPO.setSendOrga(mailingVO.getSendOrga());
+		mailingPO.setSendTEL(mailingVO.getSendTEL());
+		mailingPO.setTime(mailingVO.getTime());
+		mailingPO.setState(mailingVO.getState());
 		orderDataServiceImpl.insert(mailingPO);
 	}
 

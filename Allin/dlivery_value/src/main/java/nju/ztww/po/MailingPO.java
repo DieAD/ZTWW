@@ -14,6 +14,12 @@ import nju.ztww.common.OrderInfo;
 
 public class MailingPO extends OrderPO implements Serializable{
 	
+	private String businID;
+	private String sendOrga;
+	private String sendTEL;
+	private int time;
+	private char state;
+	
 	private int idOfOrder;
 	private String sendName;
 	private String sendLocation;
@@ -23,8 +29,52 @@ public class MailingPO extends OrderPO implements Serializable{
 	private String receiveTelephone;
 	private String infortation;
 	private String method;
-	private int count;
+	private double count;
 	private String StripNumber;
+	
+	
+	public void setBusinID(String businID){
+		this.businID = businID;
+	}
+	
+	public String getBusinID(){
+		return businID;
+	}
+	
+	public void setSendOrga(String sendOrga){
+		this.sendOrga = sendOrga;
+	}
+	
+	public String getSendOrga(){
+		return sendOrga;
+	}
+	
+	public void setSendTEL(String sendTEL){
+		this.sendTEL = sendTEL;
+	}
+	
+	public String getSendTEL(){
+		return sendTEL;
+	}
+	
+	public void setTime(int time){
+		this.time  = time;
+	}
+	
+	public int getTime(){
+		return time;
+	}
+	
+	public void setState(char state){
+		this.state = state;
+	}
+	
+	public char getState(){
+		return state;
+	}
+	
+	
+	
 
 	public MailingPO(int idOfOrde) {
 		super(idOfOrde);
@@ -103,11 +153,11 @@ public class MailingPO extends OrderPO implements Serializable{
 		this.method = method;
 	}
 
-	public int getCount() {
+	public double getCount() {
 		return count;
 	}
 
-	public void setCount(int count) {
+	public void setCount(double count) {
 		this.count = count;
 	}
 

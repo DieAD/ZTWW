@@ -17,7 +17,7 @@ public class TestCourierUI {
 	static JFrame frame =null;
 	CourierMenuUI MenuPanel = new CourierMenuUI();
 	ThemeLabelUI Theme = new ThemeLabelUI();
-	private static int type = 1;
+	private static int type = 2;
 
 	static Courier_OrderInputUI OrderInput = new Courier_OrderInputUI();
 	static Courier_AcceptUI Accept = new Courier_AcceptUI();
@@ -55,12 +55,15 @@ public class TestCourierUI {
 		removePanel();
 		if (i == 1) {
 			frame.getContentPane().add(OrderInput);
+			OrderInput.setVisible(true);
 			type = 1;
 		} else if (i == 2) {
 			frame.getContentPane().add(Accept);
+			Accept.setVisible(true);
 			type = 2;
 		} else if (i == 3) {
 			frame.getContentPane().add(checkOrder);
+			checkOrder.setVisible(true);
 			type = 3;
 		} else if (i == 4) {
 			// frame.getContentPane().add(personalInformation);
@@ -70,10 +73,13 @@ public class TestCourierUI {
 
 	public static void removePanel() {
 		if (type == 1) {
+			OrderInput.setVisible(false);
 			frame.remove(OrderInput);
 		} else if (type == 2) {
+			Accept.setVisible(false);
 			frame.remove(Accept);
 		} else if (type == 3) {
+			checkOrder.setVisible(false);
 			frame.remove(checkOrder);
 		} else if (type == 4) {
 

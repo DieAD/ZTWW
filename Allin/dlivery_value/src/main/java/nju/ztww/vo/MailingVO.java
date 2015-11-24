@@ -12,7 +12,15 @@ import nju.ztww.common.OrderInfo;
 
 public class MailingVO extends OrderVO{
 	
-	private int idOfOrder;
+	private int idOfOrder; //=1
+	
+	private String businID;
+	private String sendOrga;
+	private String sendTEL;
+	private int time;
+	private char state;
+	private double packCost;
+	
 	private String sendName;
 	private String sendLocation;
 	private String sendTelephone;
@@ -21,9 +29,62 @@ public class MailingVO extends OrderVO{
 	private String receiveTelephone;
 	private String infortation;
 	private String method;
-	private int count;
+	private double count;
 	private String StripNumber;
 
+	public void setBusinID(String businID){
+		this.businID = businID;
+	}
+	
+	public String getBusinID(){
+		return businID;
+	}
+	
+	public void setSendOrga(String sendOrga){
+		this.sendOrga = sendOrga;
+	}
+	
+	public String getSendOrga(){
+		return sendOrga;
+	}
+	
+	public void setSendTEL(String sendTEL){
+		this.sendTEL = sendTEL;
+	}
+	
+	public String getSendTEL(){
+		return sendTEL;
+	}
+	
+	public void setTime(int time){
+		this.time  = time;
+	}
+	
+	public int getTime(){
+		return time;
+	}
+	
+	public void setState(char state){
+		this.state = state;
+	}
+	
+	public char getState(){
+		return state;
+	}
+	
+	public void setPackCost(double packCost){
+		this.packCost = packCost;
+	}
+	
+	public double getPackCost(){
+		return packCost;
+	}
+	
+	
+	
+	
+	
+	
 	public MailingVO(int idOfOrde) {
 		super(idOfOrde);
 		this.idOfOrder=idOfOrde;
@@ -101,11 +162,11 @@ public class MailingVO extends OrderVO{
 		this.method = method;
 	}
 
-	public int getCount() {
+	public double getCount() {
 		return count;
 	}
 
-	public void setCount(int count) {
+	public void setCount(double count) {
 		this.count = count;
 	}
 
