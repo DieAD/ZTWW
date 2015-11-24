@@ -6,14 +6,22 @@ import java.awt.event.MouseListener;
 
 import javax.swing.JFrame;
 
+import nju.ztww.vo.MemberVO;
+
 public class ListenerUI implements MouseListener{
 	private SwiftController swiftController;
 	private JFrame frame;
-	
-	public ListenerUI(JFrame frame){
-		this.frame = frame;
+	private Login login;
+	private String ID;
+	private String password;
+	public ListenerUI(JFrame frame){ //改成Login类    By zyz
+		this.frame = frame;		
+		this.login = (Login)frame;
 		this.swiftController = new SwiftController(frame);
+		
+	
 	}
+
 
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
@@ -22,7 +30,9 @@ public class ListenerUI implements MouseListener{
 
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
+		this.swiftController.setMember(login.getID(), login.getPassword());
 		swiftController.setUI();
+		//by zyz  move here
 	}
 
 	public void mouseReleased(MouseEvent e) {

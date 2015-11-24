@@ -10,8 +10,7 @@ import nju.ztww.po.OrderPO;
 public interface UserDataService extends Remote{
 	/*
 	 * 用户输入账号密码验证身份
-	 * 输入：String id : 用户的ID
-	 * 输入：String password : 对应的密码
+	 * 输入：MemberPO member: 用户的信息的PO
 	 * 输出：MemberPO : 该账号对应的用户信息，若不匹配则返回Null
 	 */
 	public MemberPO checkMember(String id, String password) ;

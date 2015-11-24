@@ -2,9 +2,9 @@ package nju.ztww.vo;
 
 
 public class AccountVO {
-	public final String id;
-	public final double fund;
-	public final String name;
+	private final String id;
+	private final double fund;
+	private final String name;
 	
 	public AccountVO(String id, double fund, String name){
 		this.id = id;

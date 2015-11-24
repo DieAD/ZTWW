@@ -51,5 +51,9 @@ public class Commodity_stub implements CommodityService{
 		// TODO Auto-generated method stub
 		return false;
 	}
+	public void addOrder(OrderVO order) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }
