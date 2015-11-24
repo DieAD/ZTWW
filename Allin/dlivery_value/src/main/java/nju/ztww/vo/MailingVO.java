@@ -18,8 +18,9 @@ public class MailingVO extends OrderVO{
 	private String sendOrga;
 	private String sendTEL;
 	private int time;
-	private char state;
+	private int state;
 	private double packCost;
+	private int exe;
 	
 	private String sendName;
 	private String sendLocation;
@@ -65,12 +66,20 @@ public class MailingVO extends OrderVO{
 		return time;
 	}
 	
-	public void setState(char state){
+	public void setState(int state){
 		this.state = state;
 	}
 	
-	public char getState(){
+	public int getState(){
 		return state;
+	}
+	
+	public void setExe(int exe){
+		this.exe = exe;
+	}
+	
+	public int getExe(){
+		return exe;
 	}
 	
 	public void setPackCost(double packCost){
