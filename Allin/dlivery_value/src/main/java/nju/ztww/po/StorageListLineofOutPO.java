@@ -1,11 +1,13 @@
 package nju.ztww.po;
 
+import java.io.Serializable;
+
 import nju.ztww.vo.StorageListLineofInVO;
 import nju.ztww.vo.StorageListLineofOutVO;
 
 //@WJ auther
 //出库的行order对象
-public class StorageListLineofOutPO extends OrderPO { 
+public class StorageListLineofOutPO extends OrderPO implements Serializable { 
 	// TODO Auto-generated constructor stub
 	String id;
 	String data;

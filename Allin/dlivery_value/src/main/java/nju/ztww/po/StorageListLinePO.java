@@ -2,9 +2,9 @@ package nju.ztww.po;
 
 import java.io.Serializable;
 
-import nju.ztww.vo.StorageListLineofInVO;
+import nju.ztww.vo.StorageListLineVO;
 
-public class StorageListLineofInPO extends OrderPO implements Serializable {
+public class StorageListLinePO extends OrderPO implements Serializable{
 	String id;//快递编号
     String data;//入库日期
     String destination;//目的地
@@ -12,16 +12,17 @@ public class StorageListLineofInPO extends OrderPO implements Serializable {
     String pai;//排号
     String jia;//架号
     String wei;//位号
-	public StorageListLineofInPO(int idOfOrder,String id,String data,String destination,String qu,String pai,String jia,String wei) {
+	public StorageListLinePO(int idOfOrder,String id,String data,String destination, String qu,String pai, String jia,String wei) {
 		super(idOfOrder);
+		// TODO Auto-generated constructor stub
 		this.id=id;
 		this.data=data;
 		this.destination=destination;
-		this.qu=qu;
-		this.pai=pai;
 		this.jia=jia;
+		this.pai=pai;
+		this.qu=qu;
 		this.wei=wei;
-		// TODO Auto-generated constructor stub
+		
 	}
 	public String getId() {
 		return id;
@@ -65,11 +66,11 @@ public class StorageListLineofInPO extends OrderPO implements Serializable {
 	public void setWei(String wei) {
 		this.wei = wei;
 	}
-	public StorageListLineofInVO changetovo() {
+	//数据操作时要注意 VO 的对象 int 参数
+	public StorageListLineVO changetovo() {
 		// TODO Auto-generated method stub
-		return new StorageListLineofInVO(idOfOrder, id, data, destination, qu, pai, jia, wei);
 		
+		return new StorageListLineVO(idOfOrder, id, data, destination, qu, pai, jia, wei) ;
 	}
-	
 
 }

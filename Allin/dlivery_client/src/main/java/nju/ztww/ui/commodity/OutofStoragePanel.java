@@ -1,10 +1,11 @@
 package nju.ztww.ui.commodity;
-
+//debug 时注意成员变量arraylist 是否会造成添加
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Vector;
 
 import javax.swing.ImageIcon;
@@ -32,9 +33,9 @@ public class OutofStoragePanel extends JPanel {
    public JButton surebutton;
    public StorageListLineofOutVO  storagelineout;
    public JButton  sureofbutton=new JButton("确定");
+   public JButton  submitofbutton=new JButton("提交");
    public CommodityService commodity=new StorageOutListServiceImpl();
-	
-	
+   public JLabel submitlabel=new JLabel();
    java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit()
 			.getScreenSize();
    public JLabel ordernumber=new JLabel("快递编号");
@@ -47,6 +48,7 @@ public class OutofStoragePanel extends JPanel {
    public JTextField arrivefield=new JTextField();
    public JTextField zhuangyunfield=new JTextField();
    public JTextField yunshufield=new JTextField();
+   public ArrayList<StorageListLineofOutVO>arraylist=new ArrayList<StorageListLineofOutVO>();
    public OutofStoragePanel() {
 	   this.setLayout(null);
 	   addbutton=new JButton();
@@ -54,8 +56,15 @@ public class OutofStoragePanel extends JPanel {
 	   addbutton.setBounds(450, 420, 110, 38);
 	   addbutton.setIcon(add);
 	   sureofbutton.setBounds(580, 420, 110,38);
+	   submitofbutton.setBounds(300, 420, 110, 38);
+	   submitlabel.setFont(new Font("楷体",0,20));
+	   submitlabel.setText("提交成功");
+	   submitlabel.setBounds(20, 420, 200, 38);
 	   this.add(sureofbutton);
 	   this.add(addbutton);
+	   this.add(submitofbutton);
+	   this.add(submitlabel);
+	   submitlabel.setVisible(false);
 	// TODO Auto-generated constructor stub
 	   Object[][] playerInfo =
 {
@@ -78,6 +87,7 @@ public class OutofStoragePanel extends JPanel {
 	 table.setRowHeight(25);
 	scrollPane.setBounds(0, 0, 700, 400);
 	this.add(scrollPane); 
+	submitofbutton.addActionListener(listener2);
 	addbutton.addActionListener(new ActionListener() {
 	public void actionPerformed(ActionEvent arg0) {
 		dlg=new JDialog();
@@ -132,8 +142,10 @@ public class OutofStoragePanel extends JPanel {
 		row.add(arrivefield.getText());
 		row.add(zhuangyunfield.getText());
 		row.add(yunshufield.getText());
+		//构造了一个vo
 		storagelineout=new StorageListLineofOutVO(ordernumberfield.getText(), datafield.getText(), arrivefield.getText(),zhuangyunfield.getText(), yunshufield.getText());
-		commodity.addOrder(storagelineout);
+		arraylist.add(storagelineout);
+		//arraylist中加入提交之前需要的出库信息
 		ordernumberfield.setText(null);
 		datafield.setText(null);
 		arrivefield.setText(null);
@@ -145,4 +157,16 @@ public class OutofStoragePanel extends JPanel {
 	    surebutton.removeActionListener(listener);
 	}
 }; 
+ActionListener listener2=new ActionListener(){
+//需要界面提供给我idofcenter
+	public void actionPerformed(ActionEvent e) {
+		String idofcenter="0001";
+		// TODO Auto-generated method stub
+	 commodity.addoutOrder(arraylist,idofcenter);
+	 submitlabel.setVisible(true);
+	 
+	}
+	
+};
+   
 }

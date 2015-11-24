@@ -5,11 +5,11 @@ import nju.ztww.po.StorageListLineofOutPO;
 
 public class StorageListOutGetByTime {
 	ArrayList<StorageListLineofOutPO> arraylist ;
-	public ArrayList<StorageListLineofOutPO> findOutList(String time) {
+	public ArrayList<StorageListLineofOutPO> findOutList(String time,String idofcenter) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	public ArrayList<StorageListLineofOutPO> findOutList(String timebegin,String timeend){
+	public ArrayList<StorageListLineofOutPO> findOutList(String timebegin,String timeend,String idofcenter){
 		return null;
 	}
 }
