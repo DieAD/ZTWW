@@ -48,26 +48,26 @@ public class SwiftController {
 	
 	
 	public void switchUI(){
-//		if(true){
-//			
-//			panelList = MUI.getPanelList();
-//		}
-		
-		switch(id){
-		case 0: jump = false;break;
-		case 1: panelList = courierUI.getPanelList();break;
-		case 2: panelList = businessUI.getPanelList();break;
-		case 3: panelList = ccUI.getPanelList();break;
-		case 4: panelList = storageUI.getPanelList();break;
-		case 5: panelList = financeUI.getPanelList();break;
-		case 6: panelList = GMUI.getPanelList();break;
-		case 7: panelList = MUI.getPanelList();break;
-		default:{System.out.println("Switch UI error!");jump = false;}break;
+		if(true){
+			
+			panelList = courierUI.getPanelList();
 		}
+		
+//		switch(id){
+//		case 0: jump = false;break;
+//		case 1: panelList = courierUI.getPanelList();break;
+//		case 2: panelList = businessUI.getPanelList();break;
+//		case 3: panelList = ccUI.getPanelList();break;
+//		case 4: panelList = storageUI.getPanelList();break;
+//		case 5: panelList = financeUI.getPanelList();break;
+//		case 6: panelList = GMUI.getPanelList();break;
+//		case 7: panelList = MUI.getPanelList();break;
+//		default:{System.out.println("Switch UI error!");jump = false;}break;
+//		}
 	}
 	
 	public void setUI(){
-		getID();
+//		getID();
 		switchUI();
 	   if(jump){ 
 		   frame.getContentPane().removeAll();
