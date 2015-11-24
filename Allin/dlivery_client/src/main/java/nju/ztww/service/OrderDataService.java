@@ -12,10 +12,10 @@ import nju.ztww.po.OrderPO;
 
 public interface OrderDataService extends Remote{
 	
-	public void insert(OrderPO orderPO);
+	public String insert(OrderPO orderPO,int type);
 	
-	public void delete(OrderPO orderPO);
+	public String delete(OrderPO orderPO,int type);
 	
-	public void find(int id);
+	public String find(int id);
 
 }

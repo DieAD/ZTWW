@@ -52,15 +52,31 @@ public class OrderService_stub implements OrderService {
 		return null;
 	}
 
-	public void endSales(OrderVO order,int number) {
+	public String endSales(OrderVO order,int number) {
 		// TODO Auto-generated method stub
 		System.out.println("END Sale!");
+		return null;
 	}
 
 
-	public void endSales(OrderVO order, int number) {
+
+
+
+	public double getMoney(String city, String city2, int type) {
 		// TODO Auto-generated method stub
-		
+		return 0;
 	}
+
+
+	public String getDate(String city, String city2, int type) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+//	public void endSales(OrderVO order, int number) {
+//		// TODO Auto-generated method stub
+//		
+//	}
 
 }

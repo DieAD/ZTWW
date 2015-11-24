@@ -25,12 +25,20 @@ public class MailingPO extends OrderPO implements Serializable{
 	private String method;
 	private int count;
 	private String StripNumber;
+	private String arriveDate;
 
 	public MailingPO(int idOfOrde) {
 		super(idOfOrde);
 		this.idOfOrder=idOfOrde;
 	}
 
+	public String getArriveDate() {
+		return arriveDate;
+	}
+
+	public void setArriveDate(String arriveDate) {
+		this.arriveDate = arriveDate;
+	}
 	public int getIdOfOrde() {
 		return idOfOrder;
 	}

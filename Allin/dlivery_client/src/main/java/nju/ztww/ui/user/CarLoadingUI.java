@@ -24,6 +24,9 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.TableView.TableRow;
 
+import nju.ztww.serviceimpl.OrderServiceImpl;
+import nju.ztww.vo.LoadingVO;
+
 public class CarLoadingUI extends JPanel{
 	
 	private JTextField datatextArea=new JTextField("");
@@ -44,6 +47,8 @@ public class CarLoadingUI extends JPanel{
 	private  JLabel orderNumber=new  JLabel();
 	private JTextField moneytextArea=new JTextField("");
 	private  JLabel money=new  JLabel();
+	private OrderServiceImpl orderServiceImpl=new OrderServiceImpl();
+	private LoadingVO loadingVO;
 	
 	private JButton addButton=new JButton();
 	private JButton sureButton=new JButton("确定");
@@ -103,6 +108,7 @@ public class CarLoadingUI extends JPanel{
 			  addButton.addActionListener(new ActionListener(){
 
 					public void actionPerformed(ActionEvent e) {
+						loadingVO=(LoadingVO) orderServiceImpl.getOrder(4);
 						dlg= new JDialog(); 
 						dlg.setSize(new Dimension(350, 550));
 			            dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
@@ -183,6 +189,7 @@ public class CarLoadingUI extends JPanel{
 
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
+			 String result=orderServiceImpl.endSales(loadingVO, 4);
 			//增加行
 			Vector<String> row = new Vector(6);
 			row.add(datatextArea.getText());

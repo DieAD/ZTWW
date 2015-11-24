@@ -23,10 +23,19 @@ public class MailingVO extends OrderVO{
 	private String method;
 	private int count;
 	private String StripNumber;
+	private String arriveDate;
 
 	public MailingVO(int idOfOrde) {
 		super(idOfOrde);
 		this.idOfOrder=idOfOrde;
+	}
+
+	public String getArriveDate() {
+		return arriveDate;
+	}
+
+	public void setArriveDate(String arriveDate) {
+		this.arriveDate = arriveDate;
 	}
 
 	public int getIdOfOrde() {

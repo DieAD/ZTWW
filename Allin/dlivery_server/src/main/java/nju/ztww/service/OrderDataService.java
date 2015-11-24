@@ -13,11 +13,11 @@ import nju.ztww.po.OrderPO;
 
 public interface OrderDataService extends Remote  {
 	
-	public void insert(OrderPO orderPO) throws RemoteException;
+	public String insert(OrderPO orderPO,int type) throws RemoteException;
 	
-	public void delete(OrderPO orderPO)throws RemoteException;
+	public String delete(OrderPO orderPO,int type)throws RemoteException;
 
 	
-	public void find(int id)throws RemoteException;
+	public String find(int id)throws RemoteException;
 
 }
