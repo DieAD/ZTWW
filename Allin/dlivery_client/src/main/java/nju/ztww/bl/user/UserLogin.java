@@ -7,7 +7,7 @@ import nju.ztww.po.MemberPO;
 import nju.ztww.service.UserDataService;
 //import nju.ztww.serviceimpl.UserLoginDataImpl;
 import nju.ztww.vo.MemberVO;
-
+//02501001110
 //专用于登录时鉴定账号和密码
 public class UserLogin {
 	private static String IP = "127.0.0.1";

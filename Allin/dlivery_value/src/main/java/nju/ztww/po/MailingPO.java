@@ -31,6 +31,7 @@ public class MailingPO extends OrderPO implements Serializable{
 	private String method;
 	private double count;
 	private String StripNumber;
+
 	
 	
 	public void setBusinID(String businID){
@@ -76,11 +77,21 @@ public class MailingPO extends OrderPO implements Serializable{
 	
 	
 
+	private String arriveDate;
+
+
 	public MailingPO(int idOfOrde) {
 		super(idOfOrde);
 		this.idOfOrder=idOfOrde;
 	}
 
+	public String getArriveDate() {
+		return arriveDate;
+	}
+
+	public void setArriveDate(String arriveDate) {
+		this.arriveDate = arriveDate;
+	}
 	public int getIdOfOrde() {
 		return idOfOrder;
 	}

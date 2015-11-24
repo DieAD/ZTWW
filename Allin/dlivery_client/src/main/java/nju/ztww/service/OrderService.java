@@ -30,8 +30,24 @@ public interface OrderService {
 	 * @return
 	 * 
 	 * */
-	public void endSales(OrderVO order,int number);
+	public String endSales(OrderVO order,int number);
 	
 	
+	/**
+	 * 获得运费
+	 * 
+	 * @param city 出发地
+	 * @param city2 目的地
+	 * @return
+	 */
+	public double getMoney(String city,String city2,int type);
 	
+	/**
+	 * 获得到达日期
+	 * 
+	 * @param city 出发地
+	 * @param city2 目的地
+	 * @return
+	 */
+	public String getDate(String city,String city2,int type);
 }

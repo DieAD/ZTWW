@@ -31,6 +31,7 @@ public class MailingVO extends OrderVO{
 	private String method;
 	private double count;
 	private String StripNumber;
+	private String arriveDate;
 
 	public void setBusinID(String businID){
 		this.businID = businID;
@@ -88,6 +89,14 @@ public class MailingVO extends OrderVO{
 	public MailingVO(int idOfOrde) {
 		super(idOfOrde);
 		this.idOfOrder=idOfOrde;
+	}
+
+	public String getArriveDate() {
+		return arriveDate;
+	}
+
+	public void setArriveDate(String arriveDate) {
+		this.arriveDate = arriveDate;
 	}
 
 	public int getIdOfOrde() {

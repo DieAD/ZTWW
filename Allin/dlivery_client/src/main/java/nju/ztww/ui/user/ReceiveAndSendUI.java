@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Vector;
 
 import javax.swing.ImageIcon;
@@ -17,6 +18,16 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
+import nju.ztww.serviceimpl.OrderServiceImpl;
+import nju.ztww.vo.BusinessArriveVO;
+import nju.ztww.vo.LoadingVO;
+import nju.ztww.vo.SendVO;
+
+/**
+ * 接受与派件
+ * @author TQ
+ *
+ */
 public class ReceiveAndSendUI extends JPanel{
 	
 	private JTextField businesstextArea=new JTextField("");
@@ -29,9 +40,30 @@ public class ReceiveAndSendUI extends JPanel{
 	private  JLabel carNumber=new  JLabel("货物到达状态");
 	private JTextField orderNumbertextArea=new JTextField("");
 	private  JLabel orderNumber=new  JLabel("备注");
+	
+	private JTextField datetextArea=new JTextField("");
+	private  JLabel date=new  JLabel("到达日期");
+	private JTextField numbertextArea=new JTextField("");
+	private  JLabel number=new  JLabel("托运订单号");
+	private JTextField sendertextArea=new JTextField("");
+	private  JLabel sender=new  JLabel("派送员");
+	private JTextField othertextArea=new JTextField("");
+	private  JLabel other=new  JLabel("备注");
+	
 	private JButton addButton=new JButton();
-	private JButton addSendButton=new JButton();
+	private JButton addSendButton=new JButton("添加派件单");
+	private JButton sendButton=new JButton("提交派件单");
+	private JButton sendArriveButton=new JButton("提交到达单");
 	private JButton sureButton=new JButton("确定");
+	private JButton sureSendButton=new JButton("确定");
+	
+	private OrderServiceImpl orderServiceImpl=new OrderServiceImpl();
+	private BusinessArriveVO businessArriveVO;
+	private SendVO sendVO;
+	
+	private ArrayList<BusinessArriveVO> allbusinessArriveVO;
+	private ArrayList<SendVO> allSendVO;
+	
 	DefaultTableModel defaultTableModel ;
 	DefaultTableModel defaultTableModel2 ;
 	 JTable receiveTable;
@@ -44,8 +76,12 @@ public class ReceiveAndSendUI extends JPanel{
 		ImageIcon add=new ImageIcon("photo/add.gif");
 		addButton.setBounds(500, 420, 110, 38);
 		addButton.setIcon(add);
-		addSendButton.setBounds(300, 420, 110, 38);
-		addSendButton.setIcon(add);
+		addSendButton.setBounds(350, 420, 110, 38);
+		addSendButton.setIcon(null);
+		sendButton.setBounds(200, 420, 110, 38);
+		sendButton.setIcon(null);
+		sendArriveButton.setBounds(50, 420, 110, 38);
+		sendArriveButton.setIcon(null);
 		Object[][] playerInfo =
 			  {
 			    { "阿s呆", new Integer(69), new Integer(32), new Integer(98),  new Boolean(false) },
@@ -103,6 +139,7 @@ public class ReceiveAndSendUI extends JPanel{
 			  addButton.addActionListener(new ActionListener(){
 
 					public void actionPerformed(ActionEvent e) {
+						businessArriveVO=(BusinessArriveVO) orderServiceImpl.getOrder(2);
 						dlg= new JDialog(); 
 						dlg.setSize(new Dimension(350, 550));
 			            dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
@@ -148,8 +185,71 @@ public class ReceiveAndSendUI extends JPanel{
 						dlg.setVisible(true);
 					}
 					});
+			  addSendButton.addActionListener(new ActionListener(){
+
+					public void actionPerformed(ActionEvent e) {
+						sendVO=(SendVO) orderServiceImpl.getOrder(6);
+						dlg= new JDialog(); 
+						dlg.setSize(new Dimension(350, 550));
+			            dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
+			            //到达日期
+			            datetextArea.setBounds(100, 55, 150, 30);
+			            date.setIcon(null);
+			            date.setBounds(0, 50, 100, 40);
+			            //托运订单号
+			            numbertextArea.setBounds(100, 155, 150, 30);
+			            number.setIcon(null);
+			            number.setBounds(0, 150, 100, 40);
+			            //派送员
+			           sendertextArea.setBounds(100, 105, 150, 30);
+			            sender.setIcon(null);
+			            sender.setBounds(0, 100, 100, 40);
+			           
+			           
+			            //备注
+			           othertextArea.setBounds(100, 255, 150, 30);
+			            other.setIcon(null);
+			            other.setBounds(0, 250, 100, 40);
+			            
+			      
+			            dlg.add(other);
+			            dlg.add(othertextArea);
+			            dlg.add(sender);
+			            dlg.add(sendertextArea);
+			            dlg.add(number);
+			            dlg.add(numbertextArea);
+			            dlg.add(date);
+			            dlg.add(datetextArea);
+			            dlg.add(sureSendButton);
+			            sureSendButton.setBounds(100, 450, 60, 40);
+			            sureSendButton.addActionListener(listenerSend);
+			            
+			            dlg.setLayout(null);
+						dlg.setVisible(true);
+					}
+					});
+			  sendArriveButton.addActionListener(new ActionListener(){
+
+					public void actionPerformed(ActionEvent e) {
+						for(BusinessArriveVO businessArriveVOtemp:allbusinessArriveVO){
+							String result=orderServiceImpl.endSales(businessArriveVOtemp, 2);
+							 System.out.println(result);
+						}
+					}
+			  });
+			  sendButton.addActionListener(new ActionListener(){
+
+					public void actionPerformed(ActionEvent e) {
+						for(SendVO sendVOtemp:allSendVO){
+							String result=orderServiceImpl.endSales(sendVOtemp, 6);
+							 System.out.println(result);
+						}
+					}
+			  });
 			  this.add(addButton);
 			  this.add(addSendButton);
+			  this.add(sendArriveButton);
+			  this.add(sendButton);
 			  this.setLayout(null);
 	}
 
@@ -164,7 +264,13 @@ public class ReceiveAndSendUI extends JPanel{
 	ActionListener listener = new ActionListener(){
 
 		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
+			businessArriveVO.setData(businesstextArea.getText());
+			businessArriveVO.setNumber(cartextArea.getText());
+			businessArriveVO.setSend(arrivetextArea.getText());
+			businessArriveVO.setState(carNumbertextArea.getText());
+			allbusinessArriveVO.add(businessArriveVO);
+//			String result=orderServiceImpl.endSales(businessArriveVO, 2);
+//			 System.out.println(result);
 			//增加行
 			Vector<String> row = new Vector(5);
 			row.add(businesstextArea.getText());
@@ -182,6 +288,34 @@ public class ReceiveAndSendUI extends JPanel{
 			receiveTable.revalidate();
 		    dlg.dispose();
 		    sureButton.removeActionListener(listener);
+		}
+		
+	};
+	
+	ActionListener listenerSend = new ActionListener(){
+
+		public void actionPerformed(ActionEvent e) {
+			sendVO.setData(datetextArea.getText());
+			sendVO.setOrderNumber(numbertextArea.getText());
+			sendVO.setSenderName(sendertextArea.getText());
+			allSendVO.add(sendVO);
+//			String result=orderServiceImpl.endSales(sendVO, 6);
+//			 System.out.println(result);
+			//增加行
+			Vector<String> row = new Vector(4);
+			row.add(datetextArea.getText());
+			row.add(numbertextArea.getText());
+			row.add(sendertextArea.getText());
+			row.add(othertextArea.getText());
+		
+			datetextArea.setText("");
+			numbertextArea.setText("");
+			sendertextArea.setText("");
+			othertextArea.setText("");
+			defaultTableModel2.addRow(row);
+			sendTable.revalidate();
+		    dlg.dispose();
+		    sureSendButton.removeActionListener(listenerSend);
 		}
 		
 	};

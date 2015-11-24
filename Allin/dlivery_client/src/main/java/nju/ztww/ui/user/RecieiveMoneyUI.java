@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Vector;
 
 import javax.swing.ImageIcon;
@@ -16,6 +17,11 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+
+import nju.ztww.serviceimpl.OrderServiceImpl;
+import nju.ztww.vo.LoadingVO;
+import nju.ztww.vo.ReceiveVO;
+import nju.ztww.vo.SendVO;
 
 public class RecieiveMoneyUI extends JPanel{
 	
@@ -30,7 +36,15 @@ public class RecieiveMoneyUI extends JPanel{
 	private JTextField orderNumbertextArea=new JTextField("");
 	private  JLabel orderNumber=new  JLabel("备注");
 	private JButton addButton=new JButton();
+	private JButton addSendButton=new JButton("提交");
 	private JButton sureButton=new JButton("确定");
+	
+	private OrderServiceImpl orderServiceImpl=new OrderServiceImpl();
+	private ReceiveVO receiveVO;
+	
+	private ArrayList<String> allOrderNumber;
+	private ArrayList<ReceiveVO> allreceiveVO;
+	
 	DefaultTableModel defaultTableModel ;
 	 JTable table;
 	 JDialog dlg;
@@ -41,6 +55,10 @@ public class RecieiveMoneyUI extends JPanel{
 		ImageIcon add=new ImageIcon("photo/add.gif");
 		addButton.setBounds(500, 420, 110, 38);
 		addButton.setIcon(add);
+		
+
+		addSendButton.setBounds(300, 420, 110, 38);
+		addSendButton.setIcon(null);
 		Object[][] playerInfo =
 			  {
 			    { "阿s呆", new Integer(69), new Integer(32), new Integer(98),  new Boolean(false) },
@@ -70,6 +88,7 @@ public class RecieiveMoneyUI extends JPanel{
 			  addButton.addActionListener(new ActionListener(){
 
 					public void actionPerformed(ActionEvent e) {
+						receiveVO=(ReceiveVO) orderServiceImpl.getOrder(5);
 						dlg= new JDialog(); 
 						dlg.setSize(new Dimension(350, 550));
 			            dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
@@ -115,7 +134,17 @@ public class RecieiveMoneyUI extends JPanel{
 						dlg.setVisible(true);
 					}
 					});
+			  addSendButton.addActionListener(new ActionListener(){
+
+					public void actionPerformed(ActionEvent e) {
+						for(ReceiveVO receiveVOtemp:allreceiveVO){
+							String result=orderServiceImpl.endSales(receiveVOtemp, 5);
+							 System.out.println(result);
+						}
+					}
+			  });
 			  this.add(addButton);
+			  this.add(addSendButton);
 			  this.setLayout(null);
 	}
 
@@ -130,7 +159,18 @@ public class RecieiveMoneyUI extends JPanel{
 	ActionListener listener = new ActionListener(){
 
 		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
+			receiveVO.setData(businesstextArea.getText());
+			String temp[]=carNumbertextArea.getText().split(";");
+			for(int i=0;i<temp.length;i++){
+				allOrderNumber.add(temp[i]);
+			}
+			receiveVO.setOrderNumber(allOrderNumber);
+			double money=Double.parseDouble(cartextArea.getText());
+			receiveVO.setReceiveMoney(money);
+			receiveVO.setReceiverName(arrivetextArea.getText());
+			allreceiveVO.add(receiveVO);
+//			 String result=orderServiceImpl.endSales(receiveVO, 5);
+//			 System.out.println(result);
 			//增加行
 			Vector<String> row = new Vector(5);
 			row.add(businesstextArea.getText());
