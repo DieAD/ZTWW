@@ -1,5 +1,5 @@
 package nju.ztww.ui.commodity;
-
+//debug 时注意成员变量arraylist 是否会造成添加
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;

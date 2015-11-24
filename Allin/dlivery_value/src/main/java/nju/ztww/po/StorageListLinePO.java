@@ -1,8 +1,10 @@
 package nju.ztww.po;
 
+import java.io.Serializable;
+
 import nju.ztww.vo.StorageListLineVO;
 
-public class StorageListLinePO extends OrderPO{
+public class StorageListLinePO extends OrderPO implements Serializable{
 	String id;//快递编号
     String data;//入库日期
     String destination;//目的地

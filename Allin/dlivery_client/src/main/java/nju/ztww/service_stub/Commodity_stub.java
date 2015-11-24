@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import nju.ztww.service.CommodityService;
 import nju.ztww.vo.OrderVO;
 import nju.ztww.vo.StorageListLineVO;
+import nju.ztww.vo.StorageListLineofInVO;
+import nju.ztww.vo.StorageListLineofOutVO;
 import nju.ztww.vo.StorageListVO;
 
 public class Commodity_stub implements CommodityService{
@@ -53,6 +55,16 @@ public class Commodity_stub implements CommodityService{
 		return false;
 	}
 	public void addOrder(OrderVO order) {
+		// TODO Auto-generated method stub
+		
+	}
+	public void addoutOrder(ArrayList<StorageListLineofOutVO> arraylist,
+			String idofcenter) {
+		// TODO Auto-generated method stub
+		
+	}
+	public void addinOrder(ArrayList<StorageListLineofInVO> arraylist,
+			String idofcenter) {
 		// TODO Auto-generated method stub
 		
 	}
