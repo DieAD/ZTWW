@@ -21,12 +21,21 @@ public class MailingVO extends OrderVO{
 	private String receiveTelephone;
 	private String infortation;
 	private String method;
-	private int count;
+	private double count;
 	private String StripNumber;
+	private String arriveDate;
 
 	public MailingVO(int idOfOrde) {
 		super(idOfOrde);
 		this.idOfOrder=idOfOrde;
+	}
+
+	public String getArriveDate() {
+		return arriveDate;
+	}
+
+	public void setArriveDate(String arriveDate) {
+		this.arriveDate = arriveDate;
 	}
 
 	public int getIdOfOrde() {
@@ -101,11 +110,11 @@ public class MailingVO extends OrderVO{
 		this.method = method;
 	}
 
-	public int getCount() {
+	public double getCount() {
 		return count;
 	}
 
-	public void setCount(int count) {
+	public void setCount(double count) {
 		this.count = count;
 	}
 

@@ -17,12 +17,23 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-public class DriverManage extends JPanel{
+import nju.ztww.serviceimpl.OrderServiceImpl;
+import nju.ztww.vo.DriverMessageVO;
+import nju.ztww.vo.LoadingVO;
+
+/**
+ * 司机信息管理ui
+ * @author TQ
+ *
+ */
+public class DriverManageUI extends JPanel{
 
 	private JTextField businesstextArea=new JTextField("");
 	private  JLabel business=new  JLabel("司机编号");
 	private JTextField cartextArea=new JTextField("");
 	private  JLabel car=new  JLabel("姓名");
+	private JTextField driverSex=new JTextField("");
+	private  JLabel driver=new  JLabel("性别");
 	private JTextField arrivetextArea=new JTextField("");
 	private  JLabel arrive=new  JLabel("出生日期");
 	private JTextField carNumbertextArea=new JTextField("");
@@ -33,13 +44,17 @@ public class DriverManage extends JPanel{
 	private  JLabel deadline=new  JLabel("行驶证期限");
 	private JButton addButton=new JButton();
 	private JButton sureButton=new JButton("确定");
+	
+	private OrderServiceImpl orderServiceImpl=new OrderServiceImpl();
+	private DriverMessageVO driverMessageVO;
+	
 	DefaultTableModel defaultTableModel ;
 	 JTable table;
 	 JDialog dlg;
 	 java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit()
 				.getScreenSize();
 	
-	public DriverManage(){
+	public DriverManageUI(){
 		ImageIcon add=new ImageIcon("photo/add.gif");
 		addButton.setBounds(500, 420, 110, 38);
 		addButton.setIcon(add);
@@ -72,6 +87,7 @@ public class DriverManage extends JPanel{
 			  addButton.addActionListener(new ActionListener(){
 
 					public void actionPerformed(ActionEvent e) {
+						driverMessageVO=(DriverMessageVO) orderServiceImpl.getOrder(10);
 						dlg= new JDialog(); 
 						dlg.setSize(new Dimension(350, 550));
 			            dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
@@ -99,7 +115,13 @@ public class DriverManage extends JPanel{
 			            deadlinetextArea.setBounds(100, 305, 150, 30);
 			            deadline.setIcon(null);
 			            deadline.setBounds(0, 300, 100, 40);
+			            //性别
+			            driverSex.setBounds(100, 355, 150, 30);
+			            driver.setIcon(null);
+			            driver.setBounds(0, 350, 100, 40);
 			      
+			            dlg.add(driver);
+			            dlg.add(driverSex);
 			            dlg.add(deadline);
 			            dlg.add(deadlinetextArea);
 			            dlg.add(orderNumber);
@@ -135,7 +157,16 @@ public class DriverManage extends JPanel{
 	ActionListener listener = new ActionListener(){
 
 		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
+			driverMessageVO.setDriverBirthday(arrivetextArea.getText());
+			driverMessageVO.setDriverId(carNumbertextArea.getText());
+			driverMessageVO.setDriverName(cartextArea.getText());
+			driverMessageVO.setDriverNumber(businesstextArea.getText());
+			driverMessageVO.setDriverServiceDeadline(deadlinetextArea.getText());
+			driverMessageVO.setDriverSex(driverSex.getText());
+			driverMessageVO.setDriverTelephone(orderNumbertextArea.getText());
+			
+			 String result=orderServiceImpl.endSales(driverMessageVO, 10);
+			 System.out.println(result);
 			//增加行
 			Vector<String> row = new Vector(6);
 			row.add(businesstextArea.getText());
