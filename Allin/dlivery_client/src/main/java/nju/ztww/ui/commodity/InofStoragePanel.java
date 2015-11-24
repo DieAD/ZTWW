@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Vector;
 
 import javax.swing.ImageIcon;
@@ -43,8 +44,10 @@ public class InofStoragePanel extends JPanel{
 	   public JTextField weifield=new JTextField();
 	   public JButton  surebutton=new JButton("确定");
 	   public JButton  sureofbutton=new JButton("确定");
+	   public JButton  submitbutton=new JButton("提交");
 	   public CommodityService commodity=new StorageInListServiceImpl();
 	   public StorageListLineofInVO  storagelineIn;
+	   public ArrayList<StorageListLineofInVO>arraylist=new ArrayList<StorageListLineofInVO>();//成员变量
 	   java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit()
 				.getScreenSize();
 	   public InofStoragePanel() {
@@ -54,8 +57,12 @@ public class InofStoragePanel extends JPanel{
 		   addbutton.setBounds(450, 420, 110, 38);
 		   addbutton.setIcon(add);
 		   sureofbutton.setBounds(580, 420, 110,38);
+		   submitbutton.setBounds(320, 420, 110, 38);
 		   this.add(sureofbutton);
 		   this.add(addbutton);
+		   this.add(submitbutton);
+		   //提交时的监听
+		   submitbutton.addActionListener(listener2);
 		// TODO Auto-generated constructor stub
 		   Object[][] playerInfo =
 	{
@@ -151,7 +158,8 @@ public class InofStoragePanel extends JPanel{
 			row.add(weifield.getText());
 			//idoforder 不知道怎么用  用1替代。
 			storagelineIn=new StorageListLineofInVO(1, ordernumberfield.getText(), datafield.getText(), arrivefield.getText(), qufield.getText(), paifield.getText(), jiafield.getText(), weifield.getText());
-			commodity.addOrder(storagelineIn);
+			arraylist.add(storagelineIn);
+			
 			ordernumberfield.setText(null);
 			datafield.setText(null);
 			arrivefield.setText(null);
@@ -166,6 +174,15 @@ public class InofStoragePanel extends JPanel{
 		    
 		}
 	};
+	ActionListener listener2=new ActionListener(){
+		//需要界面提供给我idofcenter
+			public void actionPerformed(ActionEvent e) {
+				String idofcenter="0001";
+				// TODO Auto-generated method stub
+				commodity.addinOrder(arraylist,idofcenter);
+			}
+			
+		};
 }
 	
 

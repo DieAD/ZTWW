@@ -1,16 +1,26 @@
 package nju.ztww.bl.commodity;
 
+import java.util.ArrayList;
+
 import nju.ztww.RMI.RMIHelper;
 import nju.ztww.po.OrderPO;
+import nju.ztww.po.StorageListLineofInPO;
 import nju.ztww.service.CommodityDataService;
+import nju.ztww.vo.StorageListLineofInVO;
 
 public class StorageInofListBL {
 	private static String IP = "127.0.0.1";
     private RMIHelper rhelper = new RMIHelper(IP,"1010");
     private CommodityDataService commoditydata;
     
-    public void addorder(OrderPO po){
+    public void addorder(ArrayList<StorageListLineofInPO> arraylist,String idofcenter){
     	commoditydata = (CommodityDataService)rhelper.findService("CommodityDataService");
-    	commoditydata.insert(po);
+    	commoditydata.insertIn(arraylist,idofcenter);
     }
+
+	public void addorder(StorageListLineofInPO storagelistlinepo) {
+		// TODO Auto-generated method stub
+		
+	}
+   
 }

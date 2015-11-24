@@ -3,6 +3,7 @@ package nju.ztww.data.commodity;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import nju.ztww.po.OrderPO;
 import nju.ztww.po.StorageListLineofInPO;
@@ -27,5 +28,10 @@ public void insert(OrderPO storagelinein){
 		System.out.println("成功了！");
 		
 	}
+
+public void insertin(ArrayList<StorageListLineofInPO> arraylist,String idofcenter) {
+	// TODO Auto-generated method stub
+	
+}
 
 }

@@ -4,9 +4,13 @@ package nju.ztww.serviceimpl;
  */
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
 
 import nju.ztww.data.commodity.StorageListOut;
 import nju.ztww.po.OrderPO;
+import nju.ztww.po.StorageListLinePO;
+import nju.ztww.po.StorageListLineofInPO;
+import nju.ztww.po.StorageListLineofOutPO;
 import nju.ztww.service.CommodityDataService;
 
 public class CommodityDataServiceImpl extends UnicastRemoteObject implements CommodityDataService {
@@ -33,6 +37,24 @@ public class CommodityDataServiceImpl extends UnicastRemoteObject implements Com
 	}
 
 	public void update(OrderPO po) throws RemoteException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public ArrayList<StorageListLinePO> findList(String idofcenter)
+			throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void insertOut(ArrayList<StorageListLineofOutPO> arraylist,String idofcenter)
+			throws RemoteException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void insertIn(ArrayList<StorageListLineofInPO> arraylist,String idofcenter)
+			throws RemoteException {
 		// TODO Auto-generated method stub
 		
 	}

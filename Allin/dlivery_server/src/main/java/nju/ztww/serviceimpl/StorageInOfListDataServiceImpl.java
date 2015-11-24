@@ -2,10 +2,14 @@ package nju.ztww.serviceimpl;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
 
 import nju.ztww.data.commodity.StorageListIn;
 import nju.ztww.data.commodity.StorageListOut;
 import nju.ztww.po.OrderPO;
+import nju.ztww.po.StorageListLinePO;
+import nju.ztww.po.StorageListLineofInPO;
+import nju.ztww.po.StorageListLineofOutPO;
 import nju.ztww.service.CommodityDataService;
 
 public class StorageInOfListDataServiceImpl extends UnicastRemoteObject
@@ -37,6 +41,25 @@ public class StorageInOfListDataServiceImpl extends UnicastRemoteObject
 	public void update(OrderPO po) throws RemoteException {
 		// TODO Auto-generated method stub
 
+	}
+
+	public ArrayList<StorageListLinePO> findList(String idofcenter)throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void insertOut(ArrayList<StorageListLineofOutPO> arraylist,String idofcenter)
+			throws RemoteException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void insertIn(ArrayList<StorageListLineofInPO> arraylist,String idofcenter)
+			throws RemoteException {
+		// TODO Auto-generated method stub
+		StorageListIn storagelistlinein=new StorageListIn();
+		storagelistlinein.insertin(arraylist,idofcenter);
+		
 	}
 
 }

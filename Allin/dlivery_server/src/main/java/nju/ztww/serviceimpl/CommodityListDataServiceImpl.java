@@ -17,7 +17,7 @@ public class CommodityListDataServiceImpl extends UnicastRemoteObject implements
 		// TODO Auto-generated constructor stub
 	}
 
-	public ArrayList<StorageListLineofInPO> findInList(String time,String idofcenter) {
+	public ArrayList<StorageListLineofInPO> findInList(String time,String idofcenter) throws RemoteException{
 		// TODO Auto-generated method stub
 		
 		StorageListInGetByTime storagelistingetbytime=new StorageListInGetByTime();
@@ -25,7 +25,7 @@ public class CommodityListDataServiceImpl extends UnicastRemoteObject implements
 		return arraylistin;
 	}
 
-	public ArrayList<StorageListLineofOutPO> findOutList(String time,String idofcenter) {
+	public ArrayList<StorageListLineofOutPO> findOutList(String time,String idofcenter) throws RemoteException{
 		// TODO Auto-generated method stub
 		StorageListOutGetByTime storagelistoutgetbytime=new StorageListOutGetByTime();
 		ArrayList<StorageListLineofOutPO> arraylistout=storagelistoutgetbytime.findOutList(time,idofcenter);
@@ -34,7 +34,7 @@ public class CommodityListDataServiceImpl extends UnicastRemoteObject implements
 	}
 
 	public ArrayList<StorageListLineofInPO> findInList(String timebegin,
-			String timeend,String idofcenter) {
+			String timeend,String idofcenter) throws RemoteException{
 		StorageListInGetByTime storagelistingetbytime=new StorageListInGetByTime();
 		ArrayList<StorageListLineofInPO> arraylistin=storagelistingetbytime.findInList(timebegin,timeend,idofcenter);
 		return arraylistin;
@@ -43,7 +43,7 @@ public class CommodityListDataServiceImpl extends UnicastRemoteObject implements
 	}
 
 	public ArrayList<StorageListLineofOutPO> findOutList(String timebegin,
-			String timeend,String idofcenter) {
+			String timeend,String idofcenter) throws RemoteException{
 		// TODO Auto-generated method stub
 		StorageListOutGetByTime storagelistoutgetbytime=new StorageListOutGetByTime();
 		ArrayList<StorageListLineofOutPO> arraylistout=storagelistoutgetbytime.findOutList(timebegin,timeend,idofcenter);

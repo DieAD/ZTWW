@@ -23,6 +23,7 @@ import nju.ztww.service.CommodityService;
 import nju.ztww.serviceimpl.CommodityListServiceImpl;
 import nju.ztww.serviceimpl.CommodityServiceImp;
 import nju.ztww.vo.OrderVO;
+import nju.ztww.vo.StorageListLineVO;
 import nju.ztww.vo.StorageListLineofInVO;
 import nju.ztww.vo.StorageListVO;
 
@@ -35,7 +36,7 @@ public class StoragePanPanel extends JPanel implements ActionListener{
 	long l = System.currentTimeMillis();
 	Date data=new Date(l);
 	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-	public ArrayList<StorageListVO> arraylist;//存储一个入库单行的信息
+	public ArrayList<StorageListLineVO> arraylist;//存储一个库存单的信息
 	public CommodityService commodityservice=new CommodityServiceImp();
   public StoragePanPanel() {
 	  this.setLayout(null);
@@ -81,7 +82,7 @@ public class StoragePanPanel extends JPanel implements ActionListener{
 public void actionPerformed(ActionEvent e) {
 	// TODO Auto-generated method stub
 	//实现接口 需要传一个满足要求的arraylist
-	arraylist=commodityservice.getList("000001",timefield.getText());
+	arraylist=commodityservice.getList("000001");
 	for(int i=0;i<arraylist.size();i++){
 		Vector<String> row = new Vector(7);
 		row.add(arraylist.get(i).getId());

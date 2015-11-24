@@ -4,8 +4,10 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import nju.ztww.po.OrderPO;
+import nju.ztww.po.StorageListLineofInPO;
 import nju.ztww.po.StorageListLineofOutPO;
 
 public class StorageListOut {
@@ -27,5 +29,8 @@ public class StorageListOut {
 		System.out.println("成功了！");
 		
 	}
-
+	public void insertout(ArrayList<StorageListLineofOutPO> arraylist,String idofcenter) {
+		// TODO Auto-generated method stub
+		
+	}
 }
