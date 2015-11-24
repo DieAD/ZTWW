@@ -19,8 +19,8 @@ public class LoadingVO extends OrderVO{
 	private String carNumber;
 	private String JianZhuangName;
 	private String YaYunName;
-	private ArrayList<Integer> orderNumber;
-	private int money;
+	private ArrayList<String> orderNumber;
+	private double money;
 
 	public LoadingVO(int idOfOrder) {
 		super(idOfOrder);
@@ -91,19 +91,19 @@ public class LoadingVO extends OrderVO{
 		YaYunName = yaYunName;
 	}
 
-	public ArrayList<Integer> getOrderNumber() {
+	public ArrayList<String> getOrderNumber() {
 		return orderNumber;
 	}
 
-	public void setOrderNumber(ArrayList<Integer> orderNumber) {
+	public void setOrderNumber(ArrayList<String> orderNumber) {
 		this.orderNumber = orderNumber;
 	}
 
-	public int getMoney() {
+	public double getMoney() {
 		return money;
 	}
 
-	public void setMoney(int money) {
+	public void setMoney(double money) {
 		this.money = money;
 	}
 

@@ -17,7 +17,7 @@ public class TextBussinessUI {
 	static ReceiveAndSendUI receiveAndSendPabel=new ReceiveAndSendUI();
 	static RecieiveMoneyUI recieveMoneyUI=new RecieiveMoneyUI();
 	static CarManageUI carManageUI=new CarManageUI();
-	static DriverManage driverManageUI=new DriverManage();
+	static DriverManageUI driverManageUI=new DriverManageUI();
 	static PersonalMesageUI personalMessagePanel=new PersonalMesageUI();
 	private static int type=1;
 	

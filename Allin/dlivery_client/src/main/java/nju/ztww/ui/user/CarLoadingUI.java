@@ -10,6 +10,8 @@ import java.awt.Image;
 import java.awt.TextArea;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Vector;
 
 import javax.swing.ImageIcon;
@@ -23,6 +25,9 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.TableView.TableRow;
+
+import nju.ztww.serviceimpl.OrderServiceImpl;
+import nju.ztww.vo.LoadingVO;
 
 public class CarLoadingUI extends JPanel{
 	
@@ -44,8 +49,16 @@ public class CarLoadingUI extends JPanel{
 	private  JLabel orderNumber=new  JLabel();
 	private JTextField moneytextArea=new JTextField("");
 	private  JLabel money=new  JLabel();
+	private JTextField departtextArea=new JTextField("");
+	private  JLabel depart=new  JLabel();
+	private OrderServiceImpl orderServiceImpl=new OrderServiceImpl();
+	private LoadingVO loadingVO;
+	
+	private ArrayList<String> allOrderNumber;
+	private ArrayList<LoadingVO> allLoadingVO;
 	
 	private JButton addButton=new JButton();
+	private JButton sendButton=new JButton("提交");
 	private JButton sureButton=new JButton("确定");
 	DefaultTableModel defaultTableModel ;
 	JDialog dlg;
@@ -70,9 +83,11 @@ public class CarLoadingUI extends JPanel{
 		addButton.setBounds(500, 420, 110, 38);
 		addButton.setIcon(add);
 		
+		sendButton.setBounds(300, 420, 110, 38);
+		sendButton.setIcon(null);
 
 		this.setLayout(null);
-
+		this.add(sendButton);
         this.add(addButton);
 		Object[][] playerInfo =
 			  {
@@ -103,6 +118,7 @@ public class CarLoadingUI extends JPanel{
 			  addButton.addActionListener(new ActionListener(){
 
 					public void actionPerformed(ActionEvent e) {
+						loadingVO=(LoadingVO) orderServiceImpl.getOrder(4);
 						dlg= new JDialog(); 
 						dlg.setSize(new Dimension(350, 550));
 			            dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
@@ -142,7 +158,13 @@ public class CarLoadingUI extends JPanel{
 			            moneytextArea.setBounds(100, 405, 150, 30);
 			            money.setIcon(Money);
 			            money.setBounds(0, 400, 100, 40);
+			            //出发地
+			            departtextArea.setBounds(100, 455, 150, 30);
+			            depart.setIcon(Money);
+			            depart.setBounds(0, 450, 100, 40);
 			            
+			            dlg.add(depart);
+			            dlg.add(departtextArea);
 			            dlg.add(money);
 			            dlg.add(moneytextArea);
 			            dlg.add(yayun);
@@ -169,6 +191,15 @@ public class CarLoadingUI extends JPanel{
 						dlg.setVisible(true);
 					}
 					});
+			  sendButton.addActionListener(new ActionListener(){
+
+					public void actionPerformed(ActionEvent e) {
+						for(LoadingVO loadingVOtemp : allLoadingVO){
+							String result=orderServiceImpl.endSales(loadingVOtemp, 4);
+							 System.out.println(result);
+						}
+					}
+			  });
 	}
 	
 	public void paintComponent(Graphics g){
@@ -182,7 +213,23 @@ public class CarLoadingUI extends JPanel{
 	ActionListener listener = new ActionListener(){
 
 		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
+			
+			loadingVO.setData(datatextArea.getText());
+			loadingVO.setArrive(arrivetextArea.getText());
+			loadingVO.setCarNumber(carNumbertextArea.getText());
+			loadingVO.setJianZhuangName(jianzhuangtextArea.getText());
+			double money=orderServiceImpl.getMoney(departtextArea.getText(), arrivetextArea.getText(), 1);
+			loadingVO.setMoney(money);
+			String temp[]=orderNumber.getText().split(";");
+			for(int i=0;i<temp.length;i++){
+				allOrderNumber.add(temp[i]);
+			}
+			loadingVO.setOrderNumber(allOrderNumber);
+			loadingVO.setQiYunNumber(cartextArea.getText());
+			loadingVO.setYaYunName(yayuntextArea.getText());
+			loadingVO.setYingYeNumber(businesstextArea.getText());
+			allLoadingVO.add(loadingVO);
+
 			//增加行
 			Vector<String> row = new Vector(6);
 			row.add(datatextArea.getText());

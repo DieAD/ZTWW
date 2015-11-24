@@ -31,7 +31,7 @@ public interface TransferOrderService {
 	 * @return
 	 * 
 	 * */
-	public void endSales(TransferVO transferorder);
+	public String endSales(TransferVO transferorder);
 	
 	 /**
      * 获得全部库存信息
