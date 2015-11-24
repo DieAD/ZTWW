@@ -13,25 +13,25 @@ public class CommodityListServiceImpl implements CommodityListService {
 	
 	
 	ArrayList<StorageListLineofInPO> arraylistinpo;
-	public ArrayList<StorageListLineofInVO> getInListbytime(String time) {
+	public ArrayList<StorageListLineofInVO> getInListbytime(String time,String idofcenter) {
 		// TODO Auto-generated method stub
 		//得到所需要的arraylist
 		ArrayList<StorageListLineofInVO> arraylistinvo=new ArrayList<StorageListLineofInVO>();
 		ArrayList<StorageListLineofInPO> arraylistinpo=new ArrayList<StorageListLineofInPO>();
 		StorageListGetByStringBL storagegetbystring=new StorageListGetByStringBL();
-		arraylistinpo=storagegetbystring.getInList(time);
+		arraylistinpo=storagegetbystring.getInList(time,idofcenter);
 		for(int i=0;i<arraylistinpo.size();i++){
 			arraylistinvo.add(arraylistinpo.get(i).changetovo());
 		}
 		return arraylistinvo;
 	}
 
-	public ArrayList<StorageListLineofOutVO> getOutListbytime(String time) {
+	public ArrayList<StorageListLineofOutVO> getOutListbytime(String time,String idofcenter) {
 		// TODO Auto-generated method stub
 		ArrayList<StorageListLineofOutVO> arraylistoutvo=new ArrayList<StorageListLineofOutVO>();
 		ArrayList<StorageListLineofOutPO> arraylistoutpo=new ArrayList<StorageListLineofOutPO>();
 		StorageListGetByStringBL storagegetbystring=new StorageListGetByStringBL();
-		arraylistoutpo=storagegetbystring.getOutList(time);
+		arraylistoutpo=storagegetbystring.getOutList(time,idofcenter);
 		for(int i=0;i<arraylistoutpo.size();i++){
 			arraylistoutvo.add(arraylistoutpo.get(i).changetovo());
 		}
@@ -39,12 +39,12 @@ public class CommodityListServiceImpl implements CommodityListService {
 	}
 
 	public ArrayList<StorageListLineofInVO> getInListbytime(String timebegin,
-			String timeend) {
+			String timeend,String idofcenter) {
 		// TODO Auto-generated method stub
 		ArrayList<StorageListLineofInVO> arraylistinvo=new ArrayList<StorageListLineofInVO>();
 		ArrayList<StorageListLineofInPO> arraylistinpo=new ArrayList<StorageListLineofInPO>();
 		StorageListGetByStringBL storagegetbystring=new StorageListGetByStringBL();
-		arraylistinpo=storagegetbystring.getInList(timebegin,timeend);
+		arraylistinpo=storagegetbystring.getInList(timebegin,timeend,idofcenter);
 		for(int i=0;i<arraylistinpo.size();i++){
 			arraylistinvo.add(arraylistinpo.get(i).changetovo());
 		}
@@ -52,12 +52,12 @@ public class CommodityListServiceImpl implements CommodityListService {
 	}
 
 	public ArrayList<StorageListLineofOutVO> getOutListbytime(String timebegin,
-			String timeend) {
+			String timeend,String idofcenter) {
 		// TODO Auto-generated method stub
 		ArrayList<StorageListLineofOutVO> arraylistoutvo=new ArrayList<StorageListLineofOutVO>();
 		ArrayList<StorageListLineofOutPO> arraylistoutpo=new ArrayList<StorageListLineofOutPO>();
 		StorageListGetByStringBL storagegetbystring=new StorageListGetByStringBL();
-		arraylistoutpo=storagegetbystring.getOutList(timebegin,timeend);
+		arraylistoutpo=storagegetbystring.getOutList(timebegin,timeend,idofcenter);
 		for(int i=0;i<arraylistoutpo.size();i++){
 			arraylistoutvo.add(arraylistoutpo.get(i).changetovo());
 		}

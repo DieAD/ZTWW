@@ -6,11 +6,11 @@ import nju.ztww.po.StorageListLineofInPO;
 
 public class StorageListInGetByTime {
 	ArrayList<StorageListLineofInPO> arraylist ;
-	public ArrayList<StorageListLineofInPO> findInList(String time) {
+	public ArrayList<StorageListLineofInPO> findInList(String time,String idofcenter) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	public ArrayList<StorageListLineofInPO> findInList(String timebegin,String timeend){
+	public ArrayList<StorageListLineofInPO> findInList(String timebegin,String timeend,String idofcenter){
 		return null;
 	}
 

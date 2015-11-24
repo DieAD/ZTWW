@@ -4,6 +4,9 @@ import java.util.ArrayList;
 
 import nju.ztww.service.CommodityService;
 import nju.ztww.vo.OrderVO;
+import nju.ztww.vo.StorageListLineVO;
+import nju.ztww.vo.StorageListLineofInVO;
+import nju.ztww.vo.StorageListLineofOutVO;
 import nju.ztww.vo.StorageListVO;
 
 public class Commodity_stub implements CommodityService{
@@ -19,10 +22,10 @@ public class Commodity_stub implements CommodityService{
 			// TODO Auto-generated constructor stub
 		}
         //输入中转中心的编号得到此中转中心的库存信息
-	public StorageListVO getList(String idOfCenter) {
+	public ArrayList<StorageListLineVO >getList(String idOfCenter) {
 		ArrayList<OrderVO>arraylist=new ArrayList<OrderVO>();
 		// TODO Auto-generated method stub
-		return new StorageListVO(idOfCenter, arraylist);
+		return null;
 	}
 
 	public OrderVO getOrder(String idOfOrder) {
@@ -52,6 +55,16 @@ public class Commodity_stub implements CommodityService{
 		return false;
 	}
 	public void addOrder(OrderVO order) {
+		// TODO Auto-generated method stub
+		
+	}
+	public void addoutOrder(ArrayList<StorageListLineofOutVO> arraylist,
+			String idofcenter) {
+		// TODO Auto-generated method stub
+		
+	}
+	public void addinOrder(ArrayList<StorageListLineofInVO> arraylist,
+			String idofcenter) {
 		// TODO Auto-generated method stub
 		
 	}

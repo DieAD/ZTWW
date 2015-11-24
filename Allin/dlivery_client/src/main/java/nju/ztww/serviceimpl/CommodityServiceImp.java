@@ -1,20 +1,33 @@
 package nju.ztww.serviceimpl;
 //@ auther Wj
+import java.util.ArrayList;
+
+import nju.ztww.bl.commodity.StorageListBL;
 import nju.ztww.bl.commodity.StorageOutofListBL;
 import nju.ztww.po.OrderPO;
+import nju.ztww.po.StorageListLinePO;
+import nju.ztww.po.StorageListLineofInPO;
 import nju.ztww.po.StorageListLineofOutPO;
 import nju.ztww.service.CommodityDataService;
 import nju.ztww.service.CommodityService;
 import nju.ztww.vo.OrderVO;
+import nju.ztww.vo.StorageListLineVO;
+import nju.ztww.vo.StorageListLineofInVO;
 import nju.ztww.vo.StorageListLineofOutVO;
 import nju.ztww.vo.StorageListVO;
 
 public class CommodityServiceImp implements CommodityService {
   
-	
-public StorageListVO getList(String idOfCenter) {
+//根据 中转中心的id 和 时间来获得库存信息	
+public ArrayList<StorageListLineVO> getList(String idOfCenter) {
 	// TODO Auto-generated method stub
-	return null;
+   StorageListBL storagelistbl=new  StorageListBL();
+   ArrayList<StorageListLineVO>arraylistvo= new  ArrayList<StorageListLineVO>();
+   ArrayList<StorageListLinePO>arraylistpo=storagelistbl.getList(idOfCenter);
+   for(int i=0;i<arraylistpo.size();i++){
+	   arraylistvo.add(arraylistpo.get(i).changetovo());
+   }
+	return arraylistvo;
 }
 
 public OrderVO getOrder(String idOfOrder) {
@@ -41,5 +54,19 @@ public void deleteOrder(String idofOrder) {
 public boolean isOutofIndex(int number) {
 	// TODO Auto-generated method stub
 	return false;
+}
+
+
+
+public void addoutOrder(
+		ArrayList<StorageListLineofOutVO> arraylist,String idofcneter) {
+	// TODO Auto-generated method stub
+	
+}
+
+public void addinOrder(
+		ArrayList<StorageListLineofInVO> arraylist,String idofcneter) {
+	// TODO Auto-generated method stub
+	
 }
 }
