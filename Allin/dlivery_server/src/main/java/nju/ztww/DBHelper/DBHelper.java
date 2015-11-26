@@ -227,22 +227,25 @@ public class DBHelper {
 
 	}
 	
-	public  int getSize(String tableName){
+	public  String getSize(String tableName){
 		String sql = "select count(*) from "+tableName;
-		int len = 0;
+		long len = 0;
+		int  length;
+		String str = "0000";
 		try {
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
-			
+			rs.next();
 			len = rs.getInt(1);
-				
-			
+			length = (int) (len%9999);
+			 str=  String.format("%04d", length);
+			//System.out.print(str);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return len;
 		
+		return str;
 	}
 	
 	public static void main(String[] args){
