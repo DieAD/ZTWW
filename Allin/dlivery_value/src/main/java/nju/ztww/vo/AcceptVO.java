@@ -27,6 +27,30 @@ public class AcceptVO extends OrderVO{
 	}
 	
 	public void setAcceptID(String acceptID){
-		this.accepter
+		this.acceptID = acceptID;
+	}
+	
+	public String getAcceptID(){
+		return acceptID;
+	}
+	
+	public void setAccepter(String accepter){
+		this.accepter = accepter;
+	}
+	
+	public String getAccepter(){
+		return accepter;
+	}
+	
+	public void setAcceptTime(String acceptTime){
+		this.acceptTime = acceptTime;
+	}
+	
+	public String getAcceptTime(){
+		return acceptTime;
+	}
+	
+	public void setCourierID(String courier){
+		
 	}
 }
