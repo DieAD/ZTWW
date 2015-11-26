@@ -71,7 +71,17 @@ public class StorageListLineofInPO extends OrderPO implements Serializable {
 		return new StorageListLineofInVO(idOfOrder, id, data, destination, qu, pai, jia, wei);
 		
 	}
-	
+	public EntryFormDO changetodo(){
+		EntryFormDO entryformdo=new EntryFormDO();
+		entryformdo.setGoodsid(id);
+		entryformdo.setEntrytime(data);
+		entryformdo.setAddress(destination);
+		entryformdo.setQu(qu);
+		entryformdo.setJia(jia);
+		entryformdo.setPai(pai);
+		entryformdo.setWei(wei);
+		return entryformdo;
+	}
 	
 
 }

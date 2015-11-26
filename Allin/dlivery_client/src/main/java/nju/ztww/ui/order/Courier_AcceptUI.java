@@ -3,6 +3,7 @@ package nju.ztww.ui.order;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Vector;
 
 import javax.swing.ImageIcon;
@@ -25,6 +26,8 @@ public class Courier_AcceptUI extends JPanel{
 	JDialog searchDlg;
 	JDialog addDlg;
 	JTable table = new JTable();
+	
+//	private ArrayList<E>
 	
 	private JLabel numbersLabel = new JLabel();
 	private JTextField numbers = new JTextField();

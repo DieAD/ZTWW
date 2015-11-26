@@ -11,9 +11,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Properties;
 
-import nju.ztww.dao.StockDO;
+import nju.ztww.dao.CenterreciFormDO;
 
-public class DBForStock extends DB{
+public class DBForCenterreciForm extends DB{
 	private static String driver;
 	private static String url;
 	private static String username;
@@ -61,48 +61,53 @@ public class DBForStock extends DB{
 			}
 		}
 	}
-	
-	public ArrayList<StockDO> queryByID(String ID,String tableName){
-		ArrayList<StockDO> list  = new ArrayList<StockDO>();
-		String sql = "select * from "+tableName+" where goodsid="+ID;
-		
+
+	public ArrayList<CenterreciFormDO> queryByID(String ID, String tableName) {
+		ArrayList<CenterreciFormDO> list = new ArrayList<CenterreciFormDO>();
+
+		String sql = " select * from " + tableName + " where id=" + ID;
+
 		try {
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
-			
-			while(rs.next()){
-				StockDO stock = new StockDO();
-				stock.setIndex(rs.getInt(1));
-				stock.setGoodsid(rs.getString(2));
-				stock.setEntrytime(rs.getString(3));
-				stock.setAddress(rs.getString(4));
-				stock.setQu(rs.getString(5));
-				stock.setPai(rs.getString(6));
-				stock.setJia(rs.getString(7));
-				stock.setWei(rs.getString(8));
-				
-				list.add(stock);
+
+			while (rs.next()) {
+				CenterreciFormDO form = new CenterreciFormDO();
+				form.setIndex(rs.getInt(1));
+				form.setId(rs.getString(2));
+				form.setCenterid(rs.getString(3));
+				form.setGoodsid(rs.getString(4));
+				form.setTime(rs.getString(5));
+				form.setBddress(rs.getString(6));
+				form.setGoodsstate(rs.getString(7));
+				form.setExe(rs.getInt(8));
+				form.setState(rs.getInt(9));
+
+				list.add(form);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return list;
 	}
-	
-	public void insert(ArrayList<StockDO> list, String tableName){
-		String sql = "insert into "+tableName+"(goodsid,entrytime,address,qu,pai,jia,wei)values(?,?,?,?,?,?,?)";
+
+	public void insert(ArrayList<CenterreciFormDO> list, String tableName) {
+		String sql = "insert into " + tableName
+				+ "(id,centerid,goodsid,time,bddress,goodsstate,exe,state)"
+				+ "values(?,?,?,?,?,?,?,?)";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-			for(StockDO stock : list){
-				pstmt.setString(1, stock.getGoodsid());
-				pstmt.setString(2, stock.getEntrytime());
-				pstmt.setString(3, stock.getAddress());
-				pstmt.setString(4, stock.getQu());
-				pstmt.setString(5, stock.getPai());
-				pstmt.setString(6, stock.getJia());
-				pstmt.setString(7, stock.getWei());
+			for (CenterreciFormDO form : list) {
+				pstmt.setString(1, form.getId());
+				pstmt.setString(2, form.getCenterid());
+				pstmt.setString(3, form.getGoodsid());
+				pstmt.setString(4, form.getTime());
+				pstmt.setString(5, form.getBddress());
+				pstmt.setString(6, form.getGoodsstate());
+				pstmt.setInt(7, form.getExe());
+				pstmt.setInt(8, form.getState());
 				
 				pstmt.executeUpdate();
 			}
@@ -110,29 +115,31 @@ public class DBForStock extends DB{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
 	}
 	
-	public void update(ArrayList<StockDO> list,String tableName){
-		String sql = "update "+ tableName +" set goodsid=?,entrytime=?,address=?,qu=?,pai=?,jia=?,wei=? where goodsid=?";
-		
+	public void update(ArrayList<CenterreciFormDO> list,String tableName){
+		String sql = " update "+tableName+" set id=?,centerid=?,goodsid=?,time=?,bddress=?,goodsstate=?,exe=?,state=?"
+				+ " where id=?";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-			for(StockDO stock : list){
-				pstmt.setString(1, stock.getGoodsid());
-				pstmt.setString(2, stock.getEntrytime());
-				pstmt.setString(3, stock.getAddress());
-				pstmt.setString(4, stock.getQu());
-				pstmt.setString(5, stock.getPai());
-				pstmt.setString(6, stock.getJia());
-				pstmt.setString(7, stock.getWei());
-				pstmt.setString(8,stock.getGoodsid());
-				
+			for(CenterreciFormDO form: list){
+				pstmt.setString(1, form.getId());
+				pstmt.setString(2, form.getCenterid());
+				pstmt.setString(3, form.getGoodsid());
+				pstmt.setString(4, form.getTime());
+				pstmt.setString(5, form.getBddress());
+				pstmt.setString(6, form.getGoodsstate());
+				pstmt.setInt(7, form.getExe());
+				pstmt.setInt(8, form.getState());
+				pstmt.setString(9,form.getId());
 				pstmt.executeUpdate();
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 	}
 	
 	public void delete(String ID,String tableName){
@@ -147,10 +154,13 @@ public class DBForStock extends DB{
 	}
 	
 //	public static void main(String[] args){
-//		DBForStock db = new DBForStock();
+//		DBForCenterreciForm db = new DBForCenterreciForm();
 //		db.init();
-//		
+//		ArrayList<CenterreciFormDO> list = db.queryByID("1511250001","centerreciform");
+//		for(CenterreciFormDO form : list){
+//			form.setBddress("nanjing");
+//		}
+//		db.update(list, "centerreciform");
 //		db.close();
 //	}
-
 }

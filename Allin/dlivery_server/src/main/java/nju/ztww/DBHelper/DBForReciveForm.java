@@ -11,9 +11,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Properties;
 
-import nju.ztww.dao.StockDO;
+import nju.ztww.dao.ReciveFormDO;
 
-public class DBForStock extends DB{
+public class DBForReciveForm extends DB{
 	private static String driver;
 	private static String url;
 	private static String username;
@@ -62,26 +62,26 @@ public class DBForStock extends DB{
 		}
 	}
 	
-	public ArrayList<StockDO> queryByID(String ID,String tableName){
-		ArrayList<StockDO> list  = new ArrayList<StockDO>();
-		String sql = "select * from "+tableName+" where goodsid="+ID;
+	public ArrayList<ReciveFormDO> queryByID(String ID,String tableName){
+		ArrayList<ReciveFormDO> list =new ArrayList<ReciveFormDO>();
+		String sql = " select * from "+tableName+" where id="+ID;
 		
 		try {
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
 			
 			while(rs.next()){
-				StockDO stock = new StockDO();
-				stock.setIndex(rs.getInt(1));
-				stock.setGoodsid(rs.getString(2));
-				stock.setEntrytime(rs.getString(3));
-				stock.setAddress(rs.getString(4));
-				stock.setQu(rs.getString(5));
-				stock.setPai(rs.getString(6));
-				stock.setJia(rs.getString(7));
-				stock.setWei(rs.getString(8));
-				
-				list.add(stock);
+			 ReciveFormDO form = new ReciveFormDO();
+			 form.setIndex(rs.getInt(1));
+			 form.setId(rs.getString(2));
+			 form.setHoll(rs.getString(3));
+			 form.setRecip(rs.getString(4));
+			 form.setRealtime(rs.getString(5));
+			 form.setCourierid(rs.getString(6));
+			 form.setExe(rs.getInt(7));
+			 form.setState(rs.getInt(8));
+			 
+			 list.add(form);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -91,41 +91,20 @@ public class DBForStock extends DB{
 		return list;
 	}
 	
-	public void insert(ArrayList<StockDO> list, String tableName){
-		String sql = "insert into "+tableName+"(goodsid,entrytime,address,qu,pai,jia,wei)values(?,?,?,?,?,?,?)";
-		try {
-			PreparedStatement pstmt = conn.prepareStatement(sql);
-			for(StockDO stock : list){
-				pstmt.setString(1, stock.getGoodsid());
-				pstmt.setString(2, stock.getEntrytime());
-				pstmt.setString(3, stock.getAddress());
-				pstmt.setString(4, stock.getQu());
-				pstmt.setString(5, stock.getPai());
-				pstmt.setString(6, stock.getJia());
-				pstmt.setString(7, stock.getWei());
-				
-				pstmt.executeUpdate();
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	
-	public void update(ArrayList<StockDO> list,String tableName){
-		String sql = "update "+ tableName +" set goodsid=?,entrytime=?,address=?,qu=?,pai=?,jia=?,wei=? where goodsid=?";
+	public void insert(ArrayList<ReciveFormDO> list,String tableName){
+		String sql = "insert into "+tableName+"(id,holl,recip,realtime,courierid,exe,state)"
+				+ "values(?,?,?,?,?,?,?)";
 		
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-			for(StockDO stock : list){
-				pstmt.setString(1, stock.getGoodsid());
-				pstmt.setString(2, stock.getEntrytime());
-				pstmt.setString(3, stock.getAddress());
-				pstmt.setString(4, stock.getQu());
-				pstmt.setString(5, stock.getPai());
-				pstmt.setString(6, stock.getJia());
-				pstmt.setString(7, stock.getWei());
-				pstmt.setString(8,stock.getGoodsid());
+			for(ReciveFormDO form : list){
+				pstmt.setString(1, form.getId());
+				pstmt.setString(2, form.getHoll());
+				pstmt.setString(3, form.getRecip());
+				pstmt.setString(4, form.getRealtime());
+				pstmt.setString(5, form.getCourierid());
+				pstmt.setInt(6, form.getExe());
+				pstmt.setInt(7, form.getState());
 				
 				pstmt.executeUpdate();
 			}
@@ -133,24 +112,52 @@ public class DBForStock extends DB{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 	}
 	
-	public void delete(String ID,String tableName){
-		String sql = "delete from " + tableName + " where id=" + ID;
+	public void update(ArrayList<ReciveFormDO> list,String tableName){
+		String sql = " update "+tableName+" set id=?,holl=?,recip=?,realtime=?,courierid=?,exe=?,state=? where id=?";
 		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			for(ReciveFormDO form : list){
+				pstmt.setString(1, form.getId());
+				pstmt.setString(2, form.getHoll());
+				pstmt.setString(3, form.getRecip());
+				pstmt.setString(4, form.getRealtime());
+				pstmt.setString(5, form.getCourierid());
+				pstmt.setInt(6, form.getExe());
+				pstmt.setInt(7, form.getState());
+				pstmt.setString(8, form.getId());
+				
+				pstmt.executeUpdate();
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	public void delete(String ID,String tableName){
+		 String sql = "delete from "+tableName+" where ordernumber="+ID;
+		 try {
 			Statement stmt = conn.createStatement();
 			stmt.executeUpdate(sql);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
+		 
+	 }
 	
-//	public static void main(String[] args){
-//		DBForStock db = new DBForStock();
+//	public  static void main(String[] args){
+//		DBForReciveForm db = new DBForReciveForm();
 //		db.init();
-//		
+//		//db.insert(db.queryByID("1511250001", "reciveform"), "reciveform");
+//		ArrayList<ReciveFormDO> list = db.queryByID("1511250001", "reciveform");
+//		for(ReciveFormDO form : list){
+//			form.setRecip("haha");
+//		}
+//		db.update(list, "reciveform");
 //		db.close();
 //	}
-
 }

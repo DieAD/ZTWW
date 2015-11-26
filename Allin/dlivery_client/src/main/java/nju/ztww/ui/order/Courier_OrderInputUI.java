@@ -4,10 +4,12 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Vector;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -16,6 +18,9 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
+import nju.ztww.serviceimpl.OrderServiceImpl;
+import nju.ztww.vo.MailingVO;
+
 public class Courier_OrderInputUI extends JPanel{
 	
 	JButton addButton = new JButton();
@@ -23,7 +28,7 @@ public class Courier_OrderInputUI extends JPanel{
 	JDialog addDlg ;
 	DefaultTableModel defaultTableModel;
 	JTable table = new JTable();
-	
+	OrderServiceImpl orderServiceImpl = new OrderServiceImpl();
 	
 	private JLabel numbersLabel = new JLabel();
 	private JTextField numbers = new JTextField();
@@ -53,7 +58,12 @@ public class Courier_OrderInputUI extends JPanel{
 	private JTextField type = new JTextField();
 	private JLabel estTimeLabel = new JLabel();
 	private JTextField estTime = new JTextField();
-	
+	private JLabel packLabel = new JLabel();
+	private JTextField pack = new JTextField();
+	private JButton submitButton = new JButton();
+	private String[] pl = {"北京", "上海", "深圳", "广州", "南京"};
+	private JComboBox places = new JComboBox(pl);
+	private ArrayList<MailingVO> mailingOrders = new ArrayList<MailingVO>();
 	
 	
 	
@@ -64,8 +74,12 @@ public class Courier_OrderInputUI extends JPanel{
 		this.setLayout(null);
 		{/*for Button*/
 			addButton.setBounds(500, 420, 110, 38);
+			submitButton.setBounds(350, 420, 110, 38);
+			submitButton.setText("提交");
+			submitButton.addActionListener(e2);
 			addButton.setIcon(new ImageIcon("photo/add.gif"));
 			this.add(addButton);
+			
 			addButton.addActionListener(new ActionListener(){
 
 				public void actionPerformed(ActionEvent e) {
@@ -108,14 +122,15 @@ public class Courier_OrderInputUI extends JPanel{
 		            
 		            placeLabel.setBounds(50, 180, 150, 20);
 		            placeLabel.setText("地址");
-		            place.setBounds(100, 180, 350, 40);;
+		            places.setBounds(100, 180, 150, 20);
+		            place.setBounds(100, 210, 400, 30);
 		            
 		            goodInfoLabel.setBounds(50, 260, 150, 20);
 		            goodInfoLabel.setText("货物信息");
 		            goodInfo.setBounds(120, 260, 150, 20);
-		            costLabel.setBounds(300, 260, 150, 20);
-		            costLabel.setText("运费");
-		            cost.setBounds(370, 260, 150, 20);
+//		            costLabel.setBounds(300, 260, 150, 20);
+//		            costLabel.setText("运费");
+//		            cost.setBounds(370, 260, 150, 20);
 		            
 		            typeLabel.setBounds(50, 290, 150, 20);
 		            typeLabel.setText("货物类型");
@@ -123,6 +138,10 @@ public class Courier_OrderInputUI extends JPanel{
 		            estTimeLabel.setBounds(300, 290, 150, 20);
 		            estTimeLabel.setText("预估时间");
 		            estTime.setBounds(370, 290, 150, 20);
+		            
+		            packLabel.setText("包装费");
+		            packLabel.setBounds(300, 260, 150, 20);
+		            pack.setBounds(370, 260, 150, 20);
 		    
 		            sureButton.setBounds(450, 350, 70, 30);
 		            sureButton.addActionListener(listener);
@@ -145,14 +164,17 @@ public class Courier_OrderInputUI extends JPanel{
 		            addDlg.add(receiverPhone);
 		            addDlg.add(placeLabel);
 		            addDlg.add(place);
+		            addDlg.add(places);
 		            addDlg.add(goodInfoLabel);
 		            addDlg.add(goodInfo);
 		            addDlg.add(estTimeLabel);
 		            addDlg.add(estTime);
 		            addDlg.add(costLabel);
-		            addDlg.add(cost);
+//		            addDlg.add(cost);
 		            addDlg.add(typeLabel);
 		            addDlg.add(type);
+		            addDlg.add(packLabel);
+		            addDlg.add(pack);
 		            
 		            
 		            addDlg.add(sureButton);
@@ -166,14 +188,15 @@ public class Courier_OrderInputUI extends JPanel{
 			});
 		}
 		
+		this.add(submitButton);
 		
 		{/*for table*/
 			Object[][] OrderInfo =
 				{
-					{"H12",  "123456789", "Tom", "12345678901",  "Jerry","13411111111" , 32.5, "特快"}
+					{"H12",  "123456789", "Tom", "12345678901",  "Jerry","13411111111" , 32.5, "特快", "江苏南京"}
 					
 				};
-			String[] names = {"营业厅编号", "订单号", "寄件人", "手机", "收件人","手机" ,"费用合计", "种类"};
+			String[] names = {"营业厅编号", "订单号", "寄件人", "手机", "收件人","手机" ,"费用合计", "种类", "地址"};
 			
 			defaultTableModel = new DefaultTableModel(OrderInfo, names);
 			table = new JTable(defaultTableModel );			//???
@@ -192,11 +215,37 @@ public class Courier_OrderInputUI extends JPanel{
 	
 	}
 	
+	ActionListener e2 = new ActionListener() {
+		
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			int size = mailingOrders.size();
+			for(int i=0;i<size;i++){
+				orderServiceImpl.endSales(mailingOrders.get(i), 1);
+			}
+		}
+	};
+	
 	ActionListener listener = new ActionListener(){
 
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			Vector<String> row = new Vector<String>();
+			MailingVO mailOrder = new MailingVO(1);
+			mailOrder.setBusinID(numbers.getText());
+			mailOrder.setStripNumber(orderNum.getText());
+			mailOrder.setSendName(sender.getText());
+			mailOrder.setSendTelephone(senderPhone.getText());
+			mailOrder.setSendOrga(ognization.getText());
+			mailOrder.setSendTEL(senderTEL.getText());
+			mailOrder.setReceiveName(receiver.getText());
+			mailOrder.setReceiveTelephone(receiverPhone.getText());
+			mailOrder.setSendLocation(places.getActionCommand()+place.getText());
+			mailOrder.setInfortation(goodInfo.getText());
+			mailOrder.setPackCost(Double.valueOf(pack.getText()));
+			mailOrder.setTime(Integer.valueOf(estTime.getText()));
+			mailOrder.setState('N');
+			mailingOrders.add(mailOrder);
 			row.add(numbers.getText());
 			row.add(orderNum.getText());
 			row.add(sender.getText());
@@ -217,9 +266,10 @@ public class Courier_OrderInputUI extends JPanel{
 			 receiverPhone.setText("");
 			 place.setText("");
 			 goodInfo.setText("");
-			 cost.setText("");
+//			 cost.setText("");
 			 type.setText("");
 			 estTime.setText("");
+			 pack.setText("");
 			 
 
 			 addDlg.dispose();
@@ -229,4 +279,6 @@ public class Courier_OrderInputUI extends JPanel{
 		}
 		
 	};
+	
+	
 }

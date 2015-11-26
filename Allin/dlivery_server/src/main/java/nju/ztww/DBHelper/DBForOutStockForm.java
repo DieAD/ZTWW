@@ -13,7 +13,7 @@ import java.util.Properties;
 
 import nju.ztww.dao.OutStockFormDO;
 
-public class DBForOutStockForm {
+public class DBForOutStockForm extends DB{
 	private static String driver;
 	private static String url;
 	private static String username;

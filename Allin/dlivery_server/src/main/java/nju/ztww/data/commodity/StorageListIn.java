@@ -9,6 +9,9 @@ import java.util.ArrayList;
 
 import nju.ztww.DBHelper.DBForEntryForm;
 import nju.ztww.DBHelper.DBForStock;
+import nju.ztww.DBHelper.DBHelper;
+import nju.ztww.dao.EntryFormDO;
+import nju.ztww.dao.StockDO;
 import nju.ztww.po.OrderPO;
 import nju.ztww.po.StorageListLineofInPO;
 import nju.ztww.po.StorageListLineofOutPO;
@@ -18,7 +21,9 @@ import nju.ztww.serviceimpl.StorageOutOfListDataServiceImpl;
 public class StorageListIn {
 	public DBForEntryForm dbforentryform=new DBForEntryForm();
 	public DBForStock  dbforstock=new DBForStock();
-	
+	public DBHelper dbhelper=new DBHelper();
+	ArrayList<EntryFormDO> entryfromdolist ;
+	ArrayList<StockDO>stockdolist;
 public void insert(OrderPO storagelinein){
 		
 		FileWriter write;
@@ -41,12 +46,14 @@ public void insert(OrderPO storagelinein){
 public void insertin(ArrayList<StorageListLineofInPO> arraylist,String idofcenter) {
 	// TODO Auto-generated method stub
 	//找到本中转中心的库存和入库信息两个表
+	for(int i=0;i<arraylist.size();i++){
+		entryfromdolist.add(arraylist.get(i).changetodo());
+	}
 	dbforentryform.init();
 	dbforstock.init();
-	for(int i=0;i<arraylist.size();i++){
-		System.out.println(arraylist.get(i).getId()+" ");
-	}
-	System.out.println("成功了！");
+	
+	dbforentryform.insert(entryfromdolist, "entryform");
+	
 	dbforentryform.close();
 	dbforstock.close();
 }
