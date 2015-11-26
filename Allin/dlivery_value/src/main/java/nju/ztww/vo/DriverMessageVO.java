@@ -12,9 +12,24 @@ public class DriverMessageVO extends OrderVO {
 	private String driverTelephone;
 	private String driverSex;
 	private String driverServiceDeadline;
+	private int exe=0;
+	private int state=0;
+	
 	public DriverMessageVO(int idOfOrder) {
 		super(idOfOrder);
 		this.idOfOrde=idOfOrder;
+	}
+
+	public int getExe() {
+		return exe;
+	}
+
+	public int getState() {
+		return state;
+	}
+
+	public void setState(int state) {
+		this.state = state;
 	}
 	public String getId() {
 		return id;

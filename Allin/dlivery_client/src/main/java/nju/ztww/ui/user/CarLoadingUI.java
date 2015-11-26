@@ -27,6 +27,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.text.TableView.TableRow;
 
 import nju.ztww.serviceimpl.OrderServiceImpl;
+import nju.ztww.vo.CarManageVO;
 import nju.ztww.vo.LoadingVO;
 
 public class CarLoadingUI extends JPanel{
@@ -54,11 +55,11 @@ public class CarLoadingUI extends JPanel{
 	private OrderServiceImpl orderServiceImpl=new OrderServiceImpl();
 	private LoadingVO loadingVO;
 	
-	private ArrayList<String> allOrderNumber;
-	private ArrayList<LoadingVO> allLoadingVO;
+	private ArrayList<String> allOrderNumber=new ArrayList<String>();
+	private ArrayList<LoadingVO> allLoadingVO=new ArrayList<LoadingVO>();
 	
 	private JButton addButton=new JButton();
-	private JButton deleteButton=new JButton();
+	private JButton deleteButton=new JButton("删除");
 	private JButton sendButton=new JButton("提交");
 	private JButton sureButton=new JButton("确定");
 	DefaultTableModel defaultTableModel ;
@@ -84,7 +85,7 @@ public class CarLoadingUI extends JPanel{
 		addButton.setBounds(500, 420, 110, 38);
 		addButton.setIcon(add);
 		deleteButton.setBounds(100, 420, 110, 38);
-		deleteButton.setIcon(add);
+		deleteButton.setIcon(null);
 		sendButton.setBounds(300, 420, 110, 38);
 		sendButton.setIcon(null);
 
@@ -94,12 +95,12 @@ public class CarLoadingUI extends JPanel{
         this.add(addButton);
 		Object[][] playerInfo =
 			  {
-			    { "阿呆", new Integer(66), new Integer(32), new Integer(98),  new Boolean(false),new Integer(32), },
-			    { "阿呆", new Integer(82), new Integer(69), new Integer(128), new Boolean(true) ,new Integer(32),}, 
+			    {"1511116666", "阿呆", new Integer(66), new Integer(32), new Integer(98),  new Boolean(false),new Integer(32), },
+			    {"1511116666", "阿呆", new Integer(82), new Integer(69), new Integer(128), new Boolean(true) ,new Integer(32),}, 
 			  };
 
 			  //字段名称
-			  String[] Names = { "装车日期", "营业厅编号", "汽运编号", "到达地", "车辆代号" ,"运费"};
+			  String[] Names = {"ID", "装车日期", "营业厅编号", "汽运编号", "到达地", "车辆代号" ,"运费"};
 
 			  
 			  //创建表格: 建立一个显示二维数组数据的表格，且可以显示列的名称。 
@@ -208,6 +209,7 @@ public class CarLoadingUI extends JPanel{
 					public void actionPerformed(ActionEvent e) {
 						String id=(String) table.getValueAt(table.getSelectedRow(), 0);
 						String result=orderServiceImpl.deleteOrder(id);
+						defaultTableModel.removeRow(table.getSelectedRow());
 						System.out.println(result);
 					}
 			  });
@@ -242,7 +244,8 @@ public class CarLoadingUI extends JPanel{
 			allLoadingVO.add(loadingVO);
 
 			//增加行
-			Vector<String> row = new Vector(6);
+			Vector<String> row = new Vector(7);
+			row.add(loadingVO.getId());
 			row.add(datatextArea.getText());
 			row.add(businesstextArea.getText());
 			row.add(cartextArea.getText());

@@ -22,12 +22,25 @@ public class LoadingVO extends OrderVO{
 	private String YaYunName;
 	private ArrayList<String> orderNumber;
 	private double money;
+	private int exe=1;
+	private int state=0;
 
 	public LoadingVO(int idOfOrder) {
 		super(idOfOrder);
 		this.idOfOrde=idOfOrder;
 	}
 
+	public int getExe() {
+		return exe;
+	}
+
+	public int getState() {
+		return state;
+	}
+
+	public void setState(int state) {
+		this.state = state;
+	}
 	public String getId() {
 		return id;
 	}

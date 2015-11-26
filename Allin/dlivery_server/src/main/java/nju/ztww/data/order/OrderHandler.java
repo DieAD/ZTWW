@@ -16,6 +16,8 @@ import nju.ztww.po.TransferPO;
 
 public class OrderHandler {
 	
+	private BusinessArriveData businessArriveData;
+	
 	public OrderHandler(){
 		
 	}
@@ -26,11 +28,13 @@ public class OrderHandler {
 	}
 
 	public String insert(OrderPO orderPO,int type){
+		String result=null;
 		switch(type){
 		case 1:
 			MailingPO mailingPO=(MailingPO) orderPO;
 		case 2:
 			BusinessArrivePO businessArrivePO=(BusinessArrivePO) orderPO;
+			result=businessArriveData.insert(businessArrivePO);
 		case 3:
 			CenterReceivePO centerReceivePO=(CenterReceivePO) orderPO;
 		case 4:
@@ -49,7 +53,7 @@ public class OrderHandler {
 			DriverMessagePO driverMessagePO=(DriverMessagePO) orderPO;
 		}
 		
-		return null;
+		return result;
 		
 	}
 	

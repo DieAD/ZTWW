@@ -17,12 +17,25 @@ public class ReceiveVO extends OrderVO{
 	private double receiveMoney;
 	private String receiverName;
 	private ArrayList<String> orderNumber;
+	private int exe=1;
+	private int state=0;
 
 	public ReceiveVO(int idOfOrder) {
 		super(idOfOrder);
 		this.idOfOrde=idOfOrder;
 	}
 
+	public int getExe() {
+		return exe;
+	}
+
+	public int getState() {
+		return state;
+	}
+
+	public void setState(int state) {
+		this.state = state;
+	}
 	public String getId() {
 		return id;
 	}

@@ -42,7 +42,7 @@ public class BusinessArriveOrderBl {
 		businessArrivePO.setData(businessArriveVO.getData());
 		businessArrivePO.setNumber(businessArriveVO.getNumber());
 		businessArrivePO.setSend(businessArriveVO.getSend());
-		businessArrivePO.setState(businessArriveVO.getState());
+		businessArrivePO.setOrderState(businessArriveVO.getOrderState());
 		
 		orderDataService=(OrderDataService)rhelper.findService("OrderDataService");
 		String result=orderDataService.insert(businessArrivePO,2);

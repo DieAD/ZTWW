@@ -23,12 +23,19 @@ public class TransferPO extends OrderPO implements Serializable{
 	private String JianZhuangName;
 	private ArrayList<Integer> sendNumber;
 	private int money;
+	private String id;
 
 	public TransferPO(int idOfOrder) {
 		super(idOfOrder);
 		this.idOfOrde=idOfOrde;
 	}
+	public String getId() {
+		return id;
+	}
 
+	public void setId(String id) {
+		this.id = id;
+	}
 	public int getIdOfOrde() {
 		return idOfOrde;
 	}
