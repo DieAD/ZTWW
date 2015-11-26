@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import nju.ztww.po.AccountPO;
 import nju.ztww.po.MemberPO;
 import nju.ztww.po.OrderPO;
+import nju.ztww.vo.CollectionVO;
 
 /*
  * Date:
@@ -56,6 +57,10 @@ public interface FinanceDataService extends Remote {
 		 * 输出：double : 总收入
 		 */
 		public double calcuIncome(ArrayList everyList)throws RemoteException;
+		
+		public ArrayList<CollectionVO> queryCollection(String querydate,String queryholl)throws RemoteException;
+			
+		
 		
 		
 	/*

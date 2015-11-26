@@ -226,6 +226,31 @@ public class DBHelper {
 		}
 
 	}
+	
+	public  int getSize(String tableName){
+		String sql = "select count(*) from "+tableName;
+		int len = 0;
+		try {
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+			
+			len = rs.getInt(1);
+				
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return len;
+		
+	}
+	
+	public static void main(String[] args){
+		DBHelper db = new DBHelper();
+		db.init();
+		db.getSize("userstable");
+		db.close();
+	}
 
 	
 }

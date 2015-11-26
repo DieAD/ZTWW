@@ -3,6 +3,7 @@ package nju.ztww.service;
 import java.util.ArrayList;
 
 import nju.ztww.vo.AccountVO;
+import nju.ztww.vo.CollectionVO;
 import nju.ztww.vo.OrderVO;
 import nju.ztww.vo.SalaryVO;
 
@@ -26,6 +27,8 @@ public interface FinanceService {
 	 * 输出： ArrayList<ListPO> : 返回的单据                    
 	 */
 	public ArrayList<OrderVO> viewList();
+	
+	public CollectionVO queryCollection(String querydate,String queryholl);
 	
 	
 }
