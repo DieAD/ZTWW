@@ -50,8 +50,28 @@ public class AcceptVO extends OrderVO{
 		return acceptTime;
 	}
 	
-	public void setCourierID(String courier){
-		
+	public void setCourierID(String courierID){
+		this.courierID = courierID;
+	}
+	
+	public String getCourierID(){
+		return courierID;
+	}
+	
+	public void setState(int state){
+		this.state = state;
+	}
+	
+	public int getState(){
+		return state;
+	}
+	
+	public void setExe(int exe){
+		this.exe = exe;
+	}
+	
+	public int getExe(){
+		return exe;
 	}
 }
 

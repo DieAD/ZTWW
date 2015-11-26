@@ -19,6 +19,7 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import nju.ztww.serviceimpl.OrderServiceImpl;
+import nju.ztww.vo.DeliverFeesVO;
 import nju.ztww.vo.MailingVO;
 
 public class Courier_OrderInputUI extends JPanel{
@@ -61,7 +62,10 @@ public class Courier_OrderInputUI extends JPanel{
 	private JLabel packLabel = new JLabel();
 	private JTextField pack = new JTextField();
 	private JButton submitButton = new JButton();
-	private String[] pl = {"北京", "上海", "深圳", "广州", "南京"};
+	private String[] pl = {"北京", "上海", "广州", "南京"};
+	private String from = "北京";
+	private DeliverFeesVO deliverFees;
+	
 	private JComboBox places = new JComboBox(pl);
 	private ArrayList<MailingVO> mailingOrders = new ArrayList<MailingVO>();
 	
@@ -231,6 +235,7 @@ public class Courier_OrderInputUI extends JPanel{
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			Vector<String> row = new Vector<String>();
+			
 			MailingVO mailOrder = new MailingVO(1);
 			mailOrder.setBusinID(numbers.getText());
 			mailOrder.setStripNumber(orderNum.getText());
@@ -242,7 +247,7 @@ public class Courier_OrderInputUI extends JPanel{
 			mailOrder.setReceiveTelephone(receiverPhone.getText());
 			mailOrder.setSendLocation(places.getActionCommand()+place.getText());
 			mailOrder.setInfortation(goodInfo.getText());
-			mailOrder.setPackCost(Double.valueOf(pack.getText()));
+			mailOrder.setCount(Double.valueOf(deliverFees.getCost()));
 			mailOrder.setTime(Integer.valueOf(estTime.getText()));
 			mailOrder.setState('N');
 			mailingOrders.add(mailOrder);

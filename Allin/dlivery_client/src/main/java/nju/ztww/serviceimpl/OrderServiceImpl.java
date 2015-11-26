@@ -21,6 +21,7 @@ import nju.ztww.service.OrderService;
 import nju.ztww.vo.BusinessArriveVO;
 import nju.ztww.vo.CarManageVO;
 import nju.ztww.vo.CenterReceiveVO;
+import nju.ztww.vo.DeliverFeesVO;
 import nju.ztww.vo.DriverMessageVO;
 import nju.ztww.vo.LoadingVO;
 import nju.ztww.vo.MailingVO;
@@ -42,6 +43,8 @@ public class OrderServiceImpl implements OrderService{
 	TransferOrderBl transferOrderBl=new TransferOrderBl();
 	CarManageBl carManageBl=new CarManageBl();
 	DriverMessageBl driverMessageBl=new DriverMessageBl();
+	
+	
 	
 	public OrderServiceImpl(){
 		
@@ -161,5 +164,10 @@ public class OrderServiceImpl implements OrderService{
 		}else{
 			return (distance/1000)*25;
 		}
+	}
+
+	public double getCost(DeliverFeesVO deliverFees) {
+		double result = mailingOrderBl.getCost(deliverFees);
+		return result;
 	}
 }

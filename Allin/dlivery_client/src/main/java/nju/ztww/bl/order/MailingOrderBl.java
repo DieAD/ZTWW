@@ -14,6 +14,7 @@ import nju.ztww.po.LoadingPO;
 import nju.ztww.po.MailingPO;
 import nju.ztww.po.OrderPO;
 import nju.ztww.service.OrderDataService;
+import nju.ztww.vo.DeliverFeesVO;
 import nju.ztww.vo.MailingVO;
 
 public class MailingOrderBl {
@@ -22,11 +23,16 @@ public class MailingOrderBl {
 
 	
 	 private String IP = "127.0.0.1";
+	 
 	 private RMIHelper rhelper = new RMIHelper(IP,"1010");
 	 
 	 private OrderDataService orderDataService;
 	 
 	 private List<OrderPO> list=new ArrayList<OrderPO>();
+	 
+	 private double packCost;
+	 
+	 private double count;
 	
 	public MailingOrderBl(){
 		
@@ -41,6 +47,7 @@ public class MailingOrderBl {
 		mailingPO.setReceiveTelephone(mailingVO.getReceiveTelephone());
 		mailingPO.setInfortation(mailingVO.getInfortation());
 		mailingPO.setMethod(mailingVO.getMethod());
+		
 		mailingPO.setCount(mailingVO.getCount());
 		mailingPO.setStripNumber(mailingVO.getStripNumber());
 
@@ -72,7 +79,13 @@ public class MailingOrderBl {
 		String result=orderDataService.insertToDateFactory(this.list,1);
 		return result;
 		
-
+	}
+	
+	
+	public double getCost(DeliverFeesVO deliverFees){
+		double result = 0;
+		
+		return result;
 	}
 
 }
