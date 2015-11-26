@@ -31,7 +31,7 @@ public class Program {
         		 UserDataService userdataservice = new UserDataServiceImpl();
 
         		 CommodityDataService commoditydataservice=new StorageInOfListDataServiceImpl();
-
+        		 CommodityDataService  commoditydataserviceout=new StorageOutOfListDataServiceImpl();
 
 
         	//	 UserDataService userdataservice = new UserDataServiceImpl();
@@ -46,7 +46,7 @@ public class Program {
         		 Naming.rebind("rmi://"+IP+":"+PORT+"/CommodityDataService", commoditydataservice);
 
         		 Naming.rebind("rmi://"+IP+":"+PORT+"/OrderDataService", orderDataService);
- 
+        		 Naming.rebind("rmi://"+IP+":"+PORT+"/CommodityDataServiceOut", commoditydataserviceout);
         		 System.out.println("Server strated!");
         	 }catch(Exception e){
         		 e.printStackTrace();

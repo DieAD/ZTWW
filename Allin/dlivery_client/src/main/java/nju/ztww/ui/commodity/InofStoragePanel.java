@@ -45,7 +45,9 @@ public class InofStoragePanel extends JPanel{
 	   public JButton  surebutton=new JButton("确定");
 	   public JButton  sureofbutton=new JButton("确定");
 	   public JButton  submitbutton=new JButton("提交");
+	   public JButton  deletebutton=new JButton("删除");
 	   public CommodityService commodity=new StorageInListServiceImpl();
+	   
 	   public StorageListLineofInVO  storagelineIn;
 	   public ArrayList<StorageListLineofInVO>arraylist=new ArrayList<StorageListLineofInVO>();//成员变量
 	   java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit()
@@ -58,11 +60,14 @@ public class InofStoragePanel extends JPanel{
 		   addbutton.setIcon(add);
 		   sureofbutton.setBounds(580, 420, 110,38);
 		   submitbutton.setBounds(320, 420, 110, 38);
+		   deletebutton.setBounds(190, 420, 110, 38);
 		   this.add(sureofbutton);
 		   this.add(addbutton);
 		   this.add(submitbutton);
+		   this.add(deletebutton);
 		   //提交时的监听
 		   submitbutton.addActionListener(listener2);
+		   deletebutton.addActionListener(listener3);
 		// TODO Auto-generated constructor stub
 		   Object[][] playerInfo =
 	{
@@ -183,6 +188,16 @@ public class InofStoragePanel extends JPanel{
 			}
 			
 		};
+	ActionListener listener3=new ActionListener(){
+			//需要界面提供给我idofcenter
+				public void actionPerformed(ActionEvent e) {
+				String idofcenter="00001";
+				String idofOrder="sss";
+					// TODO Auto-generated method stub
+				commodity.deleteOrder(idofOrder, idofcenter);
+				}
+				
+			};	
 }
 	
 

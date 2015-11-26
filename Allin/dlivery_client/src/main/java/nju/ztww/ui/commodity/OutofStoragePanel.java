@@ -34,6 +34,7 @@ public class OutofStoragePanel extends JPanel {
    public StorageListLineofOutVO  storagelineout;
    public JButton  sureofbutton=new JButton("确定");
    public JButton  submitofbutton=new JButton("提交");
+   public JButton deletebutton=new JButton("删除");
    public CommodityService commodity=new StorageOutListServiceImpl();
    public JLabel submitlabel=new JLabel();
    java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit()
@@ -56,7 +57,8 @@ public class OutofStoragePanel extends JPanel {
 	   addbutton.setBounds(450, 420, 110, 38);
 	   addbutton.setIcon(add);
 	   sureofbutton.setBounds(580, 420, 110,38);
-	   submitofbutton.setBounds(300, 420, 110, 38);
+	   deletebutton.setBounds(190, 420, 110, 38);
+	   submitofbutton.setBounds(320, 420, 110, 38);
 	   submitlabel.setFont(new Font("楷体",0,20));
 	   submitlabel.setText("提交成功");
 	   submitlabel.setBounds(20, 420, 200, 38);
@@ -168,5 +170,17 @@ ActionListener listener2=new ActionListener(){
 	}
 	
 };
+ActionListener listener3=new ActionListener(){
+	//需要界面提供给我idofcenter
+		public void actionPerformed(ActionEvent e) {
+			String idofcenter="0001";
+			String idoforder="1023";
+			// TODO Auto-generated method stub
+		 commodity.deleteOrder(idoforder,idofcenter);
+		 submitlabel.setVisible(true);
+		 
+		}
+		
+	};
    
 }
