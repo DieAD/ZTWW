@@ -249,7 +249,8 @@ public class Courier_OrderInputUI extends JPanel{
 			mailOrder.setInfortation(goodInfo.getText());
 			mailOrder.setCount(Double.valueOf(deliverFees.getCost()));
 			mailOrder.setTime(Integer.valueOf(estTime.getText()));
-			mailOrder.setState('N');
+			mailOrder.setState(1);
+			mailOrder.setExe(0);
 			mailingOrders.add(mailOrder);
 			row.add(numbers.getText());
 			row.add(orderNum.getText());
@@ -257,7 +258,7 @@ public class Courier_OrderInputUI extends JPanel{
 			row.add(senderPhone.getText());
 			row.add(receiver.getText());
 			row.add(receiverPhone.getText());
-			row.add(cost.getText());
+			row.add(deliverFees.getCost()+"");
 			row.add(type.getText());
 			defaultTableModel.addRow(row);
 			 table.revalidate();

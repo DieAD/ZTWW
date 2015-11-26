@@ -30,9 +30,9 @@ public class MailingOrderBl {
 	 
 	 private List<OrderPO> list=new ArrayList<OrderPO>();
 	 
-	 private double packCost;
-	 
-	 private double count;
+	 private double priceConst;   //价格常量
+	 private double distance;  //距离
+	 private double typePrice;  //当前价格比例
 	
 	public MailingOrderBl(){
 		
@@ -85,7 +85,15 @@ public class MailingOrderBl {
 	public double getCost(DeliverFeesVO deliverFees){
 		double result = 0;
 		
+		double weight = Double.valueOf(deliverFees.getInfo());
+		double price = distance/1000*priceConst;
+		result = price*weight*typePrice + deliverFees.getPackCost();
 		return result;
 	}
 
+	
+	public void getDistance(String place1, String place2){
+		//
+	}
+	
 }
