@@ -9,15 +9,6 @@ public class PayeeFormDO {
 	private int exe;
 	private int state;
 	private String date;
-	private String holl;
-
-	public String getHoll() {
-		return holl;
-	}
-
-	public void setHoll(String holl) {
-		this.holl = holl;
-	}
 
 	public String getDate() {
 		return date;

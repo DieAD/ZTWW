@@ -3,6 +3,7 @@ package nju.ztww.service;
 import java.util.ArrayList;
 
 import nju.ztww.common.ResultMessage;
+import nju.ztww.vo.DeliverFeesVO;
 import nju.ztww.vo.OrderVO;
 import nju.ztww.vo.StorageListVO;
 
@@ -55,4 +56,13 @@ public interface OrderService {
 	 * @return
 	 */
 	public String getDate(String city,String city2,int type);
+	
+	
+	/*
+	 * 获得快递费用
+	 * 
+	 * @param 计算总共费用所需要的数据包
+	 */
+	
+	public double getCost(DeliverFeesVO deliverFees);
 }
