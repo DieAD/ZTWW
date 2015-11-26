@@ -4,6 +4,7 @@ import java.rmi.Remote;
 import java.util.List;
 
 import nju.ztww.po.OrderPO;
+import nju.ztww.po.PriceDataPO;
 
 /**
  * OrderData模块Service
@@ -20,4 +21,6 @@ public interface OrderDataService extends Remote{
 	public String find(int id);
 
 	public String insertToDateFactory(List<OrderPO> list, int type);
+	
+	public PriceDataPO getPriceData(String place1, String place2, String type);
 }

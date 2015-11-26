@@ -7,6 +7,10 @@ package nju.ztww.serviceimpl;
   */
 
 
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import nju.ztww.bl.order.BusinessArriveOrderBl;
 import nju.ztww.bl.order.CarManageBl;
 import nju.ztww.bl.order.CenterReceiveOrderBl;
@@ -169,5 +173,21 @@ public class OrderServiceImpl implements OrderService{
 	public double getCost(DeliverFeesVO deliverFees) {
 		double result = mailingOrderBl.getCost(deliverFees);
 		return result;
+	}
+	
+	public String getMailingOrderID(){
+		String mailingOrderID = getDate();
+		
+		String random = mailingOrderBl.getRandom();
+		mailingOrderID += random;
+		
+		return mailingOrderID;
+	}
+	
+	public static String getDate(){
+		Date now = new Date(); 
+		SimpleDateFormat matter = new SimpleDateFormat("yyMMdd");
+		String date = matter.format(now);
+		return date;
 	}
 }

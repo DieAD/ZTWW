@@ -13,6 +13,7 @@ import nju.ztww.RMI.RMIHelper;
 import nju.ztww.po.LoadingPO;
 import nju.ztww.po.MailingPO;
 import nju.ztww.po.OrderPO;
+import nju.ztww.po.PriceDataPO;
 import nju.ztww.service.OrderDataService;
 import nju.ztww.vo.DeliverFeesVO;
 import nju.ztww.vo.MailingVO;
@@ -33,6 +34,8 @@ public class MailingOrderBl {
 	 private double priceConst;   //价格常量
 	 private double distance;  //距离
 	 private double typePrice;  //当前价格比例
+	 
+	
 	
 	public MailingOrderBl(){
 		
@@ -83,17 +86,31 @@ public class MailingOrderBl {
 	
 	
 	public double getCost(DeliverFeesVO deliverFees){
-		double result = 0;
 		
+		double result = 0;
+		String place1 = deliverFees.getPlace1();
+		String place2 = deliverFees.getPlace2();
+		String type = deliverFees.getType();
+		System.out.println("place1 = "+place1);
+		System.out.println("place2 = "+place2);
+		System.out.println("type = "+type);
+		orderDataService=(OrderDataService)rhelper.findService("OrderDataService");
+		PriceDataPO priceData = orderDataService.getPriceData(place1, place2, type);
+		this.priceConst = priceData.getPriceConst();
+		this.distance = priceData.getDistance();
+		this.typePrice = priceData.getTypePrice();
 		double weight = Double.valueOf(deliverFees.getInfo());
 		double price = distance/1000*priceConst;
 		result = price*weight*typePrice + deliverFees.getPackCost();
 		return result;
 	}
-
 	
-	public void getDistance(String place1, String place2){
-		//
+	public String getRandom(){
+		String random = "";
+		
+		return random;
 	}
+
+
 	
 }
