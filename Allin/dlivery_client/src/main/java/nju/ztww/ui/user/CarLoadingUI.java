@@ -58,6 +58,7 @@ public class CarLoadingUI extends JPanel{
 	private ArrayList<LoadingVO> allLoadingVO;
 	
 	private JButton addButton=new JButton();
+	private JButton deleteButton=new JButton();
 	private JButton sendButton=new JButton("提交");
 	private JButton sureButton=new JButton("确定");
 	DefaultTableModel defaultTableModel ;
@@ -82,11 +83,13 @@ public class CarLoadingUI extends JPanel{
 
 		addButton.setBounds(500, 420, 110, 38);
 		addButton.setIcon(add);
-		
+		deleteButton.setBounds(100, 420, 110, 38);
+		deleteButton.setIcon(add);
 		sendButton.setBounds(300, 420, 110, 38);
 		sendButton.setIcon(null);
 
 		this.setLayout(null);
+		this.add(deleteButton);
 		this.add(sendButton);
         this.add(addButton);
 		Object[][] playerInfo =
@@ -198,6 +201,14 @@ public class CarLoadingUI extends JPanel{
 							String result=orderServiceImpl.endSales(loadingVOtemp, 4);
 							 System.out.println(result);
 						}
+					}
+			  });
+			  deleteButton.addActionListener(new ActionListener(){
+
+					public void actionPerformed(ActionEvent e) {
+						String id=(String) table.getValueAt(table.getSelectedRow(), 0);
+						String result=orderServiceImpl.deleteOrder(id);
+						System.out.println(result);
 					}
 			  });
 	}

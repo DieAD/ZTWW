@@ -10,6 +10,7 @@ package nju.ztww.vo;
 public class CenterReceiveVO extends OrderVO{
 	
 	private int idOfOrde;
+	private String id;
 	private String CenterNumber;
 	private String data;
 	private String transferNumber;
@@ -21,6 +22,13 @@ public class CenterReceiveVO extends OrderVO{
 	    this.idOfOrde=	idOfOrder;
 	}
 
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
 	public int getIdOfOrde() {
 		return idOfOrde;
 	}

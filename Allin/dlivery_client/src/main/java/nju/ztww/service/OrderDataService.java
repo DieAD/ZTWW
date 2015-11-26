@@ -15,9 +15,11 @@ public interface OrderDataService extends Remote{
 	
 	public String insert(OrderPO orderPO,int type);
 	
-	public String delete(OrderPO orderPO,int type);
+	public String delete(String id);
 	
-	public String find(int id);
+	public String find(String id);
+	
+	public String findID();
 
 	public String insertToDateFactory(List<OrderPO> list, int type);
 }

@@ -12,6 +12,7 @@ import java.util.ArrayList;
 public class ReceiveVO extends OrderVO{
 	
 	private int idOfOrde;
+	private String id;
 	private String data;
 	private double receiveMoney;
 	private String receiverName;
@@ -22,6 +23,13 @@ public class ReceiveVO extends OrderVO{
 		this.idOfOrde=idOfOrder;
 	}
 
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
 	public int getIdOfOrde() {
 		return idOfOrde;
 	}

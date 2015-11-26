@@ -10,6 +10,7 @@ package nju.ztww.vo;
 public class SendVO extends OrderVO{
 	
 	private int idOfOrde;
+	private String id;
 	private String data;
 	private String orderNumber;
 	private String senderName;
@@ -17,6 +18,14 @@ public class SendVO extends OrderVO{
 	public SendVO(int idOfOrder) {
 		super(idOfOrder);
 		this.idOfOrde=idOfOrde;
+	}
+	
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public int getIdOfOrde() {

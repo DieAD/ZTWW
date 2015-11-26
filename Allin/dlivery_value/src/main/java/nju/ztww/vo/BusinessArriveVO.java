@@ -10,6 +10,7 @@ package nju.ztww.vo;
 public class BusinessArriveVO extends OrderVO{
 	
 	private int idOfOrde;
+	private String id;
 	private String data;
 	private String number;
 	private String Send;
@@ -17,7 +18,15 @@ public class BusinessArriveVO extends OrderVO{
 
 	public BusinessArriveVO(int idOfOrder) {
 		super(idOfOrder);
-		this.idOfOrde=idOfOrde;
+		this.idOfOrde=idOfOrder;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public int getIdOfOrde() {
