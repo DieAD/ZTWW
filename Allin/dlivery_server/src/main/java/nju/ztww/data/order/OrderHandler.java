@@ -17,7 +17,11 @@ import nju.ztww.po.TransferPO;
 public class OrderHandler {
 	
 	private BusinessArriveData businessArriveData;
-	
+	private CarManageData carManageData;
+	private DriverMessageData DriverMessageData;
+	private LoadingData loadingData;
+	private ReceiveData receiveData;
+	private SendData sendData;
 	public OrderHandler(){
 		
 	}

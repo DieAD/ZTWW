@@ -1,8 +1,8 @@
-package nju.ztww.po;
+package nju.ztww.dao;
 
-public class DriverMessagePO extends OrderPO {
-
-	private int idOfOrde;
+public class DriverMessageDO {
+	
+	private int index;
 	private String driverNumber;
 	private String driverName;
 	private String driverBirthday;
@@ -13,36 +13,11 @@ public class DriverMessagePO extends OrderPO {
 	private String id;
 	private int exe=0;
 	private int state=0;
-	
-	public DriverMessagePO(int idOfOrder) {
-		super(idOfOrder);
-		this.idOfOrde=idOfOrder;
+	public int getIndex() {
+		return index;
 	}
-
-	public void setExe(int exe) {
-		this.exe = exe;
-	}
-
-	public int getExe() {
-		return exe;
-	}
-
-	public int getState() {
-		return state;
-	}
-
-	public void setState(int state) {
-		this.state = state;
-	}
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-	public int getIdOfOrde() {
-		return idOfOrde;
+	public void setIndex(int index) {
+		this.index = index;
 	}
 	public String getDriverNumber() {
 		return driverNumber;
@@ -86,8 +61,25 @@ public class DriverMessagePO extends OrderPO {
 	public void setDriverServiceDeadline(String driverServiceDeadline) {
 		this.driverServiceDeadline = driverServiceDeadline;
 	}
-	public void setIdOfOrde(int idOfOrde) {
-		this.idOfOrde = idOfOrde;
+	public String getId() {
+		return id;
 	}
-
+	public void setId(String id) {
+		this.id = id;
+	}
+	public int getExe() {
+		return exe;
+	}
+	public void setExe(int exe) {
+		this.exe = exe;
+	}
+	public int getState() {
+		return state;
+	}
+	public void setState(int state) {
+		this.state = state;
+	}
+	
+	
+	
 }
