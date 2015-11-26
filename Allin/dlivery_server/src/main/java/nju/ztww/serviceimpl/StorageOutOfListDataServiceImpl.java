@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
+import nju.ztww.data.commodity.StorageListIn;
 import nju.ztww.data.commodity.StorageListOut;
 import nju.ztww.po.OrderPO;
 import nju.ztww.po.StorageListLinePO;
@@ -49,6 +50,8 @@ public class StorageOutOfListDataServiceImpl extends UnicastRemoteObject impleme
 	public void insertOut(ArrayList<StorageListLineofOutPO> arraylist,String idofcenter)
 			throws RemoteException {
 		// TODO Auto-generated method stub
+		StorageListOut storagelistlineout=new StorageListOut();
+		storagelistlineout.insertout(arraylist,idofcenter);
 		
 	}
 
