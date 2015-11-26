@@ -44,18 +44,22 @@ public class EditCollection extends EditPanel{
     		this.add(button1);
     		button1.addActionListener(listener);
     	}
-    }
-    
-    
-    public class Listener implements ActionListener{
-
-		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
-			tableModel.addRow(new Object[]{new String("2015/11"),new Integer(100),new String("000002"),new String("00000001")});
-			
-		}
     	
-    }
+    	  public class Listener implements ActionListener{
 
+    			public void actionPerformed(ActionEvent e) {
+    				// TODO Auto-generated method stub
+    				String querydate = text1.getText();
+    				String queryholl = text2.getText();
+    				tableModel.addRow(new Object[]{new String("2015/11"),new Integer(100),new String("000002"),new String("00000001")});
+    				
+    			}
+    	    	
+    	    }
+
+    }
+    
+    
+  
 	
 }
