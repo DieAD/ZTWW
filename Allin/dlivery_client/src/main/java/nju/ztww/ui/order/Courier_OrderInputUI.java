@@ -19,6 +19,8 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import nju.ztww.serviceimpl.OrderServiceImpl;
+import nju.ztww.ui.main.UserInfoUI;
+import nju.ztww.vo.DeliverFeesVO;
 import nju.ztww.vo.MailingVO;
 
 public class Courier_OrderInputUI extends JPanel{
@@ -61,8 +63,22 @@ public class Courier_OrderInputUI extends JPanel{
 	private JLabel packLabel = new JLabel();
 	private JTextField pack = new JTextField();
 	private JButton submitButton = new JButton();
-	private String[] pl = {"北京", "上海", "深圳", "广州", "南京"};
-	private JComboBox places = new JComboBox(pl);
+	private JButton deleteButton = new JButton("删除");
+	private String[] pl = {"北京", "上海", "广州", "南京"};
+	
+	private String from ;
+	private String businID ;//= ID.substring(0, 8);
+
+	public void getFrom(String ID){
+		String place = ID.substring(0, 3);
+		if(place.equals("025")) this.from = "南京";
+		else if(place.equals("010")) this.from = "北京";
+		else if(place.equals("020")) this.from = "广州";
+		else if(place.equals("021")) this.from = "上海";
+		else System.out.println("无法获得当前城市！");
+	}
+	
+	private JComboBox<String> places = new JComboBox<String>(pl);
 	private ArrayList<MailingVO> mailingOrders = new ArrayList<MailingVO>();
 	
 	
@@ -77,8 +93,10 @@ public class Courier_OrderInputUI extends JPanel{
 			submitButton.setBounds(350, 420, 110, 38);
 			submitButton.setText("提交");
 			submitButton.addActionListener(e2);
+			this.add(submitButton);
 			addButton.setIcon(new ImageIcon("photo/add.gif"));
 			this.add(addButton);
+			
 			
 			addButton.addActionListener(new ActionListener(){
 
@@ -87,17 +105,23 @@ public class Courier_OrderInputUI extends JPanel{
 					// to add a dialog to complete
 					//very important
 					//including all the information and layout
+					String ID = UserInfoUI.getUserID();
+					businID = ID.substring(0, 8);
+					
 					addDlg = new JDialog();
 					addDlg.setSize(new Dimension(600, 450));
 		            addDlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
 		            sureButton.setText("确定");
+		            String  mailingOrderID = orderServiceImpl.getMailingOrderID();
 		 
 		            numbersLabel.setBounds(50, 20, 150, 20);
 		            numbersLabel.setText("营业厅编号");
 		            numbers.setBounds(120, 20, 100, 20);
+		            numbers.setText(businID);
 		            orderNumLabel.setBounds(300, 20, 150, 20);
 		            orderNumLabel.setText("订单号");
 		            orderNum.setBounds(350, 20, 100, 20);
+		            orderNum.setText(mailingOrderID);
 		            
 		            senderLabel.setBounds(50, 70, 150, 20);
 		            senderLabel.setText("寄件人");
@@ -186,9 +210,13 @@ public class Courier_OrderInputUI extends JPanel{
 				}
 				
 			});
+			
+			deleteButton.setBounds(220, 420, 110, 38);
+			deleteButton.addActionListener(delete);
+			this.add(deleteButton);
 		}
 		
-		this.add(submitButton);
+		
 		
 		{/*for table*/
 			Object[][] OrderInfo =
@@ -223,6 +251,7 @@ public class Courier_OrderInputUI extends JPanel{
 			for(int i=0;i<size;i++){
 				orderServiceImpl.endSales(mailingOrders.get(i), 1);
 			}
+			mailingOrders.clear();
 		}
 	};
 	
@@ -231,6 +260,19 @@ public class Courier_OrderInputUI extends JPanel{
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			Vector<String> row = new Vector<String>();
+			
+			String ID = UserInfoUI.getUserID();
+			String PLACE = ID.substring(0, 3);
+			if(PLACE.equals("025")) from = "南京";
+			else if(PLACE.equals("010")) from = "北京";
+			else if(PLACE.equals("020")) from = "广州";
+			else if(PLACE.equals("021")) from = "上海";
+			else System.out.println("无法获得当前城市！");
+			
+			DeliverFeesVO deliverFees = new DeliverFeesVO(from, (String)places.getSelectedItem(), 
+					type.getText(), Double.valueOf(pack.getText()), goodInfo.getText());
+			
+			double result = orderServiceImpl.getCost(deliverFees);
 			MailingVO mailOrder = new MailingVO(1);
 			mailOrder.setBusinID(numbers.getText());
 			mailOrder.setStripNumber(orderNum.getText());
@@ -240,11 +282,12 @@ public class Courier_OrderInputUI extends JPanel{
 			mailOrder.setSendTEL(senderTEL.getText());
 			mailOrder.setReceiveName(receiver.getText());
 			mailOrder.setReceiveTelephone(receiverPhone.getText());
-			mailOrder.setSendLocation(places.getActionCommand()+place.getText());
+			mailOrder.setSendLocation(places.getSelectedItem()+place.getText());
 			mailOrder.setInfortation(goodInfo.getText());
-			mailOrder.setPackCost(Double.valueOf(pack.getText()));
+			mailOrder.setCount(result);
 			mailOrder.setTime(Integer.valueOf(estTime.getText()));
-			mailOrder.setState('N');
+			mailOrder.setState(1);
+			mailOrder.setExe(0);
 			mailingOrders.add(mailOrder);
 			row.add(numbers.getText());
 			row.add(orderNum.getText());
@@ -252,7 +295,7 @@ public class Courier_OrderInputUI extends JPanel{
 			row.add(senderPhone.getText());
 			row.add(receiver.getText());
 			row.add(receiverPhone.getText());
-			row.add(cost.getText());
+			row.add(result+"");
 			row.add(type.getText());
 			defaultTableModel.addRow(row);
 			 table.revalidate();
@@ -280,5 +323,14 @@ public class Courier_OrderInputUI extends JPanel{
 		
 	};
 	
-	
+	ActionListener delete = new ActionListener() {
+		
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			int selected = table.getSelectedRow();
+			defaultTableModel.removeRow(selected);
+			System.out.println("selected = "+selected);
+			mailingOrders.remove(selected-1); //暂时不能删除第一个
+		}
+	};
 }

@@ -26,7 +26,6 @@ public class DBForPayeeForm extends DB{
 				form.setExe(rs.getInt(6));
 				form.setState(rs.getInt(7));
 				form.setDate(rs.getString(8));
-				form.setHoll(rs.getString(9));
 				list.add(form);
 			}
 		} catch (SQLException e) {
@@ -37,9 +36,9 @@ public class DBForPayeeForm extends DB{
     	return list;
     }
     
-    public ArrayList<PayeeFormDO> queryByDate(String date,String holl,String tableName){
+    public ArrayList<PayeeFormDO> queryByDate(String date,String tableName){
     	ArrayList<PayeeFormDO> list = new ArrayList<PayeeFormDO>();
-    	String sql = " select * from "+tableName+" where date="+date+" and holl="+holl;
+    	String sql = " select * from "+tableName+" where date="+date;
     	
     	try {
 			Statement stmt = conn.createStatement();
@@ -54,7 +53,6 @@ public class DBForPayeeForm extends DB{
 				form.setExe(rs.getInt(6));
 				form.setState(rs.getInt(7));
 				form.setDate(rs.getString(8));
-				form.setHoll(rs.getString(9));
 				list.add(form);
 			}
 		} catch (SQLException e) {
@@ -67,8 +65,8 @@ public class DBForPayeeForm extends DB{
     
     
     public void insert(ArrayList<PayeeFormDO> list,String tableName){
-    	String sql = "insert into "+tableName+"(id,goodsid,courierid,money,exe,state,date,holl)"
-    			+ "values(?,?,?,?,?,?,?,?)";
+    	String sql = "insert into "+tableName+"(id,goodsid,courierid,money,exe,state)"
+    			+ "values(?,?,?,?,?,?,?)";
     	
     	try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -80,7 +78,6 @@ public class DBForPayeeForm extends DB{
 				pstmt.setInt(5, form.getExe());
 				pstmt.setInt(6, form.getState());
 				pstmt.setString(7, form.getDate());
-				pstmt.setString(8, form.getHoll());
 				pstmt.executeUpdate();
 			}
 		} catch (SQLException e) {
@@ -91,7 +88,7 @@ public class DBForPayeeForm extends DB{
     }
     
     public void update(ArrayList<PayeeFormDO> list,String tableName){
-    	String sql = "update "+tableName+" set id=?,goodsid=?,courierid=?,money=?,exe=?,state=?,date=?,holl=?, where id=?";
+    	String sql = "update "+tableName+" set id=?,goodsid=?,courierid=?,money=?,exe=?,state=?,date=? where id=?";
     	try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			for(PayeeFormDO form : list){
@@ -102,8 +99,7 @@ public class DBForPayeeForm extends DB{
 				pstmt.setInt(5, form.getExe());
 				pstmt.setInt(6, form.getState());
 				pstmt.setString(7,form.getDate());
-				pstmt.setString(8, form.getHoll());
-				pstmt.setString(9, form.getId());
+				pstmt.setString(8, form.getId());
 				
 				pstmt.executeUpdate();
 			}
@@ -113,17 +109,17 @@ public class DBForPayeeForm extends DB{
 		}
     }
     
-    public static void main(String[] args){
-    	DBForPayeeForm db = new DBForPayeeForm();
-    	db.init();
-    	//db.insert(db.queryByID("1511250001", "payeeform"), "payeeform");
-    	ArrayList<PayeeFormDO> list =db.queryByID("1511250001", "payeeform");
-    	for(PayeeFormDO form : list){
-    		form.setMoney(1.1);
-    	}
-    	db.update(list, "payeeform");
-    	db.close();
-    	
-    	
-    }
+//    public static void main(String[] args){
+//    	DBForPayeeForm db = new DBForPayeeForm();
+//    	db.init();
+//    	//db.insert(db.queryByID("1511250001", "payeeform"), "payeeform");
+//    	ArrayList<PayeeFormDO> list =db.queryByID("1511250001", "payeeform");
+//    	for(PayeeFormDO form : list){
+//    		form.setMoney(1.1);
+//    	}
+//    	db.update(list, "payeeform");
+//    	db.close();
+//    	
+//    	
+//    }
 }

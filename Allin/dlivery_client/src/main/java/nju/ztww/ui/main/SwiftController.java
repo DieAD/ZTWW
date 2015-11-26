@@ -27,6 +27,7 @@ public class SwiftController {
 	private ClerkOfCenterUi ccUI;
 	private TestGManagerUI GMUI;
 	private TextManageUI   MUI;
+	private UserInfoUI userInfoUI;
 	//
 	private JFrame frame;
 	private MemberVO member; 
@@ -44,15 +45,13 @@ public class SwiftController {
 		storageUI = new StorageUi();
 		ccUI = new ClerkOfCenterUi();
 		MUI = new TextManageUI();
+		
 	}
 	
 	
 	public void switchUI(){
-//		if(true){
-//			
-//			panelList = courierUI.getPanelList();
-//		}
-//		
+//		panelList = courierUI.getPanelList();
+
 		switch(id){
 		case 0: jump = false;break;
 		case 1: panelList = courierUI.getPanelList();break;
@@ -63,7 +62,11 @@ public class SwiftController {
 		case 6: panelList = GMUI.getPanelList();break;
 		case 7: panelList = MUI.getPanelList();break;
 		default:{System.out.println("Switch UI error!");jump = false;}break;
+		
 		}
+		userInfoUI = new UserInfoUI(ID);
+		panelList.add(userInfoUI);
+		
 	}
 	
 	public void setUI(){
@@ -99,5 +102,7 @@ public class SwiftController {
 	public void setMember(String ID, String password){
 		this.ID = ID;
 		this.password = password;
+		
+		
 	}	//by zyz
 }

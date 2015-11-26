@@ -7,6 +7,10 @@ package nju.ztww.serviceimpl;
   */
 
 
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import nju.ztww.bl.order.BusinessArriveOrderBl;
 import nju.ztww.bl.order.CarManageBl;
 import nju.ztww.bl.order.CenterReceiveOrderBl;
@@ -23,6 +27,7 @@ import nju.ztww.service.OrderService;
 import nju.ztww.vo.BusinessArriveVO;
 import nju.ztww.vo.CarManageVO;
 import nju.ztww.vo.CenterReceiveVO;
+import nju.ztww.vo.DeliverFeesVO;
 import nju.ztww.vo.DriverMessageVO;
 import nju.ztww.vo.LoadingVO;
 import nju.ztww.vo.MailingVO;
@@ -46,6 +51,8 @@ public class OrderServiceImpl implements OrderService{
 	DriverMessageBl driverMessageBl=new DriverMessageBl();
 	FindOrderIDBl findOrderIDBl=new FindOrderIDBl();
 	DeleteOrderBl deleteOrderBl=new DeleteOrderBl();
+	
+	
 	
 	public OrderServiceImpl(){
 		
@@ -188,8 +195,31 @@ public class OrderServiceImpl implements OrderService{
 		}
 	}
 
+
+	public double getCost(DeliverFeesVO deliverFees) {
+		double result = mailingOrderBl.getCost(deliverFees);
+		return result;
+	}
+	
+	public String getMailingOrderID(){
+		String mailingOrderID = getDate();
+		
+		String random = mailingOrderBl.getRandom();
+		mailingOrderID += random;
+		
+		return mailingOrderID;
+	}
+	
+	public static String getDate(){
+		Date now = new Date(); 
+		SimpleDateFormat matter = new SimpleDateFormat("yyMMdd");
+		String date = matter.format(now);
+		return date;
+	}
+
 	public String deleteOrder(String id) {
 		String result=deleteOrderBl.delete(id);
 		return result;
 	}
+
 }
