@@ -1,18 +1,14 @@
-package nju.ztww.po;
-
-import java.io.Serializable;
-
-import nju.ztww.vo.StorageListLineofInVO;
-
-public class StorageListLineofInPO extends OrderPO implements Serializable {
-	String id;//快递编号
-    String data;//入库日期
-    String destination;//目的地
-    String qu;//区号
-    String pai;//排号
-    String jia;//架号
-    String wei;//位号
-	public StorageListLineofInPO(int idOfOrder,String id,String data,String destination,String qu,String pai,String jia,String wei) {
+package nju.ztww.vo;
+//WJ 库存里的每一行的vo
+public class StorageListLineVO extends OrderVO {
+	    String id;//快递编号
+	    String data;//入库日期
+	    String destination;//目的地
+	    String qu;//区号
+	    String pai;//排号
+	    String jia;//架号
+	    String wei;//位号
+	public StorageListLineVO(int idOfOrder,String id,String data,String destination,String qu,String pai,String jia,String wei) {
 		super(idOfOrder);
 		this.id=id;
 		this.data=data;
@@ -21,6 +17,7 @@ public class StorageListLineofInPO extends OrderPO implements Serializable {
 		this.pai=pai;
 		this.jia=jia;
 		this.wei=wei;
+		
 		// TODO Auto-generated constructor stub
 	}
 	public String getId() {
@@ -65,11 +62,5 @@ public class StorageListLineofInPO extends OrderPO implements Serializable {
 	public void setWei(String wei) {
 		this.wei = wei;
 	}
-	public StorageListLineofInVO changetovo() {
-		// TODO Auto-generated method stub
-		return new StorageListLineofInVO(idOfOrder, id, data, destination, qu, pai, jia, wei);
-		
-	}
-	
 
 }
