@@ -13,7 +13,7 @@ import java.util.Properties;
 
 import nju.ztww.dao.StockDO;
 
-public class DBForStock {
+public class DBForStock extends DB{
 	private static String driver;
 	private static String url;
 	private static String username;

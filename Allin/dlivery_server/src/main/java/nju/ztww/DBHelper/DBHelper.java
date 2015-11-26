@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Properties;
+
 import nju.ztww.dao.UserDO;
 
 /**
@@ -25,7 +26,7 @@ import nju.ztww.dao.UserDO;
  *
  *另： table中每一行，对应一个userDO对象（为了不和userPO产生冲突,我在value模块中新建的一个DO模块，具体成员变量自己去看一下）
  */
-public class DBHelper {
+public class DBHelper extends DB{
 	private static String driver;
 	private static String url;
 	private static String username;
@@ -239,7 +240,7 @@ public class DBHelper {
 			len = rs.getInt(1);
 			length = (int) (len%9999);
 			 str=  String.format("%04d", length);
-			//System.out.print(str);
+			System.out.print(str);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

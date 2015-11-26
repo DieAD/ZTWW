@@ -13,7 +13,7 @@ import java.util.Properties;
 
 import nju.ztww.dao.CenterreciFormDO;
 
-public class DBForCenterreciForm {
+public class DBForCenterreciForm extends DB{
 	private static String driver;
 	private static String url;
 	private static String username;
