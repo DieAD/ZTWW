@@ -15,6 +15,7 @@ import nju.ztww.dao.StockDO;
 import nju.ztww.po.OrderPO;
 import nju.ztww.po.StorageListLineofInPO;
 import nju.ztww.po.StorageListLineofOutPO;
+import nju.ztww.po.StorageListodInPO;
 import nju.ztww.service.CommodityDataService;
 import nju.ztww.serviceimpl.StorageOutOfListDataServiceImpl;
 // 实现入库data层
@@ -22,8 +23,8 @@ public class StorageListIn {
 	public DBForEntryForm dbforentryform=new DBForEntryForm();
 	public DBForStock  dbforstock=new DBForStock();
 	public DBHelper dbhelper=new DBHelper();
-	ArrayList<EntryFormDO> entryfromdolist ;
-	ArrayList<StockDO>stockdolist;
+	ArrayList<EntryFormDO> entryfromdolist =new ArrayList<EntryFormDO>();
+    ArrayList<StockDO>stockdolist=new ArrayList<StockDO>();
 public void insert(OrderPO storagelinein){
 		
 		FileWriter write;
@@ -43,20 +44,29 @@ public void insert(OrderPO storagelinein){
 		
 	}
 
-public void insertin(ArrayList<StorageListLineofInPO> arraylist,String idofcenter) {
+public void insertin(ArrayList<StorageListLineofInPO> arraylist ,String idofcenter) {
 	// TODO Auto-generated method stub
 	//找到本中转中心的库存和入库信息两个表
-	System.out.println("到了！");
+	
 	for(int i=0;i<arraylist.size();i++){
-		entryfromdolist.add(arraylist.get(i).changetodo());
+		System.out.println(arraylist.get(i).getData()+" ");
+		entryfromdolist.add(arraylist.get(i).changetoIndo());
+		stockdolist.add(arraylist.get(i).changetoSdo());
 	}
 	dbforentryform.init();
-	dbforstock.init();
 	
 	dbforentryform.insert(entryfromdolist, "entryform");
 	
 	dbforentryform.close();
-	dbforstock.close();
+	
+	
+}
+
+public void delete(String idoforder, String idofcenter) {
+	// TODO Auto-generated method stub
+	dbforentryform.init();
+	dbforentryform.delete(idoforder, "entryform");
+	dbforentryform.close();
 }
    
 }

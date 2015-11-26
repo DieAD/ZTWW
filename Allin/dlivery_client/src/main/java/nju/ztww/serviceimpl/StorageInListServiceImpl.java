@@ -40,8 +40,10 @@ public class StorageInListServiceImpl implements CommodityService {
 
 	}
 
-	public void deleteOrder(String idofOrder) {
+	public void deleteOrder(String idofOrder,String idofcenter) {
 		// TODO Auto-generated method stub
+		StorageInofListBL storagelistin=new StorageInofListBL();
+		storagelistin.deleteOrder(idofOrder, idofcenter);
 
 	}
 
@@ -74,7 +76,7 @@ public class StorageInListServiceImpl implements CommodityService {
 		for(int i=0;i< arraylist.size();i++){
 			arraylistinpo.add(arraylist.get(i).changetopo());
 		}
-		StorageListInbeforecheckBL storagelistinbl=new StorageListInbeforecheckBL(); 
+		StorageInofListBL storagelistinbl=new StorageInofListBL(); 
 		storagelistinbl.addorder(arraylistinpo,idofcneter);
 		// TODO Auto-generated method stub
 	

@@ -46,7 +46,7 @@ public void addOrder(OrderVO order) {
 	
 }
 
-public void deleteOrder(String idofOrder) {
+public void deleteOrder(String idofOrder,String idofcenter) {
 	// TODO Auto-generated method stub
 	
 }

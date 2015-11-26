@@ -1,9 +1,10 @@
 package nju.ztww.po;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 //WJ 单个出库单 
-public class StorageListodOutPO {
+public class StorageListodOutPO implements Serializable {
 	public ArrayList<StorageListLineofOutPO> arraylist=null;
 	public boolean ischeck=false;
   public StorageListodOutPO(ArrayList<StorageListLineofOutPO> arraylist,boolean ischeck) {

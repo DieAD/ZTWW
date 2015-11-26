@@ -68,5 +68,9 @@ public class Commodity_stub implements CommodityService{
 		// TODO Auto-generated method stub
 		
 	}
+	public void deleteOrder(String idofOrder, String idofcenter) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }
