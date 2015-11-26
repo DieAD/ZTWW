@@ -6,7 +6,10 @@ public class CollectionVO {
      public String courierid;
      public String orderid;
      
-     public CollectionVO(){
-    	 
+     public CollectionVO(String date,double money,String courierid,String orderid){
+    	 this.date = date;
+    	 this.money = money;
+    	 this.courierid = courierid;
+    	 this.orderid = orderid;
      }
 }
