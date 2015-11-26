@@ -1,7 +1,7 @@
 package nju.ztww.vo;
 
 public class AcceptVO extends OrderVO{
-	
+
 	public int idOfOrder;
 	public String businID;
 	public String acceptID;
@@ -54,3 +54,4 @@ public class AcceptVO extends OrderVO{
 		
 	}
 }
+

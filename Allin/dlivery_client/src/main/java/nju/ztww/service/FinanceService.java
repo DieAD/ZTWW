@@ -26,4 +26,6 @@ public interface FinanceService {
 	 * 输出： ArrayList<ListPO> : 返回的单据                    
 	 */
 	public ArrayList<OrderVO> viewList();
+	
+	
 }

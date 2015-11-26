@@ -48,11 +48,7 @@ public class SwiftController {
 	
 	
 	public void switchUI(){
-//		if(true){
-//			
-//			panelList = MUI.getPanelList();
-//		}
-		
+
 		switch(id){
 		case 0: jump = false;break;
 		case 1: panelList = courierUI.getPanelList();break;
