@@ -201,21 +201,22 @@ public class OrderServiceImpl implements OrderService{
 		return result;
 	}
 	
-	public String getMailingOrderID(){
-		String mailingOrderID = getDate();
+	public String getOrderID(){
+//		String mailingOrderID = getDate();
+//		
+//		String random = mailingOrderBl.getRandom();
+//		mailingOrderID += random;
+		String OrderID = mailingOrderBl.getRandom();
 		
-		String random = mailingOrderBl.getRandom();
-		mailingOrderID += random;
-		
-		return mailingOrderID;
+		return OrderID;
 	}
 	
-	public static String getDate(){
-		Date now = new Date(); 
-		SimpleDateFormat matter = new SimpleDateFormat("yyMMdd");
-		String date = matter.format(now);
-		return date;
-	}
+//	public static String getDate(){
+//		Date now = new Date(); 
+//		SimpleDateFormat matter = new SimpleDateFormat("yyMMdd");
+//		String date = matter.format(now);
+//		return date;
+//	}
 
 	public String deleteOrder(String id) {
 		String result=deleteOrderBl.delete(id);
