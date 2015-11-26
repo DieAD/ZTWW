@@ -46,13 +46,14 @@ public void insert(OrderPO storagelinein){
 public void insertin(ArrayList<StorageListLineofInPO> arraylist,String idofcenter) {
 	// TODO Auto-generated method stub
 	//找到本中转中心的库存和入库信息两个表
-	for(int i=0;i<arraylist.size();i++){
-		entryfromdolist.add(arraylist.get(i).changetodo());
-	}
+	System.out.println("到了！");
+	//for(int i=0;i<arraylist.size();i++){
+		//entryfromdolist.add(arraylist.get(i).changetodo());
+	//}
 	dbforentryform.init();
 	dbforstock.init();
 	
-	dbforentryform.insert(entryfromdolist, "entryform");
+	//dbforentryform.insert(entryfromdolist, "entryform");
 	
 	dbforentryform.close();
 	dbforstock.close();
