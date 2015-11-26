@@ -13,7 +13,7 @@ import java.util.Properties;
 
 import nju.ztww.dao.GoodsDO;
 
-public class DBForGoods {
+public class DBForGoods extends DB{
 	private static String driver;
 	private static String url;
 	private static String username;

@@ -14,7 +14,7 @@ import java.util.Properties;
 import nju.ztww.dao.EntryFormDO;
 import nju.ztww.dao.StockDO;
 
-public class DBForEntryForm {
+public class DBForEntryForm extends DB{
 	private static String driver;
 	private static String url;
 	private static String username;

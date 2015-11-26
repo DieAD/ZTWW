@@ -13,7 +13,7 @@ import java.util.Properties;
 
 import nju.ztww.dao.OrderFormDO;
 
-public class DBForOrderForm {
+public class DBForOrderForm extends DB{
 	private static String driver;
 	private static String url;
 	private static String username;
