@@ -1,6 +1,8 @@
 package nju.ztww.bl.finance;
 
-import nju.ztww.vo.AccountVO;
+import java.util.ArrayList;
+
+import nju.ztww.vo.CollectionVO;
 
 public class FinanceBL {
 
@@ -9,4 +11,8 @@ public class FinanceBL {
 		return 0;
 	}
 	
+	public ArrayList<CollectionVO> queryCollection(String querydate,String queryholl){
+		ArrayList<CollectionVO> list = new ArrayList<CollectionVO>(); 
+		return null;
+	}
 }

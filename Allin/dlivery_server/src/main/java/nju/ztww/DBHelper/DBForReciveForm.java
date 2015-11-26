@@ -13,7 +13,7 @@ import java.util.Properties;
 
 import nju.ztww.dao.ReciveFormDO;
 
-public class DBForReciveForm {
+public class DBForReciveForm extends DB{
 	private static String driver;
 	private static String url;
 	private static String username;

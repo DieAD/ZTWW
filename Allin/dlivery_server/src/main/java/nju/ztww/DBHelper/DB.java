@@ -4,6 +4,7 @@ import java.io.FileReader;
 import java.io.Reader;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
@@ -66,6 +67,27 @@ public class DB {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	//
+	public  String getSize(String tableName){
+		String sql = "select count(*) from "+tableName;
+		long len = 0;
+		int  length;
+		String str = "0000";
+		try {
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+			rs.next();
+			len = rs.getInt(1);
+			length = (int) (len%9999);
+			 str=  String.format("%04d", length);
+			//System.out.print(str);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return str;
 	}
 
 }

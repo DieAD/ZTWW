@@ -8,6 +8,7 @@ import nju.ztww.po.AccountPO;
 import nju.ztww.po.MemberPO;
 import nju.ztww.po.OrderPO;
 import nju.ztww.service.FinanceDataService;
+import nju.ztww.vo.CollectionVO;
 
 public class FinanceDataServiceImpl extends UnicastRemoteObject implements FinanceDataService {
 
@@ -45,6 +46,12 @@ public class FinanceDataServiceImpl extends UnicastRemoteObject implements Finan
 	public double calcuIncome(ArrayList everyList) throws RemoteException {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	public ArrayList<CollectionVO> queryCollection(String querydate,
+			String queryholl) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
 	}
       
 }
