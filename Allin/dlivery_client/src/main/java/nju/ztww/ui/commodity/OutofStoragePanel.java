@@ -66,6 +66,8 @@ public class OutofStoragePanel extends JPanel {
 	   this.add(addbutton);
 	   this.add(submitofbutton);
 	   this.add(submitlabel);
+	   this.add(deletebutton);
+	   deletebutton.addActionListener(listener3);
 	   submitlabel.setVisible(false);
 	// TODO Auto-generated constructor stub
 	   Object[][] playerInfo =
