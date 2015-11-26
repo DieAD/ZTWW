@@ -32,7 +32,12 @@ public interface OrderService {
 	 * */
 	public String endSales(OrderVO order,int number);
 	
-	
+	/**
+	 * 删除订单
+	 * @param id 唯一标识码
+	 * @return
+	 */
+	public String deleteOrder(String id);
 	/**
 	 * 获得运费
 	 * 

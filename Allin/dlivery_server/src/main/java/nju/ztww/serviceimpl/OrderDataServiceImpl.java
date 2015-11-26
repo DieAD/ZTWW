@@ -17,6 +17,10 @@ public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDa
 		// TODO Auto-generated constructor stub
 	}
 
+	public String findID() throws RemoteException {
+		String result=orderHandler.findID();
+		return result;
+	}
 
 	public String insert(OrderPO orderPO,int type) throws RemoteException {
 		// TODO Auto-generated method stub
@@ -24,9 +28,9 @@ public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDa
 		return result;
 	}
 
-	public String delete(OrderPO orderPO,int type) throws RemoteException {
+	public String delete(String id) throws RemoteException {
 		// TODO Auto-generated method stub
-		String result=orderHandler.delete(orderPO, type);
+		String result=orderHandler.delete(id);
 		return result;
 	}
 

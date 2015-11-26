@@ -12,6 +12,7 @@ import java.util.ArrayList;
 public class LoadingVO extends OrderVO{
 	
 	private int idOfOrde;
+	private String id;
 	private String data;
 	private String YingYeNumber;
 	private String QiYunNumber;
@@ -21,12 +22,32 @@ public class LoadingVO extends OrderVO{
 	private String YaYunName;
 	private ArrayList<String> orderNumber;
 	private double money;
+	private int exe=1;
+	private int state=0;
 
 	public LoadingVO(int idOfOrder) {
 		super(idOfOrder);
 		this.idOfOrde=idOfOrder;
 	}
 
+	public int getExe() {
+		return exe;
+	}
+
+	public int getState() {
+		return state;
+	}
+
+	public void setState(int state) {
+		this.state = state;
+	}
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
 	public int getIdOfOrde() {
 		return idOfOrde;
 	}

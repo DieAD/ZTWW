@@ -22,12 +22,33 @@ public class LoadingPO extends OrderPO implements Serializable{
 	private String YaYunName;
 	private ArrayList<String> orderNumber;
 	private double money;
+	private String id;
+	private int exe=1;
+	private int state=0;
 
 	public LoadingPO(int idOfOrder) {
 		super(idOfOrder);
 		this.idOfOrde=idOfOrder;
 	}
 
+	public int getExe() {
+		return exe;
+	}
+
+	public int getState() {
+		return state;
+	}
+
+	public void setState(int state) {
+		this.state = state;
+	}
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
 	public int getIdOfOrde() {
 		return idOfOrde;
 	}

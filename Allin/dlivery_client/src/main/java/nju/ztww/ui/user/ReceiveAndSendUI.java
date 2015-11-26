@@ -20,6 +20,7 @@ import javax.swing.table.DefaultTableModel;
 
 import nju.ztww.serviceimpl.OrderServiceImpl;
 import nju.ztww.vo.BusinessArriveVO;
+import nju.ztww.vo.DriverMessageVO;
 import nju.ztww.vo.LoadingVO;
 import nju.ztww.vo.SendVO;
 
@@ -50,6 +51,8 @@ public class ReceiveAndSendUI extends JPanel{
 	private JTextField othertextArea=new JTextField("");
 	private  JLabel other=new  JLabel("备注");
 	
+	private JButton deleteReceiveButton=new JButton("删除到达单");
+	private JButton deleteSendButton=new JButton("删除派件单");
 	private JButton addButton=new JButton();
 	private JButton addSendButton=new JButton("添加派件单");
 	private JButton sendButton=new JButton("提交派件单");
@@ -61,8 +64,8 @@ public class ReceiveAndSendUI extends JPanel{
 	private BusinessArriveVO businessArriveVO;
 	private SendVO sendVO;
 	
-	private ArrayList<BusinessArriveVO> allbusinessArriveVO;
-	private ArrayList<SendVO> allSendVO;
+	private ArrayList<BusinessArriveVO> allbusinessArriveVO=new ArrayList<BusinessArriveVO>();
+	private ArrayList<SendVO> allSendVO=new ArrayList<SendVO>();
 	
 	DefaultTableModel defaultTableModel ;
 	DefaultTableModel defaultTableModel2 ;
@@ -74,22 +77,26 @@ public class ReceiveAndSendUI extends JPanel{
 	
 	public ReceiveAndSendUI(){
 		ImageIcon add=new ImageIcon("photo/add.gif");
-		addButton.setBounds(500, 420, 110, 38);
+		addButton.setBounds(550, 420, 110, 38);
 		addButton.setIcon(add);
-		addSendButton.setBounds(350, 420, 110, 38);
+		addSendButton.setBounds(430, 420, 110, 38);
 		addSendButton.setIcon(null);
-		sendButton.setBounds(200, 420, 110, 38);
+		sendButton.setBounds(310, 420, 110, 38);
 		sendButton.setIcon(null);
-		sendArriveButton.setBounds(50, 420, 110, 38);
+		sendArriveButton.setBounds(190, 420, 110, 38);
 		sendArriveButton.setIcon(null);
+		deleteReceiveButton.setBounds(100, 420, 80, 38);
+		deleteReceiveButton.setIcon(null);
+		deleteSendButton.setBounds(10, 420, 80, 38);
+		deleteSendButton.setIcon(null);
 		Object[][] playerInfo =
 			  {
-			    { "阿s呆", new Integer(69), new Integer(32), new Integer(98),  new Boolean(false) },
-			    { "阿呆", new Integer(82), new Integer(69), new Integer(128), new Boolean(true)}, 
+			    {"1511116666", "阿s呆", new Integer(69), new Integer(32), new Integer(98),  new Boolean(false) },
+			    { "1511116666","阿呆", new Integer(82), new Integer(69), new Integer(128), new Boolean(true)}, 
 			  };
 
 			  //字段名称
-			  String[] Names = { "到达日期", "中转单编号", "出发地", "货物到达状态", "备注"};
+			  String[] Names = { "ID","到达日期", "中转单编号", "出发地", "货物到达状态", "备注"};
 
 			  
 			  //创建表格: 建立一个显示二维数组数据的表格，且可以显示列的名称。 
@@ -112,12 +119,12 @@ public class ReceiveAndSendUI extends JPanel{
 			  //设置派件单
 			  Object[][] playerInfo2 =
 				  {
-				    { "阿s呆", new Integer(69), new Integer(32),  new Boolean(false) },
-				    { "阿呆", new Integer(82), new Integer(69),  new Boolean(true)}, 
+				    { "1511116666","阿s呆", new Integer(69), new Integer(32),  new Boolean(false) },
+				    { "1511116666","阿呆", new Integer(82), new Integer(69),  new Boolean(true)}, 
 				  };
 
 				  //字段名称
-				  String[] Names2 = { "到达日期", "托运订单号", "派送员",  "备注"};
+				  String[] Names2 = {"ID", "到达日期", "托运订单号", "派送员",  "备注"};
 
 				  
 				  //创建表格: 建立一个显示二维数组数据的表格，且可以显示列的名称。 
@@ -246,6 +253,26 @@ public class ReceiveAndSendUI extends JPanel{
 						}
 					}
 			  });
+			  deleteSendButton.addActionListener(new ActionListener(){
+
+					public void actionPerformed(ActionEvent e) {
+						String id=(String) sendTable.getValueAt(sendTable.getSelectedRow(), 0);
+						String result=orderServiceImpl.deleteOrder(id);
+						defaultTableModel.removeRow(sendTable.getSelectedRow());
+						System.out.println(result);
+					}
+			  });
+			  deleteReceiveButton.addActionListener(new ActionListener(){
+
+					public void actionPerformed(ActionEvent e) {
+						String id=(String) receiveTable.getValueAt(receiveTable.getSelectedRow(), 0);
+						String result=orderServiceImpl.deleteOrder(id);
+						defaultTableModel.removeRow(receiveTable.getSelectedRow());
+						System.out.println(result);
+					}
+			  });
+			  this.add(deleteReceiveButton);
+			  this.add(deleteSendButton);
 			  this.add(addButton);
 			  this.add(addSendButton);
 			  this.add(sendArriveButton);
@@ -267,12 +294,13 @@ public class ReceiveAndSendUI extends JPanel{
 			businessArriveVO.setData(businesstextArea.getText());
 			businessArriveVO.setNumber(cartextArea.getText());
 			businessArriveVO.setSend(arrivetextArea.getText());
-			businessArriveVO.setState(carNumbertextArea.getText());
+			businessArriveVO.setOrderState(carNumbertextArea.getText());
 			allbusinessArriveVO.add(businessArriveVO);
 //			String result=orderServiceImpl.endSales(businessArriveVO, 2);
 //			 System.out.println(result);
 			//增加行
-			Vector<String> row = new Vector(5);
+			Vector<String> row = new Vector(6);
+			row.add(businessArriveVO.getId());
 			row.add(businesstextArea.getText());
 			row.add(cartextArea.getText());
 			row.add(arrivetextArea.getText());
@@ -302,7 +330,8 @@ public class ReceiveAndSendUI extends JPanel{
 //			String result=orderServiceImpl.endSales(sendVO, 6);
 //			 System.out.println(result);
 			//增加行
-			Vector<String> row = new Vector(4);
+			Vector<String> row = new Vector(5);
+			row.add(sendVO.getId());
 			row.add(datetextArea.getText());
 			row.add(numbertextArea.getText());
 			row.add(sendertextArea.getText());

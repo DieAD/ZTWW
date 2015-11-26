@@ -12,6 +12,7 @@ import java.util.ArrayList;
 public class TransferVO extends OrderVO{
 	
 	private int idOfOrde;
+	private String id;
 	private String method;
 	private String carData;
 	private String transferData;
@@ -28,6 +29,13 @@ public class TransferVO extends OrderVO{
 		this.idOfOrde=idOfOrde;
 	}
 
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
 	public int getIdOfOrde() {
 		return idOfOrde;
 	}

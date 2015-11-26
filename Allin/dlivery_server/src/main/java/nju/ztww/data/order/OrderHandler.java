@@ -16,16 +16,25 @@ import nju.ztww.po.TransferPO;
 
 public class OrderHandler {
 	
+	private BusinessArriveData businessArriveData;
+	
 	public OrderHandler(){
+		
+	}
+	
+	public String findID(){
+		return "66";
 		
 	}
 
 	public String insert(OrderPO orderPO,int type){
+		String result=null;
 		switch(type){
 		case 1:
 			MailingPO mailingPO=(MailingPO) orderPO;
 		case 2:
 			BusinessArrivePO businessArrivePO=(BusinessArrivePO) orderPO;
+			result=businessArriveData.insert(businessArrivePO);
 		case 3:
 			CenterReceivePO centerReceivePO=(CenterReceivePO) orderPO;
 		case 4:
@@ -44,33 +53,12 @@ public class OrderHandler {
 			DriverMessagePO driverMessagePO=(DriverMessagePO) orderPO;
 		}
 		
-		return null;
+		return result;
 		
 	}
 	
-	public String delete(OrderPO orderPO,int type){
-		switch(type){
-		case 1:
-			MailingPO mailingPO=(MailingPO) orderPO;
-		case 2:
-			BusinessArrivePO businessArrivePO=(BusinessArrivePO) orderPO;
-		case 3:
-			CenterReceivePO centerReceivePO=(CenterReceivePO) orderPO;
-		case 4:
-			LoadingPO loadingPO=(LoadingPO) orderPO;
-		case 5:
-			ReceivePO receivePO=(ReceivePO) orderPO;
-		case 6:
-			SendPO sendPO=(SendPO) orderPO;
-		case 7:
-			ShippingPO shippingPO=(ShippingPO) orderPO;
-		case 8:
-			TransferPO transferPO=(TransferPO) orderPO;
-		case 9:
-			CarManagePO carManagePO=(CarManagePO) orderPO;
-		case 10:
-			DriverMessagePO driverMessagePO=(DriverMessagePO) orderPO;
-		}
+	public String delete(String id){
+		
 		return null;
 		
 	}

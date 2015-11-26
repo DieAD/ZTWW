@@ -10,7 +10,9 @@ package nju.ztww.serviceimpl;
 import nju.ztww.bl.order.BusinessArriveOrderBl;
 import nju.ztww.bl.order.CarManageBl;
 import nju.ztww.bl.order.CenterReceiveOrderBl;
+import nju.ztww.bl.order.DeleteOrderBl;
 import nju.ztww.bl.order.DriverMessageBl;
+import nju.ztww.bl.order.FindOrderIDBl;
 import nju.ztww.bl.order.LoadingOrderBl;
 import nju.ztww.bl.order.MailingOrderBl;
 import nju.ztww.bl.order.ReceiveOrderBl;
@@ -42,42 +44,65 @@ public class OrderServiceImpl implements OrderService{
 	TransferOrderBl transferOrderBl=new TransferOrderBl();
 	CarManageBl carManageBl=new CarManageBl();
 	DriverMessageBl driverMessageBl=new DriverMessageBl();
+	FindOrderIDBl findOrderIDBl=new FindOrderIDBl();
+	DeleteOrderBl deleteOrderBl=new DeleteOrderBl();
 	
 	public OrderServiceImpl(){
 		
 	}
 
 	public OrderVO getOrder(int number) {
+		String id=null;
 		switch(number){
 		case 1:
 			MailingVO mainingVO=new MailingVO(1);
+			id=findOrderIDBl.findID();
+			mainingVO.setId("151111"+id);
 		    return mainingVO;
 		case 2:
 			BusinessArriveVO businessArriveVO=new BusinessArriveVO(2);
+			id=findOrderIDBl.findID();
+			businessArriveVO.setId("151111"+id);
 		    return businessArriveVO;
 		case 3:
 			CenterReceiveVO centerReceiveVO=new CenterReceiveVO(3);
+			id=findOrderIDBl.findID();
+			centerReceiveVO.setId("151111"+id);
 		    return centerReceiveVO;
 		case 4:
 			LoadingVO loadingVO=new LoadingVO(4);
+		    id=findOrderIDBl.findID();
+		    loadingVO.setId("151111"+id);
 			return loadingVO;
 		case 5:
 			ReceiveVO receiveVO=new ReceiveVO(5);
+			 id=findOrderIDBl.findID();
+			 receiveVO.setId("151111"+id);
 			return receiveVO;
 		case 6:
 			SendVO sendVO=new SendVO(6);
+			 id=findOrderIDBl.findID();
+			 sendVO.setId("151111"+id);
 			return sendVO;
 		case 7:
 			ShippingVO shippingVO=new ShippingVO(7);
+			id=findOrderIDBl.findID();
+			shippingVO.setId("151111"+id);
 			return shippingVO;
 		case 8:
 			TransferVO transferVO=new TransferVO(8);
+			 id=findOrderIDBl.findID();
+			 transferVO.setId("151111"+id);
 			return transferVO;
 		case 9:
 			CarManageVO carManageVO=new CarManageVO(9);
+			 id=findOrderIDBl.findID();
+			 carManageVO.setId("151111"+id);
 			return carManageVO;
 		case 10:
 			DriverMessageVO driverMessageVO=new DriverMessageVO(10);
+			 id=findOrderIDBl.findID();
+			 driverMessageVO.setId("151111"+id);
 			return driverMessageVO;
 		}
 		return null;
@@ -161,5 +186,10 @@ public class OrderServiceImpl implements OrderService{
 		}else{
 			return (distance/1000)*25;
 		}
+	}
+
+	public String deleteOrder(String id) {
+		String result=deleteOrderBl.delete(id);
+		return result;
 	}
 }

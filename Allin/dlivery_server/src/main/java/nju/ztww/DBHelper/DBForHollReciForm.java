@@ -38,7 +38,7 @@ public class DBForHollReciForm extends DB{
     	 return list;
      }
      
-     public void insert(ArrayList<HollReciFormDO> list,String tableName){
+     public String insert(ArrayList<HollReciFormDO> list,String tableName){
     	 String sql = "insert into "+tableName+"(id,goodsid,arrivetime,bddress,goodsstate,exe,state)"
     	 		+ "values(?,?,?,?,?,?,?)";
     	 try {
@@ -56,10 +56,11 @@ public class DBForHollReciForm extends DB{
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}    	     	     	 
+			return "fail";   
+		}
+		return "success";    	     	     	 
      }
-     public void update(ArrayList<HollReciFormDO> list,String tableName){
+     public String update(ArrayList<HollReciFormDO> list,String tableName){
     	 String sql = "update "+tableName + " set id=?,goodsid=?,arrivetime=?,bddress=?,"
     	 		+ "goodsstate=?,exe=?,state=? where id=?";
     	 try {
@@ -78,9 +79,9 @@ public class DBForHollReciForm extends DB{
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			return "fail"; 
 		}
-    	 
+    	 return "success"; 
     	 
      }
      

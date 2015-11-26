@@ -14,15 +14,36 @@ import nju.ztww.vo.OrderVO;
 
 public class BusinessArrivePO extends OrderPO implements Serializable{
 	
+	private String id;
 	private int idOfOrde;
 	private String data;
 	private String number;
 	private String Send;
-	private String state;
+	private String orderState;
+	private int exe=1;
+	private int state=0;
 
 	public BusinessArrivePO(int idOfOrder) {
 		super(idOfOrder);
 		this.idOfOrde=idOfOrde;
+	}
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+	
+	public int getExe() {
+		return exe;
+	}
+	public int getState() {
+		return state;
+	}
+
+	public void setState(int state) {
+		this.state = state;
 	}
 
 	public int getIdOfOrde() {
@@ -57,12 +78,12 @@ public class BusinessArrivePO extends OrderPO implements Serializable{
 		Send = send;
 	}
 
-	public String getState() {
-		return state;
+	public String getOrderState() {
+		return orderState;
 	}
 
-	public void setState(String state) {
-		this.state = state;
+	public void setOrderState(String orderState) {
+		this.orderState = orderState;
 	}
 
 }

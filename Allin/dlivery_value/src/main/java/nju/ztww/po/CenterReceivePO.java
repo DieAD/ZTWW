@@ -19,12 +19,19 @@ public class CenterReceivePO extends OrderPO implements Serializable{
 	private String transferNumber;
 	private String sendPlace;
 	private String state;
+	private String id;
 
 	public CenterReceivePO(int idOfOrder) {
 		super(idOfOrder);
 	    this.idOfOrde=	idOfOrder;
 	}
+	public String getId() {
+		return id;
+	}
 
+	public void setId(String id) {
+		this.id = id;
+	}
 	public int getIdOfOrde() {
 		return idOfOrde;
 	}
