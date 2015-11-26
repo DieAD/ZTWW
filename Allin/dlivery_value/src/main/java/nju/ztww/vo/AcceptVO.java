@@ -10,7 +10,7 @@ public class AcceptVO extends OrderVO{
 	public String courierID;
 	public int state;
 	public int exe;
-	
+	//
 	
 	
 	public AcceptVO(int idOfOrder){
