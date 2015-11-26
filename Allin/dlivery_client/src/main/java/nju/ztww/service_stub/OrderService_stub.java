@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import nju.ztww.common.ResultMessage;
 import nju.ztww.service.OrderService;
+import nju.ztww.vo.DeliverFeesVO;
 import nju.ztww.vo.OrderVO;
 import nju.ztww.vo.ReceiveVO;
 import nju.ztww.vo.StorageListVO;
@@ -75,6 +76,20 @@ public class OrderService_stub implements OrderService {
 
 
 	public String deleteOrder(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	public double getCost(DeliverFeesVO deliverFees) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
+
+
+	public String getOrderID() {
 		// TODO Auto-generated method stub
 		return null;
 	}

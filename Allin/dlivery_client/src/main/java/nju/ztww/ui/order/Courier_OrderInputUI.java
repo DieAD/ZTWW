@@ -18,6 +18,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
+import nju.ztww.service.OrderService;
 import nju.ztww.serviceimpl.OrderServiceImpl;
 import nju.ztww.ui.main.UserInfoUI;
 import nju.ztww.vo.DeliverFeesVO;
@@ -30,7 +31,7 @@ public class Courier_OrderInputUI extends JPanel{
 	JDialog addDlg ;
 	DefaultTableModel defaultTableModel;
 	JTable table = new JTable();
-	OrderServiceImpl orderServiceImpl = new OrderServiceImpl();
+	OrderService orderServiceImpl = new OrderServiceImpl();
 	
 	private JLabel numbersLabel = new JLabel();
 	private JTextField numbers = new JTextField();
@@ -48,14 +49,14 @@ public class Courier_OrderInputUI extends JPanel{
 	private JTextField receiver = new JTextField();
 	private JLabel placeLabel = new JLabel();
 	private JTextField place = new JTextField();
-	private JLabel receiverTELLabel = new JLabel();
-	private JTextField receiverTEL = new JTextField();
+//	private JLabel receiverTELLabel = new JLabel();
+//	private JTextField receiverTEL = new JTextField();
 	private JLabel receiverPhoneLabel = new JLabel();
 	private JTextField receiverPhone = new JTextField();
 	private JLabel goodInfoLabel = new JLabel();
 	private JTextField goodInfo = new JTextField();
 	private JLabel costLabel = new JLabel();
-	private JTextField cost = new JTextField();
+//	private JTextField cost = new JTextField();
 	private JLabel typeLabel = new JLabel();
 	private JTextField type = new JTextField();
 	private JLabel estTimeLabel = new JLabel();
@@ -69,14 +70,15 @@ public class Courier_OrderInputUI extends JPanel{
 	private String from ;
 	private String businID ;//= ID.substring(0, 8);
 
-	public void getFrom(String ID){
-		String place = ID.substring(0, 3);
-		if(place.equals("025")) this.from = "南京";
-		else if(place.equals("010")) this.from = "北京";
-		else if(place.equals("020")) this.from = "广州";
-		else if(place.equals("021")) this.from = "上海";
-		else System.out.println("无法获得当前城市！");
-	}
+//	public void getFrom(String ID){
+//		String place = ID.substring(0, 3);
+//		if(place.equals("025")) this.from = "北京";//这里！！！！！！！！！！！！！！！！！！！！
+//		else if(place.equals("010")) this.from = "北京";
+//		else if(place.equals("020")) this.from = "广州";
+//		else if(place.equals("021")) this.from = "上海";
+//		else System.out.println("无法获得当前城市！");
+//		
+//	}
 	
 	private JComboBox<String> places = new JComboBox<String>(pl);
 	private ArrayList<MailingVO> mailingOrders = new ArrayList<MailingVO>();
@@ -112,7 +114,7 @@ public class Courier_OrderInputUI extends JPanel{
 					addDlg.setSize(new Dimension(600, 450));
 		            addDlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
 		            sureButton.setText("确定");
-		            String  mailingOrderID = orderServiceImpl.getMailingOrderID();
+		            String  mailingOrderID = orderServiceImpl.getOrderID();
 		 
 		            numbersLabel.setBounds(50, 20, 150, 20);
 		            numbersLabel.setText("营业厅编号");
@@ -252,6 +254,7 @@ public class Courier_OrderInputUI extends JPanel{
 				orderServiceImpl.endSales(mailingOrders.get(i), 1);
 			}
 			mailingOrders.clear();
+			table.removeAll();
 		}
 	};
 	
@@ -263,7 +266,7 @@ public class Courier_OrderInputUI extends JPanel{
 			
 			String ID = UserInfoUI.getUserID();
 			String PLACE = ID.substring(0, 3);
-			if(PLACE.equals("025")) from = "南京";
+			if(PLACE.equals("025")) from = "北京";
 			else if(PLACE.equals("010")) from = "北京";
 			else if(PLACE.equals("020")) from = "广州";
 			else if(PLACE.equals("021")) from = "上海";

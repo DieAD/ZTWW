@@ -65,4 +65,10 @@ public interface OrderService {
 	 */
 	
 	public double getCost(DeliverFeesVO deliverFees);
+	
+	/*
+	 * 获得4位订单号
+	 */
+	
+	public String getOrderID();
 }
