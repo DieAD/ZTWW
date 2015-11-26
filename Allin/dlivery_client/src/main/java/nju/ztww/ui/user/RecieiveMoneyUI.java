@@ -35,6 +35,8 @@ public class RecieiveMoneyUI extends JPanel{
 	private  JLabel carNumber=new  JLabel("订单号");
 	private JTextField orderNumbertextArea=new JTextField("");
 	private  JLabel orderNumber=new  JLabel("备注");
+	
+	private JButton deleteButton=new JButton("删除");
 	private JButton addButton=new JButton();
 	private JButton addSendButton=new JButton("提交");
 	private JButton sureButton=new JButton("确定");
@@ -42,8 +44,8 @@ public class RecieiveMoneyUI extends JPanel{
 	private OrderServiceImpl orderServiceImpl=new OrderServiceImpl();
 	private ReceiveVO receiveVO;
 	
-	private ArrayList<String> allOrderNumber;
-	private ArrayList<ReceiveVO> allreceiveVO;
+	private ArrayList<String> allOrderNumber=new ArrayList<String>();
+	private ArrayList<ReceiveVO> allreceiveVO=new ArrayList<ReceiveVO>();
 	
 	DefaultTableModel defaultTableModel ;
 	 JTable table;
@@ -55,18 +57,19 @@ public class RecieiveMoneyUI extends JPanel{
 		ImageIcon add=new ImageIcon("photo/add.gif");
 		addButton.setBounds(500, 420, 110, 38);
 		addButton.setIcon(add);
-		
+		deleteButton.setBounds(100, 420, 110, 38);
+		deleteButton.setIcon(null);
 
 		addSendButton.setBounds(300, 420, 110, 38);
 		addSendButton.setIcon(null);
 		Object[][] playerInfo =
 			  {
-			    { "阿s呆", new Integer(69), new Integer(32), new Integer(98),  new Boolean(false) },
-			    { "阿呆", new Integer(82), new Integer(69), new Integer(128), new Boolean(true)}, 
+			    { "1511116666","阿s呆", new Integer(69), new Integer(32), new Integer(98),  new Boolean(false) },
+			    { "1511116666", "阿呆", new Integer(82), new Integer(69), new Integer(128), new Boolean(true)}, 
 			  };
 
 			  //字段名称
-			  String[] Names = { "收款日期", "收款金额", "收款快递员", "订单号", "备注" };
+			  String[] Names = {"ID", "收款日期", "收款金额", "收款快递员", "订单号", "备注" };
 
 			  
 			  //创建表格: 建立一个显示二维数组数据的表格，且可以显示列的名称。 
@@ -143,6 +146,16 @@ public class RecieiveMoneyUI extends JPanel{
 						}
 					}
 			  });
+			  deleteButton.addActionListener(new ActionListener(){
+
+					public void actionPerformed(ActionEvent e) {
+						String id=(String) table.getValueAt(table.getSelectedRow(), 0);
+						String result=orderServiceImpl.deleteOrder(id);
+						defaultTableModel.removeRow(table.getSelectedRow());
+						System.out.println(result);
+					}
+			  });
+			  this.add(deleteButton);
 			  this.add(addButton);
 			  this.add(addSendButton);
 			  this.setLayout(null);
@@ -172,7 +185,8 @@ public class RecieiveMoneyUI extends JPanel{
 //			 String result=orderServiceImpl.endSales(receiveVO, 5);
 //			 System.out.println(result);
 			//增加行
-			Vector<String> row = new Vector(5);
+			Vector<String> row = new Vector(6);
+			row.add(receiveVO.getId());
 			row.add(businesstextArea.getText());
 			row.add(cartextArea.getText());
 			row.add(arrivetextArea.getText());

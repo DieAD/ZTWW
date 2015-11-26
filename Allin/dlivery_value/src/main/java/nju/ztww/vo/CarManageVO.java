@@ -9,16 +9,37 @@ package nju.ztww.vo;
 public class CarManageVO extends OrderVO {
 
 	private int idOfOrde;
+	private String id;
 	private String carNumber;
 	private String plateNUmber;
 	private String serviceTime;
 	private String carState;
+	private int exe=0;
+	private int state=0;
 	
 	public CarManageVO(int idOfOrder) {
 		super(idOfOrder);
 		this.idOfOrde=idOfOrder;
 	}
+	
+	public int getExe() {
+		return exe;
+	}
 
+	public int getState() {
+		return state;
+	}
+
+	public void setState(int state) {
+		this.state = state;
+	}
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
 	public String getCarState() {
 		return carState;
 	}

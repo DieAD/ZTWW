@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Vector;
 
 import javax.swing.ImageIcon;
@@ -18,6 +19,7 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import nju.ztww.serviceimpl.OrderServiceImpl;
+import nju.ztww.vo.CarManageVO;
 import nju.ztww.vo.DriverMessageVO;
 import nju.ztww.vo.LoadingVO;
 
@@ -42,8 +44,13 @@ public class DriverManageUI extends JPanel{
 	private  JLabel orderNumber=new  JLabel("手机");
 	private JTextField deadlinetextArea=new JTextField("");
 	private  JLabel deadline=new  JLabel("行驶证期限");
+	
+	private ArrayList<DriverMessageVO> allDriverMessageVO=new ArrayList<DriverMessageVO>();
+	
+	private JButton deleteButton=new JButton("删除");
 	private JButton addButton=new JButton();
 	private JButton sureButton=new JButton("确定");
+	private JButton sendButton=new JButton("提交");
 	
 	private OrderServiceImpl orderServiceImpl=new OrderServiceImpl();
 	private DriverMessageVO driverMessageVO;
@@ -58,14 +65,18 @@ public class DriverManageUI extends JPanel{
 		ImageIcon add=new ImageIcon("photo/add.gif");
 		addButton.setBounds(500, 420, 110, 38);
 		addButton.setIcon(add);
+		deleteButton.setBounds(300, 420, 110, 38);
+		deleteButton.setIcon(null);
+		sendButton.setBounds(100, 420, 110, 38);
+		sendButton.setIcon(null);
 		Object[][] playerInfo =
 			  {
-			    { "阿s呆", new Integer(69), new Integer(32), new Integer(98),  new Boolean(false),new Boolean(false)  },
-			    { "阿呆", new Integer(82), new Integer(69), new Integer(128), new Boolean(true),new Boolean(false) }, 
+			    { "1511116666","阿s呆", new Integer(69), new Integer(32), new Integer(98),  new Boolean(false),new Boolean(false)  },
+			    {"1511116666", "阿呆", new Integer(82), new Integer(69), new Integer(128), new Boolean(true),new Boolean(false) }, 
 			  };
 
 			  //字段名称
-			  String[] Names = { "司机编号", "姓名", "出生日期", "身份证号", "手机 " ,"行驶证期限"};
+			  String[] Names = { "ID","司机编号", "姓名", "出生日期", "身份证号", "手机 " ,"行驶证期限"};
 
 			  
 			  //创建表格: 建立一个显示二维数组数据的表格，且可以显示列的名称。 
@@ -142,6 +153,26 @@ public class DriverManageUI extends JPanel{
 						dlg.setVisible(true);
 					}
 					});
+			  deleteButton.addActionListener(new ActionListener(){
+
+					public void actionPerformed(ActionEvent e) {
+						String id=(String) table.getValueAt(table.getSelectedRow(), 0);
+						String result=orderServiceImpl.deleteOrder(id);
+						defaultTableModel.removeRow(table.getSelectedRow());
+						System.out.println(result);
+					}
+			  });
+			  sendButton.addActionListener(new ActionListener(){
+
+					public void actionPerformed(ActionEvent e) {
+						for(DriverMessageVO DriverMessageVOTemp : allDriverMessageVO){
+							String result=orderServiceImpl.endSales(DriverMessageVOTemp, 10);
+							 System.out.println(result);
+						}
+					}
+			  });
+			  this.add(sendButton);
+			  this.add(deleteButton);
 			  this.add(addButton);
 			  this.setLayout(null);
 	}
@@ -164,11 +195,12 @@ public class DriverManageUI extends JPanel{
 			driverMessageVO.setDriverServiceDeadline(deadlinetextArea.getText());
 			driverMessageVO.setDriverSex(driverSex.getText());
 			driverMessageVO.setDriverTelephone(orderNumbertextArea.getText());
-			
-			 String result=orderServiceImpl.endSales(driverMessageVO, 10);
-			 System.out.println(result);
+			allDriverMessageVO.add(driverMessageVO);
+//			 String result=orderServiceImpl.endSales(driverMessageVO, 10);
+//			 System.out.println(result);
 			//增加行
-			Vector<String> row = new Vector(6);
+			Vector<String> row = new Vector(7);
+			row.add(driverMessageVO.getId());
 			row.add(businesstextArea.getText());
 			row.add(cartextArea.getText());
 			row.add(arrivetextArea.getText());

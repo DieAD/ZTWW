@@ -4,6 +4,7 @@ package nju.ztww.vo;
 public class DriverMessageVO extends OrderVO {
 
 	private int idOfOrde;
+	private String id;
 	private String driverNumber;
 	private String driverName;
 	private String driverBirthday;
@@ -11,9 +12,31 @@ public class DriverMessageVO extends OrderVO {
 	private String driverTelephone;
 	private String driverSex;
 	private String driverServiceDeadline;
+	private int exe=0;
+	private int state=0;
+	
 	public DriverMessageVO(int idOfOrder) {
 		super(idOfOrder);
 		this.idOfOrde=idOfOrder;
+	}
+
+	public int getExe() {
+		return exe;
+	}
+
+	public int getState() {
+		return state;
+	}
+
+	public void setState(int state) {
+		this.state = state;
+	}
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 	public int getIdOfOrde() {
 		return idOfOrde;

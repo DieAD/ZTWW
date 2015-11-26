@@ -10,14 +10,36 @@ package nju.ztww.vo;
 public class BusinessArriveVO extends OrderVO{
 	
 	private int idOfOrde;
+	private String id;
 	private String data;
 	private String number;
 	private String Send;
-	private String state;
+	private String orderState;
+	private int exe=1;
+	private int state=0;
 
 	public BusinessArriveVO(int idOfOrder) {
 		super(idOfOrder);
-		this.idOfOrde=idOfOrde;
+		this.idOfOrde=idOfOrder;
+	}
+
+	public int getExe() {
+		return exe;
+	}
+
+	public int getState() {
+		return state;
+	}
+
+	public void setState(int state) {
+		this.state = state;
+	}
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public int getIdOfOrde() {
@@ -52,12 +74,14 @@ public class BusinessArriveVO extends OrderVO{
 		Send = send;
 	}
 
-	public String getState() {
-		return state;
+	public String getOrderState() {
+		return orderState;
 	}
 
-	public void setState(String state) {
-		this.state = state;
+	public void setOrderState(String orderState) {
+		this.orderState = orderState;
 	}
+
+	
 
 }

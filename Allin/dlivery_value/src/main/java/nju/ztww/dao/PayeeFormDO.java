@@ -8,6 +8,15 @@ public class PayeeFormDO {
 	private double money;
 	private int exe;
 	private int state;
+	private String date;
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
 
 	public int getIndex() {
 		return index;

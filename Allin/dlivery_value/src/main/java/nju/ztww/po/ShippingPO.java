@@ -21,12 +21,19 @@ public class ShippingPO extends OrderPO implements Serializable{
 	private String YaYunName;
 	private ArrayList<Integer> orderNumber;
 	private int money;
+	private String id;
 
 	public ShippingPO(int idOfOrder) {
 		super(idOfOrder);
 		this.idOfOrde=idOfOrder;
 	}
+	public String getId() {
+		return id;
+	}
 
+	public void setId(String id) {
+		this.id = id;
+	}
 	public int getIdOfOrde() {
 		return idOfOrde;
 	}

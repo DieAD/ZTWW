@@ -12,8 +12,10 @@ import nju.ztww.common.OrderInfo;
 
 public class MailingVO extends OrderVO{
 	
-	private int idOfOrder; //=1
-	
+
+	private int idOfOrder;
+	private String id;
+
 	private String businID;
 	private String sendOrga;
 	private String sendTEL;
@@ -21,7 +23,7 @@ public class MailingVO extends OrderVO{
 	private int state;
 	private double packCost;
 	private int exe;
-	
+
 	private String sendName;
 	private String sendLocation;
 	private String sendTelephone;
@@ -100,6 +102,13 @@ public class MailingVO extends OrderVO{
 		this.idOfOrder=idOfOrde;
 	}
 
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
 	public String getArriveDate() {
 		return arriveDate;
 	}

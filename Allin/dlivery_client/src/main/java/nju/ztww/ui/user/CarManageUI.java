@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Vector;
 
 import javax.swing.ImageIcon;
@@ -39,6 +40,11 @@ public class CarManageUI extends JPanel{
 	private  JLabel carNumber=new  JLabel("服役时间");
 	private JTextField orderNumbertextArea=new JTextField("");
 	private  JLabel orderNumber=new  JLabel("备注");
+	
+	private ArrayList<CarManageVO> allCarManageVO=new ArrayList<CarManageVO>();
+	
+	private JButton sendButton=new JButton("提交");
+	private JButton deleteButton=new JButton("删除");
 	private JButton addButton=new JButton();
 	private JButton sureButton=new JButton("确定");
 	
@@ -55,14 +61,18 @@ public class CarManageUI extends JPanel{
 		ImageIcon add=new ImageIcon("photo/add.gif");
 		addButton.setBounds(500, 420, 110, 38);
 		addButton.setIcon(add);
+		deleteButton.setBounds(300, 420, 110, 38);
+		deleteButton.setIcon(null);
+		sendButton.setBounds(100, 420, 110, 38);
+		sendButton.setIcon(null);
 		Object[][] playerInfo =
 			  {
-			    { "阿s呆", new Integer(69), new Integer(32), new Integer(98),  new Boolean(false) },
-			    { "阿呆", new Integer(82), new Integer(69), new Integer(128), new Boolean(true)}, 
+			    {"1511116666", "阿s呆", new Integer(69), new Integer(32), new Integer(98),  new Boolean(false) },
+			    { "1511116666","阿呆", new Integer(82), new Integer(69), new Integer(128), new Boolean(true)}, 
 			  };
 
 			  //字段名称
-			  String[] Names = { "车辆代号", "车牌号", "车辆状态", "服役时间", "备注" };
+			  String[] Names = { "ID","车辆代号", "车牌号", "车辆状态", "服役时间", "备注" };
 
 			  
 			  //创建表格: 建立一个显示二维数组数据的表格，且可以显示列的名称。 
@@ -130,6 +140,26 @@ public class CarManageUI extends JPanel{
 						dlg.setVisible(true);
 					}
 					});
+			  deleteButton.addActionListener(new ActionListener(){
+
+					public void actionPerformed(ActionEvent e) {
+						String id=(String) table.getValueAt(table.getSelectedRow(), 0);
+						String result=orderServiceImpl.deleteOrder(id);
+						defaultTableModel.removeRow(table.getSelectedRow());
+						System.out.println(result);
+					}
+			  });
+			  sendButton.addActionListener(new ActionListener(){
+
+					public void actionPerformed(ActionEvent e) {
+						for(CarManageVO carManageVOtemp : allCarManageVO){
+							String result=orderServiceImpl.endSales(carManageVOtemp, 9);
+							 System.out.println(result);
+						}
+					}
+			  });
+			  this.add(sendButton);
+			  this.add(deleteButton);
 			  this.add(addButton);
 			  this.setLayout(null);
 	}
@@ -149,11 +179,12 @@ public class CarManageUI extends JPanel{
 			carManageVO.setCarState(arrivetextArea.getText());
 			carManageVO.setPlateNUmber(cartextArea.getText());
 			carManageVO.setServiceTime(carNumbertextArea.getText());
-			
-			 String result=orderServiceImpl.endSales(carManageVO, 9);
-			 System.out.println(result);
+			allCarManageVO.add(carManageVO);
+//			 String result=orderServiceImpl.endSales(carManageVO, 9);
+//			 System.out.println(result);
 			//增加行
-			Vector<String> row = new Vector(5);
+			Vector<String> row = new Vector(6);
+			row.add(carManageVO.getId());
 			row.add(businesstextArea.getText());
 			row.add(cartextArea.getText());
 			row.add(arrivetextArea.getText());

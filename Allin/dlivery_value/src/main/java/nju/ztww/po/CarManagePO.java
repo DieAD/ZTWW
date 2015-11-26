@@ -12,12 +12,32 @@ public class CarManagePO extends OrderPO {
 	private String plateNUmber;
 	private String serviceTime;
 	private String carState;
+	private int exe=0;
+	private int state=0;
+	private String id;
 	
 	public CarManagePO(int idOfOrder) {
 		super(idOfOrder);
 		this.idOfOrde=idOfOrder;
 	}
+	public String getId() {
+		return id;
+	}
 
+	public void setId(String id) {
+		this.id = id;
+	}
+	public int getExe() {
+		return exe;
+	}
+
+	public int getState() {
+		return state;
+	}
+
+	public void setState(int state) {
+		this.state = state;
+	}
 	public String getCarState() {
 		return carState;
 	}
