@@ -21,10 +21,9 @@ import nju.ztww.serviceimpl.StorageOutOfListDataServiceImpl;
 // 实现入库data层
 public class StorageListIn {
 	public DBForEntryForm dbforentryform=new DBForEntryForm();
-	public DBForStock  dbforstock=new DBForStock();
-	public DBHelper dbhelper=new DBHelper();
+	
 	ArrayList<EntryFormDO> entryfromdolist =new ArrayList<EntryFormDO>();
-    ArrayList<StockDO>stockdolist=new ArrayList<StockDO>();
+   
 public void insert(OrderPO storagelinein){
 		
 		FileWriter write;
@@ -51,7 +50,7 @@ public void insertin(ArrayList<StorageListLineofInPO> arraylist ,String idofcent
 	for(int i=0;i<arraylist.size();i++){
 		System.out.println(arraylist.get(i).getData()+" ");
 		entryfromdolist.add(arraylist.get(i).changetoIndo());
-		stockdolist.add(arraylist.get(i).changetoSdo());
+		
 	}
 	dbforentryform.init();
 	

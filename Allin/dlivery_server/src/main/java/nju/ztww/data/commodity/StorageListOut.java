@@ -40,8 +40,10 @@ public class StorageListOut {
 		// TODO Auto-generated method stub
 		DBForOutStockForm dbforoutstockform=new  DBForOutStockForm();
 		ArrayList<OutStockFormDO>outstock=new ArrayList<OutStockFormDO>();
+	
 		dbforoutstockform.init();
 		for(int i=0;i<arraylistout.size();i++){
+			System.out.println(arraylistout.get(i).getData()+" ");
 			outstock.add(arraylistout.get(i).changetodo());
 		}
 		dbforoutstockform.insert(outstock, "outstockform");

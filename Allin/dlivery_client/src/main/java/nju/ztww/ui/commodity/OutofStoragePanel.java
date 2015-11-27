@@ -167,8 +167,8 @@ ActionListener listener2=new ActionListener(){
 		String idofcenter="0001";
 		// TODO Auto-generated method stub
 	 commodity.addoutOrder(arraylist,idofcenter);
-	 defaultTableModel.setRowCount(0);
 	 arraylist.clear();
+	 defaultTableModel.setRowCount(0);
 	 submitlabel.setVisible(true);
 	 
 	}
@@ -178,8 +178,9 @@ ActionListener listener3=new ActionListener(){
 	//需要界面提供给我idofcenter
 		public void actionPerformed(ActionEvent e) {
 			if(table.getSelectedRow()>=0){
-		defaultTableModel.removeRow(table.getSelectedRow());
 		arraylist.remove(table.getSelectedRow());
+		defaultTableModel.removeRow(table.getSelectedRow());
+		
 			}
 		}
 		

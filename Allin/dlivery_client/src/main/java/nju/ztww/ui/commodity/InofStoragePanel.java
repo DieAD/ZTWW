@@ -184,8 +184,9 @@ public class InofStoragePanel extends JPanel{
 				String idofcenter="0001";
 				// TODO Auto-generated method stub
 				commodity.addinOrder(arraylist,idofcenter);
-				defaultTableModel.setRowCount(0);
 				arraylist.clear();
+				defaultTableModel.setRowCount(0);
+				
 			}
 			
 		};
@@ -195,8 +196,9 @@ public class InofStoragePanel extends JPanel{
 					System.out.println(table.getSelectedRow());
 				if(table.getSelectedRow()>=0){
 					// TODO Auto-generated method stub
+					arraylist.remove(table.getSelectedRow());
 				defaultTableModel.removeRow(table.getSelectedRow());
-				arraylist.remove(table.getSelectedRow()-1);
+				
 				}
 				}
 				

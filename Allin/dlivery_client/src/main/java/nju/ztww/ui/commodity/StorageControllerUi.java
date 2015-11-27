@@ -22,6 +22,7 @@ public class StorageControllerUi implements ActionListener {
      for(JPanel e:arraylist){
     	 e.setVisible(false);
      }
+    
      jpanel.setVisible(true);
      
 	}

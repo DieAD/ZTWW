@@ -52,6 +52,7 @@ public class StorageOutOfListDataServiceImpl extends UnicastRemoteObject impleme
 	public void insertOut(ArrayList<StorageListLineofOutPO> arraylist,String idofcenter)
 			throws RemoteException {
 		// TODO Auto-generated method stub
+		System.out.println("在服务器");
 		StorageListOut storagelistlineout=new StorageListOut();
 		storagelistlineout.insertout(arraylist,idofcenter);
 		

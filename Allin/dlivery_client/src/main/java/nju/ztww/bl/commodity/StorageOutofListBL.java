@@ -19,7 +19,7 @@ public class StorageOutofListBL {
     	
     	commoditydata = (CommodityDataService)rhelper.findService("CommodityDataServiceOut");
     	commoditydata.insertOut(outList, idofcenter);
-    	
+    	System.out.println("到了");
     }
 
 	public void addorder(StorageListLineofOutPO storagelistlinepo) {
