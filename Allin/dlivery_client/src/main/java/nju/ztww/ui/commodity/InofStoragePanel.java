@@ -71,8 +71,7 @@ public class InofStoragePanel extends JPanel{
 		// TODO Auto-generated constructor stub
 		   Object[][] playerInfo =
 	{
-		{ "0000000003", "2015年11月1日", "南京", "A",14,2,4 },
-		{ "0000000004", "2015年11月2日", "上海", "B", 15 ,3,6}, 
+		
 				  };
 
 		//字段名称
@@ -185,16 +184,22 @@ public class InofStoragePanel extends JPanel{
 				String idofcenter="0001";
 				// TODO Auto-generated method stub
 				commodity.addinOrder(arraylist,idofcenter);
+				arraylist.clear();
+				defaultTableModel.setRowCount(0);
+				
 			}
 			
 		};
 	ActionListener listener3=new ActionListener(){
 			//需要界面提供给我idofcenter
 				public void actionPerformed(ActionEvent e) {
-				String idofcenter="00001";
-				String idofOrder="sss";
+					System.out.println(table.getSelectedRow());
+				if(table.getSelectedRow()>=0){
 					// TODO Auto-generated method stub
-				commodity.deleteOrder(idofOrder, idofcenter);
+					arraylist.remove(table.getSelectedRow());
+				defaultTableModel.removeRow(table.getSelectedRow());
+				
+				}
 				}
 				
 			};	

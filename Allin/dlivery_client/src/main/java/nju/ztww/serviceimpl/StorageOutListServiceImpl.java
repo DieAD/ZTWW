@@ -39,6 +39,9 @@ public class StorageOutListServiceImpl implements CommodityService {
 
 	public void deleteOrder(String idofOrder,String idofcenter) {
 		// TODO Auto-generated method stub
+		StorageOutofListBL storageoutlist=new StorageOutofListBL();
+		storageoutlist.delete(idofOrder,idofcenter);
+		
 
 	}
 
@@ -56,12 +59,12 @@ public class StorageOutListServiceImpl implements CommodityService {
 
 	public void addoutOrder(ArrayList<StorageListLineofOutVO> arraylist,String idofcneter) {
 		// TODO Auto-generated method stub
-		
+		System.out.println("在impl");
 			ArrayList<StorageListLineofOutPO>arraylistinpo=new ArrayList<StorageListLineofOutPO>();
 			for(int i=0;i< arraylist.size();i++){
 				arraylistinpo.add(arraylist.get(i).changetopo());
 			}
-			StorageListOutbeforecheckBL storagelistoutbl=new StorageListOutbeforecheckBL(); 
+			StorageOutofListBL storagelistoutbl=new StorageOutofListBL(); 
 			storagelistoutbl.addorder(arraylistinpo,idofcneter);
 	}
 

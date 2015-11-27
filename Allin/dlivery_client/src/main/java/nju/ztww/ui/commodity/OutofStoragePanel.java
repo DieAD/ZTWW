@@ -66,6 +66,8 @@ public class OutofStoragePanel extends JPanel {
 	   this.add(addbutton);
 	   this.add(submitofbutton);
 	   this.add(submitlabel);
+	   this.add(deletebutton);
+	   deletebutton.addActionListener(listener3);
 	   submitlabel.setVisible(false);
 	// TODO Auto-generated constructor stub
 	   Object[][] playerInfo =
@@ -165,6 +167,8 @@ ActionListener listener2=new ActionListener(){
 		String idofcenter="0001";
 		// TODO Auto-generated method stub
 	 commodity.addoutOrder(arraylist,idofcenter);
+	 arraylist.clear();
+	 defaultTableModel.setRowCount(0);
 	 submitlabel.setVisible(true);
 	 
 	}
@@ -173,12 +177,11 @@ ActionListener listener2=new ActionListener(){
 ActionListener listener3=new ActionListener(){
 	//需要界面提供给我idofcenter
 		public void actionPerformed(ActionEvent e) {
-			String idofcenter="0001";
-			String idoforder="1023";
-			// TODO Auto-generated method stub
-		 commodity.deleteOrder(idoforder,idofcenter);
-		 submitlabel.setVisible(true);
-		 
+			if(table.getSelectedRow()>=0){
+		arraylist.remove(table.getSelectedRow());
+		defaultTableModel.removeRow(table.getSelectedRow());
+		
+			}
 		}
 		
 	};
