@@ -22,6 +22,8 @@ public class StorageCheckPanel extends JPanel {
  public JLabel labelout=new JLabel("出库信息");
  public JLabel labelinnumber=new JLabel("入库数量");
  public JLabel labeloutnumber=new JLabel("出库数量");
+ 
+ 
  public JTextField  textfield1=new JTextField(10);
  public JTextField  textfield2=new JTextField(10);
  public JTextField  textfieldin=new JTextField(5);
@@ -33,6 +35,7 @@ public class StorageCheckPanel extends JPanel {
  public ArrayList<StorageListLineofInVO>arraylistin;//盘点时所需的入库信息
  public ArrayList<StorageListLineofOutVO>arraylistout;
  public CommodityListService commoditylistservice=new CommodityListServiceImpl();
+ 
  public JTable table1;
  public JTable table2;
  public StorageCheckPanel() {
@@ -119,7 +122,7 @@ public class StorageCheckPanel extends JPanel {
    public void actionPerformed(ActionEvent e) {
 	   arraylistin=commoditylistservice.getInListbytime(textfieldBegin.getText(), textfieldEnd.getText());
 	   for(int i=0;i<arraylistin.size();i++){
-			Vector<String> row = new Vector(7);
+			Vector<String> row = new Vector<String>(7);
 			row.add(arraylistin.get(i).getId());
 			row.add(arraylistin.get(i).getData());
 			row.add(arraylistin.get(i).getDestination());
@@ -133,7 +136,7 @@ public class StorageCheckPanel extends JPanel {
 	   textfieldin.setText(String.valueOf(arraylistin.size()));
 	   arraylistout=commoditylistservice.getOutListbytime(textfieldBegin.getText(), textfieldEnd.getText());
 	   for(int i=0;i<arraylistout.size();i++){
-		   Vector<String> row = new Vector(5);
+		   Vector<String> row = new Vector<String>(5);
 		   row.add(arraylistout.get(i).getId());
 		   row.add(arraylistout.get(i).getData());
 		   row.add(arraylistout.get(i).getDestination());

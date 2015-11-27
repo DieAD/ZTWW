@@ -11,7 +11,7 @@ import nju.ztww.po.StorageListLineofOutPO;
 import nju.ztww.service.CommodityDataService;
 import nju.ztww.service.CommodityService;
 import nju.ztww.vo.OrderVO;
-import nju.ztww.vo.StorageListLineVO;
+
 import nju.ztww.vo.StorageListLineofInVO;
 import nju.ztww.vo.StorageListLineofOutVO;
 import nju.ztww.vo.StorageListVO;
@@ -19,16 +19,7 @@ import nju.ztww.vo.StorageListVO;
 public class CommodityServiceImp implements CommodityService {
   
 //根据 中转中心的id 和 时间来获得库存信息	
-public ArrayList<StorageListLineVO> getList(String idOfCenter) {
-	// TODO Auto-generated method stub
-   StorageListBL storagelistbl=new  StorageListBL();
-   ArrayList<StorageListLineVO>arraylistvo= new  ArrayList<StorageListLineVO>();
-   ArrayList<StorageListLinePO>arraylistpo=storagelistbl.getList(idOfCenter);
-   for(int i=0;i<arraylistpo.size();i++){
-	   arraylistvo.add(arraylistpo.get(i).changetovo());
-   }
-	return arraylistvo;
-}
+
 
 public OrderVO getOrder(String idOfOrder) {
 	// TODO Auto-generated method stub

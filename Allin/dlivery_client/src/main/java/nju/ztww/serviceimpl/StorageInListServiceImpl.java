@@ -9,18 +9,14 @@ import nju.ztww.po.StorageListLineofInPO;
 import nju.ztww.po.StorageListLineofOutPO;
 import nju.ztww.service.CommodityService;
 import nju.ztww.vo.OrderVO;
-import nju.ztww.vo.StorageListLineVO;
+
 import nju.ztww.vo.StorageListLineofInVO;
 import nju.ztww.vo.StorageListLineofOutVO;
 import nju.ztww.vo.StorageListVO;
 //WJ 主要用来实现入库单的增加数据的作用
 public class StorageInListServiceImpl implements CommodityService {
 
-	public ArrayList<StorageListLineVO> getList(String idOfCenter) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	
 	public OrderVO getOrder(String idOfOrder) {
 		// TODO Auto-generated method stub
 		return null;
@@ -52,10 +48,6 @@ public class StorageInListServiceImpl implements CommodityService {
 		return false;
 	}
 
-	public ArrayList<StorageListLineVO> getList(String idOfCenter, String time) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	public void addOrder(ArrayList<StorageListLineofOutVO> arraylist) {
 		// TODO Auto-generated method stub
