@@ -167,6 +167,8 @@ ActionListener listener2=new ActionListener(){
 		String idofcenter="0001";
 		// TODO Auto-generated method stub
 	 commodity.addoutOrder(arraylist,idofcenter);
+	 defaultTableModel.setRowCount(0);
+	 arraylist.clear();
 	 submitlabel.setVisible(true);
 	 
 	}
@@ -175,12 +177,10 @@ ActionListener listener2=new ActionListener(){
 ActionListener listener3=new ActionListener(){
 	//需要界面提供给我idofcenter
 		public void actionPerformed(ActionEvent e) {
-			String idofcenter="0001";
-			String idoforder="1023";
-			// TODO Auto-generated method stub
-		 commodity.deleteOrder(idoforder,idofcenter);
-		 submitlabel.setVisible(true);
-		 
+			if(table.getSelectedRow()>=0){
+		defaultTableModel.removeRow(table.getSelectedRow());
+		arraylist.remove(table.getSelectedRow());
+			}
 		}
 		
 	};

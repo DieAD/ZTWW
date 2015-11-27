@@ -39,6 +39,8 @@ public class StorageOutListServiceImpl implements CommodityService {
 
 	public void deleteOrder(String idofOrder,String idofcenter) {
 		// TODO Auto-generated method stub
+		StorageOutofListBL storageoutlist=new StorageOutofListBL();
+		storageoutlist.delete(idofOrder,idofcenter);
 
 	}
 
