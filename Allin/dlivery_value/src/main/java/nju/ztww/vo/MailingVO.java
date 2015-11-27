@@ -21,7 +21,7 @@ public class MailingVO extends OrderVO{
 	private String sendTEL;
 	private int time;
 	private int state;
-	private double packCost;
+//	private double packCost;
 	private int exe;
 
 	private String sendName;
@@ -84,14 +84,14 @@ public class MailingVO extends OrderVO{
 		return exe;
 	}
 	
-	public void setPackCost(double packCost){
-		this.packCost = packCost;
-	}
-	
-	public double getPackCost(){
-		return packCost;
-	}
-	
+//	public void setPackCost(double packCost){
+//		this.packCost = packCost;
+//	}
+//	
+//	public double getPackCost(){
+//		return packCost;
+//	}
+//	
 	
 	
 	
