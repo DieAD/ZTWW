@@ -11,6 +11,7 @@ package nju.ztww.serviceimpl;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import nju.ztww.bl.order.AcceptOrderBl;
 import nju.ztww.bl.order.BusinessArriveOrderBl;
 import nju.ztww.bl.order.CarManageBl;
 import nju.ztww.bl.order.CenterReceiveOrderBl;
@@ -24,6 +25,7 @@ import nju.ztww.bl.order.SendOrderBl;
 import nju.ztww.bl.order.ShipingOrderBl;
 import nju.ztww.bl.order.TransferOrderBl;
 import nju.ztww.service.OrderService;
+import nju.ztww.vo.AcceptVO;
 import nju.ztww.vo.BusinessArriveVO;
 import nju.ztww.vo.CarManageVO;
 import nju.ztww.vo.CenterReceiveVO;
@@ -51,6 +53,7 @@ public class OrderServiceImpl implements OrderService{
 	DriverMessageBl driverMessageBl=new DriverMessageBl();
 	FindOrderIDBl findOrderIDBl=new FindOrderIDBl();
 	DeleteOrderBl deleteOrderBl=new DeleteOrderBl();
+	AcceptOrderBl acceptOrderBl = new AcceptOrderBl();
 	
 	
 	
@@ -59,59 +62,66 @@ public class OrderServiceImpl implements OrderService{
 	}
 
 	public OrderVO getOrder(int number) {
+		String date = getDate();
 		String id=null;
 		switch(number){
 		case 1:
 			MailingVO mainingVO=new MailingVO(1);
 			id=findOrderIDBl.findID();
-			mainingVO.setId("151111"+id);
+			mainingVO.setId(date+id);
 		    return mainingVO;
 		case 2:
 			BusinessArriveVO businessArriveVO=new BusinessArriveVO(2);
 			id=findOrderIDBl.findID();
-			businessArriveVO.setId("151111"+id);
+			businessArriveVO.setId(date+id);
 		    return businessArriveVO;
 		case 3:
 			CenterReceiveVO centerReceiveVO=new CenterReceiveVO(3);
 			id=findOrderIDBl.findID();
-			centerReceiveVO.setId("151111"+id);
+			centerReceiveVO.setId(date+id);
 		    return centerReceiveVO;
 		case 4:
 			LoadingVO loadingVO=new LoadingVO(4);
 		    id=findOrderIDBl.findID();
-		    loadingVO.setId("151111"+id);
+		    loadingVO.setId(date+id);
 			return loadingVO;
 		case 5:
 			ReceiveVO receiveVO=new ReceiveVO(5);
 			 id=findOrderIDBl.findID();
-			 receiveVO.setId("151111"+id);
+			 receiveVO.setId(date+id);
 			return receiveVO;
 		case 6:
 			SendVO sendVO=new SendVO(6);
 			 id=findOrderIDBl.findID();
-			 sendVO.setId("151111"+id);
+			 sendVO.setId(date+id);
 			return sendVO;
 		case 7:
 			ShippingVO shippingVO=new ShippingVO(7);
 			id=findOrderIDBl.findID();
-			shippingVO.setId("151111"+id);
+			shippingVO.setId(date+id);
 			return shippingVO;
 		case 8:
 			TransferVO transferVO=new TransferVO(8);
 			 id=findOrderIDBl.findID();
-			 transferVO.setId("151111"+id);
+			 transferVO.setId(date+id);
 			return transferVO;
 		case 9:
 			CarManageVO carManageVO=new CarManageVO(9);
 			 id=findOrderIDBl.findID();
-			 carManageVO.setId("151111"+id);
+			 carManageVO.setId(date+id);
 			return carManageVO;
 		case 10:
 			DriverMessageVO driverMessageVO=new DriverMessageVO(10);
 			 id=findOrderIDBl.findID();
-			 driverMessageVO.setId("151111"+id);
+			 driverMessageVO.setId(date+id);
 			return driverMessageVO;
+		case 11:
+			AcceptVO acceptVO = new AcceptVO(11);
+			id = findOrderIDBl.findID();
+			acceptVO.setAcceptID(date+id);
+			return acceptVO;
 		}
+		
 		return null;
 	}
 
@@ -158,7 +168,12 @@ public class OrderServiceImpl implements OrderService{
 			DriverMessageVO driverMessageVO=(DriverMessageVO) order;
 			result=driverMessageBl.handleVO(driverMessageVO);
 			return result;
+		case 11:
+			AcceptVO acceptVO = (AcceptVO) order;
+			result = acceptOrderBl.handleVO(acceptVO);
+			return result;
 		}
+		
 		return null;
 	}
 
@@ -211,12 +226,12 @@ public class OrderServiceImpl implements OrderService{
 		return OrderID;
 	}
 	
-//	public static String getDate(){
-//		Date now = new Date(); 
-//		SimpleDateFormat matter = new SimpleDateFormat("yyMMdd");
-//		String date = matter.format(now);
-//		return date;
-//	}
+	public static String getDate(){
+		Date now = new Date(); 
+		SimpleDateFormat matter = new SimpleDateFormat("yyMMdd");
+		String date = matter.format(now);
+		return date;
+	}
 
 	public String deleteOrder(String id) {
 		String result=deleteOrderBl.delete(id);

@@ -1,12 +1,16 @@
 package nju.ztww.data.order;
 
+import java.util.ArrayList;
+
 import nju.ztww.DBHelper.DBForDCForm;
 import nju.ztww.dao.DCFormDO;
+import nju.ztww.dao.MailingFormDO;
 import nju.ztww.po.PriceDataPO;
 
 public class MailingOrderData {
 	DBForDCForm dbForDCForm ;
-	
+	private ArrayList<MailingFormDO> list = new ArrayList<MailingFormDO>();
+	private MailingFormDO mailingFormDO;
 	public PriceDataPO getPriceInfo(String place1, String place2, String type){
 		PriceDataPO priceData;
 		dbForDCForm = new DBForDCForm();
@@ -27,4 +31,6 @@ public class MailingOrderData {
 		dbForDCForm.close();
 		return priceData;
 	}
+	
+	
 }

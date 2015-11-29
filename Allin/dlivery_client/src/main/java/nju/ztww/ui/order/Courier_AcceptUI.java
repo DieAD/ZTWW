@@ -3,7 +3,9 @@ package nju.ztww.ui.order;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Vector;
 
 import javax.swing.ImageIcon;
@@ -122,6 +124,8 @@ public class Courier_AcceptUI extends JPanel{
 		            timeLabel.setBounds(50, 140, 150, 20);
 		            timeLabel.setText("收件日期");
 		            time.setBounds(140, 140, 150, 20);
+		            timer = getDate();
+		            time.setText(timer);
 		            courierLabel.setBounds(50, 180, 150, 20);
 		            courierLabel.setText("快递员编号");
 		            courier.setBounds(140, 180, 150, 20);
@@ -219,7 +223,7 @@ public class Courier_AcceptUI extends JPanel{
 			// TODO Auto-generated method stub
 			int selected = table.getSelectedRow();
 			de.removeRow(selected);
-			acceptOrders.remove(selected);
+			acceptOrders.remove(selected-1);
 		}
 	};
 	
@@ -239,6 +243,9 @@ public class Courier_AcceptUI extends JPanel{
 	
 	
 	public static String getDate(){
-		return null;
+		Date now = new Date();
+		SimpleDateFormat matter= new SimpleDateFormat("yyyy/MM/dd/HH:mm");
+		String date = matter.format(now);
+		return date;
 	}
 }
