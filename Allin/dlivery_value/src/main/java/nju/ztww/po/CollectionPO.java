@@ -1,7 +1,13 @@
 package nju.ztww.po;
 
-public class CollectionPO {
-    public String getDate() {
+import java.io.Serializable;
+
+public class CollectionPO implements Serializable{
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	public String getDate() {
 		return date;
 	}
 	public void setDate(String date) {

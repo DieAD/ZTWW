@@ -1,8 +1,10 @@
 package nju.ztww.service;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import nju.ztww.po.AccountPO;
+import nju.ztww.po.CollectionPO;
 import nju.ztww.po.MemberPO;
 import nju.ztww.po.OrderPO;
 
@@ -51,7 +53,10 @@ public interface FinanceDataService {
 			 */
 			public double calcuIncome(ArrayList everyList);
 			
-			
+			/*
+			 * 	按照日期和营业厅查找收款单
+			 */
+			public ArrayList<CollectionPO> queryCollection(String querydate,String queryholl)throws RemoteException;
 		/*
 		 * 在数据库中更改信息？？
 		 */

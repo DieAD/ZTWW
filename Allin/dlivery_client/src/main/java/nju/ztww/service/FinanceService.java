@@ -28,7 +28,7 @@ public interface FinanceService {
 	 */
 	public ArrayList<OrderVO> viewList();
 	
-	public CollectionVO queryCollection(String querydate,String queryholl);
+	public ArrayList<CollectionVO> queryCollection(String querydate,String queryholl);
 	
 	
 }

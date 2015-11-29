@@ -6,7 +6,7 @@ import nju.ztww.DBHelper.DBForPayeeForm;
 import nju.ztww.dao.PayeeFormDO;
 import nju.ztww.po.CollectionPO;
 
-public class FinaceData {
+public class FinanceData {
       DBForPayeeForm db = new DBForPayeeForm();
       
       

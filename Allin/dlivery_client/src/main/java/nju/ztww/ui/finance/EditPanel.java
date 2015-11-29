@@ -12,8 +12,8 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 public class EditPanel extends JPanel {
-       protected DefaultTableModel tableModel; 
-       protected JTable editTable;
+       public DefaultTableModel tableModel; 
+       public JTable editTable;
        protected String[]  columnNames ={"账户名称","账户余额"};
        protected Object[][] initInfo = {{new String("000000001"),new Double(1000.23)}};
        protected int nodeHeight =30;

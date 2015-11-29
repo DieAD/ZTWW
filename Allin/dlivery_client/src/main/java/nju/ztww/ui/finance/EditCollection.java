@@ -3,14 +3,20 @@ package nju.ztww.ui.finance;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import nju.ztww.service.FinanceService;
+import nju.ztww.serviceimpl.FinanceServiceImpl;
+import nju.ztww.vo.CollectionVO;
+
 public class EditCollection extends EditPanel{
 	 private  Header header = new Header();
+	 private FinanceService financeService= new FinanceServiceImpl();
 	 
      public EditCollection(String[] strings, Object[][] objects) {
 		// TODO Auto-generated constructor stub
@@ -51,7 +57,11 @@ public class EditCollection extends EditPanel{
     				// TODO Auto-generated method stub
     				String querydate = text1.getText();
     				String queryholl = text2.getText();
-    				tableModel.addRow(new Object[]{new String("2015/11"),new Integer(100),new String("000002"),new String("00000001")});
+    				ArrayList<CollectionVO> listVO = financeService.queryCollection(querydate,queryholl);
+    				for(CollectionVO vo : listVO){
+    					tableModel.addRow(new Object[]{new String(vo.date),new Double(vo.money),new String(vo.courierid),new String(vo.orderid)});
+    				}
+    				//tableModel.addRow(new Object[]{new String("2015/11"),new Integer(100),new String("000002"),new String("00000001")});
     				
     			}
     	    	
