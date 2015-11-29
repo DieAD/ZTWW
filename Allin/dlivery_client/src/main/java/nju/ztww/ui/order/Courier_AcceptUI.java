@@ -51,6 +51,7 @@ public class Courier_AcceptUI extends JPanel{
 	
 	private String businID;
 	private ArrayList<AcceptVO> acceptOrders = new ArrayList<AcceptVO>();
+	private String timer;
 	
 	java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit()
 			.getScreenSize();
@@ -235,4 +236,9 @@ public class Courier_AcceptUI extends JPanel{
 			table.removeAll();
 		}
 	};
+	
+	
+	public static String getDate(){
+		return null;
+	}
 }
