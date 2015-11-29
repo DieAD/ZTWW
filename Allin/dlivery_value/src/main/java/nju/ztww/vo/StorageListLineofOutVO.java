@@ -51,7 +51,7 @@ public void setNumber(String number) {
 }
 //将此vo装换成po
 public StorageListLineofOutPO changetopo(){
-	return new StorageListLineofOutPO(id,data,way,number);
+	return new StorageListLineofOutPO(id,data,way,number,destination);
 }
  
  

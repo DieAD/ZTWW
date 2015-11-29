@@ -17,17 +17,20 @@ public class StorageInofListBL {
     
     
     //bl这边执行一个方法  data需要将库存列表信息增加，入库信息列表增加
-   public void addorder(StorageListodInPO Inlist,String idofcenter){
-    	if(Inlist.isIscheck()){
-    		System.out.println("zai bl");
-    	commoditydata = (CommodityDataService)rhelper.findService("CommodityDataService");
-    	commoditydata.insertIn(Inlist.getArraylist(),idofcenter);
-    	}
+   public void addorder(ArrayList<StorageListLineofInPO> arraylistinpo,String idofcenter){
+	   commoditydata = (CommodityDataService)rhelper.findService("CommodityDataService");
+       commoditydata.insertIn(arraylistinpo,idofcenter);
+    	  
+    
     }
 
 	public void addorder(StorageListLineofInPO storagelistlinepo) {
 		// TODO Auto-generated method stub
 		
+	}
+	public void deleteOrder(String idoforder,String idofcenter){
+		commoditydata = (CommodityDataService)rhelper.findService("CommodityDataService");
+		commoditydata.delete(idoforder,idofcenter);
 	}
 	//装了所有的入库单信息
    

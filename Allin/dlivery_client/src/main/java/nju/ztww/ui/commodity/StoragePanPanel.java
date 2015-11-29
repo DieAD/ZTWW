@@ -23,21 +23,23 @@ import nju.ztww.service.CommodityService;
 import nju.ztww.serviceimpl.CommodityListServiceImpl;
 import nju.ztww.serviceimpl.CommodityServiceImp;
 import nju.ztww.vo.OrderVO;
-import nju.ztww.vo.StorageListLineVO;
+
 import nju.ztww.vo.StorageListLineofInVO;
 import nju.ztww.vo.StorageListVO;
 
-public class StoragePanPanel extends JPanel implements ActionListener{
+public class StoragePanPanel extends JPanel  implements ActionListener{
 	DefaultTableModel defaultTableModel;
 	JTable  table;
 	public JLabel time=new JLabel();
 	public JTextField timefield=new JTextField();
+	public JLabel countall=new JLabel("总数量");
+	public JTextField countshuliang=new JTextField(5);
 	public JButton panagain=new JButton("确认盘点");
 	long l = System.currentTimeMillis();
 	Date data=new Date(l);
-	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-	public ArrayList<StorageListLineVO> arraylist;//存储一个库存单的信息
-	public CommodityService commodityservice=new CommodityServiceImp();
+	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd ");
+	public ArrayList<StorageListLineofInVO> arraylist;//存储一个库存单的信息
+	public CommodityListService commodityservice=new CommodityListServiceImpl();
   public StoragePanPanel() {
 	  this.setLayout(null);
 	  Font font11=new Font("楷体",Font.BOLD,20);
@@ -47,15 +49,20 @@ public class StoragePanPanel extends JPanel implements ActionListener{
 	   Font font1=new Font("楷体",Font.PLAIN,20);
 	   timefield.setFont(font1);
 	   timefield.setAlignmentX(CENTER_ALIGNMENT);
-	   timefield.setBounds(180, 0, 200, 30);
+	   timefield.setBounds(180, 0, 120, 30);
 	   timefield.setText(dateFormat.format(data));
 	   //重新盘点按钮
 	   panagain.setFont(font1);
 	   panagain.setBounds(550, 0, 120, 30);
 	   panagain.addActionListener(this);
+	   countall.setFont(font1);
+	   countall.setBounds(550,460, 60, 30);
+	   countshuliang.setBounds(620, 460, 50, 30);
+	   this.add(countall);
 	   this.add(time);
 	   this.add(timefield);
 	   this.add(panagain);
+	   this.add(countshuliang);
 	// TODO Auto-generated constructor stub
 	   Object[][] playerInfo =
 	{
@@ -82,9 +89,9 @@ public class StoragePanPanel extends JPanel implements ActionListener{
 public void actionPerformed(ActionEvent e) {
 	// TODO Auto-generated method stub
 	//实现接口 需要传一个满足要求的arraylist
-	arraylist=commodityservice.getList("000001");
+	arraylist=commodityservice.getInListbytime("00001",dateFormat.format(data));
 	for(int i=0;i<arraylist.size();i++){
-		Vector<String> row = new Vector(7);
+		Vector<String> row = new Vector<String>(7);
 		row.add(arraylist.get(i).getId());
 		row.add(arraylist.get(i).getData());
 		row.add(arraylist.get(i).getDestination());

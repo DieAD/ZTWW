@@ -15,16 +15,22 @@ public class StorageOutofListBL {
     private RMIHelper rhelper = new RMIHelper(IP,"1010");
     private CommodityDataService commoditydata;
     //两个操作 增加信息到出库列表， 在库存中删除信息
-    public void addorder(StorageListodOutPO outList,String idofcenter){
-    	if(outList.isIscheck()){
-    	commoditydata = (CommodityDataService)rhelper.findService("CommodityDataService");
-    	commoditydata.insertOut(outList.getArraylist(), idofcenter);
-    	}
+    public void addorder(ArrayList<StorageListLineofOutPO> outList,String idofcenter){
+    	
+    	commoditydata = (CommodityDataService)rhelper.findService("CommodityDataServiceOut");
+    	commoditydata.insertOut(outList, idofcenter);
+    	
     }
 
 	public void addorder(StorageListLineofOutPO storagelistlinepo) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public void delete(String idofOrder, String idofcenter) {
+		// TODO Auto-generated method stub
+		commoditydata = (CommodityDataService)rhelper.findService("CommodityDataServiceOut");
+		commoditydata.delete(idofOrder, idofcenter);
 	}
    
 }

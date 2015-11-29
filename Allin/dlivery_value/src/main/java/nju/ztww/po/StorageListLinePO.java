@@ -2,7 +2,7 @@ package nju.ztww.po;
 
 import java.io.Serializable;
 
-import nju.ztww.vo.StorageListLineVO;
+
 
 public class StorageListLinePO extends OrderPO implements Serializable{
 	String id;//快递编号
@@ -67,10 +67,7 @@ public class StorageListLinePO extends OrderPO implements Serializable{
 		this.wei = wei;
 	}
 	//数据操作时要注意 VO 的对象 int 参数
-	public StorageListLineVO changetovo() {
-		// TODO Auto-generated method stub
-		
-		return new StorageListLineVO(idOfOrder, id, data, destination, qu, pai, jia, wei) ;
-	}
+	
+	
 
 }

@@ -9,14 +9,14 @@ import java.util.ArrayList;
 import nju.ztww.DBHelper.DBForEntryForm;
 import nju.ztww.DBHelper.DBForOutStockForm;
 import nju.ztww.DBHelper.DBForStock;
+import nju.ztww.dao.OutStockFormDO;
 import nju.ztww.po.OrderPO;
 import nju.ztww.po.StorageListLineofInPO;
 import nju.ztww.po.StorageListLineofOutPO;
+import nju.ztww.po.StorageListodOutPO;
 
 public class StorageListOut {
-	public DBForOutStockForm dbforoutstockform=new  DBForOutStockForm();
-	public DBForStock dbforstock=new  DBForStock();
-	
+	 
 	public void insert(OrderPO storagelineout){
 		
 		FileWriter write;
@@ -35,12 +35,26 @@ public class StorageListOut {
 		System.out.println("成功了！");
 		
 	}
-	public void insertout(ArrayList<StorageListLineofOutPO> arraylist,String idofcenter) {
+	//还需要写，没写完
+	public void insertout(ArrayList<StorageListLineofOutPO> arraylistout,String idofcenter) {
 		// TODO Auto-generated method stub
+		DBForOutStockForm dbforoutstockform=new  DBForOutStockForm();
+		ArrayList<OutStockFormDO>outstock=new ArrayList<OutStockFormDO>();
+	
 		dbforoutstockform.init();
-		dbforstock.init();
-		System.out.println("成功了！");
+		for(int i=0;i<arraylistout.size();i++){
+			System.out.println(arraylistout.get(i).getData()+" ");
+			outstock.add(arraylistout.get(i).changetodo());
+		}
+		dbforoutstockform.insert(outstock, "outstockform");
 		dbforoutstockform.close();
-		dbforstock.close();
+		
+	}
+	public void delete(String idoforder, String idofcenter) {
+		// TODO Auto-generated method stub
+		DBForOutStockForm dbforoutstockform=new  DBForOutStockForm();
+        dbforoutstockform.init();
+		dbforoutstockform.delete(idoforder, "outstockform");
+		dbforoutstockform.close();
 	}
 }
