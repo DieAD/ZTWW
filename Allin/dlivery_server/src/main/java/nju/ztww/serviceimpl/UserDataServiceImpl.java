@@ -19,6 +19,8 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 			throws RemoteException {
 		// TODO Auto-generated method stub
 		MemberPO member;
+		System.out.println("id = "+id+"  password = "+password);
+
 		member = userData.checkMember(id, password);
 		return member;
 	}
