@@ -94,7 +94,7 @@ public class Courier_OrderInputUI extends JPanel{
 			addButton.setBounds(500, 420, 110, 38);
 			submitButton.setBounds(350, 420, 110, 38);
 			submitButton.setText("提交");
-			submitButton.addActionListener(e2);
+			submitButton.addActionListener(submit);
 			this.add(submitButton);
 			addButton.setIcon(new ImageIcon("photo/add.gif"));
 			this.add(addButton);
@@ -245,7 +245,7 @@ public class Courier_OrderInputUI extends JPanel{
 	
 	}
 	
-	ActionListener e2 = new ActionListener() {
+	ActionListener submit = new ActionListener() {
 		
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
@@ -266,7 +266,7 @@ public class Courier_OrderInputUI extends JPanel{
 			
 			String ID = UserInfoUI.getUserID();
 			String PLACE = ID.substring(0, 3);
-			if(PLACE.equals("025")) from = "北京";
+			if(PLACE.equals("025")) from = "南京";
 			else if(PLACE.equals("010")) from = "北京";
 			else if(PLACE.equals("020")) from = "广州";
 			else if(PLACE.equals("021")) from = "上海";
