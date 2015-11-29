@@ -86,6 +86,8 @@ public class DBForOrderForm extends DB{
 				order.setPretime(rs.getString(12));
 				order.setExe(rs.getInt(13));
 				order.setState(rs.getInt(14));
+				order.setCost(rs.getDouble(15));
+				order.setCat(rs.getString(16));
 				
 				list.add(order);
 			}
@@ -98,8 +100,8 @@ public class DBForOrderForm extends DB{
 	}
 	
 	public void insert(ArrayList<OrderFormDO> list,String tableName){
-		 String sql  = "insert into "+tableName+"(holl,ordernumber,sender,phone,unit,telephone,recip,rphone,address,orderinfo,pretime,exe,state)"
-			 		+ "values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		 String sql  = "insert into "+tableName+"(holl,ordernumber,sender,phone,unit,telephone,recip,rphone,address,orderinfo,pretime,exe,state,cost,cat)"
+			 		+ "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		 
 		 try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -117,6 +119,8 @@ public class DBForOrderForm extends DB{
 				pstmt.setString(11, order.getPretime());
 				pstmt.setInt(12, order.getExe());
 				pstmt.setInt(13, order.getState());
+				pstmt.setDouble(14, order.getCost());
+				pstmt.setString(15, order.getCat());
 				
 				pstmt.executeUpdate();
 			}
@@ -129,7 +133,7 @@ public class DBForOrderForm extends DB{
 	
 	public void update(ArrayList<OrderFormDO> list,String tableName){
 		String sql = "update "+tableName+" set holl=?,ordernumber=?,sender=?,phone=?,unit=?,"
-				+ "telephone=?,recip=?,rphone=?,address=?,orderinfo=?,pretime=?,exe=?,state=?"
+				+ "telephone=?,recip=?,rphone=?,address=?,orderinfo=?,pretime=?,exe=?,state=?,cost=?,cat=?"
 				+ " where ordernumber=?";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -147,7 +151,9 @@ public class DBForOrderForm extends DB{
 				pstmt.setString(11, order.getPretime());
 				pstmt.setInt(12, order.getExe());
 				pstmt.setInt(13, order.getState());
-				pstmt.setString(14, order.getOrdernumber());
+				pstmt.setDouble(14, order.getCost());
+				pstmt.setString(15, order.getCat());
+				pstmt.setString(16, order.getOrdernumber());
 				
 				pstmt.executeUpdate();
 				
@@ -170,16 +176,16 @@ public class DBForOrderForm extends DB{
 		 
 	 }
 	 
-	 public static void main(String[] args){
-		 DBForOrderForm db = new DBForOrderForm();
-		 db.init();
-		 ArrayList<OrderFormDO> list =db.queryByID("1511240001", "orderform");
-		 for(OrderFormDO order : list){
-			 order.setAddress("shanghai");
-		 }
-		 db.update(list, "orderform");
-		 db.close();
-		 
-	 }
+//	 public static void main(String[] args){
+//		 DBForOrderForm db = new DBForOrderForm();
+//		 db.init();
+//		 ArrayList<OrderFormDO> list =db.queryByID("1511240001", "orderform");
+//		 for(OrderFormDO order : list){
+//			 order.setAddress("shanghai");
+//		 }
+//		 db.update(list, "orderform");
+//		 db.close();
+//		 
+//	 }
 
 }
