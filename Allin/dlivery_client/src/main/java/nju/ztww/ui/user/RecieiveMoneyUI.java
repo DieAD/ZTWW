@@ -64,8 +64,7 @@ public class RecieiveMoneyUI extends JPanel{
 		addSendButton.setIcon(null);
 		Object[][] playerInfo =
 			  {
-			    { "1511116666","阿s呆", new Integer(69), new Integer(32), new Integer(98),  new Boolean(false) },
-			    { "1511116666", "阿呆", new Integer(82), new Integer(69), new Integer(128), new Boolean(true)}, 
+			  
 			  };
 
 			  //字段名称
@@ -144,15 +143,18 @@ public class RecieiveMoneyUI extends JPanel{
 							String result=orderServiceImpl.endSales(receiveVOtemp, 5);
 							 System.out.println(result);
 						}
+						allreceiveVO.clear();
+						defaultTableModel.setRowCount(0);
 					}
 			  });
 			  deleteButton.addActionListener(new ActionListener(){
 
 					public void actionPerformed(ActionEvent e) {
-						String id=(String) table.getValueAt(table.getSelectedRow(), 0);
-						String result=orderServiceImpl.deleteOrder(id);
+//						String id=(String) table.getValueAt(table.getSelectedRow(), 0);
+//						String result=orderServiceImpl.deleteOrder(id,"payeeform");
+					
+						allreceiveVO.remove(table.getSelectedRow());
 						defaultTableModel.removeRow(table.getSelectedRow());
-						System.out.println(result);
 					}
 			  });
 			  this.add(deleteButton);

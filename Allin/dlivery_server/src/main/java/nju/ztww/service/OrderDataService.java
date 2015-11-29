@@ -17,11 +17,11 @@ public interface OrderDataService extends Remote  {
 	
 	public String insert(OrderPO orderPO,int type) throws RemoteException;
 	
-	public String delete(String id)throws RemoteException;
+	public String delete(String id,String type)throws RemoteException;
 
 	public String findID()throws RemoteException;
 	
-	public String find(int id)throws RemoteException;
+	public OrderPO find(String id,int type)throws RemoteException;
 	
 	public String insertToDateFactory(List<OrderPO> list,int type) throws RemoteException;
 

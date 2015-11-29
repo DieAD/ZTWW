@@ -22,6 +22,8 @@ public class LoadingOrderBl {
 	
 	   //新的LoadingPO
 	   LoadingPO loadingPO=new LoadingPO(4);
+	   
+	   LoadingVO loadingVO=new LoadingVO(4);
 		
 		 private String IP = "127.0.0.1";
 		 private RMIHelper rhelper = new RMIHelper(IP,"1010");
@@ -44,10 +46,27 @@ public class LoadingOrderBl {
 			loadingPO.setQiYunNumber(loadingVO.getQiYunNumber());
 			loadingPO.setYaYunName(loadingVO.getYaYunName());
 			loadingPO.setYingYeNumber(loadingVO.getYingYeNumber());
-			
+			loadingPO.setId(loadingVO.getId());
 			orderDataService=(OrderDataService)rhelper.findService("OrderDataService");
 			String result=orderDataService.insert(loadingPO,4);
 			return result;
+		}
+		
+		public LoadingVO find(String id){
+			orderDataService=(OrderDataService)rhelper.findService("OrderDataService");
+			loadingPO=(LoadingPO) orderDataService.find(id, 4);
+			loadingVO.setArrive(loadingPO.getArrive());
+			loadingVO.setCarNumber(loadingPO.getCarNumber());
+			loadingVO.setData(loadingPO.getData());
+			loadingVO.setJianZhuangName(loadingPO.getJianZhuangName());
+			loadingVO.setMoney(loadingPO.getMoney());
+			loadingVO.setOrderNumber(loadingPO.getOrderNumber());
+			loadingVO.setQiYunNumber(loadingPO.getQiYunNumber());
+			loadingVO.setYaYunName(loadingPO.getYaYunName());
+			loadingVO.setYingYeNumber(loadingPO.getYingYeNumber());
+			loadingVO.setId(loadingPO.getId());
+			return loadingVO;
+			
 		}
 		
 		/**

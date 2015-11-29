@@ -21,6 +21,7 @@ public class CarManageData {
     private CarManagePO carManagePO=new CarManagePO(9);
 	
     public String insert(CarManagePO carManagePO){
+    	
     	dbHelper.init();
 		list.add(carManagePO);
 		String result=dbHelper.insert(list, "carmanageform");

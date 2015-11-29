@@ -5,6 +5,7 @@ import java.rmi.server.UnicastRemoteObject;
 import java.util.List;
 
 import nju.ztww.data.order.OrderHandler;
+import nju.ztww.po.CarManagePO;
 import nju.ztww.po.OrderPO;
 import nju.ztww.service.OrderDataService;
 
@@ -23,20 +24,21 @@ public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDa
 	}
 
 	public String insert(OrderPO orderPO,int type) throws RemoteException {
-		// TODO Auto-generated method stub
+		
 		String result=orderHandler.insert(orderPO, type);
+
 		return result;
 	}
 
-	public String delete(String id) throws RemoteException {
+	public String delete(String id,String type) throws RemoteException {
 		// TODO Auto-generated method stub
-		String result=orderHandler.delete(id);
+		String result=orderHandler.delete(id,type);
 		return result;
 	}
 
-	public String find(int id) throws RemoteException {
+	public OrderPO find(String id,int type) throws RemoteException {
 		// TODO Auto-generated method stub
-		String result=orderHandler.find(id);
+		OrderPO result=orderHandler.find(id,type);
 		return result;
 	}
 

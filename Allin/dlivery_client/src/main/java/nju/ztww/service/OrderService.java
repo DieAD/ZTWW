@@ -37,7 +37,7 @@ public interface OrderService {
 	 * @param id 唯一标识码
 	 * @return
 	 */
-	public String deleteOrder(String id);
+	public String deleteOrder(String id,String type);
 	/**
 	 * 获得运费
 	 * 

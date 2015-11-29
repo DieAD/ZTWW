@@ -80,6 +80,12 @@ public class OrderService_stub implements OrderService {
 	}
 
 
+	public String deleteOrder(String id, String type) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
 //	public void endSales(OrderVO order, int number) {
 //		// TODO Auto-generated method stub
 //		

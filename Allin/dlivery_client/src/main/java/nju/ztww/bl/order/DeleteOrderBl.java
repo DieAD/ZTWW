@@ -20,9 +20,9 @@ public class DeleteOrderBl {
 		
 	}
 	
-	public String delete(String id){
+	public String delete(String id,String type){
 		orderDataService=(OrderDataService)rhelper.findService("OrderDataService");
-		String result=orderDataService.delete(id);
+		String result=orderDataService.delete(id,type);
 		return result;
 	}
 
