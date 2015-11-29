@@ -79,6 +79,7 @@ public class DBForOutStockForm extends DB{
 				form.setTransmethod(rs.getInt(6));
 				form.setExe(rs.getInt(7));
 				form.setState(rs.getInt(8));
+				form.setNumber(rs.getString(9));
 
 				list.add(form);
 			}
@@ -93,7 +94,7 @@ public class DBForOutStockForm extends DB{
 	public void insert(ArrayList<OutStockFormDO> list, String tableName) {
 		String sql = "insert into "
 				+ tableName
-				+ "(id,goodsid,time,address,transmethod,exe,state)values(?,?,?,?,?,?,?)";
+				+ "(id,goodsid,time,address,transmethod,exe,state,number)values(?,?,?,?,?,?,?,?)";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			for (OutStockFormDO form : list) {
@@ -104,6 +105,7 @@ public class DBForOutStockForm extends DB{
 				pstmt.setInt(5, form.getTransmethod());
 				pstmt.setInt(6, form.getExe());
 				pstmt.setInt(7, form.getState());
+				pstmt.setString(8, form.getNumber());
 
 				pstmt.executeUpdate();
 			}
@@ -117,7 +119,8 @@ public class DBForOutStockForm extends DB{
 	public void update(ArrayList<OutStockFormDO> list, String tableName) {
 		String sql = "update "
 				+ tableName
-				+ " set id=?,goodsid=?,time=?,address=?,transmethod=?,exe=?,state=? where id=?";
+				+ " set id=?,goodsid=?,time=?,address=?,transmethod=?,exe=?,state=?,"
+				+ "number=? where id=?";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			for (OutStockFormDO form : list) {
@@ -128,7 +131,8 @@ public class DBForOutStockForm extends DB{
 				pstmt.setInt(5, form.getTransmethod());
 				pstmt.setInt(6, form.getExe());
 				pstmt.setInt(7, form.getState());
-				pstmt.setString(8, form.getId());
+				pstmt.setString(8, form.getNumber());
+				pstmt.setString(9, form.getId());
 
 				pstmt.executeUpdate();
 
@@ -167,7 +171,7 @@ public class DBForOutStockForm extends DB{
 				form.setTransmethod(rs.getInt(6));
 				form.setExe(rs.getInt(7));
 				form.setState(rs.getInt(8));
-
+				form.setNumber(rs.getString(9));
 				list.add(form);
 			}
 		} catch (SQLException e) {
