@@ -161,6 +161,48 @@ public class OrderServiceImpl implements OrderService{
 		}
 		return null;
 	}
+	
+	public OrderVO find(String id,int number) {
+		switch(number){
+		case 1:
+			
+			return null;
+		case 2:
+			BusinessArriveVO businessArriveVO=new BusinessArriveVO(2);
+			businessArriveVO=businessArriveOrderBl.find(id);
+		    return businessArriveVO;
+		case 3:
+			
+		    return null;
+		case 4:
+			LoadingVO loadingVO=new LoadingVO(4);
+			loadingVO=loadingOrderBl.find(id);
+			return loadingVO;
+		case 5:
+			ReceiveVO receiveVO=new ReceiveVO(5);
+			receiveVO=receiveOrderBl.find(id);
+			return receiveVO;
+		case 6:
+			SendVO sendVO=new SendVO(6);
+			sendVO=sendOrderBl.find(id);
+			return sendVO;
+		case 7:
+			
+			return null;
+		case 8:
+		
+			return null;
+		case 9:
+			CarManageVO carManageVO=new CarManageVO(9);
+			//carManageVO=carManageBl.find(id);
+			return carManageVO;
+		case 10:
+			DriverMessageVO driverMessageVO=new DriverMessageVO(10);
+			driverMessageVO=driverMessageBl.find(id);
+			return driverMessageVO;
+		}
+		return null;
+	}
 
 	public double getMoney(String city, String city2,int type) {
 		if((city=="北京"&&city2=="上海")||(city2=="北京"&&city=="上海")){
@@ -196,6 +238,11 @@ public class OrderServiceImpl implements OrderService{
 	}
 
 
+	public String deleteOrder(String id,String type) {
+		String result=deleteOrderBl.delete(id,type);
+		return result;
+}
+
 	public double getCost(DeliverFeesVO deliverFees) {
 		double result = mailingOrderBl.getCost(deliverFees);
 		return result;
@@ -218,9 +265,5 @@ public class OrderServiceImpl implements OrderService{
 //		return date;
 //	}
 
-	public String deleteOrder(String id) {
-		String result=deleteOrderBl.delete(id);
-		return result;
-	}
 
 }

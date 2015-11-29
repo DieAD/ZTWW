@@ -56,7 +56,7 @@ public class DBForHollReciForm extends DB{
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			return "fail";   
+			e.printStackTrace();  
 		}
 		return "success";    	     	     	 
      }

@@ -43,21 +43,21 @@ public class TextBussinessUI {
 		driverManageUI.setBounds(210,60,690,480);
 		personalMessagePanel.setBounds(210,60,690,480);
 	
-//
+
 //		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 //		frame.getContentPane().setLayout(null);
-//		frame.getContentPane().add(panel);
-//		frame.getContentPane().add(carLoadingPanel);
-//		frame.getContentPane().add(lablePanel);
-//		frame.setVisible(true);
-	}
-
-//	public static void main(String[] args) {
-//		// TODO Auto-generated method stub
-//
-//		new TextBussinessUI().init();
-//		
+//	    frame.getContentPane().add(panel);
+//	    frame.getContentPane().add(carLoadingPanel);
+//	    frame.getContentPane().add(lablePanel);
+//    	frame.setVisible(true);
 //	}
+//
+//public static void main(String[] args) {
+//	// TODO Auto-generated method stub
+//
+//	new TextBussinessUI().init();
+	
+	}
 	
 	public static void changePanel(int i){
 		removePanel();

@@ -40,10 +40,11 @@ public class CarManageUI extends JPanel{
 	private  JLabel carNumber=new  JLabel("服役时间");
 	private JTextField orderNumbertextArea=new JTextField("");
 	private  JLabel orderNumber=new  JLabel("备注");
-	
+	private JTextField findtextArea=new JTextField("");
 	private ArrayList<CarManageVO> allCarManageVO=new ArrayList<CarManageVO>();
 	
 	private JButton sendButton=new JButton("提交");
+	private JButton findButton=new JButton("查找");
 	private JButton deleteButton=new JButton("删除");
 	private JButton addButton=new JButton();
 	private JButton sureButton=new JButton("确定");
@@ -67,8 +68,7 @@ public class CarManageUI extends JPanel{
 		sendButton.setIcon(null);
 		Object[][] playerInfo =
 			  {
-			    {"1511116666", "阿s呆", new Integer(69), new Integer(32), new Integer(98),  new Boolean(false) },
-			    { "1511116666","阿呆", new Integer(82), new Integer(69), new Integer(128), new Boolean(true)}, 
+			    
 			  };
 
 			  //字段名称
@@ -143,10 +143,14 @@ public class CarManageUI extends JPanel{
 			  deleteButton.addActionListener(new ActionListener(){
 
 					public void actionPerformed(ActionEvent e) {
-						String id=(String) table.getValueAt(table.getSelectedRow(), 0);
-						String result=orderServiceImpl.deleteOrder(id);
+//						String id=(String) table.getValueAt(table.getSelectedRow(), 0);
+//						String result=orderServiceImpl.deleteOrder(id,"carmanageform");
+
+						if(allCarManageVO.size()!=0){
+							allCarManageVO.remove(table.getSelectedRow());
+							
+						}
 						defaultTableModel.removeRow(table.getSelectedRow());
-						System.out.println(result);
 					}
 			  });
 			  sendButton.addActionListener(new ActionListener(){
@@ -156,6 +160,8 @@ public class CarManageUI extends JPanel{
 							String result=orderServiceImpl.endSales(carManageVOtemp, 9);
 							 System.out.println(result);
 						}
+						allCarManageVO.clear();
+						defaultTableModel.setRowCount(0);
 					}
 			  });
 			  this.add(sendButton);
@@ -202,5 +208,23 @@ public class CarManageUI extends JPanel{
 		    sureButton.removeActionListener(listener);
 		}
 		
+	};
+	
+	ActionListener listener2 = new ActionListener(){
+
+		public void actionPerformed(ActionEvent e) {
+			LoadingVO loadingVO=(LoadingVO) orderServiceImpl.find(findtextArea.getText(), 4);
+			Vector<String> row = new Vector(7);
+			row.add(loadingVO.getId());
+			row.add(loadingVO.getData());
+			row.add(loadingVO.getYingYeNumber());
+			row.add(loadingVO.getQiYunNumber());
+			row.add(loadingVO.getArrive());
+			row.add(loadingVO.getCarNumber());
+			row.add(Double.toString(loadingVO.getMoney()));
+			defaultTableModel.addRow(row);
+		    table.revalidate();
+		    dlg.dispose();
+		}
 	};
 }

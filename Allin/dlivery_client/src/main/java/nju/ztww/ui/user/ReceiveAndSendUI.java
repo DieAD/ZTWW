@@ -91,8 +91,7 @@ public class ReceiveAndSendUI extends JPanel{
 		deleteSendButton.setIcon(null);
 		Object[][] playerInfo =
 			  {
-			    {"1511116666", "阿s呆", new Integer(69), new Integer(32), new Integer(98),  new Boolean(false) },
-			    { "1511116666","阿呆", new Integer(82), new Integer(69), new Integer(128), new Boolean(true)}, 
+			 
 			  };
 
 			  //字段名称
@@ -119,8 +118,7 @@ public class ReceiveAndSendUI extends JPanel{
 			  //设置派件单
 			  Object[][] playerInfo2 =
 				  {
-				    { "1511116666","阿s呆", new Integer(69), new Integer(32),  new Boolean(false) },
-				    { "1511116666","阿呆", new Integer(82), new Integer(69),  new Boolean(true)}, 
+				 
 				  };
 
 				  //字段名称
@@ -242,6 +240,8 @@ public class ReceiveAndSendUI extends JPanel{
 							String result=orderServiceImpl.endSales(businessArriveVOtemp, 2);
 							 System.out.println(result);
 						}
+						allbusinessArriveVO.clear();
+						defaultTableModel.setRowCount(0);
 					}
 			  });
 			  sendButton.addActionListener(new ActionListener(){
@@ -251,24 +251,28 @@ public class ReceiveAndSendUI extends JPanel{
 							String result=orderServiceImpl.endSales(sendVOtemp, 6);
 							 System.out.println(result);
 						}
+						allSendVO.clear();
+						defaultTableModel2.setRowCount(0);
 					}
 			  });
 			  deleteSendButton.addActionListener(new ActionListener(){
 
 					public void actionPerformed(ActionEvent e) {
-						String id=(String) sendTable.getValueAt(sendTable.getSelectedRow(), 0);
-						String result=orderServiceImpl.deleteOrder(id);
-						defaultTableModel.removeRow(sendTable.getSelectedRow());
-						System.out.println(result);
+//						String id=(String) sendTable.getValueAt(sendTable.getSelectedRow(), 0);
+//						String result=orderServiceImpl.deleteOrder(id,"deliveryform");
+					
+						allSendVO.remove(sendTable.getSelectedRow());
+						defaultTableModel2.removeRow(sendTable.getSelectedRow());
 					}
 			  });
 			  deleteReceiveButton.addActionListener(new ActionListener(){
 
 					public void actionPerformed(ActionEvent e) {
-						String id=(String) receiveTable.getValueAt(receiveTable.getSelectedRow(), 0);
-						String result=orderServiceImpl.deleteOrder(id);
+//						String id=(String) receiveTable.getValueAt(receiveTable.getSelectedRow(), 0);
+//						String result=orderServiceImpl.deleteOrder(id,"hollreciform");
+						
+						allbusinessArriveVO.remove(receiveTable.getSelectedRow());
 						defaultTableModel.removeRow(receiveTable.getSelectedRow());
-						System.out.println(result);
 					}
 			  });
 			  this.add(deleteReceiveButton);
