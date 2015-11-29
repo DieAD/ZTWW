@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import nju.ztww.DBHelper.DBForDCForm;
 import nju.ztww.DBHelper.DBForOrderForm;
 import nju.ztww.dao.DCFormDO;
-import nju.ztww.dao.MailingFormDO;
 import nju.ztww.dao.OrderFormDO;
 import nju.ztww.po.BusinessArrivePO;
 import nju.ztww.po.MailingPO;
