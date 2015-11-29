@@ -40,10 +40,11 @@ public class CarManageUI extends JPanel{
 	private  JLabel carNumber=new  JLabel("服役时间");
 	private JTextField orderNumbertextArea=new JTextField("");
 	private  JLabel orderNumber=new  JLabel("备注");
-	
+	private JTextField findtextArea=new JTextField("");
 	private ArrayList<CarManageVO> allCarManageVO=new ArrayList<CarManageVO>();
 	
 	private JButton sendButton=new JButton("提交");
+	private JButton findButton=new JButton("查找");
 	private JButton deleteButton=new JButton("删除");
 	private JButton addButton=new JButton();
 	private JButton sureButton=new JButton("确定");
@@ -207,5 +208,23 @@ public class CarManageUI extends JPanel{
 		    sureButton.removeActionListener(listener);
 		}
 		
+	};
+	
+	ActionListener listener2 = new ActionListener(){
+
+		public void actionPerformed(ActionEvent e) {
+			LoadingVO loadingVO=(LoadingVO) orderServiceImpl.find(findtextArea.getText(), 4);
+			Vector<String> row = new Vector(7);
+			row.add(loadingVO.getId());
+			row.add(loadingVO.getData());
+			row.add(loadingVO.getYingYeNumber());
+			row.add(loadingVO.getQiYunNumber());
+			row.add(loadingVO.getArrive());
+			row.add(loadingVO.getCarNumber());
+			row.add(Double.toString(loadingVO.getMoney()));
+			defaultTableModel.addRow(row);
+		    table.revalidate();
+		    dlg.dispose();
+		}
 	};
 }

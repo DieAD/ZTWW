@@ -187,7 +187,7 @@ public class OrderServiceImpl implements OrderService{
 			return null;
 		case 9:
 			CarManageVO carManageVO=new CarManageVO(9);
-			carManageVO=carManageBl.find(id);
+			//carManageVO=carManageBl.find(id);
 			return carManageVO;
 		case 10:
 			DriverMessageVO driverMessageVO=new DriverMessageVO(10);
