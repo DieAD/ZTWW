@@ -11,6 +11,8 @@ import nju.ztww.po.OrderPO;
 import nju.ztww.po.StorageListLinePO;
 import nju.ztww.po.StorageListLineofInPO;
 import nju.ztww.po.StorageListLineofOutPO;
+import nju.ztww.po.StorageListodInPO;
+import nju.ztww.po.StorageListodOutPO;
 import nju.ztww.service.CommodityDataService;
 
 public class CommodityDataServiceImpl extends UnicastRemoteObject implements CommodityDataService {
@@ -26,7 +28,7 @@ public class CommodityDataServiceImpl extends UnicastRemoteObject implements Com
 		
 	}
 
-	public void delete(OrderPO po) throws RemoteException {
+	public void delete(String idoforder,String idofcenter) throws RemoteException {
 		// TODO Auto-generated method stub
 		
 	}
@@ -47,13 +49,13 @@ public class CommodityDataServiceImpl extends UnicastRemoteObject implements Com
 		return null;
 	}
 
-	public void insertOut(ArrayList<StorageListLineofOutPO> arraylist,String idofcenter)
+	public void insertOut(ArrayList<StorageListLineofOutPO>  arraylistoutpo,String idofcenter)
 			throws RemoteException {
 		// TODO Auto-generated method stub
 		
 	}
 
-	public void insertIn(ArrayList<StorageListLineofInPO> arraylist,String idofcenter)
+	public void insertIn(ArrayList<StorageListLineofInPO>  arraylistinpo,String idofcenter)
 			throws RemoteException {
 		// TODO Auto-generated method stub
 		

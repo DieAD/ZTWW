@@ -10,6 +10,8 @@ import nju.ztww.po.OrderPO;
 import nju.ztww.po.StorageListLinePO;
 import nju.ztww.po.StorageListLineofInPO;
 import nju.ztww.po.StorageListLineofOutPO;
+import nju.ztww.po.StorageListodInPO;
+import nju.ztww.po.StorageListodOutPO;
 import nju.ztww.service.CommodityDataService;
 
 public class StorageInOfListDataServiceImpl extends UnicastRemoteObject
@@ -27,9 +29,10 @@ public class StorageInOfListDataServiceImpl extends UnicastRemoteObject
 
 	}
 
-	public void delete(OrderPO po) throws RemoteException {
+	public void delete(String idoforder,String idofcenter) throws RemoteException {
 		// TODO Auto-generated method stub
-
+		StorageListIn storagelistlinein=new StorageListIn();
+		storagelistlinein.delete(idoforder,idofcenter);
 	}
 
 	public OrderPO find(String id) throws RemoteException {
@@ -54,12 +57,12 @@ public class StorageInOfListDataServiceImpl extends UnicastRemoteObject
 		
 	}
 
-	public void insertIn(ArrayList<StorageListLineofInPO> arraylist,String idofcenter)
+	public void insertIn(ArrayList<StorageListLineofInPO>  arraylistinpo,String idofcenter)
 			throws RemoteException {
 		// TODO Auto-generated method stub
-		System.out.println("在服务器端");
+		
 		StorageListIn storagelistlinein=new StorageListIn();
-		storagelistlinein.insertin(arraylist,idofcenter);
+		storagelistlinein.insertin(arraylistinpo,idofcenter);
 		
 	}
 

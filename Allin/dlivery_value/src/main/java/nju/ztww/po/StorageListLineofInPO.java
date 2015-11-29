@@ -2,6 +2,8 @@ package nju.ztww.po;
 
 import java.io.Serializable;
 
+import nju.ztww.dao.EntryFormDO;
+import nju.ztww.dao.StockDO;
 import nju.ztww.vo.StorageListLineofInVO;
 
 public class StorageListLineofInPO extends OrderPO implements Serializable {
@@ -70,6 +72,30 @@ public class StorageListLineofInPO extends OrderPO implements Serializable {
 		return new StorageListLineofInVO(idOfOrder, id, data, destination, qu, pai, jia, wei);
 		
 	}
-	
+	public EntryFormDO changetoIndo(){
+		EntryFormDO entryformdo=new EntryFormDO();
+		entryformdo.setGoodsid(id);
+		entryformdo.setEntrytime(data);
+		entryformdo.setAddress(destination);
+		entryformdo.setQu(qu);
+		entryformdo.setJia(jia);
+		entryformdo.setPai(pai);
+		entryformdo.setWei(wei);
+		entryformdo.setExe(0);
+		entryformdo.setState(1);
+		return entryformdo;
+	}
+   public StockDO  changetoSdo(){
+	   StockDO stockdo=new StockDO();
+	 
+	   stockdo.setEntrytime(data);
+	   stockdo.setGoodsid(id);
+	   stockdo.setAddress(destination);
+	   stockdo.setJia(jia);
+	   stockdo.setPai(pai);
+	   stockdo.setQu(qu);
+	   stockdo.setWei(wei);
+	   return stockdo;
+   }
 
 }
