@@ -16,7 +16,7 @@ public class DBForDCForm extends DB {
 		try {
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
-
+   
 			rs.next();
 			form = new DCFormDO();
 			form.setIndex(rs.getInt(1));
