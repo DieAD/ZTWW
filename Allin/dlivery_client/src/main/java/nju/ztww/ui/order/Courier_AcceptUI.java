@@ -16,12 +16,19 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
+import nju.ztww.service.OrderService;
+import nju.ztww.serviceimpl.OrderServiceImpl;
+import nju.ztww.ui.main.UserInfoUI;
+import nju.ztww.vo.AcceptVO;
+
 public class Courier_AcceptUI extends JPanel{
 
 	JButton searchButton = new JButton();
 	JButton addButton = new JButton();
 	JButton sureSearchButton = new JButton();
 	JButton sureAddButton = new JButton();
+	JButton deleteButton = new JButton("删除");
+	JButton submitButton = new JButton("提交");
 	DefaultTableModel de;
 	JDialog searchDlg;
 	JDialog addDlg;
@@ -40,6 +47,10 @@ public class Courier_AcceptUI extends JPanel{
 	private JLabel courierLabel = new JLabel();
 	private JTextField courier = new JTextField();
 	private JTextField search = new JTextField();
+	private OrderService orderServiceImpl = new OrderServiceImpl();
+	
+	private String businID;
+	private ArrayList<AcceptVO> acceptOrders = new ArrayList<AcceptVO>();
 	
 	java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit()
 			.getScreenSize();
@@ -85,6 +96,10 @@ public class Courier_AcceptUI extends JPanel{
 				
 				public void actionPerformed(ActionEvent e) {
 					// TODO Auto-generated method stub
+					
+					String ID = UserInfoUI.getUserID();
+					businID = ID.substring(0, 8);
+					
 					addDlg = new JDialog();
 					addDlg.setSize(new Dimension(360, 320));
 		            addDlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
@@ -95,11 +110,13 @@ public class Courier_AcceptUI extends JPanel{
 		            numbersLabel.setBounds(50, 20, 150, 20);
 		            numbersLabel.setText("营业厅编号");
 		            numbers.setBounds(140, 20, 100, 20);
+		            numbers.setText(businID);
+		            
 		            acceptNumLabel.setBounds(50, 60, 150, 20);
 		            acceptNumLabel.setText("收件信息编号");
 		            acceptNum.setBounds(140, 60, 150, 20);
 		            receiverLabel.setBounds(50, 100, 150, 20);
-		            receiverLabel.setText("收件信息编号");
+		            receiverLabel.setText("收件人");
 		            receiver.setBounds(140, 100, 150, 20);
 		            timeLabel.setBounds(50, 140, 150, 20);
 		            timeLabel.setText("收件日期");
@@ -107,6 +124,7 @@ public class Courier_AcceptUI extends JPanel{
 		            courierLabel.setBounds(50, 180, 150, 20);
 		            courierLabel.setText("快递员编号");
 		            courier.setBounds(140, 180, 150, 20);
+		            courier.setText(ID);
 		            
 		            addDlg.add(numbersLabel);
 		            addDlg.add(numbers);
@@ -125,6 +143,16 @@ public class Courier_AcceptUI extends JPanel{
 					addDlg.setVisible(true);
 				}
 			});
+		
+		
+			deleteButton.setBounds(290, 420, 110, 38);
+			this.add(deleteButton);
+			deleteButton.addActionListener(delete);
+		
+			submitButton.setBounds(180, 420, 110, 38);
+			this.add(submitButton);
+			submitButton.addActionListener(submit);
+			
 		
 		}
 		
@@ -157,6 +185,15 @@ public class Courier_AcceptUI extends JPanel{
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			Vector<String> row =  new Vector<String>();
+			AcceptVO acceptOrder = new AcceptVO(11);
+			acceptOrder.setBusinID(numbers.getText());
+			acceptOrder.setAcceptID(acceptNum.getText());
+			acceptOrder.setAccepter(receiver.getText());
+			acceptOrder.setAcceptTime(time.getText());
+			acceptOrder.setCourierID(courier.getText());
+			acceptOrder.setState(1);
+			acceptOrder.setExe(0);
+			acceptOrders.add(acceptOrder);
 			row.add(numbers.getText());
 			numbers.setText("");
 			row.add(acceptNum.getText());
@@ -172,6 +209,30 @@ public class Courier_AcceptUI extends JPanel{
 			 
 			addDlg.dispose();
 			sureAddButton.removeActionListener(listener);
+		}
+	};
+
+	ActionListener delete = new ActionListener() {
+		
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			int selected = table.getSelectedRow();
+			de.removeRow(selected);
+			acceptOrders.remove(selected);
+		}
+	};
+	
+	
+	ActionListener submit = new ActionListener() {
+		
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			int size = acceptOrders.size();
+			for(int i = 0; i<size;i++){
+				orderServiceImpl.endSales(acceptOrders.get(i), 11);
+			}
+			acceptOrders.clear();
+			table.removeAll();
 		}
 	};
 }
