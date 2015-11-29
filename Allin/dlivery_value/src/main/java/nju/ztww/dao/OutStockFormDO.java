@@ -6,7 +6,7 @@ public class OutStockFormDO {
 	private String goodsid;
 	private String time;
 	private String address;
-	private int transmethod;
+	private String transmethod;
 	private int exe;
 	private int state;
 	private String number;
@@ -60,11 +60,11 @@ public class OutStockFormDO {
 		this.address = address;
 	}
 
-	public int getTransmethod() {
+	public String getTransmethod() {
 		return transmethod;
 	}
 
-	public void setTransmethod(int transmethod) {
+	public void setTransmethod(String transmethod) {
 		this.transmethod = transmethod;
 	}
 
