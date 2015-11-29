@@ -15,6 +15,21 @@ public class OrderFormDO {
 	    private String pretime;
 	    private int exe;
 	    private int state;
+	    private double cost;
+	    private String cat;
+	    
+		public double getCost() {
+			return cost;
+		}
+		public void setCost(double cost) {
+			this.cost = cost;
+		}
+		public String getCat() {
+			return cat;
+		}
+		public void setCat(String cat) {
+			this.cat = cat;
+		}
 		public int getIndex() {
 			return index;
 		}

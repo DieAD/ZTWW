@@ -2,6 +2,7 @@ package nju.ztww.data.order;
 
 import java.util.List;
 
+import nju.ztww.po.AcceptPO;
 import nju.ztww.po.BusinessArrivePO;
 import nju.ztww.po.CarManagePO;
 import nju.ztww.po.CenterReceivePO;
@@ -18,7 +19,8 @@ import nju.ztww.po.TransferPO;
 public class OrderHandler {
 	
 	private BusinessArriveData businessArriveData;
-	
+	private MailingOrderData mailingOrderData;
+	private AcceptOrderData acceptOrderData;
 	public OrderHandler(){
 		
 	}
@@ -33,6 +35,7 @@ public class OrderHandler {
 		switch(type){
 		case 1:
 			MailingPO mailingPO=(MailingPO) orderPO;
+			result = mailingOrderData.insert(mailingPO);
 		case 2:
 			BusinessArrivePO businessArrivePO=(BusinessArrivePO) orderPO;
 			result=businessArriveData.insert(businessArrivePO);
@@ -52,6 +55,9 @@ public class OrderHandler {
 			CarManagePO carManagePO=(CarManagePO) orderPO;
 		case 10:
 			DriverMessagePO driverMessagePO=(DriverMessagePO) orderPO;
+		case 11:
+			AcceptPO acceptPO = (AcceptPO) orderPO;
+			acceptOrderData.insert(acceptPO);
 		}
 		
 		return result;
@@ -110,6 +116,10 @@ public class OrderHandler {
 		case 10:
 			for(OrderPO orderPO:list){
 		    	DriverMessagePO driverMessagePO=(DriverMessagePO) orderPO;
+			}
+		case 11:
+			for(OrderPO orderPO:list){
+				AcceptPO acceptPO = (AcceptPO) orderPO;
 			}
 		}
 		return null;
