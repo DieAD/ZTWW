@@ -27,7 +27,10 @@ public class UserLogin {
 //		MemberPO mem = new MemberPO(id, password);    //新建一个MemberPO对象，把id和password传过去，让数据层做判断
 		//TODO
 		rHelper = new RMIHelper(IP, port);
+		System.out.println("id = "+id+"  password = "+password);
+
 		userDataService = (UserDataService)rHelper.findService("UserDataService");
+		
 		mem = userDataService.checkMember(id, password);//其实传过去的password并没有用
 		this.isLegal = mem.getLegal();
 //		System.out.println("PRE password = "+password);

@@ -35,6 +35,7 @@ public class UserData{
 	public MemberPO checkMember(String id, String password){
 		// TODO Auto-generated method stub
 		dbHelper.init();
+		System.out.println("id = "+id+"  password = "+password);
 		list = dbHelper.queryByID(id, "userstable");
 		if(list.size()!=0){
 		UserDO user = list.get(0);
