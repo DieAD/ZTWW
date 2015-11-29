@@ -49,7 +49,7 @@ public class StoragePanPanel extends JPanel  implements ActionListener{
 	   Font font1=new Font("楷体",Font.PLAIN,20);
 	   timefield.setFont(font1);
 	   timefield.setAlignmentX(CENTER_ALIGNMENT);
-	   timefield.setBounds(180, 0, 200, 30);
+	   timefield.setBounds(180, 0, 120, 30);
 	   timefield.setText(dateFormat.format(data));
 	   //重新盘点按钮
 	   panagain.setFont(font1);
