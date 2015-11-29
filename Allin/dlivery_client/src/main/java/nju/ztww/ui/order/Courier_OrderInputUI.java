@@ -94,7 +94,7 @@ public class Courier_OrderInputUI extends JPanel{
 			addButton.setBounds(500, 420, 110, 38);
 			submitButton.setBounds(350, 420, 110, 38);
 			submitButton.setText("提交");
-			submitButton.addActionListener(submit));
+			submitButton.addActionListener(submit);
 			this.add(submitButton);
 			addButton.setIcon(new ImageIcon("photo/add.gif"));
 			this.add(addButton);
