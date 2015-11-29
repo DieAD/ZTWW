@@ -150,6 +150,33 @@ public class DBForOutStockForm extends DB{
 			e.printStackTrace();
 		}
 	}
+	public ArrayList<OutStockFormDO> queryByTime(String time, String tableName) {
+		ArrayList<OutStockFormDO> list = new ArrayList<OutStockFormDO>();
+		String sql = "select * from " + tableName + " where time= '"+time+"'";
+		try {
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+
+			while (rs.next()) {
+				OutStockFormDO form = new OutStockFormDO();
+				form.setIndex(rs.getInt(1));
+				form.setId(rs.getString(2));
+				form.setGoodsid(rs.getString(3));
+				form.setTime(rs.getString(4));
+				form.setAddress(rs.getString(5));
+				form.setTransmethod(rs.getInt(6));
+				form.setExe(rs.getInt(7));
+				form.setState(rs.getInt(8));
+
+				list.add(form);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return list;
+	}
 	
 	public static void main(String[] args){
 		DBForOutStockForm db = new DBForOutStockForm();

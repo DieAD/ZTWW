@@ -1,6 +1,7 @@
 package nju.ztww.serviceimpl;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.text.ParseException;
 import java.util.ArrayList;
 
 import nju.ztww.data.commodity.StorageListInGetByTime;
@@ -34,7 +35,7 @@ public class CommodityListDataServiceImpl extends UnicastRemoteObject implements
 	}
 
 	public ArrayList<StorageListLineofInPO> findInList(String timebegin,
-			String timeend,String idofcenter) throws RemoteException{
+			String timeend,String idofcenter) throws RemoteException, ParseException{
 		StorageListInGetByTime storagelistingetbytime=new StorageListInGetByTime();
 		ArrayList<StorageListLineofInPO> arraylistin=storagelistingetbytime.findInList(timebegin,timeend,idofcenter);
 		return arraylistin;
@@ -43,7 +44,7 @@ public class CommodityListDataServiceImpl extends UnicastRemoteObject implements
 	}
 
 	public ArrayList<StorageListLineofOutPO> findOutList(String timebegin,
-			String timeend,String idofcenter) throws RemoteException{
+			String timeend,String idofcenter) throws RemoteException, ParseException{
 		// TODO Auto-generated method stub
 		StorageListOutGetByTime storagelistoutgetbytime=new StorageListOutGetByTime();
 		ArrayList<StorageListLineofOutPO> arraylistout=storagelistoutgetbytime.findOutList(timebegin,timeend,idofcenter);
