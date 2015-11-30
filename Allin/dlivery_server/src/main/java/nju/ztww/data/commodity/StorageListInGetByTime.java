@@ -4,20 +4,40 @@ import java.text.ParseException;
 import java.util.ArrayList;
 
 import nju.ztww.DBHelper.DBForEntryForm;
+import nju.ztww.DBHelper.DBForStock;
 import nju.ztww.dao.EntryFormDO;
+import nju.ztww.dao.StockDO;
 import nju.ztww.po.StorageListLineofInPO;
 
 public class StorageListInGetByTime {
     
 	public DBForEntryForm dbforentryform=new DBForEntryForm();
+	public DBForStock dbforstock=new DBForStock();
 	
 	
 	
-	
-	
+	//库存盘点  
 	public ArrayList<StorageListLineofInPO> findInList(String time,String idofcenter) {
+		dbforstock.init();
+		String tableName="stock";
+		ArrayList<StockDO>stocklist=new ArrayList<StockDO>();
+		ArrayList<StorageListLineofInPO> storagelistline=new ArrayList<StorageListLineofInPO>();
+		stocklist=dbforstock.queryByTime(time, tableName);
+		for(int k=0;k<storagelistline.size();k++){
+		StorageListLineofInPO storagelistlinreofin=new StorageListLineofInPO(1,
+				stocklist.get(k).getGoodsid(),
+				stocklist.get(k).getEntrytime(),
+				stocklist.get(k).getAddress(),
+				stocklist.get(k).getQu(),
+				stocklist.get(k).getPai(),
+				stocklist.get(k).getJia(),
+				stocklist.get(k).getWei()
+	                         );
+		storagelistline.add(storagelistlinreofin);
+		}
 		
-		return null;
+		dbforstock.close();
+		return storagelistline;
 	}
 	
 	
