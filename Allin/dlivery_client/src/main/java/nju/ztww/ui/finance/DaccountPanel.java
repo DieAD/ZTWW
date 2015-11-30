@@ -49,4 +49,14 @@ public class DaccountPanel extends DialogPaneledit{
 	   this.add(lEx);
 	   this.add(tEx);
    }
+   
+   public void init(){
+	   tDate.setText("");
+	   tAmount.setText("");
+	   tPeople.setText("");
+	   tAccount.setText("");
+	   tName.setText("");
+	   tEx.setText("");
+	   
+   }
 }

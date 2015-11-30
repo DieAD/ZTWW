@@ -10,7 +10,7 @@ public class FinanceUI  {
     EditPanel accountPanel = new EditPanel();
     EditPanel paymentPanel = new EditPanel(new String[]{"付款日期","付款金额","付款人","付款账号","条目","备注"},new Object[][]{{new String("2015/11/1"),new Double(35.5),new String("Manager"),
     	new String("000000001"),new String("人员工资"),new String("11月")}});
-    EditPanel collectionPanel = new EditCollection(new String[]{"收款日期","收款金额","收款快递员","订单条形码"},new Object[][]{{new String("2015/11"),new Integer(100),new String("000002"),new String("00000001")}});
+    EditPanel collectionPanel = new EditCollection(new String[]{"收款日期","收款金额","收款快递员","订单条形码"},new Object[][]{{new String("2015/11"),new Double(100),new String("000002"),new String("00000001")}});
     EditPanel benefitPanel = new EditBenefit(new String[]{"总收入","总支出","总利润"},new Object[][]{{new Double(2222.3),new Double("333.2"),new Double("0000.2")}});
     EditPanel businessPanel = new EditBusiness(new String[]{"付款日期","付款金额","付款人","付款账号","条目","备注"},new Object[][]{{new String("2015/11/1"),new Double(35.5),new String("Manager"),new String("000000001"),new String("人员工资"),new String("11月")}});
     EditPanel initPanel = new EditInit(new String[]{"账号","创建时间","创建人","是否使用中"},new Object[][]{{new String("000001"),new String("2014/1"),new String("manager"),new String("是")}});
@@ -46,7 +46,8 @@ public class FinanceUI  {
     }
     public void setPanelListener(){
     	//dialog button;
-        accountPanel.button3.addActionListener(new ListenerDialog(new Dialog()));
+        paymentPanel.button3.addActionListener(new ListenerDialog(new Dialog(paymentPanel)));
+        paymentPanel.button1.addActionListener(new ListenerPull(paymentPanel));
     	//menuebutton
     	panelList.add(accountPanel);
     	panelList.add(paymentPanel);

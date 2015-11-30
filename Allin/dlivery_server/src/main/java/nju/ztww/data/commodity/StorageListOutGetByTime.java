@@ -28,8 +28,8 @@ public class StorageListOutGetByTime {
 					outstockformlist.get(i).getGoodsid(),
 					outstockformlist.get(i).getTime(),
 					outstockformlist.get(i).getAddress(),
-					"way",
-					"number"
+					outstockformlist.get(i).getTransmethod(),
+					outstockformlist.get(i).getNumber()
 					);
 			arraylist.add(storagelistlineofoutpo);
 			}
@@ -53,8 +53,8 @@ public class StorageListOutGetByTime {
 						outstockformlist.get(i).getGoodsid(),
 						outstockformlist.get(i).getTime(),
 						outstockformlist.get(i).getAddress(),
-						"way",
-						"number"
+						outstockformlist.get(i).getTransmethod(),
+						outstockformlist.get(i).getNumber()
 						);
 				arraylist.add(storagelistlineofoutpo);
 			}
