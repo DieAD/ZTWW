@@ -38,6 +38,7 @@ public class MailingOrderData {
 	}
 	
 	public String insert(MailingPO mailingPO){
+		System.out.println("result = successful!!!!!!!!!!!!!!!!!!!!!!S");
 		dbForOrderForm.init();
 		orderFormDO.setHoll(mailingPO.getBusinID());
 		orderFormDO.setUnit(mailingPO.getSendOrga());
@@ -55,8 +56,10 @@ public class MailingOrderData {
 		orderFormDO.setCost(mailingPO.getCount());
 		orderFormDO.setOrdernumber(mailingPO.getStripNumber());
 		list.add(orderFormDO);
+		System.out.println("result = successful!!!!!!!!!!!!!!!!!!!!!!S");
 		dbForOrderForm.insert(list, "orderform");
 		dbForDCForm.close();
+		System.out.println("result = successful!");
 		return "successful!";
 	}
 	

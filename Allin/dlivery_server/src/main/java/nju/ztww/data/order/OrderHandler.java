@@ -35,7 +35,10 @@ public class OrderHandler {
 		switch(type){
 		case 1:
 			MailingPO mailingPO=(MailingPO) orderPO;
+//			System.out.println("!!!!!!");
+			System.out.println("mailingPO = "+mailingPO.getBusinID());
 			result = mailingOrderData.insert(mailingPO);
+			break;
 		case 2:
 			BusinessArrivePO businessArrivePO=(BusinessArrivePO) orderPO;
 			result=businessArriveData.insert(businessArrivePO);
