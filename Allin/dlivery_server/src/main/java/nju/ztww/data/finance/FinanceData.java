@@ -40,6 +40,7 @@ public class FinanceData {
       public boolean addPaymentForm(ArrayList<PaymentPO> list){
     	  ArrayList<PaymentPO> listPO = list;
     	  ArrayList<PaymentFormDO> listDO = new ArrayList<PaymentFormDO>();
+    	  db2.init();
     	  for(PaymentPO po : listPO){
     		  PaymentFormDO form = new PaymentFormDO();
     		  form.setId("000000001");
@@ -51,7 +52,9 @@ public class FinanceData {
     		  form.setPs(po.getPs());
     		  listDO.add(form);
     	  }
+    	 
     	  db2.insert(listDO, "paymentform");
+    	  db2.close();
     	  return true;
     	  
       }

@@ -56,7 +56,7 @@ public class FinanceDataServiceImpl extends UnicastRemoteObject implements Finan
 		return financeData.queryByDate(querydate, queryholl);
 	}
 
-	public boolean addPaymentForm(ArrayList<PaymentPO> list) {
+	public boolean addPaymentForm(ArrayList<PaymentPO> list)throws RemoteException {
 		// TODO Auto-generated method stub
 		financeData.addPaymentForm(list);
 		return true;

@@ -1,6 +1,8 @@
 package nju.ztww.po;
 
-public class PaymentPO {
+import java.io.Serializable;
+
+public class PaymentPO implements Serializable{
 	private String date;
 	private double money;
 	private String paymen;

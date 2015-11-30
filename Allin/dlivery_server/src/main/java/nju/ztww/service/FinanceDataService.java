@@ -63,7 +63,7 @@ public interface FinanceDataService extends Remote {
 		 */
 		public ArrayList<CollectionPO> queryCollection(String querydate,String queryholl)throws RemoteException;
 		
-		public boolean addPaymentForm(ArrayList<PaymentPO> list);
+		public boolean addPaymentForm(ArrayList<PaymentPO> list)throws RemoteException;
 		
 		
 	/*
