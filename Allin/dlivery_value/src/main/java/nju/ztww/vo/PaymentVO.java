@@ -7,4 +7,14 @@ public class PaymentVO {
    public String payaccount;
    public String paycat;
    public String ps;
+   
+   public PaymentVO(String date,double money,String paymen,String payaccount,String paycat,String ps){
+	   this.date = date;
+	   this.money = money;
+	   this.paymen = paymen;
+	   this.payaccount = payaccount;
+	   this.paycat = paycat;
+	   this.ps = ps;
+	   
+   }
 }

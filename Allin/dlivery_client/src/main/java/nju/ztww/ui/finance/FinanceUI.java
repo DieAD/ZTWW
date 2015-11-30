@@ -47,6 +47,7 @@ public class FinanceUI  {
     public void setPanelListener(){
     	//dialog button;
         paymentPanel.button3.addActionListener(new ListenerDialog(new Dialog(paymentPanel)));
+        paymentPanel.button1.addActionListener(new ListenerPull(paymentPanel));
     	//menuebutton
     	panelList.add(accountPanel);
     	panelList.add(paymentPanel);

@@ -5,8 +5,10 @@ import java.util.ArrayList;
 
 import nju.ztww.RMI.RMIHelper;
 import nju.ztww.po.CollectionPO;
+import nju.ztww.po.PaymentPO;
 import nju.ztww.service.FinanceDataService;
 import nju.ztww.vo.CollectionVO;
+import nju.ztww.vo.PaymentVO;
 
 public class FinanceBL {
 	private RMIHelper rmi = new RMIHelper("localhost", "1010");
@@ -38,5 +40,15 @@ public class FinanceBL {
 			e.printStackTrace();
 		}
 		return listVO;
+	}
+	
+	public boolean addPaymentVO(ArrayList<PaymentVO> list){
+		ArrayList<PaymentVO> listVO = list;
+		ArrayList<PaymentPO> listPO = new ArrayList<PaymentPO>();
+		financeDataService = (FinanceDataService) rmi
+				.findService("FinanceDataService");
+		
+	   financeDataService.addPaymentForm(listPO);
+		return true;
 	}
 }

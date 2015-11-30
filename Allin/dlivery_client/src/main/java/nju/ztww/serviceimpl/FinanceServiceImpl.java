@@ -7,6 +7,7 @@ import nju.ztww.service.FinanceService;
 import nju.ztww.vo.AccountVO;
 import nju.ztww.vo.CollectionVO;
 import nju.ztww.vo.OrderVO;
+import nju.ztww.vo.PaymentVO;
 import nju.ztww.vo.SalaryVO;
 
 public class FinanceServiceImpl implements FinanceService{
@@ -29,6 +30,12 @@ public class FinanceServiceImpl implements FinanceService{
 	public ArrayList<CollectionVO> queryCollection(String querydate, String queryholl) {
 		// TODO Auto-generated method stub
 		return financeBL.queryCollection(querydate, queryholl);
+	}
+
+	public boolean addPaymentForm(ArrayList<PaymentVO> list) {
+		// TODO Auto-generated method stub
+		financeBL.addPaymentVO(list);
+		return true;
 	}
 
 }

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import nju.ztww.vo.AccountVO;
 import nju.ztww.vo.CollectionVO;
 import nju.ztww.vo.OrderVO;
+import nju.ztww.vo.PaymentVO;
 import nju.ztww.vo.SalaryVO;
 
 public interface FinanceService {
@@ -29,6 +30,8 @@ public interface FinanceService {
 	public ArrayList<OrderVO> viewList();
 	
 	public ArrayList<CollectionVO> queryCollection(String querydate,String queryholl);
+	
+	public boolean addPaymentForm(ArrayList<PaymentVO> list);
 	
 	
 }

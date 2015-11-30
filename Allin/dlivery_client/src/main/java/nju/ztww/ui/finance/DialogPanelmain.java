@@ -56,10 +56,17 @@ public class DialogPanelmain extends JPanel {
 //			   
 //			   JLabel lEx = new JLabel("备注");
 //			   JTextField tEx = new JTextField();
-			Object[] rowData = {new String(componentPanel1.tDate.getText()),new Double(Double.parseDouble(componentPanel1.tAmount.getText())),new String(componentPanel1.tPeople.getText()),new String(componentPanel1.tAccount.getText())
+			String tempAmount = componentPanel1.tAmount.getText();
+			//System.out.print("temp ="+tempAmount);
+			double amount =0;
+			if(tempAmount!=""){
+				//TO DO
+				amount = Double.parseDouble(componentPanel1.tAmount.getText());
+			}
+			Object[] rowData = {new String(componentPanel1.tDate.getText()),new Double(amount),new String(componentPanel1.tPeople.getText()),new String(componentPanel1.tAccount.getText())
 			                                    ,new String(componentPanel1.tName.getText()),new String(componentPanel1.tEx.getText())};
 			panel.tableModel.addRow(rowData);
-			jpanel.removeAll();
+			componentPanel1.init();
 			jpanel.dispose();
 			
 			

@@ -3,11 +3,15 @@ package nju.ztww.data.finance;
 import java.util.ArrayList;
 
 import nju.ztww.DBHelper.DBForPayeeForm;
+import nju.ztww.DBHelper.DBForPaymentForm;
 import nju.ztww.dao.PayeeFormDO;
+import nju.ztww.dao.PaymentFormDO;
 import nju.ztww.po.CollectionPO;
+import nju.ztww.po.PaymentPO;
 
 public class FinanceData {
       DBForPayeeForm db = new DBForPayeeForm();
+      DBForPaymentForm db2 = new DBForPaymentForm();
       
       
       public ArrayList<CollectionPO> queryByDate(String date,String holl){
@@ -30,6 +34,25 @@ public class FinanceData {
     	  
     	  
     	  return listPO;
+    	  
+      }
+      
+      public boolean addPaymentForm(ArrayList<PaymentPO> list){
+    	  ArrayList<PaymentPO> listPO = list;
+    	  ArrayList<PaymentFormDO> listDO = new ArrayList<PaymentFormDO>();
+    	  for(PaymentPO po : listPO){
+    		  PaymentFormDO form = new PaymentFormDO();
+    		  form.setId("000000001");
+    		  form.setDate(po.getDate());
+    		  form.setMoney(po.getMoney());
+    		  form.setPaymen(po.getPaymen());
+    		  form.setPayaccount(po.getPayaccount());
+    		  form.setPaycat(po.getPaycat());
+    		  form.setPs(po.getPs());
+    		  listDO.add(form);
+    	  }
+    	  db2.insert(listDO, "paymentform");
+    	  return true;
     	  
       }
 }
