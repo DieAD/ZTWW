@@ -65,6 +65,7 @@ public StorageListLineofOutVO changetovo() {
 	 outstockformdo.setTime(data);
 	 outstockformdo.setNumber(number);
 	 outstockformdo.setTransmethod(way);
+	 outstockformdo.setId(id);
 	 return outstockformdo;
     
  }

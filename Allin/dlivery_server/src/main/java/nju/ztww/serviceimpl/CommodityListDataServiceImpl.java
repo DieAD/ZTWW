@@ -51,5 +51,11 @@ public class CommodityListDataServiceImpl extends UnicastRemoteObject implements
 		
 		return arraylistout;
 	}
+//得到库存信息
+	public ArrayList<StorageListLineofInPO> getStock(String idofcenter)
+			throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
     
 }
