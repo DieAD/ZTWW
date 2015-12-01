@@ -82,6 +82,8 @@ public class BusinessUI extends JPanel{
 		YourMessageButton.addActionListener(new ActionListener(){
 
 			public void actionPerformed(ActionEvent e) {
+				TextBussinessUI.personalMessagePanel =new PersonalMesageUI();
+				TextBussinessUI.personalMessagePanel.setBounds(210,60,690,480);
 				TextBussinessUI.changePanel(6);
 			}});
 	

@@ -18,9 +18,9 @@ import nju.ztww.po.TransferPO;
 
 public class OrderHandler {
 	
-	private BusinessArriveData businessArriveData;
-	private MailingOrderData mailingOrderData;
-	private AcceptOrderData acceptOrderData;
+	private BusinessArriveData businessArriveData = new BusinessArriveData();
+	private MailingOrderData mailingOrderData = new MailingOrderData();
+	private AcceptOrderData acceptOrderData = new AcceptOrderData();
 	public OrderHandler(){
 		
 	}
@@ -36,6 +36,7 @@ public class OrderHandler {
 		case 1:
 			MailingPO mailingPO=(MailingPO) orderPO;
 			result = mailingOrderData.insert(mailingPO);
+			break;
 		case 2:
 			BusinessArrivePO businessArrivePO=(BusinessArrivePO) orderPO;
 			result=businessArriveData.insert(businessArrivePO);

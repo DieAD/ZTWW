@@ -27,6 +27,7 @@ public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDa
 
 	public String insert(OrderPO orderPO,int type) throws RemoteException {
 		// TODO Auto-generated method stub
+		System.out.println("DataImpl");
 		String result=orderHandler.insert(orderPO, type);
 		return result;
 	}

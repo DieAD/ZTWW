@@ -1,12 +1,6 @@
-package nju.ztww.po;
+package nju.ztww.vo;
 
-import java.io.Serializable;
-
-/*
- * 专用于个人信息的PO
- */
-
-public class UserPO implements Serializable{
+public class UserVO {
 	public String name;
 	public String ID;
 	public int sex;

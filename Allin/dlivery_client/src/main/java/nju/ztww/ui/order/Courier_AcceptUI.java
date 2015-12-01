@@ -65,7 +65,7 @@ public class Courier_AcceptUI extends JPanel{
 		{/*for Button*/
 			searchButton.setBounds(500, 420, 110, 38);
 			searchButton.setIcon(new ImageIcon("photo/search.gif"));
-			this.add(searchButton);
+//			this.add(searchButton);
 			searchButton.addActionListener(new ActionListener(){
 
 				public void actionPerformed(ActionEvent e) {
@@ -237,7 +237,7 @@ public class Courier_AcceptUI extends JPanel{
 				orderServiceImpl.endSales(acceptOrders.get(i), 11);
 			}
 			acceptOrders.clear();
-			table.removeAll();
+			de.setColumnCount(0);
 		}
 	};
 	

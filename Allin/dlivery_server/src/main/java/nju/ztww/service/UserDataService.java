@@ -5,6 +5,7 @@ import java.rmi.RemoteException;
 
 import nju.ztww.po.MemberPO;
 import nju.ztww.po.OrderPO;
+import nju.ztww.po.UserPO;
 
 /* Date:
  * Author:aaa
@@ -30,6 +31,9 @@ public interface UserDataService extends Remote {
 	 */
 	public OrderPO checkOrder(String id) throws RemoteException;
 	
-	
+	/*
+	 * 用于查询个人信息
+	 */
+	public UserPO findUser(String ID) throws RemoteException ;
 	
 }
