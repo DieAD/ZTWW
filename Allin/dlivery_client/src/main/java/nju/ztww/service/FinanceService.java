@@ -33,5 +33,9 @@ public interface FinanceService {
 	
 	public boolean addPaymentForm(ArrayList<PaymentVO> list);
 	
+	public ArrayList<PaymentVO> queryPCP(String startTime,String endTime,String holl);
+	public ArrayList<CollectionVO> queryPCC(String startTime,String endTime,String holl);
+	
+	
 	
 }
