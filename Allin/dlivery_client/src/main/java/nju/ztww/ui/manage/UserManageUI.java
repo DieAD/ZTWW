@@ -9,6 +9,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Vector;
 
 import javax.swing.ImageIcon;
@@ -21,12 +22,16 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
+import nju.ztww.service.UserService;
+import nju.ztww.serviceimpl.UserLoginImpl;
+import nju.ztww.vo.ManaUserVO;
+
 public class UserManageUI extends JPanel{
 	DefaultTableModel defaultTableModel ;
 	JDialog dlg;
 	 JTable table;
 	 private JButton addButton=new JButton();
-	 
+	 JButton submitButton = new JButton("提交");
 	 JButton sureAddButton = new JButton("确认添加");
 	 JDialog addDlg;
 	 
@@ -50,7 +55,9 @@ public class UserManageUI extends JPanel{
 	 JTextField phone = new JTextField("联系方式");
 	 JTextField position = new JTextField("快递员");
 	
-	 
+	 private ArrayList<ManaUserVO> list = new ArrayList<ManaUserVO>();
+	 private ManaUserVO user;
+	 private UserService userService = new UserLoginImpl();
 	 
 	java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit()
 			.getScreenSize();
@@ -60,10 +67,14 @@ public class UserManageUI extends JPanel{
 		ImageIcon save=new ImageIcon("photo/save.gif");
 		
 		addButton.setBounds(500, 420, 110, 38);
+		
 //		userButton.setIcon(save);
 		addButton.setText("添加");
 		addButton.addActionListener(add);
+		submitButton.setBounds(350, 420, 110, 38);
+		submitButton.addActionListener(submit);
 		this.add(addButton);
+		this.add(submitButton);
 		
 		Object[][] playerInfo =
 			  {
@@ -170,8 +181,28 @@ public class UserManageUI extends JPanel{
 			row.add(position.getText());
 			row.add(authority.getText());
 			defaultTableModel.addRow(row);
+			
+			user = new ManaUserVO(ID.getText(), name.getText(), 
+					password.getText(), authority.getText(), 
+					Integer.valueOf(age.getText()), IDCard.getText()
+							, sex.getText(), phone.getText(), position.getText());
+			
+			list.add(user);
+			
 			addDlg.dispose();
 			sureAddButton.removeActionListener(sureAdd);
+		}
+	};
+
+	ActionListener submit = new ActionListener() {
+		
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			int size = list.size();
+			for(int i = 0; i < size;i++){
+				userService.addUser(user);
+			}
+			list.clear();
 		}
 	};
 }
