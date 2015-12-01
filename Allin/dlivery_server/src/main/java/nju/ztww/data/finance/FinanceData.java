@@ -13,7 +13,7 @@ import nju.ztww.po.PaymentPO;
 public class FinanceData {
       DBForPayeeForm db = new DBForPayeeForm();
       DBForPaymentForm db2 = new DBForPaymentForm();
-      
+      DateHelper dh = new DateHelper();
       
       public ArrayList<CollectionPO> queryByDate(String date,String holl){
     	  ArrayList<PayeeFormDO> listDO = new ArrayList<PayeeFormDO>();
@@ -60,15 +60,40 @@ public class FinanceData {
     	  
       }
       
-      public ArrayList<PCPO> queryPC(String beginTime,String endTime,String holl){
-    	  return null;
+     
+      
+      public ArrayList<PaymentPO> queryPCP(String beginTime,String endTime,String holl){
+    	  ArrayList<PaymentFormDO> paymentDO  = new ArrayList<PaymentFormDO>();
+    	  ArrayList<PaymentPO> paymentPO = new ArrayList<PaymentPO>();
+    	  ArrayList<String> dateList = dh.SetTime(beginTime, endTime);
+    	  db2.init();
+    	  for(String date: dateList){
+    		  paymentDO.addAll(db2.queryByDate(date, "paymentform"));
+    	  }
+    	  for(PaymentFormDO DO : paymentDO){
+    		  PaymentPO po=new PaymentPO();
+    		  po.setDate( DO.getDate());
+    		  po.setMoney(DO.getMoney());
+    		  po.setPayaccount(DO.getPayaccount());
+    		  po.setPaycat(DO.getPaycat());
+    		  po.setPaymen(DO.getPaymen());
+    		  po.setPs(DO.getPs());
+    		  
+    		  paymentPO.add(po);
+    	  }
+    	  db2.close();
+    	  return paymentPO;
       }
       
-      public ArrayList<String> analyziseTime(String begintime,String endTime){
-    	  String  bTime = "15/11/25";
-    	  String  etime = "15/12/01";
-    	  
-    	  
-    	  return null;
+      public ArrayList<CollectionPO> queryPCC(String beginTime,String endTime,String holl){
+    	  ArrayList<String> dateList = dh.SetTime(beginTime, endTime);
+    	  ArrayList<CollectionPO> collectionPO = new ArrayList<CollectionPO>();
+    	  for(String date: dateList){
+    		  collectionPO.addAll(queryByDate(date,holl));
+    		 
+    	  }
+    	  return collectionPO;
       }
+      
+    
 }

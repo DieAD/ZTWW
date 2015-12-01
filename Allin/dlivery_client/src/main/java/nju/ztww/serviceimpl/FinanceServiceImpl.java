@@ -39,9 +39,18 @@ public class FinanceServiceImpl implements FinanceService{
 		return true;
 	}
 
-	public ArrayList<PCVO> queryPC(String startTime, String endTime, String holl) {
+	public ArrayList<PaymentVO> queryPCP(String startTime, String endTime,
+			String holl) {
 		// TODO Auto-generated method stub
-		return null;
+		return financeBL.queryPCP(startTime, endTime, holl);
 	}
+
+	public ArrayList<CollectionVO> queryPCC(String startTime, String endTime,
+			String holl) {
+		// TODO Auto-generated method stub
+		return financeBL.queryPCC(startTime, endTime, holl);
+	}
+
+	
 
 }
