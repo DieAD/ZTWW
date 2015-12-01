@@ -3,6 +3,7 @@ package nju.ztww.service;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
+import nju.ztww.po.ManaUserPO;
 import nju.ztww.po.MemberPO;
 import nju.ztww.po.OrderPO;
 import nju.ztww.po.UserPO;
@@ -27,4 +28,7 @@ public interface UserDataService extends Remote{
 	 * 用于查询个人信息
 	 */
 	public UserPO findUser(String ID);
+	
+	//管理员添加用户
+	public boolean addUser(ManaUserPO user);
 }
