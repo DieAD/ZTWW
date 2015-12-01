@@ -23,7 +23,7 @@ public class StorageCheckPanel extends JPanel {
  public JLabel labelout=new JLabel("出库信息");
  public JLabel labelinnumber=new JLabel("入库数量");
  public JLabel labeloutnumber=new JLabel("出库数量");
- 
+ String idofcenter="0001";//需要根据中转中心人员身份来确定
  
  public JTextField  textfield1=new JTextField(10);
  public JTextField  textfield2=new JTextField(10);
@@ -121,8 +121,9 @@ public class StorageCheckPanel extends JPanel {
 }
  ActionListener listener=new ActionListener(){
    public void actionPerformed(ActionEvent e) {
-	   arraylistin=commoditylistservice.getInListbytime(textfieldBegin.getText(), textfieldEnd.getText());
+	   arraylistin=commoditylistservice.getInListbytime(textfieldBegin.getText(), textfieldEnd.getText(),idofcenter);
 	   for(int i=0;i<arraylistin.size();i++){
+		   System.out.println(arraylistin.get(i).getDestination());
 			Vector<String> row = new Vector<String>(7);
 			row.add(arraylistin.get(i).getId());
 			row.add(arraylistin.get(i).getData());
@@ -135,7 +136,7 @@ public class StorageCheckPanel extends JPanel {
 		    table1.revalidate();
 		}
 	   textfieldin.setText(String.valueOf(arraylistin.size()));
-	   arraylistout=commoditylistservice.getOutListbytime(textfieldBegin.getText(), textfieldEnd.getText());
+	   arraylistout=commoditylistservice.getOutListbytime(textfieldBegin.getText(), textfieldEnd.getText(),idofcenter);
 	   for(int i=0;i<arraylistout.size();i++){
 		   Vector<String> row = new Vector<String>(5);
 		  WayToString  way=new WayToString();

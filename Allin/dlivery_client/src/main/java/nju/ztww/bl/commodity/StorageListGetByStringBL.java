@@ -23,6 +23,7 @@ public class StorageListGetByStringBL {
 	public ArrayList<StorageListLineofInPO> getInList(String timebegin,String timeend,String idofcenter){
 		commoditylistdata = (CommodityListDataService)rhelper.findService("CommodityListDataService");
 		ArrayList<StorageListLineofInPO>arraylist=commoditylistdata.findInList(timebegin, timeend,idofcenter);
+		System.out.println("zai BL");
 		return arraylist;
 		
 	}

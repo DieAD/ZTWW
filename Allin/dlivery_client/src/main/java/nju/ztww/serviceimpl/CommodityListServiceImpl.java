@@ -42,6 +42,7 @@ public class CommodityListServiceImpl implements CommodityListService {
 	public ArrayList<StorageListLineofInVO> getInListbytime(String timebegin,
 			String timeend,String idofcenter) {
 		// TODO Auto-generated method stub
+		System.out.println("在客户端");
 		ArrayList<StorageListLineofInVO> arraylistinvo=new ArrayList<StorageListLineofInVO>();
 		ArrayList<StorageListLineofInPO> arraylistinpo=new ArrayList<StorageListLineofInPO>();
 		StorageListGetByStringBL storagegetbystring=new StorageListGetByStringBL();
