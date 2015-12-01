@@ -103,6 +103,7 @@ public void actionPerformed(ActionEvent e) {
 		defaultTableModel.addRow(row);
 	    table.revalidate();
 	}
+	countshuliang.setText(String.valueOf(arraylist.size()));
 	
 	
 }
