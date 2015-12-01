@@ -103,9 +103,11 @@ public class DBForOutStockForm extends DB{
 				pstmt.setString(3, form.getTime());
 				pstmt.setString(4, form.getAddress());
 				pstmt.setString(5, form.getTransmethod());
+				pstmt.setString(8, form.getNumber());
 				pstmt.setInt(6, form.getExe());
 				pstmt.setInt(7, form.getState());
-				pstmt.setString(8, form.getNumber());
+				
+				
 
 				pstmt.executeUpdate();
 			}
@@ -156,7 +158,7 @@ public class DBForOutStockForm extends DB{
 	}
 	public ArrayList<OutStockFormDO> queryByTime(String time, String tableName) {
 		ArrayList<OutStockFormDO> list = new ArrayList<OutStockFormDO>();
-		String sql = "select * from " + tableName + " where time= '"+time+"'";
+		String sql = "select * from " + tableName + " where time= '"+time+"'and exe=1";
 		try {
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);

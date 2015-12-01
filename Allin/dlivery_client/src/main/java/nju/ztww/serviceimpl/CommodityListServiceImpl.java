@@ -65,4 +65,9 @@ public class CommodityListServiceImpl implements CommodityListService {
 	
 	}
 
+	public ArrayList<StorageListLineofInVO> getStock(String idofcenter) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
