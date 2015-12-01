@@ -45,10 +45,63 @@ public class FinanceBL {
 	public boolean addPaymentVO(ArrayList<PaymentVO> list){
 		ArrayList<PaymentVO> listVO = list;
 		ArrayList<PaymentPO> listPO = new ArrayList<PaymentPO>();
+		for(PaymentVO vo : listVO){
+			PaymentPO po = new PaymentPO();
+			po.setDate(vo.date);
+			po.setMoney(vo.money);
+			po.setPaymen(vo.paymen);
+			po.setPayaccount(vo.payaccount);
+			po.setPaycat(vo.paycat);
+			po.setPs(vo.ps);
+			
+			listPO.add(po);
+		}
 		financeDataService = (FinanceDataService) rmi
 				.findService("FinanceDataService");
 		
 	   financeDataService.addPaymentForm(listPO);
 		return true;
+	}
+	
+	public ArrayList<PaymentVO> queryPCP(String beginTime,String endTime,String holl){
+		ArrayList<PaymentVO> listVO = new ArrayList<PaymentVO>();
+		ArrayList<PaymentPO> listPO = new ArrayList<PaymentPO>();
+		financeDataService = (FinanceDataService) rmi
+				.findService("FinanceDataService");
+		try {
+			 listPO = financeDataService.queryPCP(beginTime, endTime, holl);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		for(PaymentPO po : listPO){
+			//String date,double money,String paymen,String payaccount,String paycat,String ps
+			PaymentVO vo = new PaymentVO(po.getDate(),po.getMoney(),po.getPaymen(),po.getPayaccount(),po.getPaycat(),po.getPs());
+			listVO.add(vo);
+		}
+		return listVO;
+	
+		
+	}
+	
+	public ArrayList<CollectionVO> queryPCC(String beginTime,String endTime,String holl){
+		ArrayList<CollectionPO> listPO  = new ArrayList<CollectionPO>();
+		ArrayList<CollectionVO> listVO  = new ArrayList<CollectionVO>();
+		financeDataService = (FinanceDataService) rmi
+				.findService("FinanceDataService");
+		try {
+			listPO = financeDataService.queryPCC(beginTime, endTime, holl);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		for(CollectionPO po : listPO){
+			// String date,double money,String courierid,String orderid
+			CollectionVO vo= new CollectionVO(po.getDate(),po.getMoney(),po.getCourierid(),po.getGoodsid());
+			listVO.add(vo);
+			
+		}
+  		return listVO;
+		
 	}
 }

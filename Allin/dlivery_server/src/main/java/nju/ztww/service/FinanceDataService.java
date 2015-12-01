@@ -8,6 +8,7 @@ import nju.ztww.po.AccountPO;
 import nju.ztww.po.CollectionPO;
 import nju.ztww.po.MemberPO;
 import nju.ztww.po.OrderPO;
+import nju.ztww.po.PCPO;
 import nju.ztww.po.PaymentPO;
 
 /*
@@ -65,7 +66,8 @@ public interface FinanceDataService extends Remote {
 		
 		public boolean addPaymentForm(ArrayList<PaymentPO> list)throws RemoteException;
 		
-		
+		public ArrayList<CollectionPO> queryPCC(String beginTime, String endTime, String holl)throws RemoteException;
+		public ArrayList<PaymentPO> queryPCP(String beginTime, String endTime, String holl)throws RemoteException;
 	/*
 	 * 在数据库中更改信息？？
 	 */
