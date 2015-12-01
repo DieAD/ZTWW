@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import nju.ztww.bl.finance.FinanceBL;
 import nju.ztww.service.FinanceService;
 import nju.ztww.vo.AccountVO;
+import nju.ztww.vo.BenefitVO;
 import nju.ztww.vo.CollectionVO;
 import nju.ztww.vo.OrderVO;
 import nju.ztww.vo.PCVO;
@@ -49,6 +50,11 @@ public class FinanceServiceImpl implements FinanceService{
 			String holl) {
 		// TODO Auto-generated method stub
 		return financeBL.queryPCC(startTime, endTime, holl);
+	}
+
+	public BenefitVO getBenefit() {
+		// TODO Auto-generated method stub
+		return financeBL.getTotalBenefit();
 	}
 
 	

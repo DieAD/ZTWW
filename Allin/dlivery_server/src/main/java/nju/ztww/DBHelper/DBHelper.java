@@ -135,6 +135,7 @@ public class DBHelper extends DB{
 				userDO.setPhone(rs.getString(13));
 				userDO.setTimes(rs.getInt(14));
 				userDO.setSp(rs.getDouble(15));
+				userDO.setPosition(rs.getString(16));
 				list.add(userDO);
 			}
 		} catch (SQLException e) {
@@ -151,8 +152,8 @@ public class DBHelper extends DB{
 	public void insert(ArrayList<UserDO> userDOList, String tableName) {
 		String sql = "insert into "
 				+ tableName
-				+ "(id,name,psw,authority,age,worktime,idcard,salarymethod,salary,wetherwork,sex,phone,times,sp)"
-				+ " values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+				+ "(id,name,psw,authority,age,worktime,idcard,salarymethod,salary,wetherwork,sex,phone,times,sp,position)"
+				+ " values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			for (UserDO user : userDOList) {
@@ -170,6 +171,7 @@ public class DBHelper extends DB{
 				pstmt.setString(12, user.getPhone());
 				pstmt.setInt(13, user.getTimes());
 				pstmt.setDouble(14, user.getSp());
+				pstmt.setString(15, user.getPosition());
 				pstmt.executeUpdate();
 			}
 		} catch (SQLException e) {
@@ -186,7 +188,7 @@ public class DBHelper extends DB{
 		String sql = "update "
 				+ tableName
 				+ " set name=?,psw=?,authority=?,age=?,worktime=?,idcard=?,salarymethod=?,salary=?"
-				+ ",wetherwork=?,sex=?,phone=?,times=?,sp=? where id=?";
+				+ ",wetherwork=?,sex=?,phone=?,times=?,sp=?,position=? where id=?";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			for (UserDO user : userDOList) {
@@ -203,7 +205,8 @@ public class DBHelper extends DB{
 				pstmt.setString(11, user.getPhone());
 				pstmt.setInt(12, user.getTimes());
 				pstmt.setDouble(13, user.getSp());
-				pstmt.setString(14, user.getId());
+				pstmt.setString(14, user.getPosition());
+				pstmt.setString(15, user.getId());
 				pstmt.executeUpdate();
 			}
 		} catch (SQLException e) {
@@ -249,12 +252,12 @@ public class DBHelper extends DB{
 		return str;
 	}
 	
-	public static void main(String[] args){
-		DBHelper db = new DBHelper();
-		db.init();
-		db.getSize("userstable");
-		db.close();
-	}
+//	public static void main(String[] args){
+//		DBHelper db = new DBHelper();
+//		db.init();
+//		db.getSize("userstable");
+//		db.close();
+//	}
 
 	
 }

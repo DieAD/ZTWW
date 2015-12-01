@@ -70,5 +70,15 @@ public class FinanceDataServiceImpl extends UnicastRemoteObject implements Finan
 	public ArrayList<PaymentPO> queryPCP(String beginTime, String endTime, String holl)throws RemoteException{
 		return financeData.queryPCP(beginTime, endTime, holl);
 	}
+
+	public ArrayList<CollectionPO> totalCollection() throws RemoteException {
+		// TODO Auto-generated method stub
+		return financeData.totalCollection();
+	}
+
+	public ArrayList<PaymentPO> totalPayment() throws RemoteException {
+		// TODO Auto-generated method stub
+		return financeData.totalPayment();
+	}
       
 }

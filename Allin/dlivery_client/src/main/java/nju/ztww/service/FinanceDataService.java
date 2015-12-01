@@ -61,6 +61,8 @@ public interface FinanceDataService {
 			public boolean addPaymentForm(ArrayList<PaymentPO> list);
 			public ArrayList<CollectionPO> queryPCC(String beginTime, String endTime, String holl)throws RemoteException;
 			public ArrayList<PaymentPO> queryPCP(String beginTime, String endTime, String holl)throws RemoteException;
+			public ArrayList<CollectionPO> totalCollection()throws RemoteException;
+			public ArrayList<PaymentPO>  totalPayment()throws RemoteException;
 		/*
 		 * 在数据库中更改信息？？
 		 */

@@ -82,4 +82,32 @@ public class DBForPaymentForm extends DB{
 		}
     	 
      }
+     
+     public ArrayList<PaymentFormDO> totalPayment(String tableName){
+    	 ArrayList<PaymentFormDO> list =new ArrayList<PaymentFormDO>();
+    	 
+    	 String sql = " select * from "+ tableName;
+    	 try {
+ 			Statement stmt = conn.createStatement();
+ 			ResultSet rs = stmt.executeQuery(sql);
+ 			
+ 			while(rs.next()){
+ 				PaymentFormDO form = new PaymentFormDO();
+ 				form.setIndex(rs.getInt(1));
+ 				form.setId(rs.getString(2));
+ 				form.setDate(rs.getString(3));
+ 				form.setMoney(rs.getDouble(4));
+ 				form.setPaymen(rs.getString(5));
+ 				form.setPayaccount(rs.getString(6));
+ 				form.setPaycat(rs.getString(7));
+ 				form.setPs(rs.getString(8));
+ 				list.add(form);
+ 			}
+ 		} catch (SQLException e) {
+ 			// TODO Auto-generated catch block
+ 			e.printStackTrace();
+ 		}
+    	 
+    	 return list;
+     }
 }
