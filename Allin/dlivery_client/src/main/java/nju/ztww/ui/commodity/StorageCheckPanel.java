@@ -16,7 +16,7 @@ import nju.ztww.vo.StorageListLineofInVO;
 import nju.ztww.vo.StorageListLineofOutVO;
 
 public class StorageCheckPanel extends JPanel {
- public JLabel label1=new JLabel("开始时间");
+ public JLabel label1=new JLabel("开始时间");//格式 YY/mm/RR
  public JLabel label2=new JLabel("截止时间");
  public JButton surebutton=new JButton("确定");
  public JLabel labelin=new JLabel("入库信息");
@@ -65,8 +65,7 @@ public class StorageCheckPanel extends JPanel {
 	   this.add(textfieldin);
 	 Object[][] playerInfo =
 			{
-				{ "0000000003",  "A",14,2,4 },
-				{ "0000000004",   "B", 15 ,3,6}, 
+				
 						  };
 
 				//字段名称
@@ -96,12 +95,11 @@ public class StorageCheckPanel extends JPanel {
 				this.add(textfieldout);
 				Object[][] playerInfo1 =
 					{
-						{ "0000000003",  "A",14,2,4,100 },
-						{ "0000000004",  "上海", "B", 15 ,3,6,100}, 
+						 
 											  };
 
 									//字段名称
-					String[] Names1 = { "快件编号",   "区号", "排号" ,"架号","位号","金额"};
+					String[] Names1 = { "快件编号",   "日期", "到达地" ,"装运形式","号码"};
 
 											  
 			//创建表格: 建立一个显示二维数组数据的表格，且可以显示列的名称。 
