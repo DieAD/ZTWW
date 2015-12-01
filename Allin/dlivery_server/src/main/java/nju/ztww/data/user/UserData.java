@@ -9,6 +9,7 @@ import nju.ztww.dao.UserDO;
 import nju.ztww.po.MemberPO;
 import nju.ztww.po.OrderPO;
 import nju.ztww.po.StatePO;
+import nju.ztww.po.UserPO;
 import nju.ztww.service.UserDataService;
 import nju.ztww.serviceimpl.UserDataServiceImpl;
 
@@ -53,11 +54,29 @@ public class UserData{
 			dbHelper.close();
 			return member;
 		}
-
-		
 		
 	}
-	
+	public UserPO findUser(String ID) {
+		// TODO Auto-generated method stub
+		dbHelper.init();
+		list = dbHelper.queryByID(ID, "userstable");
+		UserPO userPO = new UserPO();
+		if(list.size()!=0){
+			UserDO user = list.get(0);
+			
+			userPO.setAge(user.getAge());
+			userPO.setID(user.getId());
+			userPO.setIDCard(user.getIdcard());
+			userPO.setName(user.getName());
+			userPO.setSalary(user.getSalary());
+			userPO.setSex(user.getSex());
+			userPO.setWorkTime(user.getWorktime());
+		}else {
+			System.out.println("用户信息找不到！");
+		}
+		dbHelper.close();
+		return userPO;
+	}
 //	public static void main(String[] args){
 //		UserData userData = new UserData();
 //		userData.dbHelper.init();
@@ -74,4 +93,8 @@ public class UserData{
 		
 		return null;
 	}
+
+
+
+
 }

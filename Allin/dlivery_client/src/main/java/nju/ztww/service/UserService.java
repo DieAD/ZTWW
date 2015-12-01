@@ -3,6 +3,7 @@ package nju.ztww.service;
 import nju.ztww.ui.finance.Position;
 import nju.ztww.vo.MemberVO;
 import nju.ztww.vo.OrderVO;
+import nju.ztww.vo.UserVO;
 
 public interface UserService {
 /*
@@ -25,4 +26,7 @@ public interface UserService {
  * 输出：MemberVO : 该页面操作的用户身份	
  */
 	public Position getState();
+	
+	
+	public UserVO getUser(String ID);
 }

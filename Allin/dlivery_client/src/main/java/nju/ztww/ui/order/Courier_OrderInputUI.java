@@ -252,9 +252,10 @@ public class Courier_OrderInputUI extends JPanel{
 			int size = mailingOrders.size();
 			for(int i=0;i<size;i++){
 				orderServiceImpl.endSales(mailingOrders.get(i), 1);
+				
 			}
 			mailingOrders.clear();
-			table.removeAll();
+			defaultTableModel.setColumnCount(0);
 		}
 	};
 	

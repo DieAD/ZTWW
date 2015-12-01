@@ -18,7 +18,7 @@ public class TextBussinessUI {
 	static RecieiveMoneyUI recieveMoneyUI=new RecieiveMoneyUI();
 	static CarManageUI carManageUI=new CarManageUI();
 	static DriverManageUI driverManageUI=new DriverManageUI();
-	static PersonalMesageUI personalMessagePanel=new PersonalMesageUI();
+	static PersonalMesageUI personalMessagePanel;
 	private static int type=1;
 	
 	private ArrayList<JPanel> panelList  = new ArrayList<JPanel>();
@@ -41,7 +41,7 @@ public class TextBussinessUI {
 		recieveMoneyUI.setBounds(210,60,690,480);
 		carManageUI.setBounds(210,60,690,480);
 		driverManageUI.setBounds(210,60,690,480);
-		personalMessagePanel.setBounds(210,60,690,480);
+	
 	
 //
 //		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

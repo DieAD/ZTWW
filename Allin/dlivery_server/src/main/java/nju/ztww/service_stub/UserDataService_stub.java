@@ -6,6 +6,7 @@ import java.rmi.server.UnicastRemoteObject;
 import nju.ztww.data.user.UserData;
 import nju.ztww.po.MemberPO;
 import nju.ztww.po.OrderPO;
+import nju.ztww.po.UserPO;
 import nju.ztww.service.UserDataService;
 
 public class UserDataService_stub extends UnicastRemoteObject implements UserDataService {
@@ -30,5 +31,12 @@ public class UserDataService_stub extends UnicastRemoteObject implements UserDat
 		OrderPO orderPO = userData.findOrder(id);
 		return orderPO;
 	}
+
+	public UserPO findUser(String ID) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
 
 }
