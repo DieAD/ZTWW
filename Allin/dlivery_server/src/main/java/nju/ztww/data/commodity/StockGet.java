@@ -14,6 +14,7 @@ public class StockGet {
 	ArrayList<StockDO>stocklist=new ArrayList<StockDO>();
 	ArrayList<StorageListLineofInPO> storagelistline=new ArrayList<StorageListLineofInPO>();
 	stocklist=dbforstock.queryALL(tableName);
+	System.out.println("在服务器");
 	for(int k=0;k<stocklist.size();k++){
 		StorageListLineofInPO storagelistlinreofin=new StorageListLineofInPO(1,
 				stocklist.get(k).getGoodsid(),
