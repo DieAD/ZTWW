@@ -24,6 +24,7 @@ public class EditBenefit extends EditPanel {
 		this.remove(button1);
 		this.remove(button3);
 		button2.setText("更新");
+		button2.addActionListener(new Listener());
 		}
 	
 	class Header extends JPanel{
