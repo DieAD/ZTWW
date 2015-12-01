@@ -45,7 +45,7 @@ public class DBForPaymentForm extends DB{
 			for(PaymentFormDO form : list){
 				pstmt.setString(1,form.getId());
 				pstmt.setString(2, form.getDate());
-				pstmt.setDouble(3,form.getIndex());
+				pstmt.setDouble(3,form.getMoney());
 				pstmt.setString(4,form.getPaymen());
 				pstmt.setString(5, form.getPayaccount());
 				pstmt.setString(6, form.getPaycat());
