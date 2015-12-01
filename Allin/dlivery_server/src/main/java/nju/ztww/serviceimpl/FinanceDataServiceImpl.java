@@ -4,15 +4,17 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
+import nju.ztww.data.finance.FinanceData;
 import nju.ztww.po.AccountPO;
+import nju.ztww.po.CollectionPO;
 import nju.ztww.po.MemberPO;
 import nju.ztww.po.OrderPO;
+import nju.ztww.po.PaymentPO;
 import nju.ztww.service.FinanceDataService;
-import nju.ztww.vo.CollectionVO;
 
 public class FinanceDataServiceImpl extends UnicastRemoteObject implements FinanceDataService {
-
-	protected FinanceDataServiceImpl() throws RemoteException {
+    private FinanceData financeData = new FinanceData();
+	public FinanceDataServiceImpl() throws RemoteException {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -48,10 +50,16 @@ public class FinanceDataServiceImpl extends UnicastRemoteObject implements Finan
 		return 0;
 	}
 
-	public ArrayList<CollectionVO> queryCollection(String querydate,
+	public ArrayList<CollectionPO> queryCollection(String querydate,
 			String queryholl) throws RemoteException {
+		
+		return financeData.queryByDate(querydate, queryholl);
+	}
+
+	public boolean addPaymentForm(ArrayList<PaymentPO> list)throws RemoteException {
 		// TODO Auto-generated method stub
-		return null;
+		financeData.addPaymentForm(list);
+		return true;
 	}
       
 }
