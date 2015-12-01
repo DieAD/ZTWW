@@ -12,6 +12,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import nju.ztww.service.CheckOrderService;
+import nju.ztww.serviceimpl.CheckOrderServiceImpl;
+
 public class OrderCheckPanel extends JPanel {
 	ArrayList<JLabel> jlabellist=new ArrayList<JLabel>();
 	ArrayList<String> textstring=new ArrayList<String>(); 
@@ -23,6 +26,9 @@ public class OrderCheckPanel extends JPanel {
 	final ImageIcon bdot=new ImageIcon("photo/bdot.jpg");
 	public OrderCheckPanel() {
 		// TODO Auto-generated constructor stub
+		CheckOrderService checkorderservice=new CheckOrderServiceImpl();
+		
+		textstring=checkorderservice.findTrace("00001");
 		setup();
 		setPosition();
 	}

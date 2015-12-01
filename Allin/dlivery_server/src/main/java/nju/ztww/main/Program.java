@@ -3,11 +3,13 @@ package nju.ztww.main;
 import java.rmi.Naming;
 import java.rmi.registry.LocateRegistry;
 
+import nju.ztww.service.CheckOrderDataService;
 import nju.ztww.service.CommodityDataService;
 import nju.ztww.service.CommodityListDataService;
 import nju.ztww.service.FinanceDataService;
 import nju.ztww.service.OrderDataService;
 import nju.ztww.service.UserDataService;
+import nju.ztww.serviceimpl.CheckOrderDataServiceImpl;
 import nju.ztww.serviceimpl.CommodityListDataServiceImpl;
 import nju.ztww.serviceimpl.FinanceDataServiceImpl;
 import nju.ztww.serviceimpl.OrderDataServiceImpl;
@@ -29,13 +31,15 @@ public class Program {
         		 CommodityDataService  commoditydataserviceout=new StorageOutOfListDataServiceImpl();
         		 CommodityListDataService  commoditylistdataservice=new  CommodityListDataServiceImpl();
         		 FinanceDataService  financedataservice = new FinanceDataServiceImpl();
-        	
+        		 CheckOrderDataService checkorderdataservice=new CheckOrderDataServiceImpl();
         		 LocateRegistry.createRegistry(PORT);
         		 Naming.rebind("rmi://"+IP+":"+PORT+"/UserDataService", userdataservice);       		
         		 Naming.rebind("rmi://"+IP+":"+PORT+"/OrderDataService", orderDataService);
+        		 Naming.rebind("rmi://"+IP+":"+PORT+"/CommodityDataService", commoditydataservice);
         		 Naming.rebind("rmi://"+IP+":"+PORT+"/CommodityDataServiceOut", commoditydataserviceout);
         		 Naming.rebind("rmi://"+IP+":"+PORT+"/CommodityListDataService", commoditylistdataservice);
         		 Naming.rebind("rmi://"+IP+":"+PORT+"/FinanceDataService", financedataservice);
+        		 Naming.rebind("rmi://"+IP+":"+PORT+"/CheckOrderDataService", checkorderdataservice);
         		 
         		// LocateRegistry.createRegistry(PORT);
         		 System.out.println("Server strated!");
