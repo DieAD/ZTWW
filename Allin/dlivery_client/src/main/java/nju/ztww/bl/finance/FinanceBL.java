@@ -45,6 +45,17 @@ public class FinanceBL {
 	public boolean addPaymentVO(ArrayList<PaymentVO> list){
 		ArrayList<PaymentVO> listVO = list;
 		ArrayList<PaymentPO> listPO = new ArrayList<PaymentPO>();
+		for(PaymentVO vo : listVO){
+			PaymentPO po = new PaymentPO();
+			po.setDate(vo.date);
+			po.setMoney(vo.money);
+			po.setPaymen(vo.paymen);
+			po.setPayaccount(vo.payaccount);
+			po.setPaycat(vo.paycat);
+			po.setPs(vo.ps);
+			
+			listPO.add(po);
+		}
 		financeDataService = (FinanceDataService) rmi
 				.findService("FinanceDataService");
 		
