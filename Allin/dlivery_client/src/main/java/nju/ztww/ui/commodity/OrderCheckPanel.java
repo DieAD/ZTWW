@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -12,13 +13,10 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class OrderCheckPanel extends JPanel {
-	public JLabel JLabel1;
-	public JLabel JLabel2;
-	public JLabel JLabel3;
-	public JLabel JLabel4;
-	public JLabel JLabel5;
-	public JLabel JLabel6;
-	public JLabel JLabel1wdot;
+	ArrayList<JLabel> jlabellist=new ArrayList<JLabel>();
+	ArrayList<String> textstring=new ArrayList<String>(); 
+	ArrayList<JLabel>  jlabelwdot=new ArrayList<JLabel>();
+	
 	public JLabel JLabelbdot;
 	final ImageIcon bg=new ImageIcon("photo/bg.jpg");
 	final ImageIcon wdot=new ImageIcon("photo/wdot.jpg");
@@ -29,32 +27,31 @@ public class OrderCheckPanel extends JPanel {
 		setPosition();
 	}
      public void setup(){
-    	 JLabel1=new JLabel();
-    	 JLabel1.setText("商家正通知快递公司揽件");
-    	 JLabel2=new JLabel();
-    	 JLabel2.setText("圆通速递已揽件");
-    	 JLabel3=new JLabel();
-    	 JLabel4=new JLabel();
-    	 JLabel5=new JLabel();
-    	 JLabel6=new JLabel();
+    	 for(int i=0;i<textstring.size();i++ ){
+    		 JLabel jlabel=new JLabel();
+    		 jlabel.setText(textstring.get(i));
+    		 jlabellist.add(jlabel);
+    	 }
+    	 for(int i=0;i<textstring.size()-1;i++ ){
+    		 JLabel jlabel=new JLabel();
+    		 jlabel.setIcon(wdot);
+    	 }
+    	
     	 JLabelbdot=new JLabel();
-    	 JLabel1wdot=new JLabel();
-    	 JLabel1wdot.setIcon(wdot);
     	 JLabelbdot.setIcon(bdot);
      }
      public void setPosition(){
     	 this.setLayout(null);
-    	 JLabel1wdot.setBounds(0, 500, 25, 25);
-    	 JLabel1.setBounds(50, 500, 300, 30);
-    	 JLabel1.setFont(new Font("宋体",Font.PLAIN,15));
-    	 JLabelbdot.setBounds(0, 450, 25, 25);
-    	 JLabel2.setFont(new Font("宋体",Font.PLAIN,15));
-    	 JLabel2.setBounds(50, 450, 300, 30);
-    	 this.add(JLabel1wdot);
-    	 this.add(JLabel1);
-    	 this.add(JLabel2);
-    	 this.add(JLabelbdot);
-         
+    	 int index=0;
+    	 for(int i=0;i<jlabellist.size()-1;i++){
+    		 index=i;
+    		 jlabellist.get(i).setFont(new Font("宋体",Font.PLAIN,15));
+    		jlabellist.get(i).setBounds(50, 50*i, 300, 30);
+    		jlabelwdot.get(i).setBounds(0, 50*i, 25, 25);
+    		this.add(jlabellist.get(i));
+    		this.add(jlabelwdot.get(i));
+    	 }
+    	 
 
      }
      public void paintComponent(Graphics g){
