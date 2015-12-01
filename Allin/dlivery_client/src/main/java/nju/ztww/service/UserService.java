@@ -1,6 +1,7 @@
 package nju.ztww.service;
 
 import nju.ztww.ui.finance.Position;
+import nju.ztww.vo.ManaUserVO;
 import nju.ztww.vo.MemberVO;
 import nju.ztww.vo.OrderVO;
 import nju.ztww.vo.UserVO;
@@ -27,6 +28,9 @@ public interface UserService {
  */
 	public Position getState();
 	
-	
+	//获取个人信息
 	public UserVO getUser(String ID);
+	
+	//管理员添加用户
+	public boolean addUser(ManaUserVO user);
 }

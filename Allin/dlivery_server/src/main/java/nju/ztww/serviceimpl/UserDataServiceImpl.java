@@ -3,7 +3,9 @@ package nju.ztww.serviceimpl;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
+import nju.ztww.data.user.ManaUserData;
 import nju.ztww.data.user.UserData;
+import nju.ztww.po.ManaUserPO;
 import nju.ztww.po.MemberPO;
 import nju.ztww.po.OrderPO;
 import nju.ztww.po.UserPO;
@@ -11,6 +13,7 @@ import nju.ztww.service.UserDataService;
 
 public class UserDataServiceImpl extends UnicastRemoteObject implements UserDataService {
 	UserData userData = new UserData();
+	ManaUserData manaUserData = new ManaUserData();
 	public UserDataServiceImpl() throws RemoteException {
 		super();
 		// TODO Auto-generated constructor stub
@@ -35,6 +38,12 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 		// TODO Auto-generated method stub
 		UserPO user = userData.findUser(ID);
 		return user;
+	}
+
+	public boolean addUser(ManaUserPO user) throws RemoteException {
+		// TODO Auto-generated method stub
+		boolean result = manaUserData.addUser(user);
+		return result;
 	}
 
 }
