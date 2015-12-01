@@ -158,7 +158,7 @@ public class DBForOutStockForm extends DB{
 	}
 	public ArrayList<OutStockFormDO> queryByTime(String time, String tableName) {
 		ArrayList<OutStockFormDO> list = new ArrayList<OutStockFormDO>();
-		String sql = "select * from " + tableName + " where time= '"+time+"'and exe=1";
+		String sql = "select * from " + tableName + " where time= '"+time+"'and exe=0";
 		try {
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
@@ -187,9 +187,9 @@ public class DBForOutStockForm extends DB{
 	public static void main(String[] args){
 		DBForOutStockForm db = new DBForOutStockForm();
 		db.init();
-		ArrayList<OutStockFormDO> list = db.queryByID("1511240001", "outstockform");
+		ArrayList<OutStockFormDO> list = db.queryByTime("2015/12/1", "outstockform");
 		for(OutStockFormDO form : list){
-			form.setAddress("beijing");
+			System.out.println(form.getGoodsid());
 		}
 		db.update(list, "outstockform");
 		db.close();

@@ -17,6 +17,7 @@ public class StorageListOutGetByTime {
 	
 	//数据库写完了再更改 两个时间点相同的情况也考虑了
 	public ArrayList<StorageListLineofOutPO> findOutList(String timebegin,String timeend,String idofcenter) throws ParseException{
+		System.out.println("out服务层");
 		dbforoutstorkform.init();
 		String tableName="outstockform";
 		ArrayList<StorageListLineofOutPO> arraylist=new ArrayList<StorageListLineofOutPO>();
