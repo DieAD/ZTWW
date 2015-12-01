@@ -9,6 +9,7 @@ import java.util.Vector;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
+import nju.ztww.bl.commodity.WayToString;
 import nju.ztww.service.CommodityListService;
 import nju.ztww.serviceimpl.CommodityListServiceImpl;
 import nju.ztww.vo.StorageListLineofInVO;
@@ -137,10 +138,11 @@ public class StorageCheckPanel extends JPanel {
 	   arraylistout=commoditylistservice.getOutListbytime(textfieldBegin.getText(), textfieldEnd.getText());
 	   for(int i=0;i<arraylistout.size();i++){
 		   Vector<String> row = new Vector<String>(5);
+		  WayToString  way=new WayToString();
 		   row.add(arraylistout.get(i).getId());
 		   row.add(arraylistout.get(i).getData());
 		   row.add(arraylistout.get(i).getDestination());
-		   row.add(arraylistout.get(i).getWay());
+		   row.add(way.changetostring(arraylistout.get(i).getWay()));
 		   row.add(arraylistout.get(i).getNumber());
 		   defaultTableModel2.addRow(row);
 		    table2.revalidate();
