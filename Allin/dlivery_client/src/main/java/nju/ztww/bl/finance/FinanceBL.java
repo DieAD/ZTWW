@@ -7,6 +7,7 @@ import nju.ztww.RMI.RMIHelper;
 import nju.ztww.po.CollectionPO;
 import nju.ztww.po.PaymentPO;
 import nju.ztww.service.FinanceDataService;
+import nju.ztww.vo.BenefitVO;
 import nju.ztww.vo.CollectionVO;
 import nju.ztww.vo.PaymentVO;
 
@@ -103,5 +104,32 @@ public class FinanceBL {
 		}
   		return listVO;
 		
+	}
+	
+	public BenefitVO getTotalBenefit(){
+		ArrayList<CollectionPO> listPO1 = null;
+		ArrayList<PaymentPO>    listPO2 = null;
+		double totalCollection = 0;
+		double totalPayment = 0;
+		double totalBenefit = 0;
+		financeDataService = (FinanceDataService) rmi
+				.findService("FinanceDataService");
+		try {
+			listPO1 =  financeDataService.totalCollection();
+			listPO2 =  financeDataService.totalPayment();
+			for(CollectionPO po : listPO1){
+				totalCollection += po.getMoney();
+			}
+			for(PaymentPO po: listPO2){
+				totalPayment += po.getMoney();
+			}
+			totalBenefit = totalCollection - totalPayment;
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		BenefitVO benefitVO = new BenefitVO(totalCollection,totalPayment,totalBenefit);
+		
+		return benefitVO;
 	}
 }

@@ -3,6 +3,7 @@ package nju.ztww.service;
 import java.util.ArrayList;
 
 import nju.ztww.vo.AccountVO;
+import nju.ztww.vo.BenefitVO;
 import nju.ztww.vo.CollectionVO;
 import nju.ztww.vo.OrderVO;
 import nju.ztww.vo.PaymentVO;
@@ -35,6 +36,8 @@ public interface FinanceService {
 	
 	public ArrayList<PaymentVO> queryPCP(String startTime,String endTime,String holl);
 	public ArrayList<CollectionVO> queryPCC(String startTime,String endTime,String holl);
+	public BenefitVO getBenefit();
+	
 	
 	
 	
