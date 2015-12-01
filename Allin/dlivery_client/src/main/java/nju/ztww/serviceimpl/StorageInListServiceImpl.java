@@ -62,8 +62,8 @@ public class StorageInListServiceImpl implements CommodityService {
 	}
     //将添加的信息加到所有入库单中
 	public void addinOrder(
-			ArrayList<StorageListLineofInVO> arraylist,String idofcneter) {
-		System.out.println("wj");
+		ArrayList<StorageListLineofInVO> arraylist,String idofcneter) {
+		
 		ArrayList<StorageListLineofInPO>arraylistinpo=new ArrayList<StorageListLineofInPO>();
 		for(int i=0;i< arraylist.size();i++){
 			arraylistinpo.add(arraylist.get(i).changetopo());

@@ -156,7 +156,7 @@ public class DBForEntryForm extends DB{
 	}
 	public ArrayList<EntryFormDO> queryByTime(String time, String tableName) {
 		ArrayList<EntryFormDO> list = new ArrayList<EntryFormDO>();
-		String sql = "select * from " + tableName + " where entrytime= '"+time+"'" ;
+		String sql = "select * from " + tableName + " where entrytime= '"+time+"'and exe=1 " ;
 		try {
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
