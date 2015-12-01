@@ -7,11 +7,13 @@ import nju.ztww.dao.ReciveFormDO;
 import nju.ztww.po.AcceptPO;
 
 public class AcceptOrderData {
-	DBForReciveForm dbForReciveForm = new DBForReciveForm();
+	DBForReciveForm dbForReciveForm;
 	private ArrayList<ReciveFormDO> list = new ArrayList<ReciveFormDO>();
 	private ReciveFormDO reciveFormDO;
 	
 	public String insert(AcceptPO acceptPO){
+		reciveFormDO = new ReciveFormDO();
+		dbForReciveForm =  new DBForReciveForm();
 		dbForReciveForm.init();
 		reciveFormDO.setHoll(acceptPO.getBusinID());
 		reciveFormDO.setRecip(acceptPO.getAccepter());
@@ -23,6 +25,7 @@ public class AcceptOrderData {
 		list.add(reciveFormDO);
 		dbForReciveForm.insert(list, "reciveform");
 		dbForReciveForm.close();
+		System.out.println("Insert successful!");
 		return "successful!";
 	}
 }

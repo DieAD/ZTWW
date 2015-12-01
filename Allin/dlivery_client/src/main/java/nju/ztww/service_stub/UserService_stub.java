@@ -5,6 +5,7 @@ import nju.ztww.service.UserService;
 import nju.ztww.ui.finance.Position;
 import nju.ztww.vo.MemberVO;
 import nju.ztww.vo.OrderVO;
+import nju.ztww.vo.UserVO;
 
 public class UserService_stub implements UserService {
 	private UserBlTest UserBl;
@@ -24,6 +25,10 @@ public class UserService_stub implements UserService {
 	}
 
 	public Position getState() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public UserVO getUser(String ID) {
 		// TODO Auto-generated method stub
 		return null;
 	}
