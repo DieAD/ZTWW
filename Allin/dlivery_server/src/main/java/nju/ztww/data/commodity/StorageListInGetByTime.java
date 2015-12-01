@@ -64,8 +64,8 @@ public class StorageListInGetByTime {
         	return  storagelistlineofinpo;
         }
         
-        //两个时间端点不同的情况
-        else{
+        else{//两个时间端点不同的情况
+       
         ArrayList<String>  timelist=new ArrayList<String>();
         TimeChange time=new TimeChange();
         timelist=time.timechange(timebegin, timeend);
@@ -95,5 +95,6 @@ public class StorageListInGetByTime {
 		return storagelistlineofinpo;
 	}
 	}
-
 }
+
+

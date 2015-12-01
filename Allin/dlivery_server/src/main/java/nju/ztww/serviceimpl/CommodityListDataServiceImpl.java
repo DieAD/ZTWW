@@ -38,7 +38,8 @@ public class CommodityListDataServiceImpl extends UnicastRemoteObject implements
 	public ArrayList<StorageListLineofInPO> findInList(String timebegin,
 			String timeend,String idofcenter) throws RemoteException, ParseException{
 		StorageListInGetByTime storagelistingetbytime=new StorageListInGetByTime();
-		ArrayList<StorageListLineofInPO> arraylistin=storagelistingetbytime.findInList(timebegin,timeend,idofcenter);
+		ArrayList<StorageListLineofInPO> arraylistin=new ArrayList<StorageListLineofInPO>();
+		arraylistin=	storagelistingetbytime.findInList(timebegin,timeend,idofcenter);
 		return arraylistin;
 		// TODO Auto-generated method stub
 		
@@ -48,7 +49,8 @@ public class CommodityListDataServiceImpl extends UnicastRemoteObject implements
 			String timeend,String idofcenter) throws RemoteException, ParseException{
 		// TODO Auto-generated method stub
 		StorageListOutGetByTime storagelistoutgetbytime=new StorageListOutGetByTime();
-		ArrayList<StorageListLineofOutPO> arraylistout=storagelistoutgetbytime.findOutList(timebegin,timeend,idofcenter);
+		ArrayList<StorageListLineofOutPO> arraylistout=new ArrayList<StorageListLineofOutPO>();
+		arraylistout=storagelistoutgetbytime.findOutList(timebegin,timeend,idofcenter);
 		
 		return arraylistout;
 	}

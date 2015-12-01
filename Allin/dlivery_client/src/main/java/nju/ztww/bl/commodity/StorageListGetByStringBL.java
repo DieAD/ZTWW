@@ -17,13 +17,16 @@ public class StorageListGetByStringBL {
 	public ArrayList<StorageListLineofInPO> getInList(String time,String idofcenter) {
 		// TODO Auto-generated method stub
 		commoditylistdata = (CommodityListDataService)rhelper.findService("CommodityListDataService");
-	ArrayList<StorageListLineofInPO>arraylist=commoditylistdata.findInList(time,idofcenter);
-		return arraylist;
+	ArrayList<StorageListLineofInPO> storagelist=new ArrayList<StorageListLineofInPO>();
+	storagelist=commoditylistdata.findInList(time,idofcenter);
+		return storagelist;
 	}
 	public ArrayList<StorageListLineofInPO> getInList(String timebegin,String timeend,String idofcenter){
 		commoditylistdata = (CommodityListDataService)rhelper.findService("CommodityListDataService");
+		ArrayList<StorageListLineofInPO> storagelist=new ArrayList<StorageListLineofInPO>();
 		ArrayList<StorageListLineofInPO>arraylist=commoditylistdata.findInList(timebegin, timeend,idofcenter);
 		System.out.println("zai BL");
+		System.out.println(arraylist.get(0).getId());
 		return arraylist;
 		
 	}
@@ -35,7 +38,9 @@ public class StorageListGetByStringBL {
 	}
 	public ArrayList<StorageListLineofOutPO> getOutList(String timebegin,String timeend,String idofcenter){ 
 		commoditylistdata = (CommodityListDataService)rhelper.findService("CommodityListDataService");
+		ArrayList<StorageListLineofOutPO> storagelist=new ArrayList<StorageListLineofOutPO>();
 		ArrayList<StorageListLineofOutPO>arraylist=commoditylistdata.findOutList(timebegin,timeend,idofcenter);
+		System.out.println(arraylist.get(0).getDestination());
 		return arraylist;
 	}
 	    
