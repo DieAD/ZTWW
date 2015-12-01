@@ -1,6 +1,8 @@
 package nju.ztww.ui.finance;
 
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -62,6 +64,21 @@ public class EditBusiness extends EditPanel{
     		//this.add(text2);
     		this.add(jbox2);
     		this.add(button1);
+    		button1.addActionListener(new Listener());
     	}
 	}
+	
+	
+	public class Listener implements ActionListener{
+		
+
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			String beginTime = (String)header.jbox1.getSelectedItem();
+			String endTime   = (String)header.jbox2.getSelectedItem();
+			
+		}
+		
+	}
+	
 }

@@ -7,6 +7,7 @@ import nju.ztww.service.FinanceService;
 import nju.ztww.vo.AccountVO;
 import nju.ztww.vo.CollectionVO;
 import nju.ztww.vo.OrderVO;
+import nju.ztww.vo.PCVO;
 import nju.ztww.vo.PaymentVO;
 import nju.ztww.vo.SalaryVO;
 
@@ -36,6 +37,11 @@ public class FinanceServiceImpl implements FinanceService{
 		// TODO Auto-generated method stub
 		financeBL.addPaymentVO(list);
 		return true;
+	}
+
+	public ArrayList<PCVO> queryPC(String startTime, String endTime, String holl) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import nju.ztww.vo.AccountVO;
 import nju.ztww.vo.CollectionVO;
 import nju.ztww.vo.OrderVO;
+import nju.ztww.vo.PCVO;
 import nju.ztww.vo.PaymentVO;
 import nju.ztww.vo.SalaryVO;
 
@@ -33,5 +34,6 @@ public interface FinanceService {
 	
 	public boolean addPaymentForm(ArrayList<PaymentVO> list);
 	
+	public ArrayList<PCVO> queryPC(String startTime,String endTime,String holl);
 	
 }

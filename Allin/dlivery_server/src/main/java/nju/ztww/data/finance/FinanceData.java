@@ -7,6 +7,7 @@ import nju.ztww.DBHelper.DBForPaymentForm;
 import nju.ztww.dao.PayeeFormDO;
 import nju.ztww.dao.PaymentFormDO;
 import nju.ztww.po.CollectionPO;
+import nju.ztww.po.PCPO;
 import nju.ztww.po.PaymentPO;
 
 public class FinanceData {
@@ -57,5 +58,17 @@ public class FinanceData {
     	  db2.close();
     	  return true;
     	  
+      }
+      
+      public ArrayList<PCPO> queryPC(String beginTime,String endTime,String holl){
+    	  return null;
+      }
+      
+      public ArrayList<String> analyziseTime(String begintime,String endTime){
+    	  String  bTime = "15/11/25";
+    	  String  etime = "15/12/01";
+    	  
+    	  
+    	  return null;
       }
 }

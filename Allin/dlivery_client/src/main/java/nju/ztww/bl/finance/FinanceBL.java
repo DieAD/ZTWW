@@ -5,9 +5,11 @@ import java.util.ArrayList;
 
 import nju.ztww.RMI.RMIHelper;
 import nju.ztww.po.CollectionPO;
+import nju.ztww.po.PCPO;
 import nju.ztww.po.PaymentPO;
 import nju.ztww.service.FinanceDataService;
 import nju.ztww.vo.CollectionVO;
+import nju.ztww.vo.PCVO;
 import nju.ztww.vo.PaymentVO;
 
 public class FinanceBL {
@@ -61,5 +63,15 @@ public class FinanceBL {
 		
 	   financeDataService.addPaymentForm(listPO);
 		return true;
+	}
+	
+	public ArrayList<PCVO> queryPC(String beginTime,String endTime,String holl){
+		ArrayList<PCPO> listPO  = new ArrayList<PCPO>();
+		financeDataService = (FinanceDataService) rmi
+				.findService("FinanceDataService");
+		
+		return null;
+	
+		
 	}
 }
