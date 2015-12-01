@@ -24,10 +24,10 @@ public class StorageListGetByStringBL {
 	public ArrayList<StorageListLineofInPO> getInList(String timebegin,String timeend,String idofcenter){
 		commoditylistdata = (CommodityListDataService)rhelper.findService("CommodityListDataService");
 		ArrayList<StorageListLineofInPO> storagelist=new ArrayList<StorageListLineofInPO>();
-		ArrayList<StorageListLineofInPO>arraylist=commoditylistdata.findInList(timebegin, timeend,idofcenter);
+		storagelist=commoditylistdata.findInList(timebegin, timeend,idofcenter);
 		System.out.println("zai BL");
-		System.out.println(arraylist.get(0).getId());
-		return arraylist;
+		System.out.println(storagelist.get(0).getId());
+		return storagelist;
 		
 	}
 	public ArrayList<StorageListLineofOutPO> getOutList(String time,String idofcenter){
@@ -39,9 +39,9 @@ public class StorageListGetByStringBL {
 	public ArrayList<StorageListLineofOutPO> getOutList(String timebegin,String timeend,String idofcenter){ 
 		commoditylistdata = (CommodityListDataService)rhelper.findService("CommodityListDataService");
 		ArrayList<StorageListLineofOutPO> storagelist=new ArrayList<StorageListLineofOutPO>();
-		ArrayList<StorageListLineofOutPO>arraylist=commoditylistdata.findOutList(timebegin,timeend,idofcenter);
-		System.out.println(arraylist.get(0).getDestination());
-		return arraylist;
+      storagelist=commoditylistdata.findOutList(timebegin,timeend,idofcenter);
+		System.out.println(storagelist.get(0).getDestination());
+		return storagelist;
 	}
 	    
 

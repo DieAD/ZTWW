@@ -63,7 +63,7 @@ public class StorageListOutGetByTime {
 			
 		}
 		dbforoutstorkform.close();
-		
+		System.out.println("出库单共有："+arraylist.size());
 		return arraylist;
 	}
 }

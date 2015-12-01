@@ -48,6 +48,7 @@ public class StorageListInGetByTime {
         dbforentryform.init();
         String tableName="entryform";
         if(timebegin.equals(timeend)){
+        	
         	entryfromdolist=dbforentryform.queryByTime(timebegin, tableName);
         	for(int k=0;k<entryfromdolist.size();k++){
         		 StorageListLineofInPO storagelistlinreofin=new StorageListLineofInPO(1,
@@ -61,6 +62,9 @@ public class StorageListInGetByTime {
         		                         );
         		 storagelistlineofinpo.add(storagelistlinreofin);
         	}
+        	System.out.println("在0");
+        	System.out.println("入库单共有"+entryfromdolist.size());
+        	 dbforentryform.close();
         	return  storagelistlineofinpo;
         }
         
@@ -92,6 +96,7 @@ public class StorageListInGetByTime {
        }
 		// TODO Auto-generated method stub
 	    dbforentryform.close();
+	    System.out.println("入库单共有"+entryfromdolist.size());
 		return storagelistlineofinpo;
 	}
 	}

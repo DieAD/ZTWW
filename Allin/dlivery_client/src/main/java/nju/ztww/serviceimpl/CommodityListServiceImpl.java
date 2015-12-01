@@ -27,22 +27,12 @@ public class CommodityListServiceImpl implements CommodityListService {
 		return arraylistinvo;
 	}
 
-	public ArrayList<StorageListLineofOutVO> getOutListbytime(String time,String idofcenter) {
-		// TODO Auto-generated method stub
-		ArrayList<StorageListLineofOutVO> arraylistoutvo=new ArrayList<StorageListLineofOutVO>();
-		ArrayList<StorageListLineofOutPO> arraylistoutpo=new ArrayList<StorageListLineofOutPO>();
-		StorageListGetByStringBL storagegetbystring=new StorageListGetByStringBL();
-		arraylistoutpo=storagegetbystring.getOutList(time,idofcenter);
-		for(int i=0;i<arraylistoutpo.size();i++){
-			arraylistoutvo.add(arraylistoutpo.get(i).changetovo());
-		}
-		return arraylistoutvo;
-	}
+	
 
 	public ArrayList<StorageListLineofInVO> getInListbytime(String timebegin,
 			String timeend,String idofcenter) {
 		// TODO Auto-generated method stub
-		System.out.println("在客户端");
+		
 		ArrayList<StorageListLineofInVO> arraylistinvo=new ArrayList<StorageListLineofInVO>();
 		ArrayList<StorageListLineofInPO> arraylistinpo=new ArrayList<StorageListLineofInPO>();
 		StorageListGetByStringBL storagegetbystring=new StorageListGetByStringBL();
@@ -77,6 +67,14 @@ public class CommodityListServiceImpl implements CommodityListService {
 			arraylistinvo.add(arraylistinpo.get(i).changetovo());
 		}
 		return arraylistinvo;
+	}
+
+
+
+	public ArrayList<StorageListLineofOutVO> getOutListbytime(String time,
+			String idofcenter) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

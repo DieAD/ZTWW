@@ -182,15 +182,15 @@ public class DBForEntryForm extends DB{
 		return list;
 	}
 	
-	public static void main(String[] args){
-		DBForEntryForm db = new DBForEntryForm();
-		 db.init();
-		ArrayList<EntryFormDO>list=db.queryByTime("15/11/29", "entryform");
+	//public static void main(String[] args){
+		//DBForEntryForm db = new DBForEntryForm();
+		// db.init();
+		//ArrayList<EntryFormDO>list=db.queryByTime("15/11/29", "entryform");
 		
-		System.out.println(list.get(0).getAddress());
-		db.close();
+		//System.out.println(list.get(0).getAddress());
+		///db.close();
 	
 		
-	}
+	//}
 
 }
