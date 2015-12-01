@@ -184,7 +184,7 @@ public class DBForEntryForm extends DB{
 	
 	//public static void main(String[] args){
 		//DBForEntryForm db = new DBForEntryForm();
-		// db.init();
+		//db.init();
 		//ArrayList<EntryFormDO>list=db.queryByTime("15/11/29", "entryform");
 		
 		//System.out.println(list.get(0).getAddress());
