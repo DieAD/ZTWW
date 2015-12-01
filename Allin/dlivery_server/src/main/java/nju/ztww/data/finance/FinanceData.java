@@ -7,7 +7,6 @@ import nju.ztww.DBHelper.DBForPaymentForm;
 import nju.ztww.dao.PayeeFormDO;
 import nju.ztww.dao.PaymentFormDO;
 import nju.ztww.po.CollectionPO;
-import nju.ztww.po.PCPO;
 import nju.ztww.po.PaymentPO;
 
 public class FinanceData {
@@ -94,6 +93,37 @@ public class FinanceData {
     	  }
     	  return collectionPO;
       }
+      
+      public ArrayList<CollectionPO> totalCollection(){
+    	  ArrayList<CollectionPO> listPO = new ArrayList<CollectionPO>();
+    	  ArrayList<PayeeFormDO> listDO = new ArrayList<PayeeFormDO>();
+    	  db.init();
+    	  listDO = db.totalCollection("payeeform");
+    	  for(PayeeFormDO form: listDO){
+    		  CollectionPO po = new CollectionPO();
+    		  po.setMoney(form.getMoney());
+    		  listPO.add(po);
+    	  }
+    	  
+    	  
+    	  
+    	  
+    	  return listPO;
+      }
+      
+      public ArrayList<PaymentPO> totalPayment(){
+    	  ArrayList<PaymentPO> listPO = new ArrayList<PaymentPO>();
+    	  ArrayList<PaymentFormDO> listDO = new ArrayList<PaymentFormDO>();
+    	  db2.init();
+    	  listDO = db2.totalPayment("paymentform");
+    	  for(PaymentFormDO form : listDO){
+    		  PaymentPO po  = new PaymentPO();
+    		  po.setMoney(form.getMoney());
+    		  listPO.add(po);
+    	  }
+    	  return listPO;
+      }
+      
       
     
 }

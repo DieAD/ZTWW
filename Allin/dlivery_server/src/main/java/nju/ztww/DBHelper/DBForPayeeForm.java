@@ -111,17 +111,44 @@ public class DBForPayeeForm extends DB{
 		}
     }
     
-    public static void main(String[] args){
-    	DBForPayeeForm db = new DBForPayeeForm();
-    	db.init();
-    	//db.insert(db.queryByID("1511250001", "payeeform"), "payeeform");
-    	ArrayList<PayeeFormDO> list =db.queryByDate("15/11/25","001", "payeeform");
-    	for(PayeeFormDO form : list){
-    		form.setMoney(5.1);
-    	}
-    	db.update(list, "payeeform");
-    	db.close();
+    public ArrayList<PayeeFormDO> totalCollection(String tableName){
+    	ArrayList<PayeeFormDO> list = new ArrayList<PayeeFormDO>();
+    	String sql = "select * from "+tableName;
+    	Statement stmt;
+		try {
+			stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+	    	while(rs.next()){
+	    		PayeeFormDO form = new PayeeFormDO();
+				form.setIndex(rs.getInt(1));
+				form.setId(rs.getString(2));
+				form.setGoodsid(rs.getString(3));
+				form.setCourierid(rs.getString(4));
+				form.setMoney(rs.getDouble(5));
+				form.setExe(rs.getInt(6));
+				form.setState(rs.getInt(7));
+				form.setDate(rs.getString(8));
+				list.add(form);
+	    	}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     	
-    	
+    	return list;
     }
+    
+//    public static void main(String[] args){
+//    	DBForPayeeForm db = new DBForPayeeForm();
+//    	db.init();
+//    	//db.insert(db.queryByID("1511250001", "payeeform"), "payeeform");
+//    	ArrayList<PayeeFormDO> list =db.queryByDate("15/11/25","001", "payeeform");
+//    	for(PayeeFormDO form : list){
+//    		form.setMoney(5.1);
+//    	}
+//    	db.update(list, "payeeform");
+//    	db.close();
+//    	
+//    	
+//    }
 }
