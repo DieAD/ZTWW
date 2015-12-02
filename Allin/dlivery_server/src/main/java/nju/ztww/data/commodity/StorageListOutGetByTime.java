@@ -43,7 +43,7 @@ public class StorageListOutGetByTime {
 			TimeChange time=new TimeChange();
 			timelist=time.timechange(timebegin, timeend);
 			outstockformlist=dbforoutstorkform.queryByTime(timebegin, tableName);
-			for(int i=1;i<timelist.size();i++){
+			for(int i=0;i<timelist.size();i++){
 				ArrayList<OutStockFormDO> outstockformlist2=new ArrayList<OutStockFormDO>();
 				outstockformlist2=dbforoutstorkform.queryByTime(timelist.get(i), tableName);
 				for(int j=0;j<outstockformlist2.size();j++){
@@ -65,5 +65,10 @@ public class StorageListOutGetByTime {
 		dbforoutstorkform.close();
 		System.out.println("出库单共有："+arraylist.size());
 		return arraylist;
+	}
+	public static void main(String args[]) throws ParseException{
+		StorageListOutGetByTime slo=new StorageListOutGetByTime();
+		ArrayList<StorageListLineofOutPO> arraylist=new ArrayList<StorageListLineofOutPO>();
+		arraylist=slo.findOutList("15/11/24", "15/12/1", "0001");
 	}
 }

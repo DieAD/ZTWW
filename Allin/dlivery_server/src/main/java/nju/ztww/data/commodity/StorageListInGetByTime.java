@@ -74,11 +74,12 @@ public class StorageListInGetByTime {
         TimeChange time=new TimeChange();
         timelist=time.timechange(timebegin, timeend);
         entryfromdolist=dbforentryform.queryByTime(timebegin,tableName);
-        for(int i=1;i<timelist.size();i++){
+        for(int i=0;i<timelist.size();i++){
         ArrayList<EntryFormDO> entryfromdolist2 =new ArrayList<EntryFormDO>();
         entryfromdolist2=dbforentryform.queryByTime(timelist.get(i), tableName);
+       
         for(int j=0;j<entryfromdolist2.size();j++){
-        	entryfromdolist.add(entryfromdolist2.get(i));	
+        	entryfromdolist.add(entryfromdolist2.get(j));	
         }
         }
        for(int k=0;k<entryfromdolist.size();k++){
@@ -100,6 +101,7 @@ public class StorageListInGetByTime {
 		return storagelistlineofinpo;
 	}
 	}
+	
 }
 
 

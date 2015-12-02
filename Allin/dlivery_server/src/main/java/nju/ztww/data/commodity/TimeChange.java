@@ -10,7 +10,7 @@ public class TimeChange {
  
   public ArrayList<String> timechange(String begintime,String endtime) throws ParseException{
 	  ArrayList<String>  timetlist=new ArrayList<String>();
-	SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd"); 
+	SimpleDateFormat sdf = new SimpleDateFormat("yy/MM/dd"); 
 	java.util.Date   begin= sdf.parse(begintime);      
 	java.util.Date   end=  sdf.parse(endtime);      
 	double   between=(end.getTime()-begin.getTime())/1000;//除以1000是为了转换成秒      
@@ -21,7 +21,7 @@ public class TimeChange {
   cd.setTime(sdf.parse(begintime));   
   cd.add(Calendar.DATE, i);//增加一天   
   //cd.add(Calendar.MONTH, n);//增加一个月
-  System.out.println(sdf.format(cd.getTime()));
+ 
   timetlist.add(sdf.format(cd.getTime()));
 	}
   return timetlist;
@@ -30,6 +30,6 @@ public class TimeChange {
   public static void main(String[]args) throws ParseException{
 	  TimeChange time=new TimeChange();
 	  ArrayList<String>  timetlist=new ArrayList<String>();
-	  timetlist=time.timechange("2015/11/15", "2015/12/1");
+	  timetlist=time.timechange("15/11/15", "15/12/1");
   }
 }
