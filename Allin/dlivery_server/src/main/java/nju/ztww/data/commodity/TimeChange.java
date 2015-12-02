@@ -21,7 +21,7 @@ public class TimeChange {
   cd.setTime(sdf.parse(begintime));   
   cd.add(Calendar.DATE, i);//增加一天   
   //cd.add(Calendar.MONTH, n);//增加一个月
- 
+ System.out.println(sdf.format(cd.getTime()));
   timetlist.add(sdf.format(cd.getTime()));
 	}
   return timetlist;

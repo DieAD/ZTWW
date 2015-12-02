@@ -32,7 +32,7 @@ public void setPosition() {
 }
 public void setup() {
 	// TODO Auto-generated method stub
-	ordercheckpanel=new OrderCheckPanel();
+	ordercheckpanel=new OrderCheckPanel("000000002");
 	
 }
 public static void main(String[]args){

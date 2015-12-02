@@ -51,8 +51,11 @@ public class CommodityListServiceImpl implements CommodityListService {
 		StorageListGetByStringBL storagegetbystring=new StorageListGetByStringBL();
 		arraylistoutpo=storagegetbystring.getOutList(timebegin,timeend,idofcenter);
 		for(int i=0;i<arraylistoutpo.size();i++){
+			
 			arraylistoutvo.add(arraylistoutpo.get(i).changetovo());
+			
 		}
+		
 		return arraylistoutvo;
 	
 	}

@@ -53,9 +53,7 @@ public void insertin(ArrayList<StorageListLineofInPO> arraylist ,String idofcent
 		
 	}
 	dbforentryform.init();
-	
 	dbforentryform.insert(entryfromdolist, "entryform");
-	
 	dbforentryform.close();
 	
 	

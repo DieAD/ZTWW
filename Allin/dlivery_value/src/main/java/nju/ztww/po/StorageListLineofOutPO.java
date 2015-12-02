@@ -59,7 +59,7 @@ public void setWay(){
 //这个change to vo 要分情况讨论
 public StorageListLineofOutVO changetovo() {
 	// TODO Auto-generated method stub
-	return null;
+	return new StorageListLineofOutVO(id,data,destination,way,number);
 }
 //差一个id 单子的   //差一个number
  public OutStockFormDO changetodo(){

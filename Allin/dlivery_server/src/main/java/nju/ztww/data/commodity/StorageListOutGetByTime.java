@@ -60,15 +60,15 @@ public class StorageListOutGetByTime {
 						);
 				arraylist.add(storagelistlineofoutpo);
 			}
-			
+			System.out.println("总数量："+arraylist.size());
 		}
 		dbforoutstorkform.close();
-		System.out.println("出库单共有："+arraylist.size());
+		
 		return arraylist;
 	}
 	public static void main(String args[]) throws ParseException{
 		StorageListOutGetByTime slo=new StorageListOutGetByTime();
 		ArrayList<StorageListLineofOutPO> arraylist=new ArrayList<StorageListLineofOutPO>();
-		arraylist=slo.findOutList("15/11/24", "15/12/1", "0001");
+		arraylist=slo.findOutList("15/11/29", "15/12/02", "0001");
 	}
 }

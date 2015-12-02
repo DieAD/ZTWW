@@ -10,6 +10,7 @@ import java.util.Vector;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -54,6 +55,10 @@ public class OutofStoragePanel extends JPanel {
    public OutofStoragePanel() {
 	   this.setLayout(null);
 	   addbutton=new JButton();
+	   final JComboBox dbtype = new JComboBox();
+	   dbtype.addItem("火车");
+	   dbtype.addItem("飞机");
+	   dbtype.addItem("汽车");
 	   ImageIcon add=new ImageIcon("photo/add.gif");
 	   addbutton.setBounds(450, 420, 110, 38);
 	   addbutton.setIcon(add);

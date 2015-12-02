@@ -122,10 +122,9 @@ public class StorageCheckPanel extends JPanel {
 	   arraylistin=commoditylistservice.getInListbytime(textfieldBegin.getText(), textfieldEnd.getText(),idofcenter);
 	   for(int i=0;i<arraylistin.size();i++){
 		   System.out.println(arraylistin.get(i).getDestination());
-			Vector<String> row = new Vector<String>(7);
+			Vector<String> row = new Vector<String>(5);
 			row.add(arraylistin.get(i).getId());
-			row.add(arraylistin.get(i).getData());
-			row.add(arraylistin.get(i).getDestination());
+			
 			row.add(arraylistin.get(i).getQu());
 			row.add(arraylistin.get(i).getPai());
 			row.add(arraylistin.get(i).getJia());
@@ -135,6 +134,7 @@ public class StorageCheckPanel extends JPanel {
 		}
 	   textfieldin.setText(String.valueOf(arraylistin.size()));
 	   arraylistout=commoditylistservice.getOutListbytime(textfieldBegin.getText(), textfieldEnd.getText(),idofcenter);
+	  
 	   for(int i=0;i<arraylistout.size();i++){
 		   Vector<String> row = new Vector<String>(5);
 		  WayToString  way=new WayToString();

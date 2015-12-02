@@ -4,6 +4,8 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import nju.ztww.po.TracePO;
+
 public interface CheckOrderDataService extends Remote{
-  public ArrayList<String>findTrace(String id)throws RemoteException;
+  public ArrayList<TracePO>findTrace(String id)throws RemoteException;
 }

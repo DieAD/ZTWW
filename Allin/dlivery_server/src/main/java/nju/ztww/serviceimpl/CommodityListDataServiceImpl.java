@@ -51,7 +51,7 @@ public class CommodityListDataServiceImpl extends UnicastRemoteObject implements
 		StorageListOutGetByTime storagelistoutgetbytime=new StorageListOutGetByTime();
 		ArrayList<StorageListLineofOutPO> arraylistout=new ArrayList<StorageListLineofOutPO>();
 		arraylistout=storagelistoutgetbytime.findOutList(timebegin,timeend,idofcenter);
-		
+		System.out.println(arraylistout.size()+"实现");
 		return arraylistout;
 	}
 //得到库存信息

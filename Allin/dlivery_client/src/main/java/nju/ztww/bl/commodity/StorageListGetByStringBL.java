@@ -33,6 +33,7 @@ public class StorageListGetByStringBL {
 	public ArrayList<StorageListLineofOutPO> getOutList(String time,String idofcenter){
 		commoditylistdata = (CommodityListDataService)rhelper.findService("CommodityListDataService");
 		ArrayList<StorageListLineofOutPO>arraylist=commoditylistdata.findOutList(time,idofcenter);
+		
 		return arraylist;
 		
 	}
@@ -40,10 +41,17 @@ public class StorageListGetByStringBL {
 		commoditylistdata = (CommodityListDataService)rhelper.findService("CommodityListDataService");
 		ArrayList<StorageListLineofOutPO> storagelist=new ArrayList<StorageListLineofOutPO>();
       storagelist=commoditylistdata.findOutList(timebegin,timeend,idofcenter);
-		System.out.println(storagelist.get(0).getDestination());
+
+		 System.out.println("客服端"+ storagelist.size());
+		 
 		return storagelist;
 	}
 	    
-
+  public static void main(String[]args){
+	  StorageListGetByStringBL ss=new StorageListGetByStringBL();
+	  ArrayList<StorageListLineofOutPO> list=new ArrayList<StorageListLineofOutPO>();
+	  list=ss.getOutList("15/11/29", "15/12/02", "00");
+	 
+  }
 }
 
