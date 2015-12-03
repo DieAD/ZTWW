@@ -9,7 +9,7 @@ import javax.swing.JTextField;
 
 //最近修改： 王焕 11-17
 //date 11-18 name wh
-public class Login extends JFrame{
+public class Login extends JFrame{ 
 	//
 	//02501001110
 	//
