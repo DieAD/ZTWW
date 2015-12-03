@@ -16,6 +16,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
+import nju.ztww.bl.commodity.StringToInt;
 import nju.ztww.serviceimpl.CommodityListServiceImpl;
 import nju.ztww.serviceimpl.OrderServiceImpl;
 import nju.ztww.serviceimpl.StorageOutListServiceImpl;
@@ -346,9 +347,10 @@ public class FindStoragePanel extends JPanel {
 				row.clear();
 				//进行出库操作   未写完
 				String [] temp=OrderNumber.split(";");
+				// 2biao  shi qiche
 				for(int i=0;i<temp.length;i++){
 					StorageListLineofOutVO StorageListLineofOutVO=new StorageListLineofOutVO(temp[i],datatextArea.getText(),
-							"汽车",arrivetextArea.getText(),cartextArea.getText());
+							arrivetextArea.getText(),2,cartextArea.getText());
 					arraylist.add(StorageListLineofOutVO);
 				}
 				//中转中心编号未确定
@@ -388,8 +390,9 @@ public class FindStoragePanel extends JPanel {
 				//进行出库操作   未写完
 				String [] temp=OrderNumber.split(";");
 				for(int i=0;i<temp.length;i++){
+					StringToInt st=new StringToInt();
 					StorageListLineofOutVO StorageListLineofOutVO=new StorageListLineofOutVO(temp[i],loadDataText.getText(),
-							methodText.getText(),transferArriveText.getText(),transferNumberText.getText());
+							methodText.getText(),st.changetoint(transferArriveText.getText()),transferNumberText.getText());
 					arraylist.add(StorageListLineofOutVO);
 				}
 				//中转中心编号未确定

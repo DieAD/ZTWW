@@ -12,10 +12,10 @@ public class StorageListLineofOutPO extends OrderPO implements Serializable {
 	// TODO Auto-generated constructor stub
 	String id;
 	String data;
-	String way;
+	int way;
 	String number;//具体实现时要分两种情况
 	String destination;
-  public StorageListLineofOutPO(String id,String data,String way,String number,String destination) {
+  public StorageListLineofOutPO(String id,String data,String destination,int way,String number) {
 	  super(idOfOrder);
 	  this.id=id;
 	  this.data=data;
@@ -26,6 +26,15 @@ public class StorageListLineofOutPO extends OrderPO implements Serializable {
 }
 public String getId() {
 	return id;
+}
+public int getWay() {
+	return way;
+}
+public void setWay(int way) {
+	this.way = way;
+}
+public void setId(String id) {
+	this.id = id;
 }
 public void setIdOfOrder(String id) {
 	this.id = id;
@@ -53,7 +62,7 @@ public void setDestination(String destination) {
 //这个change to vo 要分情况讨论
 public StorageListLineofOutVO changetovo() {
 	// TODO Auto-generated method stub
-	return null;
+	return new StorageListLineofOutVO(id,data,destination,way,number);
 }
 //差一个id 单子的   //差一个number
  public OutStockFormDO changetodo(){

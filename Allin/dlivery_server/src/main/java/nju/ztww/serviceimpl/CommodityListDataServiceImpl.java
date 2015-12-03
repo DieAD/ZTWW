@@ -4,6 +4,7 @@ import java.rmi.server.UnicastRemoteObject;
 import java.text.ParseException;
 import java.util.ArrayList;
 
+import nju.ztww.data.commodity.StockGet;
 import nju.ztww.data.commodity.StorageListInGetByTime;
 import nju.ztww.data.commodity.StorageListOutGetByTime;
 import nju.ztww.po.StorageListLineofInPO;
@@ -37,7 +38,8 @@ public class CommodityListDataServiceImpl extends UnicastRemoteObject implements
 	public ArrayList<StorageListLineofInPO> findInList(String timebegin,
 			String timeend,String idofcenter) throws RemoteException, ParseException{
 		StorageListInGetByTime storagelistingetbytime=new StorageListInGetByTime();
-		ArrayList<StorageListLineofInPO> arraylistin=storagelistingetbytime.findInList(timebegin,timeend,idofcenter);
+		ArrayList<StorageListLineofInPO> arraylistin=new ArrayList<StorageListLineofInPO>();
+		arraylistin=	storagelistingetbytime.findInList(timebegin,timeend,idofcenter);
 		return arraylistin;
 		// TODO Auto-generated method stub
 		
@@ -47,9 +49,18 @@ public class CommodityListDataServiceImpl extends UnicastRemoteObject implements
 			String timeend,String idofcenter) throws RemoteException, ParseException{
 		// TODO Auto-generated method stub
 		StorageListOutGetByTime storagelistoutgetbytime=new StorageListOutGetByTime();
-		ArrayList<StorageListLineofOutPO> arraylistout=storagelistoutgetbytime.findOutList(timebegin,timeend,idofcenter);
-		
+		ArrayList<StorageListLineofOutPO> arraylistout=new ArrayList<StorageListLineofOutPO>();
+		arraylistout=storagelistoutgetbytime.findOutList(timebegin,timeend,idofcenter);
+		System.out.println(arraylistout.size()+"实现");
 		return arraylistout;
+	}
+	public ArrayList<StorageListLineofInPO> getStock(String idofcenter)throws RemoteException{
+		StockGet sg=new StockGet();
+		ArrayList<StorageListLineofInPO> arraylistin=new ArrayList<StorageListLineofInPO>();
+		arraylistin=sg.getStock(idofcenter);
+		return arraylistin;
+		
+		  
 	}
     
 }

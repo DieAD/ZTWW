@@ -19,7 +19,7 @@ public class StorageListInGetByTime {
 	//库存盘点  
 	public ArrayList<StorageListLineofInPO> findInList(String time,String idofcenter) {
 		dbforstock.init();
-		String tableName="stock";
+		String tableName="stocktable";
 		ArrayList<StockDO>stocklist=new ArrayList<StockDO>();
 		ArrayList<StorageListLineofInPO> storagelistline=new ArrayList<StorageListLineofInPO>();
 		stocklist=dbforstock.queryByTime(time, tableName);
@@ -48,6 +48,7 @@ public class StorageListInGetByTime {
         dbforentryform.init();
         String tableName="entryform";
         if(timebegin.equals(timeend)){
+        	
         	entryfromdolist=dbforentryform.queryByTime(timebegin, tableName);
         	for(int k=0;k<entryfromdolist.size();k++){
         		 StorageListLineofInPO storagelistlinreofin=new StorageListLineofInPO(1,
@@ -61,20 +62,24 @@ public class StorageListInGetByTime {
         		                         );
         		 storagelistlineofinpo.add(storagelistlinreofin);
         	}
+        	System.out.println("在0");
+        	System.out.println("入库单共有"+entryfromdolist.size());
+        	 dbforentryform.close();
         	return  storagelistlineofinpo;
         }
         
-        //两个时间端点不同的情况
-        else{
+        else{//两个时间端点不同的情况
+       
         ArrayList<String>  timelist=new ArrayList<String>();
         TimeChange time=new TimeChange();
         timelist=time.timechange(timebegin, timeend);
         entryfromdolist=dbforentryform.queryByTime(timebegin,tableName);
-        for(int i=1;i<timelist.size();i++){
+        for(int i=0;i<timelist.size();i++){
         ArrayList<EntryFormDO> entryfromdolist2 =new ArrayList<EntryFormDO>();
         entryfromdolist2=dbforentryform.queryByTime(timelist.get(i), tableName);
+       
         for(int j=0;j<entryfromdolist2.size();j++){
-        	entryfromdolist.add(entryfromdolist2.get(i));	
+        	entryfromdolist.add(entryfromdolist2.get(j));	
         }
         }
        for(int k=0;k<entryfromdolist.size();k++){
@@ -92,8 +97,11 @@ public class StorageListInGetByTime {
        }
 		// TODO Auto-generated method stub
 	    dbforentryform.close();
+	    System.out.println("入库单共有"+entryfromdolist.size());
 		return storagelistlineofinpo;
 	}
 	}
-
+	
 }
+
+
