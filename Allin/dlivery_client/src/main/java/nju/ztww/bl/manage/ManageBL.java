@@ -42,11 +42,11 @@ public class ManageBL {
 		 * 2->reciveform;
 		 */
 		if(index==1){
-			acceptOrderBl.passOrders(list);
+			mailingOrderBl.passOrders(list);
 			System.out.print("order get");
 		}
-		if(index==2){
-			mailingOrderBl.passOrders(list);
+		if(index==2){		
+			acceptOrderBl.passOrders(list);
 		}
 	}
 }
