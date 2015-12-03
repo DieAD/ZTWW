@@ -205,12 +205,7 @@ public class DBForStock extends DB{
 		DBForStock db = new DBForStock();
 		ArrayList<StockDO> list=new ArrayList<StockDO>();
 		db.init();
-		StockDO sod=new StockDO();
-		sod.setGoodsid("100000");
-		sod.setAddress("shanghai");
-		list.add(sod);
-		db.delete("100000", "stocktable");
-		//db.insert(list, "stocktable");
+		
 		list=db.queryALL("stocktable");
 		
 		for(int i=0;i<list.size();i++){
