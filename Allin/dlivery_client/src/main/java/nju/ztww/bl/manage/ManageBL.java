@@ -4,6 +4,8 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import nju.ztww.RMI.RMIHelper;
+import nju.ztww.bl.commodity.StorageListInAftercheckBL;
+import nju.ztww.bl.commodity.StorageListOutAftercheckBL;
 import nju.ztww.bl.order.AcceptOrderBl;
 import nju.ztww.bl.order.MailingOrderBl;
 import nju.ztww.po.GeneratePO;
@@ -16,6 +18,8 @@ public class ManageBL {
 	private ManageDataService MDService;
 	private AcceptOrderBl acceptOrderBl = new AcceptOrderBl();
 	private MailingOrderBl mailingOrderBl = new MailingOrderBl();
+	private  StorageListInAftercheckBL inStock = new  StorageListInAftercheckBL();
+	private  StorageListOutAftercheckBL outStock = new StorageListOutAftercheckBL();
 	
 	public ArrayList<GenerateVO> getCheckOrder(int index){
 		ArrayList<GeneratePO> listPO;
@@ -39,14 +43,19 @@ public class ManageBL {
 	public void updateInfo(ArrayList<IDVO> list ,int index){
 		/*
 		 * 1->orderform;
-		 * 2->reciveform;
+		 * 2->reciveform
+		 * 7->loadform;
+		 * 9->outStockForm;
 		 */
 		if(index==1){
-			acceptOrderBl.passOrders(list);
+			mailingOrderBl.passOrders(list);
 			System.out.print("order get");
 		}
-		if(index==2){
-			mailingOrderBl.passOrders(list);
+		if(index==7){
+			inStock.changeExeAddStock(list);
+		}
+		if(index==9){
+			outStock.changeExeDeleteStock(list);
 		}
 	}
 }
