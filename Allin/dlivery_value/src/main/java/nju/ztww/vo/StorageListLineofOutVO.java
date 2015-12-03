@@ -7,10 +7,10 @@ import nju.ztww.po.StorageListLineofOutPO;
 public class StorageListLineofOutVO extends OrderVO {
 	String id;//快递的编号
 	String data;
-	String way;
+	int way;
 	String destination;
 	String number;//具体实现时要分两种情况
-  public StorageListLineofOutVO(String id,String data,String way,String number,String destination) {
+  public StorageListLineofOutVO(String id,String data,String destination,int way,String number) {
 	  super(idOfOrder);
 	  this.id=id;
 	  this.data=data;
@@ -37,10 +37,10 @@ public String getData() {
 public void setData(String data) {
 	this.data = data;
 }
-public String getWay() {
+public int getWay() {
 	return way;
 }
-public void setWay(String way) {
+public void setWay(int way) {
 	this.way = way;
 }
 public String getNumber() {
@@ -51,7 +51,7 @@ public void setNumber(String number) {
 }
 //将此vo装换成po
 public StorageListLineofOutPO changetopo(){
-	return new StorageListLineofOutPO(id,data,way,number,destination);
+	return new StorageListLineofOutPO(id,data,destination,way,number);
 }
  
  

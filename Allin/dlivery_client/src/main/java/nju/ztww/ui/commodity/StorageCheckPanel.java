@@ -9,20 +9,21 @@ import java.util.Vector;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
+import nju.ztww.bl.commodity.WayToString;
 import nju.ztww.service.CommodityListService;
 import nju.ztww.serviceimpl.CommodityListServiceImpl;
 import nju.ztww.vo.StorageListLineofInVO;
 import nju.ztww.vo.StorageListLineofOutVO;
 
 public class StorageCheckPanel extends JPanel {
- public JLabel label1=new JLabel("开始时间");
+ public JLabel label1=new JLabel("开始时间");//格式 YY/mm/RR
  public JLabel label2=new JLabel("截止时间");
  public JButton surebutton=new JButton("确定");
  public JLabel labelin=new JLabel("入库信息");
  public JLabel labelout=new JLabel("出库信息");
  public JLabel labelinnumber=new JLabel("入库数量");
  public JLabel labeloutnumber=new JLabel("出库数量");
- 
+ String idofcenter="0001";//需要根据中转中心人员身份来确定
  
  public JTextField  textfield1=new JTextField(10);
  public JTextField  textfield2=new JTextField(10);
@@ -64,8 +65,7 @@ public class StorageCheckPanel extends JPanel {
 	   this.add(textfieldin);
 	 Object[][] playerInfo =
 			{
-				{ "0000000003",  "A",14,2,4 },
-				{ "0000000004",   "B", 15 ,3,6}, 
+				
 						  };
 
 				//字段名称
@@ -95,12 +95,11 @@ public class StorageCheckPanel extends JPanel {
 				this.add(textfieldout);
 				Object[][] playerInfo1 =
 					{
-						{ "0000000003",  "A",14,2,4,100 },
-						{ "0000000004",  "上海", "B", 15 ,3,6,100}, 
+						 
 											  };
 
 									//字段名称
-					String[] Names1 = { "快件编号",   "区号", "排号" ,"架号","位号","金额"};
+					String[] Names1 = { "快件编号",   "日期", "到达地" ,"装运形式","号码"};
 
 											  
 			//创建表格: 建立一个显示二维数组数据的表格，且可以显示列的名称。 
@@ -120,12 +119,12 @@ public class StorageCheckPanel extends JPanel {
 }
  ActionListener listener=new ActionListener(){
    public void actionPerformed(ActionEvent e) {
-	   arraylistin=commoditylistservice.getInListbytime(textfieldBegin.getText(), textfieldEnd.getText());
+	   arraylistin=commoditylistservice.getInListbytime(textfieldBegin.getText(), textfieldEnd.getText(),idofcenter);
 	   for(int i=0;i<arraylistin.size();i++){
-			Vector<String> row = new Vector<String>(7);
+		   System.out.println(arraylistin.get(i).getDestination());
+			Vector<String> row = new Vector<String>(5);
 			row.add(arraylistin.get(i).getId());
-			row.add(arraylistin.get(i).getData());
-			row.add(arraylistin.get(i).getDestination());
+			
 			row.add(arraylistin.get(i).getQu());
 			row.add(arraylistin.get(i).getPai());
 			row.add(arraylistin.get(i).getJia());
@@ -134,13 +133,14 @@ public class StorageCheckPanel extends JPanel {
 		    table1.revalidate();
 		}
 	   textfieldin.setText(String.valueOf(arraylistin.size()));
-	   arraylistout=commoditylistservice.getOutListbytime(textfieldBegin.getText(), textfieldEnd.getText());
+	   arraylistout=commoditylistservice.getOutListbytime(textfieldBegin.getText(), textfieldEnd.getText(),idofcenter);
+	  WayToString way=new WayToString();
 	   for(int i=0;i<arraylistout.size();i++){
 		   Vector<String> row = new Vector<String>(5);
 		   row.add(arraylistout.get(i).getId());
 		   row.add(arraylistout.get(i).getData());
 		   row.add(arraylistout.get(i).getDestination());
-		   row.add(arraylistout.get(i).getWay());
+		   row.add(way.changetostring(arraylistout.get(i).getWay()));
 		   row.add(arraylistout.get(i).getNumber());
 		   defaultTableModel2.addRow(row);
 		    table2.revalidate();

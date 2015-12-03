@@ -19,12 +19,11 @@ public class StorageUi extends JFrame {
     
 	public StorageUi() {
 		// TODO Auto-generated constructor stub
-		setup();
-		setPosition();
-		setController();
+//		setup();
+//		setPosition();
+//		setController();
 //		setTitle("Worker of Center!");
-//		setSize(900,600);
-//		setVisible(true);
+//		setSize(900,600);		setVisible(true);
 //		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		}
 	public  void setup(){
@@ -63,9 +62,9 @@ public class StorageUi extends JFrame {
 	}
 
 //public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		//new StorageUi();
-       
+//		// TODO Auto-generated method stub
+//		new StorageUi();
+//      
 //}
 	public ArrayList<JPanel> getPanelList(){
 		list.add(navigationpanel);

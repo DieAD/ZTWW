@@ -4,7 +4,9 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
+import nju.ztww.DBHelper.DBForTraceForm;
 import nju.ztww.data.commodity.CheckOrder;
+import nju.ztww.po.TracePO;
 import nju.ztww.service.CheckOrderDataService;
 
 public class CheckOrderDataServiceImpl extends UnicastRemoteObject implements CheckOrderDataService {
@@ -14,12 +16,18 @@ public class CheckOrderDataServiceImpl extends UnicastRemoteObject implements Ch
 		// TODO Auto-generated constructor stub
 	}
 
-	public ArrayList<String> findTrace(String id) throws RemoteException {
+	public ArrayList<TracePO> findTrace(String id) throws RemoteException {
 		// TODO Auto-generated method stub
-		ArrayList<String> stringlist=new ArrayList<String>();
+		ArrayList<TracePO> stringlist=new ArrayList<TracePO>();
 		CheckOrder checkorder=new CheckOrder();
 		stringlist=checkorder.findTrace(id);
 		return stringlist;
 	}
+	public static void main(String[]args) throws RemoteException{
+		CheckOrderDataServiceImpl  co=new CheckOrderDataServiceImpl ();
+		   DBForTraceForm  dbfortraceform=new DBForTraceForm ();
+		   ArrayList<TracePO> stringist=new ArrayList<TracePO>();
+		   stringist=co.findTrace("000000002") ;
+	   }
 
 }

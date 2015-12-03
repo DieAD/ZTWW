@@ -17,6 +17,7 @@ public class StorageListOutGetByTime {
 	
 	//数据库写完了再更改 两个时间点相同的情况也考虑了
 	public ArrayList<StorageListLineofOutPO> findOutList(String timebegin,String timeend,String idofcenter) throws ParseException{
+		System.out.println("out服务层");
 		dbforoutstorkform.init();
 		String tableName="outstockform";
 		ArrayList<StorageListLineofOutPO> arraylist=new ArrayList<StorageListLineofOutPO>();
@@ -41,7 +42,7 @@ public class StorageListOutGetByTime {
 			TimeChange time=new TimeChange();
 			timelist=time.timechange(timebegin, timeend);
 			outstockformlist=dbforoutstorkform.queryByTime(timebegin, tableName);
-			for(int i=1;i<timelist.size();i++){
+			for(int i=0;i<timelist.size();i++){
 				ArrayList<OutStockFormDO> outstockformlist2=new ArrayList<OutStockFormDO>();
 				outstockformlist2=dbforoutstorkform.queryByTime(timelist.get(i), tableName);
 				for(int j=0;j<outstockformlist2.size();j++){
@@ -58,10 +59,15 @@ public class StorageListOutGetByTime {
 						);
 				arraylist.add(storagelistlineofoutpo);
 			}
-			
+			System.out.println("总数量："+arraylist.size());
 		}
 		dbforoutstorkform.close();
 		
 		return arraylist;
+	}
+	public static void main(String args[]) throws ParseException{
+		StorageListOutGetByTime slo=new StorageListOutGetByTime();
+		ArrayList<StorageListLineofOutPO> arraylist=new ArrayList<StorageListLineofOutPO>();
+		arraylist=slo.findOutList("15/11/29", "15/12/02", "0001");
 	}
 }

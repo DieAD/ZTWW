@@ -17,27 +17,41 @@ public class StorageListGetByStringBL {
 	public ArrayList<StorageListLineofInPO> getInList(String time,String idofcenter) {
 		// TODO Auto-generated method stub
 		commoditylistdata = (CommodityListDataService)rhelper.findService("CommodityListDataService");
-	ArrayList<StorageListLineofInPO>arraylist=commoditylistdata.findInList(time,idofcenter);
-		return arraylist;
+	ArrayList<StorageListLineofInPO> storagelist=new ArrayList<StorageListLineofInPO>();
+	storagelist=commoditylistdata.findInList(time,idofcenter);
+		return storagelist;
 	}
 	public ArrayList<StorageListLineofInPO> getInList(String timebegin,String timeend,String idofcenter){
 		commoditylistdata = (CommodityListDataService)rhelper.findService("CommodityListDataService");
-		ArrayList<StorageListLineofInPO>arraylist=commoditylistdata.findInList(timebegin, timeend,idofcenter);
-		return arraylist;
+		ArrayList<StorageListLineofInPO> storagelist=new ArrayList<StorageListLineofInPO>();
+		storagelist=commoditylistdata.findInList(timebegin, timeend,idofcenter);
+		System.out.println("zai BL");
+		System.out.println(storagelist.get(0).getId());
+		return storagelist;
 		
 	}
 	public ArrayList<StorageListLineofOutPO> getOutList(String time,String idofcenter){
 		commoditylistdata = (CommodityListDataService)rhelper.findService("CommodityListDataService");
 		ArrayList<StorageListLineofOutPO>arraylist=commoditylistdata.findOutList(time,idofcenter);
+		
 		return arraylist;
 		
 	}
 	public ArrayList<StorageListLineofOutPO> getOutList(String timebegin,String timeend,String idofcenter){ 
 		commoditylistdata = (CommodityListDataService)rhelper.findService("CommodityListDataService");
-		ArrayList<StorageListLineofOutPO>arraylist=commoditylistdata.findOutList(timebegin,timeend,idofcenter);
-		return arraylist;
+		ArrayList<StorageListLineofOutPO> storagelist=new ArrayList<StorageListLineofOutPO>();
+      storagelist=commoditylistdata.findOutList(timebegin,timeend,idofcenter);
+
+		 System.out.println("客服端"+ storagelist.size());
+		 
+		return storagelist;
 	}
 	    
-
+  public static void main(String[]args){
+	  StorageListGetByStringBL ss=new StorageListGetByStringBL();
+	  ArrayList<StorageListLineofOutPO> list=new ArrayList<StorageListLineofOutPO>();
+	  list=ss.getOutList("15/11/29", "15/12/02", "00");
+	 
+  }
 }
 
