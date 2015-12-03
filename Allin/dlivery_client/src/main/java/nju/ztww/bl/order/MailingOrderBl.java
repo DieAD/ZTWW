@@ -12,6 +12,7 @@ import java.util.List;
 import nju.ztww.RMI.RMIHelper;
 import nju.ztww.po.LoadingPO;
 import nju.ztww.po.MailingPO;
+import nju.ztww.po.TrackPO;
 import nju.ztww.po.OrderPO;
 import nju.ztww.po.PriceDataPO;
 import nju.ztww.service.OrderDataService;
@@ -42,6 +43,7 @@ public class MailingOrderBl {
 	}
 	
 	public String handleVO(MailingVO mailingVO){
+
 		mailingPO.setSendName(mailingVO.getSendName());
 		mailingPO.setSendLocation(mailingVO.getSendLocation());
 		mailingPO.setSendTelephone(mailingVO.getSendTelephone());
@@ -111,6 +113,24 @@ public class MailingOrderBl {
 		return random;
 	}
 
+	public boolean passOrders(ArrayList<String> orders){
 
+		orderDataService=(OrderDataService)rhelper.findService("OrderDataService");
+		for(String order : orders){
+			TrackPO mailingTrackPO = orderDataService.passMailingOrder(order);
+			mailingTrackPO = adjust(mailingTrackPO);
+			orderDataService.addTrack(mailingTrackPO);
+		}
+		return true;
+	}
 	
+	public TrackPO adjust(TrackPO mailingTrackPO){
+		String place = mailingTrackPO.getTrack().substring(0, 3);
+		if(place.equals("025")) place = "南京";
+		else if(place.equals("010")) place = "北京";
+		else if(place.equals("020")) place = "广州";
+		else if(place.equals("021")) place = "上海";
+		mailingTrackPO.setTrack("出发地："+place);
+		return mailingTrackPO;
+	}
 }
