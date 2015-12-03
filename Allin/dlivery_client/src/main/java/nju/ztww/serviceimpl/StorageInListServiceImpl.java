@@ -3,7 +3,7 @@ package nju.ztww.serviceimpl;
 import java.util.ArrayList;
 
 import nju.ztww.bl.commodity.StorageInofListBL;
-import nju.ztww.bl.commodity.StorageListInbeforecheckBL;
+import nju.ztww.bl.commodity.StorageListInAftercheckBL;
 import nju.ztww.bl.commodity.StorageOutofListBL;
 import nju.ztww.po.StorageListLineofInPO;
 import nju.ztww.po.StorageListLineofOutPO;

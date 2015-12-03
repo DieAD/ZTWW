@@ -236,10 +236,37 @@ public class DBForEntryForm extends DB{
 		}
 		return list;
 	}
+	public ArrayList<EntryFormDO> queryByCenterID(String ID, String tableName) {
+		ArrayList<EntryFormDO> list = new ArrayList<EntryFormDO>();
+		String sql = "select * from " + tableName + " where id=" + ID;
+		try {
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+			while (rs.next()) {
+				EntryFormDO form = new EntryFormDO();
+				form.setIndex(rs.getInt(1));
+				form.setId(rs.getString(2));
+				form.setGoodsid(rs.getString(3));
+				form.setEntrytime(rs.getString(4));
+				form.setAddress(rs.getString(5));
+				form.setQu(rs.getString(6));
+				form.setPai(rs.getString(7));
+				form.setJia(rs.getString(8));
+				form.setWei(rs.getString(9));
+				form.setExe(rs.getInt(10));
+				form.setState(rs.getInt(11));
+				list.add(form);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
+	}
 	public static void main(String[] args){
 		DBForEntryForm db = new DBForEntryForm();
 		db.init();
-		ArrayList<EntryFormDO>list=db.queryALL( "entryform");
+		ArrayList<EntryFormDO>list=db.queryByCenterID("1511240001", "entryform");
 		
 		for(int i=0;i<list.size();i++){
 			System.out.println(list.get(i).getEntrytime());
