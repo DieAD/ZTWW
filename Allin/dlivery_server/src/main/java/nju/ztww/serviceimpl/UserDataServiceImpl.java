@@ -2,6 +2,7 @@ package nju.ztww.serviceimpl;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
 
 import nju.ztww.data.user.ManaUserData;
 import nju.ztww.data.user.UserData;
@@ -44,6 +45,24 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 		// TODO Auto-generated method stub
 		boolean result = manaUserData.addUser(user);
 		return result;
+	}
+
+	public ArrayList<ManaUserPO> getUsers() throws RemoteException {
+		// TODO Auto-generated method stub
+		ArrayList<ManaUserPO> users = manaUserData.getUsers();
+		return users;
+	}
+
+	public boolean deleteUser(String deleteID) throws RemoteException {
+		// TODO Auto-generated method stub
+		boolean whetherDelete = manaUserData.deleteUser(deleteID);
+		return whetherDelete;
+	}
+
+	public boolean modifyUser(ManaUserPO user) throws RemoteException {
+		// TODO Auto-generated method stub
+		boolean whetherModify = manaUserData.modifyUser(user);
+		return whetherModify;
 	}
 
 }
