@@ -3,8 +3,8 @@ package nju.ztww.data.order;
 import java.util.ArrayList;
 
 import nju.ztww.DBHelper.DBForShippingForm;
-import nju.ztww.po.CarManagePO;
 import nju.ztww.po.ShippingPO;
+import nju.ztww.vo.IDVO;
 
 public class ShippingData{
 
@@ -34,7 +34,18 @@ public String insert(ShippingPO transferPO){
 	   dbHelper.init();
 	   ArrayList<ShippingPO> list= dbHelper.queryByID(id, "shippingform");
 	   shippingPO=list.get(0);
+	   dbHelper.close();
 		return shippingPO;
 		
 	}
+   
+   public String update(IDVO Id){
+	   dbHelper.init();
+	   ArrayList<ShippingPO> list= dbHelper.queryByID(Id.id, "shippingform");
+	   list.get(0).setExe(1);
+	   String result=dbHelper.update(list, "shippingform");
+	   dbHelper.close();
+	   return result;
+	   
+   }
 }

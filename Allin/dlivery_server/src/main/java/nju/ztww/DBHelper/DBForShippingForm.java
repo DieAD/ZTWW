@@ -67,9 +67,37 @@ public class DBForShippingForm extends DB {
 		}
 	} catch (SQLException e) {
 		// TODO Auto-generated catch block
-		e.printStackTrace();
+		return "fail";
 	}
 	return "success";
 	}
 
+	public String update(ArrayList<ShippingPO> list, String tableName){
+		String sql = "update "+tableName+" set id=?,goodsid=?,time=?,tructid=?,"
+				+ "address=?,carid=?,loadmen=?,supercargo=?,cost=?,exe=?,state=? where id=?";
+		
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			for(ShippingPO form : list){
+				pstmt.setString(1, form.getId());
+				pstmt.setString(2, form.getOrderNumber());
+				pstmt.setString(3, form.getData());
+				pstmt.setString(4, form.getQiYunNumber());
+				pstmt.setString(5, form.getArrivePlace());
+				pstmt.setString(6, form.getCarNumber());
+				pstmt.setString(7,form.getJianZhuangName());
+				pstmt.setString(8, form.getYaYunName());
+				pstmt.setDouble(9, form.getMoney());
+				pstmt.setInt(10, form.getExe());
+				pstmt.setInt(11, form.getState());
+				pstmt.setString(12, form.getId());
+				
+				pstmt.executeUpdate();
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			return "fail";
+		}
+		return "success";
+	}
 }

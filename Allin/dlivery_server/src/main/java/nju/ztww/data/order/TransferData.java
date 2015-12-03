@@ -3,8 +3,8 @@ package nju.ztww.data.order;
 import java.util.ArrayList;
 
 import nju.ztww.DBHelper.DBForTransferForm;
-import nju.ztww.po.CarManagePO;
 import nju.ztww.po.TransferPO;
+import nju.ztww.vo.IDVO;
 
 public class TransferData {
 	
@@ -34,8 +34,19 @@ public String insert(TransferPO transferPO){
 	   dbHelper.init();
 	   ArrayList<TransferPO> list= dbHelper.queryByID(id, "transferform");
 	   transferPO=list.get(0);
+	   dbHelper.close();
 		return transferPO;
 		
 	}
+   
+   public String update(IDVO Id){
+	   dbHelper.init();
+	   ArrayList<TransferPO> list= dbHelper.queryByID(Id.id, "transferform");
+	   list.get(0).setExe(1);
+	   String result=dbHelper.update(list, "transferform");
+	   dbHelper.close();
+	   return result;
+	   
+   }
 
 }

@@ -5,10 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import nju.ztww.RMI.RMIHelper;
-import nju.ztww.po.CenterReceivePO;
 import nju.ztww.po.LoadingPO;
 import nju.ztww.po.OrderPO;
 import nju.ztww.service.OrderDataService;
+import nju.ztww.vo.IDVO;
 import nju.ztww.vo.LoadingVO;
 
 /**
@@ -30,7 +30,7 @@ public class LoadingOrderBl {
 		 
 		 private OrderDataService orderDataService;
 		 
-		 private List<OrderPO> list=new ArrayList<OrderPO>();
+		 private List<IDVO> list=new ArrayList<IDVO>();
 		
 		public LoadingOrderBl(){
 			
@@ -75,12 +75,12 @@ public class LoadingOrderBl {
 		 * @param list
 		 * @return
 		 */
-		public String handleAllVO(List<LoadingPO> list){
-			for(LoadingPO temp:list){
+		public String handleAllVO(List<IDVO> list){
+			for(IDVO temp:list){
 				this.list.add(temp);
 			}
 			orderDataService=(OrderDataService)rhelper.findService("OrderDataService");
-			String result=orderDataService.insertToDateFactory(this.list,4);
+			 String result=orderDataService.insertToDateFactory(this.list,4);
 			return result;
 			
 		}

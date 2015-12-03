@@ -3,9 +3,11 @@ package nju.ztww.data.order;
 import java.util.ArrayList;
 
 import nju.ztww.DBHelper.DBForHollReciForm;
+import nju.ztww.DBHelper.DBForTraceForm;
 import nju.ztww.dao.HollReciFormDO;
-import nju.ztww.dao.UserDO;
+import nju.ztww.dao.TraceFormDO;
 import nju.ztww.po.BusinessArrivePO;
+import nju.ztww.vo.IDVO;
 
 /**
  * 处理营业厅到达单
@@ -19,6 +21,8 @@ public class BusinessArriveData {
     private ArrayList<HollReciFormDO> list=new ArrayList<HollReciFormDO>();   
     private HollReciFormDO hollReciFormDO;
     private BusinessArrivePO businessArrivePO=new BusinessArrivePO(2);
+    DBForTraceForm dBForTraceForm=new DBForTraceForm();
+    NowPlace nowPlace=new NowPlace();
 	
 	public String insert(BusinessArrivePO businessArrivePO){
 		dbHelper.init();
@@ -55,5 +59,29 @@ public class BusinessArriveData {
 	   return businessArrivePO;
 		
 	}
+   public String update(IDVO Id){
+	   dbHelper.init();
+	   ArrayList<HollReciFormDO> list= dbHelper.queryByID(Id.id, "hollreciform");
+	   list.get(0).setExe(1);
+	   String result=dbHelper.update(list, "hollreciform");
+	   dbHelper.close();
+	   return result;
+	   
+   }
+   
+   public String addTrace(IDVO Id){
+	   dbHelper.init();
+	   dBForTraceForm.init();
+	   ArrayList<HollReciFormDO> list= dbHelper.queryByID(Id.id, "hollreciform");
+	   String number=list.get(0).getGoodsid();
+	   String place=nowPlace.findBusinessPlace(list.get(0).getId());
+	   TraceFormDO traceFormDO=new TraceFormDO();
+	   traceFormDO.setGoodsid(number);
+	   traceFormDO.setTrace(place);
+	   dBForTraceForm.insert(traceFormDO, "tracetable");
+	   dbHelper.close();
+	   dBForTraceForm.close();
+	   return "success";
+   }
 
 }

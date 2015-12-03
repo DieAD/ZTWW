@@ -25,6 +25,7 @@ import nju.ztww.bl.order.SendOrderBl;
 import nju.ztww.bl.order.ShipingOrderBl;
 import nju.ztww.bl.order.TransferOrderBl;
 import nju.ztww.service.OrderService;
+import nju.ztww.ui.main.UserInfoUI;
 import nju.ztww.vo.AcceptVO;
 import nju.ztww.vo.BusinessArriveVO;
 import nju.ztww.vo.CarManageVO;
@@ -73,47 +74,47 @@ public class OrderServiceImpl implements OrderService{
 		case 2:
 			BusinessArriveVO businessArriveVO=new BusinessArriveVO(2);
 			id=findOrderIDBl.findID();
-			businessArriveVO.setId(date+id);
+			businessArriveVO.setId(UserInfoUI.getUserID().substring(0, 8)+date+id);
 		    return businessArriveVO;
 		case 3:
 			CenterReceiveVO centerReceiveVO=new CenterReceiveVO(3);
 			id=findOrderIDBl.findID();
-			centerReceiveVO.setId(date+id);
+			centerReceiveVO.setId(UserInfoUI.getUserID().substring(0, 8)+date+id);
 		    return centerReceiveVO;
 		case 4:
 			LoadingVO loadingVO=new LoadingVO(4);
 		    id=findOrderIDBl.findID();
-		    loadingVO.setId(date+id);
+		    loadingVO.setId(UserInfoUI.getUserID().substring(0, 8)+date+id);
 			return loadingVO;
 		case 5:
 			ReceiveVO receiveVO=new ReceiveVO(5);
 			 id=findOrderIDBl.findID();
-			 receiveVO.setId(date+id);
+			 receiveVO.setId(UserInfoUI.getUserID().substring(0, 8)+date+id);
 			return receiveVO;
 		case 6:
 			SendVO sendVO=new SendVO(6);
 			 id=findOrderIDBl.findID();
-			 sendVO.setId(date+id);
+			 sendVO.setId(UserInfoUI.getUserID().substring(0, 8)+date+id);
 			return sendVO;
 		case 7:
 			ShippingVO shippingVO=new ShippingVO(7);
 			id=findOrderIDBl.findID();
-			shippingVO.setId(date+id);
+			shippingVO.setId(UserInfoUI.getUserID().substring(0, 8)+date+id);
 			return shippingVO;
 		case 8:
 			TransferVO transferVO=new TransferVO(8);
 			 id=findOrderIDBl.findID();
-			 transferVO.setId(date+id);
+			 transferVO.setId(UserInfoUI.getUserID().substring(0, 8)+date+id);
 			return transferVO;
 		case 9:
 			CarManageVO carManageVO=new CarManageVO(9);
 			 id=findOrderIDBl.findID();
-			 carManageVO.setId(date+id);
+			 carManageVO.setId(UserInfoUI.getUserID().substring(0, 8)+date+id);
 			return carManageVO;
 		case 10:
 			DriverMessageVO driverMessageVO=new DriverMessageVO(10);
 			 id=findOrderIDBl.findID();
-			 driverMessageVO.setId(date+id);
+			 driverMessageVO.setId(UserInfoUI.getUserID().substring(0, 8)+date+id);
 			return driverMessageVO;
 		case 11:
 			AcceptVO acceptVO = new AcceptVO(11);

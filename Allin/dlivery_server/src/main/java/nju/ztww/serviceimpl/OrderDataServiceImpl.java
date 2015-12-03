@@ -10,6 +10,7 @@ import nju.ztww.po.CarManagePO;
 import nju.ztww.po.OrderPO;
 import nju.ztww.po.PriceDataPO;
 import nju.ztww.service.OrderDataService;
+import nju.ztww.vo.IDVO;
 
 public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDataService{
 
@@ -46,7 +47,7 @@ public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDa
 	}
 
 
-	public String insertToDateFactory(List<OrderPO> list, int type)
+	public String insertToDateFactory(List<IDVO> list, int type)
 			throws RemoteException {
 		String result=orderHandler.insertToDateFactory(list, type);
 		return result;
@@ -58,6 +59,12 @@ public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDa
 		// TODO Auto-generated method stub
 		PriceDataPO priceData = mailingOrderData.getPriceInfo(place1, place2, type);
 		return priceData;
+	}
+
+	public String addTrace(List<IDVO> list, int type)
+			throws RemoteException {
+		String result=orderHandler.addTrace(list, type);
+	    return result;
 	}
 
 }

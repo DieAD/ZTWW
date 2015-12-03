@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import nju.ztww.RMI.RMIHelper;
-import nju.ztww.po.CarManagePO;
 import nju.ztww.po.DriverMessagePO;
 import nju.ztww.po.OrderPO;
 import nju.ztww.service.OrderDataService;
 import nju.ztww.vo.DriverMessageVO;
+import nju.ztww.vo.IDVO;
 
 public class DriverMessageBl {
 
@@ -22,7 +22,7 @@ public class DriverMessageBl {
 	 
 	 private OrderDataService orderDataService;
 	 
-	 private List<OrderPO> list=new ArrayList<OrderPO>();
+	 private List<IDVO> list=new ArrayList<IDVO>();
 
     public DriverMessageBl() {
 	
@@ -68,12 +68,12 @@ public class DriverMessageBl {
  * @param list
  * @return
  */
-   public String handleAllVO(List<DriverMessagePO> list){
-	  for(DriverMessagePO temp:list){
+   public String handleAllVO(List<IDVO> list){
+	  for(IDVO temp:list){
 		this.list.add(temp);
 	 }
 	  orderDataService=(OrderDataService)rhelper.findService("OrderDataService");
-	 String result=orderDataService.insertToDateFactory(this.list,9);
+	  String result=orderDataService.insertToDateFactory(this.list,10);
 	  return result;
 	
 }
