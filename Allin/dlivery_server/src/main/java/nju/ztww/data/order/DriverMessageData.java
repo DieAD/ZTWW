@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import nju.ztww.DBHelper.DBForDriverMessageForm;
 import nju.ztww.po.CarManagePO;
 import nju.ztww.po.DriverMessagePO;
+import nju.ztww.vo.IDVO;
 
 /**
  * 处理司机信息管理
@@ -38,8 +39,19 @@ public class DriverMessageData {
 	   dbHelper.init();
 	   ArrayList<DriverMessagePO> list= dbHelper.queryByID(id, "drivermessageform");
 	   driverMessagePO=list.get(0);
+	   dbHelper.close();
 		return driverMessagePO;
 		
 	}
+   
+   public String update(IDVO Id){
+	   dbHelper.init();
+	   ArrayList<DriverMessagePO> list= dbHelper.queryByID(Id.id, "drivermessageform");
+	   list.get(0).setExe(1);
+	   String result=dbHelper.update(list, "drivermessageform");
+	   dbHelper.close();
+	   return result;
+	   
+   }
 
 }

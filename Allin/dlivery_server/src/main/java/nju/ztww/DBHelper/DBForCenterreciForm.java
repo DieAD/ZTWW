@@ -149,7 +149,7 @@ public class DBForCenterreciForm extends DB{
 		return "success";
 	}
 	
-	public void update(ArrayList<CenterReceivePO> list,String tableName){
+	public String update(ArrayList<CenterReceivePO> list,String tableName){
 		String sql = " update "+tableName+" set id=?,centerid=?,goodsid=?,time=?,bddress=?,goodsstate=?,exe=?,state=?"
 				+ " where id=?";
 		try {
@@ -168,9 +168,9 @@ public class DBForCenterreciForm extends DB{
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			return "fail";
 		}
-		
+		return "success";
 	}
 	
 	public void delete(String ID,String tableName){

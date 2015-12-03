@@ -7,6 +7,7 @@ import nju.ztww.dao.CarManageDO;
 import nju.ztww.dao.HollReciFormDO;
 import nju.ztww.po.BusinessArrivePO;
 import nju.ztww.po.CarManagePO;
+import nju.ztww.vo.IDVO;
 
 /**
  * 处理车辆管理
@@ -42,8 +43,20 @@ public class CarManageData {
 	   dbHelper.init();
 	   ArrayList<CarManagePO> list= dbHelper.queryByID(id, "carmanageform");
 	   carManagePO=list.get(0);
+	   dbHelper.close();
 		return carManagePO;
 		
 	}
+   
+   public String update(IDVO Id){
+	   dbHelper.init();
+	   ArrayList<CarManagePO> list= dbHelper.queryByID(Id.id, "carmanageform");
+	   list.get(0).setExe(1);
+	   String result=dbHelper.update(list, "carmanageform");
+	   dbHelper.close();
+	   return result;
+	   
+   }
+
 
 }

@@ -82,8 +82,8 @@ public class MailingOrderBl {
 			this.list.add(temp);
 		}
 		orderDataService=(OrderDataService)rhelper.findService("OrderDataService");
-		String result=orderDataService.insertToDateFactory(this.list,1);
-		return result;
+//		String result=orderDataService.insertToDateFactory(this.list,1);
+		return null;
 		
 	}
 	

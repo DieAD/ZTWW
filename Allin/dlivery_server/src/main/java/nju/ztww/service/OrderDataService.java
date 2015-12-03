@@ -8,6 +8,7 @@ import nju.ztww.po.TrackPO;
 import nju.ztww.po.OrderPO;
 import nju.ztww.po.PriceDataPO;
 import nju.ztww.vo.BusinessArriveVO;
+import nju.ztww.vo.IDVO;
 
 /**
  * OrderData模块Service
@@ -25,13 +26,18 @@ public interface OrderDataService extends Remote  {
 	
 	public OrderPO find(String id,int type)throws RemoteException;
 	
-	public String insertToDateFactory(List<OrderPO> list,int type) throws RemoteException;
+	public String insertToDateFactory(List<IDVO> list,int type) throws RemoteException;
 
 	public PriceDataPO getPriceData(String place1, String place2, String type) throws RemoteException;
+
+	
+	public String addTrace(List<IDVO> list,int type)  throws RemoteException;
+
 
 	public TrackPO passOrder(String order) throws RemoteException;
 	
 	public void addTrack(TrackPO mailingTrackPO) throws RemoteException;
 	
 	public TrackPO passAcceptOrder(String order) throws RemoteException;
+
 }

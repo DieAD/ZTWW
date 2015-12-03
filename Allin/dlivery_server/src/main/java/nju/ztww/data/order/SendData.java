@@ -6,6 +6,7 @@ import nju.ztww.DBHelper.DBForDeliveryForm;
 import nju.ztww.DBHelper.DBForLoadForm;
 import nju.ztww.po.LoadingPO;
 import nju.ztww.po.SendPO;
+import nju.ztww.vo.IDVO;
 
 /**
  * 处理派件单
@@ -43,5 +44,15 @@ public class SendData {
 	   return sendPO;
 		
 	}
+   
+   public String update(IDVO Id){
+	   dbHelper.init();
+	   ArrayList<SendPO> list= dbHelper.queryByID(Id.id, "deliveryform");
+	   list.get(0).setExe(1);
+	   String result=dbHelper.update(list, "deliveryform");
+	   dbHelper.close();
+	   return result;
+	   
+   }
 
 }

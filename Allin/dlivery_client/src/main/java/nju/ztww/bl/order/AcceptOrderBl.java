@@ -40,8 +40,8 @@ public class AcceptOrderBl {
 			this.list.add(temp);
 		}
 		orderDataService=(OrderDataService)rHelper.findService("OrderDataService");
-		String result = orderDataService.insertToDateFactory(this.list, 11);
-		return result;
+//		String result = orderDataService.insertToDateFactory(this.list, 11);
+		return null;
 	}
 
 	public boolean passOrders(ArrayList<IDVO> list){
