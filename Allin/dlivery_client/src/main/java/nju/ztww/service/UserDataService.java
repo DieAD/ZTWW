@@ -2,7 +2,9 @@ package nju.ztww.service;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
+import nju.ztww.po.ManaUserPO;
 import nju.ztww.po.MemberPO;
 import nju.ztww.po.OrderPO;
 import nju.ztww.po.UserPO;
@@ -27,4 +29,15 @@ public interface UserDataService extends Remote{
 	 * 用于查询个人信息
 	 */
 	public UserPO findUser(String ID);
+	
+	//管理员添加用户
+	public boolean addUser(ManaUserPO user);
+
+	//管理员得到所有用户信息
+	public ArrayList<ManaUserPO> getUsers();
+
+	//管理员删除某用户信息
+	public boolean deleteUser(String deleteID);
+
+	public boolean modifyUser(ManaUserPO userPO);
 }

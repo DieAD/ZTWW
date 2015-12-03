@@ -237,7 +237,7 @@ public class Courier_AcceptUI extends JPanel{
 				orderServiceImpl.endSales(acceptOrders.get(i), 11);
 			}
 			acceptOrders.clear();
-			de.setColumnCount(0);
+			de.setRowCount(0);
 		}
 	};
 	

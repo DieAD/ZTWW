@@ -2,8 +2,11 @@ package nju.ztww.serviceimpl;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
 
+import nju.ztww.data.user.ManaUserData;
 import nju.ztww.data.user.UserData;
+import nju.ztww.po.ManaUserPO;
 import nju.ztww.po.MemberPO;
 import nju.ztww.po.OrderPO;
 import nju.ztww.po.UserPO;
@@ -11,6 +14,7 @@ import nju.ztww.service.UserDataService;
 
 public class UserDataServiceImpl extends UnicastRemoteObject implements UserDataService {
 	UserData userData = new UserData();
+	ManaUserData manaUserData = new ManaUserData();
 	public UserDataServiceImpl() throws RemoteException {
 		super();
 		// TODO Auto-generated constructor stub
@@ -35,6 +39,30 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 		// TODO Auto-generated method stub
 		UserPO user = userData.findUser(ID);
 		return user;
+	}
+
+	public boolean addUser(ManaUserPO user) throws RemoteException {
+		// TODO Auto-generated method stub
+		boolean result = manaUserData.addUser(user);
+		return result;
+	}
+
+	public ArrayList<ManaUserPO> getUsers() throws RemoteException {
+		// TODO Auto-generated method stub
+		ArrayList<ManaUserPO> users = manaUserData.getUsers();
+		return users;
+	}
+
+	public boolean deleteUser(String deleteID) throws RemoteException {
+		// TODO Auto-generated method stub
+		boolean whetherDelete = manaUserData.deleteUser(deleteID);
+		return whetherDelete;
+	}
+
+	public boolean modifyUser(ManaUserPO user) throws RemoteException {
+		// TODO Auto-generated method stub
+		boolean whetherModify = manaUserData.modifyUser(user);
+		return whetherModify;
 	}
 
 }

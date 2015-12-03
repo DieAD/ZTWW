@@ -2,8 +2,10 @@ package nju.ztww.service_stub;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
 
 import nju.ztww.data.user.UserData;
+import nju.ztww.po.ManaUserPO;
 import nju.ztww.po.MemberPO;
 import nju.ztww.po.OrderPO;
 import nju.ztww.po.UserPO;
@@ -35,6 +37,31 @@ public class UserDataService_stub extends UnicastRemoteObject implements UserDat
 	public UserPO findUser(String ID) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public boolean addUser(ManaUserPO user) throws RemoteException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public ArrayList<ManaUserPO> getUsers() throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public boolean deleteUser(String deleteID) throws RemoteException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public boolean modifyUser(UserPO user) throws RemoteException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public boolean modifyUser(ManaUserPO user) throws RemoteException {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 
