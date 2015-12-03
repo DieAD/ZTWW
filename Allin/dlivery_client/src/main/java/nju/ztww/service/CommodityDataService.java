@@ -24,6 +24,4 @@ public interface CommodityDataService {
 		//插入一个列表
 		public void insertOut(ArrayList<StorageListLineofOutPO>  arraylistoutpo,String idofcenter);
 		public void insertIn(ArrayList<StorageListLineofInPO> arraylistinpo,String idofcenter);
-		//得到库存信息
-		
 }

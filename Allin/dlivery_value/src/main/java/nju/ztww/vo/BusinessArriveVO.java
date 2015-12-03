@@ -15,8 +15,8 @@ public class BusinessArriveVO extends OrderVO{
 	private String number;
 	private String Send;
 	private String orderState;
-	private int exe=1;
-	private int state=0;
+	private int exe=0;
+	private int state=1;
 
 	public BusinessArriveVO(int idOfOrder) {
 		super(idOfOrder);

@@ -1,5 +1,11 @@
 package nju.ztww.data.order;
 
+import java.util.ArrayList;
+
+import nju.ztww.DBHelper.DBForLoadForm;
+import nju.ztww.dao.HollReciFormDO;
+import nju.ztww.dao.LoadFormDO;
+import nju.ztww.po.BusinessArrivePO;
 import nju.ztww.po.LoadingPO;
 
 /**
@@ -9,20 +15,33 @@ import nju.ztww.po.LoadingPO;
  */
 public class LoadingData {
 	
-    public String insert(LoadingPO loadingPO){
-		
-		return null;
+	DBForLoadForm dbHelper = new DBForLoadForm();
+    private ArrayList<LoadingPO> list=new ArrayList<LoadingPO>();   
+    private LoadingPO loadingPO=new LoadingPO(4);
+	
+	public String insert(LoadingPO loadingPO){
+		dbHelper.init();
+		list.add(loadingPO);
+		String result=dbHelper.insert(list, "loadform");
+		list.clear();
+		dbHelper.close();
+		return result;
 		
 	}
 	
    public String delete(String id){
-		
-		return null;
+	   dbHelper.init();
+	   dbHelper.delete(id, "loadform");
+	   dbHelper.close();
+		return "success";
 		
 	}
    public LoadingPO find(String id){
-		
-		return null;
+	   dbHelper.init();
+	   ArrayList<LoadingPO> list= dbHelper.queryByID(id, "loadform");
+	   loadingPO=list.get(0);
+	   dbHelper.close();
+	   return loadingPO;
 		
 	}
 

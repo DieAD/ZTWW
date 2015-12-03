@@ -24,7 +24,6 @@ public class StorageListOutGetByTime {
 		if(timebegin.equals(timeend)){
 			outstockformlist=dbforoutstorkform.queryByTime(timebegin, tableName);
 			for(int i=0;i<outstockformlist.size();i++){
-				
 			StorageListLineofOutPO storagelistlineofoutpo=new StorageListLineofOutPO(
 					outstockformlist.get(i).getGoodsid(),
 					outstockformlist.get(i).getTime(),

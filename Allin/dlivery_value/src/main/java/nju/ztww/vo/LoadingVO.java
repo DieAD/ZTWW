@@ -20,16 +20,18 @@ public class LoadingVO extends OrderVO{
 	private String carNumber;
 	private String JianZhuangName;
 	private String YaYunName;
-	private ArrayList<String> orderNumber;
+	private String orderNumber;
 	private double money;
-	private int exe=1;
-	private int state=0;
+	private int exe=0;
+	private int state=1;
 
 	public LoadingVO(int idOfOrder) {
 		super(idOfOrder);
 		this.idOfOrde=idOfOrder;
 	}
-
+	public void setExe(int exe) {
+		this.exe = exe;
+	}
 	public int getExe() {
 		return exe;
 	}
@@ -112,11 +114,11 @@ public class LoadingVO extends OrderVO{
 		YaYunName = yaYunName;
 	}
 
-	public ArrayList<String> getOrderNumber() {
+	public String getOrderNumber() {
 		return orderNumber;
 	}
 
-	public void setOrderNumber(ArrayList<String> orderNumber) {
+	public void setOrderNumber(String orderNumber) {
 		this.orderNumber = orderNumber;
 	}
 

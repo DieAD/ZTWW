@@ -2,7 +2,6 @@ package nju.ztww.serviceimpl;
 
 import java.util.ArrayList;
 
-import nju.ztww.bl.commodity.GetStockListBL;
 import nju.ztww.bl.commodity.StorageListGetByStringBL;
 import nju.ztww.po.StorageListLineofInPO;
 import nju.ztww.po.StorageListLineofOutPO;
@@ -68,14 +67,7 @@ public class CommodityListServiceImpl implements CommodityListService {
 
 	public ArrayList<StorageListLineofInVO> getStock(String idofcenter) {
 		// TODO Auto-generated method stub
-		ArrayList<StorageListLineofInVO> arraylistinvo=new ArrayList<StorageListLineofInVO>();
-		ArrayList<StorageListLineofInPO> arraylistinpo=new ArrayList<StorageListLineofInPO>();
-		GetStockListBL getstocklistbl=new GetStockListBL();
-		arraylistinpo=getstocklistbl.getStock(idofcenter);
-		for(int i=0;i<arraylistinpo.size();i++){
-			arraylistinvo.add(arraylistinpo.get(i).changetovo());
-		}
-		return arraylistinvo;
+		return null;
 	}
 
 }

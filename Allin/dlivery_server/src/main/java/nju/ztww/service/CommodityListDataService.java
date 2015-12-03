@@ -19,5 +19,4 @@ public interface CommodityListDataService extends Remote{
 	ArrayList<StorageListLineofInPO> findInList(String timebegin,String timeend,String idofcenter)throws RemoteException, ParseException;
 	//通过一段时间来得到出库信息（库存盘点和库存盘点）
 	ArrayList<StorageListLineofOutPO> findOutList(String timebegin,String timeend,String idofcenter)throws RemoteException, ParseException;
-	 ArrayList<StorageListLineofInPO> getStock(String idofcenter)throws RemoteException;
 }

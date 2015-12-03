@@ -30,7 +30,7 @@ public class Program {
         		 CommodityDataService commoditydataservice=new StorageInOfListDataServiceImpl();
         		 CommodityDataService  commoditydataserviceout=new StorageOutOfListDataServiceImpl();
         		 CommodityListDataService  commoditylistdataservice=new  CommodityListDataServiceImpl();
-        		// FinanceDataService  financedataservice = new FinanceDataServiceImpl();
+        		 FinanceDataService  financedataservice = new FinanceDataServiceImpl();
         		 CheckOrderDataService checkorderdataservice=new CheckOrderDataServiceImpl();
         		 LocateRegistry.createRegistry(PORT);
         		 Naming.rebind("rmi://"+IP+":"+PORT+"/UserDataService", userdataservice);       		
@@ -38,7 +38,7 @@ public class Program {
         		 Naming.rebind("rmi://"+IP+":"+PORT+"/CommodityDataService", commoditydataservice);
         		 Naming.rebind("rmi://"+IP+":"+PORT+"/CommodityDataServiceOut", commoditydataserviceout);
         		 Naming.rebind("rmi://"+IP+":"+PORT+"/CommodityListDataService", commoditylistdataservice);
-        		// Naming.rebind("rmi://"+IP+":"+PORT+"/FinanceDataService", financedataservice);
+        		 Naming.rebind("rmi://"+IP+":"+PORT+"/FinanceDataService", financedataservice);
         		 Naming.rebind("rmi://"+IP+":"+PORT+"/CheckOrderDataService", checkorderdataservice);
         		 
         		// LocateRegistry.createRegistry(PORT);

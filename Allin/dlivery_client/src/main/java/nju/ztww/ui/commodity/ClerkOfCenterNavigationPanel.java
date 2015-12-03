@@ -17,6 +17,7 @@ public class ClerkOfCenterNavigationPanel extends JPanel {
 	JButton ArriveEnd;//鐏溅
 	JButton Transfer;//姹借溅
 	JButton CarLoadbutton;//涓浆鎺ユ敹
+	JButton StorageFind;
 	final ImageIcon Plane=new ImageIcon("photo/arriveMid.gif");
 	final ImageIcon Train=new ImageIcon("photo/arriveEnd.gif");
 	final ImageIcon Bus=new ImageIcon("photo/zhongzhuan.gif");
@@ -31,26 +32,29 @@ public class ClerkOfCenterNavigationPanel extends JPanel {
 	  
 	  ArriveMid=new JButton();
 	  ArriveMid.setIcon(Plane);
-	  ArriveEnd=new JButton();
-	  ArriveEnd.setIcon(Train);
+//	  ArriveEnd=new JButton();
+//	  ArriveEnd.setIcon(Train);
 	  Transfer=new JButton();
 	  Transfer.setIcon(Bus);
 	  CarLoadbutton=new JButton();
 	  CarLoadbutton.setIcon(Receive);
+	  StorageFind=new JButton("查看库存");
+	  StorageFind.setIcon(null);
   }
  public void setPosition(){//璁剧疆浣嶇疆
 	 this.setLayout(null);
 	 
 	 ArriveMid.setBounds(0, 60, 210, 58);
-	 ArriveEnd.setBounds(0, 118, 210, 58);
-	 Transfer.setBounds(0, 176, 210, 58);
-	 CarLoadbutton.setBounds(0, 234, 210, 58);
+//	 ArriveEnd.setBounds(0, 118, 210, 58);
+	 Transfer.setBounds(0, 118, 210, 58);
+	 CarLoadbutton.setBounds(0, 176, 210, 58);
+	 StorageFind.setBounds(0, 234, 210, 58);
 	// this.add(IDbutton);
 	 this.add(ArriveMid);
-	 this.add(ArriveEnd);
+//	 this.add(ArriveEnd);
 	 this.add( Transfer);
 	 this.add(CarLoadbutton);
-	 
+	 this.add(StorageFind);
  }
  public void setListener(){
 	
