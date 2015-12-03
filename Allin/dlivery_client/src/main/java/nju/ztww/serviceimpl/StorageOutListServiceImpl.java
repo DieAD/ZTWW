@@ -5,12 +5,11 @@ package nju.ztww.serviceimpl;
 import java.util.ArrayList;
 
 
-import nju.ztww.bl.commodity.StorageOutofListBL;
 
+import nju.ztww.bl.commodity.StorageOutofListBL;
 import nju.ztww.po.StorageListLineofOutPO;
 import nju.ztww.service.CommodityService;
 import nju.ztww.vo.OrderVO;
-
 import nju.ztww.vo.StorageListLineofInVO;
 import nju.ztww.vo.StorageListLineofOutVO;
 
@@ -66,6 +65,11 @@ public class StorageOutListServiceImpl implements CommodityService {
 	public void addinOrder(ArrayList<StorageListLineofInVO> arraylist,String idofcneter) {
 		// TODO Auto-generated method stub
 		
+	}
+//得到现在单子的号码
+	public String getLastidofcenter(String idofcenter) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

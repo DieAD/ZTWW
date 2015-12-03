@@ -34,4 +34,5 @@ public interface CommodityService {
 	public void addoutOrder(ArrayList<StorageListLineofOutVO> arraylist,String idofcenter);
 	//增加入库的信息
 	public void addinOrder(ArrayList<StorageListLineofInVO> arraylist,String idofcenter);
+	public String getLastidofcenter(String idofcenter);
 }
