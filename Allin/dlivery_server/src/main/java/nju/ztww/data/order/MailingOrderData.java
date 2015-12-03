@@ -108,7 +108,7 @@ public class MailingOrderData {
 		traceDO.setGoodsid(mailingTrackPO.getID());
 		traceDO.setTrace(mailingTrackPO.getTrack());
 		traceForm.init();
-		traceForm.insert(traceDO, "traceform");
+		traceForm.insert(traceDO, "tracetable");
 		traceForm.close();
 	}
 

@@ -31,7 +31,7 @@ public class ManageBL {
 				//String id,String state,String dealmen
 				GenerateVO vo = new GenerateVO(po.getId(),"未审批",po.getDealmen());
 				listVO.add(vo);
-				
+			//	
 			}
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
