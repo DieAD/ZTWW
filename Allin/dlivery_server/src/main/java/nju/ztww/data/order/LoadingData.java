@@ -50,6 +50,7 @@ public class LoadingData {
 	   dbHelper.init();
 	   ArrayList<LoadingPO> list= dbHelper.queryByID(Id.id, "loadform");
 	   list.get(0).setExe(1);
+	   System.out.println("!!!!!!!!!!!!!!!!!!!!!!!+"+list.get(0).getExe());
 	   String result=dbHelper.update(list, "loadform");
 	   dbHelper.close();
 	   return result;

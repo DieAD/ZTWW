@@ -116,8 +116,10 @@ public class DBForLoadForm extends DB {
 		
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
+			System.out.println(list.get(0).getExe()+"???????????");
 			for(LoadingPO form : list){
 				pstmt.setString(1, form.getId());
+				System.out.print("db exe id+"+form.getId());
 				pstmt.setString(2, form.getOrderNumber());
 				pstmt.setString(3, form.getData());
 				pstmt.setString(4,form.getYingYeNumber());
@@ -128,6 +130,7 @@ public class DBForLoadForm extends DB {
 				pstmt.setString(9, form.getYaYunName());
 				pstmt.setDouble(10, form.getMoney());
 				pstmt.setInt(11, form.getExe());
+				System.out.print("db exe +"+form.getExe());
 				pstmt.setInt(12, form.getState());
 				pstmt.setString(13, form.getId());
 				

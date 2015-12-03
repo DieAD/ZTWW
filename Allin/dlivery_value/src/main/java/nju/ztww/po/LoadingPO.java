@@ -23,7 +23,7 @@ public class LoadingPO extends OrderPO implements Serializable{
 	private String orderNumber;
 	private double money;
 	private String id;
-	private int exe=0;
+	private int exe;
 	private int state=1;
 
 	public LoadingPO(int idOfOrder) {
