@@ -19,7 +19,7 @@ public class StorageListInGetByTime {
 	//库存盘点  
 	public ArrayList<StorageListLineofInPO> findInList(String time,String idofcenter) {
 		dbforstock.init();
-		String tableName="stock";
+		String tableName="stocktable";
 		ArrayList<StockDO>stocklist=new ArrayList<StockDO>();
 		ArrayList<StorageListLineofInPO> storagelistline=new ArrayList<StorageListLineofInPO>();
 		stocklist=dbforstock.queryByTime(time, tableName);

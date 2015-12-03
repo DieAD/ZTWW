@@ -19,6 +19,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
+import nju.ztww.bl.commodity.StringToInt;
 import nju.ztww.service.CommodityService;
 import nju.ztww.serviceimpl.CommodityServiceImp;
 import nju.ztww.serviceimpl.StorageOutListServiceImpl;
@@ -156,12 +157,12 @@ public class OutofStoragePanel extends JPanel {
 		row.add(dbtype.getSelectedItem().toString());
 		row.add(yunshufield.getText());
 		//构造了一个vo
-<<<<<<< HEAD
+
 		StringToInt way=new StringToInt();
 		storagelineout=new StorageListLineofOutVO(ordernumberfield.getText(), datafield.getText(), arrivefield.getText(),way.changetoint(dbtype.getSelectedItem().toString()), yunshufield.getText());
-=======
-		storagelineout=new StorageListLineofOutVO(ordernumberfield.getText(), datafield.getText(), arrivefield.getText(),zhuangyunfield.getText(), yunshufield.getText());
->>>>>>> refs/remotes/DieAD/master
+
+		
+
 		arraylist.add(storagelineout);
 		//arraylist中加入提交之前需要的出库信息
 		ordernumberfield.setText(null);

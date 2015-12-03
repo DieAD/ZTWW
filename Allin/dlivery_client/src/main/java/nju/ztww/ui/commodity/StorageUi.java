@@ -64,7 +64,7 @@ public class StorageUi extends JFrame {
 public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		new StorageUi();
-       
+      
 }
 	public ArrayList<JPanel> getPanelList(){
 		list.add(navigationpanel);
