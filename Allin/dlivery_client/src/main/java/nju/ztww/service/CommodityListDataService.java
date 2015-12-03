@@ -22,7 +22,7 @@ public interface CommodityListDataService {
 
 
 	void changeExeAddStock(ArrayList<String> list);
-   
+	void changeExeDeleteStock(ArrayList<String> list);
 
 	
 }

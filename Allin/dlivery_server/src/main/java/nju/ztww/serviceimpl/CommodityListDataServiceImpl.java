@@ -71,5 +71,11 @@ public class CommodityListDataServiceImpl extends UnicastRemoteObject implements
 		handle.changeExeAddStock(list);
 		
 	}
-    
+	public void changeExeDeleteStock(ArrayList<String> list)
+			throws RemoteException {
+		// TODO Auto-generated method stub
+		HandleExe handle=new HandleExe();
+		handle.changeExeDeleteStock(list);
+		
+	}
 }

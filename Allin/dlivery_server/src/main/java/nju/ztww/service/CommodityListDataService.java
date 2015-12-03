@@ -21,4 +21,5 @@ public interface CommodityListDataService extends Remote{
 	ArrayList<StorageListLineofOutPO> findOutList(String timebegin,String timeend,String idofcenter)throws RemoteException, ParseException;
 	ArrayList<StorageListLineofInPO> getStock(String idofcenter)throws RemoteException;
 	void changeExeAddStock(ArrayList<String> list)throws RemoteException;
+	void changeExeDeleteStock(ArrayList<String> list)throws RemoteException;
 }
