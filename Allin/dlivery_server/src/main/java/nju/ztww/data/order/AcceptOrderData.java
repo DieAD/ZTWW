@@ -31,7 +31,7 @@ public class AcceptOrderData {
 	}
 
 	public TrackPO passOrder(String order) {
-		// TODO Auto-generated method stub
+		
 		dbForReciveForm = new DBForReciveForm();
 		dbForReciveForm.init();
 		ArrayList<ReciveFormDO> reciveFormDOs = dbForReciveForm.queryByID(
