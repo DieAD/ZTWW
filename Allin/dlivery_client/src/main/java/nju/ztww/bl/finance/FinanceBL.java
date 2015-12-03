@@ -9,6 +9,7 @@ import nju.ztww.po.PaymentPO;
 import nju.ztww.service.FinanceDataService;
 import nju.ztww.vo.BenefitVO;
 import nju.ztww.vo.CollectionVO;
+import nju.ztww.vo.IDVO;
 import nju.ztww.vo.PaymentVO;
 
 public class FinanceBL {
@@ -131,5 +132,9 @@ public class FinanceBL {
 		BenefitVO benefitVO = new BenefitVO(totalCollection,totalPayment,totalBenefit);
 		
 		return benefitVO;
+	}
+	
+	public void UpdateTrace(ArrayList<IDVO> list){
+		
 	}
 }
