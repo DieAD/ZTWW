@@ -52,6 +52,7 @@ public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDa
 
 	public String insertToDateFactory(List<IDVO> list, int type)
 			throws RemoteException {
+		System.out.print("ssssss");
 		String result=orderHandler.insertToDateFactory(list, type);
 		return result;
 	}
@@ -72,7 +73,7 @@ public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDa
 	}
 
 
-	public TrackPO passMailingOrder(String order) throws RemoteException {
+	public TrackPO passOrder(String order) throws RemoteException {
 		// TODO Auto-generated method stub
 		TrackPO mailingTrackPO = mailingOrderData.passOrder(order);
 		return mailingTrackPO;

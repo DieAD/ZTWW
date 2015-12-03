@@ -10,7 +10,7 @@ import nju.ztww.po.TrackPO;
 public class AcceptOrderData {
 	DBForReciveForm dbForReciveForm;
 	private ArrayList<ReciveFormDO> list = new ArrayList<ReciveFormDO>();
-	private ReciveFormDO reciveFormDO;
+	private ReciveFormDO reciveFormDO;///
 
 	public String insert(AcceptPO acceptPO) {
 		reciveFormDO = new ReciveFormDO();
@@ -29,7 +29,7 @@ public class AcceptOrderData {
 		System.out.println("Insert successful!");
 		return "successful!";
 	}
-
+///
 	public TrackPO passOrder(String order) {
 		
 		dbForReciveForm = new DBForReciveForm();
@@ -37,7 +37,9 @@ public class AcceptOrderData {
 		ArrayList<ReciveFormDO> reciveFormDOs = dbForReciveForm.queryByID(
 				order, "reciveform");
 		TrackPO acceptTrackPO = new TrackPO();
-		System.out.println("order : "+order);
+
+		//System.out.println("order : "+order);
+
 		if (!reciveFormDOs.isEmpty()) {
 			ReciveFormDO receive = new ReciveFormDO();
 			receive.setExe(1);
@@ -48,8 +50,10 @@ public class AcceptOrderData {
 			acceptTrackPO.setID(receive.getId());
 			acceptTrackPO.setTrack(receive.getHoll() + "/"
 					+ receive.getRealtime() + "/" + receive.getRecip());
+			
 		}
 		dbForReciveForm.close();
 		return acceptTrackPO;
+		/////
 	}
 }
