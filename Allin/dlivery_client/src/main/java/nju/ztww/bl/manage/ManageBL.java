@@ -12,7 +12,7 @@ import nju.ztww.po.GeneratePO;
 import nju.ztww.service.ManageDataService;
 import nju.ztww.vo.GenerateVO;
 import nju.ztww.vo.IDVO;
-
+///
 public class ManageBL {
 	private RMIHelper rmi = new RMIHelper("localhost", "1010");
 	private ManageDataService MDService;
