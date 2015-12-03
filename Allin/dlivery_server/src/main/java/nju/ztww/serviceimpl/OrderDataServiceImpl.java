@@ -72,7 +72,7 @@ public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDa
 	}
 
 
-	public TrackPO passOrder(String order) throws RemoteException {
+	public TrackPO passMailingOrder(String order) throws RemoteException {
 		// TODO Auto-generated method stub
 		TrackPO mailingTrackPO = mailingOrderData.passOrder(order);
 		return mailingTrackPO;
@@ -86,7 +86,7 @@ public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDa
 	public TrackPO passAcceptOrder(String order) throws RemoteException {
 		// TODO Auto-generated method stub
 		TrackPO accepTrackPO = acceptOrderData.passOrder(order);
-		return null;
+		return accepTrackPO;
 	}
 
 
