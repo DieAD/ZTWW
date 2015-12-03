@@ -19,12 +19,12 @@ public class StorageUi extends JFrame {
     
 	public StorageUi() {
 		// TODO Auto-generated constructor stub
-//		setup();
-//		setPosition();
-//		setController();
-//		setTitle("Worker of Center!");
-//		setSize(900,600);		setVisible(true);
-//		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setup();
+		setPosition();
+		setController();
+		setTitle("Worker of Center!");
+		setSize(900,600);		setVisible(true);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		}
 	public  void setup(){
 		navigationpanel=new StorageNavigationPanel();
@@ -61,11 +61,11 @@ public class StorageUi extends JFrame {
 		navigationpanel.Checkbutton.addActionListener(new StorageControllerUi(this, storagecheckpanel, arraylist));
 	}
 
-//public static void main(String[] args) {
-//		// TODO Auto-generated method stub
-//		new StorageUi();
-//      
-//}
+public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		new StorageUi();
+     
+}
 	public ArrayList<JPanel> getPanelList(){
 		list.add(navigationpanel);
 		list.add(toppanel);
