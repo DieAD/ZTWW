@@ -10,6 +10,34 @@ import nju.ztww.dao.DeliveryFormDO;
 import nju.ztww.po.SendPO;
 
 public class DBForDeliveryForm extends DB{
+	public ArrayList<DeliveryFormDO> selectAll(){
+		ArrayList<DeliveryFormDO> list = new ArrayList<DeliveryFormDO>();
+		String sql = "select * from deliveryform where exe=0";
+		
+		try {
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+			
+			while(rs.next()){
+				DeliveryFormDO form = new DeliveryFormDO();
+				form.setIndex(rs.getInt(1));
+				form.setId(rs.getString(2));
+				form.setGoodsid(rs.getString(3));
+				form.setCourierid(rs.getString(4));
+				form.setArrivetime(rs.getString(5));
+				form.setExe(rs.getInt(6));
+				form.setState(rs.getInt(7));
+				
+				list.add(form);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return list;
+	}
 
 	
 	public ArrayList<SendPO> queryByID(String ID,String tableName){

@@ -10,7 +10,44 @@ import nju.ztww.dao.LoadFormDO;
 import nju.ztww.po.LoadingPO;
 
 public class DBForLoadForm extends DB {
+
+	
+
+	public ArrayList<LoadFormDO> selectAll(){
+		String sql = " select * from loadform where exe=0";
+		ArrayList<LoadFormDO> list = new ArrayList<LoadFormDO>();
+		
+		try {
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+			
+			while(rs.next()){
+				LoadFormDO form = new LoadFormDO();
+				form.setIndex(rs.getInt(1));
+				form.setId(rs.getString(2));
+				form.setGoodsid(rs.getString(3));
+				form.setTime(rs.getString(4));
+				form.setHoll(rs.getString(5));
+				form.setTructid(rs.getString(6));
+				form.setAddress(rs.getString(7));
+				form.setCarid(rs.getString(8));
+				form.setLoadmen(rs.getString(9));
+				form.setSupercargo(rs.getString(10));
+				form.setCost(rs.getDouble(11));
+				form.setExe(rs.getInt(12));
+				form.setState(rs.getInt(13));
+				
+				list.add(form);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
 	public ArrayList<LoadingPO> queryByID(String ID,String tableName){
+
 		String sql = " select * from "+tableName+" where id="+ID;
 		ArrayList<LoadingPO> list = new ArrayList<LoadingPO>();
 		

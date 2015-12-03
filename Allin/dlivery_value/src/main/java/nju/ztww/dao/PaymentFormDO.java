@@ -69,9 +69,28 @@ public class PaymentFormDO {
 
 	private String id;
 	private String date;
+
+	public int getExe() {
+		return exe;
+	}
+
+	public void setExe(int exe) {
+		this.exe = exe;
+	}
+
+	public int getState() {
+		return state;
+	}
+
+	public void setState(int state) {
+		this.state = state;
+	}
+
 	private double money;
 	private String paymen;
 	private String payaccount;
 	private String paycat;
 	private String ps;
+	private int exe;
+	private int state;
 }
