@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import nju.ztww.RMI.RMIHelper;
 import nju.ztww.po.AcceptPO;
 import nju.ztww.po.OrderPO;
+import nju.ztww.po.TrackPO;
 import nju.ztww.service.OrderDataService;
 import nju.ztww.vo.AcceptVO;
 
@@ -41,4 +42,32 @@ public class AcceptOrderBl {
 		String result = orderDataService.insertToDateFactory(this.list, 11);
 		return result;
 	}
+
+	public boolean passOrders(ArrayList<String> orders){
+
+		orderDataService=(OrderDataService)rHelper.findService("OrderDataService");
+		for(String order : orders){
+			TrackPO acceptTrackPO = orderDataService.passAcceptOrder(order);
+			acceptTrackPO = adjust(acceptTrackPO);
+			orderDataService.addTrack(acceptTrackPO);
+		}
+		return true;
+	}
+
+	private TrackPO adjust(TrackPO mailingTrackPO) {
+		// TODO Auto-generated method stub
+		String info = mailingTrackPO.getTrack();
+		String[] infos = info.split("/");
+		infos[0] = infos[0].substring(0,3);
+		
+		if(infos[0].equals("025")) infos[0] = "南京";
+		else if(infos[0].equals("010")) infos[0] = "北京";
+		else if(infos[0].equals("020")) infos[0] = "广州";
+		else if(infos[0].equals("021")) infos[0] = "上海";
+		
+		info = "快递已在"+infos[0]+"被签收"+",签收者："+infos[2]+"，签收时间："+infos[1];
+		mailingTrackPO.setTrack(info);
+		return mailingTrackPO;
+	}
+	
 }

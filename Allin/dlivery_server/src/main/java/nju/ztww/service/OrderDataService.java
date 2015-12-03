@@ -4,6 +4,7 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.List;
 
+import nju.ztww.po.TrackPO;
 import nju.ztww.po.OrderPO;
 import nju.ztww.po.PriceDataPO;
 import nju.ztww.vo.BusinessArriveVO;
@@ -28,5 +29,9 @@ public interface OrderDataService extends Remote  {
 
 	public PriceDataPO getPriceData(String place1, String place2, String type) throws RemoteException;
 
-	public void passOrder(String order) throws RemoteException;
+	public TrackPO passOrder(String order) throws RemoteException;
+	
+	public void addTrack(TrackPO mailingTrackPO) throws RemoteException;
+	
+	public TrackPO passAcceptOrder(String order) throws RemoteException;
 }

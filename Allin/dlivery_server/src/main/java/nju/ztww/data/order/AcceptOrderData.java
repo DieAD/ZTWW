@@ -5,15 +5,16 @@ import java.util.ArrayList;
 import nju.ztww.DBHelper.DBForReciveForm;
 import nju.ztww.dao.ReciveFormDO;
 import nju.ztww.po.AcceptPO;
+import nju.ztww.po.TrackPO;
 
 public class AcceptOrderData {
 	DBForReciveForm dbForReciveForm;
 	private ArrayList<ReciveFormDO> list = new ArrayList<ReciveFormDO>();
 	private ReciveFormDO reciveFormDO;
-	
-	public String insert(AcceptPO acceptPO){
+
+	public String insert(AcceptPO acceptPO) {
 		reciveFormDO = new ReciveFormDO();
-		dbForReciveForm =  new DBForReciveForm();
+		dbForReciveForm = new DBForReciveForm();
 		dbForReciveForm.init();
 		reciveFormDO.setHoll(acceptPO.getBusinID());
 		reciveFormDO.setRecip(acceptPO.getAccepter());
@@ -27,5 +28,27 @@ public class AcceptOrderData {
 		dbForReciveForm.close();
 		System.out.println("Insert successful!");
 		return "successful!";
+	}
+
+	public TrackPO passOrder(String order) {
+		// TODO Auto-generated method stub
+		dbForReciveForm = new DBForReciveForm();
+		dbForReciveForm.init();
+		ArrayList<ReciveFormDO> reciveFormDOs = dbForReciveForm.queryByID(
+				order, "reciveform");
+		TrackPO acceptTrackPO = new TrackPO();
+		if (!reciveFormDOs.isEmpty()) {
+			ReciveFormDO receive = new ReciveFormDO();
+			receive.setExe(1);
+			ArrayList<ReciveFormDO> newList = new ArrayList<ReciveFormDO>();
+			newList.add(receive);
+			dbForReciveForm.insert(newList, "reciveform");
+
+			acceptTrackPO.setID(receive.getId());
+			acceptTrackPO.setTrack(receive.getHoll() + "/"
+					+ receive.getRealtime() + "/" + receive.getRecip());
+		}
+		dbForReciveForm.close();
+		return acceptTrackPO;
 	}
 }

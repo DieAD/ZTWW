@@ -12,6 +12,7 @@ import java.util.List;
 import nju.ztww.RMI.RMIHelper;
 import nju.ztww.po.LoadingPO;
 import nju.ztww.po.MailingPO;
+import nju.ztww.po.TrackPO;
 import nju.ztww.po.OrderPO;
 import nju.ztww.po.PriceDataPO;
 import nju.ztww.service.OrderDataService;
@@ -113,16 +114,23 @@ public class MailingOrderBl {
 	}
 
 	public boolean passOrders(ArrayList<String> orders){
+
 		orderDataService=(OrderDataService)rhelper.findService("OrderDataService");
 		for(String order : orders){
-			orderDataService.passOrder(order);
+			TrackPO mailingTrackPO = orderDataService.passMailingOrder(order);
+			mailingTrackPO = adjust(mailingTrackPO);
+			orderDataService.addTrack(mailingTrackPO);
 		}
 		return true;
 	}
 	
-	public boolean addTrack(String order){
-		
-		return true;
+	public TrackPO adjust(TrackPO mailingTrackPO){
+		String place = mailingTrackPO.getTrack().substring(0, 3);
+		if(place.equals("025")) place = "南京";
+		else if(place.equals("010")) place = "北京";
+		else if(place.equals("020")) place = "广州";
+		else if(place.equals("021")) place = "上海";
+		mailingTrackPO.setTrack("出发地："+place);
+		return mailingTrackPO;
 	}
-	
 }

@@ -4,10 +4,13 @@ import java.util.ArrayList;
 
 import nju.ztww.DBHelper.DBForDCForm;
 import nju.ztww.DBHelper.DBForOrderForm;
+import nju.ztww.DBHelper.DBForTraceForm;
 import nju.ztww.dao.DCFormDO;
 import nju.ztww.dao.OrderFormDO;
+import nju.ztww.dao.TraceFormDO;
 import nju.ztww.po.BusinessArrivePO;
 import nju.ztww.po.MailingPO;
+import nju.ztww.po.TrackPO;
 import nju.ztww.po.PriceDataPO;
 
 public class MailingOrderData {
@@ -77,19 +80,37 @@ public class MailingOrderData {
 			
 		}
 
-	public void passOrder(String order) {
+	public TrackPO passOrder(String order) {
 
 		// TODO Auto-generated method stub
 		dbForOrderForm = new DBForOrderForm();
 		dbForOrderForm.init();
 		ArrayList<OrderFormDO> mailingOrders = dbForOrderForm.queryByID(order, "orderform");
+		TrackPO mailingTrackPO = new TrackPO();
 		if(!mailingOrders.isEmpty()){
+			
 			OrderFormDO mailingOrder = mailingOrders.get(0);
 			mailingOrder.setExe(1);
+			mailingTrackPO.setID(order);
+			mailingTrackPO.setTrack(mailingOrder.getHoll());
 			ArrayList<OrderFormDO> newOrders = new ArrayList<OrderFormDO>();
 			newOrders.add(mailingOrder);
 			dbForOrderForm.update(newOrders, "orderform");
 		}
 		dbForOrderForm.close();
+		return mailingTrackPO;
 	}
+
+	public void addTrack(TrackPO mailingTrackPO) {
+		// TODO Auto-generated method stub
+		DBForTraceForm traceForm = new DBForTraceForm();
+		TraceFormDO traceDO = new TraceFormDO();
+		traceDO.setGoodsid(mailingTrackPO.getID());
+		traceDO.setTrace(mailingTrackPO.getTrack());
+		traceForm.init();
+		traceForm.insert(traceDO, "traceform");
+		traceForm.close();
+	}
+
+
 }
