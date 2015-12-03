@@ -22,6 +22,7 @@ public class TransferOrderBl {
 	
 	 //新的TransferPO
 	TransferPO transferPO=new TransferPO(8);
+	TransferVO transferVO=new TransferVO(8);
 
 	 private String IP = "127.0.0.1";
 	 private RMIHelper rhelper = new RMIHelper(IP,"1010");
@@ -48,6 +49,22 @@ public class TransferOrderBl {
 		orderDataService=(OrderDataService)rhelper.findService("OrderDataService");
 		String result=orderDataService.insert(transferPO,8);
 		return result;
+	}
+	
+	public TransferVO find(String id){
+		orderDataService=(OrderDataService)rhelper.findService("OrderDataService");
+		transferPO=(TransferPO) orderDataService.find(id, 8);
+		transferVO.setArrivePlace(transferPO.getArrivePlace());
+		transferVO.setCarData(transferPO.getCarData());
+		transferVO.setCounterNumber(transferPO.getCounterNumber());
+		transferVO.setJianZhuangName(transferPO.getJianZhuangName());
+		transferVO.setMethod(transferPO.getMethod());
+		transferVO.setMethodNumber(transferPO.getMethodNumber());
+		transferVO.setMoney(transferPO.getMoney());
+		transferVO.setSendNumber(transferPO.getSendNumber());
+		transferVO.setSendPlace(transferPO.getSendPlace());
+		transferVO.setTransferData(transferPO.getTransferData());
+		return transferVO;
 	}
 	
 	/**

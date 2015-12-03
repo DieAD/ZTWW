@@ -52,13 +52,17 @@ public class CarLoadingUI extends JPanel{
 	private  JLabel money=new  JLabel();
 	private JTextField departtextArea=new JTextField("");
 	private  JLabel depart=new  JLabel();
+	private JTextField findtextArea=new JTextField("");
 	private OrderServiceImpl orderServiceImpl=new OrderServiceImpl();
 	private LoadingVO loadingVO;
 	
-	private ArrayList<String> allOrderNumber=new ArrayList<String>();
 	private ArrayList<LoadingVO> allLoadingVO=new ArrayList<LoadingVO>();
 	
+	private ResultMessageUI resultMessageUI=new ResultMessageUI();
+	
 	private JButton addButton=new JButton();
+	private JButton findSureButton=new JButton("确定");
+	private JButton findButton=new JButton("查看");
 	private JButton deleteButton=new JButton("删除");
 	private JButton sendButton=new JButton("提交");
 	private JButton sureButton=new JButton("确定");
@@ -84,19 +88,21 @@ public class CarLoadingUI extends JPanel{
 
 		addButton.setBounds(500, 420, 110, 38);
 		addButton.setIcon(add);
-		deleteButton.setBounds(100, 420, 110, 38);
+		deleteButton.setBounds(220, 420, 110, 38);
 		deleteButton.setIcon(null);
-		sendButton.setBounds(300, 420, 110, 38);
+		sendButton.setBounds(360, 420, 110, 38);
 		sendButton.setIcon(null);
+		findButton.setBounds(90, 420, 110, 38);
+		findButton.setIcon(null);
 
 		this.setLayout(null);
+		this.add(findButton);
 		this.add(deleteButton);
 		this.add(sendButton);
         this.add(addButton);
 		Object[][] playerInfo =
 			  {
-			    {"1511116666", "阿呆", new Integer(66), new Integer(32), new Integer(98),  new Boolean(false),new Integer(32), },
-			    {"1511116666", "阿呆", new Integer(82), new Integer(69), new Integer(128), new Boolean(true) ,new Integer(32),}, 
+			  
 			  };
 
 			  //字段名称
@@ -200,17 +206,38 @@ public class CarLoadingUI extends JPanel{
 					public void actionPerformed(ActionEvent e) {
 						for(LoadingVO loadingVOtemp : allLoadingVO){
 							String result=orderServiceImpl.endSales(loadingVOtemp, 4);
-							 System.out.println(result);
+							resultMessageUI.setPhoto(result);
+							
 						}
+						resultMessageUI.setPhoto("success");
+						allLoadingVO.clear();
+						defaultTableModel.setRowCount(0);
 					}
 			  });
 			  deleteButton.addActionListener(new ActionListener(){
 
 					public void actionPerformed(ActionEvent e) {
-						String id=(String) table.getValueAt(table.getSelectedRow(), 0);
-						String result=orderServiceImpl.deleteOrder(id);
+//						String id=(String) table.getValueAt(table.getSelectedRow(), 0);
+//						String result=orderServiceImpl.deleteOrder(id,"loadform");
+						if(table.getSelectedRow()>=0&&allLoadingVO.size()!=0){
+							allLoadingVO.remove(table.getSelectedRow());
+						}
 						defaultTableModel.removeRow(table.getSelectedRow());
-						System.out.println(result);
+					}
+			  });
+			  findButton.addActionListener(new ActionListener(){
+
+					public void actionPerformed(ActionEvent e) {
+						dlg= new JDialog(); 
+						dlg.setSize(new Dimension(350, 150));
+			            dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
+			            findtextArea.setBounds(50, 30, 150, 30);
+			            findSureButton.setBounds(100, 80, 70, 40);
+			            findSureButton.addActionListener(listener2);
+			            dlg.add(findSureButton);
+			            dlg.add(findtextArea);
+			            dlg.setLayout(null);
+						dlg.setVisible(true);
 					}
 			  });
 	}
@@ -233,11 +260,7 @@ public class CarLoadingUI extends JPanel{
 			loadingVO.setJianZhuangName(jianzhuangtextArea.getText());
 			double money=orderServiceImpl.getMoney(departtextArea.getText(), arrivetextArea.getText(), 1);
 			loadingVO.setMoney(money);
-			String temp[]=orderNumber.getText().split(";");
-			for(int i=0;i<temp.length;i++){
-				allOrderNumber.add(temp[i]);
-			}
-			loadingVO.setOrderNumber(allOrderNumber);
+			loadingVO.setOrderNumber(orderNumber.getText());
 			loadingVO.setQiYunNumber(cartextArea.getText());
 			loadingVO.setYaYunName(yayuntextArea.getText());
 			loadingVO.setYingYeNumber(businesstextArea.getText());
@@ -264,6 +287,26 @@ public class CarLoadingUI extends JPanel{
 		    sureButton.removeActionListener(listener);
 		}
 		
+	};
+	
+	ActionListener listener2 = new ActionListener(){
+
+		public void actionPerformed(ActionEvent e) {
+			LoadingVO loadingVO=(LoadingVO) orderServiceImpl.find(findtextArea.getText(), 4);
+			Vector<String> row = new Vector(7);
+			row.add(loadingVO.getId());
+			row.add(loadingVO.getData());
+			row.add(loadingVO.getYingYeNumber());
+			row.add(loadingVO.getQiYunNumber());
+			row.add(loadingVO.getArrive());
+			row.add(loadingVO.getCarNumber());
+			row.add(Double.toString(loadingVO.getMoney()));
+			defaultTableModel.addRow(row);
+		    table.revalidate();
+		    findtextArea.setText("");
+		    dlg.dispose();
+		    findSureButton.removeActionListener(listener2);
+		}
 	};
 	
 }

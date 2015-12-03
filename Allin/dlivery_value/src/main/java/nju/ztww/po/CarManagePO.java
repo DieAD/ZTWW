@@ -20,6 +20,11 @@ public class CarManagePO extends OrderPO {
 		super(idOfOrder);
 		this.idOfOrde=idOfOrder;
 	}
+	
+	public void setExe(int exe) {
+		this.exe = exe;
+	}
+
 	public String getId() {
 		return id;
 	}

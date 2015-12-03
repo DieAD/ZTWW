@@ -75,11 +75,13 @@ public class OrderService_stub implements OrderService {
 	}
 
 
-	public String deleteOrder(String id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
+
+
+	public String deleteOrder(String id, String type) {
+		return type;
+		
+	}
 
 	public double getCost(DeliverFeesVO deliverFees) {
 		// TODO Auto-generated method stub
@@ -90,6 +92,7 @@ public class OrderService_stub implements OrderService {
 
 
 	public String getOrderID() {
+
 		// TODO Auto-generated method stub
 		return null;
 	}

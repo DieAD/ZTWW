@@ -9,6 +9,38 @@ import java.util.ArrayList;
 import nju.ztww.dao.TrainFormDO;
 
 public class DBForTrainForm extends DB{
+	public ArrayList<TrainFormDO> selectAll(){
+    	String sql ="select * from trainform where exe=0";
+    	ArrayList<TrainFormDO> list = new ArrayList<TrainFormDO>();
+    	 try {
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+			while(rs.next()){
+				TrainFormDO form = new TrainFormDO();
+				form.setIndex(rs.getInt(1));
+				form.setId(rs.getString(2));
+				form.setGoodsid(rs.getString(3));
+				form.setTransmethod(rs.getInt(4));
+				form.setTime(rs.getString(5));
+				form.setFltn(rs.getString(6));
+				form.setBddress(rs.getString(7));
+				form.setAddress(rs.getString(8));
+				form.setContainernumber(rs.getString(9));
+				form.setLoadmen(rs.getString(10));
+				form.setCost(rs.getDouble(11));
+				form.setExe(rs.getInt(12));
+				form.setState(rs.getInt(13));
+				
+				list.add(form);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	 
+    	return list;
+    }
+	
     public ArrayList<TrainFormDO> queryByID(String ID,String tableName){
     	String sql ="select * from "+tableName+" where id="+ID;
     	ArrayList<TrainFormDO> list = new ArrayList<TrainFormDO>();

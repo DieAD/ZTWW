@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Vector;
 
 import javax.swing.ImageIcon;
@@ -14,104 +15,110 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
+import nju.ztww.serviceimpl.OrderServiceImpl;
+import nju.ztww.ui.user.ResultMessageUI;
+import nju.ztww.vo.LoadingVO;
+import nju.ztww.vo.TransferVO;
+
 public class ClerkOfCenterTransferPanel extends JPanel {
-	   public JTable table1;
-	   public JTable table2;
-	   public JTable table3;
+	
+	   public JTable table;
+
 	   public JDialog dlg;
-	   DefaultTableModel defaultTableModel1;
-	   DefaultTableModel defaultTableModel2;
-	   DefaultTableModel defaultTableModel3;
-	   public JButton addbutton;
-	   public JLabel  plane=new JLabel("飞机运输");
-	   public JLabel  train=new JLabel("火车运输");
-	   public JLabel  bus=new JLabel("汽车运输");
-	   public ClerkOfCenterTransferPanel() {
-		   this.setLayout(null);
-		   addbutton=new JButton();
-		   ImageIcon add=new ImageIcon("photo/add.gif");
-		   addbutton.setBounds(500, 420, 110, 38);
-		   addbutton.setIcon(add);
-		  
-		   this.add(addbutton);
-		   plane.setBounds(250, 0, 80, 20);
-		   this.add(plane);
-		// TODO Auto-generated constructor stub
-		   Object[][] playerInfo1 =
-	{
-		{ "2014年11月12日", "555", "02", "上海","南京",2,"sb","sss","00000000004",150},
+	
+	   DefaultTableModel defaultTableModel;
+
+		private JButton findSureButton=new JButton("确定");
+		private JButton findButton=new JButton("查看");
+		private JButton deleteButton=new JButton("删除");
+		private JButton sendButton=new JButton("提交");
 		
+		java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit()
+				.getScreenSize();
+	   
+	   private ArrayList<TransferVO> alltransferVO=new ArrayList<TransferVO>();
+	   
+	   private JTextField findtextArea=new JTextField("");
+		private OrderServiceImpl orderServiceImpl=new OrderServiceImpl();
+		private ResultMessageUI resultMessageUI=new ResultMessageUI();
+		private TransferVO transferVO=new TransferVO(8);
+
+	   public ClerkOfCenterTransferPanel() {
+		   
+		   deleteButton.setBounds(360, 420, 110, 38);
+			deleteButton.setIcon(null);
+			sendButton.setBounds(500, 420, 110, 38);
+			sendButton.setIcon(null);
+			findButton.setBounds(220, 420, 110, 38);
+			findButton.setIcon(null);
+			this.add(findButton);
+			this.add(deleteButton);
+			this.add(sendButton);
+		   this.setLayout(null);
+		   Object[][] playerInfo =
+				  {
+				  
 				  };
 
-		
-	  String[] Names1 = { "中转单编号", "航班号", "出发地", "到达地", "货柜号" ,"监装员","单号","运费"};
-        defaultTableModel1 = new DefaultTableModel( playerInfo1,Names1); 
-		table1 = new JTable( defaultTableModel1);      
-		Dimension size = table1.getTableHeader().getPreferredSize();
-		size.height = 20;
-		table1.getTableHeader().setPreferredSize(size);
-		table1.setAutoResizeMode(JTable.AUTO_RESIZE_NEXT_COLUMN);
-		
-		JScrollPane scrollPane1 = new JScrollPane(table1);
-		 table1.setRowHeight(25);
-		scrollPane1.setBounds(0, 20, 690, 120);
-		this.add(scrollPane1); 
-		
-		
-		//火车运输
-		train.setBounds(250, 140, 80, 20);
-		this.add(train);
-		Object[][] playerInfo2 =
-			{
-				{ "2014年11月12日", "555", "02", "上海","南京",2,"sb","sss","00000000004",150},
-				
-						  };
+				  //字段名称
+				  String[] Names = {"ID", "运输方式", "装运日期", "中转中心运输编号", "航班(车次)号", "出发地" ,"到达地","运费"};
 
-				
-			  String[] Names2 = { "中转单编号", "航班号", "出发地", "到达地", "货柜号" ,"监装员","单号","运费"};
-		        defaultTableModel2 = new DefaultTableModel( playerInfo2,Names2); 
-				table2 = new JTable( defaultTableModel2);      
-				Dimension size1 = table1.getTableHeader().getPreferredSize();
-				size1.height = 20;
-				table2.getTableHeader().setPreferredSize(size1);
-				table2.setAutoResizeMode(JTable.AUTO_RESIZE_NEXT_COLUMN);
-				
-				JScrollPane scrollPane2 = new JScrollPane(table2);
-				 table2.setRowHeight(25);
-				scrollPane2.setBounds(0, 160, 690, 120);
-				this.add(scrollPane2); 
-				
-				//火车运输
-				bus.setBounds(250, 280, 80, 20);
-				this.add(bus);
-				Object[][] playerInfo3 =
-					{
-						{ "2014年11月12日", "555", "02", "上海","南京",2,"sb","sss","00000000004",150},
-						
-								  };
+				  
+				  //创建表格: 建立一个显示二维数组数据的表格，且可以显示列的名称。 
+				  defaultTableModel = new DefaultTableModel( playerInfo,Names); 
+				  table = new JTable( defaultTableModel);       //字段名称
+				  Dimension size = table.getTableHeader().getPreferredSize();
+			
+				  size.height = 30;//设置新的表头高度40
+				  table.getTableHeader().setPreferredSize(size);
+				  table.setAutoResizeMode(JTable.AUTO_RESIZE_NEXT_COLUMN);
+				//  table.setPreferredScrollableViewportSize(new Dimension( 550,
+//				                60));
+				  
+				  //绑定滚动条
+				  JScrollPane scrollPane = new JScrollPane(table);
+			      table.setRowHeight(25);
+				  scrollPane.setBounds(0, 0, 690, 420);
+				  this.add(scrollPane);
+				  sendButton.addActionListener(new ActionListener(){
 
-						
-					  String[] Names3 = { "中转单编号", "航班号", "出发地", "到达地", "货柜号" ,"监装员","单号","运费"};
-				        defaultTableModel3 = new DefaultTableModel( playerInfo3,Names3); 
-						table3 = new JTable( defaultTableModel3);      
-						Dimension size2 = table3.getTableHeader().getPreferredSize();
-						size2.height = 20;
-						table3.getTableHeader().setPreferredSize(size2);
-						table3.setAutoResizeMode(JTable.AUTO_RESIZE_NEXT_COLUMN);
-						
-						JScrollPane scrollPane3 = new JScrollPane(table3);
-						 table3.setRowHeight(25);
-						scrollPane3.setBounds(0, 300, 690, 120);
-						this.add(scrollPane3); 
-		addbutton.addActionListener(new ActionListener() {
-		public void actionPerformed(ActionEvent arg0) {
-			// TODO Auto-generated method stub
-		defaultTableModel1.addRow(new Vector());
-			table1.revalidate();
-					}
-				});
+						public void actionPerformed(ActionEvent e) {
+							for(TransferVO alltransferVOTemp : alltransferVO){
+								String result=orderServiceImpl.endSales(alltransferVOTemp, 8);
+							}
+							alltransferVO.clear();
+							defaultTableModel.setRowCount(0);
+						}
+				  });
+				  deleteButton.addActionListener(new ActionListener(){
+
+						public void actionPerformed(ActionEvent e) {
+//							String id=(String) table.getValueAt(table.getSelectedRow(), 0);
+//							String result=orderServiceImpl.deleteOrder(id,"loadform");
+							if(table.getSelectedRow()>=0&&alltransferVO.size()!=0){
+								alltransferVO.remove(table.getSelectedRow());
+							}
+						    defaultTableModel.removeRow(table.getSelectedRow());
+						}
+				  });
+				  findButton.addActionListener(new ActionListener(){
+
+						public void actionPerformed(ActionEvent e) {
+							dlg= new JDialog(); 
+							dlg.setSize(new Dimension(350, 150));
+				            dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
+				            findtextArea.setBounds(50, 30, 150, 30);
+				            findSureButton.setBounds(100, 80, 70, 40);
+				            findSureButton.addActionListener(listener2);
+				            dlg.add(findSureButton);
+				            dlg.add(findtextArea);
+				            dlg.setLayout(null);
+							dlg.setVisible(true);
+						}
+				  });
 		   
 	}
 	   
@@ -122,4 +129,41 @@ public class ClerkOfCenterTransferPanel extends JPanel {
 			g.drawImage(background, 0,0,null);
 			
 		}
+	   
+	   public void getTransferOrder(TransferVO transferVO){
+		   alltransferVO.add(transferVO);
+		 //增加行
+			Vector<String> row = new Vector(8);
+			row.add(transferVO.getId());
+			row.add(transferVO.getMethod());
+			row.add(transferVO.getTransferData());
+			row.add(transferVO.getMethodNumber());
+			row.add(transferVO.getCarData());
+			row.add(transferVO.getSendPlace());
+			row.add(transferVO.getArrivePlace());
+			row.add(Double.toString(transferVO.getMoney()));
+			defaultTableModel.addRow(row);
+		    table.revalidate();
+	   }
+	   
+	   ActionListener listener2 = new ActionListener(){
+
+			public void actionPerformed(ActionEvent e) {
+				TransferVO transferVO=(TransferVO) orderServiceImpl.find(findtextArea.getText(), 8);
+				Vector<String> row = new Vector(8);
+				row.add(transferVO.getId());
+				row.add(transferVO.getMethod());
+				row.add(transferVO.getTransferData());
+				row.add(transferVO.getMethodNumber());
+				row.add(transferVO.getCarData());
+				row.add(transferVO.getSendPlace());
+				row.add(transferVO.getArrivePlace());
+				row.add(Double.toString(transferVO.getMoney()));
+				defaultTableModel.addRow(row);
+			    table.revalidate();
+			    findtextArea.setText("");
+			    dlg.dispose();
+			    findSureButton.removeActionListener(listener2);
+			}
+		};
 }

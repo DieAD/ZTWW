@@ -1,9 +1,5 @@
 package nju.ztww.serviceimpl;
 
-import java.util.ArrayList;
-
-import javax.naming.spi.DirStateFactory.Result;
-
 import nju.ztww.bl.user.GetUserBl;
 import nju.ztww.bl.user.ManageUserBl;
 import nju.ztww.bl.user.UserLogin;
@@ -46,24 +42,6 @@ public class UserLoginImpl implements UserService{
 	public boolean addUser(ManaUserVO user) {
 		// TODO Auto-generated method stub
 		boolean result = manageUser.addUser(user);
-		return result;
-	}
-
-	public ArrayList<ManaUserVO> getManaUsers() {
-		// TODO Auto-generated method stub
-		ArrayList<ManaUserVO> users = manageUser.getUsers();
-		return users;
-	}
-
-	public boolean deleteUser(String deleteID) {
-		// TODO Auto-generated method stub
-		boolean whetherDelete = manageUser.deleteUser(deleteID);
-		return whetherDelete;
-	}
-
-	public boolean modify(ManaUserVO userNew) {
-		// TODO Auto-generated method stub
-		boolean result = manageUser.modifyUser(userNew);
 		return result;
 	}
 }

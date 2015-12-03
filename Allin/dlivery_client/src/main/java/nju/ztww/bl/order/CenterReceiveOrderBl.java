@@ -5,10 +5,12 @@ import java.util.List;
 
 import nju.ztww.RMI.RMIHelper;
 import nju.ztww.po.BusinessArrivePO;
+import nju.ztww.po.CarManagePO;
 import nju.ztww.po.CenterReceivePO;
 import nju.ztww.po.OrderPO;
 import nju.ztww.service.OrderDataService;
 import nju.ztww.vo.BusinessArriveVO;
+import nju.ztww.vo.CarManageVO;
 import nju.ztww.vo.CenterReceiveVO;
 
 /**
@@ -27,6 +29,8 @@ public class CenterReceiveOrderBl {
 	 
 	 private OrderDataService orderDataService;
 	 
+	 private CenterReceiveVO centerReceiveVO=new CenterReceiveVO(3);
+	 
 	 private List<OrderPO> list=new ArrayList<OrderPO>();
 
     public CenterReceiveOrderBl(){
@@ -39,10 +43,22 @@ public class CenterReceiveOrderBl {
 		centerReceivePO.setSendPlace(centerReceiveVO.getSendPlace());
 		centerReceivePO.setState(centerReceiveVO.getState());
 		centerReceivePO.setTransferNumber(centerReceiveVO.getTransferNumber());
-		
+		centerReceivePO.setId(centerReceiveVO.getId());
 		orderDataService=(OrderDataService)rhelper.findService("OrderDataService");
 		String result=orderDataService.insert(centerReceivePO,3);
 		return result;
+	}
+	
+	public CenterReceiveVO find(String id){
+		orderDataService=(OrderDataService)rhelper.findService("OrderDataService");
+		centerReceivePO=(CenterReceivePO) orderDataService.find(id, 3);
+		centerReceiveVO.setCenterNumber(centerReceivePO.getCenterNumber());
+		centerReceiveVO.setData(centerReceivePO.getData());
+		centerReceiveVO.setSendPlace(centerReceivePO.getSendPlace());
+		centerReceiveVO.setState(centerReceivePO.getState());
+		centerReceiveVO.setTransferNumber(centerReceivePO.getTransferNumber());
+		centerReceiveVO.setId(centerReceivePO.getId());
+		return centerReceiveVO;
 	}
 	
 	/**

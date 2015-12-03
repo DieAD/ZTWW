@@ -22,6 +22,8 @@ public class ReceiveOrderBl {
 
 	   //新的ReceivePO
 	   ReceivePO receivePO=new ReceivePO(5);
+	   
+	   ReceiveVO receiveVO=new ReceiveVO(5);
 
 	   private String IP = "127.0.0.1";
 	   private RMIHelper rhelper = new RMIHelper(IP,"1010");
@@ -39,9 +41,22 @@ public class ReceiveOrderBl {
 			receivePO.setOrderNumber(receiveVO.getOrderNumber());
 			receivePO.setReceiveMoney(receiveVO.getReceiveMoney());
 			receivePO.setReceiverName(receiveVO.getReceiverName());
+			receivePO.setId(receiveVO.getId());
 			orderDataService=(OrderDataService)rhelper.findService("OrderDataService");
 			String result=orderDataService.insert(receivePO,5);
 			return result;
+		}
+		
+		public ReceiveVO find(String id){
+			orderDataService=(OrderDataService)rhelper.findService("OrderDataService");
+			receivePO=(ReceivePO) orderDataService.find(id, 5);
+			receiveVO.setData(receivePO.getData());
+			receiveVO.setOrderNumber(receivePO.getOrderNumber());
+			receiveVO.setReceiveMoney(receivePO.getReceiveMoney());
+			receiveVO.setReceiverName(receivePO.getReceiverName());
+			receiveVO.setId(receivePO.getId());
+			return receiveVO;
+			
 		}
 		
 		/**

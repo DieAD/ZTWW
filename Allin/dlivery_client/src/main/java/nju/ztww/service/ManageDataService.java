@@ -1,5 +1,9 @@
 package nju.ztww.service;
 
+import java.rmi.RemoteException;
+import java.util.ArrayList;
+
+import nju.ztww.po.GeneratePO;
 import nju.ztww.po.SuperviseePO;
 
 public interface ManageDataService {
@@ -11,5 +15,6 @@ public interface ManageDataService {
 		public SuperviseePO find(String id);
 		//更新一个被管理者的具体信息
 		public void update(SuperviseePO po);
+		public ArrayList<GeneratePO> getCheckOrder(int index)throws RemoteException;
 }
 

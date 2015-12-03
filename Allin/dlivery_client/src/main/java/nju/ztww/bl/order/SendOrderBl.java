@@ -23,6 +23,8 @@ public class SendOrderBl {
 	   //新的SendPO
 	   SendPO sendPO=new SendPO(6);
 	   
+	   SendVO sendVO=new SendVO(6);
+	   
 	   private String IP = "127.0.0.1";
 		 private RMIHelper rhelper = new RMIHelper(IP,"1010");
 		 
@@ -38,11 +40,22 @@ public class SendOrderBl {
 			sendPO.setData(sendVO.getData());
 			sendPO.setOrderNumber(sendVO.getOrderNumber());
 			sendPO.setSenderName(sendVO.getSenderName());
+			sendPO.setId(sendVO.getId());
 			orderDataService=(OrderDataService)rhelper.findService("OrderDataService");
 			String result=orderDataService.insert(sendPO,6);
 			return result;
 		}
 
+		public SendVO find(String id){
+			orderDataService=(OrderDataService)rhelper.findService("OrderDataService");
+			sendPO=(SendPO) orderDataService.find(id, 6);
+			sendVO.setData(sendPO.getData());
+			sendVO.setOrderNumber(sendPO.getOrderNumber());
+			sendVO.setSenderName(sendPO.getSenderName());
+			sendVO.setId(sendPO.getId());
+			return sendVO;
+			
+		}
 		/**
 		 * 修改物流数据库
 		 * 
