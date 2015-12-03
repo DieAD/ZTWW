@@ -51,14 +51,13 @@ public class OutofStoragePanel extends JPanel {
    public JTextField arrivefield=new JTextField();
    public JTextField zhuangyunfield=new JTextField();
    public JTextField yunshufield=new JTextField();
+   public JComboBox dbtype = new JComboBox();
+    
    public ArrayList<StorageListLineofOutVO>arraylist=new ArrayList<StorageListLineofOutVO>();
    public OutofStoragePanel() {
 	   this.setLayout(null);
 	   addbutton=new JButton();
-	   final JComboBox dbtype = new JComboBox();
-	   dbtype.addItem("火车");
-	   dbtype.addItem("飞机");
-	   dbtype.addItem("汽车");
+	   
 	   ImageIcon add=new ImageIcon("photo/add.gif");
 	   addbutton.setBounds(450, 420, 110, 38);
 	   addbutton.setIcon(add);
@@ -98,6 +97,9 @@ public class OutofStoragePanel extends JPanel {
 	scrollPane.setBounds(0, 0, 700, 400);
 	this.add(scrollPane); 
 	submitofbutton.addActionListener(listener2);
+	dbtype.addItem("火车");
+    dbtype.addItem("飞机");
+    dbtype.addItem("汽车");
 	addbutton.addActionListener(new ActionListener() {
 	public void actionPerformed(ActionEvent arg0) {
 		dlg=new JDialog();
@@ -116,13 +118,15 @@ public class OutofStoragePanel extends JPanel {
         arrivefield.setBounds(100, 105, 150, 30);
         arrive.setFont(new Font("黑体",0,18));
         arrive.setBounds(0, 100, 100, 40);
-        zhuangyunfield.setBounds(100, 155, 150, 30);
+        //zhuangyunfield.setBounds(100, 155, 150, 30);
         zhuangyun.setFont(new Font("黑体",0,18));
         zhuangyun.setBounds(0, 150, 100, 40);
         yunshufield.setBounds(100, 205, 150, 30);
         yunshu.setFont(new Font("黑体",0,18));
         yunshu.setBounds(0, 200, 100, 40);
         
+ 	    dbtype.setBounds(100, 155, 150, 30);
+ 	    dlg.add(dbtype);
         dlg.add(surebutton);
         dlg.add(arrive);
         dlg.add(arrivefield);
@@ -150,11 +154,11 @@ public class OutofStoragePanel extends JPanel {
 		row.add(ordernumberfield.getText());
 		row.add(datafield.getText());
 		row.add(arrivefield.getText());
-		row.add(zhuangyunfield.getText());
+		row.add(dbtype.getSelectedItem().toString());
 		row.add(yunshufield.getText());
 		//构造了一个vo
 		StringToInt way=new StringToInt();
-		storagelineout=new StorageListLineofOutVO(ordernumberfield.getText(), datafield.getText(), arrivefield.getText(),way.changetoint(zhuangyunfield.getText()), yunshufield.getText());
+		storagelineout=new StorageListLineofOutVO(ordernumberfield.getText(), datafield.getText(), arrivefield.getText(),way.changetoint(dbtype.getSelectedItem().toString()), yunshufield.getText());
 		arraylist.add(storagelineout);
 		//arraylist中加入提交之前需要的出库信息
 		ordernumberfield.setText(null);

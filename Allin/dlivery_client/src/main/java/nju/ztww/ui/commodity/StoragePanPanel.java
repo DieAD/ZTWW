@@ -35,6 +35,7 @@ public class StoragePanPanel extends JPanel  implements ActionListener{
 	public JLabel countall=new JLabel("总数量");
 	public JTextField countshuliang=new JTextField(5);
 	public JButton panagain=new JButton("确认盘点");
+	public JButton excel=new JButton("导出Excel");
 	long l = System.currentTimeMillis();
 	Date data=new Date(l);
 	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd ");
@@ -58,11 +59,13 @@ public class StoragePanPanel extends JPanel  implements ActionListener{
 	   countall.setFont(font1);
 	   countall.setBounds(550,460, 60, 30);
 	   countshuliang.setBounds(620, 460, 50, 30);
+	   excel.setBounds(410, 460, 120, 30);
 	   this.add(countall);
 	   this.add(time);
 	   this.add(timefield);
 	   this.add(panagain);
 	   this.add(countshuliang);
+	   this.add(excel);
 	// TODO Auto-generated constructor stub
 	   Object[][] playerInfo =
 	{
@@ -86,7 +89,7 @@ public class StoragePanPanel extends JPanel  implements ActionListener{
 		scrollPane.setBounds(0, 40, 700, 400);
 		this.add(scrollPane); 
 }
-public void actionPerformed(ActionEvent e) {
+  public void actionPerformed(ActionEvent e) {
 	// TODO Auto-generated method stub
 	//实现接口 需要传一个满足要求的arraylist
 	arraylist=commodityservice.getStock("0001");
@@ -105,7 +108,13 @@ public void actionPerformed(ActionEvent e) {
 	}
 	countshuliang.setText(String.valueOf(arraylist.size()));
 	
-	
+	ActionListener listenerdao=new ActionListener() {
+		
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+	};
 }
    
 }
