@@ -52,6 +52,7 @@ public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDa
 
 	public String insertToDateFactory(List<IDVO> list, int type)
 			throws RemoteException {
+		System.out.print("ssssss");
 		String result=orderHandler.insertToDateFactory(list, type);
 		return result;
 	}
