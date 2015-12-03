@@ -5,7 +5,9 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Vector;
 
 import javax.swing.ImageIcon;
@@ -23,6 +25,7 @@ import nju.ztww.bl.commodity.StringToInt;
 import nju.ztww.service.CommodityService;
 import nju.ztww.serviceimpl.CommodityServiceImp;
 import nju.ztww.serviceimpl.StorageOutListServiceImpl;
+import nju.ztww.ui.main.UserInfoUI;
 import nju.ztww.vo.OrderVO;
 import nju.ztww.vo.StorageListLineofOutVO;
 import nju.ztww.vo.StorageListVO;
@@ -51,6 +54,9 @@ public class OutofStoragePanel extends JPanel {
    public JTextField arrivefield=new JTextField();
    public JTextField zhuangyunfield=new JTextField();
    public JTextField yunshufield=new JTextField();
+   long l = System.currentTimeMillis();
+   Date time=new Date(l);
+  SimpleDateFormat dateFormat = new SimpleDateFormat("yy-MM-dd ");
    public JComboBox dbtype = new JComboBox();
     
    public ArrayList<StorageListLineofOutVO>arraylist=new ArrayList<StorageListLineofOutVO>();
@@ -157,10 +163,11 @@ public class OutofStoragePanel extends JPanel {
 		row.add(dbtype.getSelectedItem().toString());
 		row.add(yunshufield.getText());
 		//构造了一个vo
-
+		String idofcenter=UserInfoUI.getUserID().substring(0, 5);
+        String index=UserInfoUI.getUserID().substring(0,8)+dateFormat.format(time)+commodity.getLastidofcenter(idofcenter);
 		StringToInt way=new StringToInt();
-		storagelineout=new StorageListLineofOutVO(ordernumberfield.getText(), datafield.getText(), arrivefield.getText(),way.changetoint(dbtype.getSelectedItem().toString()), yunshufield.getText());
-
+		storagelineout=new StorageListLineofOutVO(index,ordernumberfield.getText(), datafield.getText(), arrivefield.getText(),way.changetoint(dbtype.getSelectedItem().toString()), yunshufield.getText());
+      
 		
 
 		arraylist.add(storagelineout);
@@ -179,7 +186,7 @@ public class OutofStoragePanel extends JPanel {
 ActionListener listener2=new ActionListener(){
 //需要界面提供给我idofcenter
 	public void actionPerformed(ActionEvent e) {
-		String idofcenter="0001";
+		String idofcenter=UserInfoUI.getUserID().substring(0, 5);//表名改啦
 		// TODO Auto-generated method stub
 	 commodity.addoutOrder(arraylist,idofcenter);
 	 arraylist.clear();

@@ -25,13 +25,15 @@ public class StorageListInGetByTime {
 		stocklist=dbforstock.queryByTime(time, tableName);
 		for(int k=0;k<storagelistline.size();k++){
 		StorageListLineofInPO storagelistlinreofin=new StorageListLineofInPO(1,
+				" 没有用",
 				stocklist.get(k).getGoodsid(),
 				stocklist.get(k).getEntrytime(),
 				stocklist.get(k).getAddress(),
 				stocklist.get(k).getQu(),
 				stocklist.get(k).getPai(),
 				stocklist.get(k).getJia(),
-				stocklist.get(k).getWei()
+				stocklist.get(k).getWei(),
+				stocklist.get(k).getState()
 	                         );
 		storagelistline.add(storagelistlinreofin);
 		}
@@ -52,13 +54,15 @@ public class StorageListInGetByTime {
         	entryfromdolist=dbforentryform.queryByTime(timebegin, tableName);
         	for(int k=0;k<entryfromdolist.size();k++){
         		 StorageListLineofInPO storagelistlinreofin=new StorageListLineofInPO(1,
+        				 "没有用",
         		    		entryfromdolist.get(k).getGoodsid(),
         		    		entryfromdolist.get(k).getEntrytime(),
         		    		entryfromdolist.get(k).getAddress(),
         		    		entryfromdolist.get(k).getQu(),
         		    		entryfromdolist.get(k).getPai(),
         		    		entryfromdolist.get(k).getJia(),
-        		    		entryfromdolist.get(k).getWei()
+        		    		entryfromdolist.get(k).getWei(),
+        		    		entryfromdolist.get(k).getState()
         		                         );
         		 storagelistlineofinpo.add(storagelistlinreofin);
         	}
@@ -84,13 +88,15 @@ public class StorageListInGetByTime {
         }
        for(int k=0;k<entryfromdolist.size();k++){
 	    StorageListLineofInPO storagelistlinreofin=new StorageListLineofInPO(1,
+	    		"没有用",
 	    		entryfromdolist.get(k).getGoodsid(),
 	    		entryfromdolist.get(k).getEntrytime(),
 	    		entryfromdolist.get(k).getAddress(),
 	    		entryfromdolist.get(k).getQu(),
 	    		entryfromdolist.get(k).getPai(),
 	    		entryfromdolist.get(k).getJia(),
-	    		entryfromdolist.get(k).getWei()
+	    		entryfromdolist.get(k).getWei(),
+	    		entryfromdolist.get(k).getState()
 	                         );
 	    
 	    storagelistlineofinpo.add(storagelistlinreofin);

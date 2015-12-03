@@ -4,7 +4,9 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Vector;
 
 import javax.swing.ImageIcon;
@@ -20,6 +22,7 @@ import javax.swing.table.DefaultTableModel;
 import nju.ztww.service.CommodityService;
 import nju.ztww.serviceimpl.CommodityServiceImp;
 import nju.ztww.serviceimpl.StorageInListServiceImpl;
+import nju.ztww.ui.main.UserInfoUI;
 import nju.ztww.vo.StorageListLineofInVO;
 import nju.ztww.vo.StorageListLineofOutVO;
 
@@ -47,7 +50,11 @@ public class InofStoragePanel extends JPanel{
 	   public JButton  submitbutton=new JButton("提交");
 	   public JButton  deletebutton=new JButton("删除");
 	   public CommodityService commodity=new StorageInListServiceImpl();
-	   
+	   String idofcenter=UserInfoUI.getUserID();//idbianhao 
+	   long l = System.currentTimeMillis();
+	  Date time=new Date(l);
+	  SimpleDateFormat dateFormat = new SimpleDateFormat("yy-MM-dd ");
+	  
 	   public StorageListLineofInVO  storagelineIn;
 	   public ArrayList<StorageListLineofInVO>arraylist=new ArrayList<StorageListLineofInVO>();//成员变量
 	   java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit()
@@ -161,7 +168,10 @@ public class InofStoragePanel extends JPanel{
 			row.add(jiafield.getText());
 			row.add(weifield.getText());
 			//idoforder 不知道怎么用  用1替代。
-			storagelineIn=new StorageListLineofInVO(1, ordernumberfield.getText(), datafield.getText(), arrivefield.getText(), qufield.getText(), paifield.getText(), jiafield.getText(), weifield.getText());
+			
+			String index=commodity.getLastidofcenter(idofcenter);
+			String idofdanzi=UserInfoUI.getUserID().substring(0,8)+dateFormat.format(time)+index;
+			storagelineIn=new StorageListLineofInVO(1,idofdanzi,ordernumberfield.getText(), datafield.getText(), arrivefield.getText(), qufield.getText(), paifield.getText(), jiafield.getText(), weifield.getText(),0);
 			arraylist.add(storagelineIn);
 			
 			ordernumberfield.setText(null);

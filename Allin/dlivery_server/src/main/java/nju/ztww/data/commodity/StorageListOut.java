@@ -57,4 +57,14 @@ public class StorageListOut {
 		dbforoutstockform.delete(idoforder, "outstockform");
 		dbforoutstockform.close();
 	}
+	public String getLastidofcenter(String idofcenter) {
+		// TODO Auto-generated method stub
+		DBForOutStockForm dbforoutstockform=new  DBForOutStockForm();
+		dbforoutstockform.init();
+		String tableName="outstockform";//要改
+		String index="";
+		index=dbforoutstockform.getSize(tableName);
+	    dbforoutstockform.close();		
+		return index;
+	}
 }

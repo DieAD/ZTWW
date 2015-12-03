@@ -61,4 +61,9 @@ public class CommodityDataServiceImpl extends UnicastRemoteObject implements Com
 		
 	}
 
+	public String getLastidofcenter(String idofcenter) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

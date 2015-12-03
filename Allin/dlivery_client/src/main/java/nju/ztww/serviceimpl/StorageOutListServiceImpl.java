@@ -69,7 +69,10 @@ public class StorageOutListServiceImpl implements CommodityService {
 //得到现在单子的号码
 	public String getLastidofcenter(String idofcenter) {
 		// TODO Auto-generated method stub
-		return null;
+		String index="";
+		StorageOutofListBL soutbl=new StorageOutofListBL();
+		index=soutbl.getLastidofcenter(idofcenter);
+		return index;
 	}
 
 }

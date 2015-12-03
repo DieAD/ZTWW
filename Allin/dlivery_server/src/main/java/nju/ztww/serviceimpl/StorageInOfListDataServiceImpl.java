@@ -66,4 +66,12 @@ public class StorageInOfListDataServiceImpl extends UnicastRemoteObject
 		
 	}
 
+	public String getLastidofcenter(String idofcenter) throws RemoteException {
+		// TODO Auto-generated method stub
+		String index="";
+		StorageListIn storagelistlinein=new StorageListIn();
+		index=storagelistlinein.getLastidofcenter(idofcenter);
+		return index;
+	}
+
 }

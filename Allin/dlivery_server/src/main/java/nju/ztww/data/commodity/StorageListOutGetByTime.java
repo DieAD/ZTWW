@@ -26,6 +26,7 @@ public class StorageListOutGetByTime {
 			outstockformlist=dbforoutstorkform.queryByTime(timebegin, tableName);
 			for(int i=0;i<outstockformlist.size();i++){
 			StorageListLineofOutPO storagelistlineofoutpo=new StorageListLineofOutPO(
+					"不需要",
 					outstockformlist.get(i).getGoodsid(),
 					outstockformlist.get(i).getTime(),
 					outstockformlist.get(i).getAddress(),
@@ -51,6 +52,7 @@ public class StorageListOutGetByTime {
 			}
 			for(int i=0;i<outstockformlist.size();i++){
 				StorageListLineofOutPO storagelistlineofoutpo=new StorageListLineofOutPO(
+						"不需要",
 						outstockformlist.get(i).getGoodsid(),
 						outstockformlist.get(i).getTime(),
 						outstockformlist.get(i).getAddress(),

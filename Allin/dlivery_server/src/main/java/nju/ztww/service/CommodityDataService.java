@@ -25,4 +25,5 @@ public interface CommodityDataService extends Remote{
 	//TODO
 		public void insertOut(ArrayList<StorageListLineofOutPO>  arraylistoutpo,String idofcenter)throws RemoteException;
 		public void insertIn(ArrayList<StorageListLineofInPO>  arraylistinpo,String idofcenter)throws RemoteException;
+		public String getLastidofcenter(String idofcenter)throws RemoteException;
 }
