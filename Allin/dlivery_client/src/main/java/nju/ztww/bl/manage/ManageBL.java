@@ -56,6 +56,6 @@ public class ManageBL {
 		}
 		if(index==9){
 			outStock.changeExeDeleteStock(list);
-		}
+		}//
 	}
 }

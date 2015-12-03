@@ -10,7 +10,7 @@ import nju.ztww.po.TrackPO;
 public class AcceptOrderData {
 	DBForReciveForm dbForReciveForm;
 	private ArrayList<ReciveFormDO> list = new ArrayList<ReciveFormDO>();
-	private ReciveFormDO reciveFormDO;
+	private ReciveFormDO reciveFormDO;///
 
 	public String insert(AcceptPO acceptPO) {
 		reciveFormDO = new ReciveFormDO();
