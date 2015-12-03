@@ -19,6 +19,10 @@ public class DriverMessagePO extends OrderPO {
 		this.idOfOrde=idOfOrder;
 	}
 
+	public void setExe(int exe) {
+		this.exe = exe;
+	}
+
 	public int getExe() {
 		return exe;
 	}

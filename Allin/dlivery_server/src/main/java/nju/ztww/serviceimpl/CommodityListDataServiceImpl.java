@@ -4,7 +4,6 @@ import java.rmi.server.UnicastRemoteObject;
 import java.text.ParseException;
 import java.util.ArrayList;
 
-import nju.ztww.data.commodity.StockGet;
 import nju.ztww.data.commodity.StorageListInGetByTime;
 import nju.ztww.data.commodity.StorageListOutGetByTime;
 import nju.ztww.po.StorageListLineofInPO;
@@ -53,16 +52,6 @@ public class CommodityListDataServiceImpl extends UnicastRemoteObject implements
 		arraylistout=storagelistoutgetbytime.findOutList(timebegin,timeend,idofcenter);
 		System.out.println(arraylistout.size()+"实现");
 		return arraylistout;
-	}
-//得到库存信息
-	public ArrayList<StorageListLineofInPO> getStock(String idofcenter)
-			throws RemoteException {
-		// TODO Auto-generated method stub
-		 ArrayList<StorageListLineofInPO> storagelistofin=new ArrayList<StorageListLineofInPO>();
-		 StockGet stockget=new StockGet();
-		 storagelistofin=stockget.getStock(idofcenter);
-		 
-		return storagelistofin;
 	}
     
 }

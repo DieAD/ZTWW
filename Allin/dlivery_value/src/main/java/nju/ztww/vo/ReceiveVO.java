@@ -17,8 +17,8 @@ public class ReceiveVO extends OrderVO{
 	private double receiveMoney;
 	private String receiverName;
 	private ArrayList<String> orderNumber;
-	private int exe=1;
-	private int state=0;
+	private int exe=0;
+	private int state=1;
 
 	public ReceiveVO(int idOfOrder) {
 		super(idOfOrder);

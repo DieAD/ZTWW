@@ -18,8 +18,8 @@ public class ReceivePO extends OrderPO implements Serializable{
 	private String receiverName;
 	private ArrayList<String> orderNumber;
 	private String id;
-	private int exe=1;
-	private int state=0;
+	private int exe=0;
+	private int state=1;
 
 	public ReceivePO(int idOfOrder) {
 		super(idOfOrder);

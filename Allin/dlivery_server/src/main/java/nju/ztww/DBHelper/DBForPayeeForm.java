@@ -9,6 +9,33 @@ import java.util.ArrayList;
 import nju.ztww.dao.PayeeFormDO;
 
 public class DBForPayeeForm extends DB{
+	 public ArrayList<PayeeFormDO> selectAll(){
+	    	ArrayList<PayeeFormDO> list = new ArrayList<PayeeFormDO>();
+	    	String sql = " select * from payeeform where exe=0";
+	    	
+	    	try {
+				Statement stmt = conn.createStatement();
+				ResultSet rs =stmt.executeQuery(sql);
+				while(rs.next()){
+					PayeeFormDO form = new PayeeFormDO();
+					form.setIndex(rs.getInt(1));
+					form.setId(rs.getString(2));
+					form.setGoodsid(rs.getString(3));
+					form.setCourierid(rs.getString(4));
+					form.setMoney(rs.getDouble(5));
+					form.setExe(rs.getInt(6));
+					form.setState(rs.getInt(7));
+					form.setDate(rs.getString(8));
+					list.add(form);
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	    	
+	    	return list;
+	    }
+	
     public ArrayList<PayeeFormDO> queryByID(String ID,String tableName){
     	ArrayList<PayeeFormDO> list = new ArrayList<PayeeFormDO>();
     	String sql = " select * from "+tableName+" where id="+ID;

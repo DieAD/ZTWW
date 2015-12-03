@@ -3,6 +3,7 @@ package nju.ztww.service_stub;
 import java.util.ArrayList;
 
 import nju.ztww.service.ManageService;
+import nju.ztww.vo.GenerateVO;
 import nju.ztww.vo.SuperviseeVO;
 
 public class ManageService_stub implements ManageService {
@@ -34,6 +35,10 @@ public class ManageService_stub implements ManageService {
 		System.out.println("信息已经被修改");
 		// TODO Auto-generated method stub
 
+	}
+	public ArrayList<GenerateVO> getCheckOrder(int index) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

@@ -16,14 +16,17 @@ public class TransferPO extends OrderPO implements Serializable{
 	private String method;
 	private String carData;
 	private String transferData;
+	//中转中心运输编号
 	private String methodNumber;
 	private String sendPlace;
 	private String arrivePlace;
 	private String counterNumber;
 	private String JianZhuangName;
-	private ArrayList<Integer> sendNumber;
-	private int money;
+	private String sendNumber;
 	private String id;
+	private double money;
+	private int exe=0;
+	private int state=1;
 
 	public TransferPO(int idOfOrder) {
 		super(idOfOrder);
@@ -108,21 +111,33 @@ public class TransferPO extends OrderPO implements Serializable{
 		JianZhuangName = jianZhuangName;
 	}
 
-	public ArrayList<Integer> getSendNumber() {
+	public String getSendNumber() {
 		return sendNumber;
 	}
 
-	public void setSendNumber(ArrayList<Integer> sendNumber) {
+	public void setSendNumber(String sendNumber) {
 		this.sendNumber = sendNumber;
 	}
-
-	public int getMoney() {
+	public double getMoney() {
 		return money;
 	}
-
-	public void setMoney(int money) {
+	public void setMoney(double money) {
 		this.money = money;
 	}
+	public int getExe() {
+		return exe;
+	}
+	public void setExe(int exe) {
+		this.exe = exe;
+	}
+	public int getState() {
+		return state;
+	}
+	public void setState(int state) {
+		this.state = state;
+	}
+
+
 
 }
 

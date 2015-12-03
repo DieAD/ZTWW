@@ -20,8 +20,8 @@ public class BusinessArrivePO extends OrderPO implements Serializable{
 	private String number;
 	private String Send;
 	private String orderState;
-	private int exe=1;
-	private int state=0;
+	private int exe=0;
+	private int state=1;
 
 	public BusinessArrivePO(int idOfOrder) {
 		super(idOfOrder);

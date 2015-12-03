@@ -13,33 +13,29 @@ import java.util.ArrayList;
 public class ShippingPO extends OrderPO implements Serializable{
 	
 	private int idOfOrde;
+	private String id;
 	private String data;
-	private String transferNumber;
+	private String QiYunNumber;
 	private String arrivePlace;
 	private String carNumber;
 	private String JianZhuangName;
 	private String YaYunName;
-	private ArrayList<Integer> orderNumber;
-	private int money;
-	private String id;
+	private String orderNumber;
+	private double money;
+	private int exe=0;
+	private int state=1;
 
 	public ShippingPO(int idOfOrder) {
 		super(idOfOrder);
 		this.idOfOrde=idOfOrder;
 	}
+
 	public String getId() {
 		return id;
 	}
 
 	public void setId(String id) {
 		this.id = id;
-	}
-	public int getIdOfOrde() {
-		return idOfOrde;
-	}
-
-	public void setIdOfOrde(int idOfOrde) {
-		this.idOfOrde = idOfOrde;
 	}
 
 	public String getData() {
@@ -50,12 +46,12 @@ public class ShippingPO extends OrderPO implements Serializable{
 		this.data = data;
 	}
 
-	public String getTransferNumber() {
-		return transferNumber;
+	public String getQiYunNumber() {
+		return QiYunNumber;
 	}
 
-	public void setTransferNumber(String transferNumber) {
-		this.transferNumber = transferNumber;
+	public void setQiYunNumber(String qiYunNumber) {
+		QiYunNumber = qiYunNumber;
 	}
 
 	public String getArrivePlace() {
@@ -90,21 +86,37 @@ public class ShippingPO extends OrderPO implements Serializable{
 		YaYunName = yaYunName;
 	}
 
-	public ArrayList<Integer> getOrderNumber() {
+	public String getOrderNumber() {
 		return orderNumber;
 	}
 
-	public void setOrderNumber(ArrayList<Integer> orderNumber) {
+	public void setOrderNumber(String orderNumber) {
 		this.orderNumber = orderNumber;
 	}
 
-	public int getMoney() {
+	public double getMoney() {
 		return money;
 	}
 
-	public void setMoney(int money) {
+	public void setMoney(double money) {
 		this.money = money;
 	}
 
+	public int getExe() {
+		return exe;
+	}
+
+	public void setExe(int exe) {
+		this.exe = exe;
+	}
+
+	public int getState() {
+		return state;
+	}
+
+	public void setState(int state) {
+		this.state = state;
+	}
+	
 }
 

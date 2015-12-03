@@ -18,8 +18,10 @@ public class CenterReceivePO extends OrderPO implements Serializable{
 	private String data;
 	private String transferNumber;
 	private String sendPlace;
-	private String state;
+	private String OrderState;
 	private String id;
+	private int exe=0;
+	private int state=1;
 
 	public CenterReceivePO(int idOfOrder) {
 		super(idOfOrder);
@@ -71,13 +73,25 @@ public class CenterReceivePO extends OrderPO implements Serializable{
 	public void setSendPlace(String sendPlace) {
 		this.sendPlace = sendPlace;
 	}
-
-	public String getState() {
+	public String getOrderState() {
+		return OrderState;
+	}
+	public void setOrderState(String orderState) {
+		OrderState = orderState;
+	}
+	public int getExe() {
+		return exe;
+	}
+	public void setExe(int exe) {
+		this.exe = exe;
+	}
+	public int getState() {
 		return state;
 	}
-
-	public void setState(String state) {
+	public void setState(int state) {
 		this.state = state;
 	}
+
+
 
 }

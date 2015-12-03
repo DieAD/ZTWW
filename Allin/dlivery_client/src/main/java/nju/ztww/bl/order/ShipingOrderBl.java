@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import nju.ztww.RMI.RMIHelper;
+import nju.ztww.po.CarManagePO;
 import nju.ztww.po.OrderPO;
 import nju.ztww.po.SendPO;
 import nju.ztww.po.ShippingPO;
 import nju.ztww.service.OrderDataService;
+import nju.ztww.vo.CarManageVO;
 import nju.ztww.vo.SendVO;
 import nju.ztww.vo.ShippingVO;
 
@@ -28,6 +30,8 @@ public class ShipingOrderBl {
 		 
 		 private OrderDataService orderDataService;
 		 
+		 private ShippingVO shippingVO=new ShippingVO(7);
+		 
 		 private List<OrderPO> list=new ArrayList<OrderPO>();
 
 		
@@ -42,13 +46,28 @@ public class ShipingOrderBl {
 			shippingPO.setJianZhuangName(shippingVO.getJianZhuangName());
 			shippingPO.setMoney(shippingVO.getMoney());
 			shippingPO.setOrderNumber(shippingVO.getOrderNumber());
-			shippingPO.setTransferNumber(shippingVO.getTransferNumber());
+			shippingPO.setQiYunNumber(shippingVO.getQiYunNumber());
 			shippingPO.setYaYunName(shippingVO.getYaYunName());
+			shippingPO.setId(shippingVO.getId());
 			orderDataService=(OrderDataService)rhelper.findService("OrderDataService");
 			String result=orderDataService.insert(shippingPO,7);
 			return result;
 		}
 
+		public ShippingVO find(String id){
+			orderDataService=(OrderDataService)rhelper.findService("OrderDataService");
+			shippingPO=(ShippingPO) orderDataService.find(id, 7);
+			shippingVO.setArrivePlace(shippingPO.getArrivePlace());
+			shippingVO.setCarNumber(shippingPO.getCarNumber());
+			shippingVO.setData(shippingPO.getData());
+			shippingVO.setJianZhuangName(shippingPO.getJianZhuangName());
+			shippingVO.setMoney(shippingPO.getMoney());
+			shippingVO.setOrderNumber(shippingPO.getOrderNumber());
+			shippingVO.setQiYunNumber(shippingPO.getQiYunNumber());
+			shippingVO.setYaYunName(shippingPO.getYaYunName());
+			shippingVO.setId(shippingPO.getId());
+			return shippingVO;
+		}
 		/**
 		 * 修改物流数据库
 		 * 

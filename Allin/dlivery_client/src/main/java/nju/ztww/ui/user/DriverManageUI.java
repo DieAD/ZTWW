@@ -44,9 +44,12 @@ public class DriverManageUI extends JPanel{
 	private  JLabel orderNumber=new  JLabel("手机");
 	private JTextField deadlinetextArea=new JTextField("");
 	private  JLabel deadline=new  JLabel("行驶证期限");
+	private JTextField findtextArea=new JTextField("");
 	
 	private ArrayList<DriverMessageVO> allDriverMessageVO=new ArrayList<DriverMessageVO>();
 	
+	private JButton findButton=new JButton("查找");
+	private JButton findSureButton=new JButton("确定");
 	private JButton deleteButton=new JButton("删除");
 	private JButton addButton=new JButton();
 	private JButton sureButton=new JButton("确定");
@@ -65,14 +68,15 @@ public class DriverManageUI extends JPanel{
 		ImageIcon add=new ImageIcon("photo/add.gif");
 		addButton.setBounds(500, 420, 110, 38);
 		addButton.setIcon(add);
-		deleteButton.setBounds(300, 420, 110, 38);
+		deleteButton.setBounds(220, 420, 110, 38);
 		deleteButton.setIcon(null);
-		sendButton.setBounds(100, 420, 110, 38);
+		sendButton.setBounds(360, 420, 110, 38);
 		sendButton.setIcon(null);
+		findButton.setBounds(90, 420, 110, 38);
+		findButton.setIcon(null);
 		Object[][] playerInfo =
 			  {
-			    { "1511116666","阿s呆", new Integer(69), new Integer(32), new Integer(98),  new Boolean(false),new Boolean(false)  },
-			    {"1511116666", "阿呆", new Integer(82), new Integer(69), new Integer(128), new Boolean(true),new Boolean(false) }, 
+			  
 			  };
 
 			  //字段名称
@@ -156,10 +160,13 @@ public class DriverManageUI extends JPanel{
 			  deleteButton.addActionListener(new ActionListener(){
 
 					public void actionPerformed(ActionEvent e) {
-						String id=(String) table.getValueAt(table.getSelectedRow(), 0);
-						String result=orderServiceImpl.deleteOrder(id);
+//						String id=(String) table.getValueAt(table.getSelectedRow(), 0);
+//						String result=orderServiceImpl.deleteOrder(id,"drivermessage");
+						if(table.getSelectedRow()>=0&&allDriverMessageVO.size()!=0){
+							allDriverMessageVO.remove(table.getSelectedRow());
+						}
+					
 						defaultTableModel.removeRow(table.getSelectedRow());
-						System.out.println(result);
 					}
 			  });
 			  sendButton.addActionListener(new ActionListener(){
@@ -169,8 +176,26 @@ public class DriverManageUI extends JPanel{
 							String result=orderServiceImpl.endSales(DriverMessageVOTemp, 10);
 							 System.out.println(result);
 						}
+						allDriverMessageVO.clear();
+						defaultTableModel.setRowCount(0);
 					}
 			  });
+			  findButton.addActionListener(new ActionListener(){
+
+					public void actionPerformed(ActionEvent e) {
+						dlg= new JDialog(); 
+						dlg.setSize(new Dimension(350, 150));
+			            dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
+			            findtextArea.setBounds(50, 30, 150, 30);
+			            findSureButton.setBounds(100, 80, 70, 40);
+			            findSureButton.addActionListener(listener2);
+			            dlg.add(findSureButton);
+			            dlg.add(findtextArea);
+			            dlg.setLayout(null);
+						dlg.setVisible(true);
+					}
+			  });
+			  this.add(findButton);
 			  this.add(sendButton);
 			  this.add(deleteButton);
 			  this.add(addButton);
@@ -219,5 +244,25 @@ public class DriverManageUI extends JPanel{
 		    sureButton.removeActionListener(listener);
 		}
 		
+	};
+	
+	ActionListener listener2 = new ActionListener(){
+
+		public void actionPerformed(ActionEvent e) {
+			DriverMessageVO driverMessageVO=(DriverMessageVO) orderServiceImpl.find(findtextArea.getText(), 10);
+			Vector<String> row = new Vector(7);
+			row.add(driverMessageVO.getId());
+			row.add(driverMessageVO.getDriverNumber());
+			row.add(driverMessageVO.getDriverName());
+			row.add(driverMessageVO.getDriverBirthday());
+			row.add(driverMessageVO.getDriverId());
+			row.add(driverMessageVO.getDriverTelephone());
+			row.add(driverMessageVO.getDriverServiceDeadline());
+			defaultTableModel.addRow(row);
+		    table.revalidate();
+		    findtextArea.setText("");
+		    dlg.dispose();
+		    findSureButton.removeActionListener(listener2);
+		}
 	};
 }

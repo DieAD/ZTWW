@@ -9,6 +9,35 @@ import java.util.ArrayList;
 import nju.ztww.dao.HollReciFormDO;
 
 public class DBForHollReciForm extends DB{
+	 public ArrayList<HollReciFormDO> selectAll(){
+		    //	 System.out.print(ID);
+		    	 String sql = "select * from hollreciform where exe=0";
+		    	 ArrayList<HollReciFormDO> list = new ArrayList<HollReciFormDO>();
+		    	 try {
+					Statement stmt = conn.createStatement();
+					ResultSet rs = stmt.executeQuery(sql);
+					while(rs.next()){
+						HollReciFormDO form = new HollReciFormDO();
+						form.setIndex(rs.getInt(1));
+						form.setId(rs.getString(2));
+						form.setGoodsid(rs.getString(3));
+						form.setArrivetime(rs.getString(4));
+						form.setBddress(rs.getString(5));
+						form.setGoodsstate(rs.getString(6));
+						form.setExe(rs.getInt(7));
+						form.setState(rs.getInt(8));
+			//			System.out.print(rs.getString(2));
+						list.add(form);
+						
+					}
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		    	 
+		    	 return list;
+		     }
+	
      public ArrayList<HollReciFormDO> queryByID(String ID,String tableName){
     //	 System.out.print(ID);
     	 String sql = "select * from "+tableName +" where id="+ID;
@@ -56,7 +85,7 @@ public class DBForHollReciForm extends DB{
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			return "fail";   
+			e.printStackTrace();  
 		}
 		return "success";    	     	     	 
      }

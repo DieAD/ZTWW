@@ -14,12 +14,15 @@ public class SendVO extends OrderVO{
 	private String data;
 	private String orderNumber;
 	private String senderName;
-	private int exe=1;
-	private int state=0;
+	private int exe=0;
+	private int state=1;
 
 	public SendVO(int idOfOrder) {
 		super(idOfOrder);
 		this.idOfOrde=idOfOrde;
+	}
+	public void setExe(int exe) {
+		this.exe = exe;
 	}
 
 	public int getExe() {

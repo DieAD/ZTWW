@@ -14,6 +14,8 @@ public class DriverMessageBl {
 
 	  //新的businessArrivePO
     DriverMessagePO driverMessagePO=new DriverMessagePO(10);
+    
+    DriverMessageVO driverMessageVO=new DriverMessageVO(10);
 	//ip地址
 	 private String IP = "127.0.0.1";
 	 private RMIHelper rhelper = new RMIHelper(IP,"1010");
@@ -40,12 +42,26 @@ public class DriverMessageBl {
     	driverMessagePO.setDriverServiceDeadline(driverMessageVO.getDriverServiceDeadline());
     	driverMessagePO.setDriverSex(driverMessageVO.getDriverSex());
     	driverMessagePO.setDriverSex(driverMessageVO.getDriverTelephone());
-	
+    	driverMessagePO.setId(driverMessageVO.getId());
 	orderDataService=(OrderDataService)rhelper.findService("OrderDataService");
 	String result=orderDataService.insert(driverMessagePO,10);
 	return result;
 }
 
+    public DriverMessageVO find(String id){
+    	orderDataService=(OrderDataService)rhelper.findService("OrderDataService");
+    	driverMessagePO=(DriverMessagePO) orderDataService.find(id, 10);
+    	driverMessageVO.setDriverBirthday(driverMessagePO.getDriverBirthday());
+    	driverMessageVO.setDriverId(driverMessagePO.getDriverId());
+    	driverMessageVO.setDriverName(driverMessagePO.getDriverName());
+    	driverMessageVO.setDriverNumber(driverMessagePO.getDriverNumber());
+    	driverMessageVO.setDriverServiceDeadline(driverMessagePO.getDriverServiceDeadline());
+    	driverMessageVO.setDriverSex(driverMessagePO.getDriverSex());
+    	driverMessageVO.setDriverSex(driverMessagePO.getDriverTelephone());
+    	driverMessageVO.setId(driverMessagePO.getId());
+		return driverMessageVO;
+    	
+    }
 /**
  * 修改物流数据库
  * 

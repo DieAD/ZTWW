@@ -2,6 +2,7 @@ package nju.ztww.service;
 
 import java.util.ArrayList;
 
+import nju.ztww.vo.GenerateVO;
 import nju.ztww.vo.SuperviseeVO;
 
 public interface ManageService {
@@ -20,4 +21,8 @@ public interface ManageService {
      
    //通过id（指的是具体的某个被管理者的身份编号）在被管理者信息列表中删除此信息
      public void modifySupervisee(String id);
+     
+     public ArrayList<GenerateVO> getCheckOrder(int index);
+     
+     
 }

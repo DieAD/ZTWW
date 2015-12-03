@@ -7,10 +7,14 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import nju.ztww.dao.LoadFormDO;
+import nju.ztww.po.LoadingPO;
 
 public class DBForLoadForm extends DB {
-	public ArrayList<LoadFormDO> queryByID(String ID,String tableName){
-		String sql = " select * from "+tableName+" where id="+ID;
+
+	
+
+	public ArrayList<LoadFormDO> selectAll(){
+		String sql = " select * from loadform where exe=0";
 		ArrayList<LoadFormDO> list = new ArrayList<LoadFormDO>();
 		
 		try {
@@ -42,25 +46,58 @@ public class DBForLoadForm extends DB {
 		
 		return list;
 	}
+	public ArrayList<LoadingPO> queryByID(String ID,String tableName){
+
+		String sql = " select * from "+tableName+" where id="+ID;
+		ArrayList<LoadingPO> list = new ArrayList<LoadingPO>();
+		
+		try {
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+			
+			while(rs.next()){
+				LoadingPO form = new LoadingPO(4);
+				form.setId(rs.getString(2));
+				form.setOrderNumber(rs.getString(3));
+				form.setData(rs.getString(4));
+				form.setYingYeNumber(rs.getString(5));
+				form.setQiYunNumber(rs.getString(6));
+				form.setArrive(rs.getString(7));
+				form.setCarNumber(rs.getString(8));
+				form.setJianZhuangName(rs.getString(9));
+				form.setYaYunName(rs.getString(10));
+				form.setMoney(rs.getDouble(11));
+				form.setExe(rs.getInt(12));
+				form.setState(rs.getInt(13));
+				
+				list.add(form);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
 	
-	public void insert(ArrayList<LoadFormDO> list,String tableName){
+	public String insert(ArrayList<LoadingPO> list,String tableName){
 	String sql = "insert into " + tableName+"(id,goodsid,time,holl,tructid,address,carid,"
 			+ "loadmen,supercargo,cost,exe,state)values(?,?,?,?,?,?,?,?,?,?,?,?)";
 	
 	
 	try {
 		PreparedStatement pstmt = conn.prepareStatement(sql);
-		for(LoadFormDO form : list){
+		for(LoadingPO form : list){
 			pstmt.setString(1, form.getId());
-			pstmt.setString(2, form.getGoodsid());
-			pstmt.setString(3, form.getTime());
-			pstmt.setString(4,form.getHoll());
-			pstmt.setString(5, form.getTructid());
-			pstmt.setString(6, form.getAddress());
-			pstmt.setString(7, form.getCarid());
-			pstmt.setString(8,form.getLoadmen());
-			pstmt.setString(9, form.getSupercargo());
-			pstmt.setDouble(10, form.getCost());
+			pstmt.setString(2, form.getOrderNumber());
+			pstmt.setString(3, form.getData());
+			pstmt.setString(4,form.getYingYeNumber());
+			pstmt.setString(5, form.getQiYunNumber());
+			pstmt.setString(6, form.getArrive());
+			pstmt.setString(7, form.getCarNumber());
+			pstmt.setString(8,form.getJianZhuangName());
+			pstmt.setString(9, form.getYaYunName());
+			pstmt.setDouble(10, form.getMoney());
 			pstmt.setInt(11, form.getExe());
 			pstmt.setInt(12, form.getState());
 			
@@ -70,26 +107,26 @@ public class DBForLoadForm extends DB {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
-	
+	return "success";
 	}
 	
-	public void update(ArrayList<LoadFormDO> list, String tableName){
+	public String update(ArrayList<LoadingPO> list, String tableName){
 		String sql = "update "+tableName+" set id=?,goodsid=?,time=?,holl=?,tructid=?,"
 				+ "address=?,carid=?,loadmen=?,supercargo=?,cost=?,exe=?,state=? where id=?";
 		
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-			for(LoadFormDO form : list){
+			for(LoadingPO form : list){
 				pstmt.setString(1, form.getId());
-				pstmt.setString(2, form.getGoodsid());
-				pstmt.setString(3, form.getTime());
-				pstmt.setString(4,form.getHoll());
-				pstmt.setString(5, form.getTructid());
-				pstmt.setString(6, form.getAddress());
-				pstmt.setString(7, form.getCarid());
-				pstmt.setString(8,form.getLoadmen());
-				pstmt.setString(9, form.getSupercargo());
-				pstmt.setDouble(10, form.getCost());
+				pstmt.setString(2, form.getOrderNumber());
+				pstmt.setString(3, form.getData());
+				pstmt.setString(4,form.getYingYeNumber());
+				pstmt.setString(5, form.getQiYunNumber());
+				pstmt.setString(6, form.getArrive());
+				pstmt.setString(7, form.getCarNumber());
+				pstmt.setString(8,form.getJianZhuangName());
+				pstmt.setString(9, form.getYaYunName());
+				pstmt.setDouble(10, form.getMoney());
 				pstmt.setInt(11, form.getExe());
 				pstmt.setInt(12, form.getState());
 				pstmt.setString(13, form.getId());
@@ -100,7 +137,7 @@ public class DBForLoadForm extends DB {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		return "success";
 	}
 //	public static void main(String[] args){
 //		DBForLoadForm db = new DBForLoadForm();

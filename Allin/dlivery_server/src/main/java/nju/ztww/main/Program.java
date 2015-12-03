@@ -7,11 +7,13 @@ import nju.ztww.service.CheckOrderDataService;
 import nju.ztww.service.CommodityDataService;
 import nju.ztww.service.CommodityListDataService;
 import nju.ztww.service.FinanceDataService;
+import nju.ztww.service.ManageDataService;
 import nju.ztww.service.OrderDataService;
 import nju.ztww.service.UserDataService;
 import nju.ztww.serviceimpl.CheckOrderDataServiceImpl;
 import nju.ztww.serviceimpl.CommodityListDataServiceImpl;
 import nju.ztww.serviceimpl.FinanceDataServiceImpl;
+import nju.ztww.serviceimpl.ManageDataServiceImpl;
 import nju.ztww.serviceimpl.OrderDataServiceImpl;
 import nju.ztww.serviceimpl.StorageInOfListDataServiceImpl;
 import nju.ztww.serviceimpl.StorageOutOfListDataServiceImpl;
@@ -30,16 +32,19 @@ public class Program {
         		 CommodityDataService commoditydataservice=new StorageInOfListDataServiceImpl();
         		 CommodityDataService  commoditydataserviceout=new StorageOutOfListDataServiceImpl();
         		 CommodityListDataService  commoditylistdataservice=new  CommodityListDataServiceImpl();
-        		// FinanceDataService  financedataservice = new FinanceDataServiceImpl();
+        		 FinanceDataService  financedataservice = new FinanceDataServiceImpl();
         		 CheckOrderDataService checkorderdataservice=new CheckOrderDataServiceImpl();
+        		 ManageDataService   managedataservice = new ManageDataServiceImpl();
         		 LocateRegistry.createRegistry(PORT);
         		 Naming.rebind("rmi://"+IP+":"+PORT+"/UserDataService", userdataservice);       		
         		 Naming.rebind("rmi://"+IP+":"+PORT+"/OrderDataService", orderDataService);
         		 Naming.rebind("rmi://"+IP+":"+PORT+"/CommodityDataService", commoditydataservice);
         		 Naming.rebind("rmi://"+IP+":"+PORT+"/CommodityDataServiceOut", commoditydataserviceout);
         		 Naming.rebind("rmi://"+IP+":"+PORT+"/CommodityListDataService", commoditylistdataservice);
-        		// Naming.rebind("rmi://"+IP+":"+PORT+"/FinanceDataService", financedataservice);
+        		 Naming.rebind("rmi://"+IP+":"+PORT+"/FinanceDataService", financedataservice);
         		 Naming.rebind("rmi://"+IP+":"+PORT+"/CheckOrderDataService", checkorderdataservice);
+        		 Naming.rebind("rmi://"+IP+":"+PORT+"/ManageDataService", managedataservice);
+        		 //ManageDataServiceImpl
         		 
         		// LocateRegistry.createRegistry(PORT);
         		 System.out.println("Server strated!");

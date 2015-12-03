@@ -19,7 +19,7 @@ public class EditPanel extends JPanel {
        protected int nodeHeight =30;
        protected int rowHeight  =25;
        protected JButton button1 = new JButton("提交");
-       protected JButton button2 = new JButton("保存");
+       public JButton button2 = new JButton("保存");
        protected JButton button3 = new JButton("添加");
        protected JScrollPane scrollPane;
        

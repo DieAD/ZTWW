@@ -16,9 +16,9 @@ public interface OrderDataService extends Remote{
 	
 	public String insert(OrderPO orderPO,int type);
 	
-	public String delete(String id);
+	public String delete(String id,String type);
 	
-	public String find(String id);
+	public OrderPO find(String id,int type);
 	
 	public String findID();
 
