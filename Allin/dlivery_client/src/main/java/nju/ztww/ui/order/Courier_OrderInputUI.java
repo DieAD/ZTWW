@@ -255,7 +255,7 @@ public class Courier_OrderInputUI extends JPanel{
 				
 			}
 			mailingOrders.clear();
-			defaultTableModel.setRowCount(0);
+			defaultTableModel.setColumnCount(0);
 		}
 	};
 	

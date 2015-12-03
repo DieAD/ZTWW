@@ -21,6 +21,8 @@ public class CarManageBl {
 	
 	    //新的businessArrivePO
 	    CarManagePO carManagePO=new CarManagePO(9);
+	    
+	    CarManageVO carManageVO=new CarManageVO(9);
 		//ip地址
 		 private String IP = "127.0.0.1";
 		 private RMIHelper rhelper = new RMIHelper(IP,"1010");
@@ -44,10 +46,22 @@ public class CarManageBl {
 		carManagePO.setCarState(carManageVO.getCarState());
 		carManagePO.setPlateNUmber(carManageVO.getPlateNUmber());
 		carManagePO.setServiceTime(carManageVO.getServiceTime());
-		
+		carManagePO.setId(carManageVO.getId());
 		orderDataService=(OrderDataService)rhelper.findService("OrderDataService");
+	
 		String result=orderDataService.insert(carManagePO,9);
 		return result;
+	}
+	
+	public CarManageVO find(String id){
+		orderDataService=(OrderDataService)rhelper.findService("OrderDataService");
+		carManagePO=(CarManagePO) orderDataService.find(id, 9);
+		carManageVO.setCarNumber(carManagePO.getCarNumber());
+		carManageVO.setCarState(carManagePO.getCarState());
+		carManageVO.setPlateNUmber(carManagePO.getPlateNUmber());
+		carManageVO.setServiceTime(carManagePO.getServiceTime());
+		carManageVO.setId(carManagePO.getId());
+		return carManageVO;
 	}
 	
 	/**

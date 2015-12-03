@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 //最近修改 王焕 11-17
 public class TextBussinessUI {
 	
-	static JFrame frame;
+	static JFrame frame=new JFrame();
 	BusinessUI panel =new BusinessUI();
 	ThemeLabelUI lablePanel=new ThemeLabelUI();
 
@@ -18,7 +18,11 @@ public class TextBussinessUI {
 	static RecieiveMoneyUI recieveMoneyUI=new RecieiveMoneyUI();
 	static CarManageUI carManageUI=new CarManageUI();
 	static DriverManageUI driverManageUI=new DriverManageUI();
+
+	static ResultMessageUI resultMessageUI=new ResultMessageUI();
+
 	static PersonalMesageUI personalMessagePanel;
+
 	private static int type=1;
 	
 	private ArrayList<JPanel> panelList  = new ArrayList<JPanel>();
@@ -33,7 +37,7 @@ public class TextBussinessUI {
 //		frame.setResizable(false);
 		
 		panel.setBounds(0, 0, 210, 600);
-
+		resultMessageUI.setBounds(210, 540, 690, 30);
 		lablePanel.setBounds(210, 0, 690, 60);
 		
 		carLoadingPanel.setBounds(210,60,690,480);
@@ -43,21 +47,22 @@ public class TextBussinessUI {
 		driverManageUI.setBounds(210,60,690,480);
 	
 	
-//
+
 //		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 //		frame.getContentPane().setLayout(null);
-//		frame.getContentPane().add(panel);
-//		frame.getContentPane().add(carLoadingPanel);
-//		frame.getContentPane().add(lablePanel);
-//		frame.setVisible(true);
-	}
-
-//	public static void main(String[] args) {
-//		// TODO Auto-generated method stub
-//
-//		new TextBussinessUI().init();
-//		
+//	    frame.getContentPane().add(panel);
+//	    frame.getContentPane().add(carLoadingPanel);
+//	    frame.getContentPane().add(lablePanel);
+//	    frame.getContentPane().add(resultMessageUI);
+//    	frame.setVisible(true);
 //	}
+//
+//public static void main(String[] args) {
+//	// TODO Auto-generated method stub
+//
+//	new TextBussinessUI().init();
+	
+	}
 	
 	public static void changePanel(int i){
 		removePanel();
@@ -112,7 +117,7 @@ public class TextBussinessUI {
 			panelList.add(panel);
 			panelList.add(carLoadingPanel);
 			panelList.add(lablePanel);
-
+			panelList.add(resultMessageUI);
 			return panelList;
 		}
 		

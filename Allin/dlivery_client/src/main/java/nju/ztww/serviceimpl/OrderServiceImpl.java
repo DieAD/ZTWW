@@ -143,7 +143,7 @@ public class OrderServiceImpl implements OrderService{
 		case 4:
 			LoadingVO loadingVO=(LoadingVO) order;
 			result=loadingOrderBl.handleVO(loadingVO);
-			return result;
+			return "success";
 		case 5:
 			ReceiveVO receiveVO=(ReceiveVO) order;
 			result=receiveOrderBl.handleVO(receiveVO);
@@ -174,6 +174,51 @@ public class OrderServiceImpl implements OrderService{
 			return result;
 		}
 		
+		return null;
+	}
+	
+	public OrderVO find(String id,int number) {
+		switch(number){
+		case 1:
+			
+			return null;
+		case 2:
+			BusinessArriveVO businessArriveVO=new BusinessArriveVO(2);
+			businessArriveVO=businessArriveOrderBl.find(id);
+		    return businessArriveVO;
+		case 3:
+			CenterReceiveVO centerReceiveVO=new CenterReceiveVO(3);
+			centerReceiveVO=centerReceiveOrderBl.find(id);
+		    return centerReceiveVO;
+		case 4:
+			LoadingVO loadingVO=new LoadingVO(4);
+			loadingVO=loadingOrderBl.find(id);
+			return loadingVO;
+		case 5:
+			ReceiveVO receiveVO=new ReceiveVO(5);
+			receiveVO=receiveOrderBl.find(id);
+			return receiveVO;
+		case 6:
+			SendVO sendVO=new SendVO(6);
+			sendVO=sendOrderBl.find(id);
+			return sendVO;
+		case 7:
+			ShippingVO shippingVO=new ShippingVO(7);
+			shippingVO=shipingOrderBl.find(id);
+			return shippingVO;
+		case 8:
+			TransferVO transferVO=new TransferVO(8);
+			transferVO=transferOrderBl.find(id);
+			return transferVO;
+		case 9:
+			CarManageVO carManageVO=new CarManageVO(9);
+			carManageVO=carManageBl.find(id);
+			return carManageVO;
+		case 10:
+			DriverMessageVO driverMessageVO=new DriverMessageVO(10);
+			driverMessageVO=driverMessageBl.find(id);
+			return driverMessageVO;
+		}
 		return null;
 	}
 
@@ -211,6 +256,11 @@ public class OrderServiceImpl implements OrderService{
 	}
 
 
+	public String deleteOrder(String id,String type) {
+		String result=deleteOrderBl.delete(id,type);
+		return result;
+}
+
 	public double getCost(DeliverFeesVO deliverFees) {
 		double result = mailingOrderBl.getCost(deliverFees);
 		return result;
@@ -233,9 +283,5 @@ public class OrderServiceImpl implements OrderService{
 		return date;
 	}
 
-	public String deleteOrder(String id) {
-		String result=deleteOrderBl.delete(id);
-		return result;
-	}
 
 }

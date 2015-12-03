@@ -13,20 +13,42 @@ public class TransferVO extends OrderVO{
 	
 	private int idOfOrde;
 	private String id;
+	//运输方式
 	private String method;
+	//装车日期
 	private String carData;
+	//中转编号
 	private String transferData;
+	//航班（车次）号
 	private String methodNumber;
 	private String sendPlace;
 	private String arrivePlace;
 	private String counterNumber;
 	private String JianZhuangName;
-	private ArrayList<Integer> sendNumber;
-	private int money;
+	private String sendNumber;
+	private double money;
+	private int exe=0;
+	private int state=1;
 
 	public TransferVO(int idOfOrde) {
 		super(idOfOrder);
 		this.idOfOrde=idOfOrde;
+	}
+
+	public int getExe() {
+		return exe;
+	}
+
+	public void setExe(int exe) {
+		this.exe = exe;
+	}
+
+	public int getState() {
+		return state;
+	}
+
+	public void setState(int state) {
+		this.state = state;
 	}
 
 	public String getId() {
@@ -108,19 +130,19 @@ public class TransferVO extends OrderVO{
 		JianZhuangName = jianZhuangName;
 	}
 
-	public ArrayList<Integer> getSendNumber() {
+	public String getSendNumber() {
 		return sendNumber;
 	}
 
-	public void setSendNumber(ArrayList<Integer> sendNumber) {
+	public void setSendNumber(String sendNumber) {
 		this.sendNumber = sendNumber;
 	}
 
-	public int getMoney() {
+	public double getMoney() {
 		return money;
 	}
 
-	public void setMoney(int money) {
+	public void setMoney(double money) {
 		this.money = money;
 	}
 

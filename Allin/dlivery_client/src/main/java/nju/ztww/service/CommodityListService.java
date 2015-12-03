@@ -9,7 +9,7 @@ import nju.ztww.vo.StorageListLineofOutVO;
 
 //WJ 来得到
 public interface CommodityListService {
-	//直接根据idofcenter来得到库存
+	//通过时间来得到具体的 入库信息表
  public ArrayList<StorageListLineofInVO> getStock(String idofcenter);
    
  public ArrayList<StorageListLineofInVO>getInListbytime(String time,String idofcenter);

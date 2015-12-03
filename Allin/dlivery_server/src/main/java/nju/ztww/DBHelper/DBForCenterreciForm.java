@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import nju.ztww.dao.CenterreciFormDO;
+import nju.ztww.po.CenterReceivePO;
 
 public class DBForCenterreciForm extends DB{
 	private static String driver;
@@ -93,8 +94,8 @@ public class DBForCenterreciForm extends DB{
 	}
 
 
-	public ArrayList<CenterreciFormDO> queryByID(String ID, String tableName) {
-		ArrayList<CenterreciFormDO> list = new ArrayList<CenterreciFormDO>();
+	public ArrayList<CenterReceivePO> queryByID(String ID, String tableName) {
+		ArrayList<CenterReceivePO> list = new ArrayList<CenterReceivePO>();
 
 		String sql = " select * from " + tableName + " where id=" + ID;
 
@@ -103,14 +104,13 @@ public class DBForCenterreciForm extends DB{
 			ResultSet rs = stmt.executeQuery(sql);
 
 			while (rs.next()) {
-				CenterreciFormDO form = new CenterreciFormDO();
-				form.setIndex(rs.getInt(1));
+				CenterReceivePO form = new CenterReceivePO(3);
 				form.setId(rs.getString(2));
-				form.setCenterid(rs.getString(3));
-				form.setGoodsid(rs.getString(4));
-				form.setTime(rs.getString(5));
-				form.setBddress(rs.getString(6));
-				form.setGoodsstate(rs.getString(7));
+				form.setCenterNumber(rs.getString(3));
+				form.setTransferNumber(rs.getString(4));
+				form.setData(rs.getString(5));
+				form.setSendPlace(rs.getString(6));
+				form.setOrderState(rs.getString(7));
 				form.setExe(rs.getInt(8));
 				form.setState(rs.getInt(9));
 
@@ -124,19 +124,19 @@ public class DBForCenterreciForm extends DB{
 		return list;
 	}
 
-	public void insert(ArrayList<CenterreciFormDO> list, String tableName) {
+	public String insert(ArrayList<CenterReceivePO> list, String tableName) {
 		String sql = "insert into " + tableName
 				+ "(id,centerid,goodsid,time,bddress,goodsstate,exe,state)"
 				+ "values(?,?,?,?,?,?,?,?)";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-			for (CenterreciFormDO form : list) {
+			for (CenterReceivePO form : list) {
 				pstmt.setString(1, form.getId());
-				pstmt.setString(2, form.getCenterid());
-				pstmt.setString(3, form.getGoodsid());
-				pstmt.setString(4, form.getTime());
-				pstmt.setString(5, form.getBddress());
-				pstmt.setString(6, form.getGoodsstate());
+				pstmt.setString(2, form.getCenterNumber());
+				pstmt.setString(3, form.getTransferNumber());
+				pstmt.setString(4, form.getData());
+				pstmt.setString(5, form.getSendPlace());
+				pstmt.setString(6, form.getOrderState());
 				pstmt.setInt(7, form.getExe());
 				pstmt.setInt(8, form.getState());
 				
@@ -146,21 +146,21 @@ public class DBForCenterreciForm extends DB{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		return "success";
 	}
 	
-	public void update(ArrayList<CenterreciFormDO> list,String tableName){
+	public void update(ArrayList<CenterReceivePO> list,String tableName){
 		String sql = " update "+tableName+" set id=?,centerid=?,goodsid=?,time=?,bddress=?,goodsstate=?,exe=?,state=?"
 				+ " where id=?";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-			for(CenterreciFormDO form: list){
+			for(CenterReceivePO form: list){
 				pstmt.setString(1, form.getId());
-				pstmt.setString(2, form.getCenterid());
-				pstmt.setString(3, form.getGoodsid());
-				pstmt.setString(4, form.getTime());
-				pstmt.setString(5, form.getBddress());
-				pstmt.setString(6, form.getGoodsstate());
+				pstmt.setString(2, form.getCenterNumber());
+				pstmt.setString(3, form.getTransferNumber());
+				pstmt.setString(4, form.getData());
+				pstmt.setString(5, form.getSendPlace());
+				pstmt.setString(6, form.getOrderState());
 				pstmt.setInt(7, form.getExe());
 				pstmt.setInt(8, form.getState());
 				pstmt.setString(9,form.getId());

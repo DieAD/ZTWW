@@ -62,6 +62,7 @@ public class DBForOutStockForm extends DB{
 		}
 	}
 
+
 	public ArrayList<OutStockFormDO> selectAll() {
 		ArrayList<OutStockFormDO> list = new ArrayList<OutStockFormDO>();
 		String sql = "select * from outstockform where exe=0";
@@ -76,7 +77,7 @@ public class DBForOutStockForm extends DB{
 				form.setGoodsid(rs.getString(3));
 				form.setTime(rs.getString(4));
 				form.setAddress(rs.getString(5));
-				form.setTransmethod(rs.getInt(6));
+				form.setTransmethod(rs.getString(6));
 				form.setExe(rs.getInt(7));
 				form.setState(rs.getInt(8));
 				form.setNumber(rs.getString(9));
@@ -106,7 +107,7 @@ public class DBForOutStockForm extends DB{
 				form.setGoodsid(rs.getString(3));
 				form.setTime(rs.getString(4));
 				form.setAddress(rs.getString(5));
-				form.setTransmethod(rs.getInt(6));
+				form.setTransmethod(rs.getString(6));
 				form.setExe(rs.getInt(7));
 				form.setState(rs.getInt(8));
 				form.setNumber(rs.getString(9));
@@ -132,7 +133,7 @@ public class DBForOutStockForm extends DB{
 				pstmt.setString(2, form.getGoodsid());
 				pstmt.setString(3, form.getTime());
 				pstmt.setString(4, form.getAddress());
-				pstmt.setInt(5, form.getTransmethod());
+				pstmt.setString(5, form.getTransmethod());
 				pstmt.setString(8, form.getNumber());
 				pstmt.setInt(6, form.getExe());
 				pstmt.setInt(7, form.getState());
@@ -160,7 +161,7 @@ public class DBForOutStockForm extends DB{
 				pstmt.setString(2, form.getGoodsid());
 				pstmt.setString(3, form.getTime());
 				pstmt.setString(4, form.getAddress());
-				pstmt.setInt(5, form.getTransmethod());
+				pstmt.setString(5, form.getTransmethod());
 				pstmt.setInt(6, form.getExe());
 				pstmt.setInt(7, form.getState());
 				pstmt.setString(8, form.getNumber());
@@ -200,7 +201,7 @@ public class DBForOutStockForm extends DB{
 				form.setGoodsid(rs.getString(3));
 				form.setTime(rs.getString(4));
 				form.setAddress(rs.getString(5));
-				form.setTransmethod(rs.getInt(6));
+				form.setTransmethod(rs.getString(6));
 				form.setExe(rs.getInt(7));
 				form.setState(rs.getInt(8));
 				form.setNumber(rs.getString(9));

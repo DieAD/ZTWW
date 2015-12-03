@@ -18,12 +18,16 @@ public class SendPO extends OrderPO implements Serializable{
 	private String orderNumber;
 	private String senderName;
 	private String id;
-	private int exe=1;
-	private int state=0;
+	private int exe=0;
+	private int state=1;
 
 	public SendPO(int idOfOrder) {
 		super(idOfOrder);
 		this.idOfOrde=idOfOrde;
+	}
+
+	public void setExe(int exe) {
+		this.exe = exe;
 	}
 
 	public int getExe() {

@@ -50,6 +50,8 @@ public class ReceiveAndSendUI extends JPanel{
 	private  JLabel sender=new  JLabel("派送员");
 	private JTextField othertextArea=new JTextField("");
 	private  JLabel other=new  JLabel("备注");
+	private JTextField findSendtextArea=new JTextField("");
+	private JTextField findArrivetextArea=new JTextField("");
 	
 	private JButton deleteReceiveButton=new JButton("删除到达单");
 	private JButton deleteSendButton=new JButton("删除派件单");
@@ -59,6 +61,10 @@ public class ReceiveAndSendUI extends JPanel{
 	private JButton sendArriveButton=new JButton("提交到达单");
 	private JButton sureButton=new JButton("确定");
 	private JButton sureSendButton=new JButton("确定");
+	private JButton findSendButton=new JButton("查找派件单");
+	private JButton findArriveButton=new JButton("查找到达单");
+	private JButton findSendSureButton=new JButton("确定");
+	private JButton findArriveSureButton=new JButton("确定");
 	
 	private OrderServiceImpl orderServiceImpl=new OrderServiceImpl();
 	private BusinessArriveVO businessArriveVO;
@@ -77,22 +83,25 @@ public class ReceiveAndSendUI extends JPanel{
 	
 	public ReceiveAndSendUI(){
 		ImageIcon add=new ImageIcon("photo/add.gif");
-		addButton.setBounds(550, 420, 110, 38);
+		addButton.setBounds(560, 420, 110, 28);
 		addButton.setIcon(add);
-		addSendButton.setBounds(430, 420, 110, 38);
+		addSendButton.setBounds(560, 453, 110, 28);
 		addSendButton.setIcon(null);
-		sendButton.setBounds(310, 420, 110, 38);
+		sendButton.setBounds(430, 420, 110, 28);
 		sendButton.setIcon(null);
-		sendArriveButton.setBounds(190, 420, 110, 38);
+		sendArriveButton.setBounds(430, 453, 110, 28);
 		sendArriveButton.setIcon(null);
-		deleteReceiveButton.setBounds(100, 420, 80, 38);
+		deleteReceiveButton.setBounds(310, 420, 110, 28);
 		deleteReceiveButton.setIcon(null);
-		deleteSendButton.setBounds(10, 420, 80, 38);
+		deleteSendButton.setBounds(310, 453, 110, 28);
 		deleteSendButton.setIcon(null);
+		findSendButton.setBounds(190, 420, 110, 28);
+		findSendButton.setIcon(null);
+		findArriveButton.setBounds(190, 453, 110, 28);
+		findArriveButton.setIcon(null);
 		Object[][] playerInfo =
 			  {
-			    {"1511116666", "阿s呆", new Integer(69), new Integer(32), new Integer(98),  new Boolean(false) },
-			    { "1511116666","阿呆", new Integer(82), new Integer(69), new Integer(128), new Boolean(true)}, 
+			 
 			  };
 
 			  //字段名称
@@ -119,8 +128,7 @@ public class ReceiveAndSendUI extends JPanel{
 			  //设置派件单
 			  Object[][] playerInfo2 =
 				  {
-				    { "1511116666","阿s呆", new Integer(69), new Integer(32),  new Boolean(false) },
-				    { "1511116666","阿呆", new Integer(82), new Integer(69),  new Boolean(true)}, 
+				 
 				  };
 
 				  //字段名称
@@ -242,6 +250,8 @@ public class ReceiveAndSendUI extends JPanel{
 							String result=orderServiceImpl.endSales(businessArriveVOtemp, 2);
 							 System.out.println(result);
 						}
+						allbusinessArriveVO.clear();
+						defaultTableModel.setRowCount(0);
 					}
 			  });
 			  sendButton.addActionListener(new ActionListener(){
@@ -251,26 +261,64 @@ public class ReceiveAndSendUI extends JPanel{
 							String result=orderServiceImpl.endSales(sendVOtemp, 6);
 							 System.out.println(result);
 						}
+						allSendVO.clear();
+						defaultTableModel2.setRowCount(0);
 					}
 			  });
 			  deleteSendButton.addActionListener(new ActionListener(){
 
 					public void actionPerformed(ActionEvent e) {
-						String id=(String) sendTable.getValueAt(sendTable.getSelectedRow(), 0);
-						String result=orderServiceImpl.deleteOrder(id);
-						defaultTableModel.removeRow(sendTable.getSelectedRow());
-						System.out.println(result);
+//						String id=(String) sendTable.getValueAt(sendTable.getSelectedRow(), 0);
+//						String result=orderServiceImpl.deleteOrder(id,"deliveryform");
+						if(sendTable.getSelectedRow()>=0&&allSendVO.size()!=0){
+							allSendVO.remove(sendTable.getSelectedRow());
+						}
+						defaultTableModel2.removeRow(sendTable.getSelectedRow());
 					}
 			  });
 			  deleteReceiveButton.addActionListener(new ActionListener(){
 
 					public void actionPerformed(ActionEvent e) {
-						String id=(String) receiveTable.getValueAt(receiveTable.getSelectedRow(), 0);
-						String result=orderServiceImpl.deleteOrder(id);
+//						String id=(String) receiveTable.getValueAt(receiveTable.getSelectedRow(), 0);
+//						String result=orderServiceImpl.deleteOrder(id,"hollreciform");
+						if(receiveTable.getSelectedRow()>=0&&allbusinessArriveVO.size()!=0){
+							allbusinessArriveVO.remove(receiveTable.getSelectedRow());
+						}
 						defaultTableModel.removeRow(receiveTable.getSelectedRow());
-						System.out.println(result);
 					}
 			  });
+			  findSendButton.addActionListener(new ActionListener(){
+
+					public void actionPerformed(ActionEvent e) {
+						dlg= new JDialog(); 
+						dlg.setSize(new Dimension(350, 150));
+			            dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
+			            findSendtextArea.setBounds(50, 30, 150, 30);
+			            findSendSureButton.setBounds(100, 80, 70, 40);
+			            findSendSureButton.addActionListener(listener2);
+			            dlg.add(findSendSureButton);
+			            dlg.add(findSendtextArea);
+			            dlg.setLayout(null);
+						dlg.setVisible(true);
+					}
+			  });
+			  findArriveButton.addActionListener(new ActionListener(){
+
+					public void actionPerformed(ActionEvent e) {
+						dlg= new JDialog(); 
+						dlg.setSize(new Dimension(350, 150));
+			            dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
+			            findArrivetextArea.setBounds(50, 30, 150, 30);
+			            findArriveSureButton.setBounds(100, 80, 70, 40);
+			            findArriveSureButton.addActionListener(listener3);
+			            dlg.add(findArriveSureButton);
+			            dlg.add(findArrivetextArea);
+			            dlg.setLayout(null);
+						dlg.setVisible(true);
+					}
+			  });
+			  this.add(findArriveButton);
+			  this.add(findSendButton);
 			  this.add(deleteReceiveButton);
 			  this.add(deleteSendButton);
 			  this.add(addButton);
@@ -347,5 +395,40 @@ public class ReceiveAndSendUI extends JPanel{
 		    sureSendButton.removeActionListener(listenerSend);
 		}
 		
+	};
+	ActionListener listener2 = new ActionListener(){
+
+		public void actionPerformed(ActionEvent e) {
+			SendVO sendVO=(SendVO) orderServiceImpl.find(findSendtextArea.getText(), 6);
+			Vector<String> row = new Vector(5);
+			row.add(sendVO.getId());
+			row.add(sendVO.getData());
+			row.add(sendVO.getOrderNumber());
+			row.add(sendVO.getSenderName());
+			row.add("");
+			defaultTableModel2.addRow(row);
+			sendTable.revalidate();
+		    findSendtextArea.setText("");
+		    dlg.dispose();
+		    findSendSureButton.removeActionListener(listener2);
+		}
+	};
+	ActionListener listener3 = new ActionListener(){
+
+		public void actionPerformed(ActionEvent e) {
+			BusinessArriveVO businessArriveVO=(BusinessArriveVO) orderServiceImpl.find(findArrivetextArea.getText(), 2);
+			Vector<String> row = new Vector(6);
+			row.add(businessArriveVO.getId());
+			row.add(businessArriveVO.getData());
+			row.add(businessArriveVO.getNumber());
+			row.add(businessArriveVO.getSend());
+			row.add(businessArriveVO.getOrderState());
+			row.add("");
+			defaultTableModel.addRow(row);
+			receiveTable.revalidate();
+		    findArrivetextArea.setText("");
+		    dlg.dispose();
+		    findArriveSureButton.removeActionListener(listener3);
+		}
 	};
 }

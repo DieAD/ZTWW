@@ -19,6 +19,7 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import nju.ztww.serviceimpl.OrderServiceImpl;
+import nju.ztww.vo.DriverMessageVO;
 import nju.ztww.vo.LoadingVO;
 import nju.ztww.vo.ReceiveVO;
 import nju.ztww.vo.SendVO;
@@ -35,7 +36,10 @@ public class RecieiveMoneyUI extends JPanel{
 	private  JLabel carNumber=new  JLabel("订单号");
 	private JTextField orderNumbertextArea=new JTextField("");
 	private  JLabel orderNumber=new  JLabel("备注");
+	private JTextField findtextArea=new JTextField("");
 	
+	private JButton findButton=new JButton("查找");
+	private JButton findSureButton=new JButton("确定");
 	private JButton deleteButton=new JButton("删除");
 	private JButton addButton=new JButton();
 	private JButton addSendButton=new JButton("提交");
@@ -57,15 +61,15 @@ public class RecieiveMoneyUI extends JPanel{
 		ImageIcon add=new ImageIcon("photo/add.gif");
 		addButton.setBounds(500, 420, 110, 38);
 		addButton.setIcon(add);
-		deleteButton.setBounds(100, 420, 110, 38);
+		deleteButton.setBounds(220, 420, 110, 38);
 		deleteButton.setIcon(null);
-
-		addSendButton.setBounds(300, 420, 110, 38);
+		addSendButton.setBounds(360, 420, 110, 38);
 		addSendButton.setIcon(null);
+		findButton.setBounds(90, 420, 110, 38);
+		findButton.setIcon(null);
 		Object[][] playerInfo =
 			  {
-			    { "1511116666","阿s呆", new Integer(69), new Integer(32), new Integer(98),  new Boolean(false) },
-			    { "1511116666", "阿呆", new Integer(82), new Integer(69), new Integer(128), new Boolean(true)}, 
+			  
 			  };
 
 			  //字段名称
@@ -144,17 +148,38 @@ public class RecieiveMoneyUI extends JPanel{
 							String result=orderServiceImpl.endSales(receiveVOtemp, 5);
 							 System.out.println(result);
 						}
+						allreceiveVO.clear();
+						defaultTableModel.setRowCount(0);
 					}
 			  });
 			  deleteButton.addActionListener(new ActionListener(){
 
 					public void actionPerformed(ActionEvent e) {
-						String id=(String) table.getValueAt(table.getSelectedRow(), 0);
-						String result=orderServiceImpl.deleteOrder(id);
+//						String id=(String) table.getValueAt(table.getSelectedRow(), 0);
+//						String result=orderServiceImpl.deleteOrder(id,"payeeform");
+						if(table.getSelectedRow()>=0&&allreceiveVO.size()!=0){
+							allreceiveVO.remove(table.getSelectedRow());
+						}
+	
 						defaultTableModel.removeRow(table.getSelectedRow());
-						System.out.println(result);
 					}
 			  });
+			  findButton.addActionListener(new ActionListener(){
+
+					public void actionPerformed(ActionEvent e) {
+						dlg= new JDialog(); 
+						dlg.setSize(new Dimension(350, 150));
+			            dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
+			            findtextArea.setBounds(50, 30, 150, 30);
+			            findSureButton.setBounds(100, 80, 70, 40);
+			            findSureButton.addActionListener(listener2);
+			            dlg.add(findSureButton);
+			            dlg.add(findtextArea);
+			            dlg.setLayout(null);
+						dlg.setVisible(true);
+					}
+			  });
+			  this.add(findButton);
 			  this.add(deleteButton);
 			  this.add(addButton);
 			  this.add(addSendButton);
@@ -205,5 +230,22 @@ public class RecieiveMoneyUI extends JPanel{
 		}
 		
 	};
+	ActionListener listener2 = new ActionListener(){
 
+		public void actionPerformed(ActionEvent e) {
+			ReceiveVO receiveVO=(ReceiveVO) orderServiceImpl.find(findtextArea.getText(), 5);
+			Vector<String> row = new Vector(6);
+			row.add(receiveVO.getId());
+			row.add(receiveVO.getData());
+			row.add(Double.toString(receiveVO.getReceiveMoney()));
+			row.add(receiveVO.getReceiverName());
+			row.add(receiveVO.getOrderNumber().get(0));
+			row.add("");
+			defaultTableModel.addRow(row);
+		    table.revalidate();
+		    findtextArea.setText("");
+		    dlg.dispose();
+		    findSureButton.removeActionListener(listener2);
+		}
+	};
 }
