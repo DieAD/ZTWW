@@ -3,10 +3,9 @@ package nju.ztww.data.order;
 import java.util.List;
 
 
+
 import nju.ztww.DBHelper.DB;
-
 import nju.ztww.po.AcceptPO;
-
 import nju.ztww.po.BusinessArrivePO;
 import nju.ztww.po.CarManagePO;
 import nju.ztww.po.CenterReceivePO;
@@ -19,6 +18,7 @@ import nju.ztww.po.ReceivePO;
 import nju.ztww.po.SendPO;
 import nju.ztww.po.ShippingPO;
 import nju.ztww.po.TransferPO;
+import nju.ztww.vo.IDVO;
 
 public class OrderHandler {
 	
@@ -157,52 +157,101 @@ public class OrderHandler {
 		
 	}
 	
-	public String insertToDateFactory(List<OrderPO> list, int type){
+	public String insertToDateFactory(List<IDVO> list, int type){
+		String result=null;
 		switch(type){
 		case 1:
-			for(OrderPO orderPO:list){
-				MailingPO mailingPO=(MailingPO) orderPO;
+			for(IDVO orderPO:list){
+//				MailingPO mailingPO=(MailingPO) orderPO;
 			}
 		case 2:
-			for(OrderPO orderPO:list){
-			    BusinessArrivePO businessArrivePO=(BusinessArrivePO) orderPO;
+			for(IDVO orderPO:list){
+			    result=businessArriveData.update(orderPO);
+			    if(result!="success"){
+			    	return "fail";
+			    }
 			}
+			break;
 		case 3:
-			for(OrderPO orderPO:list){
-			    CenterReceivePO centerReceivePO=(CenterReceivePO) orderPO;
+			for(IDVO orderPO:list){
+				 result=CenterReceiveData.update(orderPO);
+				    if(result!="success"){
+				    	return "fail";
+				    }
 			}
+			break;
 		case 4:
-			for(OrderPO orderPO:list){
-			    LoadingPO loadingPO=(LoadingPO) orderPO;
-			}
+			for(IDVO orderPO:list){
+				result=loadingData.update(orderPO);
+			    if(result!="success"){
+			    	return "fail";
+			    }
+		    }
+		    break;
 		case 5:
-			for(OrderPO orderPO:list){
-			    ReceivePO receivePO=(ReceivePO) orderPO;
-			}
+//			for(IDVO orderPO:list){
+//			}
 		case 6:
-			for(OrderPO orderPO:list){
-		    	SendPO sendPO=(SendPO) orderPO;
-			}
+			for(IDVO orderPO:list){
+				result=sendData.update(orderPO);
+			    if(result!="success"){
+			    	return "fail";
+			    }
+		    }
+		    break;
 		case 7:
-			for(OrderPO orderPO:list){
-		    	ShippingPO shippingPO=(ShippingPO) orderPO;
-			}
+			for(IDVO orderPO:list){
+				result=shippingData.update(orderPO);
+			    if(result!="success"){
+			    	return "fail";
+			    }
+		    }
+		    break;
 		case 8:
-			for(OrderPO orderPO:list){
-		    	TransferPO transferPO=(TransferPO) orderPO;
-			}
+			for(IDVO orderPO:list){
+				result=transferData.update(orderPO);
+			    if(result!="success"){
+			    	return "fail";
+			    }
+		    }
+		    break;
 		case 9:
-			for(OrderPO orderPO:list){
-			     CarManagePO carManagePO=(CarManagePO) orderPO;
-			}
+			for(IDVO orderPO:list){
+				result=carManageData.update(orderPO);
+			    if(result!="success"){
+			    	return "fail";
+			    }
+		    }
+		    break;
 		case 10:
-			for(OrderPO orderPO:list){
-		    	DriverMessagePO driverMessagePO=(DriverMessagePO) orderPO;
-			}
+			for(IDVO orderPO:list){
+				result=DriverMessageData.update(orderPO);
+			    if(result!="success"){
+			    	return "fail";
+			    }
+		    }
+		    break;
 		case 11:
-			for(OrderPO orderPO:list){
-				AcceptPO acceptPO = (AcceptPO) orderPO;
+			for(IDVO orderPO:list){
+				
 			}
+		}
+		return result;
+		
+	}
+	
+	public String addTrace(List<IDVO> list, int type){
+		String result=null;
+		if(type==2){
+			for(IDVO orderPO:list){
+			    result=businessArriveData.addTrace(orderPO);
+			}
+			return result;
+		}else if(type==3){
+			for(IDVO orderPO:list){
+			    result=CenterReceiveData.addTrace(orderPO);
+			}
+			return result;
 		}
 		return null;
 		

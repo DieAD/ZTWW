@@ -8,11 +8,13 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import nju.ztww.bl.manage.ManageBL;
+import nju.ztww.service.ManageService;
+import nju.ztww.serviceimpl.ManageServiceImpl;
 import nju.ztww.vo.GenerateVO;
 import nju.ztww.vo.IDVO;
 
 public class GManager_CheckOrders extends JPanel {
-	ManageBL manageBL = new ManageBL();
+	ManageService mService = new ManageServiceImpl();
 	// JTextField search = new JTextField();
 	// JButton searchButton = new JButton("搜索");
 	// JLabel nameLabel = new JLabel();
@@ -38,6 +40,7 @@ public class GManager_CheckOrders extends JPanel {
 	JButton sureButton = new JButton();
 	MyTable table;
 	JPanel tablePanel = new JPanel();
+	int index = 0;
 
 	// Object[][] orders1;
 	// Object[][] orders2;
@@ -178,9 +181,10 @@ public class GManager_CheckOrders extends JPanel {
 	}
 	
 	public void getCheckOrderVO(int index){
+		this.index = index;
 		if(index>1){
 			tablePanel.removeAll();}
-		ArrayList<GenerateVO> list = manageBL.getCheckOrder(index);
+		ArrayList<GenerateVO> list = mService.getCheckOrder(index);
 		Object[][] values = new Object[list.size()][5];
 		int i = 0;
 		for (GenerateVO vo : list) {
@@ -224,10 +228,12 @@ public class GManager_CheckOrders extends JPanel {
 				}
 			}
 			
+			mService.updateInformation(list, index);
 			for(IDVO vo : list){
 				System.out.print(vo.id);
 			}
-			tablePanel.removeAll();;
+			tablePanel.removeAll();
+			tablePanel.repaint();
 		}
 		
 	}

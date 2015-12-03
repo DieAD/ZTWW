@@ -7,6 +7,7 @@ import nju.ztww.dao.HollReciFormDO;
 import nju.ztww.dao.LoadFormDO;
 import nju.ztww.po.BusinessArrivePO;
 import nju.ztww.po.LoadingPO;
+import nju.ztww.vo.IDVO;
 
 /**
  * 处理装车单
@@ -44,5 +45,15 @@ public class LoadingData {
 	   return loadingPO;
 		
 	}
+   
+   public String update(IDVO Id){
+	   dbHelper.init();
+	   ArrayList<LoadingPO> list= dbHelper.queryByID(Id.id, "loadform");
+	   list.get(0).setExe(1);
+	   String result=dbHelper.update(list, "loadform");
+	   dbHelper.close();
+	   return result;
+	   
+   }
 
 }

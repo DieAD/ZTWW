@@ -4,14 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import nju.ztww.RMI.RMIHelper;
-import nju.ztww.po.BusinessArrivePO;
-import nju.ztww.po.CarManagePO;
 import nju.ztww.po.CenterReceivePO;
 import nju.ztww.po.OrderPO;
 import nju.ztww.service.OrderDataService;
-import nju.ztww.vo.BusinessArriveVO;
-import nju.ztww.vo.CarManageVO;
 import nju.ztww.vo.CenterReceiveVO;
+import nju.ztww.vo.IDVO;
 
 /**
  * 中转中心到达单的bl层
@@ -31,7 +28,7 @@ public class CenterReceiveOrderBl {
 	 
 	 private CenterReceiveVO centerReceiveVO=new CenterReceiveVO(3);
 	 
-	 private List<OrderPO> list=new ArrayList<OrderPO>();
+	 private List<IDVO> list=new ArrayList<IDVO>();
 
     public CenterReceiveOrderBl(){
 		
@@ -67,12 +64,13 @@ public class CenterReceiveOrderBl {
 	 * @param list
 	 * @return
 	 */
-	public String handleAllVO(List<CenterReceivePO> list){
-		for(CenterReceivePO temp:list){
+	public String handleAllVO(List<IDVO> list){
+		for(IDVO temp:list){
 			this.list.add(temp);
 		}
 		orderDataService=(OrderDataService)rhelper.findService("OrderDataService");
-		String result=orderDataService.insertToDateFactory(this.list,3);
+		String result=orderDataService.insertToDateFactory(this.list, 3);
+		orderDataService.addTrace(this.list, 3);
 		return result;
 		
 	}
