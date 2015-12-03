@@ -59,4 +59,9 @@ public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDa
 		return priceData;
 	}
 
+	public void passOrder(String order) throws RemoteException {
+		// TODO Auto-generated method stub
+		mailingOrderData.passOrder(order);
+	}
+
 }

@@ -27,4 +27,6 @@ public interface OrderDataService extends Remote  {
 	public String insertToDateFactory(List<OrderPO> list,int type) throws RemoteException;
 
 	public PriceDataPO getPriceData(String place1, String place2, String type) throws RemoteException;
+
+	public void passOrder(String order) throws RemoteException;
 }

@@ -42,6 +42,7 @@ public class MailingOrderBl {
 	}
 	
 	public String handleVO(MailingVO mailingVO){
+
 		mailingPO.setSendName(mailingVO.getSendName());
 		mailingPO.setSendLocation(mailingVO.getSendLocation());
 		mailingPO.setSendTelephone(mailingVO.getSendTelephone());
@@ -111,6 +112,17 @@ public class MailingOrderBl {
 		return random;
 	}
 
-
+	public boolean passOrders(ArrayList<String> orders){
+		orderDataService=(OrderDataService)rhelper.findService("OrderDataService");
+		for(String order : orders){
+			orderDataService.passOrder(order);
+		}
+		return true;
+	}
+	
+	public boolean addTrack(String order){
+		
+		return true;
+	}
 	
 }

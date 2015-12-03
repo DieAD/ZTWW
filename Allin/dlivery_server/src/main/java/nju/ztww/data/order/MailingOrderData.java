@@ -38,6 +38,7 @@ public class MailingOrderData {
 	}
 	
 	public String insert(MailingPO mailingPO){
+
 		dbForOrderForm = new DBForOrderForm();
 		System.out.println("result = successful!!!!!!!!!!!!!!!!!!!!!!S");
 		dbForOrderForm.init();
@@ -75,4 +76,20 @@ public class MailingOrderData {
 			return null;
 			
 		}
+
+	public void passOrder(String order) {
+
+		// TODO Auto-generated method stub
+		dbForOrderForm = new DBForOrderForm();
+		dbForOrderForm.init();
+		ArrayList<OrderFormDO> mailingOrders = dbForOrderForm.queryByID(order, "orderform");
+		if(!mailingOrders.isEmpty()){
+			OrderFormDO mailingOrder = mailingOrders.get(0);
+			mailingOrder.setExe(1);
+			ArrayList<OrderFormDO> newOrders = new ArrayList<OrderFormDO>();
+			newOrders.add(mailingOrder);
+			dbForOrderForm.update(newOrders, "orderform");
+		}
+		dbForOrderForm.close();
+	}
 }
