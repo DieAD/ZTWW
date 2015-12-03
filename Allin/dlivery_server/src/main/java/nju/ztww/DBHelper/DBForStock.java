@@ -173,12 +173,43 @@ public class DBForStock extends DB{
 		
 		return list;
 	}
-	
-//	public static void main(String[] args){
-//		DBForStock db = new DBForStock();
-//		db.init();
-//		
-//		db.close();
-//	}
+	public ArrayList<StockDO> queryALL(String tableName){
+		ArrayList<StockDO> list  = new ArrayList<StockDO>();
+		String sql = "select * from "+tableName;
+		
+		try {
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+			
+			while(rs.next()){
+				StockDO stock = new StockDO();
+				stock.setIndex(rs.getInt(1));
+				stock.setGoodsid(rs.getString(2));
+				stock.setEntrytime(rs.getString(3));
+				stock.setAddress(rs.getString(4));
+				stock.setQu(rs.getString(5));
+				stock.setPai(rs.getString(6));
+				stock.setJia(rs.getString(7));
+				stock.setWei(rs.getString(8));
+				
+				list.add(stock);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+	public static void main(String[] args){
+		DBForStock db = new DBForStock();
+		ArrayList<StockDO> list=new ArrayList<StockDO>();
+		db.init();
+		list=db.queryALL("stocktable");
+		for(int i=0;i<list.size();i++){
+		  System.out.println(list.get(i).getEntrytime());
+		}
+		db.close();
+	}
 
 }

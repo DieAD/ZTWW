@@ -77,7 +77,7 @@ public class DBForOutStockForm extends DB{
 				form.setGoodsid(rs.getString(3));
 				form.setTime(rs.getString(4));
 				form.setAddress(rs.getString(5));
-				form.setTransmethod(rs.getString(6));
+				form.setTransmethod(rs.getInt(6));
 				form.setExe(rs.getInt(7));
 				form.setState(rs.getInt(8));
 				form.setNumber(rs.getString(9));
@@ -107,7 +107,7 @@ public class DBForOutStockForm extends DB{
 				form.setGoodsid(rs.getString(3));
 				form.setTime(rs.getString(4));
 				form.setAddress(rs.getString(5));
-				form.setTransmethod(rs.getString(6));
+				form.setTransmethod(rs.getInt(6));
 				form.setExe(rs.getInt(7));
 				form.setState(rs.getInt(8));
 				form.setNumber(rs.getString(9));
@@ -133,7 +133,7 @@ public class DBForOutStockForm extends DB{
 				pstmt.setString(2, form.getGoodsid());
 				pstmt.setString(3, form.getTime());
 				pstmt.setString(4, form.getAddress());
-				pstmt.setString(5, form.getTransmethod());
+				pstmt.setInt(5, form.getTransmethod());
 				pstmt.setString(8, form.getNumber());
 				pstmt.setInt(6, form.getExe());
 				pstmt.setInt(7, form.getState());
@@ -161,7 +161,7 @@ public class DBForOutStockForm extends DB{
 				pstmt.setString(2, form.getGoodsid());
 				pstmt.setString(3, form.getTime());
 				pstmt.setString(4, form.getAddress());
-				pstmt.setString(5, form.getTransmethod());
+				pstmt.setInt(5, form.getTransmethod());
 				pstmt.setInt(6, form.getExe());
 				pstmt.setInt(7, form.getState());
 				pstmt.setString(8, form.getNumber());
@@ -189,7 +189,7 @@ public class DBForOutStockForm extends DB{
 	}
 	public ArrayList<OutStockFormDO> queryByTime(String time, String tableName) {
 		ArrayList<OutStockFormDO> list = new ArrayList<OutStockFormDO>();
-		String sql = "select * from " + tableName + " where time= '"+time+"'and exe=1";
+		String sql = "select * from " + tableName + " where time= '"+time+"'and exe=0";
 		try {
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
@@ -201,7 +201,34 @@ public class DBForOutStockForm extends DB{
 				form.setGoodsid(rs.getString(3));
 				form.setTime(rs.getString(4));
 				form.setAddress(rs.getString(5));
-				form.setTransmethod(rs.getString(6));
+				form.setTransmethod(rs.getInt(6));
+				form.setExe(rs.getInt(7));
+				form.setState(rs.getInt(8));
+				form.setNumber(rs.getString(9));
+				list.add(form);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return list;
+	}
+	public ArrayList<OutStockFormDO> queryALL( String tableName) {
+		ArrayList<OutStockFormDO> list = new ArrayList<OutStockFormDO>();
+		String sql = "select * from " + tableName ;
+		try {
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+
+			while (rs.next()) {
+				OutStockFormDO form = new OutStockFormDO();
+				form.setIndex(rs.getInt(1));
+				form.setId(rs.getString(2));
+				form.setGoodsid(rs.getString(3));
+				form.setTime(rs.getString(4));
+				form.setAddress(rs.getString(5));
+				form.setTransmethod(rs.getInt(6));
 				form.setExe(rs.getInt(7));
 				form.setState(rs.getInt(8));
 				form.setNumber(rs.getString(9));
@@ -218,9 +245,9 @@ public class DBForOutStockForm extends DB{
 	public static void main(String[] args){
 		DBForOutStockForm db = new DBForOutStockForm();
 		db.init();
-		ArrayList<OutStockFormDO> list = db.queryByID("1511240001", "outstockform");
+		ArrayList<OutStockFormDO> list = db.queryALL("outstockform");
 		for(OutStockFormDO form : list){
-			form.setAddress("beijing");
+			System.out.println(form.getTime());
 		}
 		db.update(list, "outstockform");
 		db.close();

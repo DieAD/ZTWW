@@ -89,8 +89,8 @@ public class DBForTraceForm extends DB {
 				+ "(goodsid,trace)values(?,?)";
 	   try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-			pstmt.setString(2, traceformdo.getGoodsid());
-			pstmt.setString(3, traceformdo.getTrace());
+			pstmt.setString(1, traceformdo.getGoodsid());
+			pstmt.setString(2, traceformdo.getTrace());
 			pstmt.executeUpdate();
 		
 	} catch (SQLException e) {
@@ -98,6 +98,27 @@ public class DBForTraceForm extends DB {
 		e.printStackTrace();
 	}
    }
+	   public ArrayList<TraceFormDO> queryALL(String tableName){
+		   ArrayList<TraceFormDO> list = new ArrayList<TraceFormDO>();
+		   String sql = "select * from "+tableName;
+		   try {
+				Statement stmt = conn.createStatement();
+				ResultSet rs = stmt.executeQuery(sql);
+				while(rs.next()){
+					TraceFormDO traceformdo=new TraceFormDO();
+					traceformdo.setIndex(rs.getInt(1));
+					traceformdo.setGoodsid(rs.getString(2));
+					traceformdo.setTrace(rs.getString(3));
+					list.add(traceformdo);
+				}
+				}catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				return list;
+		  
+	   }
+   
    public void update(TraceFormDO traceformdo, String tableName){
 	   String sql = "update "+ tableName +" set goodsid=?,entrytime=?where goodsid=?";
 	   try {
@@ -110,5 +131,23 @@ public class DBForTraceForm extends DB {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
+   }
+   public static void main(String[]args){
+	   DBForTraceForm db=new  DBForTraceForm();
+	   ArrayList<TraceFormDO>list=new  ArrayList<TraceFormDO>();
+	   TraceFormDO tdo=new TraceFormDO();
+	  
+	   tdo.setTrace("上海");
+	   tdo.setGoodsid("000000002");
+	   db.init();
+	   list=db.queryALL("tracetable");
+	   
+	   
+	   ArrayList<TraceFormDO> fdo=new ArrayList<TraceFormDO>();
+	   fdo=db.queryByID("000000002", "tracetable");
+	   for(int i=0;i<fdo.size();i++){
+		   System.out.println(fdo.get(i).getTrace());
+	   }
+	   db.close();
    }
 }

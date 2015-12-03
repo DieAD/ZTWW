@@ -16,4 +16,5 @@ public class GetStockListBL {
 		storagelist=commoditylistdata.getStock(idofcenter);
 		return storagelist;
 	}
+	
 }
