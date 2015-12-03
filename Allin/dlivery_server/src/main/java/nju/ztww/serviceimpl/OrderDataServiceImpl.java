@@ -4,9 +4,11 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.List;
 
+import nju.ztww.data.order.AcceptOrderData;
 import nju.ztww.data.order.MailingOrderData;
 import nju.ztww.data.order.OrderHandler;
 import nju.ztww.po.CarManagePO;
+import nju.ztww.po.TrackPO;
 import nju.ztww.po.OrderPO;
 import nju.ztww.po.PriceDataPO;
 import nju.ztww.service.OrderDataService;
@@ -15,6 +17,7 @@ public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDa
 
 	private OrderHandler orderHandler=new OrderHandler();
 	private MailingOrderData mailingOrderData = new MailingOrderData();
+	private AcceptOrderData acceptOrderData = new AcceptOrderData();
 	
 	public OrderDataServiceImpl() throws RemoteException {
 		super();
@@ -59,5 +62,24 @@ public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDa
 		PriceDataPO priceData = mailingOrderData.getPriceInfo(place1, place2, type);
 		return priceData;
 	}
+
+	public TrackPO passOrder(String order) throws RemoteException {
+		// TODO Auto-generated method stub
+		TrackPO mailingTrackPO = mailingOrderData.passOrder(order);
+		return mailingTrackPO;
+	}
+
+	public void addTrack(TrackPO mailingTrackPO) throws RemoteException {
+		// TODO Auto-generated method stub
+		mailingOrderData.addTrack(mailingTrackPO);
+	}
+
+	public TrackPO passAcceptOrder(String order) throws RemoteException {
+		// TODO Auto-generated method stub
+		TrackPO accepTrackPO = acceptOrderData.passOrder(order);
+		return null;
+	}
+
+
 
 }
