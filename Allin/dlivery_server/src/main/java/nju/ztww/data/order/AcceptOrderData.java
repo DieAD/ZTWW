@@ -31,13 +31,15 @@ public class AcceptOrderData {
 	}
 ///
 	public TrackPO passOrder(String order) {
-		// TODO Auto-generated method stub
+		
 		dbForReciveForm = new DBForReciveForm();
 		dbForReciveForm.init();
 		ArrayList<ReciveFormDO> reciveFormDOs = dbForReciveForm.queryByID(
 				order, "reciveform");
 		TrackPO acceptTrackPO = new TrackPO();
-		
+
+		//System.out.println("order : "+order);
+
 		if (!reciveFormDOs.isEmpty()) {
 			ReciveFormDO receive = new ReciveFormDO();
 			receive.setExe(1);

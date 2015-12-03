@@ -51,11 +51,18 @@ public class ManageBL {
 			mailingOrderBl.passOrders(list);
 			System.out.print("order get");
 		}
+
 		if(index==7){
 			inStock.changeExeAddStock(list);
+		}
+		if(index==2){		
+			acceptOrderBl.passOrders(list);
+
 		}
 		if(index==9){
 			outStock.changeExeDeleteStock(list);
 		}////
+		
 	}
+	
 }
