@@ -17,6 +17,7 @@ import nju.ztww.po.OrderPO;
 import nju.ztww.po.PriceDataPO;
 import nju.ztww.service.OrderDataService;
 import nju.ztww.vo.DeliverFeesVO;
+import nju.ztww.vo.IDVO;
 import nju.ztww.vo.MailingVO;
 
 public class MailingOrderBl {
@@ -113,7 +114,12 @@ public class MailingOrderBl {
 		return random;
 	}
 
-	public boolean passOrders(ArrayList<String> orders){
+	public boolean passOrders(ArrayList<IDVO> list){
+		 ArrayList<String> orders  = new ArrayList<String>();
+	        for(IDVO vo : list){
+	        	String temp = vo.id;
+	        	orders.add(temp);
+	        }
 
 		orderDataService=(OrderDataService)rhelper.findService("OrderDataService");
 		for(String order : orders){

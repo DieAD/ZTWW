@@ -1,7 +1,7 @@
 package nju.ztww.bl.order;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 import nju.ztww.RMI.RMIHelper;
 import nju.ztww.po.AcceptPO;
@@ -9,6 +9,7 @@ import nju.ztww.po.OrderPO;
 import nju.ztww.po.TrackPO;
 import nju.ztww.service.OrderDataService;
 import nju.ztww.vo.AcceptVO;
+import nju.ztww.vo.IDVO;
 
 public class AcceptOrderBl {
 
@@ -43,8 +44,12 @@ public class AcceptOrderBl {
 		return result;
 	}
 
-	public boolean passOrders(ArrayList<String> orders){
-
+	public boolean passOrders(ArrayList<IDVO> list){
+        ArrayList<String> orders  = new ArrayList<String>();
+        for(IDVO vo : list){
+        	String temp = vo.id;
+        	orders.add(temp);
+        }
 		orderDataService=(OrderDataService)rHelper.findService("OrderDataService");
 		for(String order : orders){
 			TrackPO acceptTrackPO = orderDataService.passAcceptOrder(order);
