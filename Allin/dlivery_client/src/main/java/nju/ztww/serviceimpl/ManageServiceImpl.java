@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import nju.ztww.bl.manage.ManageBL;
 import nju.ztww.service.ManageService;
 import nju.ztww.vo.GenerateVO;
+import nju.ztww.vo.IDVO;
 import nju.ztww.vo.SuperviseeVO;
 
 public class ManageServiceImpl implements ManageService {
@@ -37,6 +38,12 @@ public class ManageServiceImpl implements ManageService {
 	public ArrayList<GenerateVO> getCheckOrder(int index) {
 		// TODO Auto-generated method stub
 		return manageBL.getCheckOrder(index);
+	}
+
+	public void updateInformation(ArrayList<IDVO> list,int index) {
+		// TODO Auto-generated method stub
+		manageBL.updateInfo(list, index);
+		
 	}
 
 }

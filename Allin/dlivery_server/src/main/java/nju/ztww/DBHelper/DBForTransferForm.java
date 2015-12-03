@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import nju.ztww.dao.HollReciFormDO;
 import nju.ztww.po.CarManagePO;
 import nju.ztww.po.TransferPO;
 
@@ -15,35 +16,7 @@ public class DBForTransferForm extends DB{
 		
 	}
 	
-	 public String insert(ArrayList<TransferPO> list,String tableName){
-    	 String sql = "insert into "+tableName+"(id,transferMethod,data,transferNumber,airNumber,"
-    	 		+ "sendPlace,arrive,counter,jianZzhuangYuan,order,money,exe,state)"
-    	 		+ "values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
-    	 try {
-			PreparedStatement pstmt = conn.prepareStatement(sql);
-			for(TransferPO form : list){
-				pstmt.setString(1, form.getId());
-				pstmt.setString(2,form.getMethod());
-				pstmt.setString(3,form.getCarData());
-				pstmt.setString(4,form.getTransferData());
-				pstmt.setString(5,form.getMethodNumber());
-				pstmt.setString(6,form.getSendPlace());
-				pstmt.setString(7,form.getArrivePlace());
-				pstmt.setString(8,form.getCounterNumber());
-				pstmt.setString(9,form.getJianZhuangName());
-				pstmt.setString(10,form.getSendNumber());
-				pstmt.setDouble(11,form.getMoney());
-				pstmt.setInt(12,form.getExe());
-				pstmt.setInt(13,form.getState());
-				
-				pstmt.executeUpdate();
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace(); 
-		}
-		return "success";    	     	     	 
-     }
+	
 	 
 	 public ArrayList<TransferPO> queryByID(String ID,String tableName){
 		    //	 System.out.print(ID);
@@ -78,5 +51,65 @@ public class DBForTransferForm extends DB{
 		    	 
 		    	 return list;
 		     }
+	 public String insert(ArrayList<TransferPO> list,String tableName){
+    	 String sql = "insert into "+tableName+"(id,transferMethod,data,transferNumber,airNumber,"
+    	 		+ "sendPlace,arrive,counter,jianZzhuangYuan,order,money,exe,state)"
+    	 		+ "values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    	 try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			for(TransferPO form : list){
+				pstmt.setString(1, form.getId());
+				pstmt.setString(2,form.getMethod());
+				pstmt.setString(3,form.getCarData());
+				pstmt.setString(4,form.getTransferData());
+				pstmt.setString(5,form.getMethodNumber());
+				pstmt.setString(6,form.getSendPlace());
+				pstmt.setString(7,form.getArrivePlace());
+				pstmt.setString(8,form.getCounterNumber());
+				pstmt.setString(9,form.getJianZhuangName());
+				pstmt.setString(10,form.getSendNumber());
+				pstmt.setDouble(11,form.getMoney());
+				pstmt.setInt(12,form.getExe());
+				pstmt.setInt(13,form.getState());
+				
+				pstmt.executeUpdate();
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace(); 
+		}
+		return "success";    	     	     	 
+     }
+	 
+	 public String update(ArrayList<TransferPO> list,String tableName){
+    	 String sql = "update "+tableName + " set id=?,transferMethod=?,data=?,transferNumber=?,"
+    	 		+ "airNumber=?,sendPlace=?,arrive=?,counter=?,jianZzhuangYuan=?,order=?,money=?,exe=?,state=? where id=?";
+    	 try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			for(TransferPO form : list){
+				pstmt.setString(1, form.getId());
+				pstmt.setString(2,form.getMethod());
+				pstmt.setString(3,form.getCarData());
+				pstmt.setString(4,form.getTransferData());
+				pstmt.setString(5,form.getMethodNumber());
+				pstmt.setString(6,form.getSendPlace());
+				pstmt.setString(7,form.getArrivePlace());
+				pstmt.setString(8,form.getCounterNumber());
+				pstmt.setString(9,form.getJianZhuangName());
+				pstmt.setString(10,form.getSendNumber());
+				pstmt.setDouble(11,form.getMoney());
+				pstmt.setInt(12,form.getExe());
+				pstmt.setInt(13,form.getState());
+				pstmt.setString(14, form.getId());
+				
+				pstmt.executeUpdate();
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			return "fail"; 
+		}
+    	 return "success"; 
+    	 
+     }
 
 }

@@ -4,11 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import nju.ztww.RMI.RMIHelper;
-import nju.ztww.po.OrderPO;
-import nju.ztww.po.ShippingPO;
 import nju.ztww.po.TransferPO;
 import nju.ztww.service.OrderDataService;
-import nju.ztww.vo.ShippingVO;
+import nju.ztww.vo.IDVO;
 import nju.ztww.vo.TransferVO;
 
 /**
@@ -29,7 +27,7 @@ public class TransferOrderBl {
 	 
 	 private OrderDataService orderDataService;
 	 
-	 private List<OrderPO> list=new ArrayList<OrderPO>();
+	 private List<IDVO> list=new ArrayList<IDVO>();
 	
 	public TransferOrderBl(){
 		
@@ -73,12 +71,12 @@ public class TransferOrderBl {
 	 * @param list
 	 * @return
 	 */
-	public String handleAllVO(List<TransferPO> list){
-		for(TransferPO temp:list){
+	public String handleAllVO(List<IDVO> list){
+		for(IDVO temp:list){
 			this.list.add(temp);
 		}
 		orderDataService=(OrderDataService)rhelper.findService("OrderDataService");
-		String result=orderDataService.insertToDateFactory(this.list,8);
+		 String result=orderDataService.insertToDateFactory(this.list,8);
 		return result;
 		
 	}

@@ -5,10 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import nju.ztww.RMI.RMIHelper;
-import nju.ztww.po.BusinessArrivePO;
 import nju.ztww.po.OrderPO;
 import nju.ztww.po.ReceivePO;
 import nju.ztww.service.OrderDataService;
+import nju.ztww.vo.IDVO;
 import nju.ztww.vo.ReceiveVO;
 
 /**
@@ -30,7 +30,7 @@ public class ReceiveOrderBl {
 		 
 		private OrderDataService orderDataService;
 		
-		 private List<OrderPO> list=new ArrayList<OrderPO>();
+		 private List<IDVO> list=new ArrayList<IDVO>();
 		
 		public ReceiveOrderBl(){
 			
@@ -65,12 +65,12 @@ public class ReceiveOrderBl {
 		 * @param list
 		 * @return
 		 */
-		public String handleAllVO(List<ReceivePO> list){
-			for(ReceivePO temp:list){
+		public String handleAllVO(List<IDVO> list){
+			for(IDVO temp:list){
 				this.list.add(temp);
 			}
 			orderDataService=(OrderDataService)rhelper.findService("OrderDataService");
-			String result=orderDataService.insertToDateFactory(this.list,5);
+			 String result=orderDataService.insertToDateFactory(this.list,5);
 			return result;
 			
 		}

@@ -8,6 +8,7 @@ import nju.ztww.po.BusinessArrivePO;
 import nju.ztww.po.OrderPO;
 import nju.ztww.service.OrderDataService;
 import nju.ztww.vo.BusinessArriveVO;
+import nju.ztww.vo.IDVO;
 import nju.ztww.vo.MailingVO;
 import nju.ztww.vo.OrderVO;
 
@@ -29,7 +30,7 @@ public class BusinessArriveOrderBl {
 	 
 	 private OrderDataService orderDataService;
 	 
-	 private List<OrderPO> list=new ArrayList<OrderPO>();
+	 private List<IDVO> list=new ArrayList<IDVO>();
 	
 	public BusinessArriveOrderBl(){
 		
@@ -71,12 +72,13 @@ public class BusinessArriveOrderBl {
 	 * @param list
 	 * @return
 	 */
-	public String handleAllVO(List<BusinessArrivePO> list){
-		for(BusinessArrivePO temp:list){
+	public String handleAllVO(List<IDVO> list){
+		for(IDVO temp:list){
 			this.list.add(temp);
 		}
 		orderDataService=(OrderDataService)rhelper.findService("OrderDataService");
-		String result=orderDataService.insertToDateFactory(this.list,2);
+		String result=orderDataService.insertToDateFactory(this.list, 2);
+		orderDataService.addTrace(this.list, 2);
 		return result;
 		
 	}

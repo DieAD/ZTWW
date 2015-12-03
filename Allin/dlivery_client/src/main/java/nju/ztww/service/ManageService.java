@@ -3,6 +3,7 @@ package nju.ztww.service;
 import java.util.ArrayList;
 
 import nju.ztww.vo.GenerateVO;
+import nju.ztww.vo.IDVO;
 import nju.ztww.vo.SuperviseeVO;
 
 public interface ManageService {
@@ -23,6 +24,8 @@ public interface ManageService {
      public void modifySupervisee(String id);
      
      public ArrayList<GenerateVO> getCheckOrder(int index);
+        
+     public void  updateInformation(ArrayList<IDVO> list,int index);
      
      
 }
