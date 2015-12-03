@@ -19,4 +19,10 @@ public interface CommodityListDataService {
 
 
 	ArrayList<StorageListLineofInPO> getStock(String idofcenter);
+
+
+	void changeExeAddStock(ArrayList<String> list);
+   
+
+	
 }

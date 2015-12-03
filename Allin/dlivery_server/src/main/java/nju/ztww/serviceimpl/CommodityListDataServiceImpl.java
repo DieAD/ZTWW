@@ -4,6 +4,7 @@ import java.rmi.server.UnicastRemoteObject;
 import java.text.ParseException;
 import java.util.ArrayList;
 
+import nju.ztww.data.commodity.HandleExe;
 import nju.ztww.data.commodity.StockGet;
 import nju.ztww.data.commodity.StorageListInGetByTime;
 import nju.ztww.data.commodity.StorageListOutGetByTime;
@@ -61,6 +62,14 @@ public class CommodityListDataServiceImpl extends UnicastRemoteObject implements
 		return arraylistin;
 		
 		  
+	}
+
+	public void changeExeAddStock(ArrayList<String> list)
+			throws RemoteException {
+		// TODO Auto-generated method stub
+		HandleExe handle=new HandleExe();
+		handle.changeExeAddStock(list);
+		
 	}
     
 }

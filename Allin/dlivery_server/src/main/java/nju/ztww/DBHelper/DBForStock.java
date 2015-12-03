@@ -136,7 +136,7 @@ public class DBForStock extends DB{
 	}
 	
 	public void delete(String ID,String tableName){
-		String sql = "delete from " + tableName + " where id=" + ID;
+		String sql = "delete from " + tableName + " where goodsid=" + ID;
 		try {
 			Statement stmt = conn.createStatement();
 			stmt.executeUpdate(sql);
@@ -205,9 +205,11 @@ public class DBForStock extends DB{
 		DBForStock db = new DBForStock();
 		ArrayList<StockDO> list=new ArrayList<StockDO>();
 		db.init();
+		
 		list=db.queryALL("stocktable");
+		
 		for(int i=0;i<list.size();i++){
-		  System.out.println(list.get(i).getEntrytime());
+		  System.out.println(list.get(i).getAddress());
 		}
 		db.close();
 	}
