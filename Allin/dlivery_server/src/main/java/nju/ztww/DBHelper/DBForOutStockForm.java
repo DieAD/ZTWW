@@ -61,6 +61,34 @@ public class DBForOutStockForm extends DB{
 			}
 		}
 	}
+	public ArrayList<OutStockFormDO> selectAll() {
+		ArrayList<OutStockFormDO> list = new ArrayList<OutStockFormDO>();
+		String sql = "select * from outstockform where exe=0";
+		try {
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+
+			while (rs.next()) {
+				OutStockFormDO form = new OutStockFormDO();
+				form.setIndex(rs.getInt(1));
+				form.setId(rs.getString(2));
+				form.setGoodsid(rs.getString(3));
+				form.setTime(rs.getString(4));
+				form.setAddress(rs.getString(5));
+				form.setTransmethod(rs.getString(6));
+				form.setExe(rs.getInt(7));
+				form.setState(rs.getInt(8));
+				form.setNumber(rs.getString(9));
+
+				list.add(form);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return list;
+	}
 
 	public ArrayList<OutStockFormDO> queryByID(String ID, String tableName) {
 		ArrayList<OutStockFormDO> list = new ArrayList<OutStockFormDO>();

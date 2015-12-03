@@ -176,6 +176,43 @@ public class DBForOrderForm extends DB{
 		 
 	 }
 	 
+	 public ArrayList<OrderFormDO> selectAll(){
+		 ArrayList<OrderFormDO> list = new ArrayList<OrderFormDO>();
+		 String sql = "select * from orderform where exe=0";
+			
+			try {
+				Statement stmt = conn.createStatement();
+				ResultSet rs = stmt.executeQuery(sql);
+				
+				while(rs.next()){
+					OrderFormDO order = new OrderFormDO();
+					order.setIndex(rs.getInt(1));
+					order.setHoll(rs.getString(2));
+					order.setOrdernumber(rs.getString(3));
+					order.setSender(rs.getString(4));
+					order.setPhone(rs.getString(5));
+					order.setUnit(rs.getString(6));
+					order.setTelephone(rs.getString(7));
+					order.setRecip(rs.getString(8));
+					order.setRphone(rs.getString(9));
+					order.setAddress(rs.getString(10));
+					order.setOrderinfo(rs.getString(11));								
+					order.setPretime(rs.getString(12));
+					order.setExe(rs.getInt(13));
+					order.setState(rs.getInt(14));
+					order.setCost(rs.getDouble(15));
+					order.setCat(rs.getString(16));
+					
+					list.add(order);
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			return list;
+	 }
+	 
 //	 public static void main(String[] args){
 //		 DBForOrderForm db = new DBForOrderForm();
 //		 db.init();

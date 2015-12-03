@@ -61,6 +61,37 @@ public class DBForCenterreciForm extends DB{
 			}
 		}
 	}
+	public ArrayList<CenterreciFormDO> selectAll(){
+		ArrayList<CenterreciFormDO> list = new ArrayList<CenterreciFormDO>();
+
+		String sql = " select * from centerreciform where exe=0" ;
+
+		try {
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+
+			while (rs.next()) {
+				CenterreciFormDO form = new CenterreciFormDO();
+				form.setIndex(rs.getInt(1));
+				form.setId(rs.getString(2));
+				form.setCenterid(rs.getString(3));
+				form.setGoodsid(rs.getString(4));
+				form.setTime(rs.getString(5));
+				form.setBddress(rs.getString(6));
+				form.setGoodsstate(rs.getString(7));
+				form.setExe(rs.getInt(8));
+				form.setState(rs.getInt(9));
+
+				list.add(form);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return list;
+	}
+
 
 	public ArrayList<CenterreciFormDO> queryByID(String ID, String tableName) {
 		ArrayList<CenterreciFormDO> list = new ArrayList<CenterreciFormDO>();
