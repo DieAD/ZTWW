@@ -1,5 +1,6 @@
 package nju.ztww.ui.finance;
 
+import java.awt.Toolkit;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
@@ -31,7 +32,7 @@ public class FinanceUI  {
 //		//add panel;
 //		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 //		frame.getContentPane().setLayout(null);
-		//frame.getContentPane().add(accountPanel);
+//		frame.getContentPane().add(accountPanel);
 //		frame.getContentPane().add(headerPanel);
 //		frame.getContentPane().add(menuePanel);
 //		frame.setVisible(true);
@@ -86,6 +87,6 @@ public class FinanceUI  {
     }
     
 //    public static void main(String[] args){
-//    	new FinanceUI();
+//    	new FinanceUI(new JFrame());
 //    }
 }
