@@ -1,5 +1,6 @@
 package nju.ztww.ui.commodity;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -20,14 +21,17 @@ import javax.swing.table.DefaultTableModel;
 import nju.ztww.service.CommodityService;
 import nju.ztww.serviceimpl.CommodityServiceImp;
 import nju.ztww.serviceimpl.StorageInListServiceImpl;
+import nju.ztww.ui.order.MyButton;
+import nju.ztww.ui.order.MyScrollPane;
+import nju.ztww.ui.order.MyTable;
 import nju.ztww.vo.StorageListLineofInVO;
 import nju.ztww.vo.StorageListLineofOutVO;
 
 public class InofStoragePanel extends JPanel{
-	public JTable table;
+	public MyTable table;
 	   public JDialog dlg;
 	   DefaultTableModel defaultTableModel ;
-	   public JButton addbutton;
+	   public MyButton addbutton;
 	   public JLabel ordernumber=new JLabel("快递编号");
 	   public JLabel data=new JLabel("入库日期");
 	   public JLabel arrive=new JLabel("目的地");
@@ -44,8 +48,8 @@ public class InofStoragePanel extends JPanel{
 	   public JTextField weifield=new JTextField();
 	   public JButton  surebutton=new JButton("确定");
 	   public JButton  sureofbutton=new JButton("确定");
-	   public JButton  submitbutton=new JButton("提交");
-	   public JButton  deletebutton=new JButton("删除");
+	   public MyButton  submitbutton=new MyButton('a');
+	   public MyButton  deletebutton=new MyButton('c');
 	   public CommodityService commodity=new StorageInListServiceImpl();
 	   
 	   public StorageListLineofInVO  storagelineIn;
@@ -53,14 +57,16 @@ public class InofStoragePanel extends JPanel{
 	   java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit()
 				.getScreenSize();
 	   public InofStoragePanel() {
+			this.setBackground(new Color(250, 240, 230));
+
 		   this.setLayout(null);
-		   addbutton=new JButton();
-		   ImageIcon add=new ImageIcon("photo/add.gif");
-		   addbutton.setBounds(450, 420, 110, 38);
-		   addbutton.setIcon(add);
+		   addbutton=new MyButton('b');
+//		   ImageIcon add=new ImageIcon("photo/add.gif");
+//		   addbutton.setBounds(450, 420, 110, 38);
+//		   addbutton.setIcon(add);
 		   sureofbutton.setBounds(580, 420, 110,38);
-		   submitbutton.setBounds(320, 420, 110, 38);
-		   deletebutton.setBounds(190, 420, 110, 38);
+//		   submitbutton.setBounds(320, 420, 110, 38);
+//		   deletebutton.setBounds(190, 420, 110, 38);
 		   this.add(sureofbutton);
 		   this.add(addbutton);
 		   this.add(submitbutton);
@@ -79,16 +85,18 @@ public class InofStoragePanel extends JPanel{
 
 				  
 	  //创建表格: 建立一个显示二维数组数据的表格，且可以显示列的名称。 
-		defaultTableModel = new DefaultTableModel( playerInfo,Names); 
-		table = new JTable( defaultTableModel);       //字段名称
-		Dimension size = table.getTableHeader().getPreferredSize();
-		size.height = 30;//设置新的表头高度40
-		table.getTableHeader().setPreferredSize(size);
-		table.setAutoResizeMode(JTable.AUTO_RESIZE_NEXT_COLUMN);
-		//绑定滚动条
-		JScrollPane scrollPane = new JScrollPane(table);
-		 table.setRowHeight(25);
-		scrollPane.setBounds(0, 0, 700, 400);
+		defaultTableModel = new DefaultTableModel( playerInfo,Names);
+		table = new MyTable(defaultTableModel);
+		MyScrollPane scrollPane = new MyScrollPane(table);
+//		table = new JTable( defaultTableModel);       //字段名称
+//		Dimension size = table.getTableHeader().getPreferredSize();
+//		size.height = 30;//设置新的表头高度40
+//		table.getTableHeader().setPreferredSize(size);
+//		table.setAutoResizeMode(JTable.AUTO_RESIZE_NEXT_COLUMN);
+//		//绑定滚动条
+//		JScrollPane scrollPane = new JScrollPane(table);
+//		 table.setRowHeight(25);
+//		scrollPane.setBounds(0, 0, 700, 400);
 		this.add(scrollPane); 
 		addbutton.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent arg0) {

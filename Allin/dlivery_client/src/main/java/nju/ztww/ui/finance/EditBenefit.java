@@ -1,11 +1,13 @@
 package nju.ztww.ui.finance;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -17,14 +19,18 @@ public class EditBenefit extends EditPanel {
     private Header  header = new Header();
     FinanceService fs = new FinanceServiceImpl();
 	public EditBenefit(String[] strings, Object[][] objects ){
+		
 		super(strings,objects);
-		this.scrollPane.setBounds(0,25,690,395);
-		this.header.setBounds(0, 0, 690, 25);
+		this.setBackground(new Color(250, 240, 230));
+		this.scrollPane.setBounds(0,25,750,375);   //——by zyz 
+		this.header.setBounds(0, 0, 750, 25);
 		this.add(header);
 		this.remove(button1);
 		this.remove(button3);
-		button2.setText("更新");
+		button2.setIcon(new ImageIcon("photo/update.png"));
+//		button2.setText("更新");
 		button2.addActionListener(new Listener());
+		this.add(button2);
 		}
 	
 	class Header extends JPanel{

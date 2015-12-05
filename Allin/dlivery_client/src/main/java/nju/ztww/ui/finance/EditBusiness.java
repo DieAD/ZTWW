@@ -1,5 +1,6 @@
 package nju.ztww.ui.finance;
 
+import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -24,6 +25,7 @@ public class EditBusiness extends EditPanel{
     EditPanel scrollPanel2 = new EditPanel(new String[]{"收款日期","收款金额","收款快递员","订单条形码"},new Object[][]{{new String("2015/11"),new Integer(100),new String("000002"),new String("00000001")}});
 	public EditBusiness(String[] strings,Object[][] objects){
 		super(strings,objects);
+		this.setBackground(new Color(250, 240, 230));
 		scrollPanel2.remove(button1);
 		scrollPanel2.remove(button2);
 		scrollPanel2.remove(button3);
@@ -34,7 +36,8 @@ public class EditBusiness extends EditPanel{
 		this.scrollPane.setBounds(0, 50, 690, 175);
 		scrollPanel2.setBounds(0, 250, 690, 175);
 		
-		
+		this.scrollPane.setBackground(new Color(250, 240, 230));
+		scrollPanel2.setBackground(new Color(250, 240, 230)); //by zyz
 		
 		this.add(header);
 		this.add(label1);

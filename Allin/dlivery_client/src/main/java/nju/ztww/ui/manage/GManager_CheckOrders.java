@@ -182,7 +182,7 @@ public class GManager_CheckOrders extends JPanel {
 	
 	public void getCheckOrderVO(int index){
 		this.index = index;
-		if(index>1){
+		if(index>0){
 			tablePanel.removeAll();}
 		ArrayList<GenerateVO> list = mService.getCheckOrder(index);
 		Object[][] values = new Object[list.size()][5];
