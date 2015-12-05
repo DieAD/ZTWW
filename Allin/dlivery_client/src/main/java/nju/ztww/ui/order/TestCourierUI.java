@@ -32,12 +32,12 @@ public class TestCourierUI {
 		// frame.setLocation((width-900)/2, (height-600)/2);
 		// frame.setResizable(false);
 
-		MenuPanel.setBounds(0, 0, 210, 600);
-		Theme.setBounds(210, 0, 690, 60);
-		OrderInput.setBounds(210, 60, 690, 480);
-		Accept.setBounds(210, 60, 690, 480);
+		MenuPanel.setBounds(0, 100, 150, 600);
+		Theme.setBounds(150, 0, 750, 60);
+		OrderInput.setBounds(150, 100, 750, 450);
+		Accept.setBounds(150, 100, 750, 450);
 		// personalInformation.setBounds(210,60,690,480);
-		checkOrder.setBounds(210, 60, 690, 480);
+		checkOrder.setBounds(150, 100, 750, 450);
 
 		// frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		// frame.getContentPane().setLayout(null);

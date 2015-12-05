@@ -1,30 +1,32 @@
 package nju.ztww.ui.order;
 
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JPanel;
 
 public class CourierMenuUI extends JPanel{
 	
-	JButton OrderInputButton = new JButton();
-	JButton AcceptButton = new JButton();
-	JButton CheckOrderButton = new JButton();
-	JButton YourMessageButton = new JButton();
-	JButton LogoutButton = new JButton();
+	MyButton OrderInputButton = new MyButton();
+	MyButton AcceptButton = new MyButton();
+	MyButton CheckOrderButton = new MyButton();
+	MyButton YourMessageButton = new MyButton();
+	MyButton LogoutButton = new MyButton();
 	
 	CourierMenuUI(){
+		
 		this.setLayout(null);
-		ImageIcon OrderInput = new ImageIcon("photo/OrderInput.gif");
-		ImageIcon Accept = new ImageIcon("photo/Accept.gif");
-		ImageIcon CheckOrder = new ImageIcon("photo/CheckOrder.gif");
-		ImageIcon YourMessage = new ImageIcon("photo/YourMessage.gif");
-		ImageIcon Logout = new ImageIcon("photo/Logout.gif");
+		this.setBackground(new Color(155,122,90));
+		ImageIcon OrderInput = new ImageIcon("photo/OrderInput.png");
+		ImageIcon Accept = new ImageIcon("photo/Accept.png");
+		ImageIcon CheckOrder = new ImageIcon("photo/CheckOrder.png");
+		ImageIcon YourMessage = new ImageIcon("photo/PersonInfo.png");
+		ImageIcon Logout = new ImageIcon("photo/Logout.png");
 		
 		this.setBorder(new javax.swing.border.TitledBorder(null, "",
 				javax.swing.border.TitledBorder.CENTER,
@@ -32,7 +34,7 @@ public class CourierMenuUI extends JPanel{
 		
 		
 		OrderInputButton.setIcon(OrderInput);
-		OrderInputButton.setBounds(0,60,209,58);
+		OrderInputButton.setBounds(0,0,150,40); //——by zyz 2015/12/3
 		OrderInputButton.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
@@ -42,7 +44,7 @@ public class CourierMenuUI extends JPanel{
 		});
 		
 		AcceptButton.setIcon(Accept);
-		AcceptButton.setBounds(0,118,209,58);
+		AcceptButton.setBounds(0,40,150,40); //——by zyz 2015/12/3
 		AcceptButton.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
@@ -52,7 +54,7 @@ public class CourierMenuUI extends JPanel{
 		});
 		
 		CheckOrderButton.setIcon(CheckOrder);
-		CheckOrderButton.setBounds(0,176,209,58);
+		CheckOrderButton.setBounds(0,80,150,40); //——by zyz 2015/12/3
 		CheckOrderButton.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
@@ -62,7 +64,7 @@ public class CourierMenuUI extends JPanel{
 		});
 		
 		YourMessageButton.setIcon(YourMessage);
-		YourMessageButton.setBounds(0,234,209,58);
+		YourMessageButton.setBounds(0,120,150,40);	//——by zyz 2015/12/3
 		YourMessageButton.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
@@ -72,7 +74,7 @@ public class CourierMenuUI extends JPanel{
 		});
 		
 		LogoutButton.setIcon(Logout);
-		LogoutButton.setBounds(0,292,209,58);
+		LogoutButton.setBounds(0,160,150,40);	//——by zyz 2015/12/3
 		
 		this.add(OrderInputButton);
 		this.add(AcceptButton);
@@ -81,11 +83,11 @@ public class CourierMenuUI extends JPanel{
 		this.add(LogoutButton);
 	}
 	
-	public void paintComponent(Graphics g){
-		super.paintComponent(g);
-		
-		Image background=new ImageIcon("photo/background.gif").getImage();
-		g.drawImage(background, 0,0,null);
-		
-	}
+//	public void paintComponent(Graphics g){
+//		super.paintComponent(g);
+//		
+//		Image background=new ImageIcon("photo/background.gif").getImage();
+//		g.drawImage(background, 0,0,null);
+//		
+//	}
 }
