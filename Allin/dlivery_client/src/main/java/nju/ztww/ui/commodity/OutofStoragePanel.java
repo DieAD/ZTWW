@@ -1,5 +1,6 @@
 package nju.ztww.ui.commodity;
 //debug 时注意成员变量arraylist 是否会造成添加
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -23,20 +24,23 @@ import nju.ztww.bl.commodity.StringToInt;
 import nju.ztww.service.CommodityService;
 import nju.ztww.serviceimpl.CommodityServiceImp;
 import nju.ztww.serviceimpl.StorageOutListServiceImpl;
+import nju.ztww.ui.order.MyButton;
+import nju.ztww.ui.order.MyScrollPane;
+import nju.ztww.ui.order.MyTable;
 import nju.ztww.vo.OrderVO;
 import nju.ztww.vo.StorageListLineofOutVO;
 import nju.ztww.vo.StorageListVO;
 
 public class OutofStoragePanel extends JPanel {
-   public JTable table;
+   public MyTable table;
    public JDialog dlg;
    DefaultTableModel defaultTableModel ;
-   public JButton addbutton;
+   public MyButton addbutton;
    public JButton surebutton;
    public StorageListLineofOutVO  storagelineout;
    public JButton  sureofbutton=new JButton("确定");
-   public JButton  submitofbutton=new JButton("提交");
-   public JButton deletebutton=new JButton("删除");
+   public MyButton  submitofbutton=new MyButton('a');
+   public MyButton deletebutton=new MyButton('c');
    public CommodityService commodity=new StorageOutListServiceImpl();
    public JLabel submitlabel=new JLabel();
    java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit()
@@ -55,18 +59,19 @@ public class OutofStoragePanel extends JPanel {
     
    public ArrayList<StorageListLineofOutVO>arraylist=new ArrayList<StorageListLineofOutVO>();
    public OutofStoragePanel() {
+	   this.setBackground(new Color(250, 240, 230));
 	   this.setLayout(null);
-	   addbutton=new JButton();
+	   addbutton=new MyButton('b');
 	   
-	   ImageIcon add=new ImageIcon("photo/add.gif");
-	   addbutton.setBounds(450, 420, 110, 38);
-	   addbutton.setIcon(add);
+//	   ImageIcon add=new ImageIcon("photo/add.gif");
+//	   addbutton.setBounds(450, 420, 110, 38);
+//	   addbutton.setIcon(add);
 	   sureofbutton.setBounds(580, 420, 110,38);
-	   deletebutton.setBounds(190, 420, 110, 38);
-	   submitofbutton.setBounds(320, 420, 110, 38);
-	   submitlabel.setFont(new Font("楷体",0,20));
-	   submitlabel.setText("提交成功");
-	   submitlabel.setBounds(20, 420, 200, 38);
+//	   deletebutton.setBounds(190, 420, 110, 38);
+//	   submitofbutton.setBounds(320, 420, 110, 38);
+//	   submitlabel.setFont(new Font("楷体",0,20));
+//	   submitlabel.setText("提交成功");
+//	   submitlabel.setBounds(20, 420, 200, 38);
 	   this.add(sureofbutton);
 	   this.add(addbutton);
 	   this.add(submitofbutton);
@@ -86,15 +91,17 @@ public class OutofStoragePanel extends JPanel {
 			  
   //创建表格: 建立一个显示二维数组数据的表格，且可以显示列的名称。 
 	defaultTableModel = new DefaultTableModel( playerInfo,Names); 
-	table = new JTable( defaultTableModel);       //字段名称
-	Dimension size = table.getTableHeader().getPreferredSize();
-	size.height = 30;//设置新的表头高度40
-	table.getTableHeader().setPreferredSize(size);
-	table.setAutoResizeMode(JTable.AUTO_RESIZE_NEXT_COLUMN);
-	//绑定滚动条
-	JScrollPane scrollPane = new JScrollPane(table);
-	 table.setRowHeight(25);
-	scrollPane.setBounds(0, 0, 700, 400);
+	table = new MyTable(defaultTableModel);
+	MyScrollPane scrollPane = new MyScrollPane(table);
+//	table = new JTable( defaultTableModel);       //字段名称
+//	Dimension size = table.getTableHeader().getPreferredSize();
+//	size.height = 30;//设置新的表头高度40
+//	table.getTableHeader().setPreferredSize(size);
+//	table.setAutoResizeMode(JTable.AUTO_RESIZE_NEXT_COLUMN);
+//	//绑定滚动条
+//	JScrollPane scrollPane = new JScrollPane(table);
+//	 table.setRowHeight(25);
+//	scrollPane.setBounds(0, 0, 700, 400);
 	this.add(scrollPane); 
 	submitofbutton.addActionListener(listener2);
 	dbtype.addItem("火车");

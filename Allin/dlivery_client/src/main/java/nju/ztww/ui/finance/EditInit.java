@@ -1,5 +1,7 @@
 package nju.ztww.ui.finance;
 
+import java.awt.Color;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -11,6 +13,7 @@ public class EditInit extends EditPanel{
 	
     public EditInit(String[] strings,Object[][] objects){
     	super(strings,objects);
+    	this.setBackground(new Color(250, 240, 230));
     	button.setIcon(initaccout);
     	this.remove(button1);
     	this.remove(button2);

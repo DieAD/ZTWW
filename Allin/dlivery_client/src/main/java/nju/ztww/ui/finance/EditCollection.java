@@ -1,5 +1,6 @@
 package nju.ztww.ui.finance;
 
+import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,7 +22,9 @@ public class EditCollection extends EditPanel{
      public EditCollection(String[] strings, Object[][] objects) {
 		// TODO Auto-generated constructor stub
     	 super( strings, objects);
+    	 this.setBackground(new Color(250, 240, 230));
     	 this.scrollPane.setBounds(0, 25, 690, 395);
+    	 this.scrollPane.setBackground(new Color(250, 240, 230));
     	 this.header.setBounds(0, 0, 690, 25);
     	 this.add(header);
     	 this.remove(button1);

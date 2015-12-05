@@ -18,7 +18,7 @@ public class StorageUi extends JFrame {
     private ArrayList<JPanel> list = new ArrayList<JPanel>();
     
 	public StorageUi() {
-		// TODO Auto-generated constructor stub
+//		 TODO Auto-generated constructor stub
 //		setup();
 //		setPosition();
 //		setController();
@@ -36,12 +36,12 @@ public class StorageUi extends JFrame {
 	}
 	public void setPosition(){
 		this.setLayout(null);
-		navigationpanel.setBounds(0, 0, 150, 600);
+		navigationpanel.setBounds(0, 100, 150, 500);
 		toppanel.setBounds(150, 0, 750, 60);
-		outofStoragepanel.setBounds(150, 60, 750, 500);
-		inofStoragepanel.setBounds(150, 60, 750, 500);
-		storagecheckpanel.setBounds(150, 60, 750, 500);
-		storagepanpanel.setBounds(150, 60, 750, 500);
+		outofStoragepanel.setBounds(150, 100, 750, 450);
+		inofStoragepanel.setBounds(150, 100, 750, 450);
+		storagecheckpanel.setBounds(150, 100, 750, 450);
+		storagepanpanel.setBounds(150, 100, 750, 450);
 		this.add(navigationpanel);
 		this.add(toppanel);
 		this.add(storagecheckpanel);

@@ -36,15 +36,15 @@ public class TextBussinessUI {
 //		frame.setLocation((width-900)/2, (height-600)/2);
 //		frame.setResizable(false);
 		
-		panel.setBounds(0, 0, 210, 600);
+		panel.setBounds(0, 100, 150, 500);
 		resultMessageUI.setBounds(210, 540, 690, 30);
-		lablePanel.setBounds(210, 0, 690, 60);
+		lablePanel.setBounds(150, 0, 750, 60);
 		
-		carLoadingPanel.setBounds(210,60,690,480);
-		receiveAndSendPabel.setBounds(210,60,690,480);
-		recieveMoneyUI.setBounds(210,60,690,480);
-		carManageUI.setBounds(210,60,690,480);
-		driverManageUI.setBounds(210,60,690,480);
+		carLoadingPanel.setBounds(150, 100, 750, 450);
+		receiveAndSendPabel.setBounds(150, 100, 750, 450);
+		recieveMoneyUI.setBounds(150, 100, 750, 450);
+		carManageUI.setBounds(150, 100, 750, 450);
+		driverManageUI.setBounds(150, 100, 750, 450);
 	
 	
 

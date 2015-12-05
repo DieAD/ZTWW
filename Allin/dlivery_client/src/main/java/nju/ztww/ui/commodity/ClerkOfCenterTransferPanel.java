@@ -1,5 +1,6 @@
 package nju.ztww.ui.commodity;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -19,22 +20,25 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import nju.ztww.serviceimpl.OrderServiceImpl;
+import nju.ztww.ui.order.MyButton;
+import nju.ztww.ui.order.MyScrollPane;
+import nju.ztww.ui.order.MyTable;
 import nju.ztww.ui.user.ResultMessageUI;
 import nju.ztww.vo.LoadingVO;
 import nju.ztww.vo.TransferVO;
 
 public class ClerkOfCenterTransferPanel extends JPanel {
 	
-	   public JTable table;
+	   public MyTable table;
 
 	   public JDialog dlg;
 	
 	   DefaultTableModel defaultTableModel;
 
 		private JButton findSureButton=new JButton("确定");
-		private JButton findButton=new JButton("查看");
-		private JButton deleteButton=new JButton("删除");
-		private JButton sendButton=new JButton("提交");
+		private MyButton findButton=new MyButton('d');
+		private MyButton deleteButton=new MyButton('c');
+		private MyButton sendButton=new MyButton('a');
 		
 		java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit()
 				.getScreenSize();
@@ -48,12 +52,14 @@ public class ClerkOfCenterTransferPanel extends JPanel {
 
 	   public ClerkOfCenterTransferPanel() {
 		   
-		   deleteButton.setBounds(360, 420, 110, 38);
-			deleteButton.setIcon(null);
-			sendButton.setBounds(500, 420, 110, 38);
-			sendButton.setIcon(null);
-			findButton.setBounds(220, 420, 110, 38);
-			findButton.setIcon(null);
+		   this.setBackground(new Color(250, 240, 230));
+		   
+//		   deleteButton.setBounds(360, 420, 110, 38);
+//			deleteButton.setIcon(null);
+//			sendButton.setBounds(500, 420, 110, 38);
+//			sendButton.setIcon(null);
+//			findButton.setBounds(220, 420, 110, 38);
+//			findButton.setIcon(null);
 			this.add(findButton);
 			this.add(deleteButton);
 			this.add(sendButton);
@@ -69,19 +75,21 @@ public class ClerkOfCenterTransferPanel extends JPanel {
 				  
 				  //创建表格: 建立一个显示二维数组数据的表格，且可以显示列的名称。 
 				  defaultTableModel = new DefaultTableModel( playerInfo,Names); 
-				  table = new JTable( defaultTableModel);       //字段名称
-				  Dimension size = table.getTableHeader().getPreferredSize();
-			
-				  size.height = 30;//设置新的表头高度40
-				  table.getTableHeader().setPreferredSize(size);
-				  table.setAutoResizeMode(JTable.AUTO_RESIZE_NEXT_COLUMN);
-				//  table.setPreferredScrollableViewportSize(new Dimension( 550,
-//				                60));
-				  
-				  //绑定滚动条
-				  JScrollPane scrollPane = new JScrollPane(table);
-			      table.setRowHeight(25);
-				  scrollPane.setBounds(0, 0, 690, 420);
+				  table = new MyTable(defaultTableModel);
+				  MyScrollPane scrollPane = new MyScrollPane(table);
+//				  table = new JTable( defaultTableModel);       //字段名称
+//				  Dimension size = table.getTableHeader().getPreferredSize();
+//			
+//				  size.height = 30;//设置新的表头高度40
+//				  table.getTableHeader().setPreferredSize(size);
+//				  table.setAutoResizeMode(JTable.AUTO_RESIZE_NEXT_COLUMN);
+//				//  table.setPreferredScrollableViewportSize(new Dimension( 550,
+////				                60));
+//				  
+//				  //绑定滚动条
+//				  JScrollPane scrollPane = new JScrollPane(table);
+//			      table.setRowHeight(25);
+//				  scrollPane.setBounds(0, 0, 690, 420);
 				  this.add(scrollPane);
 				  sendButton.addActionListener(new ActionListener(){
 
@@ -122,13 +130,13 @@ public class ClerkOfCenterTransferPanel extends JPanel {
 		   
 	}
 	   
-	   public void paintComponent(Graphics g){
-			super.paintComponent(g);
-			
-			Image background=new ImageIcon("photo/bbbackground2.gif").getImage();
-			g.drawImage(background, 0,0,null);
-			
-		}
+//	   public void paintComponent(Graphics g){
+//			super.paintComponent(g);
+//			
+//			Image background=new ImageIcon("photo/bbbackground2.gif").getImage();
+//			g.drawImage(background, 0,0,null);
+//			
+//		}
 	   
 	   public void getTransferOrder(TransferVO transferVO){
 		   alltransferVO.add(transferVO);

@@ -29,8 +29,8 @@ public class TestGManagerUI {
 //		frame.setLocation((width-900)/2, (height-600)/2);
 //		frame.setResizable(false);
 		
-		MenuPanel.setBounds(0, 0, 210, 600);
-		Theme.setBounds(210, 0, 690, 60);
+		MenuPanel.setBounds(0, 100, 150, 500);
+		Theme.setBounds(150, 0, 750, 60);
 //		manageSalaryUI.setBounds(210,60,690,480)
 //		
 //		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -51,7 +51,7 @@ public class TestGManagerUI {
 	//	panelList.add(viewFormsUI);
 		
 		for(JPanel p : panelList){
-			p.setBounds(210,60,690,480);
+			p.setBounds(150,100,750,450);
 			p.setVisible(false);
 // 			frame.add(p);
 //			p.setVisible(false);
