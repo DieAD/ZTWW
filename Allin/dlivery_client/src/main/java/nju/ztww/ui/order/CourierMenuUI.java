@@ -17,16 +17,26 @@ public class CourierMenuUI extends JPanel{
 	MyButton CheckOrderButton = new MyButton();
 	MyButton YourMessageButton = new MyButton();
 	MyButton LogoutButton = new MyButton();
+	ImageIcon OrderInput = new ImageIcon("photo/OrderInput.png");
+	ImageIcon Accept = new ImageIcon("photo/Accept.png");
+	ImageIcon CheckOrder = new ImageIcon("photo/CheckOrder.png");
+	ImageIcon YourMessage = new ImageIcon("photo/PersonInfo.png");
+	ImageIcon Logout = new ImageIcon("photo/Logout.png");
+	ImageIcon OrderInput2 = new ImageIcon("photo/OrderInput2.png");
+	ImageIcon Accept2 = new ImageIcon("photo/Accept2.png");
+	ImageIcon CheckOrder2 = new ImageIcon("photo/CheckOrder2.png");
+	ImageIcon YourMessage2 = new ImageIcon("photo/PersonInfo2.png");
+	
+	int panel = 1;
 	
 	CourierMenuUI(){
+
+
+
 		
 		this.setLayout(null);
 		this.setBackground(new Color(155,122,90));
-		ImageIcon OrderInput = new ImageIcon("photo/OrderInput.png");
-		ImageIcon Accept = new ImageIcon("photo/Accept.png");
-		ImageIcon CheckOrder = new ImageIcon("photo/CheckOrder.png");
-		ImageIcon YourMessage = new ImageIcon("photo/PersonInfo.png");
-		ImageIcon Logout = new ImageIcon("photo/Logout.png");
+		
 		
 		this.setBorder(new javax.swing.border.TitledBorder(null, "",
 				javax.swing.border.TitledBorder.CENTER,
@@ -38,38 +48,57 @@ public class CourierMenuUI extends JPanel{
 		OrderInputButton.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
+
 				// TODO Auto-generated method stub
 				TestCourierUI.changePanel(1);
+				removeButton(panel);
+				OrderInputButton.setIcon(OrderInput2);
+				panel = 0;
 			}
 		});
 		
 		AcceptButton.setIcon(Accept);
 		AcceptButton.setBounds(0,40,150,40); //——by zyz 2015/12/3
 		AcceptButton.addActionListener(new ActionListener() {
+
 			
 			public void actionPerformed(ActionEvent e) {
+
 				// TODO Auto-generated method stub
 				TestCourierUI.changePanel(2);
+				removeButton(panel);
+				AcceptButton.setIcon(Accept2);
+				panel = 1;
 			}
 		});
 		
 		CheckOrderButton.setIcon(CheckOrder);
 		CheckOrderButton.setBounds(0,80,150,40); //——by zyz 2015/12/3
 		CheckOrderButton.addActionListener(new ActionListener() {
+
 			
 			public void actionPerformed(ActionEvent e) {
+
 				// TODO Auto-generated method stub
 				TestCourierUI.changePanel(3);
+				removeButton(panel);
+				CheckOrderButton.setIcon(CheckOrder2);
+				panel = 2;
 			}
 		});
 		
 		YourMessageButton.setIcon(YourMessage);
 		YourMessageButton.setBounds(0,120,150,40);	//——by zyz 2015/12/3
 		YourMessageButton.addActionListener(new ActionListener() {
+
 			
 			public void actionPerformed(ActionEvent e) {
+
 				// TODO Auto-generated method stub
 				TestCourierUI.changePanel(4);
+				removeButton(panel);
+				YourMessageButton.setIcon(YourMessage2);
+				panel = 3;
 			}
 		});
 		
@@ -83,7 +112,20 @@ public class CourierMenuUI extends JPanel{
 		this.add(LogoutButton);
 	}
 	
-//	public void paintComponent(Graphics g){
+
+	private void removeButton(int i){
+
+		switch (i){
+		case 0:OrderInputButton.setIcon(OrderInput);break;
+		case 1:AcceptButton.setIcon(Accept);break;
+		case 2:CheckOrderButton.setIcon(CheckOrder);break;
+		case 3:YourMessageButton.setIcon(YourMessage);break;
+		}
+	}
+	
+	
+	
+	//	public void paintComponent(Graphics g){
 //		super.paintComponent(g);
 //		
 //		Image background=new ImageIcon("photo/background.gif").getImage();

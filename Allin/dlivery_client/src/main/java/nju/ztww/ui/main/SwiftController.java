@@ -28,6 +28,7 @@ public class SwiftController {
 	private TestGManagerUI GMUI;
 	private TextManageUI   MUI;
 	private UserInfoUI userInfoUI;
+	private TipsUI tipsUI;
 	//
 	private JFrame frame;
 	private MemberVO member; 
@@ -50,27 +51,28 @@ public class SwiftController {
 	
 	
 	public void switchUI(){
-//		panelList = MUI.getPanelList();
-
-		switch(id){
-		case 0: jump = false;break;
-		case 1: panelList = courierUI.getPanelList();break;
-		case 2: panelList = businessUI.getPanelList();break;
-		case 3: panelList = ccUI.getPanelList();break;
-		case 4: panelList = storageUI.getPanelList();break;
-		case 5: panelList = financeUI.getPanelList();break;
-		case 6: panelList = GMUI.getPanelList();break;
-		case 7: panelList = MUI.getPanelList();break;
-		default:{System.out.println("Switch UI error!");jump = false;}break;
-		
-		}
+		panelList = businessUI.getPanelList();
+//
+//		switch(id){
+//		case 0: jump = false;break;
+//		case 1: panelList = courierUI.getPanelList();break;
+//		case 2: panelList = businessUI.getPanelList();break;
+//		case 3: panelList = ccUI.getPanelList();break;
+//		case 4: panelList = storageUI.getPanelList();break;
+//		case 5: panelList = financeUI.getPanelList();break;
+//		case 6: panelList = GMUI.getPanelList();break;
+//		case 7: panelList = MUI.getPanelList();break;
+//		default:{System.out.println("Switch UI error!");jump = false;}break;
+//		
+//		}
 		userInfoUI = new UserInfoUI(ID);
 		panelList.add(userInfoUI);
-		
+		tipsUI = new TipsUI();
+		panelList.add(tipsUI);
 	}
 	
 	public void setUI(){
-		getID();
+//		getID();
 		switchUI();
 	   if(jump){ 
 		   frame.getContentPane().removeAll();
