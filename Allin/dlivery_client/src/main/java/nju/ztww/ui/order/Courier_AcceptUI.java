@@ -1,5 +1,6 @@
 package nju.ztww.ui.order;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,7 +10,6 @@ import java.util.Date;
 import java.util.Vector;
 
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -25,16 +25,16 @@ import nju.ztww.vo.AcceptVO;
 
 public class Courier_AcceptUI extends JPanel{
 
-	JButton searchButton = new JButton();
-	JButton addButton = new JButton();
-	JButton sureSearchButton = new JButton();
-	JButton sureAddButton = new JButton();
-	JButton deleteButton = new JButton("删除");
-	JButton submitButton = new JButton("提交");
+	MyButton searchButton = new MyButton('d');
+	MyButton addButton = new MyButton('b');
+	MyButton sureSearchButton = new MyButton();
+	MyButton sureAddButton = new MyButton();
+	MyButton deleteButton = new MyButton('c');
+	MyButton submitButton = new MyButton('a');
 	DefaultTableModel de;
 	JDialog searchDlg;
 	JDialog addDlg;
-	JTable table = new JTable();
+	MyTable table;
 	
 //	private ArrayList<E>
 	
@@ -61,10 +61,11 @@ public class Courier_AcceptUI extends JPanel{
 	
 	
 	public Courier_AcceptUI(){
+		this.setBackground(new Color(250, 240, 230));
 		this.setLayout(null);
 		{/*for Button*/
-			searchButton.setBounds(500, 420, 110, 38);
-			searchButton.setIcon(new ImageIcon("photo/search.gif"));
+//			searchButton.setBounds(410, 400, 80, 30);	//——by zyz 2015/12/3
+//			searchButton.setIcon(new ImageIcon("photo/search.gif"));
 //			this.add(searchButton);
 			searchButton.addActionListener(new ActionListener(){
 
@@ -92,8 +93,8 @@ public class Courier_AcceptUI extends JPanel{
 			});
 			
 		
-			addButton.setBounds(400, 420, 110, 38);
-			addButton.setText("添加");
+//			addButton.setBounds(570, 400, 80, 30);	//——by zyz 2015/12/3
+//			addButton.setText("添加");
 			this.add(addButton);
 			addButton.addActionListener(new ActionListener() {
 				
@@ -150,11 +151,11 @@ public class Courier_AcceptUI extends JPanel{
 			});
 		
 		
-			deleteButton.setBounds(290, 420, 110, 38);
+//			deleteButton.setBounds(490, 400, 80, 30);	//——by zyz 2015/12/3
 			this.add(deleteButton);
 			deleteButton.addActionListener(delete);
 		
-			submitButton.setBounds(180, 420, 110, 38);
+//			submitButton.setBounds(650, 400, 80, 30);	//——by zyz 2015/12/3
 			this.add(submitButton);
 			submitButton.addActionListener(submit);
 			
@@ -170,17 +171,25 @@ public class Courier_AcceptUI extends JPanel{
 			String[] names = {"营业厅编号", "收件信息编号", "收件人", "收件时间", "快递员编号"};
 		
 		de = new DefaultTableModel(Accept, names);
-		table = new JTable(de);
-		Dimension size = table.getTableHeader().getPreferredSize();		
-		
-		size.height = 30;
-		table.getTableHeader().setPreferredSize(size);
-		table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
-		
-		JScrollPane scrollPane = new JScrollPane(table);
-		table.setRowHeight(25);
-		scrollPane.setBounds(0, 0, 690, 420);
+		table = new MyTable(de);
+		MyScrollPane scrollPane = new MyScrollPane(table);
 		this.add(scrollPane);
+//		Dimension size = table.getTableHeader().getPreferredSize();		
+//		
+//		size.height = 30;
+//		table.getTableHeader().setPreferredSize(size);
+//		table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+//		JScrollPane scrollPane = new JScrollPane(table);
+//		
+//		//
+//		table.getTableHeader().setBackground(new Color(249,231,212));//208,168,125
+//		table.setBackground(new Color(208,168,125)); //226,203,170
+//		scrollPane.getViewport().setOpaque(false);
+//		scrollPane.setOpaque(false);
+//		
+//		table.setRowHeight(25);
+//		scrollPane.setBounds(0, 0, 750, 400);
+//		this.add(scrollPane);
 		}
 		
 	}

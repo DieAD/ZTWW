@@ -1,5 +1,6 @@
 package nju.ztww.ui.commodity;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -97,6 +98,8 @@ public class FindStoragePanel extends JPanel {
 	   private ArrayList<StorageListLineofOutVO> arraylist=new ArrayList<StorageListLineofOutVO>();
 	   private ArrayList<StorageListLineofInVO> getStorage=new ArrayList<StorageListLineofInVO>();
 	   public FindStoragePanel() {
+		   
+		   this.setBackground(new Color(250, 240, 230));
 		   
 		    final ImageIcon BusinessNumber=new ImageIcon("photo/businessNumberLabel.gif");
 			final ImageIcon CarNumber=new ImageIcon("photo/carNumberLabel.gif");
