@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import nju.ztww.service.CommodityService;
 import nju.ztww.vo.OrderVO;
-
 import nju.ztww.vo.StorageListLineofInVO;
 import nju.ztww.vo.StorageListLineofOutVO;
 import nju.ztww.vo.StorageListVO;
@@ -67,6 +66,12 @@ public class Commodity_stub implements CommodityService{
 	public void deleteOrder(String idofOrder, String idofcenter) {
 		// TODO Auto-generated method stub
 		
+	}
+
+
+	public String getLastidofcenter(String idofcenter) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

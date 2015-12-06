@@ -3,6 +3,7 @@ package nju.ztww.serviceimpl;
 import java.util.ArrayList;
 
 import nju.ztww.bl.manage.ManageBL;
+import nju.ztww.po.MUserPO;
 import nju.ztww.service.ManageService;
 import nju.ztww.vo.GenerateVO;
 import nju.ztww.vo.IDVO;
@@ -44,6 +45,21 @@ public class ManageServiceImpl implements ManageService {
 		// TODO Auto-generated method stub
 		manageBL.updateInfo(list, index);
 		
+	}
+
+	public String[] getItem(String index) {
+		// TODO Auto-generated method stub
+		return manageBL.getItems(index);
+	}
+
+	public MUserPO getUserInfo(String index, String name) {
+		// TODO Auto-generated method stub
+		return manageBL.getUserInfo(index, name);
+	}
+
+	public MUserPO getUserInfoById(String id) {
+		// TODO Auto-generated method stub
+		return manageBL.getUserInfoById(id);
 	}
 
 }

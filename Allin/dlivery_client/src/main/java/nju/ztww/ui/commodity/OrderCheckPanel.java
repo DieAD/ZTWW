@@ -16,8 +16,10 @@ import nju.ztww.po.TracePO;
 import nju.ztww.service.CheckOrderService;
 import nju.ztww.serviceimpl.CheckOrderServiceImpl;
 
-public class OrderCheckPanel extends JPanel {
-	ArrayList<JLabel> jlabellist=new ArrayList<JLabel>();
+public class OrderCheckPanel extends JPanel  {
+	
+ 
+	ArrayList<MovingMessagePanel> jpanellist=new ArrayList<MovingMessagePanel>();
 	ArrayList<TracePO> textstring=new ArrayList<TracePO>(); 
 	ArrayList<JLabel>  jlabelwdot=new ArrayList<JLabel>();
 	
@@ -25,6 +27,7 @@ public class OrderCheckPanel extends JPanel {
 	final ImageIcon bg=new ImageIcon("photo/bg.jpg");
 	final ImageIcon wdot=new ImageIcon("photo/wdot.jpg");
 	final ImageIcon bdot=new ImageIcon("photo/bdot.jpg");
+	Font font1 = new Font("楷体", Font.BOLD, 16);
 	public OrderCheckPanel(String id) {
 		// TODO Auto-generated constructor stub
 		System.out.println(id);
@@ -38,9 +41,9 @@ public class OrderCheckPanel extends JPanel {
 	}
      public void setup(){
     	 for(int i=0;i<textstring.size();i++ ){
-    		 JLabel jlabel=new JLabel();
-    		 jlabel.setText(textstring.get(i).getTrace());
-    		 jlabellist.add(jlabel);
+    		 MovingMessagePanel movingpanel=new  MovingMessagePanel(textstring.get(i).getTrace());
+    		 
+    		 jpanellist.add(movingpanel);
     	 }
     	 for(int i=0;i<textstring.size()-1;i++ ){
     		 JLabel jlabel=new JLabel();
@@ -55,13 +58,17 @@ public class OrderCheckPanel extends JPanel {
     	
     	 this.setLayout(null);
     	 int index=0;
-    	 System.out.println(jlabellist.size());
-    	 for(int i=0;i<jlabellist.size()-1;i++){
+    	 System.out.println(jpanellist.size());
+    	 for(int i=0;i<jpanellist.size()-1;i++){
     		 index=i;
-    		 jlabellist.get(i).setFont(new Font("宋体",Font.PLAIN,15));
-    		jlabellist.get(i).setBounds(50, 50*i, 300, 30);
+    		
+    	     
+    		jpanellist.get(i).setBounds(50, 50*i, 600, 30);
+    		jpanellist.get(i).setFont(font1);
+    		jpanellist.get(i).setForeground(Color.getHSBColor(155, 120, 90));
+    		jpanellist.get(i).setBackground(Color.darkGray);
     		jlabelwdot.get(i).setBounds(0, 50*i, 25, 25);
-    		this.add(jlabellist.get(i));
+    		this.add(jpanellist.get(i));
     		this.add(jlabelwdot.get(i));
     	 }
     	 jlabelwdot.get(index).setVisible(false);
@@ -72,8 +79,15 @@ public class OrderCheckPanel extends JPanel {
      public void paintComponent(Graphics g){
   		super.paintComponent(g);
   		
-  		Image background=new ImageIcon("photo/checkbg.jpg").getImage();
+  		Image background=new ImageIcon("photo/checkbg.png").getImage();
   		g.drawImage(background, 0,0,null);
   		
   	}
+	public void run() {
+		// TODO Auto-generated method stub
+		  
+		
+		
+	}
+	
 }

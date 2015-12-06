@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import nju.ztww.data.manage.ManageData;
 import nju.ztww.po.GeneratePO;
+import nju.ztww.po.MUserPO;
 import nju.ztww.po.SuperviseePO;
 import nju.ztww.service.ManageDataService;
 
@@ -40,6 +41,16 @@ public class ManageDataServiceImpl extends UnicastRemoteObject implements Manage
 			throws RemoteException {
 		// TODO Auto-generated method stub
 		return md.getCheckOrder(index);
+	}
+
+	public ArrayList<MUserPO> getItems(String index) throws RemoteException {
+		// TODO Auto-generated method stub
+		return md.getItems(index);
+	}
+
+	public MUserPO getUserInfoById(String id) throws RemoteException {
+		// TODO Auto-generated method stub
+		return md.getUserInfoById(id);
 	}
 
 }

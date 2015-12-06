@@ -2,6 +2,7 @@ package nju.ztww.service;
 
 import java.util.ArrayList;
 
+import nju.ztww.po.MUserPO;
 import nju.ztww.vo.GenerateVO;
 import nju.ztww.vo.IDVO;
 import nju.ztww.vo.SuperviseeVO;
@@ -26,6 +27,12 @@ public interface ManageService {
      public ArrayList<GenerateVO> getCheckOrder(int index);
         
      public void  updateInformation(ArrayList<IDVO> list,int index);
+     
+     public String[] getItem(String index);
+     
+     public MUserPO getUserInfo(String index,String name);
+     
+     public MUserPO getUserInfoById(String id);
      
      
 }

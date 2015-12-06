@@ -10,6 +10,13 @@ public class StockDO {
     private String pai;
     private String jia;
     private String wei;
+    private int state;
+	public int getState() {
+		return state;
+	}
+	public void setState(int state) {
+		this.state = state;
+	}
 	public int getIndex() {
 		return index;
 	}
