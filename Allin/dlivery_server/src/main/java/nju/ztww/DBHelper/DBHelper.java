@@ -106,6 +106,39 @@ public class DBHelper extends DB{
 			}
 		}
 	}
+	
+	public ArrayList<UserDO> searchByPosition(String index,String tableName){
+		ArrayList<UserDO> list = new ArrayList<UserDO>();
+		String sql = "select * from " + tableName + " where position='" + index+"'";
+		try {
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+			while (rs.next()) {
+				UserDO userDO = new UserDO();
+				userDO.setIndex(rs.getInt(1));
+				userDO.setId(rs.getString(2));
+				userDO.setName(rs.getString(3));
+				userDO.setPsw(rs.getString(4));
+				userDO.setAuthority(rs.getString(5));
+				userDO.setAge(rs.getInt(6));
+				userDO.setWorktime(rs.getInt(7));
+				userDO.setIdcard(rs.getString(8));
+				userDO.setSalarymethod(rs.getInt(9));
+				userDO.setSalary(rs.getDouble(10));
+				userDO.setWetherwork(rs.getInt(11));
+				userDO.setSex(rs.getInt(12));
+				userDO.setPhone(rs.getString(13));
+				userDO.setTimes(rs.getInt(14));
+				userDO.setSp(rs.getDouble(15));
+				userDO.setPosition(rs.getString(16));
+				list.add(userDO);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
+	}
     //按ID值返回一个UserDO list
 	/**
 	 * @param id

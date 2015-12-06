@@ -5,6 +5,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import nju.ztww.po.GeneratePO;
+import nju.ztww.po.MUserPO;
 import nju.ztww.po.SuperviseePO;
 
 /*
@@ -23,5 +24,9 @@ public interface ManageDataService extends Remote {
 	public void update(SuperviseePO po) throws RemoteException;
 	
 	public ArrayList<GeneratePO> getCheckOrder(int index)throws RemoteException;
+	
+	public ArrayList<MUserPO> getItems(String index)throws RemoteException;
+	
+	public MUserPO getUserInfoById(String id)throws RemoteException;
 
 }

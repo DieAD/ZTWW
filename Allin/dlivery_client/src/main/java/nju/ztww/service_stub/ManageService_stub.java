@@ -2,6 +2,7 @@ package nju.ztww.service_stub;
 
 import java.util.ArrayList;
 
+import nju.ztww.po.MUserPO;
 import nju.ztww.service.ManageService;
 import nju.ztww.vo.GenerateVO;
 import nju.ztww.vo.IDVO;
@@ -45,9 +46,25 @@ public class ManageService_stub implements ManageService {
 		// TODO Auto-generated method stub
 		
 	}
+//	public void updateInformation(ArrayList<IDVO> list, int index) {
+//		// TODO Auto-generated method stub
+//		
+//	}
+	public String[] getItem(String index) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public MUserPO getUserInfo(String index, String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	public void updateInformation(ArrayList<IDVO> list, int index) {
 		// TODO Auto-generated method stub
 		
+	}
+	public MUserPO getUserInfoById(String id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

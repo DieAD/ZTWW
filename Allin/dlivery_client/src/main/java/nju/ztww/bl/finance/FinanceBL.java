@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import nju.ztww.RMI.RMIHelper;
 import nju.ztww.po.CollectionPO;
+import nju.ztww.po.MUserPO;
 import nju.ztww.po.PaymentPO;
 import nju.ztww.service.FinanceDataService;
 import nju.ztww.vo.BenefitVO;
@@ -137,4 +138,6 @@ public class FinanceBL {
 	public void UpdateTrace(ArrayList<IDVO> list){
 		
 	}
+	
+	
 }
