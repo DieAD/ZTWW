@@ -61,6 +61,7 @@ public class OrderCheckPanel extends JPanel  {
     	 for(int i=0;i<jlabellist.size()-1;i++){
     		 index=i;
     		 jlabellist.get(i).setFont(new Font("宋体",Font.PLAIN,15));
+    	     
     		jlabellist.get(i).setBounds(50, 50*i, 300, 30);
     		jlabelwdot.get(i).setBounds(0, 50*i, 25, 25);
     		this.add(jlabellist.get(i));
