@@ -16,13 +16,26 @@ public class ReceiveVO extends OrderVO{
 	private String data;
 	private double receiveMoney;
 	private String receiverName;
-	private ArrayList<String> orderNumber;
+	private String orderNumber;
+	private String Holl;
 	private int exe=0;
 	private int state=1;
 
 	public ReceiveVO(int idOfOrder) {
 		super(idOfOrder);
 		this.idOfOrde=idOfOrder;
+	}
+
+	public String getHoll() {
+		return Holl;
+	}
+
+	public void setHoll(String holl) {
+		Holl = holl;
+	}
+
+	public void setExe(int exe) {
+		this.exe = exe;
 	}
 
 	public int getExe() {
@@ -75,11 +88,11 @@ public class ReceiveVO extends OrderVO{
 		this.receiverName = receiverName;
 	}
 
-	public ArrayList<String> getOrderNumber() {
+	public String getOrderNumber() {
 		return orderNumber;
 	}
 
-	public void setOrderNumber(ArrayList<String> orderNumber) {
+	public void setOrderNumber(String orderNumber) {
 		this.orderNumber = orderNumber;
 	}
 

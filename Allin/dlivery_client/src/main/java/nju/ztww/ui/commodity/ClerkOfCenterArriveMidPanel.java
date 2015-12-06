@@ -1,11 +1,15 @@
 package nju.ztww.ui.commodity;
 
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Vector;
 
 import javax.swing.ImageIcon;
@@ -24,7 +28,7 @@ import nju.ztww.vo.CarManageVO;
 import nju.ztww.vo.CenterReceiveVO;
 import nju.ztww.vo.SendVO;
 
-public class ClerkOfCenterArriveMidPanel extends JPanel {
+public class ClerkOfCenterArriveMidPanel extends JPanel implements Runnable{
 	
 	private JTextField businesstextArea=new JTextField("");
 	private  JLabel business=new  JLabel("到达日期");
@@ -37,11 +41,12 @@ public class ClerkOfCenterArriveMidPanel extends JPanel {
 	private JTextField transferNumbertextArea=new JTextField("");
 	private  JLabel transferNumber=new  JLabel("中转中心编号");
 	private JTextField findtextArea=new JTextField("");
-	
+	private JTextField findtext=new JTextField("");
+	private  JLabel time=new  JLabel();
 	private JButton sendButton=new JButton("提交");
 	private JButton deleteSendButton=new JButton("删除");
 	private JButton sureButton=new JButton("确定");
-	private JButton findButton=new JButton("查找");
+	private JButton findButton=new JButton("查找订单");
 	private JButton findSureButton=new JButton("确定");
 	
 	private ArrayList<CenterReceiveVO> allcenterReceiveVO=new ArrayList<CenterReceiveVO>();
@@ -57,7 +62,10 @@ public class ClerkOfCenterArriveMidPanel extends JPanel {
 	   public JDialog dlg;
 	   DefaultTableModel defaultTableModel ;
 	   public JButton addbutton;
+	   
+	   Thread t=new Thread(this);
 	   public ClerkOfCenterArriveMidPanel() {
+		   t.start();
 		   this.setLayout(null);
 		   addbutton=new JButton();
 		   ImageIcon add=new ImageIcon("photo/add.gif");
@@ -67,8 +75,17 @@ public class ClerkOfCenterArriveMidPanel extends JPanel {
 			sendButton.setIcon(null);
 			deleteSendButton.setBounds(300, 420, 110, 38);
 			deleteSendButton.setIcon(null);
-			findButton.setBounds(170, 420, 110, 38);
+			findButton.setBounds(570, 12, 90, 30);
 			findButton.setIcon(null);
+			findtext.setBounds(410, 12, 150, 30);
+			time.setBounds(20, 10, 160, 30);
+//			 Date dt=new Date();
+//		     SimpleDateFormat matter1=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//		     time.setText(matter1.format(dt));
+		     time.setForeground(Color.GRAY);
+		     time.setFont(new Font("宋体", 1, 13));
+			this.add(time);
+			this.add(findtext);
 			this.add(deleteSendButton);
 		  this.add(findButton);
 		  this.add(sendButton);
@@ -92,7 +109,7 @@ public class ClerkOfCenterArriveMidPanel extends JPanel {
 		//缁戝畾婊氬姩鏉�
 		JScrollPane scrollPane = new JScrollPane(table);
 		 table.setRowHeight(25);
-		scrollPane.setBounds(0, 0, 690, 420);
+		scrollPane.setBounds(0, 50, 690, 360);
 		this.add(scrollPane); 
 		addbutton.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent arg0) {
@@ -239,4 +256,17 @@ public class ClerkOfCenterArriveMidPanel extends JPanel {
 			    findSureButton.removeActionListener(listener2);
 			}
 		};
+		public void run() {
+			try { 
+				while(true){ 
+				   SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
+				   time.setText(sdf.format(new Date())); 
+				   t.sleep(1000);
+				} 
+				} 
+				catch (Exception ex) { 
+				ex.printStackTrace(); 
+				} 
+			
+		}
 }

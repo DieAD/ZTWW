@@ -12,6 +12,7 @@ import nju.ztww.po.TrackPO;
 import nju.ztww.po.OrderPO;
 import nju.ztww.po.PriceDataPO;
 import nju.ztww.service.OrderDataService;
+import nju.ztww.vo.DeliverFeesVO;
 import nju.ztww.vo.IDVO;
 
 public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDataService{
@@ -25,8 +26,8 @@ public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDa
 		// TODO Auto-generated constructor stub
 	}
 
-	public String findID() throws RemoteException {
-		String result=orderHandler.findID();
+	public String findID(String name) throws RemoteException {
+		String result=orderHandler.findID(name);
 		return result;
 	}
 
@@ -87,6 +88,11 @@ public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDa
 		// TODO Auto-generated method stub
 		TrackPO accepTrackPO = acceptOrderData.passOrder(order);
 		return null;
+	}
+
+	public double getmoney(DeliverFeesVO deliverFees) throws RemoteException {
+		double distence =orderHandler.getdistence(deliverFees);
+		return distence;
 	}
 
 
