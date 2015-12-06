@@ -12,6 +12,7 @@ import nju.ztww.DBHelper.DBForOutStockForm;
 import nju.ztww.DBHelper.DBForPayeeForm;
 import nju.ztww.DBHelper.DBForPaymentForm;
 import nju.ztww.DBHelper.DBForTrainForm;
+import nju.ztww.DBHelper.DBHelper;
 import nju.ztww.dao.CenterreciFormDO;
 import nju.ztww.dao.DeliveryFormDO;
 import nju.ztww.dao.EntryFormDO;
@@ -22,7 +23,9 @@ import nju.ztww.dao.OutStockFormDO;
 import nju.ztww.dao.PayeeFormDO;
 import nju.ztww.dao.PaymentFormDO;
 import nju.ztww.dao.TrainFormDO;
+import nju.ztww.dao.UserDO;
 import nju.ztww.po.GeneratePO;
+import nju.ztww.po.MUserPO;
 
 public class ManageData {
 	DBForOrderForm dbOrder = new DBForOrderForm();
@@ -35,6 +38,7 @@ public class ManageData {
 	DBForTrainForm dbTrain = new DBForTrainForm();
 	DBForOutStockForm dbOut = new DBForOutStockForm();
 	DBForPaymentForm dbPayment = new DBForPaymentForm();
+	DBHelper dbUser = new DBHelper();
 	
 	public ArrayList<GeneratePO> getCheckOrder(int index){
 		ArrayList<GeneratePO> listPO = new ArrayList<GeneratePO>();
@@ -161,5 +165,42 @@ public class ManageData {
 		}
 		return listPO;
 		
+	}
+	
+	public ArrayList<MUserPO> getItems(String index){
+		ArrayList<MUserPO> list = new ArrayList<MUserPO>();
+		ArrayList<UserDO> listDO = new ArrayList<UserDO>();
+		dbUser.init();
+		listDO = dbUser.searchByPosition(index, "userstable");
+		for(UserDO user : listDO){
+			MUserPO po = new MUserPO();
+			po.setId(user.getId());
+			po.setName(user.getName());
+			po.setSalary(user.getSalary());
+			po.setSp(user.getSp());
+			po.setSalarymethod(user.getSalarymethod());
+			po.setNumber(user.getTimes());
+			list.add(po);
+		}
+		dbUser.close();
+		return list;
+	}
+	
+	public MUserPO getUserInfoById(String id){
+		ArrayList<UserDO> listDO = new ArrayList<UserDO>();
+		
+		dbUser.init();
+		listDO =  dbUser.queryByID(id, "userstable");
+		UserDO user = listDO.get(0);
+		MUserPO po = new MUserPO();
+		po.setId(user.getId());
+		po.setName(user.getName());
+		po.setSalary(user.getSalary());
+		po.setSp(user.getSp());
+		po.setSalarymethod(user.getSalarymethod());
+		po.setNumber(user.getTimes());
+		dbUser.close();
+		
+		return po;
 	}
 }

@@ -15,6 +15,8 @@ import nju.ztww.bl.order.ReceiveOrderBl;
 import nju.ztww.bl.order.SendOrderBl;
 import nju.ztww.bl.order.TransferOrderBl;
 import nju.ztww.po.GeneratePO;
+import nju.ztww.po.MUserPO;
+import nju.ztww.service.FinanceDataService;
 import nju.ztww.service.ManageDataService;
 import nju.ztww.vo.GenerateVO;
 import nju.ztww.vo.IDVO;
@@ -100,6 +102,61 @@ public class ManageBL {
 			
 		}
 		
+	}
+	
+	public String[] getItems(String index){
+		ArrayList<MUserPO> listPO = new ArrayList<MUserPO>();
+		ArrayList<String> listString  = new ArrayList<String>();
+		MDService = (ManageDataService)rmi.findService("ManageDataService");
+		try {
+			listPO = MDService.getItems(index);
+			for(MUserPO po : listPO){
+				String name = po.getName();
+				listString.add(name);
+			}
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		String[] items = new String[listString.size()];
+		int count=0;
+		for(String name : listString){
+			items[count] = name;
+			count++;
+		}
+		
+		
+		return items;
+	}
+	
+	public MUserPO getUserInfo(String index,String name){
+		ArrayList<MUserPO> listPO = new ArrayList<MUserPO>();
+		MDService = (ManageDataService)rmi.findService("ManageDataService");
+		try {
+			listPO = MDService.getItems(index);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		MUserPO user = new MUserPO();
+		for(MUserPO po : listPO){
+			if(po.getName().equals(name)){
+				user = po;
+			}
+		}
+		return user;
+	}
+	
+	public MUserPO getUserInfoById(String  id){
+		MDService = (ManageDataService)rmi.findService("ManageDataService");
+		MUserPO po = new MUserPO();
+		try {
+			 po = MDService.getUserInfoById(id);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return po;
 	}
 	
 }
