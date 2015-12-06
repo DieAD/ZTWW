@@ -189,7 +189,7 @@ public class DBForOutStockForm extends DB{
 	}
 	public ArrayList<OutStockFormDO> queryByTime(String time, String tableName) {
 		ArrayList<OutStockFormDO> list = new ArrayList<OutStockFormDO>();
-		String sql = "select * from " + tableName + " where time= '"+time+"'and exe=0";
+		String sql = "select * from " + tableName + " where time= '"+time+"'and exe=1";
 		try {
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);

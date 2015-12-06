@@ -7,6 +7,7 @@ import java.rmi.Naming;
 import java.rmi.registry.LocateRegistry;
 import java.util.ArrayList;
 
+import nju.ztww.DBHelper.DB;
 import nju.ztww.DBHelper.DBForEntryForm;
 import nju.ztww.DBHelper.DBForStock;
 import nju.ztww.DBHelper.DBHelper;
@@ -20,9 +21,7 @@ import nju.ztww.service.CommodityDataService;
 import nju.ztww.serviceimpl.StorageOutOfListDataServiceImpl;
 // 实现入库data层
 public class StorageListIn {
-	public DBForEntryForm dbforentryform=new DBForEntryForm();
 	
-	ArrayList<EntryFormDO> entryfromdolist =new ArrayList<EntryFormDO>();
    
 public void insert(OrderPO storagelinein){
 		
@@ -46,7 +45,9 @@ public void insert(OrderPO storagelinein){
 public void insertin(ArrayList<StorageListLineofInPO> arraylist ,String idofcenter) {
 	// TODO Auto-generated method stub
 	//找到本中转中心的库存和入库信息两个表
+ DBForEntryForm dbforentryform=new DBForEntryForm();
 	
+	ArrayList<EntryFormDO> entryfromdolist =new ArrayList<EntryFormDO>();
 	for(int i=0;i<arraylist.size();i++){
 		System.out.println(arraylist.get(i).getData()+" ");
 		entryfromdolist.add(arraylist.get(i).changetoIndo());
@@ -61,9 +62,26 @@ public void insertin(ArrayList<StorageListLineofInPO> arraylist ,String idofcent
 
 public void delete(String idoforder, String idofcenter) {
 	// TODO Auto-generated method stub
+	DBForEntryForm dbforentryform=new DBForEntryForm();
 	dbforentryform.init();
 	dbforentryform.delete(idoforder, "entryform");
 	dbforentryform.close();
 }
-   
+
+public String getLastidofcenter(String idofcenter) {
+	// TODO Auto-generated method stub
+	DB dbforentryform=new DB();
+	String tableName="entryform";//表建多了要设置那个idofcenter 表名
+	String index="";
+	dbforentryform.init();
+	index=dbforentryform.getSize(tableName);
+	System.out.println(index);
+	dbforentryform.close();
+	return index;
+	
+}
+ public static void main(String[]args){
+	StorageListIn sli=new StorageListIn();
+	sli.getLastidofcenter("ss");
+ }
 }

@@ -10,13 +10,15 @@ import nju.ztww.vo.StorageListLineofOutVO;
 //出库的行order对象
 public class StorageListLineofOutPO extends OrderPO implements Serializable { 
 	// TODO Auto-generated constructor stub
+	String idofdanzi;
 	String id;
 	String data;
 	int way;
 	String number;//具体实现时要分两种情况
 	String destination;
-  public StorageListLineofOutPO(String id,String data,String destination,int way,String number) {
+  public StorageListLineofOutPO(String idofdanzi,String id,String data,String destination,int way,String number) {
 	  super(idOfOrder);
+	  this.idofdanzi=idofdanzi;
 	  this.id=id;
 	  this.data=data;
 	  this.way=way;
@@ -62,11 +64,12 @@ public void setDestination(String destination) {
 //这个change to vo 要分情况讨论
 public StorageListLineofOutVO changetovo() {
 	// TODO Auto-generated method stub
-	return new StorageListLineofOutVO(id,data,destination,way,number);
+	return new StorageListLineofOutVO(idofdanzi,id,data,destination,way,number);
 }
 //差一个id 单子的   //差一个number
  public OutStockFormDO changetodo(){
 	 OutStockFormDO outstockformdo=new OutStockFormDO();
+	 outstockformdo.setId(idofdanzi);
 	 outstockformdo.setExe(0);
 	 outstockformdo.setState(1);
 	 outstockformdo.setAddress(destination);

@@ -9,7 +9,6 @@ import nju.ztww.po.StorageListLineofInPO;
 import nju.ztww.po.StorageListLineofOutPO;
 import nju.ztww.service.CommodityService;
 import nju.ztww.vo.OrderVO;
-
 import nju.ztww.vo.StorageListLineofInVO;
 import nju.ztww.vo.StorageListLineofOutVO;
 import nju.ztww.vo.StorageListVO;
@@ -72,6 +71,14 @@ public class StorageInListServiceImpl implements CommodityService {
 		storagelistinbl.addorder(arraylistinpo,idofcneter);
 		// TODO Auto-generated method stub
 	
+	}
+
+	public String getLastidofcenter(String idofcenter) {
+		// TODO Auto-generated method stub
+		String index="";
+		StorageInofListBL bl=new StorageInofListBL();
+		index=bl.getLastidofcenter(idofcenter);
+		return index;
 	}
 
 }

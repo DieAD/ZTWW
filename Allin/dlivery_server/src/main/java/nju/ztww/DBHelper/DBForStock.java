@@ -80,7 +80,7 @@ public class DBForStock extends DB{
 				stock.setPai(rs.getString(6));
 				stock.setJia(rs.getString(7));
 				stock.setWei(rs.getString(8));
-				
+				stock.setState(rs.getInt(9));
 				list.add(stock);
 			}
 		} catch (SQLException e) {
@@ -103,7 +103,7 @@ public class DBForStock extends DB{
 				pstmt.setString(5, stock.getPai());
 				pstmt.setString(6, stock.getJia());
 				pstmt.setString(7, stock.getWei());
-				
+				pstmt.setInt(8,stock.getState());
 				pstmt.executeUpdate();
 			}
 		} catch (SQLException e) {
@@ -113,7 +113,7 @@ public class DBForStock extends DB{
 	}
 	
 	public void update(ArrayList<StockDO> list,String tableName){
-		String sql = "update "+ tableName +" set goodsid=?,entrytime=?,address=?,qu=?,pai=?,jia=?,wei=? where goodsid=?";
+		String sql = "update "+ tableName +" set goodsid=?,entrytime=?,address=?,qu=?,pai=?,jia=?,wei=?,state? where goodsid=?";
 		
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -126,7 +126,7 @@ public class DBForStock extends DB{
 				pstmt.setString(6, stock.getJia());
 				pstmt.setString(7, stock.getWei());
 				pstmt.setString(8,stock.getGoodsid());
-				
+				pstmt.setInt(9, stock.getState());
 				pstmt.executeUpdate();
 			}
 		} catch (SQLException e) {
@@ -163,7 +163,7 @@ public class DBForStock extends DB{
 				stock.setPai(rs.getString(6));
 				stock.setJia(rs.getString(7));
 				stock.setWei(rs.getString(8));
-				
+				stock.setState(rs.getInt(9));
 				list.add(stock);
 			}
 		} catch (SQLException e) {
@@ -191,7 +191,7 @@ public class DBForStock extends DB{
 				stock.setPai(rs.getString(6));
 				stock.setJia(rs.getString(7));
 				stock.setWei(rs.getString(8));
-				
+				stock.setState(rs.getInt(9));
 				list.add(stock);
 			}
 		} catch (SQLException e) {

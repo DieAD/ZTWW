@@ -5,7 +5,9 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Vector;
 
 import javax.swing.ImageIcon;
@@ -21,9 +23,13 @@ import javax.swing.table.DefaultTableModel;
 import nju.ztww.service.CommodityService;
 import nju.ztww.serviceimpl.CommodityServiceImp;
 import nju.ztww.serviceimpl.StorageInListServiceImpl;
+
+import nju.ztww.ui.main.UserInfoUI;
+
 import nju.ztww.ui.order.MyButton;
 import nju.ztww.ui.order.MyScrollPane;
 import nju.ztww.ui.order.MyTable;
+
 import nju.ztww.vo.StorageListLineofInVO;
 import nju.ztww.vo.StorageListLineofOutVO;
 
@@ -51,7 +57,11 @@ public class InofStoragePanel extends JPanel{
 	   public MyButton  submitbutton=new MyButton('a');
 	   public MyButton  deletebutton=new MyButton('c');
 	   public CommodityService commodity=new StorageInListServiceImpl();
-	   
+	   String idofcenter=UserInfoUI.getUserID();//idbianhao 
+	   long l = System.currentTimeMillis();
+	  Date time=new Date(l);
+	  SimpleDateFormat dateFormat = new SimpleDateFormat("yy-MM-dd ");
+	  SimpleDateFormat dateFormatindex=new SimpleDateFormat("yyMMdd");
 	   public StorageListLineofInVO  storagelineIn;
 	   public ArrayList<StorageListLineofInVO>arraylist=new ArrayList<StorageListLineofInVO>();//成员变量
 	   java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit()
@@ -64,10 +74,10 @@ public class InofStoragePanel extends JPanel{
 //		   ImageIcon add=new ImageIcon("photo/add.gif");
 //		   addbutton.setBounds(450, 420, 110, 38);
 //		   addbutton.setIcon(add);
-		   sureofbutton.setBounds(580, 420, 110,38);
+//		   sureofbutton.setBounds(580, 420, 110,38);
 //		   submitbutton.setBounds(320, 420, 110, 38);
 //		   deletebutton.setBounds(190, 420, 110, 38);
-		   this.add(sureofbutton);
+//		   this.add(sureofbutton);
 		   this.add(addbutton);
 		   this.add(submitbutton);
 		   this.add(deletebutton);
@@ -169,7 +179,12 @@ public class InofStoragePanel extends JPanel{
 			row.add(jiafield.getText());
 			row.add(weifield.getText());
 			//idoforder 不知道怎么用  用1替代。
-			storagelineIn=new StorageListLineofInVO(1, ordernumberfield.getText(), datafield.getText(), arrivefield.getText(), qufield.getText(), paifield.getText(), jiafield.getText(), weifield.getText());
+			
+			String index=commodity.getLastidofcenter(idofcenter);
+			System.out.println(index);
+			String idofdanzi=UserInfoUI.getUserID().substring(0,8)+dateFormatindex.format(time)+index;
+			System.out.println(idofdanzi);
+			storagelineIn=new StorageListLineofInVO(1,idofdanzi,ordernumberfield.getText(), datafield.getText(), arrivefield.getText(), qufield.getText(), paifield.getText(), jiafield.getText(), weifield.getText(),0);
 			arraylist.add(storagelineIn);
 			
 			ordernumberfield.setText(null);

@@ -33,6 +33,14 @@ public class StorageInofListBL {
 		commoditydata.delete(idoforder,idofcenter);
 	}
 	//装了所有的入库单信息
+
+	public String getLastidofcenter(String idofcenter) {
+		// TODO Auto-generated method stub
+		String index="";
+		commoditydata = (CommodityDataService)rhelper.findService("CommodityDataService");
+		index=commoditydata.getLastidofcenter(idofcenter);
+		return index;
+	}
    
 	 
 }
