@@ -63,7 +63,7 @@ public class OutofStoragePanel extends JPanel {
    public JTextField yunshufield=new JTextField();
    long l = System.currentTimeMillis();
    Date time=new Date(l);
-  SimpleDateFormat dateFormat = new SimpleDateFormat("yy-MM-dd ");
+  SimpleDateFormat dateFormat = new SimpleDateFormat("yyMMdd");
    public JComboBox dbtype = new JComboBox();
     
    public ArrayList<StorageListLineofOutVO>arraylist=new ArrayList<StorageListLineofOutVO>();
@@ -75,19 +75,19 @@ public class OutofStoragePanel extends JPanel {
 //	   ImageIcon add=new ImageIcon("photo/add.gif");
 //	   addbutton.setBounds(450, 420, 110, 38);
 //	   addbutton.setIcon(add);
-	   sureofbutton.setBounds(580, 420, 110,38);
+//	   sureofbutton.setBounds(580, 420, 110,38);
 //	   deletebutton.setBounds(190, 420, 110, 38);
 //	   submitofbutton.setBounds(320, 420, 110, 38);
 //	   submitlabel.setFont(new Font("楷体",0,20));
 //	   submitlabel.setText("提交成功");
 //	   submitlabel.setBounds(20, 420, 200, 38);
-	   this.add(sureofbutton);
+//	   this.add(sureofbutton);
 	   this.add(addbutton);
 	   this.add(submitofbutton);
-	   this.add(submitlabel);
+//	   this.add(submitlabel);
 	   this.add(deletebutton);
 	   deletebutton.addActionListener(listener3);
-	   submitlabel.setVisible(false);
+//	   submitlabel.setVisible(false);
 	// TODO Auto-generated constructor stub
 	   Object[][] playerInfo =
 {

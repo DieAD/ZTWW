@@ -107,7 +107,12 @@ public class StorageListInGetByTime {
 		return storagelistlineofinpo;
 	}
 	}
-	
+	public static void main(String[]args) throws ParseException{
+		StorageListInGetByTime slig=new StorageListInGetByTime();
+		ArrayList<EntryFormDO> entryfromdolist =new ArrayList<EntryFormDO>();
+		ArrayList<StorageListLineofInPO> storagelistlineofinpo=new ArrayList<StorageListLineofInPO>();
+		storagelistlineofinpo=slig.findInList("15/11/24", "15/12/01", "111");
+	}
 }
 
 

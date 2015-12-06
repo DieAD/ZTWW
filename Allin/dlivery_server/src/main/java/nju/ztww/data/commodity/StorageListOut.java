@@ -6,6 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import nju.ztww.DBHelper.DB;
 import nju.ztww.DBHelper.DBForEntryForm;
 import nju.ztww.DBHelper.DBForOutStockForm;
 import nju.ztww.DBHelper.DBForStock;
@@ -59,7 +60,7 @@ public class StorageListOut {
 	}
 	public String getLastidofcenter(String idofcenter) {
 		// TODO Auto-generated method stub
-		DBForOutStockForm dbforoutstockform=new  DBForOutStockForm();
+		DB dbforoutstockform=new  DB();
 		dbforoutstockform.init();
 		String tableName="outstockform";//要改
 		String index="";

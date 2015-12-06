@@ -16,7 +16,9 @@ import nju.ztww.po.TracePO;
 import nju.ztww.service.CheckOrderService;
 import nju.ztww.serviceimpl.CheckOrderServiceImpl;
 
-public class OrderCheckPanel extends JPanel {
+public class OrderCheckPanel extends JPanel  {
+	
+ 
 	ArrayList<JLabel> jlabellist=new ArrayList<JLabel>();
 	ArrayList<TracePO> textstring=new ArrayList<TracePO>(); 
 	ArrayList<JLabel>  jlabelwdot=new ArrayList<JLabel>();
@@ -72,8 +74,15 @@ public class OrderCheckPanel extends JPanel {
      public void paintComponent(Graphics g){
   		super.paintComponent(g);
   		
-  		Image background=new ImageIcon("photo/checkbg.jpg").getImage();
+  		Image background=new ImageIcon("photo/checkbg.png").getImage();
   		g.drawImage(background, 0,0,null);
   		
   	}
+	public void run() {
+		// TODO Auto-generated method stub
+		  
+		
+		
+	}
+	
 }

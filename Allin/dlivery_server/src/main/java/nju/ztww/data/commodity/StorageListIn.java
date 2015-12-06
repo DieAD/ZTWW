@@ -7,6 +7,7 @@ import java.rmi.Naming;
 import java.rmi.registry.LocateRegistry;
 import java.util.ArrayList;
 
+import nju.ztww.DBHelper.DB;
 import nju.ztww.DBHelper.DBForEntryForm;
 import nju.ztww.DBHelper.DBForStock;
 import nju.ztww.DBHelper.DBHelper;
@@ -69,14 +70,18 @@ public void delete(String idoforder, String idofcenter) {
 
 public String getLastidofcenter(String idofcenter) {
 	// TODO Auto-generated method stub
-	DBForEntryForm dbforentryform=new DBForEntryForm();
+	DB dbforentryform=new DB();
 	String tableName="entryform";//表建多了要设置那个idofcenter 表名
 	String index="";
 	dbforentryform.init();
 	index=dbforentryform.getSize(tableName);
+	System.out.println(index);
 	dbforentryform.close();
 	return index;
 	
 }
-   
+ public static void main(String[]args){
+	StorageListIn sli=new StorageListIn();
+	sli.getLastidofcenter("ss");
+ }
 }

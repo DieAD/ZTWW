@@ -61,7 +61,7 @@ public class InofStoragePanel extends JPanel{
 	   long l = System.currentTimeMillis();
 	  Date time=new Date(l);
 	  SimpleDateFormat dateFormat = new SimpleDateFormat("yy-MM-dd ");
-	  
+	  SimpleDateFormat dateFormatindex=new SimpleDateFormat("yyMMdd");
 	   public StorageListLineofInVO  storagelineIn;
 	   public ArrayList<StorageListLineofInVO>arraylist=new ArrayList<StorageListLineofInVO>();//成员变量
 	   java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit()
@@ -74,10 +74,10 @@ public class InofStoragePanel extends JPanel{
 //		   ImageIcon add=new ImageIcon("photo/add.gif");
 //		   addbutton.setBounds(450, 420, 110, 38);
 //		   addbutton.setIcon(add);
-		   sureofbutton.setBounds(580, 420, 110,38);
+//		   sureofbutton.setBounds(580, 420, 110,38);
 //		   submitbutton.setBounds(320, 420, 110, 38);
 //		   deletebutton.setBounds(190, 420, 110, 38);
-		   this.add(sureofbutton);
+//		   this.add(sureofbutton);
 		   this.add(addbutton);
 		   this.add(submitbutton);
 		   this.add(deletebutton);
@@ -181,7 +181,9 @@ public class InofStoragePanel extends JPanel{
 			//idoforder 不知道怎么用  用1替代。
 			
 			String index=commodity.getLastidofcenter(idofcenter);
-			String idofdanzi=UserInfoUI.getUserID().substring(0,8)+dateFormat.format(time)+index;
+			System.out.println(index);
+			String idofdanzi=UserInfoUI.getUserID().substring(0,8)+dateFormatindex.format(time)+index;
+			System.out.println(idofdanzi);
 			storagelineIn=new StorageListLineofInVO(1,idofdanzi,ordernumberfield.getText(), datafield.getText(), arrivefield.getText(), qufield.getText(), paifield.getText(), jiafield.getText(), weifield.getText(),0);
 			arraylist.add(storagelineIn);
 			

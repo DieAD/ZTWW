@@ -38,7 +38,7 @@ public class StorageInofListBL {
 		// TODO Auto-generated method stub
 		String index="";
 		commoditydata = (CommodityDataService)rhelper.findService("CommodityDataService");
-		commoditydata.getLastidofcenter(idofcenter);
+		index=commoditydata.getLastidofcenter(idofcenter);
 		return index;
 	}
    

@@ -184,7 +184,7 @@ public class DBForEntryForm extends DB{
 	}
 	public ArrayList<EntryFormDO> queryByTime(String time, String tableName) {
 		ArrayList<EntryFormDO> list = new ArrayList<EntryFormDO>();
-		String sql = "select * from " + tableName + " where entrytime= '"+time+"'and exe=0 " ;
+		String sql = "select * from " + tableName + " where entrytime= '"+time+"'and exe=1 " ;
 		try {
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
@@ -264,13 +264,16 @@ public class DBForEntryForm extends DB{
 		return list;
 	}
 	public static void main(String[] args){
+		
 		DBForEntryForm db = new DBForEntryForm();
 		db.init();
-		ArrayList<EntryFormDO>list=db.queryByCenterID("1511240001", "entryform");
+		
+		ArrayList<EntryFormDO>list=db.queryALL("entryform");
 		
 		for(int i=0;i<list.size();i++){
-			System.out.println(list.get(i).getEntrytime());
+			System.out.println(list.get(i).getId());
 		}
+		
 		db.close();
 	
 		
