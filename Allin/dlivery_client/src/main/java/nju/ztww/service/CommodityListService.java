@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 
 
+
 import nju.ztww.vo.StorageListLineofInVO;
 import nju.ztww.vo.StorageListLineofOutVO;
 
@@ -28,5 +29,7 @@ public interface CommodityListService {
 
 public ArrayList<StorageListLineofInVO> getStockbyQu(String string,
 		String idofcenter);
+
+public void modify(ArrayList<StorageListLineofInVO> arraylist, String idofcenter);
 }
 

@@ -67,6 +67,27 @@ public class StockGet {
 	public static void main(String[]args){
 		StockGet sg=new StockGet();
 		 ArrayList<StorageListLineofInPO>stocklist=new  ArrayList<StorageListLineofInPO>();
-		stocklist=sg.getStockByQu("航空区", "1");
+		 StorageListLineofInPO ss=new StorageListLineofInPO(1, "", "001", "", "", "航运区", "22", "22", "23", 0);
+		stocklist=sg.getStockByQu("航运区", "1");
+	}
+	public void modify(ArrayList<StorageListLineofInPO> arraylistinpo,
+			String idofcenter) {
+		// TODO Auto-generated method stub
+		dbforstock.init();
+		String tableName="stocktable";//要改
+		
+		ArrayList<StockDO>stocklistall=new ArrayList<StockDO>();
+		for(int i=0;i<arraylistinpo.size();i++){
+			ArrayList<StockDO>stocklist=new ArrayList<StockDO>();
+			stocklist=dbforstock.queryByID(arraylistinpo.get(i).getId(), tableName);
+			stocklist.get(0).setQu(arraylistinpo.get(i).getQu());
+			stocklist.get(0).setJia(arraylistinpo.get(i).getJia());
+			stocklist.get(0).setPai(arraylistinpo.get(i).getPai());
+			stocklist.get(0).setWei(arraylistinpo.get(i).getWei());
+			stocklistall.add(stocklist.get(0));
+		}
+		dbforstock.update(stocklistall, tableName);
+		dbforstock.close();
+		
 	}
 }

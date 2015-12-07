@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import nju.ztww.ui.main.ListenerEndUI;
+import nju.ztww.ui.main.Listener_Return;
 //date 11-18 name wh
 //需要根据中转中心业务员身份知道中转中心的id
 public class StorageUi extends JFrame {
@@ -23,9 +24,9 @@ public class StorageUi extends JFrame {
 	public StorageUi() {
 
 		// TODO Auto-generated constructor stub
-		setup();
-		setPosition();
-		setController();
+//		setup();
+//		setPosition();
+//		setController();
 
 //		 TODO Auto-generated constructor stub
 //		setup();
@@ -77,16 +78,16 @@ public class StorageUi extends JFrame {
 		navigationpanel.Outbutton.addActionListener(new StorageControllerUi(this, outofStoragepanel, arraylist));
 		navigationpanel.Panbutton.addActionListener(new StorageControllerUi(this, storagepanpanel, arraylist));
 		navigationpanel.Checkbutton.addActionListener(new StorageControllerUi(this, storagecheckpanel, arraylist));
-		navigationpanel.LogoutButton.addActionListener(new ListenerEndUI(this));
+		navigationpanel.LogoutButton.addActionListener(new Listener_Return());
 		navigationpanel.Tiaobutton.addActionListener(new StorageControllerUi(this, storagetiaopanel, arraylist));
 		
 	}
 
-public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		new StorageUi();
-     
-}
+//public static void main(String[] args) {
+//		// TODO Auto-generated method stub
+//		new StorageUi();
+//     
+//}
 	public ArrayList<JPanel> getPanelList(){
 		list.add(navigationpanel);
 		list.add(toppanel);

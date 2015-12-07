@@ -100,6 +100,20 @@ public class CommodityListServiceImpl implements CommodityListService {
 		ArrayList<StorageListLineofInVO> sss=new ArrayList<StorageListLineofInVO>();
 		sss=ss.getStockbyQu("航空区", "ss");
 	}
+
+
+
+	public void modify(ArrayList<StorageListLineofInVO> arraylist,
+			String idofcenter) {
+		// TODO Auto-generated method stub
+		ArrayList<StorageListLineofInPO> arraylistinpo=new ArrayList<StorageListLineofInPO>();
+		for(int i=0;i<arraylist.size();i++){
+		arraylistinpo.add(arraylist.get(i).changetopo());
+		}
+		GetStockListBL gbl=new GetStockListBL();
+		 gbl.modify(arraylistinpo,idofcenter);
+		
+	}
 	
 
 }

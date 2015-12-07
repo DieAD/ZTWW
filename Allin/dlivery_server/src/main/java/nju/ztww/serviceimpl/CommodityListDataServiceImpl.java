@@ -88,4 +88,11 @@ public class CommodityListDataServiceImpl extends UnicastRemoteObject implements
 		return arraylistin;
 		
 	}
+
+	public void modify(ArrayList<StorageListLineofInPO> arraylistinpo,
+			String idofcenter) throws RemoteException {
+		// TODO Auto-generated method stub
+		StockGet sg=new StockGet();
+		sg.modify(arraylistinpo,idofcenter);
+	}
 }

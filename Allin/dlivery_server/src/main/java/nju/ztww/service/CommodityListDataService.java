@@ -24,4 +24,6 @@ public interface CommodityListDataService extends Remote{
 			String idofcenter)throws RemoteException;
 	void changeExeAddStock(ArrayList<String> list)throws RemoteException;
 	void changeExeDeleteStock(ArrayList<String> list)throws RemoteException;
+	void modify(ArrayList<StorageListLineofInPO> arraylistinpo,
+			String idofcenter)throws RemoteException;
 }

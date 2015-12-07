@@ -73,7 +73,7 @@ public class StorageNavigationPanel extends JPanel {
 	ImageIcon Out2 = new ImageIcon("photo/out2.png");
 	ImageIcon Check2 = new ImageIcon("photo/check2.png");
 	ImageIcon pan2 = new ImageIcon("photo/pan2.png");
-	final ImageIcon tiaozheng=new ImageIcon("photo/SeperateAdjust.png");
+	ImageIcon tiaozheng=new ImageIcon("photo/SeperateAdjust.png");
 	ImageIcon Logout = new ImageIcon("photo/Logout.png");
 	int panel = 0;
 
@@ -118,6 +118,8 @@ public class StorageNavigationPanel extends JPanel {
 		this.add(Panbutton);
 		this.add(Inbutton);
 		this.add(Outbutton);
+		this.add(LogoutButton);
+		this.add(Tiaobutton);
 
 	}
 	
@@ -127,6 +129,8 @@ public class StorageNavigationPanel extends JPanel {
 		case 1: Panbutton.setIcon(pan);	break;
 		case 2:	Inbutton.setIcon(In);break;
 		case 3: Outbutton.setIcon(Out);break;
+		case 4: Tiaobutton.setIcon(tiaozheng);
+		case 5: LogoutButton.setIcon(Logout);
 		default:
 			break;
 		}
@@ -170,6 +174,16 @@ public class StorageNavigationPanel extends JPanel {
 			removeButton(panel);
 			Outbutton.setIcon(Out2);
 			panel = 3;
+		}
+	};
+     ActionListener tiao  = new ActionListener() {
+		
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			
+			removeButton(panel);
+			Outbutton.setIcon(Out2);
+			panel = 4;
 		}
 	};
 

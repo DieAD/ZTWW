@@ -28,6 +28,15 @@ public class GetStockListBL {
 	public static void main(String[]args){
 		ArrayList<StorageListLineofInPO> ss=new ArrayList<StorageListLineofInPO>();
 		 GetStockListBL gs=new GetStockListBL();
-		 ss=gs.getStockByQu("航空区", "ss");
+		 ss=gs.getStockByQu("航运区", "ss");
+	}
+	public void modify(ArrayList<StorageListLineofInPO> arraylistinpo,
+			String idofcenter) {
+		// TODO Auto-generated method stub
+	commoditylistdata = (CommodityListDataService)rhelper.findService("CommodityListDataService");
+	commoditylistdata.modify(arraylistinpo,idofcenter);
+	for(int i=0;i<arraylistinpo.size();i++){
+	System.out.println(arraylistinpo.get(i).getQu());
+	}
 	}
 }

@@ -28,5 +28,9 @@ public interface CommodityListDataService {
 	ArrayList<StorageListLineofInPO> getStockByQu(String string,
 			String idofcenter);
 
+
+	void modify(ArrayList<StorageListLineofInPO> arraylistinpo,
+			String idofcenter);
+
 	
 }

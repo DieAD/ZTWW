@@ -62,6 +62,7 @@ public class StorageTiaoPanel extends JPanel {
 	    tiaozheng.setBounds(500, 400, 100, 60);
 	    tiaozheng.addActionListener(listenertiao);
 	    tijiao.setBounds(610, 400, 100, 60);
+	    tijiao.addActionListener(tijiaolisten);
 	    this.add(xuanze);
 		this.add(dbtype);
 		this.add(showbutton);
@@ -104,11 +105,14 @@ public class StorageTiaoPanel extends JPanel {
 			if(table.getSelectedRow()>=0){
 			dlg=new JDialog();
 			dlg.setLayout(null);
-			dlg.setSize(new Dimension(350, 250));
+			dlg.setSize(new Dimension(350, 300));
             dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
             ordernumber.setFont(new Font("黑体",0,18));
             ordernumber.setBounds(0, 0, 100, 40);
             ordernumberfield.setBounds(100, 5, 100, 30);
+            int row=table.getSelectedRow();
+            System.out.println(table.getValueAt(row, 0));
+            ordernumberfield.setText((String) table.getValueAt(row, 0));
             qu.setFont(new Font("黑体",0,18));
             qu.setBounds(0, 50, 100, 40);
             dbtype2.setBounds(100, 55, 100, 30);
@@ -116,7 +120,6 @@ public class StorageTiaoPanel extends JPanel {
              pai.setFont(new Font("黑体",0,18));
              pai.setBounds(0, 100, 100, 40);
              jiafield.setBounds(100, 155, 150, 30);
-             
              jia.setBounds(0, 150, 100, 40);
              jia.setFont(new Font("黑体",0,18));
              weifield.setBounds(100, 205, 150, 30);
@@ -144,6 +147,17 @@ public class StorageTiaoPanel extends JPanel {
 		
 		public void actionPerformed(ActionEvent e) {
 			
+			StorageListLineofInVO storagelistlineinvo=new StorageListLineofInVO(1, "", ordernumberfield.getText(), "", "", dbtype2.getSelectedItem().toString(), paifield.getText(), jiafield.getText(), weifield.getText(), 0);			
+			arraylist.add(storagelistlineinvo);
+			System.out.println(ordernumberfield.getText());
+			int row=table.getSelectedRow();
+			table.setValueAt(dbtype2.getSelectedItem().toString(), row, 3);
+			table.setValueAt(paifield.getText(), row, 4);
+			table.setValueAt(jiafield.getText(), row, 5);
+			table.setValueAt(weifield.getText(), row, 6);
+			
+			
+			dlg.setVisible(false);
 			surebutton.removeActionListener(surelistener);
 			// TODO Auto-generated method stub
 			
@@ -155,7 +169,7 @@ public class StorageTiaoPanel extends JPanel {
 		
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
-	
+			defaultTableModel.setRowCount(0);
 	arraylistshow=commodityservice.getStockbyQu(dbtype.getSelectedItem().toString(),idofcenter);
 	
 	
@@ -174,11 +188,12 @@ public class StorageTiaoPanel extends JPanel {
 		}
 	};
 ActionListener tijiaolisten=new ActionListener() {
-		
+	
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
-			
-			
+			commodityservice.modify(arraylist,idofcenter);
+			defaultTableModel.setRowCount(0);
+			arraylist.clear();
 		}
 	};
 }
