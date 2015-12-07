@@ -10,13 +10,15 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
+import nju.ztww.ui.main.Listener_Return;
+
 public class CourierMenuUI extends JPanel{
 	
-	MyButton OrderInputButton = new MyButton();
-	MyButton AcceptButton = new MyButton();
-	MyButton CheckOrderButton = new MyButton();
-	MyButton YourMessageButton = new MyButton();
-	MyButton LogoutButton = new MyButton();
+	MyButton OrderInputButton = new MyButton(0);
+	MyButton AcceptButton = new MyButton(1);
+	MyButton CheckOrderButton = new MyButton(2);
+	MyButton YourMessageButton = new MyButton(3);
+	MyButton LogoutButton = new MyButton(4);
 	ImageIcon OrderInput = new ImageIcon("photo/OrderInput.png");
 	ImageIcon Accept = new ImageIcon("photo/Accept.png");
 	ImageIcon CheckOrder = new ImageIcon("photo/CheckOrder.png");
@@ -44,7 +46,7 @@ public class CourierMenuUI extends JPanel{
 		
 		
 		OrderInputButton.setIcon(OrderInput);
-		OrderInputButton.setBounds(0,0,150,40); //——by zyz 2015/12/3
+//		OrderInputButton.setBounds(0,0,150,40); //——by zyz 2015/12/3
 		OrderInputButton.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
@@ -58,7 +60,7 @@ public class CourierMenuUI extends JPanel{
 		});
 		
 		AcceptButton.setIcon(Accept);
-		AcceptButton.setBounds(0,40,150,40); //——by zyz 2015/12/3
+//		AcceptButton.setBounds(0,40,150,40); //——by zyz 2015/12/3
 		AcceptButton.addActionListener(new ActionListener() {
 
 			
@@ -73,7 +75,7 @@ public class CourierMenuUI extends JPanel{
 		});
 		
 		CheckOrderButton.setIcon(CheckOrder);
-		CheckOrderButton.setBounds(0,80,150,40); //——by zyz 2015/12/3
+//		CheckOrderButton.setBounds(0,80,150,40); //——by zyz 2015/12/3
 		CheckOrderButton.addActionListener(new ActionListener() {
 
 			
@@ -88,7 +90,7 @@ public class CourierMenuUI extends JPanel{
 		});
 		
 		YourMessageButton.setIcon(YourMessage);
-		YourMessageButton.setBounds(0,120,150,40);	//——by zyz 2015/12/3
+//		YourMessageButton.setBounds(0,120,150,40);	//——by zyz 2015/12/3
 		YourMessageButton.addActionListener(new ActionListener() {
 
 			
@@ -103,7 +105,15 @@ public class CourierMenuUI extends JPanel{
 		});
 		
 		LogoutButton.setIcon(Logout);
-		LogoutButton.setBounds(0,160,150,40);	//——by zyz 2015/12/3
+		LogoutButton.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				Listener_Return returnPanel = new Listener_Return();
+				returnPanel.actionPerformed(e);
+			}
+		});
+//		LogoutButton.setBounds(0,160,150,40);	//——by zyz 2015/12/3
 		
 		this.add(OrderInputButton);
 		this.add(AcceptButton);

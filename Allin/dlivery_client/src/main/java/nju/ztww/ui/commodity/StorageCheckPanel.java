@@ -1,5 +1,6 @@
 package nju.ztww.ui.commodity;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -82,7 +83,13 @@ public class StorageCheckPanel extends JPanel {
 				//绑定滚动条
 				JScrollPane scrollPane = new JScrollPane(table1);
 				 table1.setRowHeight(25);
-				scrollPane.setBounds(0, 50, 700, 150);
+				 //
+				scrollPane.setBounds(0, 50, 700, 150);//——by zyz
+				scrollPane.getViewport().setOpaque(false);
+				scrollPane.setOpaque(false);
+				table1.getTableHeader().setBackground(new Color(249,231,212));//208,168,125
+				table1.setBackground(new Color(208,168,125)); //226,203,170
+				//
 				this.add(scrollPane); 
 				
 				
@@ -112,7 +119,11 @@ public class StorageCheckPanel extends JPanel {
 									//绑定滚动条
 				JScrollPane scrollPane1 = new JScrollPane(table2);
 				table2.setRowHeight(25);
+				//
 				scrollPane1.setBounds(0, 280, 700, 150);
+				scrollPane1.getViewport().setOpaque(false);
+				scrollPane1.setOpaque(false);
+				
 				this.add(scrollPane1);
 				
 	

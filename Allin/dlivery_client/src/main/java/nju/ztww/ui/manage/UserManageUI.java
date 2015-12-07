@@ -1,9 +1,10 @@
 package nju.ztww.ui.manage;
 /**
  * 田琦
- * 
+ * userManage panel
  * */
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -25,16 +26,19 @@ import javax.swing.table.DefaultTableModel;
 import nju.ztww.service.UserService;
 import nju.ztww.serviceimpl.OrderServiceImpl;
 import nju.ztww.serviceimpl.UserLoginImpl;
+import nju.ztww.ui.order.MyButton;
+import nju.ztww.ui.order.MyScrollPane;
+import nju.ztww.ui.order.MyTable;
 import nju.ztww.vo.ManaUserVO;
 
 public class UserManageUI extends JPanel{
 	int row=0;
 	DefaultTableModel defaultTableModel ;
 	JDialog dlg;
-	 JTable table;
-	 private JButton addButton=new JButton();
-	 private JButton deleteButton=new JButton("删除");
-	 private JButton changeButton=new JButton("修改");
+	 MyTable table;
+	 private MyButton addButton=new MyButton('b');
+	 private MyButton deleteButton=new MyButton('c');
+	 private MyButton changeButton=new MyButton('a');
 	 JButton sureAddButton = new JButton("确认添加");
 	 JButton sureChangeButton = new JButton("确认修改");
 	 JDialog addDlg;
@@ -74,10 +78,12 @@ public class UserManageUI extends JPanel{
 	public UserManageUI(){
 		
 		ImageIcon save=new ImageIcon("photo/save.gif");
-		
-		addButton.setBounds(500, 420, 110, 38);
-		deleteButton.setBounds(350, 420, 110, 38);
-		changeButton.setBounds(200, 420, 110, 38);
+		this.setBackground(new Color(250, 240, 230));
+//		
+//		deleteButton.setBounds(350, 420, 110, 38);
+//		changeButton.setBounds(200, 420, 110, 38);
+		changeButton.setIcon(new ImageIcon("photo/modify.png"));
+
 //		userButton.setIcon(save);
 		addButton.setText("添加");
 		addButton.addActionListener(add);
@@ -95,19 +101,21 @@ public class UserManageUI extends JPanel{
 			  
 			  //创建表格: 建立一个显示二维数组数据的表格，且可以显示列的名称。 
 			  defaultTableModel = new DefaultTableModel( playerInfo,Names); 
-			  table = new JTable( defaultTableModel);       //字段名称
-			  Dimension size = table.getTableHeader().getPreferredSize();
-			  //init();
-			  size.height = 30;//设置新的表头高度40
-			  table.getTableHeader().setPreferredSize(size);
-			  table.setAutoResizeMode(JTable.AUTO_RESIZE_NEXT_COLUMN);
-			//  table.setPreferredScrollableViewportSize(new Dimension( 550,
-//			                60));
-			  
-			  //绑定滚动条
-			  JScrollPane scrollPane = new JScrollPane(table);
-		      table.setRowHeight(25);
-			  scrollPane.setBounds(0, 0, 690, 420);
+			  table = new MyTable(defaultTableModel);
+			  MyScrollPane scrollPane = new MyScrollPane(table);
+//			  table = new JTable( defaultTableModel);       //字段名称
+//			  Dimension size = table.getTableHeader().getPreferredSize();
+//			  //init();
+//			  size.height = 30;//设置新的表头高度40
+//			  table.getTableHeader().setPreferredSize(size);
+//			  table.setAutoResizeMode(JTable.AUTO_RESIZE_NEXT_COLUMN);
+//			//  table.setPreferredScrollableViewportSize(new Dimension( 550,
+////			                60));
+//			  
+//			  //绑定滚动条
+//			  JScrollPane scrollPane = new JScrollPane(table);
+//		      table.setRowHeight(25);
+//			  scrollPane.setBounds(0, 0, 690, 420);
 			  this.add(scrollPane);
 			  this.setLayout(null);
 			  deleteButton.addActionListener(new ActionListener(){
@@ -122,6 +130,8 @@ public class UserManageUI extends JPanel{
 	}
 	
 	public void init(){
+
+
 		ArrayList<ManaUserVO> list=userService.findAll();
 		for(ManaUserVO temp:list){
 			Vector<String> row = new Vector<String>();
@@ -135,18 +145,22 @@ public class UserManageUI extends JPanel{
 
 	}
 
-	public void paintComponent(Graphics g){
-		super.paintComponent(g);
-		
-		Image background=new ImageIcon("photo/background2.gif").getImage();
-		g.drawImage(background, 0,0,null);
-		
-	}
+
+//	public void paintComponent(Graphics g){
+//		super.paintComponent(g);
+//		
+//		Image background=new ImageIcon("photo/background2.gif").getImage();
+//		g.drawImage(background, 0,0,null);
+//		
+//	}
 	
     ActionListener change = new ActionListener() {
 
+
+
 		
 		public void actionPerformed(ActionEvent e) {
+
 			row=table.getSelectedRow();
 			ManaUserVO userVO=userService.findByID((String)table.getValueAt(row, 1));
 			addDlg = new JDialog();
@@ -258,6 +272,124 @@ public class UserManageUI extends JPanel{
 		}
     };
 	
+//    ActionListener change = new ActionListener() {
+//
+//
+//		
+//		public void actionPerformed(ActionEvent e) {
+//
+//
+//			row=table.getSelectedRow();
+//			ManaUserVO userVO=userService.findByID((String)table.getValueAt(row, 1));
+//			addDlg = new JDialog();
+//			addDlg.setSize(new Dimension(600, 350));
+//            addDlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
+//            
+//            IDLabel.setBounds(50, 20, 150, 20);
+//            IDLabel.setText(userVO.getID());
+//            ID.setBounds(120, 20, 100, 20);
+//            nameLabel.setBounds(300, 20, 150, 20);
+//            nameLabel.setText(userVO.getName());
+//            name.setBounds(350, 20, 100, 20);
+//            passwordLabel.setBounds(50, 70, 150, 20);
+//            passwordLabel.setText(userVO.getPassword());
+//            password.setBounds(100, 70, 100, 20);
+//            authorityLabel.setBounds(300, 70, 150, 20);
+//            authorityLabel.setText(userVO.getAuthority());
+//            authority.setBounds(350, 70, 150, 20);
+//            ageLabel.setBounds(50, 100, 150, 20);
+//            ageLabel.setText(Integer.toString(userVO.getAge()));
+//            age.setBounds(100, 100, 150, 20);
+//            IDCardLabel.setBounds(300, 100, 150, 20);
+//            IDCardLabel.setText(userVO.getIDCard());
+//            IDCard.setBounds(350, 100, 150, 20);
+//            sexLabel.setBounds(50, 150, 150, 20);
+//            if(userVO.getSex()==0){
+//            	sexLabel.setText("男");
+//            }else{
+//            	sexLabel.setText("女");
+//            }
+//            sex.setBounds(100, 150, 150, 20);
+//            phoneLabel.setBounds(300, 150, 150, 20);
+//            phoneLabel.setText(userVO.getPhone());
+//            phone.setBounds(350, 150, 150, 20);
+//            timeLabel.setBounds(300, 180, 150, 20);
+//            timeLabel.setText(Integer.toString(userVO.getWorktime()));
+//            time.setBounds(350, 180, 150, 20);
+//            onLineLabel.setBounds(300, 210, 150, 20);
+//            if(userVO.getWetherwork()==0){
+//            	onLineLabel.setText("否");
+//            }else{
+//            	onLineLabel.setText("是");
+//            }
+//            onLine.setBounds(350, 210, 150, 20);
+//            positionLabel.setBounds(50, 180, 150, 20);
+//            positionLabel.setText(userVO.getPosition());
+//            position.setBounds(100, 180, 150, 20);
+//            sureChangeButton.setBounds(200, 250, 150, 40);
+//            sureChangeButton.addActionListener(sureChange);
+//            
+//            addDlg.add(onLineLabel);
+//            addDlg.add(onLine);
+//            addDlg.add(timeLabel);
+//            addDlg.add(time);
+//            addDlg.add(IDLabel);
+//            addDlg.add(ID);
+//            addDlg.add(nameLabel);
+//            addDlg.add(name);
+//            addDlg.add(passwordLabel);
+//            addDlg.add(password);
+//            addDlg.add(authorityLabel);
+//            addDlg.add(authority);
+//            addDlg.add(ageLabel);
+//            addDlg.add(age);
+//            addDlg.add(IDCardLabel);
+//            addDlg.add(IDCard);
+//            addDlg.add(sexLabel);
+//            addDlg.add(sex);
+//            addDlg.add(phoneLabel);
+//            addDlg.add(phone);
+//            addDlg.add(positionLabel);
+//            addDlg.add(position);
+//            addDlg.add(sureChangeButton);
+//            
+//            addDlg.setLayout(null);
+//			addDlg.setVisible(true);
+//            
+//		}
+//    };
+//     ActionListener sureChange = new ActionListener() {
+//
+//		
+//		public void actionPerformed(ActionEvent e) {
+//			int SEX=0;
+//			if(sex.getText().equals("男")){
+//				SEX=0;
+//			}else{
+//				SEX=1;
+//			}
+//			int IF=0;
+//			if(onLine.getText().equals("是")){
+//				IF=1;
+//			}else{
+//				IF=0;
+//			}
+//			user = new ManaUserVO(ID.getText(), name.getText(), 
+//					password.getText(), authority.getText(), 
+//					Integer.valueOf(age.getText()), IDCard.getText()
+//							, SEX, phone.getText(), position.getText(),Integer.parseInt(time.getText()),IF);
+//			String result=userService.update(user);
+//			table.setValueAt(name.getText(), row, 0);
+//			table.setValueAt(ID.getText(), row, 1);
+//			table.setValueAt(password.getText(), row, 2);
+//			table.setValueAt(position.getText(), row, 3);
+//			table.setValueAt(authority.getText(), row, 4);
+//			
+//			addDlg.dispose();
+//			sureChangeButton.removeActionListener(sureChange);
+//		}
+//    };
+//	
 	ActionListener add = new ActionListener() {
 
 		
@@ -322,8 +454,10 @@ public class UserManageUI extends JPanel{
 	};
 
 	ActionListener sureAdd = new ActionListener() {
+
 		
 		public void actionPerformed(ActionEvent e) {
+
 			// TODO Auto-generated method stub
 			Vector<String> row = new Vector<String>();
 			row.add(name.getText());

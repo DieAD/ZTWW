@@ -99,7 +99,7 @@ public class ClerkOfCenterCarloadPanel extends JPanel{
 //		deleteButton.setIcon(null);
 //		sendButton.setBounds(500, 420, 110, 38);
 //		sendButton.setIcon(null);
-//		findButton.setBounds(220, 420, 110, 38);
+		findButton.setBounds(560, 400, 80, 30);
 //		findButton.setIcon(null);
 
 		this.setLayout(null);

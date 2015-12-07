@@ -55,14 +55,14 @@ public class PersonalMesageUI extends JPanel{
 		sex.setBounds(270, 100, 132, 41);
 		sextextArea.setBounds(320, 105, 72, 31);
 		ID.setFont(new Font("SimSun", Font.BOLD, 20));
-		ID.setBounds(440, 50, 132, 41);
-		itextArea.setBounds(470, 55, 72, 31);
+		ID.setBounds(490, 50, 132, 41);
+		itextArea.setBounds(520, 55, 120, 31);
 		age.setFont(new Font("SimSun", Font.BOLD, 20));
-		age.setBounds(425, 100, 132, 41);
-		agetextArea.setBounds(470, 105, 72, 31);
+		age.setBounds(475, 100, 132, 41);
+		agetextArea.setBounds(520, 105, 120, 31);
 		area.setFont(new Font("SimSun", Font.BOLD, 20));
 		area.setBounds(270, 150, 132, 41);
-		areatextArea.setBounds(320, 155, 222, 31);
+		areatextArea.setBounds(360, 155, 242, 31);
 		position.setFont(new Font("SimSun", Font.BOLD, 20));
 		position.setBounds(270, 200, 132, 41);
 		positiontextArea.setBounds(320, 205, 222, 31);
@@ -96,7 +96,8 @@ public class PersonalMesageUI extends JPanel{
 		salarytextArea.setText(Salary+"");
 		
 		this.setLayout(null);
-		this.add(changeButton);
+		this.setBounds(150,100,750,450);
+//		this.add(changeButton);
 		this.add(salary);
 		this.add(salarytextArea);
 		this.add(workyear);
@@ -118,7 +119,7 @@ public class PersonalMesageUI extends JPanel{
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
 		
-		Image background=new ImageIcon("photo/background3.gif").getImage();
+		Image background=new ImageIcon("photo/PersonInfoBG.png").getImage();
 		g.drawImage(background, 0,0,null);
 		Image touxiang=new ImageIcon("photo/touxiang.gif").getImage();
 		g.drawImage(touxiang, 30,30,null);
