@@ -52,7 +52,7 @@ public class SwiftController {
 	
 	
 	public void switchUI(){
-		panelList = MUI.getPanelList();
+		panelList = ccUI.getPanelList();
 
 //		switch(id){
 //		case 0: jump = false;break;
