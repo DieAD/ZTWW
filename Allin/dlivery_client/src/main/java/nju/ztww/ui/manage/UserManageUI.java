@@ -1,9 +1,10 @@
 package nju.ztww.ui.manage;
 /**
  * 田琦
- * 
+ * userManage panel
  * */
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -25,16 +26,19 @@ import javax.swing.table.DefaultTableModel;
 import nju.ztww.service.UserService;
 import nju.ztww.serviceimpl.OrderServiceImpl;
 import nju.ztww.serviceimpl.UserLoginImpl;
+import nju.ztww.ui.order.MyButton;
+import nju.ztww.ui.order.MyScrollPane;
+import nju.ztww.ui.order.MyTable;
 import nju.ztww.vo.ManaUserVO;
 
 public class UserManageUI extends JPanel{
 	int row=0;
 	DefaultTableModel defaultTableModel ;
 	JDialog dlg;
-	 JTable table;
-	 private JButton addButton=new JButton();
-	 private JButton deleteButton=new JButton("删除");
-	 private JButton changeButton=new JButton("修改");
+	 MyTable table;
+	 private MyButton addButton=new MyButton('b');
+	 private MyButton deleteButton=new MyButton('c');
+	 private MyButton changeButton=new MyButton('a');
 	 JButton sureAddButton = new JButton("确认添加");
 	 JButton sureChangeButton = new JButton("确认修改");
 	 JDialog addDlg;
@@ -74,10 +78,11 @@ public class UserManageUI extends JPanel{
 	public UserManageUI(){
 		
 		ImageIcon save=new ImageIcon("photo/save.gif");
-		
-		addButton.setBounds(500, 420, 110, 38);
-		deleteButton.setBounds(350, 420, 110, 38);
-		changeButton.setBounds(200, 420, 110, 38);
+		this.setBackground(new Color(250, 240, 230));
+//		
+//		deleteButton.setBounds(350, 420, 110, 38);
+//		changeButton.setBounds(200, 420, 110, 38);
+		changeButton.setIcon(new ImageIcon("photo/modify.png"));
 //		userButton.setIcon(save);
 		addButton.setText("添加");
 		addButton.addActionListener(add);
@@ -95,19 +100,21 @@ public class UserManageUI extends JPanel{
 			  
 			  //创建表格: 建立一个显示二维数组数据的表格，且可以显示列的名称。 
 			  defaultTableModel = new DefaultTableModel( playerInfo,Names); 
-			  table = new JTable( defaultTableModel);       //字段名称
-			  Dimension size = table.getTableHeader().getPreferredSize();
-			  //init();
-			  size.height = 30;//设置新的表头高度40
-			  table.getTableHeader().setPreferredSize(size);
-			  table.setAutoResizeMode(JTable.AUTO_RESIZE_NEXT_COLUMN);
-			//  table.setPreferredScrollableViewportSize(new Dimension( 550,
-//			                60));
-			  
-			  //绑定滚动条
-			  JScrollPane scrollPane = new JScrollPane(table);
-		      table.setRowHeight(25);
-			  scrollPane.setBounds(0, 0, 690, 420);
+			  table = new MyTable(defaultTableModel);
+			  MyScrollPane scrollPane = new MyScrollPane(table);
+//			  table = new JTable( defaultTableModel);       //字段名称
+//			  Dimension size = table.getTableHeader().getPreferredSize();
+//			  //init();
+//			  size.height = 30;//设置新的表头高度40
+//			  table.getTableHeader().setPreferredSize(size);
+//			  table.setAutoResizeMode(JTable.AUTO_RESIZE_NEXT_COLUMN);
+//			//  table.setPreferredScrollableViewportSize(new Dimension( 550,
+////			                60));
+//			  
+//			  //绑定滚动条
+//			  JScrollPane scrollPane = new JScrollPane(table);
+//		      table.setRowHeight(25);
+//			  scrollPane.setBounds(0, 0, 690, 420);
 			  this.add(scrollPane);
 			  this.setLayout(null);
 			  deleteButton.addActionListener(new ActionListener(){
@@ -122,6 +129,7 @@ public class UserManageUI extends JPanel{
 	}
 	
 	public void init(){
+
 		ArrayList<ManaUserVO> list=userService.findAll();
 		for(ManaUserVO temp:list){
 			Vector<String> row = new Vector<String>();
@@ -135,13 +143,13 @@ public class UserManageUI extends JPanel{
 
 	}
 
-	public void paintComponent(Graphics g){
-		super.paintComponent(g);
-		
-		Image background=new ImageIcon("photo/background2.gif").getImage();
-		g.drawImage(background, 0,0,null);
-		
-	}
+//	public void paintComponent(Graphics g){
+//		super.paintComponent(g);
+//		
+//		Image background=new ImageIcon("photo/background2.gif").getImage();
+//		g.drawImage(background, 0,0,null);
+//		
+//	}
 	
     ActionListener change = new ActionListener() {
 
@@ -322,8 +330,10 @@ public class UserManageUI extends JPanel{
 	};
 
 	ActionListener sureAdd = new ActionListener() {
+
 		
 		public void actionPerformed(ActionEvent e) {
+
 			// TODO Auto-generated method stub
 			Vector<String> row = new Vector<String>();
 			row.add(name.getText());

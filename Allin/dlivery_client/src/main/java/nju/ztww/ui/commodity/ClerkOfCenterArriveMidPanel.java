@@ -74,7 +74,7 @@ public class ClerkOfCenterArriveMidPanel extends JPanel{
 	   public ClerkOfCenterArriveMidPanel() {
 			findtext.setBounds(410, 12, 150, 30);
 
-			this.add(findtext);
+//			this.add(findtext); ?   							 ——by zyz
 			this.setBackground(new Color(250, 240, 230));
 
 		   this.setLayout(null);
