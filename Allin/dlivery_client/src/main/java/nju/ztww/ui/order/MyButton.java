@@ -50,7 +50,10 @@ public class MyButton extends JButton {
 		
 		public void mouseReleased(MouseEvent e) {
 			// TODO Auto-generated method stub
-			
+			String photo = MyButton.this.getIcon().toString();
+			System.out.println(photo);
+			photo = photo.substring(0, photo.length()-4)+"2.png";
+			MyButton.this.setIcon(new ImageIcon(photo));
 		}
 		
 		public void mousePressed(MouseEvent e) {
@@ -67,10 +70,13 @@ public class MyButton extends JButton {
 		
 		public void mouseEntered(MouseEvent e) {
 			// TODO Auto-generated method stub
+			
 			String photo = MyButton.this.getIcon().toString();
+			if(!photo.contains("2")){
 			System.out.println(photo);
 			photo = photo.substring(0, photo.length()-4)+"2.png";
 			MyButton.this.setIcon(new ImageIcon(photo));
+			}
 		}
 		
 		public void mouseClicked(MouseEvent e) {

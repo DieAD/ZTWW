@@ -1,6 +1,7 @@
 package nju.ztww.ui.commodity;
 
 import java.awt.Color;
+
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -23,6 +24,8 @@ import nju.ztww.bl.commodity.StringToInt;
 import nju.ztww.serviceimpl.CommodityListServiceImpl;
 import nju.ztww.serviceimpl.OrderServiceImpl;
 import nju.ztww.serviceimpl.StorageOutListServiceImpl;
+import nju.ztww.ui.order.MyButton;
+
 import nju.ztww.vo.DeliverFeesVO;
 import nju.ztww.vo.ShippingVO;
 import nju.ztww.vo.StorageListLineofInVO;
@@ -79,9 +82,9 @@ public class FindStoragePanel extends JPanel {
 
 	JDialog dlg;
 	
-	   private JButton find=new JButton("查看库存");
-	   private JButton addTransferOrder=new JButton("生成中转单");
-	   private JButton addLoadOrder=new JButton("生成装车单");
+	   private MyButton find=new MyButton('c');
+	   private MyButton addTransferOrder=new MyButton('b');
+	   private MyButton addLoadOrder=new MyButton('a');
 	   private JButton sureButton=new JButton("确定");
 	   private JButton sureTransferButton=new JButton("确定");
 	  
@@ -101,6 +104,7 @@ public class FindStoragePanel extends JPanel {
 	   private ArrayList<StorageListLineofOutVO> arraylist=new ArrayList<StorageListLineofOutVO>();
 	   private ArrayList<StorageListLineofInVO> getStorage=new ArrayList<StorageListLineofInVO>();
 	   public FindStoragePanel() {
+
 		   
 		   this.setBackground(new Color(250, 240, 230));
 		   
@@ -115,12 +119,12 @@ public class FindStoragePanel extends JPanel {
 			ImageIcon add=new ImageIcon("photo/add.gif");
 			final ImageIcon dataLable=new ImageIcon("photo/dataLable.gif");
 		
-		     find.setBounds(220, 420, 110, 38);
-		     find.setIcon(null);
-		     addTransferOrder.setBounds(360, 420, 110, 38);
-		     addTransferOrder.setIcon(null);
-		     addLoadOrder.setBounds(500, 420, 110, 38);
-		     addLoadOrder.setIcon(null);
+//		     find.setBounds(220, 420, 110, 38);
+		     find.setIcon(new ImageIcon("photo/ViewStorage.png"));
+//		     addTransferOrder.setBounds(360, 420, 110, 38);
+		     addTransferOrder.setIcon(new ImageIcon("photo/TransitOrder.png"));
+//		     addLoadOrder.setBounds(500, 420, 110, 38);
+		     addLoadOrder.setIcon(new ImageIcon("photo/LoadingOrder.png"));
 
 
 		      final Object[][] p =
@@ -162,7 +166,13 @@ public class FindStoragePanel extends JPanel {
 			  //绑定滚动条
 			  JScrollPane scrollPane = new JScrollPane(table);
 		      table.setRowHeight(25);
-			  scrollPane.setBounds(0, 0, 690, 420);
+		      //
+			  scrollPane.setBounds(0, 0, 750, 400);
+				scrollPane.getViewport().setOpaque(false);
+				scrollPane.setOpaque(false);
+				table.getTableHeader().setBackground(new Color(249,231,212));//208,168,125
+				table.setBackground(new Color(208,168,125)); //226,203,170
+			  //
 			  addLoadOrder.addActionListener(new ActionListener(){
 
 					public void actionPerformed(ActionEvent e) {
@@ -425,13 +435,13 @@ public class FindStoragePanel extends JPanel {
 			}
 		}
 		
-		public void paintComponent(Graphics g){
-			super.paintComponent(g);
-			
-			Image background=new ImageIcon("photo/bbbackground2.gif").getImage();
-			g.drawImage(background, 0,0,null);
-			
-		}
+//		public void paintComponent(Graphics g){
+//			super.paintComponent(g);
+//			
+//			Image background=new ImageIcon("photo/bbbackground2.gif").getImage();
+//			g.drawImage(background, 0,0,null);
+//			
+//		}
 }
 
  
