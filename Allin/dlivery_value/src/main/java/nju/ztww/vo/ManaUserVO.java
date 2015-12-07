@@ -7,23 +7,83 @@ public class ManaUserVO {
 	public String authority;
 	public int age;
 	public String IDCard;
-	public String sex;
+	public int sex;
 	public String phone;
 	public String position;
+    public int worktime;
+    public int wetherwork;
 	
-	public ManaUserVO(String ID, String name,String password, String authority, int age
-			, String IDCard, String sex, String phone, String position){
-		this.ID = ID;
+
+	
+	public ManaUserVO(String iD, String name, String password,
+			String authority, int age, String iDCard, int sex, String phone,
+			String position, int worktime, int wetherwork) {
+		super();
+		this.ID = iD;
 		this.name = name;
 		this.password = password;
 		this.authority = authority;
 		this.age = age;
-		this.IDCard = IDCard;
+		this.IDCard = iDCard;
 		this.sex = sex;
 		this.phone = phone;
 		this.position = position;
+		this.worktime = worktime;
+		this.wetherwork = wetherwork;
 	}
-	
+
+	public void setID(String iD) {
+		ID = iD;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public void setAuthority(String authority) {
+		this.authority = authority;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	public void setIDCard(String iDCard) {
+		IDCard = iDCard;
+	}
+
+	public void setSex(int sex) {
+		this.sex = sex;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public void setPosition(String position) {
+		this.position = position;
+	}
+
+	public void setWorktime(int worktime) {
+		this.worktime = worktime;
+	}
+
+	public void setWetherwork(int wetherwork) {
+		this.wetherwork = wetherwork;
+	}
+
+	public int getWorktime() {
+		return worktime;
+	}
+
+	public int getWetherwork() {
+		return wetherwork;
+	}
+
 	public String getID(){
 		return ID;
 	}
@@ -48,7 +108,7 @@ public class ManaUserVO {
 		return IDCard;
 	}
 	
-	public String getSex(){
+	public int getSex(){
 		return sex;
 	}
 	

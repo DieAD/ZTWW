@@ -2,6 +2,8 @@ package nju.ztww.ui.commodity;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -21,6 +23,7 @@ import nju.ztww.bl.commodity.StringToInt;
 import nju.ztww.serviceimpl.CommodityListServiceImpl;
 import nju.ztww.serviceimpl.OrderServiceImpl;
 import nju.ztww.serviceimpl.StorageOutListServiceImpl;
+import nju.ztww.vo.DeliverFeesVO;
 import nju.ztww.vo.ShippingVO;
 import nju.ztww.vo.StorageListLineofInVO;
 import nju.ztww.vo.StorageListLineofOutVO;
@@ -330,7 +333,7 @@ public class FindStoragePanel extends JPanel {
 				loadingVO.setArrivePlace(arrivetextArea.getText());
 				loadingVO.setCarNumber(carNumbertextArea.getText());
 				loadingVO.setJianZhuangName(jianzhuangtextArea.getText());
-				double money=orderServiceImpl.getMoney(departtextArea.getText(), arrivetextArea.getText(), 1);
+				double money=30*2*row.size()*0.01;
 				loadingVO.setMoney(money);
 				getSelectString();
 				if(OrderNumber !=""){
@@ -375,7 +378,9 @@ public class FindStoragePanel extends JPanel {
 				transferVO.setMethodNumber(AirOrCarNumberText.getText());
 				transferVO.setSendPlace(transferSendText.getText());
 				transferVO.setTransferData(transferNumberText.getText());
-				double money=orderServiceImpl.getMoney(transferSendText.getText(), transferArriveText.getText(), 1);
+				DeliverFeesVO deliverFeesVO=new DeliverFeesVO(transferSendText.getText(),transferArriveText.getText()
+						,methodText.getText(),0,Double.toString(row.size()*0.01));
+				double money=orderServiceImpl.getMoney(deliverFeesVO);
 				transferVO.setMoney(money);
 				getSelectString();
 				if(OrderNumber !=""){
@@ -418,6 +423,14 @@ public class FindStoragePanel extends JPanel {
 					row.add(i);
 				}
 			}
+		}
+		
+		public void paintComponent(Graphics g){
+			super.paintComponent(g);
+			
+			Image background=new ImageIcon("photo/bbbackground2.gif").getImage();
+			g.drawImage(background, 0,0,null);
+			
 		}
 }
 

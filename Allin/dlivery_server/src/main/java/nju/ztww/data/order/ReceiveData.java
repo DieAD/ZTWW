@@ -1,6 +1,12 @@
 package nju.ztww.data.order;
 
+import java.util.ArrayList;
+
+import nju.ztww.DBHelper.DBForPayeeForm;
+import nju.ztww.dao.HollReciFormDO;
+import nju.ztww.dao.PayeeFormDO;
 import nju.ztww.po.ReceivePO;
+import nju.ztww.vo.IDVO;
 
 /**
  * 处理收款单
@@ -9,21 +15,57 @@ import nju.ztww.po.ReceivePO;
  */
 public class ReceiveData {
 	
+	 DBForPayeeForm dbHelper=new DBForPayeeForm();
+	 private ArrayList<PayeeFormDO> list=new ArrayList<PayeeFormDO>();   
+	 private PayeeFormDO payeeFormDO;
+	 private ReceivePO receivePO=new ReceivePO(5);
+	
     public String insert(ReceivePO receivePO){
-		
-		return null;
+    	dbHelper.init();
+    	payeeFormDO.setCourierid(receivePO.getReceiverName());
+    	payeeFormDO.setDate(receivePO.getData());
+    	payeeFormDO.setExe(receivePO.getExe());
+    	payeeFormDO.setGoodsid(receivePO.getOrderNumber());
+    	payeeFormDO.setHoll(receivePO.getHoll());
+    	payeeFormDO.setId(receivePO.getId());
+    	payeeFormDO.setMoney(receivePO.getReceiveMoney());
+    	payeeFormDO.setState(receivePO.getState());
+    	list.add(payeeFormDO);
+    	dbHelper.insert(list, "payeeform");
+		list.clear();
+		dbHelper.close();
+		return "success";
 		
 	}
 	
    public String delete(String id){
-		
-		return null;
+	   dbHelper.init();
+	   dbHelper.delete(id, "payeeform");
+	   dbHelper.close();
+	   return "success";
 		
 	}
    public ReceivePO find(String id){
-		
-		return null;
+	   dbHelper.init();
+	   ArrayList<PayeeFormDO> list= dbHelper.queryByID(id, "payeeform");
+	   PayeeFormDO payeeFormDO=list.get(0);
+	   receivePO.setData(payeeFormDO.getDate());
+	   receivePO.setId(payeeFormDO.getId());
+	   receivePO.setOrderNumber(payeeFormDO.getGoodsid());
+	   receivePO.setReceiveMoney(payeeFormDO.getMoney());
+	   receivePO.setReceiverName(payeeFormDO.getCourierid());
+	   return null;
 		
 	}
+   
+   public String update(IDVO Id){
+	   dbHelper.init();
+	   ArrayList<PayeeFormDO> list= dbHelper.queryByID(Id.id, "payeeform");
+	   list.get(0).setExe(1);
+	   dbHelper.update(list, "payeeform");
+	   dbHelper.close();
+	   return "success";
+	   
+   }
 
 }

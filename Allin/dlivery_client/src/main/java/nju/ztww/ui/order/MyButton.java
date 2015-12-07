@@ -1,5 +1,8 @@
 package nju.ztww.ui.order;
 
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
@@ -32,12 +35,47 @@ public class MyButton extends JButton {
 	}
 	
 	public MyButton(int n){
+
 		this.setBorderPainted(false);
 		int locate = setLocate(width, n);
 		this.setBounds(0, locate, 150, width);
+//		this.addMouseListener(nevigation);
 	}
 	
 	private int setLocate(int width, int n){
 		return n*width;
 	}
+	
+	MouseListener nevigation = new MouseListener() {
+		
+		public void mouseReleased(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		public void mousePressed(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		public void mouseExited(MouseEvent e) {
+			// TODO Auto-generated method stub
+			String photo = MyButton.this.getIcon().toString();
+			photo = photo.substring(0, photo.length()-5)+".png";
+			MyButton.this.setIcon(new ImageIcon(photo));
+		}
+		
+		public void mouseEntered(MouseEvent e) {
+			// TODO Auto-generated method stub
+			String photo = MyButton.this.getIcon().toString();
+			System.out.println(photo);
+			photo = photo.substring(0, photo.length()-4)+"2.png";
+			MyButton.this.setIcon(new ImageIcon(photo));
+		}
+		
+		public void mouseClicked(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+	};
 }

@@ -20,9 +20,13 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import nju.ztww.serviceimpl.OrderServiceImpl;
+
+import nju.ztww.ui.main.UserInfoUI;
+
 import nju.ztww.ui.order.MyButton;
 import nju.ztww.ui.order.MyScrollPane;
 import nju.ztww.ui.order.MyTable;
+
 import nju.ztww.vo.DriverMessageVO;
 import nju.ztww.vo.LoadingVO;
 import nju.ztww.vo.ReceiveVO;
@@ -205,14 +209,11 @@ public class RecieiveMoneyUI extends JPanel{
 
 		public void actionPerformed(ActionEvent e) {
 			receiveVO.setData(businesstextArea.getText());
-			String temp[]=carNumbertextArea.getText().split(";");
-			for(int i=0;i<temp.length;i++){
-				allOrderNumber.add(temp[i]);
-			}
-			receiveVO.setOrderNumber(allOrderNumber);
+			receiveVO.setOrderNumber(carNumbertextArea.getText());
 			double money=Double.parseDouble(cartextArea.getText());
 			receiveVO.setReceiveMoney(money);
 			receiveVO.setReceiverName(arrivetextArea.getText());
+			receiveVO.setHoll(UserInfoUI.getUserID().substring(5, 8));
 			allreceiveVO.add(receiveVO);
 //			 String result=orderServiceImpl.endSales(receiveVO, 5);
 //			 System.out.println(result);
@@ -246,7 +247,7 @@ public class RecieiveMoneyUI extends JPanel{
 			row.add(receiveVO.getData());
 			row.add(Double.toString(receiveVO.getReceiveMoney()));
 			row.add(receiveVO.getReceiverName());
-			row.add(receiveVO.getOrderNumber().get(0));
+			row.add(receiveVO.getOrderNumber());
 			row.add("");
 			defaultTableModel.addRow(row);
 		    table.revalidate();
