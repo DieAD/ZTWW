@@ -2,13 +2,13 @@ package nju.ztww.ui.main;
 
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.Toolkit;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -28,11 +28,27 @@ public class TracePanel extends JPanel {
     Image title;
     Image background;
     ArrayList<partTracePanel> tracelist = new ArrayList<partTracePanel>();
+    Thread thread ;
+    JButton button = new JButton("返回");
+    	
+    	
     
     public TracePanel(){
+    	button.setBounds(700,500,150,50);
+    	this.add(button);
+    	button.addActionListener(new Listener_Return());
+    	//
     	getImage();
     	getPart();
-    	setFrame();
+    	//setFrame();
+    	thread = new Thread(){
+     	   public void run(){
+     	     animate();
+     	   }
+     	};
+     	
+     	thread.start();
+     	
     }
     public void animate(){
     	for(partTracePanel panel : tracelist){
@@ -49,18 +65,18 @@ public class TracePanel extends JPanel {
 	public void setFrame() {
 		//getPart();
 		//
-		frame.setSize(900, 600);
-		frame.setTitle("Bussiness");
-		int width = Toolkit.getDefaultToolkit().getScreenSize().width;
-		int height = Toolkit.getDefaultToolkit().getScreenSize().height;
-		frame.setLocation((width - 900) / 2, (height - 600) / 2);
-		frame.setResizable(false);
-		// add panel;
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setLayout(null);
-		this.setBounds(0,0,900,600);
-		frame.add(this);
-		frame.setVisible(true);
+//		frame.setSize(900, 600);
+//		frame.setTitle("Bussiness");
+//		int width = Toolkit.getDefaultToolkit().getScreenSize().width;
+//		int height = Toolkit.getDefaultToolkit().getScreenSize().height;
+//		frame.setLocation((width - 900) / 2, (height - 600) / 2);
+//		frame.setResizable(false);
+//		// add panel;
+//		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		frame.setLayout(null);
+//		this.setBounds(0,0,900,600);
+//		//frame.add(this);
+//		frame.setVisible(true);
 	}
 	public void getPart(){
 		this.setLayout(null);
