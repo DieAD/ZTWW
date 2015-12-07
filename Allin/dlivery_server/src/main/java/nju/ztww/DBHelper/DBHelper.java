@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import nju.ztww.dao.UserDO;
+import nju.ztww.po.ManaUserPO;
 
 /**
  * @author wh
@@ -144,6 +145,38 @@ public class DBHelper extends DB{
 		}
 		return list;
 	}
+	
+	public ArrayList<ManaUserPO> queryAll(String tableName) {
+		ArrayList<ManaUserPO> list = new ArrayList<ManaUserPO>();
+		String sql = "select * from " + tableName ;
+		try {
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+			while (rs.next()) {
+				ManaUserPO userDO = new ManaUserPO();
+				userDO.setId(rs.getString(2));
+				userDO.setName(rs.getString(3));
+				userDO.setPsw(rs.getString(4));
+				userDO.setAuthority(rs.getString(5));
+				userDO.setAge(rs.getInt(6));
+				userDO.setWorktime(rs.getInt(7));
+				userDO.setIdcard(rs.getString(8));
+				userDO.setSalarymethod(rs.getInt(9));
+				userDO.setSalary(rs.getDouble(10));
+				userDO.setWetherwork(rs.getInt(11));
+				userDO.setSex(rs.getInt(12));
+				userDO.setPhone(rs.getString(13));
+				userDO.setTimes(rs.getInt(14));
+				userDO.setSp(rs.getDouble(15));
+				userDO.setPosition(rs.getString(16));
+				list.add(userDO);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
+	}
    //增加记录
 	/**
 	 * @param userDOList
@@ -184,7 +217,7 @@ public class DBHelper extends DB{
 	 * @param userDOList
 	 * @param tableName
 	 */
-	public void updateByID(ArrayList<UserDO> userDOList, String tableName) {
+	public String updateByID(ArrayList<UserDO> userDOList, String tableName) {
 		String sql = "update "
 				+ tableName
 				+ " set name=?,psw=?,authority=?,age=?,worktime=?,idcard=?,salarymethod=?,salary=?"
@@ -212,7 +245,7 @@ public class DBHelper extends DB{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
+		return "success";
 	}
 
 	/**按照id删除对应记录

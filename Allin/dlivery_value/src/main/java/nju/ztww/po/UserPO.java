@@ -15,7 +15,24 @@ public class UserPO implements Serializable{
 	public String position;
 	public int workTime;
 	public double salary;
+	public int wetherwork;
 	
+	public String getPosition() {
+		return position;
+	}
+
+	public void setPosition(String position) {
+		this.position = position;
+	}
+
+	public int getWetherwork() {
+		return wetherwork;
+	}
+
+	public void setWetherwork(int wetherwork) {
+		this.wetherwork = wetherwork;
+	}
+
 	public void setName(String name){
 		this.name = name;
 	}

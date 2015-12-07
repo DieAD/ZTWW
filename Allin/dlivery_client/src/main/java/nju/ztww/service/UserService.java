@@ -1,5 +1,7 @@
 package nju.ztww.service;
 
+import java.util.ArrayList;
+
 import nju.ztww.ui.finance.Position;
 import nju.ztww.vo.ManaUserVO;
 import nju.ztww.vo.MemberVO;
@@ -33,4 +35,11 @@ public interface UserService {
 	
 	//管理员添加用户
 	public boolean addUser(ManaUserVO user);
+	
+	public ArrayList<ManaUserVO> findAll();
+	
+	public ManaUserVO findByID(String ID);
+	
+	public String update(ManaUserVO user);
+	
 }

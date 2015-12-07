@@ -28,7 +28,7 @@ import nju.ztww.vo.CarManageVO;
 import nju.ztww.vo.CenterReceiveVO;
 import nju.ztww.vo.SendVO;
 
-public class ClerkOfCenterArriveMidPanel extends JPanel implements Runnable{
+public class ClerkOfCenterArriveMidPanel extends JPanel{
 	
 	private JTextField businesstextArea=new JTextField("");
 	private  JLabel business=new  JLabel("到达日期");
@@ -62,10 +62,9 @@ public class ClerkOfCenterArriveMidPanel extends JPanel implements Runnable{
 	   public JDialog dlg;
 	   DefaultTableModel defaultTableModel ;
 	   public JButton addbutton;
-	   
-	   Thread t=new Thread(this);
+	 
 	   public ClerkOfCenterArriveMidPanel() {
-		   t.start();
+		  
 		   this.setLayout(null);
 		   addbutton=new JButton();
 		   ImageIcon add=new ImageIcon("photo/add.gif");
@@ -78,13 +77,7 @@ public class ClerkOfCenterArriveMidPanel extends JPanel implements Runnable{
 			findButton.setBounds(570, 12, 90, 30);
 			findButton.setIcon(null);
 			findtext.setBounds(410, 12, 150, 30);
-			time.setBounds(20, 10, 160, 30);
-//			 Date dt=new Date();
-//		     SimpleDateFormat matter1=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-//		     time.setText(matter1.format(dt));
-		     time.setForeground(Color.GRAY);
-		     time.setFont(new Font("宋体", 1, 13));
-			this.add(time);
+
 			this.add(findtext);
 			this.add(deleteSendButton);
 		  this.add(findButton);
@@ -109,7 +102,7 @@ public class ClerkOfCenterArriveMidPanel extends JPanel implements Runnable{
 		//缁戝畾婊氬姩鏉�
 		JScrollPane scrollPane = new JScrollPane(table);
 		 table.setRowHeight(25);
-		scrollPane.setBounds(0, 50, 690, 360);
+		scrollPane.setBounds(0, 0, 690, 420);
 		this.add(scrollPane); 
 		addbutton.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent arg0) {
@@ -256,17 +249,5 @@ public class ClerkOfCenterArriveMidPanel extends JPanel implements Runnable{
 			    findSureButton.removeActionListener(listener2);
 			}
 		};
-		public void run() {
-			try { 
-				while(true){ 
-				   SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
-				   time.setText(sdf.format(new Date())); 
-				   t.sleep(1000);
-				} 
-				} 
-				catch (Exception ex) { 
-				ex.printStackTrace(); 
-				} 
-			
-		}
+	
 }
