@@ -83,6 +83,7 @@ public class UserManageUI extends JPanel{
 //		deleteButton.setBounds(350, 420, 110, 38);
 //		changeButton.setBounds(200, 420, 110, 38);
 		changeButton.setIcon(new ImageIcon("photo/modify.png"));
+
 //		userButton.setIcon(save);
 		addButton.setText("添加");
 		addButton.addActionListener(add);
@@ -130,6 +131,7 @@ public class UserManageUI extends JPanel{
 	
 	public void init(){
 
+
 		ArrayList<ManaUserVO> list=userService.findAll();
 		for(ManaUserVO temp:list){
 			Vector<String> row = new Vector<String>();
@@ -143,6 +145,7 @@ public class UserManageUI extends JPanel{
 
 	}
 
+
 //	public void paintComponent(Graphics g){
 //		super.paintComponent(g);
 //		
@@ -153,8 +156,11 @@ public class UserManageUI extends JPanel{
 	
     ActionListener change = new ActionListener() {
 
+
+
 		
 		public void actionPerformed(ActionEvent e) {
+
 			row=table.getSelectedRow();
 			ManaUserVO userVO=userService.findByID((String)table.getValueAt(row, 1));
 			addDlg = new JDialog();
@@ -266,6 +272,124 @@ public class UserManageUI extends JPanel{
 		}
     };
 	
+//    ActionListener change = new ActionListener() {
+//
+//
+//		
+//		public void actionPerformed(ActionEvent e) {
+//
+//
+//			row=table.getSelectedRow();
+//			ManaUserVO userVO=userService.findByID((String)table.getValueAt(row, 1));
+//			addDlg = new JDialog();
+//			addDlg.setSize(new Dimension(600, 350));
+//            addDlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
+//            
+//            IDLabel.setBounds(50, 20, 150, 20);
+//            IDLabel.setText(userVO.getID());
+//            ID.setBounds(120, 20, 100, 20);
+//            nameLabel.setBounds(300, 20, 150, 20);
+//            nameLabel.setText(userVO.getName());
+//            name.setBounds(350, 20, 100, 20);
+//            passwordLabel.setBounds(50, 70, 150, 20);
+//            passwordLabel.setText(userVO.getPassword());
+//            password.setBounds(100, 70, 100, 20);
+//            authorityLabel.setBounds(300, 70, 150, 20);
+//            authorityLabel.setText(userVO.getAuthority());
+//            authority.setBounds(350, 70, 150, 20);
+//            ageLabel.setBounds(50, 100, 150, 20);
+//            ageLabel.setText(Integer.toString(userVO.getAge()));
+//            age.setBounds(100, 100, 150, 20);
+//            IDCardLabel.setBounds(300, 100, 150, 20);
+//            IDCardLabel.setText(userVO.getIDCard());
+//            IDCard.setBounds(350, 100, 150, 20);
+//            sexLabel.setBounds(50, 150, 150, 20);
+//            if(userVO.getSex()==0){
+//            	sexLabel.setText("男");
+//            }else{
+//            	sexLabel.setText("女");
+//            }
+//            sex.setBounds(100, 150, 150, 20);
+//            phoneLabel.setBounds(300, 150, 150, 20);
+//            phoneLabel.setText(userVO.getPhone());
+//            phone.setBounds(350, 150, 150, 20);
+//            timeLabel.setBounds(300, 180, 150, 20);
+//            timeLabel.setText(Integer.toString(userVO.getWorktime()));
+//            time.setBounds(350, 180, 150, 20);
+//            onLineLabel.setBounds(300, 210, 150, 20);
+//            if(userVO.getWetherwork()==0){
+//            	onLineLabel.setText("否");
+//            }else{
+//            	onLineLabel.setText("是");
+//            }
+//            onLine.setBounds(350, 210, 150, 20);
+//            positionLabel.setBounds(50, 180, 150, 20);
+//            positionLabel.setText(userVO.getPosition());
+//            position.setBounds(100, 180, 150, 20);
+//            sureChangeButton.setBounds(200, 250, 150, 40);
+//            sureChangeButton.addActionListener(sureChange);
+//            
+//            addDlg.add(onLineLabel);
+//            addDlg.add(onLine);
+//            addDlg.add(timeLabel);
+//            addDlg.add(time);
+//            addDlg.add(IDLabel);
+//            addDlg.add(ID);
+//            addDlg.add(nameLabel);
+//            addDlg.add(name);
+//            addDlg.add(passwordLabel);
+//            addDlg.add(password);
+//            addDlg.add(authorityLabel);
+//            addDlg.add(authority);
+//            addDlg.add(ageLabel);
+//            addDlg.add(age);
+//            addDlg.add(IDCardLabel);
+//            addDlg.add(IDCard);
+//            addDlg.add(sexLabel);
+//            addDlg.add(sex);
+//            addDlg.add(phoneLabel);
+//            addDlg.add(phone);
+//            addDlg.add(positionLabel);
+//            addDlg.add(position);
+//            addDlg.add(sureChangeButton);
+//            
+//            addDlg.setLayout(null);
+//			addDlg.setVisible(true);
+//            
+//		}
+//    };
+//     ActionListener sureChange = new ActionListener() {
+//
+//		
+//		public void actionPerformed(ActionEvent e) {
+//			int SEX=0;
+//			if(sex.getText().equals("男")){
+//				SEX=0;
+//			}else{
+//				SEX=1;
+//			}
+//			int IF=0;
+//			if(onLine.getText().equals("是")){
+//				IF=1;
+//			}else{
+//				IF=0;
+//			}
+//			user = new ManaUserVO(ID.getText(), name.getText(), 
+//					password.getText(), authority.getText(), 
+//					Integer.valueOf(age.getText()), IDCard.getText()
+//							, SEX, phone.getText(), position.getText(),Integer.parseInt(time.getText()),IF);
+//			String result=userService.update(user);
+//			table.setValueAt(name.getText(), row, 0);
+//			table.setValueAt(ID.getText(), row, 1);
+//			table.setValueAt(password.getText(), row, 2);
+//			table.setValueAt(position.getText(), row, 3);
+//			table.setValueAt(authority.getText(), row, 4);
+//			
+//			addDlg.dispose();
+//			sureChangeButton.removeActionListener(sureChange);
+//		}
+//    };
+//	
 	ActionListener add = new ActionListener() {
 
 		
