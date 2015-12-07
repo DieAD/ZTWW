@@ -1,14 +1,25 @@
 package nju.ztww.ui.manage;
 
+import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import nju.ztww.po.MUserPO;
+import nju.ztww.service.ManageService;
+import nju.ztww.serviceimpl.ManageServiceImpl;
+
 public class GManager_ManageSalaryUI extends JPanel{
-	String[] Position = {"快递员", "营业厅业务员", "中转中心业务员", "中转中心仓库人员", "财务人员", "总经理", "管理员"};
+	String[] Position = {" ", "快递员", "营业厅业务员", "中转中心业务员", "仓库管理员", "财务人员", "总经理", "管理员"};
 	String names;
 	String[] Places = {"北京", "上海", "深圳", "广州", "南京"};
 	JButton sureButton1 = new JButton();
@@ -39,23 +50,26 @@ public class GManager_ManageSalaryUI extends JPanel{
 	JTextField distance = new JTextField();
 	JRadioButton monthly = new JRadioButton("按月提成");
 	JRadioButton timely = new JRadioButton("按次提成");
+	//
+	JButton searchButton2  =new JButton("查找");
+	private ManageService MS = new ManageServiceImpl();
 	public GManager_ManageSalaryUI(){
-		String[] name = {"Tom", "Jerry"};
+		String[] name = {" "};
 		this.setLayout(null);
 		positionLabel.setText("职位");
 		positionLabel.setBounds(20, 20, 80, 30);
 		position.setBounds(80, 20, 170, 30);
-		
+		// delete name jbox ;
 		nameLabel.setText("姓名");
 		nameLabel.setBounds(20, 100, 80, 30);
 		JComboBox name1 = new JComboBox(name);
 		name1.setBounds(80, 100, 170, 30);
-		
+		//change id text dy;
 		idLabel.setText("ID");
 		idLabel.setBounds(20, 180, 80, 30);
 		id1.setBounds(80, 180, 140, 30);
 		searchButton.setText("查找");
-		searchButton.setBounds(220, 180, 30, 30);
+		searchButton.setBounds(220, 180, 70, 30);
 		
 		nameLabel2.setText("姓名");
 		nameLabel2.setBounds(300, 20, 60, 30);
@@ -99,6 +113,7 @@ public class GManager_ManageSalaryUI extends JPanel{
 		sureButton2.setBounds(580, 300, 80, 30);
 		this.add(positionLabel);
 		this.add(position);
+		//name jbox delete
 		this.add(nameLabel);
 		this.add(name1);
 		this.add(idLabel);
@@ -126,6 +141,141 @@ public class GManager_ManageSalaryUI extends JPanel{
 		this.add(to);
 		this.add(distance);
 		this.add(sureButton2);
+		//name1.addActionListener(new Listener1());
+		//
+		searchButton2.setBounds(80, 140, 70, 30);
+		searchButton.setBounds(80,220,70,30);
+		this.add(searchButton2);
+		position.addItemListener(new Listener1(position,name1));
+		searchButton2.addActionListener(new Listener2(position,name1));
+		searchButton.addActionListener(new Listener3(name1));
+		sureButton1.addActionListener(new Listener4());
+		
+		name2.setHorizontalAlignment(JTextField.CENTER);
+		name2.setEditable(false);
+		id2.setHorizontalAlignment(JTextField.CENTER);
+		id2.setEditable(false);
+		num.setHorizontalAlignment(JTextField.CENTER);
+		num.setEditable(false);
+		money.setHorizontalAlignment(JTextField.CENTER);
+		money.setEditable(true);
+	}
+	
+	public class Listener1 implements ItemListener{
+		JComboBox box  ;
+		JComboBox boxToDis;
+		public Listener1(JComboBox box,JComboBox boxToDis){
+			this.box = box;
+			this.boxToDis = boxToDis;
+		}
+
+		public void itemStateChanged(ItemEvent e) {
+			// TODO Auto-generated method stub
+			if(e.getStateChange()==ItemEvent.SELECTED){
+				eventHandle();
+			}
+		}
+		
+		public void eventHandle(){
+            String s = (String)box.getSelectedItem();
+            if(s.equals("快递员")){
+            	System.out.print("0");
+            }
+            String[] disInfo;
+            disInfo = MS.getItem(s);
+            
+            boxToDis.removeAllItems();
+            for(int i=0;i<disInfo.length;i++){
+            	boxToDis.addItem(disInfo[i]);
+            }
+       ///     boxToDis.addItem(disInfo);
+			
+			//System.out.print(s);
+		}
+
+		
+		
+	}
+	
+	public class Listener2 implements ActionListener{
+		
+		private JComboBox index;
+		private JComboBox name;
+		public Listener2(JComboBox index,JComboBox name){
+			this.index = index;
+			this.name =name;
+		}
+
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			String sindex = (String)index.getSelectedItem();
+			String sname = (String)name.getSelectedItem();
+			System.out.print(sindex + sname);
+			MUserPO userInfo = MS.getUserInfo(sindex, sname);
+			name2.setText(userInfo.getName());
+			id1.setText(userInfo.getId());
+			id2.setText(userInfo.getId());
+			String number = userInfo.getNumber()+"";
+			num.setText(number);
+			String sp = userInfo.getSp() + "";
+			money.setText(sp);
+			String salary = userInfo.getSalary()+"";
+			sumSalary.setText(salary);
+			if(userInfo.getSalarymethod()==0){
+				monthly.setSelected(true);	
+				timely.setSelected(false);
+			}else{
+				monthly.setSelected(false);
+				timely.setSelected(true);
+			}
+			
+		}
+		
+		
+	}
+	public class Listener3 implements ActionListener{
+		JComboBox nameBox;
+		public Listener3(JComboBox box){
+			this.nameBox = box;
+		}
+
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			String id = id1.getText();
+			System.out.print(id);
+			MUserPO userInfo = MS.getUserInfoById(id);
+			name2.setText(userInfo.getName());
+//			id1.setText(userInfo.getId());
+			id2.setText(userInfo.getId());
+			String number = userInfo.getNumber()+"";
+			num.setText(number);
+			String sp = userInfo.getSp() + "";
+			money.setText(sp);
+			String salary = userInfo.getSalary()+"";
+			sumSalary.setText(salary);
+			if(userInfo.getSalarymethod()==0){
+				monthly.setSelected(true);	
+				timely.setSelected(false);
+				//money.setEditable(false);
+			}else{
+				monthly.setSelected(false);
+				timely.setSelected(true);
+				//sumSalary.setEditable(false);
+			}
+			nameBox.removeAllItems();
+		}
+		
+	}
+	
+	public class Listener4 implements ActionListener{
+
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			double sp = Double.parseDouble(money.getText());
+			double sum = Double.parseDouble(sumSalary.getText());
+			System.out.print(sp + "df"+sum);
+		}
+		
 	}
 	
 }

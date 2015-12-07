@@ -36,6 +36,8 @@ public class StoragePanPanel extends JPanel  implements ActionListener{
 	public JTextField countshuliang=new JTextField(5);
 	public JButton panagain=new JButton("确认盘点");
 	public JButton excel=new JButton("导出Excel");
+	public JLabel baojing=new JLabel("库存警戒线");
+	public JTextField baojingshuliang=new JTextField(5);
 	long l = System.currentTimeMillis();
 	Date data=new Date(l);
 	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd ");
@@ -57,15 +59,19 @@ public class StoragePanPanel extends JPanel  implements ActionListener{
 	   panagain.setBounds(550, 0, 120, 30);
 	   panagain.addActionListener(this);
 	   countall.setFont(font1);
-	   countall.setBounds(550,460, 60, 30);
-	   countshuliang.setBounds(620, 460, 50, 30);
-	   excel.setBounds(410, 460, 120, 30);
+	   baojing.setBounds(400, 400, 80, 30);
+	   baojingshuliang.setBounds(480, 400, 40, 30);
+	   countall.setBounds(550,400, 60, 30);
+	   countshuliang.setBounds(620, 400, 50, 30);
+	   excel.setBounds(210, 400, 120, 30);
 	   this.add(countall);
 	   this.add(time);
 	   this.add(timefield);
 	   this.add(panagain);
 	   this.add(countshuliang);
 	   this.add(excel);
+	   this.add(baojing);
+	   this.add(baojingshuliang);
 	// TODO Auto-generated constructor stub
 	   Object[][] playerInfo =
 	{
@@ -86,7 +92,7 @@ public class StoragePanPanel extends JPanel  implements ActionListener{
 		//绑定滚动条
 		JScrollPane scrollPane = new JScrollPane(table);
 		 table.setRowHeight(25);
-		scrollPane.setBounds(0, 40, 700, 400);
+		scrollPane.setBounds(0, 40, 700, 360);
 		this.add(scrollPane); 
 }
   public void actionPerformed(ActionEvent e) {
