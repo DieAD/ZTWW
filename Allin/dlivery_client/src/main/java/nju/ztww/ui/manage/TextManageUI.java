@@ -46,6 +46,9 @@ public class TextManageUI {
 	
 	public TextManageUI(){
 		init();
+		panel.setBounds(0, 100, 150, 500);
+		lablePanel.setBounds(150, 0, 750, 60);
+		userManagePanel.setBounds(150,100,750,450);
 	}
 	
 	public ArrayList<JPanel> getPanelList(){

@@ -74,6 +74,12 @@ public class ClerkOfCenterArriveMidPanel extends JPanel{
 
 	   public MyButton addbutton = new MyButton('b');
 	   public ClerkOfCenterArriveMidPanel() {
+
+
+
+//			this.add(findtext); ?   							 ——by zyz
+
+
 			this.setBackground(new Color(250, 240, 230));
 
 		   this.setLayout(null);

@@ -122,7 +122,7 @@ public class TextBussinessUI {
 			panelList.add(panel);
 			panelList.add(carLoadingPanel);
 			panelList.add(lablePanel);
-			panelList.add(resultMessageUI);
+//			panelList.add(resultMessageUI);  //——by zyz
 			return panelList;
 		}
 		
