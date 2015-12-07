@@ -14,9 +14,9 @@ public class FindOrderIDBl {
 		// TODO Auto-generated constructor stub
 	}
 
-	public String findID(){
+	public String findID(String name){
 		orderDataService=(OrderDataService)rhelper.findService("OrderDataService");
-		String id=orderDataService.findID();
+		String id=orderDataService.findID(name);
 		return id;
 	}
 }

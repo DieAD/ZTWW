@@ -2,11 +2,14 @@ package nju.ztww.ui.commodity;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Vector;
 
 import javax.swing.ImageIcon;
@@ -28,7 +31,7 @@ import nju.ztww.vo.CarManageVO;
 import nju.ztww.vo.CenterReceiveVO;
 import nju.ztww.vo.SendVO;
 
-public class ClerkOfCenterArriveMidPanel extends JPanel {
+public class ClerkOfCenterArriveMidPanel extends JPanel{
 	
 	private JTextField businesstextArea=new JTextField("");
 	private  JLabel business=new  JLabel("到达日期");
@@ -41,11 +44,16 @@ public class ClerkOfCenterArriveMidPanel extends JPanel {
 	private JTextField transferNumbertextArea=new JTextField("");
 	private  JLabel transferNumber=new  JLabel("中转中心编号");
 	private JTextField findtextArea=new JTextField("");
+
+	private JTextField findtext=new JTextField("");
+
+
 	
 	private MyButton sendButton=new MyButton('a');
 	private MyButton deleteSendButton=new MyButton('c');
 	private JButton sureButton=new JButton("确定");
 	private MyButton findButton=new MyButton('d');
+
 	private JButton findSureButton=new JButton("确定");
 	
 	private ArrayList<CenterReceiveVO> allcenterReceiveVO=new ArrayList<CenterReceiveVO>();
@@ -60,9 +68,13 @@ public class ClerkOfCenterArriveMidPanel extends JPanel {
 	 public MyTable table;
 	   public JDialog dlg;
 	   DefaultTableModel defaultTableModel ;
+		
+
 	   public MyButton addbutton = new MyButton('b');
 	   public ClerkOfCenterArriveMidPanel() {
-		   
+			findtext.setBounds(410, 12, 150, 30);
+
+			this.add(findtext);
 			this.setBackground(new Color(250, 240, 230));
 
 		   this.setLayout(null);
@@ -76,6 +88,7 @@ public class ClerkOfCenterArriveMidPanel extends JPanel {
 //			deleteSendButton.setIcon(null);
 //			findButton.setBounds(170, 420, 110, 38);
 //			findButton.setIcon(null);
+
 			this.add(deleteSendButton);
 		  this.add(findButton);
 		  this.add(sendButton);
@@ -249,4 +262,5 @@ public class ClerkOfCenterArriveMidPanel extends JPanel {
 			    findSureButton.removeActionListener(listener2);
 			}
 		};
+	
 }

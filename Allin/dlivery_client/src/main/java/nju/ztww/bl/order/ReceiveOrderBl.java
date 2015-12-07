@@ -42,6 +42,7 @@ public class ReceiveOrderBl {
 			receivePO.setReceiveMoney(receiveVO.getReceiveMoney());
 			receivePO.setReceiverName(receiveVO.getReceiverName());
 			receivePO.setId(receiveVO.getId());
+			receivePO.setHoll(receiveVO.getHoll());
 			orderDataService=(OrderDataService)rhelper.findService("OrderDataService");
 			String result=orderDataService.insert(receivePO,5);
 			return result;

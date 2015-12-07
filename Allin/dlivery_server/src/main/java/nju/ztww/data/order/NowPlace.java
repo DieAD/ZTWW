@@ -4,12 +4,12 @@ package nju.ztww.data.order;
 public class NowPlace {
 	
 	public String findCity(String ID){
-		String city=ID.substring(0, 3);
-		if(city=="025"){
+		
+		if(ID=="025"){
 			return "北京";
-		}else if(city=="035"){
+		}else if(ID=="035"){
 			return "上海";
-		}else if(city=="045"){
+		}else if(ID=="045"){
 			return "广州";
 		}else{
 			return "南京";
@@ -17,8 +17,7 @@ public class NowPlace {
 	}
 	public String findTransfer(String ID){
 		
-		String transfer=ID.substring(3, 5);
-		if(transfer=="01"){
+		if(ID=="01"){
 			return "中转中心一";
 		}else{
 			return "中转中心二";
@@ -26,10 +25,10 @@ public class NowPlace {
 		
 	}
 	public String findBussiness(String ID){
-	    String bussiness=ID.substring(5, 8);
-	    if(bussiness=="001"){
+	 
+	    if(ID=="001"){
 	    	return "营业厅一";
-	    }else  if(bussiness=="002"){
+	    }else  if(ID=="002"){
 	    	return "营业厅二";
 	    }else{
 	    	return "营业厅其他";

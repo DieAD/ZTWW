@@ -2,9 +2,9 @@ package nju.ztww.data.order;
 
 import java.util.List;
 
-
-
 import nju.ztww.DBHelper.DB;
+import nju.ztww.DBHelper.DBForDCForm;
+import nju.ztww.dao.DCFormDO;
 import nju.ztww.po.AcceptPO;
 import nju.ztww.po.BusinessArrivePO;
 import nju.ztww.po.CarManagePO;
@@ -13,11 +13,11 @@ import nju.ztww.po.DriverMessagePO;
 import nju.ztww.po.LoadingPO;
 import nju.ztww.po.MailingPO;
 import nju.ztww.po.OrderPO;
-import nju.ztww.po.PriceDataPO;
 import nju.ztww.po.ReceivePO;
 import nju.ztww.po.SendPO;
 import nju.ztww.po.ShippingPO;
 import nju.ztww.po.TransferPO;
+import nju.ztww.vo.DeliverFeesVO;
 import nju.ztww.vo.IDVO;
 
 public class OrderHandler {
@@ -34,6 +34,8 @@ public class OrderHandler {
 	private ShippingData shippingData=new ShippingData();
 	private TransferData transferData=new TransferData();
 	private DB db;
+	private DBForDCForm dBForDCForm=new DBForDCForm();
+	private DCFormDO dCFormDO;
 	
 
 	private BusinessArriveData businessArriveData = new BusinessArriveData();
@@ -44,9 +46,15 @@ public class OrderHandler {
 		
 	}
 	
-	public String findID(){
-		return "66";
+	public String findID(String name){
+		String id=db.getSize(name);
+		return id;
 		
+	}
+	
+	public double getdistence(DeliverFeesVO deliverFees){
+		dCFormDO=dBForDCForm.query(deliverFees.place1, deliverFees.place2);
+		return dCFormDO.getDistance();
 	}
 
 	public String insert(OrderPO orderPO,int type){
@@ -189,8 +197,13 @@ public class OrderHandler {
 		    }
 		    break;
 		case 5:
-//			for(IDVO orderPO:list){
-//			}
+			for(IDVO orderPO:list){
+				result=receiveData.update(orderPO);
+			    if(result!="success"){
+			    	return "fail";
+			    }
+		    }
+		    break;
 		case 6:
 			for(IDVO orderPO:list){
 				result=sendData.update(orderPO);

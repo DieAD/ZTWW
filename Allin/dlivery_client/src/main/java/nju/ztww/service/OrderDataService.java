@@ -6,6 +6,7 @@ import java.util.List;
 import nju.ztww.po.TrackPO;
 import nju.ztww.po.OrderPO;
 import nju.ztww.po.PriceDataPO;
+import nju.ztww.vo.DeliverFeesVO;
 import nju.ztww.vo.IDVO;
 
 /**
@@ -22,7 +23,7 @@ public interface OrderDataService extends Remote{
 	
 	public OrderPO find(String id,int type);
 	
-	public String findID();
+	public String findID(String name);
 
 	public String insertToDateFactory(List<IDVO> list, int type);
 	
@@ -30,6 +31,8 @@ public interface OrderDataService extends Remote{
 
 	
 	public String addTrace(List<IDVO> list,int type);
+	
+	public double getmoney(DeliverFeesVO deliverFees);
 
 
 	public TrackPO passMailingOrder(String order);

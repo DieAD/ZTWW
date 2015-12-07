@@ -76,11 +76,11 @@ public class ClerkOfCenterUi extends JFrame {
 		navigationpanel.StorageFind.addActionListener(new ClerkOfCenterController(this, findStoragePanel, arraylist));
 	}
 
-//	public static void main(String[] args) {
-//		
-//		new ClerkOfCenterUi();
-//       
-//}
+	public static void main(String[] args) {
+		
+		new ClerkOfCenterUi();
+       
+}
 	
 	public ArrayList<JPanel> getPanelList(){
 		list.add(navigationpanel);

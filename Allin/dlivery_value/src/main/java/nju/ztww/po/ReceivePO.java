@@ -16,7 +16,8 @@ public class ReceivePO extends OrderPO implements Serializable{
 	private String data;
 	private double receiveMoney;
 	private String receiverName;
-	private ArrayList<String> orderNumber;
+	private String orderNumber;
+	private String Holl;
 	private String id;
 	private int exe=0;
 	private int state=1;
@@ -24,6 +25,18 @@ public class ReceivePO extends OrderPO implements Serializable{
 	public ReceivePO(int idOfOrder) {
 		super(idOfOrder);
 		this.idOfOrde=idOfOrder;
+	}
+
+	public String getHoll() {
+		return Holl;
+	}
+
+	public void setHoll(String holl) {
+		Holl = holl;
+	}
+
+	public void setExe(int exe) {
+		this.exe = exe;
 	}
 
 	public int getExe() {
@@ -76,11 +89,11 @@ public class ReceivePO extends OrderPO implements Serializable{
 		this.receiverName = receiverName;
 	}
 
-	public ArrayList<String> getOrderNumber() {
+	public String getOrderNumber() {
 		return orderNumber;
 	}
 
-	public void setOrderNumber(ArrayList<String> orderNumber) {
+	public void setOrderNumber(String orderNumber) {
 		this.orderNumber = orderNumber;
 	}
 
