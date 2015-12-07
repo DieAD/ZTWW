@@ -22,6 +22,7 @@ public class StorageNavigationPanel extends JPanel {
 	final ImageIcon Out=new ImageIcon("photo/out.png");
 	final ImageIcon Check=new ImageIcon("photo/check.png");
 	final ImageIcon pan=new ImageIcon("photo/pan.png");
+	final ImageIcon tiaozheng=new ImageIcon("photo/SeperateAdjust.png");
 	ImageIcon Logout = new ImageIcon("photo/Logout.png");
   public StorageNavigationPanel() {
 	// TODO Auto-generated constructor stub
@@ -34,7 +35,7 @@ public class StorageNavigationPanel extends JPanel {
 	  LogoutButton=new MyButton(5);
 	  LogoutButton.setIcon(Logout);
 	  Tiaobutton=new MyButton(4);
-	  Tiaobutton.setText("分区调整");
+	  Tiaobutton.setIcon(tiaozheng);
 	  Outbutton=new MyButton(3);
 	  Outbutton.setIcon(Out);
 	  Inbutton=new MyButton(2);

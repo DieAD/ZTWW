@@ -92,9 +92,14 @@ public class CommodityListServiceImpl implements CommodityListService {
 		for(int i=0;i<arraylistinpo.size();i++){
 			 arraylistinvo.add(arraylistinpo.get(i).changetovo());
 		}
+		System.out.println(arraylistinvo.size());
 		return arraylistinvo;
 	}
-		
+	public static void main(String[]args){
+		CommodityListServiceImpl ss=new CommodityListServiceImpl();
+		ArrayList<StorageListLineofInVO> sss=new ArrayList<StorageListLineofInVO>();
+		sss=ss.getStockbyQu("航空区", "ss");
+	}
 	
 
 }

@@ -22,7 +22,12 @@ public class GetStockListBL {
 		ArrayList<StorageListLineofInPO> storagelist=new ArrayList<StorageListLineofInPO>();
 		commoditylistdata = (CommodityListDataService)rhelper.findService("CommodityListDataService");
 		storagelist=commoditylistdata.getStockByQu(string,idofcenter);
+		System.out.println("ssss"+storagelist.size());
 		return storagelist;
 	}
-	
+	public static void main(String[]args){
+		ArrayList<StorageListLineofInPO> ss=new ArrayList<StorageListLineofInPO>();
+		 GetStockListBL gs=new GetStockListBL();
+		 ss=gs.getStockByQu("航空区", "ss");
+	}
 }

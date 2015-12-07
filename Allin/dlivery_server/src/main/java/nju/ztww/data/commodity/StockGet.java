@@ -43,6 +43,7 @@ public class StockGet {
 		ArrayList<StorageListLineofInPO> storagelistline=new ArrayList<StorageListLineofInPO>();
 		stocklist=dbforstock.queryByQu(string, tableName);
 		System.out.println("在服务器");
+		System.out.println(stocklist.size());
 		for(int k=0;k<stocklist.size();k++){
 			StorageListLineofInPO storagelistlinreofin=new StorageListLineofInPO(1,
 					"没有用",
@@ -62,5 +63,10 @@ public class StockGet {
 		return storagelistline;
 
 		
+	}
+	public static void main(String[]args){
+		StockGet sg=new StockGet();
+		 ArrayList<StorageListLineofInPO>stocklist=new  ArrayList<StorageListLineofInPO>();
+		stocklist=sg.getStockByQu("航空区", "1");
 	}
 }

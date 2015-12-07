@@ -45,6 +45,7 @@ public class StorageTiaoPanel extends JPanel {
 	public JTextField paifield=new JTextField();
 	public JTextField jiafield=new JTextField();
 	public JTextField weifield=new JTextField();
+	ArrayList<StorageListLineofInVO> arraylistshow=new ArrayList<StorageListLineofInVO>();
 	JButton surebutton=new JButton("确定");
 	String idofcenter="";//中转中心的编号
   public StorageTiaoPanel() {
@@ -154,8 +155,10 @@ public class StorageTiaoPanel extends JPanel {
 		
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
-	ArrayList<StorageListLineofInVO> arraylistshow=new ArrayList<StorageListLineofInVO>();
+	
 	arraylistshow=commodityservice.getStockbyQu(dbtype.getSelectedItem().toString(),idofcenter);
+	
+	
 	for(int i=0;i<arraylistshow.size();i++){
 		Vector<String> row = new Vector<String>(7);
 		row.add(arraylistshow.get(i).getId());

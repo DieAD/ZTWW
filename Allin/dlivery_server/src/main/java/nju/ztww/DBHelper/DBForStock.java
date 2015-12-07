@@ -92,7 +92,7 @@ public class DBForStock extends DB{
 	}
 	
 	public void insert(ArrayList<StockDO> list, String tableName){
-		String sql = "insert into "+tableName+"(goodsid,entrytime,address,qu,pai,jia,wei)values(?,?,?,?,?,?,?)";
+		String sql = "insert into "+tableName+"(goodsid,entrytime,address,qu,pai,jia,wei,state)values(?,?,?,?,?,?,?,?)";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			for(StockDO stock : list){
@@ -113,7 +113,10 @@ public class DBForStock extends DB{
 	}
 	
 	public void update(ArrayList<StockDO> list,String tableName){
-		String sql = "update "+ tableName +" set goodsid=?,entrytime=?,address=?,qu=?,pai=?,jia=?,wei=?,state? where goodsid=?";
+		String sql = "update "
+				+ tableName
+				+ " set goodsid=?,entrytime=?,address=?,qu=?,pai=?,jia=?,wei=?,state=?"
+				+ " where goodsid=?";
 		
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -125,8 +128,9 @@ public class DBForStock extends DB{
 				pstmt.setString(5, stock.getPai());
 				pstmt.setString(6, stock.getJia());
 				pstmt.setString(7, stock.getWei());
-				pstmt.setString(8,stock.getGoodsid());
-				pstmt.setInt(9, stock.getState());
+				pstmt.setInt(8, stock.getState());
+				pstmt.setString(9,stock.getGoodsid());
+				
 				pstmt.executeUpdate();
 			}
 		} catch (SQLException e) {
@@ -203,7 +207,7 @@ public class DBForStock extends DB{
 	}
 	public ArrayList<StockDO> queryByQu(String qu,String tableName){
 		ArrayList<StockDO> list  = new ArrayList<StockDO>();
-		String sql = "select * from "+tableName+" where qu="+qu;
+		String sql = "select * from "+tableName+" where qu='"+qu+"'";
 		
 		try {
 			Statement stmt = conn.createStatement();
@@ -237,8 +241,12 @@ public class DBForStock extends DB{
 		list=db.queryALL("stocktable");
 		
 		for(int i=0;i<list.size();i++){
-		  System.out.println(list.get(i).getAddress());
+			System.out.println(list.get(i).getGoodsid());
+			System.out.println(list.get(i).getQu());
+			//list.get(i).setQu("航运区");
 		}
+		
+		db.update(list, "stocktable");
 		db.close();
 	}
 
