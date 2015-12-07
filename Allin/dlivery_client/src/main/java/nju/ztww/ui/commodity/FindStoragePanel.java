@@ -435,13 +435,13 @@ public class FindStoragePanel extends JPanel {
 			}
 		}
 		
-		public void paintComponent(Graphics g){
-			super.paintComponent(g);
-			
-			Image background=new ImageIcon("photo/bbbackground2.gif").getImage();
-			g.drawImage(background, 0,0,null);
-			
-		}
+//		public void paintComponent(Graphics g){
+//			super.paintComponent(g);
+//			
+//			Image background=new ImageIcon("photo/bbbackground2.gif").getImage();
+//			g.drawImage(background, 0,0,null);
+//			
+//		}
 }
 
  
