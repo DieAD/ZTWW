@@ -36,7 +36,7 @@ public interface OrderDataService extends Remote  {
 	public String addTrace(List<IDVO> list,int type)  throws RemoteException;
 
 
-	public TrackPO passOrder(String order) throws RemoteException;
+	public TrackPO passMailingOrder(String order) throws RemoteException;
 	
 	public void addTrack(TrackPO mailingTrackPO) throws RemoteException;
 	

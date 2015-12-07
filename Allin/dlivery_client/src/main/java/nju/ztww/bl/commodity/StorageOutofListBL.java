@@ -32,5 +32,13 @@ public class StorageOutofListBL {
 		commoditydata = (CommodityDataService)rhelper.findService("CommodityDataServiceOut");
 		commoditydata.delete(idofOrder, idofcenter);
 	}
+
+	public String getLastidofcenter(String idofcenter) {
+		// TODO Auto-generated method stub
+		String index=" ";
+		commoditydata = (CommodityDataService)rhelper.findService("CommodityDataServiceOut");
+		index=commoditydata.getLastidofcenter(idofcenter);
+		return index;
+	}
    
 }

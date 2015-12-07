@@ -26,7 +26,7 @@ public class StorageListGetByStringBL {
 		ArrayList<StorageListLineofInPO> storagelist=new ArrayList<StorageListLineofInPO>();
 		storagelist=commoditylistdata.findInList(timebegin, timeend,idofcenter);
 		System.out.println("zai BL");
-		System.out.println(storagelist.get(0).getId());
+
 		return storagelist;
 		
 	}

@@ -28,6 +28,7 @@ public class SwiftController {
 	private TestGManagerUI GMUI;
 	private TextManageUI   MUI;
 	private UserInfoUI userInfoUI;
+	private TipsUI tipsUI;
 	//
 	private JFrame frame;
 	private MemberVO member; 
@@ -50,7 +51,7 @@ public class SwiftController {
 	
 	
 	public void switchUI(){
-//		panelList = MUI.getPanelList();
+//		panelList = businessUI.getPanelList();
 
 		switch(id){
 		case 0: jump = false;break;
@@ -66,7 +67,8 @@ public class SwiftController {
 		}
 		userInfoUI = new UserInfoUI(ID);
 		panelList.add(userInfoUI);
-		
+		tipsUI = new TipsUI();
+		panelList.add(tipsUI);
 	}
 	
 	public void setUI(){

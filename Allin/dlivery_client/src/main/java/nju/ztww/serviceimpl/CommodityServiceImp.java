@@ -11,7 +11,6 @@ import nju.ztww.po.StorageListLineofOutPO;
 import nju.ztww.service.CommodityDataService;
 import nju.ztww.service.CommodityService;
 import nju.ztww.vo.OrderVO;
-
 import nju.ztww.vo.StorageListLineofInVO;
 import nju.ztww.vo.StorageListLineofOutVO;
 import nju.ztww.vo.StorageListVO;
@@ -60,5 +59,10 @@ public void addinOrder(
 		ArrayList<StorageListLineofInVO> arraylist,String idofcneter) {
 	// TODO Auto-generated method stub
 	
+}
+
+public String getLastidofcenter(String idofcenter) {
+	// TODO Auto-generated method stub
+	return null;
 }
 }

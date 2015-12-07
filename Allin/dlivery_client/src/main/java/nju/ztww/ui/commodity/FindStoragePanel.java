@@ -1,5 +1,6 @@
 package nju.ztww.ui.commodity;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -100,6 +101,8 @@ public class FindStoragePanel extends JPanel {
 	   private ArrayList<StorageListLineofOutVO> arraylist=new ArrayList<StorageListLineofOutVO>();
 	   private ArrayList<StorageListLineofInVO> getStorage=new ArrayList<StorageListLineofInVO>();
 	   public FindStoragePanel() {
+		   
+		   this.setBackground(new Color(250, 240, 230));
 		   
 		    final ImageIcon BusinessNumber=new ImageIcon("photo/businessNumberLabel.gif");
 			final ImageIcon CarNumber=new ImageIcon("photo/carNumberLabel.gif");
@@ -352,7 +355,7 @@ public class FindStoragePanel extends JPanel {
 				String [] temp=OrderNumber.split(";");
 				// 2biao  shi qiche
 				for(int i=0;i<temp.length;i++){
-					StorageListLineofOutVO StorageListLineofOutVO=new StorageListLineofOutVO(temp[i],datatextArea.getText(),
+					StorageListLineofOutVO StorageListLineofOutVO=new StorageListLineofOutVO("idofdanzi",temp[i],datatextArea.getText(),
 							arrivetextArea.getText(),2,cartextArea.getText());
 					arraylist.add(StorageListLineofOutVO);
 				}
@@ -396,7 +399,7 @@ public class FindStoragePanel extends JPanel {
 				String [] temp=OrderNumber.split(";");
 				for(int i=0;i<temp.length;i++){
 					StringToInt st=new StringToInt();
-					StorageListLineofOutVO StorageListLineofOutVO=new StorageListLineofOutVO(temp[i],loadDataText.getText(),
+					StorageListLineofOutVO StorageListLineofOutVO=new StorageListLineofOutVO("idofdanzi",temp[i],loadDataText.getText(),
 							methodText.getText(),st.changetoint(transferArriveText.getText()),transferNumberText.getText());
 					arraylist.add(StorageListLineofOutVO);
 				}

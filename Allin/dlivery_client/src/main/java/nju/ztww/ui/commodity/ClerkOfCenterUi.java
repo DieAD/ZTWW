@@ -45,13 +45,13 @@ public class ClerkOfCenterUi extends JFrame {
 	}
 	public void setPosition(){
 		this.setLayout(null);
-		navigationpanel.setBounds(0, 0, 210, 600);
-		toppanel.setBounds(210, 0, 690, 60);
-		ArriveMidpanel.setBounds(210, 60, 690, 480);
-		Transferpanel.setBounds(210, 60, 690, 480);
-		ArriveEndpanel.setBounds(210, 60, 690, 480);
-		CarloadPanel.setBounds(210, 60, 690, 480);
-		findStoragePanel.setBounds(210, 60, 690, 480);
+		navigationpanel.setBounds(0, 100, 150, 500);
+		toppanel.setBounds(150, 0, 750, 60);
+		ArriveMidpanel.setBounds(150, 100, 750, 450);
+		Transferpanel.setBounds(150, 100, 750, 450);
+		ArriveEndpanel.setBounds(150, 100, 750, 450);
+		CarloadPanel.setBounds(150, 100, 750, 450);
+		findStoragePanel.setBounds(150, 100, 750, 450);
 		//注掉
 	
 		this.add(navigationpanel);

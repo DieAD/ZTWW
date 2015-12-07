@@ -7,6 +7,7 @@ import nju.ztww.dao.StockDO;
 import nju.ztww.vo.StorageListLineofInVO;
 
 public class StorageListLineofInPO extends OrderPO implements Serializable {
+	String idofdanzi;//单子号
 	String id;//快递编号
     String data;//入库日期
     String destination;//目的地
@@ -14,8 +15,10 @@ public class StorageListLineofInPO extends OrderPO implements Serializable {
     String pai;//排号
     String jia;//架号
     String wei;//位号
-	public StorageListLineofInPO(int idOfOrder,String id,String data,String destination,String qu,String pai,String jia,String wei) {
+    int belong;//需不需要转运
+	public StorageListLineofInPO(int idOfOrder,String idofdanzi,String id,String data,String destination,String qu,String pai,String jia,String wei,int belong) {
 		super(idOfOrder);
+		this.belong=belong;
 		this.id=id;
 		this.data=data;
 		this.destination=destination;
@@ -23,7 +26,20 @@ public class StorageListLineofInPO extends OrderPO implements Serializable {
 		this.pai=pai;
 		this.jia=jia;
 		this.wei=wei;
+		this.idofdanzi=idofdanzi;
 		// TODO Auto-generated constructor stub
+	}
+	public String getIdofdanzi() {
+		return idofdanzi;
+	}
+	public void setIdofdanzi(String idofdanzi) {
+		this.idofdanzi = idofdanzi;
+	}
+	public int getBelong() {
+		return belong;
+	}
+	public void setBelong(int belong) {
+		this.belong = belong;
 	}
 	public String getId() {
 		return id;
@@ -69,11 +85,12 @@ public class StorageListLineofInPO extends OrderPO implements Serializable {
 	}
 	public StorageListLineofInVO changetovo() {
 		// TODO Auto-generated method stub
-		return new StorageListLineofInVO(idOfOrder, id, data, destination, qu, pai, jia, wei);
+		return new StorageListLineofInVO(idOfOrder,"不需要用的idofcenter" ,id, data, destination, qu, pai, jia, wei,0);
 		
 	}
 	public EntryFormDO changetoIndo(){
 		EntryFormDO entryformdo=new EntryFormDO();
+		entryformdo.setId(idofdanzi);
 		entryformdo.setGoodsid(id);
 		entryformdo.setEntrytime(data);
 		entryformdo.setAddress(destination);
@@ -82,12 +99,12 @@ public class StorageListLineofInPO extends OrderPO implements Serializable {
 		entryformdo.setPai(pai);
 		entryformdo.setWei(wei);
 		entryformdo.setExe(0);
-		entryformdo.setState(1);
+		entryformdo.setState(belong);
 		return entryformdo;
 	}
    public StockDO  changetoSdo(){
 	   StockDO stockdo=new StockDO();
-	 
+	   stockdo.setState(belong);
 	   stockdo.setEntrytime(data);
 	   stockdo.setGoodsid(id);
 	   stockdo.setAddress(destination);

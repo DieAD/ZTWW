@@ -1,5 +1,6 @@
 package nju.ztww.ui.user;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -19,6 +20,9 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import nju.ztww.serviceimpl.OrderServiceImpl;
+import nju.ztww.ui.order.MyButton;
+import nju.ztww.ui.order.MyScrollPane;
+import nju.ztww.ui.order.MyTable;
 import nju.ztww.vo.CarManageVO;
 import nju.ztww.vo.LoadingVO;
 
@@ -43,32 +47,33 @@ public class CarManageUI extends JPanel{
 	private JTextField findtextArea=new JTextField("");
 	private ArrayList<CarManageVO> allCarManageVO=new ArrayList<CarManageVO>();
 	
-	private JButton sendButton=new JButton("提交");
-	private JButton findButton=new JButton("查找");
-	private JButton deleteButton=new JButton("删除");
+	private MyButton sendButton=new MyButton('a');
+	private MyButton findButton=new MyButton('d');
+	private MyButton deleteButton=new MyButton('c');
 	private JButton findSureButton=new JButton("确定");
-	private JButton addButton=new JButton();
+	private MyButton addButton=new MyButton('b');
 	private JButton sureButton=new JButton("确定");
 	
 	private OrderServiceImpl orderServiceImpl=new OrderServiceImpl();
 	private CarManageVO carManageVO;
 	
 	DefaultTableModel defaultTableModel ;
-	 JTable table;
+	 MyTable table;
 	 JDialog dlg;
 	 java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit()
 				.getScreenSize();
 	
 	public CarManageUI(){
-		ImageIcon add=new ImageIcon("photo/add.gif");
-		addButton.setBounds(500, 420, 110, 38);
-		addButton.setIcon(add);
-		deleteButton.setBounds(220, 420, 110, 38);
-		deleteButton.setIcon(null);
-		sendButton.setBounds(360, 420, 110, 38);
-		sendButton.setIcon(null);
-		findButton.setBounds(90, 420, 110, 38);
-		findButton.setIcon(null);
+		this.setBackground(new Color(250, 240, 230));
+//		ImageIcon add=new ImageIcon("photo/add.gif");
+//		addButton.setBounds(500, 420, 110, 38);
+//		addButton.setIcon(add);
+//		deleteButton.setBounds(220, 420, 110, 38);
+//		deleteButton.setIcon(null);
+//		sendButton.setBounds(360, 420, 110, 38);
+//		sendButton.setIcon(null);
+//		findButton.setBounds(90, 420, 110, 38);
+//		findButton.setIcon(null);
 		Object[][] playerInfo =
 			  {
 			    
@@ -80,19 +85,22 @@ public class CarManageUI extends JPanel{
 			  
 			  //创建表格: 建立一个显示二维数组数据的表格，且可以显示列的名称。 
 			  defaultTableModel = new DefaultTableModel( playerInfo,Names); 
-			  table = new JTable( defaultTableModel);       //字段名称
-			  Dimension size = table.getTableHeader().getPreferredSize();
-		
-			  size.height = 30;//设置新的表头高度40
-			  table.getTableHeader().setPreferredSize(size);
-			  table.setAutoResizeMode(JTable.AUTO_RESIZE_NEXT_COLUMN);
-			//  table.setPreferredScrollableViewportSize(new Dimension( 550,
-//			                60));
 			  
-			  //绑定滚动条
-			  JScrollPane scrollPane = new JScrollPane(table);
-		      table.setRowHeight(25);
-			  scrollPane.setBounds(0, 0, 690, 420);
+			  table = new MyTable(defaultTableModel);
+			  MyScrollPane scrollPane = new MyScrollPane(table);
+//			  table = new JTable( defaultTableModel);       //字段名称
+//			  Dimension size = table.getTableHeader().getPreferredSize();
+//		
+//			  size.height = 30;//设置新的表头高度40
+//			  table.getTableHeader().setPreferredSize(size);
+//			  table.setAutoResizeMode(JTable.AUTO_RESIZE_NEXT_COLUMN);
+//			//  table.setPreferredScrollableViewportSize(new Dimension( 550,
+////			                60));
+//			  
+//			  //绑定滚动条
+//			  JScrollPane scrollPane = new JScrollPane(table);
+//		      table.setRowHeight(25);
+//			  scrollPane.setBounds(0, 0, 690, 420);
 			  this.add(scrollPane);
 			  addButton.addActionListener(new ActionListener(){
 
@@ -188,13 +196,13 @@ public class CarManageUI extends JPanel{
 			  this.setLayout(null);
 	}
 
-	public void paintComponent(Graphics g){
-		super.paintComponent(g);
-		
-		Image background=new ImageIcon("photo/background2.gif").getImage();
-		g.drawImage(background, 0,0,null);
-		
-	}
+//	public void paintComponent(Graphics g){
+//		super.paintComponent(g);
+//		
+//		Image background=new ImageIcon("photo/background2.gif").getImage();
+//		g.drawImage(background, 0,0,null);
+//		
+//	}
 	
 	ActionListener listener = new ActionListener(){
 

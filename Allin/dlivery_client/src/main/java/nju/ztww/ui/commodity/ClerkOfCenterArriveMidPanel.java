@@ -23,6 +23,9 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import nju.ztww.serviceimpl.OrderServiceImpl;
+import nju.ztww.ui.order.MyButton;
+import nju.ztww.ui.order.MyScrollPane;
+import nju.ztww.ui.order.MyTable;
 import nju.ztww.vo.BusinessArriveVO;
 import nju.ztww.vo.CarManageVO;
 import nju.ztww.vo.CenterReceiveVO;
@@ -41,12 +44,16 @@ public class ClerkOfCenterArriveMidPanel extends JPanel{
 	private JTextField transferNumbertextArea=new JTextField("");
 	private  JLabel transferNumber=new  JLabel("中转中心编号");
 	private JTextField findtextArea=new JTextField("");
+
 	private JTextField findtext=new JTextField("");
-	private  JLabel time=new  JLabel();
-	private JButton sendButton=new JButton("提交");
-	private JButton deleteSendButton=new JButton("删除");
+
+
+	
+	private MyButton sendButton=new MyButton('a');
+	private MyButton deleteSendButton=new MyButton('c');
 	private JButton sureButton=new JButton("确定");
-	private JButton findButton=new JButton("查找订单");
+	private MyButton findButton=new MyButton('d');
+
 	private JButton findSureButton=new JButton("确定");
 	
 	private ArrayList<CenterReceiveVO> allcenterReceiveVO=new ArrayList<CenterReceiveVO>();
@@ -58,27 +65,30 @@ public class ClerkOfCenterArriveMidPanel extends JPanel{
 	 
 	 private OrderServiceImpl orderServiceImpl=new OrderServiceImpl();
 	
-	 public JTable table;
+	 public MyTable table;
 	   public JDialog dlg;
 	   DefaultTableModel defaultTableModel ;
-	   public JButton addbutton;
-	 
+		
+
+	   public MyButton addbutton = new MyButton('b');
 	   public ClerkOfCenterArriveMidPanel() {
-		  
-		   this.setLayout(null);
-		   addbutton=new JButton();
-		   ImageIcon add=new ImageIcon("photo/add.gif");
-		   addbutton.setBounds(560, 420, 110, 38);
-		   addbutton.setIcon(add);
-		   sendButton.setBounds(430, 420, 110, 38);
-			sendButton.setIcon(null);
-			deleteSendButton.setBounds(300, 420, 110, 38);
-			deleteSendButton.setIcon(null);
-			findButton.setBounds(570, 12, 90, 30);
-			findButton.setIcon(null);
 			findtext.setBounds(410, 12, 150, 30);
 
 			this.add(findtext);
+			this.setBackground(new Color(250, 240, 230));
+
+		   this.setLayout(null);
+//		   addbutton=new MyButton('b');
+//		   ImageIcon add=new ImageIcon("photo/add.gif");
+//		   addbutton.setBounds(560, 420, 110, 38);
+//		   addbutton.setIcon(add);
+//		   sendButton.setBounds(430, 420, 110, 38);
+//			sendButton.setIcon(null);
+//			deleteSendButton.setBounds(300, 420, 110, 38);
+//			deleteSendButton.setIcon(null);
+//			findButton.setBounds(170, 420, 110, 38);
+//			findButton.setIcon(null);
+
 			this.add(deleteSendButton);
 		  this.add(findButton);
 		  this.add(sendButton);
@@ -94,15 +104,18 @@ public class ClerkOfCenterArriveMidPanel extends JPanel{
 				  
 	  //鍒涘缓琛ㄦ牸: 寤虹珛涓�涓樉绀轰簩缁存暟缁勬暟鎹殑琛ㄦ牸锛屼笖鍙互鏄剧ず鍒楃殑鍚嶇О銆� 
 		defaultTableModel = new DefaultTableModel( playerInfo,Names); 
-		table = new JTable( defaultTableModel);       //瀛楁鍚嶇О
-		Dimension size = table.getTableHeader().getPreferredSize();
-		size.height = 30;//璁剧疆鏂扮殑琛ㄥご楂樺害40
-		table.getTableHeader().setPreferredSize(size);
-		table.setAutoResizeMode(JTable.AUTO_RESIZE_NEXT_COLUMN);
-		//缁戝畾婊氬姩鏉�
-		JScrollPane scrollPane = new JScrollPane(table);
-		 table.setRowHeight(25);
-		scrollPane.setBounds(0, 0, 690, 420);
+		
+		table = new MyTable(defaultTableModel);
+		MyScrollPane scrollPane = new MyScrollPane(table);
+//		table = new JTable( defaultTableModel);       //瀛楁鍚嶇О
+//		Dimension size = table.getTableHeader().getPreferredSize();
+//		size.height = 30;//璁剧疆鏂扮殑琛ㄥご楂樺害40
+//		table.getTableHeader().setPreferredSize(size);
+//		table.setAutoResizeMode(JTable.AUTO_RESIZE_NEXT_COLUMN);
+//		//缁戝畾婊氬姩鏉�
+//		JScrollPane scrollPane = new JScrollPane(table);
+//		 table.setRowHeight(25);
+//		scrollPane.setBounds(0, 0, 690, 420);
 		this.add(scrollPane); 
 		addbutton.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent arg0) {
@@ -189,13 +202,13 @@ public class ClerkOfCenterArriveMidPanel extends JPanel{
 		   
 	}
 	   
-	   public void paintComponent(Graphics g){
-			super.paintComponent(g);
-			
-			Image background=new ImageIcon("photo/bbbackground2.gif").getImage();
-			g.drawImage(background, 0,0,null);
-			
-		}
+//	   public void paintComponent(Graphics g){
+//			super.paintComponent(g);
+//			
+//			Image background=new ImageIcon("photo/bbbackground2.gif").getImage();
+//			g.drawImage(background, 0,0,null);
+//			
+//		}
 	   
 	   ActionListener listener = new ActionListener(){
 

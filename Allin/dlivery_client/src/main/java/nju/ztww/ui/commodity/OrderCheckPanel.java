@@ -16,7 +16,9 @@ import nju.ztww.po.TracePO;
 import nju.ztww.service.CheckOrderService;
 import nju.ztww.serviceimpl.CheckOrderServiceImpl;
 
-public class OrderCheckPanel extends JPanel {
+public class OrderCheckPanel extends JPanel  {
+	
+ 
 	ArrayList<JLabel> jlabellist=new ArrayList<JLabel>();
 	ArrayList<TracePO> textstring=new ArrayList<TracePO>(); 
 	ArrayList<JLabel>  jlabelwdot=new ArrayList<JLabel>();
@@ -59,6 +61,7 @@ public class OrderCheckPanel extends JPanel {
     	 for(int i=0;i<jlabellist.size()-1;i++){
     		 index=i;
     		 jlabellist.get(i).setFont(new Font("宋体",Font.PLAIN,15));
+    	     
     		jlabellist.get(i).setBounds(50, 50*i, 300, 30);
     		jlabelwdot.get(i).setBounds(0, 50*i, 25, 25);
     		this.add(jlabellist.get(i));
@@ -72,8 +75,15 @@ public class OrderCheckPanel extends JPanel {
      public void paintComponent(Graphics g){
   		super.paintComponent(g);
   		
-  		Image background=new ImageIcon("photo/checkbg.jpg").getImage();
+  		Image background=new ImageIcon("photo/checkbg.png").getImage();
   		g.drawImage(background, 0,0,null);
   		
   	}
+	public void run() {
+		// TODO Auto-generated method stub
+		  
+		
+		
+	}
+	
 }
