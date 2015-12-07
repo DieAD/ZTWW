@@ -75,13 +75,13 @@ public class OrderServiceImpl implements OrderService{
 		    return mainingVO;
 		case 2:
 			BusinessArriveVO businessArriveVO=new BusinessArriveVO(2);
-			id=findOrderIDBl.findID("hollreciform");
-			businessArriveVO.setId(UserInfoUI.getUserID().substring(0, 8)+date+id);
+			//id=findOrderIDBl.findID("hollreciform");
+			//businessArriveVO.setId(UserInfoUI.getUserID().substring(0, 8)+date+id);
 		    return businessArriveVO;
 		case 3:
 			CenterReceiveVO centerReceiveVO=new CenterReceiveVO(3);
-			id=findOrderIDBl.findID("centerreciform");
-			centerReceiveVO.setId(UserInfoUI.getUserID().substring(0, 8)+date+id);
+//			id=findOrderIDBl.findID("centerreciform");
+//			centerReceiveVO.setId(UserInfoUI.getUserID().substring(0, 8)+date+id);
 		    return centerReceiveVO;
 		case 4:
 			LoadingVO loadingVO=new LoadingVO(4);

@@ -25,13 +25,13 @@ public class ClerkOfCenterUi extends JFrame {
 		setPosition();
 		setController();
 		//注掉
-		setTitle("Worker of Center!");
-		int width=Toolkit.getDefaultToolkit().getScreenSize().width;
-		int height=Toolkit.getDefaultToolkit().getScreenSize().height;
-		setLocation((width-900)/2, (height-600)/2);
-		setSize(900,600);
-		setVisible(true);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		setTitle("Worker of Center!");
+//		int width=Toolkit.getDefaultToolkit().getScreenSize().width;
+//		int height=Toolkit.getDefaultToolkit().getScreenSize().height;
+//		setLocation((width-900)/2, (height-600)/2);
+//		setSize(900,600);
+//		setVisible(true);
+//		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//
 		}
 	public  void setup(){
@@ -54,13 +54,13 @@ public class ClerkOfCenterUi extends JFrame {
 		findStoragePanel.setBounds(150, 100, 750, 450);
 		//注掉
 	
-		this.add(navigationpanel);
-		this.add(toppanel);
-		this.add(ArriveMidpanel);
-		this.add(Transferpanel);
-		this.add(ArriveEndpanel);
-		this.add(CarloadPanel);
-		this.add(findStoragePanel);
+//		this.add(navigationpanel);
+//		this.add(toppanel);
+//		this.add(ArriveMidpanel);
+//		this.add(Transferpanel);
+//		this.add(ArriveEndpanel);
+//		this.add(CarloadPanel);
+//		this.add(findStoragePanel);
 		//
 	}
 	public void setController(){
@@ -76,11 +76,11 @@ public class ClerkOfCenterUi extends JFrame {
 		navigationpanel.StorageFind.addActionListener(new ClerkOfCenterController(this, findStoragePanel, arraylist));
 	}
 
-	public static void main(String[] args) {
-		
-		new ClerkOfCenterUi();
-       
-}
+//	public static void main(String[] args) {
+//		
+//		new ClerkOfCenterUi();
+//       
+//}
 	
 	public ArrayList<JPanel> getPanelList(){
 		list.add(navigationpanel);
