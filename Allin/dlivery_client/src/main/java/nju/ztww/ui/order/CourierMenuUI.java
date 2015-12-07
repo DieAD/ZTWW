@@ -10,6 +10,8 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
+import nju.ztww.ui.main.Listener_Return;
+
 public class CourierMenuUI extends JPanel{
 	
 	MyButton OrderInputButton = new MyButton(0);
@@ -103,6 +105,14 @@ public class CourierMenuUI extends JPanel{
 		});
 		
 		LogoutButton.setIcon(Logout);
+		LogoutButton.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				Listener_Return returnPanel = new Listener_Return();
+				returnPanel.actionPerformed(e);
+			}
+		});
 //		LogoutButton.setBounds(0,160,150,40);	//——by zyz 2015/12/3
 		
 		this.add(OrderInputButton);
