@@ -1,5 +1,7 @@
 package nju.ztww.serviceimpl;
 
+import java.util.ArrayList;
+
 import nju.ztww.bl.user.GetUserBl;
 import nju.ztww.bl.user.ManageUserBl;
 import nju.ztww.bl.user.UserLogin;
@@ -42,6 +44,24 @@ public class UserLoginImpl implements UserService{
 	public boolean addUser(ManaUserVO user) {
 		// TODO Auto-generated method stub
 		boolean result = manageUser.addUser(user);
+		return result;
+	}
+
+	public ArrayList<ManaUserVO> findAll() {
+		// TODO Auto-generated method stub
+		ArrayList <ManaUserVO> list=manageUser.findAll();
+		return list;
+	}
+
+	public ManaUserVO findByID(String ID) {
+		// TODO Auto-generated method stub
+		ManaUserVO userVO=manageUser.findByID(ID);
+		return userVO;
+	}
+
+	public String update(ManaUserVO user) {
+		// TODO Auto-generated method stub
+		String result=manageUser.update(user);
 		return result;
 	}
 }

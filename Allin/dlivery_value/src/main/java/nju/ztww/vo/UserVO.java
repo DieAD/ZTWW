@@ -5,11 +5,36 @@ public class UserVO {
 	public String ID;
 	public int sex;
 	public int age;
+	public int worktime;
+	public int wetherwork;
 	public String IDCard;
 	public String position;
-	public int workTime;
 	public double salary;
 	
+	public String getPosition() {
+		return position;
+	}
+
+	public void setPosition(String position) {
+		this.position = position;
+	}
+
+	public int getWorkTime() {
+		return worktime;
+	}
+
+	public void setWorkTime(int worktime) {
+		this.worktime = worktime;
+	}
+
+	public int getWetherwork() {
+		return wetherwork;
+	}
+
+	public void setWetherwork(int wetherwork) {
+		this.wetherwork = wetherwork;
+	}
+
 	public void setName(String name){
 		this.name = name;
 	}
@@ -50,13 +75,6 @@ public class UserVO {
 		return IDCard;
 	}
 	
-	public void setWorkTime(int workTime){
-		this.workTime = workTime;
-	}
-	
-	public int getWorkTime(){
-		return workTime;
-	}
 	
 	public void setSalary(double salary){
 		this.salary = salary;

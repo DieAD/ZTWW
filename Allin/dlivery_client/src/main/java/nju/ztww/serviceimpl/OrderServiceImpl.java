@@ -24,6 +24,7 @@ import nju.ztww.bl.order.ReceiveOrderBl;
 import nju.ztww.bl.order.SendOrderBl;
 import nju.ztww.bl.order.ShipingOrderBl;
 import nju.ztww.bl.order.TransferOrderBl;
+import nju.ztww.bl.order.getMoneyBl;
 import nju.ztww.service.OrderService;
 import nju.ztww.ui.main.UserInfoUI;
 import nju.ztww.vo.AcceptVO;
@@ -55,7 +56,7 @@ public class OrderServiceImpl implements OrderService{
 	FindOrderIDBl findOrderIDBl=new FindOrderIDBl();
 	DeleteOrderBl deleteOrderBl=new DeleteOrderBl();
 	AcceptOrderBl acceptOrderBl = new AcceptOrderBl();
-	
+	getMoneyBl GetMoneyBl=new getMoneyBl();
 	
 	
 	public OrderServiceImpl(){
@@ -64,61 +65,62 @@ public class OrderServiceImpl implements OrderService{
 
 	public OrderVO getOrder(int number) {
 		String date = getDate();
+		date=date.substring(2);
 		String id=null;
 		switch(number){
 		case 1:
 			MailingVO mainingVO=new MailingVO(1);
-			id=findOrderIDBl.findID();
+			id=findOrderIDBl.findID("orderform");
 			mainingVO.setId(date+id);
 		    return mainingVO;
 		case 2:
 			BusinessArriveVO businessArriveVO=new BusinessArriveVO(2);
-			id=findOrderIDBl.findID();
+			id=findOrderIDBl.findID("hollreciform");
 			businessArriveVO.setId(UserInfoUI.getUserID().substring(0, 8)+date+id);
 		    return businessArriveVO;
 		case 3:
 			CenterReceiveVO centerReceiveVO=new CenterReceiveVO(3);
-			id=findOrderIDBl.findID();
+			id=findOrderIDBl.findID("centerreciform");
 			centerReceiveVO.setId(UserInfoUI.getUserID().substring(0, 8)+date+id);
 		    return centerReceiveVO;
 		case 4:
 			LoadingVO loadingVO=new LoadingVO(4);
-		    id=findOrderIDBl.findID();
+		    id=findOrderIDBl.findID("loadform");
 		    loadingVO.setId(UserInfoUI.getUserID().substring(0, 8)+date+id);
 			return loadingVO;
 		case 5:
 			ReceiveVO receiveVO=new ReceiveVO(5);
-			 id=findOrderIDBl.findID();
+			 id=findOrderIDBl.findID("payeeform");
 			 receiveVO.setId(UserInfoUI.getUserID().substring(0, 8)+date+id);
 			return receiveVO;
 		case 6:
 			SendVO sendVO=new SendVO(6);
-			 id=findOrderIDBl.findID();
+			 id=findOrderIDBl.findID("deliveryform");
 			 sendVO.setId(UserInfoUI.getUserID().substring(0, 8)+date+id);
 			return sendVO;
 		case 7:
 			ShippingVO shippingVO=new ShippingVO(7);
-			id=findOrderIDBl.findID();
+			id=findOrderIDBl.findID("shippingform");
 			shippingVO.setId(UserInfoUI.getUserID().substring(0, 8)+date+id);
 			return shippingVO;
 		case 8:
 			TransferVO transferVO=new TransferVO(8);
-			 id=findOrderIDBl.findID();
-			 transferVO.setId(UserInfoUI.getUserID().substring(0, 8)+date+id);
+			 id=findOrderIDBl.findID("transferform");
+			 transferVO.setId("sss");
 			return transferVO;
 		case 9:
 			CarManageVO carManageVO=new CarManageVO(9);
-			 id=findOrderIDBl.findID();
+			 id=findOrderIDBl.findID("carmanageform");
 			 carManageVO.setId(UserInfoUI.getUserID().substring(0, 8)+date+id);
 			return carManageVO;
 		case 10:
 			DriverMessageVO driverMessageVO=new DriverMessageVO(10);
-			 id=findOrderIDBl.findID();
+			 id=findOrderIDBl.findID("drivermessageform");
 			 driverMessageVO.setId(UserInfoUI.getUserID().substring(0, 8)+date+id);
 			return driverMessageVO;
 		case 11:
 			AcceptVO acceptVO = new AcceptVO(11);
-			id = findOrderIDBl.findID();
+			id = findOrderIDBl.findID("reciveform");
 			acceptVO.setAcceptID(date+id);
 			return acceptVO;
 		}
@@ -144,7 +146,7 @@ public class OrderServiceImpl implements OrderService{
 		case 4:
 			LoadingVO loadingVO=(LoadingVO) order;
 			result=loadingOrderBl.handleVO(loadingVO);
-			return "success";
+			return result;
 		case 5:
 			ReceiveVO receiveVO=(ReceiveVO) order;
 			result=receiveOrderBl.handleVO(receiveVO);
@@ -242,7 +244,7 @@ public class OrderServiceImpl implements OrderService{
 	}
 
 	public String getDate(String city, String city2,int type) {
-		// TODO Auto-generated method stub
+		
 		return "2015-11-11";
 	}
 
@@ -264,6 +266,11 @@ public class OrderServiceImpl implements OrderService{
 
 	public double getCost(DeliverFeesVO deliverFees) {
 		double result = mailingOrderBl.getCost(deliverFees);
+		return result;
+	}
+	
+	public double getMoney(DeliverFeesVO deliverFees){
+		double result = GetMoneyBl.getmoney(deliverFees);
 		return result;
 	}
 	
