@@ -1,6 +1,8 @@
 package nju.ztww.ui.main;
 
-import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -25,18 +27,25 @@ public class Login extends JFrame{
 	JTextField order = new JTextField();
 	JLabel searchButton = new JLabel();
 	private ListenerUI uiListener;
+	public static JFrame frame;
+	public static JPanel panel;
+	
 	
 	
 	
 	public Login(){
+
 		
 		
+
+		frame = this;
+
 		this.setLayout(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		this.setSize(900, 600);
 		this.setResizable(false);
-		JPanel panel = new JPanel();
+	    panel = new JPanel();
 		panel.setLayout(null);
 		panel.setVisible(true);
 		panel.setBounds(0, 0, 900, 600);
@@ -73,15 +82,24 @@ public class Login extends JFrame{
 		
 		uiListener = new ListenerUI(this);
 		loginbButton.addMouseListener(uiListener);
+		searchButton.addMouseListener(new Listener_Trace(this));
 		
 		//移动了 add() setVisible 方法
 		this.add(panel);
 		this.setVisible(true);
 		this.getContentPane().repaint();
+
 		
 		///FRAME = this;
 		
+
+		//searchButton.addMouseListener(new Listener_Trace(this));
+		//this.removeAll();
+		//jframe = this;
+
 	}
+	
+	
 	
 	public String getID(){
 		return id.getText();
@@ -96,4 +114,8 @@ public class Login extends JFrame{
 	public static void main(String[] args) {
 		new Login();
 	}
+	
+	
+
+	
 }
