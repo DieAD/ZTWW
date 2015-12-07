@@ -78,4 +78,14 @@ public class CommodityListDataServiceImpl extends UnicastRemoteObject implements
 		handle.changeExeDeleteStock(list);
 		
 	}
+
+	public ArrayList<StorageListLineofInPO> getStockByQu(String string,
+			String idofcenter) throws RemoteException {
+		// TODO Auto-generated method stub
+		StockGet sg=new StockGet();
+		ArrayList<StorageListLineofInPO> arraylistin=new ArrayList<StorageListLineofInPO>();
+		arraylistin=sg.getStockByQu(string,idofcenter);
+		return arraylistin;
+		
+	}
 }

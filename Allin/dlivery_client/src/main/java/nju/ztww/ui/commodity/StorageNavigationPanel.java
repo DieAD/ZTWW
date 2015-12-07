@@ -12,15 +12,17 @@ import javax.swing.JPanel;
 import nju.ztww.ui.order.MyButton;
 
 public class StorageNavigationPanel extends JPanel {
-	
+	MyButton LogoutButton;//退出登录
 	MyButton Outbutton;//出库
 	MyButton Inbutton;//入库
 	MyButton Panbutton;//库存盘点
 	MyButton Checkbutton;//库存查看；
+	MyButton Tiaobutton;//库存调整
 	final ImageIcon In=new ImageIcon("photo/in.png");
 	final ImageIcon Out=new ImageIcon("photo/out.png");
 	final ImageIcon Check=new ImageIcon("photo/check.png");
 	final ImageIcon pan=new ImageIcon("photo/pan.png");
+	ImageIcon Logout = new ImageIcon("photo/Logout.png");
   public StorageNavigationPanel() {
 	// TODO Auto-generated constructor stub
 	  this.setBackground(new Color(155,122,90));
@@ -29,7 +31,10 @@ public class StorageNavigationPanel extends JPanel {
 }
   public void setup(){//初始化部件对象
 	  
-	  
+	  LogoutButton=new MyButton(5);
+	  LogoutButton.setIcon(Logout);
+	  Tiaobutton=new MyButton(4);
+	  Tiaobutton.setText("分区调整");
 	  Outbutton=new MyButton(3);
 	  Outbutton.setIcon(Out);
 	  Inbutton=new MyButton(2);
@@ -51,6 +56,8 @@ public class StorageNavigationPanel extends JPanel {
 	 this.add(Panbutton);
 	 this.add(Inbutton);
 	 this.add(Outbutton);
+	 this.add(LogoutButton);
+	 this.add(Tiaobutton);
 	 
  }
  

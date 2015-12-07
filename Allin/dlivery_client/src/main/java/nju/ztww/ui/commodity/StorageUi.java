@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import nju.ztww.ui.main.ListenerEndUI;
 //date 11-18 name wh
 //需要根据中转中心业务员身份知道中转中心的id
 public class StorageUi extends JFrame {
@@ -13,6 +15,7 @@ public class StorageUi extends JFrame {
     InofStoragePanel  inofStoragepanel;
     StorageCheckPanel storagecheckpanel;
     StoragePanPanel storagepanpanel;
+    StorageTiaoPanel storagetiaopanel;
     ArrayList<JPanel>arraylist=new ArrayList<JPanel>();
     //modify
     private ArrayList<JPanel> list = new ArrayList<JPanel>();
@@ -40,6 +43,7 @@ public class StorageUi extends JFrame {
 		inofStoragepanel=new InofStoragePanel();
 		storagecheckpanel=new StorageCheckPanel();
 		storagepanpanel=new StoragePanPanel();
+		storagetiaopanel=new StorageTiaoPanel();
 	}
 	public void setPosition(){
 		this.setLayout(null);
@@ -49,23 +53,33 @@ public class StorageUi extends JFrame {
 		inofStoragepanel.setBounds(150, 100, 750, 450);
 		storagecheckpanel.setBounds(150, 100, 750, 450);
 		storagepanpanel.setBounds(150, 100, 750, 450);
+		storagetiaopanel.setBounds(150, 100, 750, 450);
 		this.add(navigationpanel);
 		this.add(toppanel);
 		this.add(storagecheckpanel);
 		this.add(outofStoragepanel);
 		this.add(inofStoragepanel);
 		this.add(storagepanpanel);
-		
+		this.add(storagetiaopanel);
+	
+		inofStoragepanel.setVisible(false);
+		outofStoragepanel.setVisible(false);
+		storagepanpanel.setVisible(false);
+	    storagetiaopanel.setVisible(false);
 	}
 	public void setController(){
 		arraylist.add(outofStoragepanel);
 		arraylist.add(inofStoragepanel);
 		arraylist.add(storagecheckpanel);
 		arraylist.add(storagepanpanel);
+		arraylist.add(storagetiaopanel);
 		navigationpanel.Inbutton.addActionListener(new StorageControllerUi(this, inofStoragepanel, arraylist));
 		navigationpanel.Outbutton.addActionListener(new StorageControllerUi(this, outofStoragepanel, arraylist));
 		navigationpanel.Panbutton.addActionListener(new StorageControllerUi(this, storagepanpanel, arraylist));
 		navigationpanel.Checkbutton.addActionListener(new StorageControllerUi(this, storagecheckpanel, arraylist));
+		navigationpanel.LogoutButton.addActionListener(new ListenerEndUI(this));
+		navigationpanel.Tiaobutton.addActionListener(new StorageControllerUi(this, storagetiaopanel, arraylist));
+		
 	}
 
 //public static void main(String[] args) {
@@ -80,6 +94,7 @@ public class StorageUi extends JFrame {
 		list.add(outofStoragepanel);
 		list.add(inofStoragepanel);
 		list.add(storagepanpanel);
+		list.add(storagetiaopanel);
 		return list;
 	}
 }

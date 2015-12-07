@@ -16,5 +16,13 @@ public class GetStockListBL {
 		storagelist=commoditylistdata.getStock(idofcenter);
 		return storagelist;
 	}
+	public ArrayList<StorageListLineofInPO> getStockByQu(String string,
+			String idofcenter) {
+		// TODO Auto-generated method stub
+		ArrayList<StorageListLineofInPO> storagelist=new ArrayList<StorageListLineofInPO>();
+		commoditylistdata = (CommodityListDataService)rhelper.findService("CommodityListDataService");
+		storagelist=commoditylistdata.getStockByQu(string,idofcenter);
+		return storagelist;
+	}
 	
 }

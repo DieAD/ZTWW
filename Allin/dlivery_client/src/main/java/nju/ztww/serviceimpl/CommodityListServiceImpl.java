@@ -80,4 +80,21 @@ public class CommodityListServiceImpl implements CommodityListService {
 		return null;
 	}
 
+
+
+	public ArrayList<StorageListLineofInVO> getStockbyQu(String string,
+			String idofcenter) {
+		// TODO Auto-generated method stub
+		ArrayList<StorageListLineofInVO> arraylistinvo=new ArrayList<StorageListLineofInVO>();
+		ArrayList<StorageListLineofInPO> arraylistinpo=new ArrayList<StorageListLineofInPO>();
+		 GetStockListBL getstock=new GetStockListBL();
+		 arraylistinpo=getstock.getStockByQu(string,idofcenter);
+		for(int i=0;i<arraylistinpo.size();i++){
+			 arraylistinvo.add(arraylistinpo.get(i).changetovo());
+		}
+		return arraylistinvo;
+	}
+		
+	
+
 }

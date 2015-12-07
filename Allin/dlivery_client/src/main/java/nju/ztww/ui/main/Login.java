@@ -26,7 +26,11 @@ public class Login extends JFrame{
 	JLabel searchButton = new JLabel();
 	private ListenerUI uiListener;
 	
+	
+	
 	public Login(){
+		
+		
 		this.setLayout(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
@@ -66,7 +70,7 @@ public class Login extends JFrame{
 		panel.add(order);
 		panel.add(searchButton);
 		panel.add(bg);
-		//
+		
 		uiListener = new ListenerUI(this);
 		loginbButton.addMouseListener(uiListener);
 		
@@ -74,6 +78,9 @@ public class Login extends JFrame{
 		this.add(panel);
 		this.setVisible(true);
 		this.getContentPane().repaint();
+		
+		///FRAME = this;
+		
 	}
 	
 	public String getID(){
