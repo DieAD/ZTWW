@@ -13,18 +13,18 @@ import nju.ztww.ui.order.MyButton;
 
 public class StorageNavigationPanel extends JPanel {
 
-//	MyButton LogoutButton;//退出登录
+	
 //	MyButton Outbutton;//出库
 //	MyButton Inbutton;//入库
 //	MyButton Panbutton;//库存盘点
 //	MyButton Checkbutton;//库存查看；
-//	MyButton Tiaobutton;//库存调整
+	
 //	final ImageIcon In=new ImageIcon("photo/in.png");
 //	final ImageIcon Out=new ImageIcon("photo/out.png");
 //	final ImageIcon Check=new ImageIcon("photo/check.png");
 //	final ImageIcon pan=new ImageIcon("photo/pan.png");
-//	final ImageIcon tiaozheng=new ImageIcon("photo/SeperateAdjust.png");
-//	ImageIcon Logout = new ImageIcon("photo/Logout.png");
+//	
+//	
 //  public StorageNavigationPanel() {
 //	// TODO Auto-generated constructor stub
 //	  this.setBackground(new Color(155,122,90));
@@ -32,11 +32,7 @@ public class StorageNavigationPanel extends JPanel {
 //	  setPosition();
 //}
 //  public void setup(){//初始化部件对象
-//	  
-//	  LogoutButton=new MyButton(5);
-//	  LogoutButton.setIcon(Logout);
-//	  Tiaobutton=new MyButton(4);
-//	  Tiaobutton.setIcon(tiaozheng);
+	  	 
 //	  Outbutton=new MyButton(3);
 //	  Outbutton.setIcon(Out);
 //	  Inbutton=new MyButton(2);
@@ -63,8 +59,8 @@ public class StorageNavigationPanel extends JPanel {
 //	 
 // }
  
-
-
+	MyButton Tiaobutton;//库存调整
+	MyButton LogoutButton;//退出登录
 	MyButton Outbutton;// 出库
 	MyButton Inbutton;// 入库
 	MyButton Panbutton;// 库存盘点
@@ -77,6 +73,8 @@ public class StorageNavigationPanel extends JPanel {
 	ImageIcon Out2 = new ImageIcon("photo/out2.png");
 	ImageIcon Check2 = new ImageIcon("photo/check2.png");
 	ImageIcon pan2 = new ImageIcon("photo/pan2.png");
+	final ImageIcon tiaozheng=new ImageIcon("photo/SeperateAdjust.png");
+	ImageIcon Logout = new ImageIcon("photo/Logout.png");
 	int panel = 0;
 
 	public StorageNavigationPanel() {
@@ -94,7 +92,10 @@ public class StorageNavigationPanel extends JPanel {
 	}
 
 	public void setup() {// 初始化部件对象
-
+		 LogoutButton=new MyButton(5);
+		  LogoutButton.setIcon(Logout);
+		  Tiaobutton=new MyButton(4);
+		  Tiaobutton.setIcon(tiaozheng);
 		Outbutton = new MyButton(3);
 		Outbutton.setIcon(Out);
 		Inbutton = new MyButton(2);
