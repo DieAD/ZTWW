@@ -68,9 +68,9 @@ public class StoragePanPanel extends JPanel  implements ActionListener{
 	   baojing.setFont(font1);
 	   baojing.setBounds(400, 400, 80, 30);
 	   baojingshuliang.setBounds(480, 400, 40, 30);
-	   countall.setBounds(550,400, 60, 30);
-	   countshuliang.setBounds(620, 400, 80, 30);
-	   excel.setBounds(210, 400, 120, 30);
+	   countall.setBounds(550,340, 60, 30);
+	   countshuliang.setBounds(620, 340, 80, 30);
+	   excel.setBounds(280, 340, 120, 30);
 	   excel.setIcon(new ImageIcon("photo/wj_excel.png"));
 	   excel.setBorderPainted(false);
 	   this.add(countall);
@@ -103,7 +103,7 @@ public class StoragePanPanel extends JPanel  implements ActionListener{
 		//绑定滚动条
 		JScrollPane scrollPane = new JScrollPane(table);
 		 table.setRowHeight(25);
-		scrollPane.setBounds(0, 40, 700, 360);
+		scrollPane.setBounds(0, 40, 700, 300);
 		scrollPane.getViewport().setOpaque(false);
 		scrollPane.setOpaque(false);
 		this.add(scrollPane); 
