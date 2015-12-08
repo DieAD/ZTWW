@@ -9,7 +9,7 @@ import nju.ztww.ui.main.ListenerEndUI;
 import nju.ztww.ui.main.Listener_Return;
 //date 11-18 name wh
 //需要根据中转中心业务员身份知道中转中心的id
-public class StorageUi extends JFrame {
+public class StorageUi extends JFrame implements Runnable{
 	StorageNavigationPanel navigationpanel;
     TopPanel toppanel;
     OutofStoragePanel outofStoragepanel;
@@ -17,6 +17,7 @@ public class StorageUi extends JFrame {
     StorageCheckPanel storagecheckpanel;
     StoragePanPanel storagepanpanel;
     StorageTiaoPanel storagetiaopanel;
+    StorageBaoJingPanel storagebaojingpanel;
     ArrayList<JPanel>arraylist=new ArrayList<JPanel>();
     //modify
     private ArrayList<JPanel> list = new ArrayList<JPanel>();
@@ -38,6 +39,7 @@ public class StorageUi extends JFrame {
 //		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		}
 	public  void setup(){
+		Thread tishibaojing=new Thread(this);
 		navigationpanel=new StorageNavigationPanel();
 		toppanel=new TopPanel();
 		outofStoragepanel=new OutofStoragePanel();
@@ -45,6 +47,7 @@ public class StorageUi extends JFrame {
 		storagecheckpanel=new StorageCheckPanel();
 		storagepanpanel=new StoragePanPanel();
 		storagetiaopanel=new StorageTiaoPanel();
+		storagebaojingpanel=new StorageBaoJingPanel();
 	}
 	public void setPosition(){
 		this.setLayout(null);
@@ -55,6 +58,7 @@ public class StorageUi extends JFrame {
 		storagecheckpanel.setBounds(150, 100, 750, 450);
 		storagepanpanel.setBounds(150, 100, 750, 450);
 		storagetiaopanel.setBounds(150, 100, 750, 450);
+		storagebaojingpanel.setBounds(150, 100, 750, 450);
 		this.add(navigationpanel);
 		this.add(toppanel);
 		this.add(storagecheckpanel);
@@ -62,6 +66,7 @@ public class StorageUi extends JFrame {
 		this.add(inofStoragepanel);
 		this.add(storagepanpanel);
 		this.add(storagetiaopanel);
+		this.add(storagebaojingpanel);
 	
 		inofStoragepanel.setVisible(false);
 		outofStoragepanel.setVisible(false);
@@ -98,4 +103,8 @@ public class StorageUi extends JFrame {
 		list.add(storagetiaopanel);
 		return list;
 	}
+public void run() {
+	// TODO Auto-generated method stub
+	
+}
 }

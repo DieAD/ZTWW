@@ -161,11 +161,16 @@ public class StorageTiaoPanel extends JPanel {
 			StorageListLineofInVO storagelistlineinvo=new StorageListLineofInVO(1, "", ordernumberfield.getText(), "", "", dbtype2.getSelectedItem().toString(), paifield.getText(), jiafield.getText(), weifield.getText(), 0);			
 			arraylist.add(storagelistlineinvo);
 			System.out.println(ordernumberfield.getText());
+			
 			int row=table.getSelectedRow();
 			table.setValueAt(dbtype2.getSelectedItem().toString(), row, 3);
 			table.setValueAt(paifield.getText(), row, 4);
 			table.setValueAt(jiafield.getText(), row, 5);
 			table.setValueAt(weifield.getText(), row, 6);
+			ordernumberfield.setText(null);
+			paifield.setText(null);
+			jiafield.setText(null);
+			weifield.setText(null);
 			
 			
 			dlg.setVisible(false);
