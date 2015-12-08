@@ -57,4 +57,8 @@ public class DBForIns extends DB {
 		}
         
     }
+    
+    public void insert(InsDO form){
+    	//String sql = "insert into instable(id,name,number1,number2,number3,number4,number,)"
+    }
 }
