@@ -23,6 +23,8 @@ public class BusinessUI extends JPanel{
 	MyButton CarManageButton=new MyButton(3);
 	MyButton DriverManageButton=new MyButton(4);
 	MyButton YourMessageButton=new MyButton(5);
+	MyButton CheckOrderButton = new MyButton(6);
+	MyButton LogoutButton  = new MyButton(7);
 	
 	ImageIcon CarLoading=new ImageIcon("photo/CarLoading.png");
 	ImageIcon ReceiveAndSend=new ImageIcon("photo/receiveAndSend.png");
@@ -30,12 +32,15 @@ public class BusinessUI extends JPanel{
 	ImageIcon CarManage=new ImageIcon("photo/CarManage.png");
 	ImageIcon DriverManage=new ImageIcon("photo/DriverManage.png");
 	ImageIcon YourMessage=new ImageIcon("photo/PersonInfo.png");
+	ImageIcon CheckOrder = new ImageIcon("photo/CheckOrder.png");
+	ImageIcon Logout = new ImageIcon("photo/Logout.png");
 	ImageIcon CarLoading2=new ImageIcon("photo/CarLoading2.png");
 	ImageIcon ReceiveAndSend2=new ImageIcon("photo/receiveAndSend2.png");
 	ImageIcon ReceiveBill2=new ImageIcon("photo/ReceiveBill2.png");
 	ImageIcon CarManage2=new ImageIcon("photo/CarManage2.png");
 	ImageIcon DriverManage2=new ImageIcon("photo/DriverManage2.png");
 	ImageIcon YourMessage2=new ImageIcon("photo/PersonInfo2.png");
+	ImageIcon CheckOrder2 = new ImageIcon("photo/CheckOrder2.png");
 	int panel = 0;
 	public BusinessUI(){
 
@@ -122,7 +127,9 @@ public class BusinessUI extends JPanel{
 		YourMessageButton.addActionListener(new ActionListener(){
 
 
+
 			public void actionPerformed(ActionEvent e) {
+
 
 				TextBussinessUI.personalMessagePanel =new PersonalMesageUI();
 //				TextBussinessUI.personalMessagePanel.setBounds(210,60,690,480);
@@ -132,6 +139,16 @@ public class BusinessUI extends JPanel{
 				panel = 5;
 			}});
 	
+		CheckOrderButton.setIcon(CheckOrder);
+		CheckOrderButton.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				removeButton(panel);
+				CheckOrderButton.setIcon(CheckOrder2);
+				panel = 6;
+			}
+		});
 		this.add(CarLoadingButton);
 		this.add(receiveAndSendButton);
 		this.add(ReceiveBillButton);

@@ -105,7 +105,7 @@ public class UserManageUI extends JPanel{
 			  MyScrollPane scrollPane = new MyScrollPane(table);
 //			  table = new JTable( defaultTableModel);       //字段名称
 //			  Dimension size = table.getTableHeader().getPreferredSize();
-//			  //init();
+			  init();
 //			  size.height = 30;//设置新的表头高度40
 //			  table.getTableHeader().setPreferredSize(size);
 //			  table.setAutoResizeMode(JTable.AUTO_RESIZE_NEXT_COLUMN);
