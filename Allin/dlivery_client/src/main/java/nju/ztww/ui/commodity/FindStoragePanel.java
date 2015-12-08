@@ -143,6 +143,9 @@ public class FindStoragePanel extends JPanel {
 					  public Class getColumnClass(int column) {
 				            for (int row = 0; row < getRowCount(); row++)  {
 				                Object o = getValueAt(row, column);
+				                if(column==8){
+				                	return Boolean.class;
+				                }
 				                if (o != null)
 				                {
 				                    return o.getClass();
