@@ -1,6 +1,5 @@
 package nju.ztww.ui.manage;
 
-import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -11,12 +10,13 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import nju.ztww.dao.DCFormDO;
 import nju.ztww.po.MUserPO;
 import nju.ztww.service.ManageService;
 import nju.ztww.serviceimpl.ManageServiceImpl;
+import nju.ztww.vo.UserSalaryVO;
 
 public class GManager_ManageSalaryUI extends JPanel{
 	String[] Position = {" ", "快递员", "营业厅业务员", "中转中心业务员", "仓库管理员", "财务人员", "总经理", "管理员"};
@@ -150,6 +150,7 @@ public class GManager_ManageSalaryUI extends JPanel{
 		searchButton2.addActionListener(new Listener2(position,name1));
 		searchButton.addActionListener(new Listener3(name1));
 		sureButton1.addActionListener(new Listener4());
+		to.addItemListener(new Listener5(from,to));
 		
 		name2.setHorizontalAlignment(JTextField.CENTER);
 		name2.setEditable(false);
@@ -271,10 +272,40 @@ public class GManager_ManageSalaryUI extends JPanel{
 
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
+			String id = id1.getText();
 			double sp = Double.parseDouble(money.getText());
 			double sum = Double.parseDouble(sumSalary.getText());
-			System.out.print(sp + "df"+sum);
+			UserSalaryVO vo = new UserSalaryVO(id,sp,sum);
+			MS.updateUserSalary(vo);
 		}
+		
+	}
+	
+	public class Listener5 implements ItemListener{
+        JComboBox box1;
+        JComboBox box2;
+        public Listener5(JComboBox box1,JComboBox box2){
+        	this.box1 = box1;
+        	this.box2 = box2;
+        	
+        }
+        
+		public void itemStateChanged(ItemEvent e) {
+			// TODO Auto-generated method stub
+			if(e.getStateChange()==ItemEvent.SELECTED){
+				eventHandle();
+			}
+			
+		}
+		
+		public void eventHandle(){
+			String bddress = (String)box1.getSelectedItem();
+			String address = (String)box2.getSelectedItem();
+			DCFormDO form = MS.showDC(bddress, address);
+			String dis = form.getDistance()+"";
+			distance.setText(dis);
+		}
+		
 		
 	}
 	

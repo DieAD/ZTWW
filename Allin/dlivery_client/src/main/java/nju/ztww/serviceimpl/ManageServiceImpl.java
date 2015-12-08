@@ -3,11 +3,14 @@ package nju.ztww.serviceimpl;
 import java.util.ArrayList;
 
 import nju.ztww.bl.manage.ManageBL;
+import nju.ztww.dao.DCFormDO;
+import nju.ztww.dao.InsDO;
 import nju.ztww.po.MUserPO;
 import nju.ztww.service.ManageService;
 import nju.ztww.vo.GenerateVO;
 import nju.ztww.vo.IDVO;
 import nju.ztww.vo.SuperviseeVO;
+import nju.ztww.vo.UserSalaryVO;
 
 public class ManageServiceImpl implements ManageService {
     private ManageBL manageBL = new ManageBL();
@@ -60,6 +63,26 @@ public class ManageServiceImpl implements ManageService {
 	public MUserPO getUserInfoById(String id) {
 		// TODO Auto-generated method stub
 		return manageBL.getUserInfoById(id);
+	}
+
+	public void updateUserSalary(UserSalaryVO vo) {
+		// TODO Auto-generated method stub
+		manageBL.updateUserSalary(vo);
+	}
+
+	public DCFormDO showDC(String city1, String city2) {
+		// TODO Auto-generated method stub
+		return manageBL.showDC(city1, city2);
+	}
+
+	public InsDO showInsInfo(String id) {
+		// TODO Auto-generated method stub
+		return manageBL.showInsInfo(id);
+	}
+
+	public void updateIns(InsDO ins) {
+		// TODO Auto-generated method stub
+		manageBL.updateIns(ins);
 	}
 
 }

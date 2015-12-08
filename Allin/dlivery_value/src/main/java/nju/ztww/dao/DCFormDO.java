@@ -1,5 +1,7 @@
 package nju.ztww.dao;
 
+import java.io.Serializable;
+
 public class DCFormDO {
 	private int index;
 	private String city1;
