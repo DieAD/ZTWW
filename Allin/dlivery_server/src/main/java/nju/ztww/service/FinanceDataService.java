@@ -4,11 +4,11 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import nju.ztww.dao.InsDO;
 import nju.ztww.po.AccountPO;
 import nju.ztww.po.CollectionPO;
 import nju.ztww.po.MemberPO;
 import nju.ztww.po.OrderPO;
-import nju.ztww.po.PCPO;
 import nju.ztww.po.PaymentPO;
 
 /*
@@ -70,6 +70,7 @@ public interface FinanceDataService extends Remote {
 		public ArrayList<PaymentPO> queryPCP(String beginTime, String endTime, String holl)throws RemoteException;
 		public ArrayList<CollectionPO> totalCollection()throws RemoteException;
 		public ArrayList<PaymentPO>  totalPayment()throws RemoteException;
+		public void init(ArrayList<InsDO> list)throws RemoteException;
 	/*
 	 * 在数据库中更改信息？？
 	 */

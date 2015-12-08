@@ -59,6 +59,24 @@ public class DBForIns extends DB {
     }
     
     public void insert(InsDO form){
-    	//String sql = "insert into instable(id,name,number1,number2,number3,number4,number,)"
+    	String sql = "insert into instable(id,name,number1,number2,number3,number4,number5,number6,number7)values(?,?,?,?,?,?,?,?,?)";
+    	 try {
+ 			PreparedStatement pstmt = conn.prepareStatement(sql);
+ 			pstmt.setString(1, form.getId());
+ 			pstmt.setString(2, form.getName());
+ 			pstmt.setInt(3, form.getN1());
+ 			pstmt.setInt(4, form.getN2());
+ 			pstmt.setInt(5, form.getN3());
+ 			pstmt.setInt(6, form.getN4());
+ 			pstmt.setInt(7, form.getN5());
+ 			pstmt.setInt(8, form.getN6());
+ 			pstmt.setInt(9, form.getN7());
+ 			
+ 			
+ 			pstmt.executeUpdate();
+ 		} catch (SQLException e) {
+ 			// TODO Auto-generated catch block
+ 			e.printStackTrace();
+ 		} 
     }
 }
