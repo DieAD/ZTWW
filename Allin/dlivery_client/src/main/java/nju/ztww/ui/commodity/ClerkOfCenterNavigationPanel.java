@@ -10,7 +10,9 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.plaf.metal.MetalBorders.PaletteBorder;
 
+import nju.ztww.ui.main.Listener_Return;
 import nju.ztww.ui.order.MyButton;
 
 public class ClerkOfCenterNavigationPanel extends JPanel {
@@ -20,14 +22,22 @@ public class ClerkOfCenterNavigationPanel extends JPanel {
 	MyButton Transfer;// 中转单
 	MyButton CarLoadbutton;// 装车单
 	MyButton StorageFind;// 库存查看 ——by zyz 2015/12/05
+	MyButton yourMessageButton;
+	MyButton checkOrderButton;
+	MyButton logoutButton;
 	final ImageIcon checkStorage = new ImageIcon("photo/check.png");
 	final ImageIcon arriveOrder = new ImageIcon("photo/arrive.png");
 	final ImageIcon transit = new ImageIcon("photo/zhongzhuan.png");
 	final ImageIcon carLoading = new ImageIcon("photo/CarLoading.png");
+	ImageIcon yourMessage  = new ImageIcon("photo/PersonInfo.png");
+	ImageIcon checkOrder = new ImageIcon("photo/CheckOrder.png");
+	ImageIcon logout = new ImageIcon("photo/Logout.png");
 	ImageIcon checkStorage2 = new ImageIcon("photo/check2.png");
 	ImageIcon arriveOrder2 = new ImageIcon("photo/arrive2.png");
 	ImageIcon transit2 = new ImageIcon("photo/zhongzhuan2.png");
 	ImageIcon carLoading2 = new ImageIcon("photo/CarLoading2.png");
+	ImageIcon yourMessage2  = new ImageIcon("photo/PersonInfo2.png");
+	ImageIcon checkOrder2 = new ImageIcon("photo/CheckOrder2.png");
 	int panel = 0;
 	
 	public ClerkOfCenterNavigationPanel() {
@@ -42,7 +52,9 @@ public class ClerkOfCenterNavigationPanel extends JPanel {
 		Transfer.addActionListener(transfer);
 		CarLoadbutton.addActionListener(carLoad);
 		StorageFind.addActionListener(storage);
-
+		yourMessageButton.addActionListener(info);
+		checkOrderButton.addActionListener(check);
+		logoutButton.addActionListener(out);
 	}
 
 	public void setup() {// 鍒濆鍖栭儴浠跺璞�
@@ -60,6 +72,12 @@ public class ClerkOfCenterNavigationPanel extends JPanel {
 		StorageFind.setIcon(checkStorage); // 2015/12/05 ——by zyz
 		// StorageFind.setIcon(null); //???????注释掉了 2015/12/05 ——by zyz
 		// 当时为啥setnull？
+		yourMessageButton = new MyButton(4);
+		checkOrderButton = new MyButton(5);
+		logoutButton = new MyButton(6);
+		yourMessageButton.setIcon(yourMessage);
+		checkOrderButton.setIcon(checkOrder);
+		logoutButton.setIcon(logout);
 	}
 
 	public void setPosition() {// 璁剧疆浣嶇疆
@@ -77,6 +95,9 @@ public class ClerkOfCenterNavigationPanel extends JPanel {
 		this.add(Transfer);
 		this.add(CarLoadbutton);
 		this.add(StorageFind);
+		this.add(yourMessageButton);
+		this.add(checkOrderButton);
+		this.add(logoutButton);
 	}
 
 	public void setListener() {
@@ -130,6 +151,36 @@ public class ClerkOfCenterNavigationPanel extends JPanel {
 			panel =3;
 		}
 	};
+	
+	ActionListener info = new ActionListener() {
+		
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			removeButton(panel);
+			yourMessageButton.setIcon(yourMessage2);
+			panel = 4;
+		}
+	};
+	
+	
+	ActionListener check = new ActionListener() {
+		
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			removeButton(panel);
+			checkOrderButton.setIcon(checkOrder2);
+			panel = 5;
+		}
+	};
+	
+	ActionListener out = new ActionListener() {
+		
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			Listener_Return re = new Listener_Return();
+			re.actionPerformed(e);
+		}
+	};
 
 	private void removeButton(int n){
 		switch (n){
@@ -137,6 +188,8 @@ public class ClerkOfCenterNavigationPanel extends JPanel {
 		case 1:Transfer.setIcon(transit);break;
 		case 2:CarLoadbutton.setIcon(carLoading);break;
 		case 3:StorageFind.setIcon(checkStorage);break;
+		case 4:yourMessageButton.setIcon(yourMessage);break;
+		case 5:checkOrderButton.setIcon(checkOrder);break;
 		}
 	}
 	//

@@ -13,6 +13,7 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
+import nju.ztww.ui.main.Listener_Return;
 import nju.ztww.ui.order.MyButton;
 
 public class BusinessUI extends JPanel{
@@ -24,26 +25,29 @@ public class BusinessUI extends JPanel{
 	MyButton DriverManageButton=new MyButton(4);
 	MyButton SendButton=new MyButton(5);
 	MyButton YourMessageButton=new MyButton(6);
+	MyButton CheckOrderButton = new MyButton(7);
+	MyButton LogoutButton  = new MyButton(8);
 	
 	ImageIcon CarLoading=new ImageIcon("photo/CarLoading.png");
-	ImageIcon ReceiveAndSend=new ImageIcon("photo/receiveAndSend.png");
+	ImageIcon AcceptGood=new ImageIcon("photo/AcceptGood.png");
 	ImageIcon ReceiveBill=new ImageIcon("photo/ReceiveBill.png");
 	ImageIcon CarManage=new ImageIcon("photo/CarManage.png");
 	ImageIcon DriverManage=new ImageIcon("photo/DriverManage.png");
 	ImageIcon YourMessage=new ImageIcon("photo/PersonInfo.png");
+	ImageIcon CheckOrder = new ImageIcon("photo/CheckOrder.png");
+	ImageIcon Deliver = new ImageIcon("photo/Deliver.png");
+	ImageIcon Logout = new ImageIcon("photo/Logout.png");
+	
 	ImageIcon CarLoading2=new ImageIcon("photo/CarLoading2.png");
-	ImageIcon ReceiveAndSend2=new ImageIcon("photo/receiveAndSend2.png");
+	ImageIcon AcceptGood2=new ImageIcon("photo/AcceptGood2.png");
 	ImageIcon ReceiveBill2=new ImageIcon("photo/ReceiveBill2.png");
 	ImageIcon CarManage2=new ImageIcon("photo/CarManage2.png");
 	ImageIcon DriverManage2=new ImageIcon("photo/DriverManage2.png");
 	ImageIcon YourMessage2=new ImageIcon("photo/PersonInfo2.png");
+	ImageIcon Deliver2 = new ImageIcon("photo/Deliver2.png");
+	ImageIcon CheckOrder2 = new ImageIcon("photo/CheckOrder2.png");
 	int panel = 0;
 	public BusinessUI(){
-
-
-
-
-
 		this.setBackground(new Color(155,122,90));
 		
 		
@@ -65,7 +69,7 @@ public class BusinessUI extends JPanel{
 				panel = 0;
 			}});
 		
-		receiveAndSendButton.setIcon(ReceiveAndSend);
+		receiveAndSendButton.setIcon(AcceptGood);
 //		receiveAndSendButton.setBounds(0,118,209,58);
 		receiveAndSendButton.addActionListener(new ActionListener(){
 
@@ -74,7 +78,7 @@ public class BusinessUI extends JPanel{
 
 						TextBussinessUI.changePanel(2);
 						removeButton(panel);
-						receiveAndSendButton.setIcon(ReceiveAndSend2);
+						receiveAndSendButton.setIcon(AcceptGood2);
 						panel = 1;
 					}});
 		
@@ -123,15 +127,19 @@ public class BusinessUI extends JPanel{
 		YourMessageButton.addActionListener(new ActionListener(){
 
 
+
 			public void actionPerformed(ActionEvent e) {
+
 
 				TextBussinessUI.personalMessagePanel =new PersonalMesageUI();
 //				TextBussinessUI.personalMessagePanel.setBounds(210,60,690,480);
 				TextBussinessUI.changePanel(6);
 				removeButton(panel);
 				YourMessageButton.setIcon(YourMessage2);
-				panel = 5;
+				panel = 6;
 			}});
+		
+		SendButton.setIcon(Deliver);
 		SendButton.addActionListener(new ActionListener(){
 
 
@@ -139,10 +147,32 @@ public class BusinessUI extends JPanel{
 
 				TextBussinessUI.changePanel(7);
 				removeButton(panel);
-				SendButton.setIcon(CarLoading2);
-				panel = 6;
+				SendButton.setIcon(Deliver2);
+				panel = 5;
 			}});
 	
+		CheckOrderButton.setIcon(CheckOrder);
+		CheckOrderButton.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				removeButton(panel);
+				CheckOrderButton.setIcon(CheckOrder2);
+				panel = 7;
+			}
+		});
+		
+		LogoutButton.setIcon(Logout);
+		LogoutButton.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				Listener_Return re = new Listener_Return();
+				re.actionPerformed(e);
+			}
+		});
+		
+		
 		this.add(CarLoadingButton);
 		this.add(receiveAndSendButton);
 		this.add(ReceiveBillButton);
@@ -150,6 +180,8 @@ public class BusinessUI extends JPanel{
 		this.add(DriverManageButton);
 		this.add(YourMessageButton);
 		this.add(SendButton);
+		this.add(CheckOrderButton);
+		this.add(LogoutButton);
 		//this.repaint();
 		
 	}
@@ -162,12 +194,13 @@ public class BusinessUI extends JPanel{
 
 		switch (n){
 		case 0:CarLoadingButton.setIcon(CarLoading);break;
-		case 1:receiveAndSendButton.setIcon(ReceiveAndSend);break;
+		case 1:receiveAndSendButton.setIcon(AcceptGood);break;
 		case 2:ReceiveBillButton.setIcon(ReceiveBill);break;
 		case 3:CarManageButton.setIcon(CarManage);break;
 		case 4:DriverManageButton.setIcon(DriverManage);break;
-		case 5:YourMessageButton.setIcon(YourMessage);break;
-		
+		case 5:SendButton.setIcon(Deliver);break;
+		case 6:YourMessageButton.setIcon(YourMessage);break;
+		case 7:CheckOrderButton.setIcon(CheckOrder);break;
 		}
 	}
 //	public void paintComponent(Graphics g){

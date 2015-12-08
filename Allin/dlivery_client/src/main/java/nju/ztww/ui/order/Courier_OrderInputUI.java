@@ -30,7 +30,7 @@ public class Courier_OrderInputUI extends JPanel{
 	MyButton sureButton = new MyButton();
 	JDialog addDlg ;
 	DefaultTableModel defaultTableModel;
-	JTable table = new JTable();
+	MyTable table ;
 	OrderService orderServiceImpl = new OrderServiceImpl();
 	
 	private JLabel numbersLabel = new JLabel();
@@ -120,28 +120,30 @@ public class Courier_OrderInputUI extends JPanel{
 			String[] names = {"营业厅编号", "订单号", "寄件人", "手机", "收件人","手机" ,"费用合计", "种类", "地址"};
 			
 			defaultTableModel = new DefaultTableModel(OrderInfo, names);
-			table = new JTable(defaultTableModel );			
-			Dimension size = table.getTableHeader().getPreferredSize();		
-			
-			size.height = 30;
-			table.getTableHeader().setPreferredSize(size);
-			table.setOpaque(false);
-			table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
-			
-			JScrollPane scrollPane = new JScrollPane(table);
-			
-			//
-			table.getTableHeader().setBackground(new Color(249,231,212));//208,168,125
-			table.setBackground(new Color(208,168,125)); //226,203,170
-			scrollPane.getViewport().setOpaque(false);
-			scrollPane.setOpaque(false);
-//			scrollPane.getColumnHeader().setOpaque(false);
-			
-			
-			
-			
-			table.setRowHeight(25);
-			scrollPane.setBounds(0, 0, 750, 400);//——by zyz 2015/12/3
+			table = new MyTable(defaultTableModel);
+			MyScrollPane scrollPane = new MyScrollPane(table);
+//			table = new JTable(defaultTableModel );			
+//			Dimension size = table.getTableHeader().getPreferredSize();		
+//			
+//			size.height = 30;
+//			table.getTableHeader().setPreferredSize(size);
+//			table.setOpaque(false);
+//			table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+//			
+//			JScrollPane scrollPane = new JScrollPane(table);
+//			
+//			//
+//			table.getTableHeader().setBackground(new Color(249,231,212));//208,168,125
+//			table.setBackground(new Color(208,168,125)); //226,203,170
+//			scrollPane.getViewport().setOpaque(false);
+//			scrollPane.setOpaque(false);
+////			scrollPane.getColumnHeader().setOpaque(false);
+//			
+//			
+//			
+//			
+//			table.setRowHeight(25);
+//			scrollPane.setBounds(0, 0, 750, 400);//——by zyz 2015/12/3
 			this.add(scrollPane);
 		}
 		

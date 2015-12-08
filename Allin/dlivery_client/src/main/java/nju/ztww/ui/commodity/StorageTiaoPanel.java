@@ -1,5 +1,6 @@
 package nju.ztww.ui.commodity;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -7,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
@@ -19,6 +21,7 @@ import javax.swing.table.DefaultTableModel;
 
 import nju.ztww.service.CommodityListService;
 import nju.ztww.serviceimpl.CommodityListServiceImpl;
+import nju.ztww.ui.order.MyButton;
 import nju.ztww.vo.StorageListLineofInVO;
 
 public class StorageTiaoPanel extends JPanel {
@@ -28,12 +31,12 @@ public class StorageTiaoPanel extends JPanel {
 				.getScreenSize();
 	public ArrayList<StorageListLineofInVO> arraylist=new ArrayList<StorageListLineofInVO>() ;//存储一个库存单的信息
 	public CommodityListService commodityservice=new CommodityListServiceImpl();
-	public JButton tiaozheng=new JButton("调整");
+	public MyButton tiaozheng=new MyButton('b');
 	public JLabel ordernumber=new JLabel("快递编号");
 	public JTextField ordernumberfield=new JTextField();
 	public JLabel    xuanze=new JLabel("分区选择");
-	public JButton  showbutton=new JButton("显示信息");
-	public JButton tijiao=new JButton("提交");
+	public JButton  showbutton=new JButton();
+	public MyButton tijiao=new MyButton('a');
 	public JTextField idoforder=new JTextField(10);
 	public JDialog dlg=new JDialog();
 	public JComboBox dbtype = new JComboBox();
@@ -50,6 +53,7 @@ public class StorageTiaoPanel extends JPanel {
 	String idofcenter="";//中转中心的编号
   public StorageTiaoPanel() {
 	// TODO Auto-generated constructor stub
+		this.setBackground(new Color(250, 240, 230));
 	  this.setLayout(null);
 	    dbtype.addItem("航运区");
 	    dbtype.addItem("铁运区");
@@ -59,9 +63,10 @@ public class StorageTiaoPanel extends JPanel {
 	    dbtype2.addItem("铁运区");
 	    dbtype2.addItem("汽运区");
 	    dbtype2.addItem("机动区");
-	    tiaozheng.setBounds(500, 400, 100, 60);
+//	    tiaozheng.setBounds(500, 400, 100, 60);
+	    tiaozheng.setIcon(new ImageIcon("photo/wj_adjust.png"));
 	    tiaozheng.addActionListener(listenertiao);
-	    tijiao.setBounds(610, 400, 100, 60);
+//	    tijiao.setBounds(610, 400, 100, 60);
 	    tijiao.addActionListener(tijiaolisten);
 	    this.add(xuanze);
 		this.add(dbtype);
@@ -71,6 +76,8 @@ public class StorageTiaoPanel extends JPanel {
 	  xuanze.setBounds(20, 10, 60, 30);
 	  dbtype.setBounds(90, 10, 100, 30);
 	  showbutton.setBounds(200, 10, 100, 30);
+	  showbutton.setIcon(new ImageIcon("photo/wj_show.png"));
+	  showbutton.setBorderPainted(false);
 	  showbutton.addActionListener(show);
 	   Object[][] playerInfo =
 			{
@@ -91,7 +98,11 @@ public class StorageTiaoPanel extends JPanel {
 				//绑定滚动条
 				JScrollPane scrollPane = new JScrollPane(table);
 				 table.setRowHeight(25);
+				 table.getTableHeader().setBackground(new Color(249,231,212));//208,168,125
+				 table.setBackground(new Color(208,168,125)); //226,203,170
 				scrollPane.setBounds(0, 40, 700, 360);
+				scrollPane.getViewport().setOpaque(false);
+				scrollPane.setOpaque(false);
 				this.add(scrollPane); 
 		}
 	 

@@ -19,7 +19,7 @@ import nju.ztww.vo.StorageListLineofOutVO;
 public class StorageCheckPanel extends JPanel {
  public JLabel label1=new JLabel("开始时间");//格式 YY/mm/RR
  public JLabel label2=new JLabel("截止时间");
- public JButton surebutton=new JButton("确定");
+ public JButton surebutton=new JButton();
  public JLabel labelin=new JLabel("入库信息");
  public JLabel labelout=new JLabel("出库信息");
  public JLabel labelinnumber=new JLabel("入库数量");
@@ -46,6 +46,7 @@ public class StorageCheckPanel extends JPanel {
  }
  public void setup(){
 	   //入库的表格
+	 this.setBackground(new Color(250, 240, 230));
 	 this.setLayout(null);
 	   label1.setBounds(0, 0, 70, 20);
 	   textfieldBegin.setBounds(70, 0, 50, 20);
@@ -53,7 +54,9 @@ public class StorageCheckPanel extends JPanel {
 	   labelin.setBounds(300, 20, 100, 30);
 	   textfieldEnd.setBounds(200, 0, 50, 20);
 	   surebutton.setBounds(600,0, 70, 20);//确认时要加监听
+	   surebutton.setIcon(new ImageIcon("photo/wj_queding.png"));
 	   surebutton.addActionListener(listener);
+	   surebutton.setBorderPainted(false);
 	   this.add(surebutton);
 	   this.add(label1);
 	   this.add(textfieldBegin);
@@ -114,7 +117,7 @@ public class StorageCheckPanel extends JPanel {
 			    table2 = new JTable( defaultTableModel2);       //字段名称
 				Dimension size1 = table2.getTableHeader().getPreferredSize();
 				size.height = 30;//设置新的表头高度40
-				table2.getTableHeader().setPreferredSize(size1);
+				table2.getTableHeader().setPreferredSize(size);
 				table2.setAutoResizeMode(JTable.AUTO_RESIZE_NEXT_COLUMN);
 									//绑定滚动条
 				JScrollPane scrollPane1 = new JScrollPane(table2);
@@ -123,6 +126,9 @@ public class StorageCheckPanel extends JPanel {
 				scrollPane1.setBounds(0, 280, 700, 150);
 				scrollPane1.getViewport().setOpaque(false);
 				scrollPane1.setOpaque(false);
+				table2.getTableHeader().setBackground(new Color(249,231,212));//208,168,125
+				table2.setBackground(new Color(208,168,125)); //226,203,170
+				//
 				
 				this.add(scrollPane1);
 				

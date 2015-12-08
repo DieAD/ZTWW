@@ -102,10 +102,10 @@ public class UserManageUI extends JPanel{
 			  defaultTableModel = new DefaultTableModel( playerInfo,Names); 
 			  table = new MyTable(defaultTableModel);
 			  MyScrollPane scrollPane = new MyScrollPane(table);
-			  init();
+//			  init();
 //			  table = new JTable( defaultTableModel);       //字段名称
 //			  Dimension size = table.getTableHeader().getPreferredSize();
-//			  //init();
+//			  init();
 //			  size.height = 30;//设置新的表头高度40
 //			  table.getTableHeader().setPreferredSize(size);
 //			  table.setAutoResizeMode(JTable.AUTO_RESIZE_NEXT_COLUMN);
