@@ -3,9 +3,11 @@ package nju.ztww.data.manage;
 import java.util.ArrayList;
 
 import nju.ztww.DBHelper.DBForCenterreciForm;
+import nju.ztww.DBHelper.DBForDCForm;
 import nju.ztww.DBHelper.DBForDeliveryForm;
 import nju.ztww.DBHelper.DBForEntryForm;
 import nju.ztww.DBHelper.DBForHollReciForm;
+import nju.ztww.DBHelper.DBForIns;
 import nju.ztww.DBHelper.DBForLoadForm;
 import nju.ztww.DBHelper.DBForOrderForm;
 import nju.ztww.DBHelper.DBForOutStockForm;
@@ -14,9 +16,11 @@ import nju.ztww.DBHelper.DBForPaymentForm;
 import nju.ztww.DBHelper.DBForTrainForm;
 import nju.ztww.DBHelper.DBHelper;
 import nju.ztww.dao.CenterreciFormDO;
+import nju.ztww.dao.DCFormDO;
 import nju.ztww.dao.DeliveryFormDO;
 import nju.ztww.dao.EntryFormDO;
 import nju.ztww.dao.HollReciFormDO;
+import nju.ztww.dao.InsDO;
 import nju.ztww.dao.LoadFormDO;
 import nju.ztww.dao.OrderFormDO;
 import nju.ztww.dao.OutStockFormDO;
@@ -26,6 +30,7 @@ import nju.ztww.dao.TrainFormDO;
 import nju.ztww.dao.UserDO;
 import nju.ztww.po.GeneratePO;
 import nju.ztww.po.MUserPO;
+import nju.ztww.po.UserSalaryPO;
 
 public class ManageData {
 	DBForOrderForm dbOrder = new DBForOrderForm();
@@ -39,6 +44,8 @@ public class ManageData {
 	DBForOutStockForm dbOut = new DBForOutStockForm();
 	DBForPaymentForm dbPayment = new DBForPaymentForm();
 	DBHelper dbUser = new DBHelper();
+	DBForDCForm dbDC = new DBForDCForm();
+	DBForIns dbIns = new DBForIns();
 	
 	public ArrayList<GeneratePO> getCheckOrder(int index){
 		ArrayList<GeneratePO> listPO = new ArrayList<GeneratePO>();
@@ -202,5 +209,41 @@ public class ManageData {
 		dbUser.close();
 		
 		return po;
+	}
+	
+	public void upDateSalary(UserSalaryPO userSalary){
+		dbUser.init();
+		ArrayList<UserDO> list1 = dbUser.queryByID(userSalary.getId(), "userstable");
+		UserDO userInfo = list1.get(0);
+		userInfo.setSp(userSalary.getSp());
+		userInfo.setSalary(userSalary.getSumSalary());
+		ArrayList<UserDO> list2 = new ArrayList<UserDO>();
+		list2.add(userInfo);
+		
+		dbUser.updateByID(list2, "userstable");
+		dbUser.close();
+	}
+	
+	public DCFormDO showDC(String city1,String city2){
+		////
+		////
+		dbDC.init();
+		DCFormDO dc = dbDC.query(city1, city2);
+		dbDC.close();
+		return dc;
+	}
+	
+	public InsDO showInsInfo(String id){
+		dbIns.init();
+		InsDO ins  = new InsDO();
+		ins = dbIns.queryByID(id);
+		dbIns.close();
+		return ins;
+	}
+	
+	public void updateIns(InsDO ins){
+		dbIns.init();
+		dbIns.update(ins);
+		dbIns.close();
 	}
 }

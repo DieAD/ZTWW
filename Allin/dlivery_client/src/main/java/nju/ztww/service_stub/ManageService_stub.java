@@ -2,11 +2,14 @@ package nju.ztww.service_stub;
 
 import java.util.ArrayList;
 
+import nju.ztww.dao.DCFormDO;
+import nju.ztww.dao.InsDO;
 import nju.ztww.po.MUserPO;
 import nju.ztww.service.ManageService;
 import nju.ztww.vo.GenerateVO;
 import nju.ztww.vo.IDVO;
 import nju.ztww.vo.SuperviseeVO;
+import nju.ztww.vo.UserSalaryVO;
 
 public class ManageService_stub implements ManageService {
          String id;//id指的是营业厅的编号(末尾区分了不同的被管理者种类)
@@ -65,6 +68,22 @@ public class ManageService_stub implements ManageService {
 	public MUserPO getUserInfoById(String id) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	public void updateUserSalary(UserSalaryVO vo) {
+		// TODO Auto-generated method stub
+		
+	}
+	public DCFormDO showDC(String city1, String city2) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public InsDO showInsInfo(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public void updateIns(InsDO ins) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

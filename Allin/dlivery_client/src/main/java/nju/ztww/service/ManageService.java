@@ -2,10 +2,13 @@ package nju.ztww.service;
 
 import java.util.ArrayList;
 
+import nju.ztww.dao.DCFormDO;
+import nju.ztww.dao.InsDO;
 import nju.ztww.po.MUserPO;
 import nju.ztww.vo.GenerateVO;
 import nju.ztww.vo.IDVO;
 import nju.ztww.vo.SuperviseeVO;
+import nju.ztww.vo.UserSalaryVO;
 
 public interface ManageService {
 	//通过id（指的是区别车辆信息，司机以及机构的编号）来获取一张信息表
@@ -33,6 +36,14 @@ public interface ManageService {
      public MUserPO getUserInfo(String index,String name);
      
      public MUserPO getUserInfoById(String id);
+     
+     public void updateUserSalary(UserSalaryVO vo);
+     
+     public DCFormDO showDC(String city1,String city2);
+     
+     public InsDO showInsInfo(String id);
+     
+     public void updateIns(InsDO ins);
      
      
 }
