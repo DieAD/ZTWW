@@ -1,10 +1,17 @@
 package nju.ztww.ui.manage;
 
+
+import java.awt.BorderLayout;
+
+import java.awt.Graphics;
+import java.awt.Image;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -17,7 +24,7 @@ import nju.ztww.po.MUserPO;
 import nju.ztww.service.ManageService;
 import nju.ztww.serviceimpl.ManageServiceImpl;
 import nju.ztww.vo.UserSalaryVO;
-
+//
 public class GManager_ManageSalaryUI extends JPanel{
 	String[] Position = {" ", "快递员", "营业厅业务员", "中转中心业务员", "仓库管理员", "财务人员", "总经理", "管理员"};
 	String names;
@@ -63,13 +70,13 @@ public class GManager_ManageSalaryUI extends JPanel{
 		nameLabel.setText("姓名");
 		nameLabel.setBounds(20, 100, 80, 30);
 		JComboBox name1 = new JComboBox(name);
-		name1.setBounds(80, 100, 170, 30);
+		name1.setBounds(80, 100, 140, 30);
 		//change id text dy;
 		idLabel.setText("ID");
 		idLabel.setBounds(20, 180, 80, 30);
 		id1.setBounds(80, 180, 140, 30);
 		searchButton.setText("查找");
-		searchButton.setBounds(220, 180, 70, 30);
+		searchButton.setBounds(220, 180, 70, 30);//!!!!!!!!!!!!!!
 		
 		nameLabel2.setText("姓名");
 		nameLabel2.setBounds(300, 20, 60, 30);
@@ -281,6 +288,7 @@ public class GManager_ManageSalaryUI extends JPanel{
 		
 	}
 	
+
 	public class Listener5 implements ItemListener{
         JComboBox box1;
         JComboBox box2;
@@ -306,6 +314,13 @@ public class GManager_ManageSalaryUI extends JPanel{
 			distance.setText(dis);
 		}
 		
+	}
+	public void paintComponent(Graphics g){
+		super.paintComponent(g);
+		
+		Image background=new ImageIcon("photo/ManaSalary2.png").getImage();
+		g.drawImage(background, 0,0,null);
+
 		
 	}
 	

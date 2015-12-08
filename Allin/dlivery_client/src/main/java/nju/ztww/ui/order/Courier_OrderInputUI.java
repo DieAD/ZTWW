@@ -115,7 +115,7 @@ public class Courier_OrderInputUI extends JPanel{
 		{/*for table*/
 			Object[][] OrderInfo =
 				{		
-					{"123","123", "123"}
+//					{"123","123", "123"}
 				};
 			String[] names = {"营业厅编号", "订单号", "寄件人", "手机", "收件人","手机" ,"费用合计", "种类", "地址"};
 			

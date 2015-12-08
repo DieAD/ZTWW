@@ -1,9 +1,15 @@
 package nju.ztww.ui.manage;
 
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.ImageObserver;
+import java.awt.image.ImageProducer;
 import java.util.ArrayList;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
@@ -27,16 +33,16 @@ public class GManager_CheckOrders extends JPanel {
 	// JTextField num3 = new JTextField();
 	// JButton sureButton = new JButton("确定");
 	// JButton closButton = new JButton("关闭");
-	JButton order1Button = new JButton();
-	JButton order2Button = new JButton();
-	JButton order3Button = new JButton();
-	JButton order4Button = new JButton();
-	JButton order5Button = new JButton();
-	JButton order6Button = new JButton();
-	JButton order7Button = new JButton();
-	JButton order8Button = new JButton();
-	JButton order9Button = new JButton();
-	JButton order10Button = new JButton();
+	OrdersButton order1Button = new OrdersButton(1);
+	OrdersButton order2Button = new OrdersButton(2);
+	OrdersButton order3Button = new OrdersButton(3);
+	OrdersButton order4Button = new OrdersButton(4);
+	OrdersButton order5Button = new OrdersButton(5);
+	OrdersButton order6Button = new OrdersButton(6);
+	OrdersButton order7Button = new OrdersButton(7);
+	OrdersButton order8Button = new OrdersButton(8);
+	OrdersButton order9Button = new OrdersButton(9);
+	OrdersButton order10Button = new OrdersButton(10);
 	JButton sureButton = new JButton();
 	MyTable table;
 	JPanel tablePanel = new JPanel();
@@ -53,6 +59,7 @@ public class GManager_CheckOrders extends JPanel {
 	// Object[][] orders9;
 	// Object[][] orders10;
 	public GManager_CheckOrders() {
+		this.setBackground(new Color(250, 240, 230));
 		// this.setLayout(null);
 		// search.setBounds(20, 20, 100, 20);
 		// searchButton.setBounds(150, 20, 100, 20);
@@ -63,30 +70,31 @@ public class GManager_CheckOrders extends JPanel {
 		// // numLabel.setBounds(50, 100, width, height);
 		this.setLayout(null);
 		tablePanel.setLayout(null);
-		tablePanel.setBounds(135, 10, 570, 400);
+		tablePanel.setBounds(135, 10, 600, 400);
 		this.add(tablePanel);
-		order1Button.setText("寄件单");
-		order1Button.setBounds(10, 10, 120, 30);
-		order2Button.setText("装车单");
-		order2Button.setBounds(10, 40, 120, 30);
-		order3Button.setText("营业厅到达单");
-		order3Button.setBounds(10, 70, 120, 30);
-		order4Button.setText("收款单");
-		order4Button.setBounds(10, 100, 120, 30);
-		order5Button.setText("派件单");
-		order5Button.setBounds(10, 130, 120, 30);
-		order6Button.setText("中装中心到达单");
-		order6Button.setBounds(10, 160, 120, 30);
-		order7Button.setText("入库单");
-		order7Button.setBounds(10, 190, 120, 30);
-		order8Button.setText("中转单");
-		order8Button.setBounds(10, 220, 120, 30);
-		order9Button.setText("出库单");
-		order9Button.setBounds(10, 250, 120, 30);
-		order10Button.setText("付款单");
-		order10Button.setBounds(10, 280, 120, 30);
-		sureButton.setText("审批单据");
-		sureButton.setBounds(550, 420, 120, 30);
+//		order1Button.setText("寄件单");
+//		order1Button.setBounds(10, 10, 120, 30);
+//		order2Button.setText("装车单");
+//		order2Button.setBounds(10, 40, 120, 30);
+//		order3Button.setText("营业厅到达单");
+//		order3Button.setBounds(10, 70, 120, 30);
+//		order4Button.setText("收款单");
+//		order4Button.setBounds(10, 100, 120, 30);
+//		order5Button.setText("派件单");
+//		order5Button.setBounds(10, 130, 120, 30);
+//		order6Button.setText("中装中心到达单");
+//		order6Button.setBounds(10, 160, 120, 30);
+//		order7Button.setText("入库单");
+//		order7Button.setBounds(10, 190, 120, 30);
+//		order8Button.setText("中转单");
+//		order8Button.setBounds(10, 220, 120, 30);
+//		order9Button.setText("出库单");
+//		order9Button.setBounds(10, 250, 120, 30);
+//		order10Button.setText("付款单");
+//		order10Button.setBounds(10, 280, 120, 30);
+		sureButton.setBounds(560, 430, 120, 30);
+		sureButton.setBorderPainted(false);
+		sureButton.setIcon(new ImageIcon("photo/GCheckOrders.png"));
 		order1Button.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
