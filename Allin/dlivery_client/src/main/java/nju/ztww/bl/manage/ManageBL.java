@@ -14,12 +14,15 @@ import nju.ztww.bl.order.MailingOrderBl;
 import nju.ztww.bl.order.ReceiveOrderBl;
 import nju.ztww.bl.order.SendOrderBl;
 import nju.ztww.bl.order.TransferOrderBl;
+import nju.ztww.dao.DCFormDO;
+import nju.ztww.dao.InsDO;
 import nju.ztww.po.GeneratePO;
 import nju.ztww.po.MUserPO;
-import nju.ztww.service.FinanceDataService;
+import nju.ztww.po.UserSalaryPO;
 import nju.ztww.service.ManageDataService;
 import nju.ztww.vo.GenerateVO;
 import nju.ztww.vo.IDVO;
+import nju.ztww.vo.UserSalaryVO;
 ///
 public class ManageBL {
 	private RMIHelper rmi = new RMIHelper("localhost", "1010");
@@ -157,6 +160,50 @@ public class ManageBL {
 			e.printStackTrace();
 		}
 		return po;
+	}
+	
+	public void updateUserSalary(UserSalaryVO vo){
+		UserSalaryPO po = new UserSalaryPO();
+		po.setId(vo.id);
+		po.setSp(vo.sp);
+		po.setSumSalary(vo.sumSalary);
+		MDService = (ManageDataService)rmi.findService("ManageDataService");
+		try {
+			MDService.updateUserSalary(po);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public DCFormDO showDC(String city1,String city2){
+		MDService = (ManageDataService)rmi.findService("ManageDataService");
+		DCFormDO dc = new DCFormDO();
+		dc  = MDService.showD(city1, city2);
+		return dc;
+	}
+	
+	public InsDO showInsInfo(String id){
+		MDService = (ManageDataService)rmi.findService("ManageDataService");
+		InsDO ins = new InsDO();
+		try {
+			 ins = MDService.showInsInfo(id);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return ins;
+	}
+	
+	public void updateIns(InsDO ins){
+		MDService = (ManageDataService)rmi.findService("ManageDataService");
+		try {
+			MDService.updateIns(ins);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 }

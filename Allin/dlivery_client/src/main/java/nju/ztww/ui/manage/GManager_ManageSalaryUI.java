@@ -72,7 +72,7 @@ public class GManager_ManageSalaryUI extends JPanel{
 		idLabel.setBounds(20, 180, 80, 30);
 		id1.setBounds(80, 180, 140, 30);
 		searchButton.setText("查找");
-		searchButton.setBounds(220, 180, 70, 30);//!!!!!!!!!!!!!!
+//		searchButton.setBounds(220, 180, 70, 30);//!!!!!!!!!!!!!!
 		
 		nameLabel2.setText("姓名");
 		nameLabel2.setBounds(300, 20, 60, 30);
@@ -146,7 +146,7 @@ public class GManager_ManageSalaryUI extends JPanel{
 		this.add(sureButton2);
 		//name1.addActionListener(new Listener1());
 		//
-		searchButton2.setBounds(80, 140, 70, 30);
+		searchButton2.setBounds(80, 140, 70, 30);//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 		searchButton.setBounds(80,220,70,30);
 		this.add(searchButton2);
 		position.addItemListener(new Listener1(position,name1));

@@ -1,10 +1,11 @@
 package nju.ztww.ui.finance;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 
 public class EditInit extends EditPanel{
 	//JLabel label1  = new JLabel("");
@@ -23,5 +24,24 @@ public class EditInit extends EditPanel{
     	this.button.setBounds(130, 260, 400, 200);//picture 600x200
     	
     	this.add(button);
+    	button.addActionListener(new Listener(this));
+    }
+    
+    public class Listener implements ActionListener{
+    	EditInit panel;
+    	INIT init ;
+    	public Listener(EditInit panel){
+    		this.panel = panel;
+    		init =  new INIT(panel);
+    	}
+
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			panel.removeAll();
+			init.setBounds(0, 0, 750, 450);
+			panel.add(init);
+			panel.repaint();
+		}
+    	
     }
 }
