@@ -59,22 +59,31 @@ public class StorageNavigationPanel extends JPanel {
 //	 
 // }
  
-	MyButton Tiaobutton;//库存调整
-	MyButton LogoutButton;//退出登录
-	MyButton Outbutton;// 出库
-	MyButton Inbutton;// 入库
-	MyButton Panbutton;// 库存盘点
 	MyButton Checkbutton;// 库存查看；
+	MyButton Panbutton;// 库存盘点
+	MyButton Inbutton;// 入库
+	MyButton Outbutton;// 出库
+	MyButton Tiaobutton;//库存调整
+	MyButton YourMessageButton;
+	MyButton CheckOrderButton;
+	MyButton LogoutButton;//退出登录
 	final ImageIcon In = new ImageIcon("photo/in.png");
 	final ImageIcon Out = new ImageIcon("photo/out.png");
 	final ImageIcon Check = new ImageIcon("photo/check.png");
 	final ImageIcon pan = new ImageIcon("photo/pan.png");
+	ImageIcon tiaozheng=new ImageIcon("photo/SeperateAdjust.png");
+	ImageIcon yourMessage = new ImageIcon("photo/PersonInfo.png");
+	ImageIcon checkOrder = new ImageIcon("photo/CheckOrder.png");
+	ImageIcon Logout = new ImageIcon("photo/Logout.png");
+	
 	ImageIcon In2 = new ImageIcon("photo/in2.png");
 	ImageIcon Out2 = new ImageIcon("photo/out2.png");
 	ImageIcon Check2 = new ImageIcon("photo/check2.png");
 	ImageIcon pan2 = new ImageIcon("photo/pan2.png");
-	ImageIcon tiaozheng=new ImageIcon("photo/SeperateAdjust.png");
-	ImageIcon Logout = new ImageIcon("photo/Logout.png");
+	ImageIcon tiaozheng2=new ImageIcon("photo/SeperateAdjust2.png");
+	ImageIcon yourMessage2 = new ImageIcon("photo/PersonInfo2.png");
+	ImageIcon checkOrder2 = new ImageIcon("photo/CheckOrder2.png");
+	
 	int panel = 0;
 
 	public StorageNavigationPanel() {
@@ -88,12 +97,13 @@ public class StorageNavigationPanel extends JPanel {
 		Panbutton.addActionListener(pandian);
 		Inbutton.addActionListener(in);
 		Outbutton.addActionListener(out);
-		
+		Tiaobutton.addActionListener(tiao);
+		YourMessageButton.addActionListener(Info);
+		CheckOrderButton.addActionListener(checkorder);
 	}
 
 	public void setup() {// 初始化部件对象
-		 LogoutButton=new MyButton(5);
-		  LogoutButton.setIcon(Logout);
+		
 		  Tiaobutton=new MyButton(4);
 		  Tiaobutton.setIcon(tiaozheng);
 		Outbutton = new MyButton(3);
@@ -104,6 +114,13 @@ public class StorageNavigationPanel extends JPanel {
 		Panbutton.setIcon(pan);
 		Checkbutton = new MyButton(0);
 		Checkbutton.setIcon(Check);
+		
+		YourMessageButton = new MyButton(5);
+		YourMessageButton.setIcon(yourMessage);
+		CheckOrderButton = new MyButton(6);
+		CheckOrderButton.setIcon(checkOrder);
+		 LogoutButton=new MyButton(7);
+		  LogoutButton.setIcon(Logout);
 	}
 
 	public void setPosition() {// 设置位置
@@ -120,7 +137,8 @@ public class StorageNavigationPanel extends JPanel {
 		this.add(Outbutton);
 		this.add(LogoutButton);
 		this.add(Tiaobutton);
-
+		this.add(YourMessageButton);
+		this.add(CheckOrderButton);
 	}
 	
 	private void removeButton(int n){
@@ -129,8 +147,9 @@ public class StorageNavigationPanel extends JPanel {
 		case 1: Panbutton.setIcon(pan);	break;
 		case 2:	Inbutton.setIcon(In);break;
 		case 3: Outbutton.setIcon(Out);break;
-		case 4: Tiaobutton.setIcon(tiaozheng);
-		case 5: LogoutButton.setIcon(Logout);
+		case 4: Tiaobutton.setIcon(tiaozheng);break;
+		case 5: YourMessageButton.setIcon(yourMessage);break;
+		case 6: CheckOrderButton.setIcon(checkOrder);break;
 		default:
 			break;
 		}
@@ -182,8 +201,28 @@ public class StorageNavigationPanel extends JPanel {
 			// TODO Auto-generated method stub
 			
 			removeButton(panel);
-			Outbutton.setIcon(Out2);
+			Tiaobutton.setIcon(tiaozheng2);
 			panel = 4;
+		}
+	};
+	
+	ActionListener Info = new ActionListener() {
+		
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			removeButton(panel);
+			YourMessageButton.setIcon(yourMessage2);
+			panel = 5;
+		}
+	};
+	
+	ActionListener checkorder = new ActionListener() {
+		
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			removeButton(panel);
+			CheckOrderButton.setIcon(checkOrder2);
+			panel = 6;
 		}
 	};
 

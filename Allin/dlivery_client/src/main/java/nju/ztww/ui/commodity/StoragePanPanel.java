@@ -1,5 +1,6 @@
 package nju.ztww.ui.commodity;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -9,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Vector;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -34,8 +36,8 @@ public class StoragePanPanel extends JPanel  implements ActionListener{
 	public JTextField timefield=new JTextField();
 	public JLabel countall=new JLabel("总数量");
 	public JTextField countshuliang=new JTextField(5);
-	public JButton panagain=new JButton("确认盘点");
-	public JButton excel=new JButton("导出Excel");
+	public JButton panagain=new JButton();
+	public JButton excel=new JButton();
 	public JLabel baojing=new JLabel("库存警戒线");
 	public JTextField baojingshuliang=new JTextField(5);
 	long l = System.currentTimeMillis();
@@ -43,13 +45,15 @@ public class StoragePanPanel extends JPanel  implements ActionListener{
 	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd ");
 	public ArrayList<StorageListLineofInVO> arraylist;//存储一个库存单的信息
 	public CommodityListService commodityservice=new CommodityListServiceImpl();
+	
   public StoragePanPanel() {
+		this.setBackground(new Color(250, 240, 230));
 	  this.setLayout(null);
-	  Font font11=new Font("楷体",Font.BOLD,20);
-	   time.setFont(font11);
+	  Font font11=new Font("微软雅黑",Font.BOLD,20);
+	   time.setFont(font11);	
 	   time.setText("此次盘点时间：");
 	   time.setBounds(20, 0, 150, 30);
-	   Font font1=new Font("楷体",Font.PLAIN,20);
+	   Font font1=new Font("微软雅黑",Font.PLAIN,15);
 	   timefield.setFont(font1);
 	   timefield.setAlignmentX(CENTER_ALIGNMENT);
 	   timefield.setBounds(180, 0, 120, 30);
@@ -57,13 +61,18 @@ public class StoragePanPanel extends JPanel  implements ActionListener{
 	   //重新盘点按钮
 	   panagain.setFont(font1);
 	   panagain.setBounds(550, 0, 120, 30);
+	   panagain.setIcon(new ImageIcon("photo/wj_pandian.png"));
+	   panagain.setBorderPainted(false);
 	   panagain.addActionListener(this);
 	   countall.setFont(font1);
+	   baojing.setFont(font1);
 	   baojing.setBounds(400, 400, 80, 30);
 	   baojingshuliang.setBounds(480, 400, 40, 30);
 	   countall.setBounds(550,400, 60, 30);
-	   countshuliang.setBounds(620, 400, 50, 30);
+	   countshuliang.setBounds(620, 400, 80, 30);
 	   excel.setBounds(210, 400, 120, 30);
+	   excel.setIcon(new ImageIcon("photo/wj_excel.png"));
+	   excel.setBorderPainted(false);
 	   this.add(countall);
 	   this.add(time);
 	   this.add(timefield);
@@ -89,10 +98,14 @@ public class StoragePanPanel extends JPanel  implements ActionListener{
 		size.height = 30;//设置新的表头高度40
 		table.getTableHeader().setPreferredSize(size);
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_NEXT_COLUMN);
+		table.getTableHeader().setBackground(new Color(249,231,212));//208,168,125
+		table.setBackground(new Color(208,168,125)); //226,203,170
 		//绑定滚动条
 		JScrollPane scrollPane = new JScrollPane(table);
 		 table.setRowHeight(25);
 		scrollPane.setBounds(0, 40, 700, 360);
+		scrollPane.getViewport().setOpaque(false);
+		scrollPane.setOpaque(false);
 		this.add(scrollPane); 
 }
   public void actionPerformed(ActionEvent e) {

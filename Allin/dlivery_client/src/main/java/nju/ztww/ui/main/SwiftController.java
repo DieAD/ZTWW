@@ -52,7 +52,7 @@ public class SwiftController {
 	
 	
 	public void switchUI(){
-//		panelList = businessUI.getPanelList();
+//		panelList = courierUI.getPanelList();
 
 		switch(id){
 		case 0: jump = false;break;
