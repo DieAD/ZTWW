@@ -1,15 +1,21 @@
 package nju.ztww.ui.manage;
 
+
+import java.awt.BorderLayout;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import nju.ztww.dao.DCFormDO;
@@ -17,6 +23,9 @@ import nju.ztww.po.MUserPO;
 import nju.ztww.service.ManageService;
 import nju.ztww.serviceimpl.ManageServiceImpl;
 import nju.ztww.vo.UserSalaryVO;
+//
+
+
 
 public class GManager_ManageSalaryUI extends JPanel{
 	String[] Position = {" ", "快递员", "营业厅业务员", "中转中心业务员", "仓库管理员", "财务人员", "总经理", "管理员"};
@@ -63,13 +72,13 @@ public class GManager_ManageSalaryUI extends JPanel{
 		nameLabel.setText("姓名");
 		nameLabel.setBounds(20, 100, 80, 30);
 		JComboBox name1 = new JComboBox(name);
-		name1.setBounds(80, 100, 170, 30);
+		name1.setBounds(80, 100, 140, 30);
 		//change id text dy;
 		idLabel.setText("ID");
 		idLabel.setBounds(20, 180, 80, 30);
 		id1.setBounds(80, 180, 140, 30);
 		searchButton.setText("查找");
-		searchButton.setBounds(220, 180, 70, 30);
+//		searchButton.setBounds(220, 180, 70, 30);//!!!!!!!!!!!!!!
 		
 		nameLabel2.setText("姓名");
 		nameLabel2.setBounds(300, 20, 60, 30);
@@ -143,14 +152,13 @@ public class GManager_ManageSalaryUI extends JPanel{
 		this.add(sureButton2);
 		//name1.addActionListener(new Listener1());
 		//
-		searchButton2.setBounds(80, 140, 70, 30);
+		searchButton2.setBounds(80, 140, 70, 30);//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 		searchButton.setBounds(80,220,70,30);
 		this.add(searchButton2);
 		position.addItemListener(new Listener1(position,name1));
 		searchButton2.addActionListener(new Listener2(position,name1));
 		searchButton.addActionListener(new Listener3(name1));
 		sureButton1.addActionListener(new Listener4());
-		to.addItemListener(new Listener5(from,to));
 		
 		name2.setHorizontalAlignment(JTextField.CENTER);
 		name2.setEditable(false);
@@ -272,15 +280,15 @@ public class GManager_ManageSalaryUI extends JPanel{
 
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
-			String id = id1.getText();
 			double sp = Double.parseDouble(money.getText());
 			double sum = Double.parseDouble(sumSalary.getText());
-			UserSalaryVO vo = new UserSalaryVO(id,sp,sum);
-			MS.updateUserSalary(vo);
+			System.out.print(sp + "df"+sum);
 		}
 		
 	}
 	
+
+
 	public class Listener5 implements ItemListener{
         JComboBox box1;
         JComboBox box2;
@@ -306,6 +314,16 @@ public class GManager_ManageSalaryUI extends JPanel{
 			distance.setText(dis);
 		}
 		
+	}
+
+
+	public void paintComponent(Graphics g){
+		super.paintComponent(g);
+		
+		Image background=new ImageIcon("photo/ManaSalary2.png").getImage();
+		g.drawImage(background, 0,0,null);
+
+
 		
 	}
 	
