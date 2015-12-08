@@ -12,6 +12,7 @@ import java.util.Vector;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -23,13 +24,10 @@ import javax.swing.table.DefaultTableModel;
 import nju.ztww.service.CommodityService;
 import nju.ztww.serviceimpl.CommodityServiceImp;
 import nju.ztww.serviceimpl.StorageInListServiceImpl;
-
 import nju.ztww.ui.main.UserInfoUI;
-
 import nju.ztww.ui.order.MyButton;
 import nju.ztww.ui.order.MyScrollPane;
 import nju.ztww.ui.order.MyTable;
-
 import nju.ztww.vo.StorageListLineofInVO;
 import nju.ztww.vo.StorageListLineofOutVO;
 
@@ -66,6 +64,8 @@ public class InofStoragePanel extends JPanel{
 	   public ArrayList<StorageListLineofInVO>arraylist=new ArrayList<StorageListLineofInVO>();//成员变量
 	   java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit()
 				.getScreenSize();
+	   public JComboBox dbtype = new JComboBox();
+	  
 	   public InofStoragePanel() {
 			this.setBackground(new Color(250, 240, 230));
 
@@ -78,9 +78,14 @@ public class InofStoragePanel extends JPanel{
 //		   submitbutton.setBounds(320, 420, 110, 38);
 //		   deletebutton.setBounds(190, 420, 110, 38);
 //		   this.add(sureofbutton);
+		    dbtype.addItem("航运区");
+		    dbtype.addItem("铁运区");
+		    dbtype.addItem("汽运区");
+		    dbtype.addItem("机动区");
 		   this.add(addbutton);
 		   this.add(submitbutton);
 		   this.add(deletebutton);
+		   
 		   //提交时的监听
 		   submitbutton.addActionListener(listener2);
 		   deletebutton.addActionListener(listener3);
@@ -123,9 +128,9 @@ public class InofStoragePanel extends JPanel{
             arrivefield.setBounds(100, 105, 150, 30);
             arrive.setFont(new Font("黑体",0,18));
             arrive.setBounds(0, 100, 100, 40);
-            qufield.setBounds(100, 155, 150, 30);
-            qu.setFont(new Font("黑体",0,18));
-            qu.setBounds(0, 150, 100, 40);
+            dbtype.setBounds(100, 155, 150, 30);
+           qu.setFont(new Font("黑体",0,18));
+           qu.setBounds(0, 150, 100, 40);
             paifield.setBounds(100, 205, 150, 30);
             pai.setFont(new Font("黑体",0,18));
             pai.setBounds(0, 200, 100, 40);
@@ -148,7 +153,7 @@ public class InofStoragePanel extends JPanel{
             dlg.add(pai);
             dlg.add(paifield);
             dlg.add(qu);
-            dlg.add(qufield);
+            dlg.add(dbtype);
             dlg.add(wei);
             dlg.add(weifield);
            
@@ -174,7 +179,7 @@ public class InofStoragePanel extends JPanel{
 			row.add(ordernumberfield.getText());
 			row.add(datafield.getText());
 			row.add(arrivefield.getText());
-			row.add(qufield.getText());
+			row.add(dbtype.getSelectedItem().toString());
 			row.add(paifield.getText());
 			row.add(jiafield.getText());
 			row.add(weifield.getText());
@@ -190,7 +195,7 @@ public class InofStoragePanel extends JPanel{
 			ordernumberfield.setText(null);
 			datafield.setText(null);
 			arrivefield.setText(null);
-			qufield.setText(null);
+			//qufield.setText(null);
 			paifield.setText(null);
 			jiafield.setText(null);
 			weifield.setText(null);

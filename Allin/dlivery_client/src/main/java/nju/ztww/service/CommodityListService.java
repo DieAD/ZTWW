@@ -4,6 +4,9 @@ import java.util.ArrayList;
 
 
 
+
+
+
 import nju.ztww.vo.StorageListLineofInVO;
 import nju.ztww.vo.StorageListLineofOutVO;
 
@@ -23,4 +26,10 @@ public interface CommodityListService {
  
  //通过一段时间来得到具体的出库信息表
  public ArrayList<StorageListLineofOutVO> getOutListbytime(String timebegin,String timeend,String idofcenter);
+
+public ArrayList<StorageListLineofInVO> getStockbyQu(String string,
+		String idofcenter);
+
+public void modify(ArrayList<StorageListLineofInVO> arraylist, String idofcenter);
 }
+
