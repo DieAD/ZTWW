@@ -4,8 +4,8 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import nju.ztww.RMI.RMIHelper;
+import nju.ztww.dao.InsDO;
 import nju.ztww.po.CollectionPO;
-import nju.ztww.po.MUserPO;
 import nju.ztww.po.PaymentPO;
 import nju.ztww.service.FinanceDataService;
 import nju.ztww.vo.BenefitVO;
@@ -137,6 +137,17 @@ public class FinanceBL {
 	
 	public void UpdateTrace(ArrayList<IDVO> list){
 		
+	}
+	
+	public void init(ArrayList<InsDO> list){
+		financeDataService = (FinanceDataService) rmi
+				.findService("FinanceDataService");
+		try {
+			financeDataService.init(list);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	

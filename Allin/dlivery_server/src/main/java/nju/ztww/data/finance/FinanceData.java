@@ -2,8 +2,11 @@ package nju.ztww.data.finance;
 
 import java.util.ArrayList;
 
+import nju.ztww.DBHelper.DBForIns;
+import nju.ztww.DBHelper.DBForNewIns;
 import nju.ztww.DBHelper.DBForPayeeForm;
 import nju.ztww.DBHelper.DBForPaymentForm;
+import nju.ztww.dao.InsDO;
 import nju.ztww.dao.PayeeFormDO;
 import nju.ztww.dao.PaymentFormDO;
 import nju.ztww.po.CollectionPO;
@@ -13,6 +16,8 @@ public class FinanceData {
       DBForPayeeForm db = new DBForPayeeForm();
       DBForPaymentForm db2 = new DBForPaymentForm();
       DateHelper dh = new DateHelper();
+      DBForIns dbIns = new DBForIns();
+      DBForNewIns dbNewIns = new DBForNewIns();
       
       public ArrayList<CollectionPO> queryByDate(String date,String holl){
     	  ArrayList<PayeeFormDO> listDO = new ArrayList<PayeeFormDO>();
@@ -122,6 +127,17 @@ public class FinanceData {
     		  listPO.add(po);
     	  }
     	  return listPO;
+      }
+      
+      public void init(ArrayList<InsDO> list){
+    	  dbIns.init();
+    	  dbNewIns.init();
+    	  for(InsDO form : list){
+    		  dbIns.insert(form);
+    		  dbNewIns.insert(form);
+    	  }
+    	  dbIns.close();
+    	  dbNewIns.close();
       }
       
       
