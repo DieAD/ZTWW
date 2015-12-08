@@ -22,7 +22,8 @@ public class BusinessUI extends JPanel{
 	MyButton ReceiveBillButton=new MyButton(2);
 	MyButton CarManageButton=new MyButton(3);
 	MyButton DriverManageButton=new MyButton(4);
-	MyButton YourMessageButton=new MyButton(5);
+	MyButton SendButton=new MyButton(5);
+	MyButton YourMessageButton=new MyButton(6);
 	
 	ImageIcon CarLoading=new ImageIcon("photo/CarLoading.png");
 	ImageIcon ReceiveAndSend=new ImageIcon("photo/receiveAndSend.png");
@@ -131,6 +132,16 @@ public class BusinessUI extends JPanel{
 				YourMessageButton.setIcon(YourMessage2);
 				panel = 5;
 			}});
+		SendButton.addActionListener(new ActionListener(){
+
+
+			public void actionPerformed(ActionEvent e) {
+
+				TextBussinessUI.changePanel(7);
+				removeButton(panel);
+				SendButton.setIcon(CarLoading2);
+				panel = 6;
+			}});
 	
 		this.add(CarLoadingButton);
 		this.add(receiveAndSendButton);
@@ -138,6 +149,7 @@ public class BusinessUI extends JPanel{
 		this.add(CarManageButton);
 		this.add(DriverManageButton);
 		this.add(YourMessageButton);
+		this.add(SendButton);
 		//this.repaint();
 		
 	}
@@ -155,6 +167,7 @@ public class BusinessUI extends JPanel{
 		case 3:CarManageButton.setIcon(CarManage);break;
 		case 4:DriverManageButton.setIcon(DriverManage);break;
 		case 5:YourMessageButton.setIcon(YourMessage);break;
+		
 		}
 	}
 //	public void paintComponent(Graphics g){
