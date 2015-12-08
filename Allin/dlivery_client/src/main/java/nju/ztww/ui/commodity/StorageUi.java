@@ -24,9 +24,9 @@ public class StorageUi extends JFrame {
 	public StorageUi() {
 
 		// TODO Auto-generated constructor stub
-//		setup();
-//		setPosition();
-//		setController();
+		setup();
+		setPosition();
+		setController();
 
 //		 TODO Auto-generated constructor stub
 //		setup();
@@ -83,11 +83,11 @@ public class StorageUi extends JFrame {
 		
 	}
 
-//public static void main(String[] args) {
-//		// TODO Auto-generated method stub
-//		new StorageUi();
-//     
-//}
+public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		new StorageUi();
+     
+}
 	public ArrayList<JPanel> getPanelList(){
 		list.add(navigationpanel);
 		list.add(toppanel);
