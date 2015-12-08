@@ -92,7 +92,7 @@ public class DBForStock extends DB{
 	}
 	
 	public void insert(ArrayList<StockDO> list, String tableName){
-		String sql = "insert into "+tableName+"(goodsid,entrytime,address,qu,pai,jia,wei)values(?,?,?,?,?,?,?)";
+		String sql = "insert into "+tableName+"(goodsid,entrytime,address,qu,pai,jia,wei,state)values(?,?,?,?,?,?,?,?)";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			for(StockDO stock : list){
@@ -113,7 +113,10 @@ public class DBForStock extends DB{
 	}
 	
 	public void update(ArrayList<StockDO> list,String tableName){
-		String sql = "update "+ tableName +" set goodsid=?,entrytime=?,address=?,qu=?,pai=?,jia=?,wei=?,state? where goodsid=?";
+		String sql = "update "
+				+ tableName
+				+ " set goodsid=?,entrytime=?,address=?,qu=?,pai=?,jia=?,wei=?,state=?"
+				+ " where goodsid=?";
 		
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -125,8 +128,9 @@ public class DBForStock extends DB{
 				pstmt.setString(5, stock.getPai());
 				pstmt.setString(6, stock.getJia());
 				pstmt.setString(7, stock.getWei());
-				pstmt.setString(8,stock.getGoodsid());
-				pstmt.setInt(9, stock.getState());
+				pstmt.setInt(8, stock.getState());
+				pstmt.setString(9,stock.getGoodsid());
+				
 				pstmt.executeUpdate();
 			}
 		} catch (SQLException e) {
@@ -201,16 +205,48 @@ public class DBForStock extends DB{
 		
 		return list;
 	}
+	public ArrayList<StockDO> queryByQu(String qu,String tableName){
+		ArrayList<StockDO> list  = new ArrayList<StockDO>();
+		String sql = "select * from "+tableName+" where qu='"+qu+"'";
+		
+		try {
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+			
+			while(rs.next()){
+				StockDO stock = new StockDO();
+				stock.setIndex(rs.getInt(1));
+				stock.setGoodsid(rs.getString(2));
+				stock.setEntrytime(rs.getString(3));
+				stock.setAddress(rs.getString(4));
+				stock.setQu(rs.getString(5));
+				stock.setPai(rs.getString(6));
+				stock.setJia(rs.getString(7));
+				stock.setWei(rs.getString(8));
+				stock.setState(rs.getInt(9));
+				list.add(stock);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
 	public static void main(String[] args){
 		DBForStock db = new DBForStock();
 		ArrayList<StockDO> list=new ArrayList<StockDO>();
 		db.init();
 		
-		list=db.queryALL("stocktable");
+		list=db.queryByID("234", "stocktable");
 		
 		for(int i=0;i<list.size();i++){
-		  System.out.println(list.get(i).getAddress());
+			System.out.println(list.get(i).getGoodsid());
+			System.out.println(list.get(i).getQu());
+			//list.get(i).setQu("航运区");
 		}
+		
+		db.update(list, "stocktable");
 		db.close();
 	}
 

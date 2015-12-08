@@ -24,5 +24,13 @@ public interface CommodityListDataService {
 	void changeExeAddStock(ArrayList<String> list);
 	void changeExeDeleteStock(ArrayList<String> list);
 
+   //得到各分区库存
+	ArrayList<StorageListLineofInPO> getStockByQu(String string,
+			String idofcenter);
+
+
+	void modify(ArrayList<StorageListLineofInPO> arraylistinpo,
+			String idofcenter);
+
 	
 }

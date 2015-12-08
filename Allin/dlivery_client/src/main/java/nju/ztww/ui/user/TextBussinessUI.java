@@ -18,6 +18,7 @@ public class TextBussinessUI {
 	static RecieiveMoneyUI recieveMoneyUI=new RecieiveMoneyUI();
 	static CarManageUI carManageUI=new CarManageUI();
 	static DriverManageUI driverManageUI=new DriverManageUI();
+	static SendUI sendUI=new SendUI();
 
 	static ResultMessageUI resultMessageUI=new ResultMessageUI();
 
@@ -28,16 +29,15 @@ public class TextBussinessUI {
 	private ArrayList<JPanel> panelList  = new ArrayList<JPanel>();
 
 	public void init(){
-
+		//注掉
 //		frame.setSize(900, 600);
 //		frame.setTitle("Bussiness");
 //		int width=Toolkit.getDefaultToolkit().getScreenSize().width;
 //		int height=Toolkit.getDefaultToolkit().getScreenSize().height;
 //		frame.setLocation((width-900)/2, (height-600)/2);
 //		frame.setResizable(false);
-		
+		//
 		panel.setBounds(0, 100, 150, 500);
-		resultMessageUI.setBounds(210, 540, 690, 30);
 		lablePanel.setBounds(150, 0, 750, 60);
 		
 		carLoadingPanel.setBounds(150, 100, 750, 450);
@@ -45,15 +45,14 @@ public class TextBussinessUI {
 		recieveMoneyUI.setBounds(150, 100, 750, 450);
 		carManageUI.setBounds(150, 100, 750, 450);
 		driverManageUI.setBounds(150, 100, 750, 450);
+		sendUI.setBounds(150, 100, 750, 450);
 	
-	
-
+		//注掉
 //		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 //		frame.getContentPane().setLayout(null);
 //	    frame.getContentPane().add(panel);
 //	    frame.getContentPane().add(carLoadingPanel);
 //	    frame.getContentPane().add(lablePanel);
-//	    frame.getContentPane().add(resultMessageUI);
 //    	frame.setVisible(true);
 //	}
 //
@@ -61,7 +60,7 @@ public class TextBussinessUI {
 //	// TODO Auto-generated method stub
 //
 //	new TextBussinessUI().init();
-	
+	//
 	}
 	
 	public static void changePanel(int i){
@@ -91,6 +90,10 @@ public class TextBussinessUI {
 			personalMessagePanel.setVisible(true);
 			frame.getContentPane().add(personalMessagePanel);
 			type=6;
+		}else if(i==7){
+			sendUI.setVisible(true);
+			frame.getContentPane().add(sendUI);
+			type=7;
 		}
 	
 	}
@@ -108,6 +111,8 @@ public class TextBussinessUI {
 			driverManageUI.setVisible(false);
 		}else if(type==6){
 			personalMessagePanel.setVisible(false);
+		}else if(type==7){
+			sendUI.setVisible(false);
 		}
 	}
 	

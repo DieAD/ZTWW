@@ -31,8 +31,15 @@ public class Login extends JFrame{
 	public static JPanel panel;
 	
 	
+	
+	
 	public Login(){
-		frame = this;
+
+		
+		
+
+		//frame = this;
+
 		this.setLayout(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
@@ -72,7 +79,7 @@ public class Login extends JFrame{
 		panel.add(order);
 		panel.add(searchButton);
 		panel.add(bg);
-		//
+		
 		uiListener = new ListenerUI(this);
 		loginbButton.addMouseListener(uiListener);
 		searchButton.addMouseListener(new Listener_Trace(this));
@@ -81,9 +88,15 @@ public class Login extends JFrame{
 		this.add(panel);
 		this.setVisible(true);
 		this.getContentPane().repaint();
+
+		
+		///FRAME = this;
+		
+
 		//searchButton.addMouseListener(new Listener_Trace(this));
 		//this.removeAll();
 		//jframe = this;
+
 	}
 	
 	

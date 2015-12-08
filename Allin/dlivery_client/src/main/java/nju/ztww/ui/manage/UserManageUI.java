@@ -85,7 +85,6 @@ public class UserManageUI extends JPanel{
 		changeButton.setIcon(new ImageIcon("photo/modify.png"));
 
 //		userButton.setIcon(save);
-		addButton.setText("添加");
 		addButton.addActionListener(add);
 		changeButton.addActionListener(change);
 		this.add(changeButton);
@@ -103,6 +102,7 @@ public class UserManageUI extends JPanel{
 			  defaultTableModel = new DefaultTableModel( playerInfo,Names); 
 			  table = new MyTable(defaultTableModel);
 			  MyScrollPane scrollPane = new MyScrollPane(table);
+			  init();
 //			  table = new JTable( defaultTableModel);       //字段名称
 //			  Dimension size = table.getTableHeader().getPreferredSize();
 			  init();
@@ -121,9 +121,11 @@ public class UserManageUI extends JPanel{
 			  deleteButton.addActionListener(new ActionListener(){
 
 				public void actionPerformed(ActionEvent e) {
+					if(table.getSelectedRow()>=0){
 					String id=(String) table.getValueAt(table.getSelectedRow(), 1);
 					orderServiceImpl.deleteOrder(id, "userstable");
 					defaultTableModel.removeRow(table.getSelectedRow());
+					}
 				}
 				  
 			  });
@@ -162,6 +164,7 @@ public class UserManageUI extends JPanel{
 		public void actionPerformed(ActionEvent e) {
 
 			row=table.getSelectedRow();
+			if(row>=0){
 			ManaUserVO userVO=userService.findByID((String)table.getValueAt(row, 1));
 			addDlg = new JDialog();
 			addDlg.setSize(new Dimension(600, 350));
@@ -237,7 +240,7 @@ public class UserManageUI extends JPanel{
             
             addDlg.setLayout(null);
 			addDlg.setVisible(true);
-            
+			}
 		}
     };
      ActionListener sureChange = new ActionListener() {
