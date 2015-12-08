@@ -1,5 +1,6 @@
 package nju.ztww.ui.manage;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 
@@ -25,8 +26,10 @@ public class MyTable extends JPanel{
 	
 	
 	public MyTable(Object[][] Orders){
-		this.setBounds(0,0,570,400);
+		this.setBounds(0,0,600,390);
 		this.init(Orders);
+		this.setBackground(new Color(250, 240, 230));
+
 	}
 	
 	
@@ -37,6 +40,8 @@ public class MyTable extends JPanel{
 //	tableModel = new DefaultTableModel(Orders, head);
 	tableModel = new Model(Orders, head);
 	table = new JTable(tableModel);
+	table.getTableHeader().setBackground(new Color(249,231,212));//208,168,125
+	table.setBackground(new Color(208,168,125)); //226,203,170
 	Dimension size = table.getTableHeader().getPreferredSize();	
 	size.height = 30;
 	table.getTableHeader().setPreferredSize(size);
@@ -44,7 +49,9 @@ public class MyTable extends JPanel{
 	
 	JScrollPane scrollPane = new JScrollPane(table);
 	table.setRowHeight(25);
-	scrollPane.setBounds(0, 0, 540, 420);
+	scrollPane.setBounds(0, 0, 600, 390);
+	scrollPane.getViewport().setOpaque(false);
+	scrollPane.setOpaque(false);
 	this.add(scrollPane);
 	TableColumn tc1 = table.getColumnModel().getColumn(0);
 	
