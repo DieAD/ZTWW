@@ -29,9 +29,10 @@ public class EditInit extends EditPanel{
     
     public class Listener implements ActionListener{
     	EditInit panel;
-    	INIT init = new INIT();
+    	INIT init ;
     	public Listener(EditInit panel){
     		this.panel = panel;
+    		init =  new INIT(panel);
     	}
 
 		public void actionPerformed(ActionEvent e) {
