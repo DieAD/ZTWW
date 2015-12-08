@@ -38,7 +38,7 @@ public class Login extends JFrame{
 		
 		
 
-		//frame = this;
+		frame = this;
 
 		this.setLayout(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

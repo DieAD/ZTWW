@@ -23,9 +23,9 @@ public class EditCollection extends EditPanel{
 		// TODO Auto-generated constructor stub
     	 super( strings, objects);
     	 this.setBackground(new Color(250, 240, 230));
-    	 this.scrollPane.setBounds(0, 25, 690, 395);
+    	 this.scrollPane.setBounds(0, 25, 750, 395);//690->750
     	 this.scrollPane.setBackground(new Color(250, 240, 230));
-    	 this.header.setBounds(0, 0, 690, 25);
+    	 this.header.setBounds(0, 0, 750, 25);  //690->750
     	 this.add(header);
     	 this.remove(button1);
     	 this.remove(button2);
@@ -38,6 +38,7 @@ public class EditCollection extends EditPanel{
 //     }
      
     public class Header extends JPanel{
+    	
     	public JLabel label1  = new JLabel("日期：",JLabel.CENTER);
     	public JLabel label2 = new JLabel("营业厅编号：",JLabel.CENTER);
     	public JButton button1  = new JButton("查看");
@@ -46,6 +47,7 @@ public class EditCollection extends EditPanel{
     	private Listener listener = new Listener();
     	public Header(){
     		this.setLayout(new GridLayout(1,5));
+    		this.setBackground(new Color(250, 240, 230));
     		this.add(label1);
     		this.add(text1);
     		this.add(label2);

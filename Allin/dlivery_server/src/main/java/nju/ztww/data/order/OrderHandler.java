@@ -33,7 +33,7 @@ public class OrderHandler {
 	private centerReceiveData CenterReceiveData=new centerReceiveData();
 	private ShippingData shippingData=new ShippingData();
 	private TransferData transferData=new TransferData();
-	private DB db;
+	private DB db = new DB();
 	private DBForDCForm dBForDCForm=new DBForDCForm();
 	private DCFormDO dCFormDO;
 	

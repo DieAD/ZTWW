@@ -13,7 +13,7 @@ public class HeaderPanel extends JPanel{
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
 		
-		Image lable=new ImageIcon("photo/lable.gif").getImage();
+		Image lable=new ImageIcon("photo/theme.png").getImage();
 		g.drawImage(lable, 0,0,null);
 		
 	}
