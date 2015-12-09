@@ -1,5 +1,6 @@
 package nju.ztww.ui.manage;
 
+
 import java.awt.BorderLayout;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -17,9 +18,14 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import nju.ztww.dao.DCFormDO;
 import nju.ztww.po.MUserPO;
 import nju.ztww.service.ManageService;
 import nju.ztww.serviceimpl.ManageServiceImpl;
+import nju.ztww.vo.UserSalaryVO;
+//
+
+
 
 public class GManager_ManageSalaryUI extends JPanel{
 	String[] Position = {" ", "快递员", "营业厅业务员", "中转中心业务员", "仓库管理员", "财务人员", "总经理", "管理员"};
@@ -284,12 +290,43 @@ public class GManager_ManageSalaryUI extends JPanel{
 		
 	}
 	
-	
+
+
+	public class Listener5 implements ItemListener{
+        JComboBox box1;
+        JComboBox box2;
+        public Listener5(JComboBox box1,JComboBox box2){
+        	this.box1 = box1;
+        	this.box2 = box2;
+        	
+        }
+        
+		public void itemStateChanged(ItemEvent e) {
+			// TODO Auto-generated method stub
+			if(e.getStateChange()==ItemEvent.SELECTED){
+				eventHandle();
+			}
+			
+		}
+		
+		public void eventHandle(){
+			String bddress = (String)box1.getSelectedItem();
+			String address = (String)box2.getSelectedItem();
+			DCFormDO form = MS.showDC(bddress, address);
+			String dis = form.getDistance()+"";
+			distance.setText(dis);
+		}
+		
+	}
+
+
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
 		
 		Image background=new ImageIcon("photo/ManaSalary2.png").getImage();
 		g.drawImage(background, 0,0,null);
+
+
 		
 	}
 	

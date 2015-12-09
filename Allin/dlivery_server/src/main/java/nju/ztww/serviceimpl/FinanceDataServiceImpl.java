@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
+import nju.ztww.dao.InsDO;
 import nju.ztww.data.finance.FinanceData;
 import nju.ztww.po.AccountPO;
 import nju.ztww.po.CollectionPO;
@@ -79,6 +80,11 @@ public class FinanceDataServiceImpl extends UnicastRemoteObject implements Finan
 	public ArrayList<PaymentPO> totalPayment() throws RemoteException {
 		// TODO Auto-generated method stub
 		return financeData.totalPayment();
+	}
+
+	public void init(ArrayList<InsDO> list) throws RemoteException {
+		// TODO Auto-generated method stub
+		financeData.init(list);
 	}
       
 }

@@ -3,6 +3,7 @@ package nju.ztww.serviceimpl;
 import java.util.ArrayList;
 
 import nju.ztww.bl.finance.FinanceBL;
+import nju.ztww.dao.InsDO;
 import nju.ztww.service.FinanceService;
 import nju.ztww.vo.AccountVO;
 import nju.ztww.vo.BenefitVO;
@@ -55,6 +56,11 @@ public class FinanceServiceImpl implements FinanceService{
 	public BenefitVO getBenefit() {
 		// TODO Auto-generated method stub
 		return financeBL.getTotalBenefit();
+	}
+
+	public void init(ArrayList<InsDO> list) {
+		// TODO Auto-generated method stub
+		financeBL.init(list);
 	}
 
 	

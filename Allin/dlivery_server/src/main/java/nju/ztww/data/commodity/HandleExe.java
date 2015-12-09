@@ -50,6 +50,7 @@ public void changeExeAddStock(ArrayList<String> list) {
 	 dbstock.init();
 	  for(int i=0;i<list.size();i++){
 		  ArrayList<OutStockFormDO> outstockdolist=new  ArrayList<OutStockFormDO>();
+		  System.out.println(list.get(i));
 		  String idofCenter=list.get(i).substring(0, 8);
 		  ArrayList<StockDO>stocklist=new ArrayList<StockDO>();
 		  outstockdolist=dbout.queryByID(list.get(i), "outstockform");//表名需要改
