@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 
 import nju.ztww.ui.main.ListenerEndUI;
 import nju.ztww.ui.main.Listener_Return;
+import nju.ztww.ui.main.UserInfoUI;
 //date 11-18 name wh
 //需要根据中转中心业务员身份知道中转中心的id
 public class StorageUi extends JFrame implements Runnable{
@@ -47,7 +48,7 @@ public class StorageUi extends JFrame implements Runnable{
 		storagecheckpanel=new StorageCheckPanel();
 		storagepanpanel=new StoragePanPanel();
 		storagetiaopanel=new StorageTiaoPanel();
-		storagebaojingpanel=new StorageBaoJingPanel();
+		//storagebaojingpanel=new StorageBaoJingPanel();
 	}
 	public void setPosition(){
 		this.setLayout(null);
@@ -58,7 +59,7 @@ public class StorageUi extends JFrame implements Runnable{
 		storagecheckpanel.setBounds(150, 100, 750, 450);
 		storagepanpanel.setBounds(150, 100, 750, 450);
 		storagetiaopanel.setBounds(150, 100, 750, 450);
-		storagebaojingpanel.setBounds(150, 100, 750, 450);
+		//storagebaojingpanel.setBounds(150, 100, 750, 450);
 		this.add(navigationpanel);
 		this.add(toppanel);
 		this.add(storagecheckpanel);
@@ -66,7 +67,8 @@ public class StorageUi extends JFrame implements Runnable{
 		this.add(inofStoragepanel);
 		this.add(storagepanpanel);
 		this.add(storagetiaopanel);
-		this.add(storagebaojingpanel);
+		
+		//this.add(storagebaojingpanel);
 	
 		inofStoragepanel.setVisible(false);
 		outofStoragepanel.setVisible(false);
