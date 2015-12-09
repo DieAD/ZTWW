@@ -26,8 +26,8 @@ public class EditPanel extends JPanel {
        protected MyButton button1 = new MyButton('a');
        public MyButton button2 = new MyButton('a');
        protected MyButton button3 = new MyButton('b');
-       protected MyScrollPane scrollPane;
-       
+       public MyScrollPane scrollPane;
+      
        java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit()
    			.getScreenSize();
        

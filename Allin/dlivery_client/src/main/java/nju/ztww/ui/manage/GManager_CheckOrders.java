@@ -71,6 +71,7 @@ public class GManager_CheckOrders extends JPanel {
 		this.setLayout(null);
 		tablePanel.setLayout(null);
 		tablePanel.setBounds(135, 10, 600, 400);
+		tablePanel.setBackground(new Color(250, 240, 230));
 		this.add(tablePanel);
 //		order1Button.setText("寄件单");
 //		order1Button.setBounds(10, 10, 120, 30);
@@ -92,7 +93,7 @@ public class GManager_CheckOrders extends JPanel {
 //		order9Button.setBounds(10, 250, 120, 30);
 //		order10Button.setText("付款单");
 //		order10Button.setBounds(10, 280, 120, 30);
-		sureButton.setBounds(560, 430, 120, 30);
+		sureButton.setBounds(570, 420, 120, 30);
 		sureButton.setBorderPainted(false);
 		sureButton.setIcon(new ImageIcon("photo/GCheckOrders.png"));
 		order1Button.addActionListener(new ActionListener() {
