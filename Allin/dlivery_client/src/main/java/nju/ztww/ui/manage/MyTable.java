@@ -26,7 +26,7 @@ public class MyTable extends JPanel{
 	
 	
 	public MyTable(Object[][] Orders){
-		this.setBounds(0,0,600,390);
+		this.setBounds(0,0,600,400);
 		this.init(Orders);
 		this.setBackground(new Color(250, 240, 230));
 
@@ -49,7 +49,7 @@ public class MyTable extends JPanel{
 	
 	JScrollPane scrollPane = new JScrollPane(table);
 	table.setRowHeight(25);
-	scrollPane.setBounds(0, 0, 600, 390);
+	scrollPane.setBounds(0, 0, 600, 400);
 	scrollPane.getViewport().setOpaque(false);
 	scrollPane.setOpaque(false);
 	this.add(scrollPane);

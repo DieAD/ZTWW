@@ -1,5 +1,6 @@
 package nju.ztww.ui.manage;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -33,11 +34,11 @@ public class GManager_ViewFormsUI extends JPanel {
 	public final String[] Month = { "1", "2", "3", "4", "5", "6", "7", "8",
 			"9", "10", "11", "12" };
 	JLabel state = new JLabel();
-	ImageIcon state1 = new ImageIcon("photo/state1.gif");
-	ImageIcon state2 = new ImageIcon("photo/state2.gif");;
+	ImageIcon state1 = new ImageIcon("photo/state1.png");
+	ImageIcon state2 = new ImageIcon("photo/state2.png");;
 	JLabel cost = new JLabel();
-	ImageIcon cost1 = new ImageIcon("photo/cost1.gif");
-	ImageIcon cost2 = new ImageIcon("photo/cost2.gif");;
+	ImageIcon cost1 = new ImageIcon("photo/cost1.png");
+	ImageIcon cost2 = new ImageIcon("photo/cost2.png");;
 	JLabel year = new JLabel();
 	JLabel month = new JLabel();
 	JComboBox monthBox = new JComboBox(Month);
@@ -49,7 +50,7 @@ public class GManager_ViewFormsUI extends JPanel {
 
 	public GManager_ViewFormsUI() {
 		;
-
+		 this.setBackground(new Color(250, 240, 230));
 		this.setLayout(null);
 		sureButton.setText("确定");
 		sureButton.setBounds(500, 400, 120, 40);
@@ -132,6 +133,10 @@ public class GManager_ViewFormsUI extends JPanel {
 		this.add(businessPanel);
 		this.add(benefitPanel);
 		//this.add(benefitPanel.button2);
+		benefitPanel.setBounds(5, 30, 735, 420);
+		benefitPanel.scrollPane.setBounds(0, 30, 690, 340);
+		benefitPanel.button2.setLocation(600, 370);
+//		benefitPanel.button2.setBounds(500, 350, 120, 30);
 		benefitPanel.setVisible(false);
 		this.cost.addMouseListener(new ListenerForCost());
 		this.state.addMouseListener(new ListenerForState());
@@ -179,6 +184,8 @@ public class GManager_ViewFormsUI extends JPanel {
 		public void mousePressed(MouseEvent e) {
 			// TODO Auto-generated method stub
 			benefitPanel.setVisible(false);
+			
+			
 			businessPanel.setVisible(true);
 		}
 
