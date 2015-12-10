@@ -10,16 +10,16 @@ import java.util.Vector;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JDialog;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import confligUI.MyButton;
+import confligUI.MyComboBox;
+import confligUI.MyLabel;
+import confligUI.MyTextField;
 import nju.ztww.service.CommodityListService;
 import nju.ztww.serviceimpl.CommodityListServiceImpl;
 import nju.ztww.vo.StorageListLineofInVO;
@@ -32,22 +32,22 @@ public class StorageTiaoPanel extends JPanel {
 	public ArrayList<StorageListLineofInVO> arraylist=new ArrayList<StorageListLineofInVO>() ;//存储一个库存单的信息
 	public CommodityListService commodityservice=new CommodityListServiceImpl();
 	public MyButton tiaozheng=new MyButton('b');
-	public JLabel ordernumber=new JLabel("快递编号");
-	public JTextField ordernumberfield=new JTextField();
-	public JLabel    xuanze=new JLabel("分区选择");
+	public MyLabel ordernumber=new MyLabel("快递编号");
+	public MyTextField ordernumberfield=new MyTextField();
+	public MyLabel    xuanze=new MyLabel("分区选择");
 	public JButton  showbutton=new JButton();
 	public MyButton tijiao=new MyButton('a');
-	public JTextField idoforder=new JTextField(10);
+	public MyTextField idoforder=new MyTextField(10);
 	public JDialog dlg=new JDialog();
-	public JComboBox dbtype = new JComboBox();
-	public JComboBox dbtype2 = new JComboBox();
-	public JLabel qu=new JLabel("区号");
-	public JLabel pai=new JLabel("排号");
-	public JLabel jia=new JLabel("架号");
-	public JLabel wei=new JLabel("位号");
-	public JTextField paifield=new JTextField();
-	public JTextField jiafield=new JTextField();
-	public JTextField weifield=new JTextField();
+	public MyComboBox dbtype = new MyComboBox();
+	public MyComboBox dbtype2 = new MyComboBox();
+	public MyLabel qu=new MyLabel("区号");
+	public MyLabel pai=new MyLabel("排号");
+	public MyLabel jia=new MyLabel("架号");
+	public MyLabel wei=new MyLabel("位号");
+	public MyTextField paifield=new MyTextField();
+	public MyTextField jiafield=new MyTextField();
+	public MyTextField weifield=new MyTextField();
 	ArrayList<StorageListLineofInVO> arraylistshow=new ArrayList<StorageListLineofInVO>();
 	JButton surebutton=new JButton("确定");
 	String idofcenter="";//中转中心的编号

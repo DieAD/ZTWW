@@ -12,16 +12,16 @@ import java.util.Vector;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import confligUI.MyButton;
+import confligUI.MyLabel;
 import confligUI.MyScrollPane;
 import confligUI.MyTable;
+import confligUI.MyTextField;
 import nju.ztww.serviceimpl.OrderServiceImpl;
 import nju.ztww.vo.CarManageVO;
 import nju.ztww.vo.DriverMessageVO;
@@ -34,21 +34,21 @@ import nju.ztww.vo.LoadingVO;
  */
 public class DriverManageUI extends JPanel{
 
-	private JTextField businesstextArea=new JTextField("");
-	private  JLabel business=new  JLabel("司机编号");
-	private JTextField cartextArea=new JTextField("");
-	private  JLabel car=new  JLabel("姓名");
-	private JTextField driverSex=new JTextField("");
-	private  JLabel driver=new  JLabel("性别");
-	private JTextField arrivetextArea=new JTextField("");
-	private  JLabel arrive=new  JLabel("出生日期");
-	private JTextField carNumbertextArea=new JTextField("");
-	private  JLabel carNumber=new  JLabel("身份证号");
-	private JTextField orderNumbertextArea=new JTextField("");
-	private  JLabel orderNumber=new  JLabel("手机");
-	private JTextField deadlinetextArea=new JTextField("");
-	private  JLabel deadline=new  JLabel("行驶证期限");
-	private JTextField findtextArea=new JTextField("");
+	private MyTextField businesstextArea=new MyTextField("");
+	private  MyLabel business=new  MyLabel("司机编号");
+	private MyTextField cartextArea=new MyTextField("");
+	private  MyLabel car=new  MyLabel("姓名");
+	private MyTextField driverSex=new MyTextField("");
+	private  MyLabel driver=new  MyLabel("性别");
+	private MyTextField arrivetextArea=new MyTextField("");
+	private  MyLabel arrive=new  MyLabel("出生日期");
+	private MyTextField carNumbertextArea=new MyTextField("");
+	private  MyLabel carNumber=new  MyLabel("身份证号");
+	private MyTextField orderNumbertextArea=new MyTextField("");
+	private  MyLabel orderNumber=new  MyLabel("手机");
+	private MyTextField deadlinetextArea=new MyTextField("");
+	private  MyLabel deadline=new  MyLabel("行驶证期限");
+	private MyTextField findtextArea=new MyTextField("");
 	
 	private ArrayList<DriverMessageVO> allDriverMessageVO=new ArrayList<DriverMessageVO>();
 	

@@ -1,6 +1,7 @@
 package confligUI;
 
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -15,10 +16,24 @@ public class MyTextField extends JTextField {
 	Border border1 = new LineBorder(new Color(165,163,162), 1, true);
 	Border border2  = new LineBorder(new Color(155,122,90),1,true);
 	public MyTextField(){
+		super();
 		this.setFont(myFont);
+		
 		this.addMouseListener(ad);
 	}
 	
+	public MyTextField(String str){
+		super(str);
+		this.setFont(myFont);
+		this.addMouseListener(ad);
+		
+	}
+	
+	public MyTextField(int n){
+		super(n);
+		this.setFont(myFont);
+		this.addMouseListener(ad);
+	}
 	
 	
 	MouseListener ad = new MouseListener() {

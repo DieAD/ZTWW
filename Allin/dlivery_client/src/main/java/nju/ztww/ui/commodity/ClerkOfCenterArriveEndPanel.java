@@ -1,6 +1,7 @@
 package nju.ztww.ui.commodity;
 
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -16,6 +17,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 public class ClerkOfCenterArriveEndPanel extends JPanel {
+	Font myFont = new Font("微软雅黑", Font.PLAIN, 12);
 	public JTable table;
 	   public JDialog dlg;
 	   DefaultTableModel defaultTableModel ;
@@ -46,7 +48,7 @@ public class ClerkOfCenterArriveEndPanel extends JPanel {
 		size.height = 30;
 		table.getTableHeader().setPreferredSize(size);
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_NEXT_COLUMN);
-		
+		table.setFont(myFont);
 		JScrollPane scrollPane = new JScrollPane(table);
 		 table.setRowHeight(25);
 		scrollPane.setBounds(0, 0, 690, 420);
