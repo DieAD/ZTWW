@@ -10,4 +10,9 @@ public class MyLabel extends JLabel {
 		super(str);
 		this.setFont(myFont);
 	}
+	
+	public MyLabel(){
+		super();
+		this.setFont(myFont);
+	}
 }

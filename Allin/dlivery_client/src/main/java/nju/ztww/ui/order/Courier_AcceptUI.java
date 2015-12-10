@@ -18,6 +18,9 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
+import confligUI.MyButton;
+import confligUI.MyScrollPane;
+import confligUI.MyTable;
 import nju.ztww.service.OrderService;
 import nju.ztww.serviceimpl.OrderServiceImpl;
 import nju.ztww.ui.main.UserInfoUI;

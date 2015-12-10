@@ -15,8 +15,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import confligUI.MyButton;
 import nju.ztww.ui.main.Listener_Return;
-import nju.ztww.ui.order.MyButton;
 import nju.ztww.ui.user.TextBussinessUI;
 
 public class ManageUI extends JPanel{
