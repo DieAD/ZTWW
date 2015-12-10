@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import nju.ztww.bl.finance.FinanceBL;
 import nju.ztww.dao.InsDO;
+import nju.ztww.po.CarManagePO;
 import nju.ztww.service.FinanceService;
 import nju.ztww.vo.AccountVO;
 import nju.ztww.vo.BenefitVO;
@@ -61,6 +62,11 @@ public class FinanceServiceImpl implements FinanceService{
 	public void init(ArrayList<InsDO> list) {
 		// TODO Auto-generated method stub
 		financeBL.init(list);
+	}
+
+	public void initCar(ArrayList<CarManagePO> list) {
+		// TODO Auto-generated method stub
+		financeBL.initCar(list);
 	}
 
 	
