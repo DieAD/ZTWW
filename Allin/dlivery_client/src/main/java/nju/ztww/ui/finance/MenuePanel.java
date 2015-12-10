@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-import nju.ztww.ui.order.MyButton;
+import confligUI.MyButton;
 
 public class MenuePanel extends JPanel {
        MyButton accountButton = new MyButton(0);

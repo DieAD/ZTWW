@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
+import confligUI.MyButton;
 import nju.ztww.ui.main.Listener_Return;
 
 public class CourierMenuUI extends JPanel{

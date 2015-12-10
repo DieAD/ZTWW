@@ -12,8 +12,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.plaf.metal.MetalBorders.PaletteBorder;
 
+import confligUI.MyButton;
 import nju.ztww.ui.main.Listener_Return;
-import nju.ztww.ui.order.MyButton;
 
 public class ClerkOfCenterNavigationPanel extends JPanel {
 

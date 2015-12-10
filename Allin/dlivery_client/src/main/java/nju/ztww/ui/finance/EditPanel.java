@@ -12,9 +12,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-import nju.ztww.ui.order.MyButton;
-import nju.ztww.ui.order.MyScrollPane;
-import nju.ztww.ui.order.MyTable;
+import confligUI.MyButton;
+import confligUI.MyScrollPane;
+import confligUI.MyTable;
 
 public class EditPanel extends JPanel {
        public DefaultTableModel tableModel; 

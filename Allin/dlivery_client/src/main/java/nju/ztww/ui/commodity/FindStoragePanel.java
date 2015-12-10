@@ -1,7 +1,6 @@
 package nju.ztww.ui.commodity;
 
 import java.awt.Color;
-
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -20,12 +19,11 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
+import confligUI.MyButton;
 import nju.ztww.bl.commodity.StringToInt;
 import nju.ztww.serviceimpl.CommodityListServiceImpl;
 import nju.ztww.serviceimpl.OrderServiceImpl;
 import nju.ztww.serviceimpl.StorageOutListServiceImpl;
-import nju.ztww.ui.order.MyButton;
-
 import nju.ztww.vo.DeliverFeesVO;
 import nju.ztww.vo.ShippingVO;
 import nju.ztww.vo.StorageListLineofInVO;
