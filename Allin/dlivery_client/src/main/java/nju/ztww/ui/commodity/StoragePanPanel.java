@@ -20,7 +20,9 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
+import nju.ztww.bl.commodity.CheckOrderBL;
 import nju.ztww.po.StorageListLineofInPO;
+import nju.ztww.po.TracePO;
 import nju.ztww.service.CommodityListService;
 import nju.ztww.service.CommodityService;
 import nju.ztww.serviceimpl.CommodityListServiceImpl;
@@ -122,6 +124,9 @@ public class StoragePanPanel extends JPanel  implements ActionListener{
 	// TODO Auto-generated method stub
 	//实现接口 需要传一个满足要求的arraylist
 	arraylist=commodityservice.getStock(UserInfoUI.getUserID().substring(0, 5));//ZHE 个String 是id一部分
+	CheckOrderBL checks=new CheckOrderBL();
+	ArrayList<TracePO> stringlist=new ArrayList<TracePO>();
+	stringlist=checks.findTrace("库存警戒线"+UserInfoUI.getUserID().substring(0, 5));
 	for(int i=0;i<arraylist.size();i++){
 		Vector<String> row = new Vector<String>(7);
 		row.add(arraylist.get(i).getId());
@@ -135,7 +140,7 @@ public class StoragePanPanel extends JPanel  implements ActionListener{
 	    table.revalidate();
 	}
 	countshuliang.setText(String.valueOf(arraylist.size()));
-	
+	baojingshuliang.setText(stringlist.get(0).getTrace());
 	ActionListener listenerdao=new ActionListener() {
 		
 		public void actionPerformed(ActionEvent e) {
@@ -171,7 +176,14 @@ ActionListener listenersure=new ActionListener() {
 			// TODO Auto-generated method stub
 			dlg.setVisible(false);
 			//需要改到库存中
+			CheckOrderBL checks2=new CheckOrderBL();
+			String number=baojingnew.getText();
+			ArrayList<TracePO> stringlist2=new ArrayList<TracePO>();
+			checks2.modifyBaoJing("库存警戒线"+UserInfoUI.getUserID().substring(0, 5), number);
 			baojingnew.setText(null);
+			baojingshuliang.setText(number);
+			
+			
 			sure.removeActionListener(listenersure);
 		}
 	};
