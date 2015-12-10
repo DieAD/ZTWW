@@ -47,13 +47,17 @@ public class OrderHandler {
 	}
 	
 	public String findID(String name){
+		db.init();
 		String id=db.getSize(name);
+		db.close();
 		return id;
 		
 	}
 	
-	public double getdistence(DeliverFeesVO deliverFees){
-		dCFormDO=dBForDCForm.query(deliverFees.place1, deliverFees.place2);
+	public double getdistence(String place1,String place2){
+		dBForDCForm.init();
+		dCFormDO=dBForDCForm.query(place1, place2);
+		dBForDCForm.close();
 		return dCFormDO.getDistance();
 	}
 
