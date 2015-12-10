@@ -9,31 +9,31 @@ import java.util.Vector;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import confligUI.MyButton;
+import confligUI.MyLabel;
 import confligUI.MyScrollPane;
 import confligUI.MyTable;
+import confligUI.MyTextField;
 import nju.ztww.serviceimpl.OrderServiceImpl;
 import nju.ztww.vo.BusinessArriveVO;
 import nju.ztww.vo.SendVO;
 
 public class SendUI extends JPanel{
 	
-	private JTextField datetextArea=new JTextField("");
-	private  JLabel date=new  JLabel("到达日期");
-	private JTextField numbertextArea=new JTextField("");
-	private  JLabel number=new  JLabel("托运订单号");
-	private JTextField sendertextArea=new JTextField("");
-	private  JLabel sender=new  JLabel("派送员");
-	private JTextField othertextArea=new JTextField("");
-	private  JLabel other=new  JLabel("备注");
-	private JTextField findSendtextArea=new JTextField("");
+	private MyTextField datetextArea=new MyTextField("");
+	private  MyLabel date=new  MyLabel("到达日期");
+	private MyTextField numbertextArea=new MyTextField("");
+	private  MyLabel number=new  MyLabel("托运订单号");
+	private MyTextField sendertextArea=new MyTextField("");
+	private  MyLabel sender=new  MyLabel("派送员");
+	private MyTextField othertextArea=new MyTextField("");
+	private  MyLabel other=new  MyLabel("备注");
+	private MyTextField findSendtextArea=new MyTextField("");
 	
 	private OrderServiceImpl orderServiceImpl=new OrderServiceImpl();
 	private SendVO sendVO;

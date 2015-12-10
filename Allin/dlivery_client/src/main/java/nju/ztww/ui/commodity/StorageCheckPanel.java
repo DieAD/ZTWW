@@ -2,6 +2,7 @@ package nju.ztww.ui.commodity;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -10,6 +11,8 @@ import java.util.Vector;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
+import confligUI.MyLabel;
+import confligUI.MyTextField;
 import nju.ztww.bl.commodity.WayToString;
 import nju.ztww.service.CommodityListService;
 import nju.ztww.serviceimpl.CommodityListServiceImpl;
@@ -17,21 +20,22 @@ import nju.ztww.vo.StorageListLineofInVO;
 import nju.ztww.vo.StorageListLineofOutVO;
 
 public class StorageCheckPanel extends JPanel {
- public JLabel label1=new JLabel("开始时间");//格式 YY/mm/RR
- public JLabel label2=new JLabel("截止时间");
+	Font myFont = new Font("微软雅黑", Font.PLAIN, 12);
+ public MyLabel label1=new MyLabel("开始时间");//格式 YY/mm/RR
+ public MyLabel label2=new MyLabel("截止时间");
  public JButton surebutton=new JButton();
- public JLabel labelin=new JLabel("入库信息");
- public JLabel labelout=new JLabel("出库信息");
- public JLabel labelinnumber=new JLabel("入库数量");
- public JLabel labeloutnumber=new JLabel("出库数量");
+ public MyLabel labelin=new MyLabel("入库信息");
+ public MyLabel labelout=new MyLabel("出库信息");
+ public MyLabel labelinnumber=new MyLabel("入库数量");
+ public MyLabel labeloutnumber=new MyLabel("出库数量");
  String idofcenter="0001";//需要根据中转中心人员身份来确定
  
- public JTextField  textfield1=new JTextField(10);
- public JTextField  textfield2=new JTextField(10);
- public JTextField  textfieldin=new JTextField(5);
- public JTextField  textfieldout=new JTextField(5);
- public JTextField  textfieldBegin=new JTextField(10);
- public JTextField  textfieldEnd=new JTextField(10);
+ public MyTextField  textfield1=new MyTextField(10);
+ public MyTextField  textfield2=new MyTextField(10);
+ public MyTextField  textfieldin=new MyTextField(5);
+ public MyTextField  textfieldout=new MyTextField(5);
+ public MyTextField  textfieldBegin=new MyTextField(10);
+ public MyTextField  textfieldEnd=new MyTextField(10);
  DefaultTableModel defaultTableModel1 ;
  DefaultTableModel defaultTableModel2;
  public ArrayList<StorageListLineofInVO>arraylistin;//盘点时所需的入库信息
@@ -80,6 +84,7 @@ public class StorageCheckPanel extends JPanel {
 				defaultTableModel1= new DefaultTableModel( playerInfo,Names); 
 				table1 = new JTable( defaultTableModel1);       //字段名称
 				Dimension size = table1.getTableHeader().getPreferredSize();
+				table1.setFont(myFont);
 				size.height = 30;//设置新的表头高度40
 				table1.getTableHeader().setPreferredSize(size);
 				table1.setAutoResizeMode(JTable.AUTO_RESIZE_NEXT_COLUMN);
@@ -119,6 +124,7 @@ public class StorageCheckPanel extends JPanel {
 				size.height = 30;//设置新的表头高度40
 				table2.getTableHeader().setPreferredSize(size);
 				table2.setAutoResizeMode(JTable.AUTO_RESIZE_NEXT_COLUMN);
+				table2.setFont(myFont);
 									//绑定滚动条
 				JScrollPane scrollPane1 = new JScrollPane(table2);
 				table2.setRowHeight(25);

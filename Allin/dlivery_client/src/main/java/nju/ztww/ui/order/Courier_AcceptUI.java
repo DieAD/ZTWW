@@ -11,16 +11,16 @@ import java.util.Vector;
 
 import javax.swing.ImageIcon;
 import javax.swing.JDialog;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import confligUI.MyButton;
+import confligUI.MyLabel;
 import confligUI.MyScrollPane;
 import confligUI.MyTable;
+import confligUI.MyTextField;
 import nju.ztww.service.OrderService;
 import nju.ztww.serviceimpl.OrderServiceImpl;
 import nju.ztww.ui.main.UserInfoUI;
@@ -41,17 +41,17 @@ public class Courier_AcceptUI extends JPanel{
 	
 //	private ArrayList<E>
 	
-	private JLabel numbersLabel = new JLabel();
-	private JTextField numbers = new JTextField();
-	private JLabel acceptNumLabel = new JLabel();
-	private JTextField acceptNum = new JTextField();
-	private JLabel receiverLabel = new JLabel();
-	private JTextField receiver = new JTextField();
-	private JLabel timeLabel = new JLabel();
-	private JTextField time = new JTextField();
-	private JLabel courierLabel = new JLabel();
-	private JTextField courier = new JTextField();
-	private JTextField search = new JTextField();
+	private MyLabel numbersLabel = new MyLabel();
+	private MyTextField numbers = new MyTextField();
+	private MyLabel acceptNumLabel = new MyLabel();
+	private MyTextField acceptNum = new MyTextField();
+	private MyLabel receiverLabel = new MyLabel();
+	private MyTextField receiver = new MyTextField();
+	private MyLabel timeLabel = new MyLabel();
+	private MyTextField time = new MyTextField();
+	private MyLabel courierLabel = new MyLabel();
+	private MyTextField courier = new MyTextField();
+	private MyTextField search = new MyTextField();
 	private OrderService orderServiceImpl = new OrderServiceImpl();
 	
 	private String businID;
@@ -110,7 +110,7 @@ public class Courier_AcceptUI extends JPanel{
 					addDlg = new JDialog();
 					addDlg.setSize(new Dimension(360, 320));
 		            addDlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
-		            sureAddButton.setText("确定");
+		            sureAddButton.setIcon(new ImageIcon("photo/courierSure.png"));
 		            sureAddButton.setBounds(220, 230, 70, 30);
 		            sureAddButton.addActionListener(listener);
 		 

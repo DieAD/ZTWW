@@ -9,12 +9,12 @@ import java.awt.event.ItemListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JDialog;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 
+import confligUI.MyComboBox;
+import confligUI.MyLabel;
+import confligUI.MyTextField;
 import nju.ztww.dao.InsDO;
 import nju.ztww.service.ManageService;
 import nju.ztww.serviceimpl.ManageServiceImpl;
@@ -25,28 +25,28 @@ public class GManager_ManageOrgaUI extends JPanel {
 	JButton searchButton = new JButton();
 	JButton modifyButton = new JButton();
 	JButton deletebButton = new JButton();
-	JLabel nameLabel = new JLabel();
-	JLabel idLabel = new JLabel();
-	JLabel membersLabel = new JLabel();
-	JTextField search = new JTextField();
-	JTextField name = new JTextField();
-	JTextField id = new JTextField();
-	JTextField members1 = new JTextField();
-	JTextField members2 = new JTextField();
-	JTextField members3 = new JTextField();
+	MyLabel nameLabel = new MyLabel();
+	MyLabel idLabel = new MyLabel();
+	MyLabel membersLabel = new MyLabel();
+	MyTextField search = new MyTextField();
+	MyTextField name = new MyTextField();
+	MyTextField id = new MyTextField();
+	MyTextField members1 = new MyTextField();
+	MyTextField members2 = new MyTextField();
+	MyTextField members3 = new MyTextField();
 	JDialog delete;
 	JButton yesButton = new JButton();
 	JButton cancelButton = new JButton();
-	JLabel tips = new JLabel();
+	MyLabel tips = new MyLabel();
 	InsDO info;
 	ManageService MS = new ManageServiceImpl();
 
 	java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit()
 			.getScreenSize();
 
-	JComboBox mem1 = new JComboBox(position);
-	JComboBox mem2 = new JComboBox(position);
-	JComboBox mem3 = new JComboBox(position);
+	MyComboBox mem1 = new MyComboBox(position);
+	MyComboBox mem2 = new MyComboBox(position);
+	MyComboBox mem3 = new MyComboBox(position);
 
 	public GManager_ManageOrgaUI() {
 		this.setLayout(null);
@@ -154,10 +154,10 @@ public class GManager_ManageOrgaUI extends JPanel {
 	}
 
 	public class Listener2 implements ItemListener {
-		JComboBox box;
-		JTextField text;
+		MyComboBox box;
+		MyTextField text;
 
-		public Listener2(JComboBox box, JTextField text) {
+		public Listener2(MyComboBox box, MyTextField text) {
 			this.box = box;
 			this.text = text;
 		}
@@ -218,7 +218,7 @@ public class GManager_ManageOrgaUI extends JPanel {
 			MS.updateIns(ins);
 		}
 
-		public int swfit(JComboBox box, JTextField text) {
+		public int swfit(MyComboBox box, MyTextField text) {
 			int index = 0;
 			String item = (String) box.getSelectedItem();
 			if (item.equals("快递员")) {

@@ -8,10 +8,10 @@ import java.awt.event.MouseListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import confligUI.MyComboBox;
+import confligUI.MyLabel;
 import nju.ztww.ui.finance.EditBenefit;
 import nju.ztww.ui.finance.EditBusiness;
 
@@ -33,16 +33,16 @@ public class GManager_ViewFormsUI extends JPanel {
 			"2016" };
 	public final String[] Month = { "1", "2", "3", "4", "5", "6", "7", "8",
 			"9", "10", "11", "12" };
-	JLabel state = new JLabel();
+	MyLabel state = new MyLabel();
 	ImageIcon state1 = new ImageIcon("photo/state1.png");
 	ImageIcon state2 = new ImageIcon("photo/state2.png");;
-	JLabel cost = new JLabel();
+	MyLabel cost = new MyLabel();
 	ImageIcon cost1 = new ImageIcon("photo/cost1.png");
 	ImageIcon cost2 = new ImageIcon("photo/cost2.png");;
-	JLabel year = new JLabel();
-	JLabel month = new JLabel();
-	JComboBox monthBox = new JComboBox(Month);
-	JComboBox yearBox = new JComboBox(Year);
+	MyLabel year = new MyLabel();
+	MyLabel month = new MyLabel();
+	MyComboBox monthBox = new MyComboBox(Month);
+	MyComboBox yearBox = new MyComboBox(Year);
 	JButton sureButton = new JButton();
 
 	java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit()

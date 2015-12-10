@@ -9,7 +9,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 public class MyTable extends JTable{
-	Font myFont = new Font("思源黑体 CN Normal", Font.PLAIN, 12);
+	Font myFont = new Font("微软雅黑", Font.PLAIN, 12);
 	public MyTable(DefaultTableModel defaultTableModel){
 		super(defaultTableModel);
 		Dimension size = this.getTableHeader().getPreferredSize();	

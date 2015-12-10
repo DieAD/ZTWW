@@ -8,10 +8,9 @@ import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 
+import confligUI.MyLabel;
 import nju.ztww.po.TracePO;
 import nju.ztww.service.CheckOrderService;
 import nju.ztww.serviceimpl.CheckOrderServiceImpl;
@@ -21,13 +20,13 @@ public class OrderCheckPanel extends JPanel  {
  
 	ArrayList<MovingMessagePanel> jpanellist=new ArrayList<MovingMessagePanel>();
 	ArrayList<TracePO> textstring=new ArrayList<TracePO>(); 
-	ArrayList<JLabel>  jlabelwdot=new ArrayList<JLabel>();
+	ArrayList<MyLabel>  MyLabelwdot=new ArrayList<MyLabel>();
 	
-	public JLabel JLabelbdot;
+	public MyLabel MyLabelbdot;
 	final ImageIcon bg=new ImageIcon("photo/bg.jpg");
 	final ImageIcon wdot=new ImageIcon("photo/wdot.jpg");
 	final ImageIcon bdot=new ImageIcon("photo/bdot.jpg");
-	Font font1 = new Font("楷体", Font.BOLD, 16);
+	Font font1 = new Font("微软雅黑", Font.PLAIN, 12);
 	public OrderCheckPanel(String id) {
 		// TODO Auto-generated constructor stub
 		System.out.println(id);
@@ -46,13 +45,13 @@ public class OrderCheckPanel extends JPanel  {
     		 jpanellist.add(movingpanel);
     	 }
     	 for(int i=0;i<textstring.size()-1;i++ ){
-    		 JLabel jlabel=new JLabel();
-    		 jlabel.setIcon(wdot);
-    		 jlabelwdot.add(jlabel);
+    		 MyLabel MyLabel=new MyLabel();
+    		 MyLabel.setIcon(wdot);
+    		 MyLabelwdot.add(MyLabel);
     	 }
     	
-    	 JLabelbdot=new JLabel();
-    	 JLabelbdot.setIcon(bdot);
+    	 MyLabelbdot=new MyLabel();
+    	 MyLabelbdot.setIcon(bdot);
      }
      public void setPosition(){
     	
@@ -67,13 +66,13 @@ public class OrderCheckPanel extends JPanel  {
     		jpanellist.get(i).setFont(font1);
     		jpanellist.get(i).setForeground(Color.getHSBColor(155, 120, 90));
     		jpanellist.get(i).setBackground(Color.darkGray);
-    		jlabelwdot.get(i).setBounds(0, 50*i, 25, 25);
+    		MyLabelwdot.get(i).setBounds(0, 50*i, 25, 25);
     		this.add(jpanellist.get(i));
-    		this.add(jlabelwdot.get(i));
+    		this.add(MyLabelwdot.get(i));
     	 }
-    	 jlabelwdot.get(index).setVisible(false);
-    	 JLabelbdot.setBounds(0, 50*index, 25, 25);
-    	 this.add(JLabelbdot);
+    	 MyLabelwdot.get(index).setVisible(false);
+    	 MyLabelbdot.setBounds(0, 50*index, 25, 25);
+    	 this.add(MyLabelbdot);
 
      }
      public void paintComponent(Graphics g){
