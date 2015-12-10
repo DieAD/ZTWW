@@ -14,12 +14,12 @@ public class getMoneyBl {
 		 
 		 public double getmoney(DeliverFeesVO deliverFees){
 			 orderDataService=(OrderDataService)rhelper.findService("OrderDataService");
-			 double distence=orderDataService.getmoney(deliverFees);
-			 if(deliverFees.type=="飞机"){
+			 double distence=orderDataService.getmoney(deliverFees.place1,deliverFees.place2);
+			 if(deliverFees.type.equals("飞机")){
 				 return 20*distence*(Double.parseDouble(deliverFees.info));
-			 }else if(deliverFees.type=="火车"){
+			 }else if(deliverFees.type.equals("火车")){
 				 return 0.2*distence*(Double.parseDouble(deliverFees.info));
-			 }else if(deliverFees.type=="汽车"){
+			 }else if(deliverFees.type.equals("汽车")){
 				 return 2*distence*(Double.parseDouble(deliverFees.info));
 
 			 }

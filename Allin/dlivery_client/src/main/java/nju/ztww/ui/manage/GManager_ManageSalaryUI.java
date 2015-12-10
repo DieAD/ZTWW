@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
+import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -62,7 +63,11 @@ public class GManager_ManageSalaryUI extends JPanel{
 	//
 	JButton searchButton2  =new JButton("查找");
 	private ManageService MS = new ManageServiceImpl();
+	//TQ的修改
+	ButtonGroup group = new ButtonGroup ();
 	public GManager_ManageSalaryUI(){
+		group.add(timely);
+		group.add(monthly);
 		String[] name = {" "};
 		this.setLayout(null);
 		positionLabel.setText("职位");
