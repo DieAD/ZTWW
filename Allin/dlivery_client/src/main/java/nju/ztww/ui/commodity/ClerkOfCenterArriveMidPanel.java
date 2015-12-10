@@ -229,7 +229,7 @@ public class ClerkOfCenterArriveMidPanel extends JPanel{
 	   ActionListener findCarLoad = new ActionListener(){
 
 			public void actionPerformed(ActionEvent e) {
-				LoadingVO loadingVO=(LoadingVO) orderServiceImpl.find(findtextArea.getText(), 4);
+				LoadingVO loadingVO=(LoadingVO) orderServiceImpl.find(findCarLoadtextArea.getText(), 4);
 				String OrderNumber=loadingVO.getOrderNumber();
 				String [] temp=OrderNumber.split(";");
 				number=temp.length;

@@ -4,7 +4,10 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import nju.ztww.RMI.RMIHelper;
+import nju.ztww.dao.AccountDO;
 import nju.ztww.dao.InsDO;
+import nju.ztww.dao.StockDO;
+import nju.ztww.po.CarManagePO;
 import nju.ztww.po.CollectionPO;
 import nju.ztww.po.PaymentPO;
 import nju.ztww.service.FinanceDataService;
@@ -144,6 +147,40 @@ public class FinanceBL {
 				.findService("FinanceDataService");
 		try {
 			financeDataService.init(list);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void initCar(ArrayList<CarManagePO> listPO){
+		financeDataService = (FinanceDataService) rmi
+				.findService("FinanceDataService");
+		
+		try {
+			financeDataService.initCar(listPO);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void initStock(ArrayList<StockDO> list){
+		financeDataService = (FinanceDataService) rmi
+				.findService("FinanceDataService");
+		try {
+			financeDataService.initStock(list);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void initAccount(AccountDO account){
+		financeDataService = (FinanceDataService) rmi
+				.findService("FinanceDataService");
+		try {
+			financeDataService.initAccount(account);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

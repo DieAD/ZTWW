@@ -4,8 +4,11 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import nju.ztww.dao.AccountDO;
 import nju.ztww.dao.InsDO;
+import nju.ztww.dao.StockDO;
 import nju.ztww.po.AccountPO;
+import nju.ztww.po.CarManagePO;
 import nju.ztww.po.CollectionPO;
 import nju.ztww.po.MemberPO;
 import nju.ztww.po.OrderPO;
@@ -71,6 +74,10 @@ public interface FinanceDataService extends Remote {
 		public ArrayList<CollectionPO> totalCollection()throws RemoteException;
 		public ArrayList<PaymentPO>  totalPayment()throws RemoteException;
 		public void init(ArrayList<InsDO> list)throws RemoteException;
+		public void initCar(ArrayList<CarManagePO> listPO)throws RemoteException;
+		public void initStock(ArrayList<StockDO> list)throws RemoteException;
+		public void initAccount(AccountDO account)throws RemoteException;
+		
 	/*
 	 * 在数据库中更改信息？？
 	 */

@@ -102,7 +102,7 @@ public class UserManageUI extends JPanel{
 			  defaultTableModel = new DefaultTableModel( playerInfo,Names); 
 			  table = new MyTable(defaultTableModel);
 			  MyScrollPane scrollPane = new MyScrollPane(table);
-//			  init();
+			  init();
 //			  table = new JTable( defaultTableModel);       //字段名称
 //			  Dimension size = table.getTableHeader().getPreferredSize();
 //			  init();

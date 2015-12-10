@@ -167,6 +167,7 @@ public class InofStoragePanel extends JPanel{
 		
 					}
 				});
+		//ShowIdOfCenter();
 		
 	   }
 
@@ -231,6 +232,11 @@ public class InofStoragePanel extends JPanel{
 				}
 				
 			};	
+//	public void ShowIdOfCenter(){
+//		String idofcenter2=UserInfoUI.getUserID();
+//		System.out.println(idofcenter2);
+		
+	//}
 }
 	
 

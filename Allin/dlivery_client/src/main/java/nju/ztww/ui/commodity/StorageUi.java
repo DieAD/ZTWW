@@ -1,12 +1,25 @@
 package nju.ztww.ui.commodity;
 
+import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
+import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import nju.ztww.bl.commodity.CheckOrderBL;
+import nju.ztww.bl.commodity.GetStockListBL;
+import nju.ztww.po.StorageListLineofInPO;
+import nju.ztww.po.TracePO;
 import nju.ztww.ui.main.ListenerEndUI;
 import nju.ztww.ui.main.Listener_Return;
+import nju.ztww.ui.main.UserInfoUI;
 //date 11-18 name wh
 //需要根据中转中心业务员身份知道中转中心的id
 public class StorageUi extends JFrame implements Runnable{
@@ -19,6 +32,15 @@ public class StorageUi extends JFrame implements Runnable{
     StorageTiaoPanel storagetiaopanel;
     StorageBaoJingPanel storagebaojingpanel;
     ArrayList<JPanel>arraylist=new ArrayList<JPanel>();
+    ArrayList<TracePO>arraylistpo=new ArrayList<TracePO>();
+    public JDialog dlg=new JDialog();
+    boolean ispast=false;
+    public JLabel tishi=new JLabel("库存已超出警戒线");
+    public JButton sure=new JButton("确定");
+    Thread t=new Thread(this);
+    java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit()
+			.getScreenSize();
+   
     //modify
     private ArrayList<JPanel> list = new ArrayList<JPanel>();
     
@@ -39,7 +61,7 @@ public class StorageUi extends JFrame implements Runnable{
 //		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		}
 	public  void setup(){
-		Thread tishibaojing=new Thread(this);
+		
 		navigationpanel=new StorageNavigationPanel();
 		toppanel=new TopPanel();
 		outofStoragepanel=new OutofStoragePanel();
@@ -47,10 +69,12 @@ public class StorageUi extends JFrame implements Runnable{
 		storagecheckpanel=new StorageCheckPanel();
 		storagepanpanel=new StoragePanPanel();
 		storagetiaopanel=new StorageTiaoPanel();
-		storagebaojingpanel=new StorageBaoJingPanel();
+		
+		//storagebaojingpanel=new StorageBaoJingPanel();
 	}
 	public void setPosition(){
 		this.setLayout(null);
+		
 		navigationpanel.setBounds(0, 100, 150, 500);
 		toppanel.setBounds(150, 0, 750, 60);
 		outofStoragepanel.setBounds(150, 100, 750, 450);
@@ -58,7 +82,7 @@ public class StorageUi extends JFrame implements Runnable{
 		storagecheckpanel.setBounds(150, 100, 750, 450);
 		storagepanpanel.setBounds(150, 100, 750, 450);
 		storagetiaopanel.setBounds(150, 100, 750, 450);
-		storagebaojingpanel.setBounds(150, 100, 750, 450);
+		//storagebaojingpanel.setBounds(150, 100, 750, 450);
 		this.add(navigationpanel);
 		this.add(toppanel);
 		this.add(storagecheckpanel);
@@ -66,7 +90,13 @@ public class StorageUi extends JFrame implements Runnable{
 		this.add(inofStoragepanel);
 		this.add(storagepanpanel);
 		this.add(storagetiaopanel);
-		this.add(storagebaojingpanel);
+		
+		
+		
+		
+		
+		
+		//this.add(storagebaojingpanel);
 	
 		inofStoragepanel.setVisible(false);
 		outofStoragepanel.setVisible(false);
@@ -105,6 +135,50 @@ public class StorageUi extends JFrame implements Runnable{
 	}
 public void run() {
 	// TODO Auto-generated method stub
-	
+	while(true){
+		show();
+		if(ispast){
+		dlg.setLayout(null);
+		dlg.setSize(new Dimension(250, 150));
+	    dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
+		tishi.setBounds(2, 0, 200, 50);
+	    sure.setBounds(120, 50, 60, 40);
+	    sure.addActionListener(surelistener);
+		dlg.add(tishi);
+		dlg.add(sure);	
+		dlg.setVisible(true);
+		//t.stop();
+		}
+	}
 }
+
+   public  void show(){
+	   CheckOrderBL bl=new  CheckOrderBL();
+	   arraylistpo=bl.findTrace("库存警戒线"+UserInfoUI.getUserID().substring(0,5));
+	   ArrayList<StorageListLineofInPO> storagelist=new ArrayList<StorageListLineofInPO>();
+	   GetStockListBL gbl=new GetStockListBL();
+	   storagelist=gbl.getStock(UserInfoUI.getUserID().substring(0,5));
+	   int baojing=Integer.parseInt(arraylistpo.get(0).getTrace());
+	   int storage=storagelist.size();
+	   
+	   System.out.println(storagelist.size());
+	   System.out.println(arraylistpo.get(0).getTrace());
+	   if(storage>baojing){
+		 ispast=true;
+		   }
+   }
+   ActionListener surelistener=new ActionListener() {
+	
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		dlg.setVisible(false);
+		ispast=false;
+		//t.stop();
+		
+	}
+}; 
+   public void startThread(){
+	  
+	   t.start();
+   }
 }

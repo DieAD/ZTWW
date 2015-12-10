@@ -30,4 +30,12 @@ public class CheckOrderDataServiceImpl extends UnicastRemoteObject implements Ch
 		   stringist=co.findTrace("000000002") ;
 	   }
 
+	public void modifyBaoJing(String idofcenter, String number)
+			throws RemoteException {
+		// TODO Auto-generated method stub
+		CheckOrder co=new CheckOrder();
+		co.modifyBaoJing(idofcenter,number);
+		
+	}
+
 }

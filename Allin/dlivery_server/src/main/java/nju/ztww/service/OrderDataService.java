@@ -31,7 +31,7 @@ public interface OrderDataService extends Remote  {
 
 	public PriceDataPO getPriceData(String place1, String place2, String type) throws RemoteException;
 
-	public double getmoney(DeliverFeesVO deliverFees)throws RemoteException;
+	public double getmoney(String place1,String place2)throws RemoteException;
 	
 	public String addTrace(List<IDVO> list,int type)  throws RemoteException;
 

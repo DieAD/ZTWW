@@ -2,15 +2,19 @@ package nju.ztww.data.finance;
 
 import java.util.ArrayList;
 
+import nju.ztww.DBHelper.DBForAccount;
 import nju.ztww.DBHelper.DBForCarManageForm;
 import nju.ztww.DBHelper.DBForIns;
 import nju.ztww.DBHelper.DBForNewCar;
 import nju.ztww.DBHelper.DBForNewIns;
 import nju.ztww.DBHelper.DBForPayeeForm;
 import nju.ztww.DBHelper.DBForPaymentForm;
+import nju.ztww.DBHelper.DBForStock;
+import nju.ztww.dao.AccountDO;
 import nju.ztww.dao.InsDO;
 import nju.ztww.dao.PayeeFormDO;
 import nju.ztww.dao.PaymentFormDO;
+import nju.ztww.dao.StockDO;
 import nju.ztww.po.CarManagePO;
 import nju.ztww.po.CollectionPO;
 import nju.ztww.po.PaymentPO;
@@ -23,6 +27,8 @@ public class FinanceData {
       DBForNewIns dbNewIns = new DBForNewIns();
       DBForCarManageForm dbCar = new DBForCarManageForm();
       DBForNewCar dbNewCar = new DBForNewCar();
+      DBForStock dbStock = new DBForStock();
+      DBForAccount dbAccount = new DBForAccount();
       
       public ArrayList<CollectionPO> queryByDate(String date,String holl){
     	  ArrayList<PayeeFormDO> listDO = new ArrayList<PayeeFormDO>();
@@ -153,6 +159,19 @@ public class FinanceData {
     	dbCar.close();
     	dbNewCar.close();
     	
+      }
+      
+      public void initStock(ArrayList<StockDO> list){
+    	  dbStock.init();
+    	  dbStock.insert(list, "stocktable");
+    	  dbStock.insert(list, "newstocktable");
+    	  dbStock.close();
+      }
+      
+      public void initAccount(AccountDO account){
+    	  dbAccount.init();
+    	  dbAccount.insert(account, "accounttable");
+    	  dbAccount.close();
       }
       
       

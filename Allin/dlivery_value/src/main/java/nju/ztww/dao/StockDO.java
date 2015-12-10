@@ -1,6 +1,8 @@
 package nju.ztww.dao;
 
-public class StockDO {
+import java.io.Serializable;
+
+public class StockDO implements Serializable{
 	
 	private int index;
 	private String goodsid;

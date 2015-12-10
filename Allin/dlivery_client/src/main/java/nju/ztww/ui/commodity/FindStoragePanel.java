@@ -344,9 +344,9 @@ public class FindStoragePanel extends JPanel {
 				loadingVO.setArrivePlace(arrivetextArea.getText());
 				loadingVO.setCarNumber(carNumbertextArea.getText());
 				loadingVO.setJianZhuangName(jianzhuangtextArea.getText());
+				getSelectString();
 				double money=30*2*row.size()*0.01;
 				loadingVO.setMoney(money);
-				getSelectString();
 				if(OrderNumber !=""){
 					OrderNumber=OrderNumber.substring(1);
 				}
@@ -389,11 +389,11 @@ public class FindStoragePanel extends JPanel {
 				transferVO.setMethodNumber(AirOrCarNumberText.getText());
 				transferVO.setSendPlace(transferSendText.getText());
 				transferVO.setTransferData(transferNumberText.getText());
+				getSelectString();
 				DeliverFeesVO deliverFeesVO=new DeliverFeesVO(transferSendText.getText(),transferArriveText.getText()
 						,methodText.getText(),0,Double.toString(row.size()*0.01));
 				double money=orderServiceImpl.getMoney(deliverFeesVO);
 				transferVO.setMoney(money);
-				getSelectString();
 				if(OrderNumber !=""){
 					OrderNumber=OrderNumber.substring(1);
 				}
@@ -429,7 +429,7 @@ public class FindStoragePanel extends JPanel {
 		
 		public static void getSelectString(){
 			for(int i=0;i<table.getRowCount();i++){
-				if( (Boolean) table.getValueAt(i,8)){
+				if(table.getValueAt(i,8)!=null&& (Boolean) table.getValueAt(i,8)){
 					OrderNumber=OrderNumber+";"+(String) table.getValueAt(i,0);
 					row.add(i);
 				}

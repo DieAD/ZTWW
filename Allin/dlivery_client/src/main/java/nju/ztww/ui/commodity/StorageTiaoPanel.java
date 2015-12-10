@@ -22,6 +22,11 @@ import confligUI.MyLabel;
 import confligUI.MyTextField;
 import nju.ztww.service.CommodityListService;
 import nju.ztww.serviceimpl.CommodityListServiceImpl;
+
+import nju.ztww.ui.main.UserInfoUI;
+
+
+
 import nju.ztww.vo.StorageListLineofInVO;
 
 public class StorageTiaoPanel extends JPanel {
@@ -68,6 +73,8 @@ public class StorageTiaoPanel extends JPanel {
 	    tiaozheng.addActionListener(listenertiao);
 //	    tijiao.setBounds(610, 400, 100, 60);
 	    tijiao.addActionListener(tijiaolisten);
+	    System.out.println("ss");
+		System.out.println(UserInfoUI.getUserID());
 	    this.add(xuanze);
 		this.add(dbtype);
 		this.add(showbutton);

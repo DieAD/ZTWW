@@ -30,4 +30,17 @@ public class CheckOrder {
 	   ArrayList<TracePO> stringist=new ArrayList<TracePO>();
 	   stringist=co.findTrace("000000002") ;
    }
+public void modifyBaoJing(String idofcenter, String number) {
+	// TODO Auto-generated method stub
+	dbfortraceform.init();
+	TraceFormDO tdo=new TraceFormDO();
+	tdo.setGoodsid(idofcenter);
+	tdo.setTrace(number);
+	dbfortraceform.update(tdo, "tracetable");
+	
+	
+	
+	dbfortraceform.close();
+	
+}
 }
