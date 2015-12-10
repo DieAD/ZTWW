@@ -238,7 +238,7 @@ public class DBForStock extends DB{
 		ArrayList<StockDO> list=new ArrayList<StockDO>();
 		db.init();
 		
-		list=db.queryByID("234", "stocktable");
+		
 		
 		for(int i=0;i<list.size();i++){
 			System.out.println(list.get(i).getGoodsid());

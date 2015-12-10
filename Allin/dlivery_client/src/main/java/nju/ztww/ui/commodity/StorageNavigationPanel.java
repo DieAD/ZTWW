@@ -9,7 +9,12 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+
+import nju.ztww.ui.main.UserInfoUI;
+
+
 import confligUI.MyButton;
+
 
 public class StorageNavigationPanel extends JPanel {
 

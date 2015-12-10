@@ -8,4 +8,5 @@ import nju.ztww.po.TracePO;
 
 public interface CheckOrderDataService extends Remote{
   public ArrayList<TracePO>findTrace(String id)throws RemoteException;
+  public void modifyBaoJing(String idofcenter, String number)throws RemoteException;
 }
