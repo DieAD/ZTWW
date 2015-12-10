@@ -9,7 +9,8 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-import nju.ztww.ui.order.MyButton;
+import confligUI.MyButton;
+import nju.ztww.ui.main.Listener_Return;
 
 public class GManagerMenuUI extends JPanel{
 	MyButton ViewFormsButton = new MyButton(0);
@@ -70,6 +71,7 @@ public class GManagerMenuUI extends JPanel{
 		
 		LogoutButton.setIcon(Logout);
 //		LogoutButton.setBounds(0,408,209,58);
+		LogoutButton.addActionListener(logout);
 		
 		this.add(ViewFormsButton);
 		this.add(CheckOrdersButton);
@@ -139,6 +141,16 @@ public class GManagerMenuUI extends JPanel{
 			removeButton(panel);
 			YourMessageButton.setIcon(YourMessage2);
 			panel = 5;
+		}
+	};
+	
+	
+	ActionListener logout = new ActionListener() {
+		
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			Listener_Return re = new Listener_Return();
+			re.actionPerformed(e);
 		}
 	};
 	

@@ -23,12 +23,12 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
+import confligUI.MyButton;
+import confligUI.MyScrollPane;
+import confligUI.MyTable;
 import nju.ztww.service.UserService;
 import nju.ztww.serviceimpl.OrderServiceImpl;
 import nju.ztww.serviceimpl.UserLoginImpl;
-import nju.ztww.ui.order.MyButton;
-import nju.ztww.ui.order.MyScrollPane;
-import nju.ztww.ui.order.MyTable;
 import nju.ztww.vo.ManaUserVO;
 
 public class UserManageUI extends JPanel{
@@ -102,7 +102,7 @@ public class UserManageUI extends JPanel{
 			  defaultTableModel = new DefaultTableModel( playerInfo,Names); 
 			  table = new MyTable(defaultTableModel);
 			  MyScrollPane scrollPane = new MyScrollPane(table);
-//			  init();
+			  init();
 //			  table = new JTable( defaultTableModel);       //字段名称
 //			  Dimension size = table.getTableHeader().getPreferredSize();
 //			  init();

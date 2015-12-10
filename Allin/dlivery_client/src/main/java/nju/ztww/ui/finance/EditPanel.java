@@ -12,9 +12,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-import nju.ztww.ui.order.MyButton;
-import nju.ztww.ui.order.MyScrollPane;
-import nju.ztww.ui.order.MyTable;
+import confligUI.MyButton;
+import confligUI.MyScrollPane;
+import confligUI.MyTable;
 
 public class EditPanel extends JPanel {
        public DefaultTableModel tableModel; 
@@ -26,8 +26,8 @@ public class EditPanel extends JPanel {
        protected MyButton button1 = new MyButton('a');
        public MyButton button2 = new MyButton('a');
        protected MyButton button3 = new MyButton('b');
-       protected MyScrollPane scrollPane;
-       
+       public MyScrollPane scrollPane;
+      
        java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit()
    			.getScreenSize();
        

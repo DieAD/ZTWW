@@ -19,10 +19,14 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
+import confligUI.MyButton;
 import nju.ztww.service.CommodityListService;
 import nju.ztww.serviceimpl.CommodityListServiceImpl;
+
 import nju.ztww.ui.main.UserInfoUI;
-import nju.ztww.ui.order.MyButton;
+
+
+
 import nju.ztww.vo.StorageListLineofInVO;
 
 public class StorageTiaoPanel extends JPanel {

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import nju.ztww.RMI.RMIHelper;
 import nju.ztww.dao.InsDO;
+import nju.ztww.po.CarManagePO;
 import nju.ztww.po.CollectionPO;
 import nju.ztww.po.PaymentPO;
 import nju.ztww.service.FinanceDataService;
@@ -144,6 +145,18 @@ public class FinanceBL {
 				.findService("FinanceDataService");
 		try {
 			financeDataService.init(list);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void initCar(ArrayList<CarManagePO> listPO){
+		financeDataService = (FinanceDataService) rmi
+				.findService("FinanceDataService");
+		
+		try {
+			financeDataService.initCar(listPO);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

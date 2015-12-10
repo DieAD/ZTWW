@@ -275,13 +275,11 @@ public class OrderServiceImpl implements OrderService{
 	}
 	
 	public String getOrderID(){
-//		String mailingOrderID = getDate();
-//		
-//		String random = mailingOrderBl.getRandom();
-//		mailingOrderID += random;
-		String OrderID = mailingOrderBl.getRandom();
+		String date = getDate();
+		date=date.substring(2);
+		String id=findOrderIDBl.findID("orderform");
 		
-		return OrderID;
+		return UserInfoUI.getUserID().substring(0, 8)+date+id;
 	}
 	
 	public static String getDate(){

@@ -1,11 +1,13 @@
 package nju.ztww.ui.manage;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
@@ -48,8 +50,10 @@ public class GManager_ManageOrgaUI extends JPanel {
 
 	public GManager_ManageOrgaUI() {
 		this.setLayout(null);
+		this.setBackground(new Color(250, 240, 230));
 		search.setBounds(60, 20, 160, 30);
-		searchButton.setText("查询");
+		searchButton.setIcon(new ImageIcon("photo/search.png"));
+		searchButton.setBorderPainted(false);
 		searchButton.setBounds(240, 20, 80, 30);
 
 		nameLabel.setText("机构名称");
@@ -69,10 +73,12 @@ public class GManager_ManageOrgaUI extends JPanel {
 		mem3.setBounds(240, 300, 160, 30);
 		members3.setBounds(440, 300, 100, 30);
 
-		modifyButton.setText("修改");
+		modifyButton.setIcon(new ImageIcon("photo/modify.png"));
+		modifyButton.setBorderPainted(false);
 		modifyButton.setBounds(540, 400, 80, 30);
 
-		deletebButton.setText("删除");
+		deletebButton.setIcon(new ImageIcon("photo/delete.png"));
+		deletebButton.setBorderPainted(false);
 		deletebButton.setBounds(430, 400, 80, 30);
 		deletebButton.addActionListener(new ActionListener() {
 

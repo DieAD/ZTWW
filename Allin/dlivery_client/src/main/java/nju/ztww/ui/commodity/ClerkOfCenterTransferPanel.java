@@ -19,10 +19,10 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
+import confligUI.MyButton;
+import confligUI.MyScrollPane;
+import confligUI.MyTable;
 import nju.ztww.serviceimpl.OrderServiceImpl;
-import nju.ztww.ui.order.MyButton;
-import nju.ztww.ui.order.MyScrollPane;
-import nju.ztww.ui.order.MyTable;
 import nju.ztww.ui.user.ResultMessageUI;
 import nju.ztww.vo.LoadingVO;
 import nju.ztww.vo.TransferVO;

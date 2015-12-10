@@ -52,8 +52,13 @@ public class SwiftController {
 	
 	
 	public void switchUI(){
+
 //		panelList = GMUI.getPanelList();
 		userInfoUI = new UserInfoUI(ID);
+
+//		panelList = courierUI.getPanelList();
+
+
 		switch(id){
 		case 0: jump = false;break;
 		case 1: panelList = courierUI.getPanelList();break;

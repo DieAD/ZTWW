@@ -13,8 +13,8 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
+import confligUI.MyButton;
 import nju.ztww.ui.main.Listener_Return;
-import nju.ztww.ui.order.MyButton;
 
 public class BusinessUI extends JPanel{
 	

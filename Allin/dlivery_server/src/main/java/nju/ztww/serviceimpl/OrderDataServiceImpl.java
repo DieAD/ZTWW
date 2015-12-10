@@ -91,8 +91,8 @@ public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDa
 		return accepTrackPO;
 	}
 
-	public double getmoney(DeliverFeesVO deliverFees) throws RemoteException {
-		double distence =orderHandler.getdistence(deliverFees);
+	public double getmoney(String place1,String place2) throws RemoteException {
+		double distence =orderHandler.getdistence(place1,place2);
 		return distence;
 	}
 

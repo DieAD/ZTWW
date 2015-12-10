@@ -23,10 +23,10 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
+import confligUI.MyButton;
+import confligUI.MyScrollPane;
+import confligUI.MyTable;
 import nju.ztww.serviceimpl.OrderServiceImpl;
-import nju.ztww.ui.order.MyButton;
-import nju.ztww.ui.order.MyScrollPane;
-import nju.ztww.ui.order.MyTable;
 import nju.ztww.vo.BusinessArriveVO;
 import nju.ztww.vo.CarManageVO;
 import nju.ztww.vo.CenterReceiveVO;
@@ -229,7 +229,7 @@ public class ClerkOfCenterArriveMidPanel extends JPanel{
 	   ActionListener findCarLoad = new ActionListener(){
 
 			public void actionPerformed(ActionEvent e) {
-				LoadingVO loadingVO=(LoadingVO) orderServiceImpl.find(findtextArea.getText(), 4);
+				LoadingVO loadingVO=(LoadingVO) orderServiceImpl.find(findCarLoadtextArea.getText(), 4);
 				String OrderNumber=loadingVO.getOrderNumber();
 				String [] temp=OrderNumber.split(";");
 				number=temp.length;

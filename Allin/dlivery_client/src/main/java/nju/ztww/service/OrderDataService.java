@@ -32,7 +32,7 @@ public interface OrderDataService extends Remote{
 	
 	public String addTrace(List<IDVO> list,int type);
 	
-	public double getmoney(DeliverFeesVO deliverFees);
+	public double getmoney(String place1,String place2);
 
 
 	public TrackPO passMailingOrder(String order);

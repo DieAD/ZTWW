@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
+import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -60,9 +61,13 @@ public class GManager_ManageSalaryUI extends JPanel{
 	JRadioButton monthly = new JRadioButton("按月提成");
 	JRadioButton timely = new JRadioButton("按次提成");
 	//
-	JButton searchButton2  =new JButton("查找");
+	JButton searchButton2  =new JButton();
 	private ManageService MS = new ManageServiceImpl();
+	//TQ的修改
+	ButtonGroup group = new ButtonGroup ();
 	public GManager_ManageSalaryUI(){
+		group.add(timely);
+		group.add(monthly);
 		String[] name = {" "};
 		this.setLayout(null);
 		positionLabel.setText("职位");
@@ -77,7 +82,6 @@ public class GManager_ManageSalaryUI extends JPanel{
 		idLabel.setText("ID");
 		idLabel.setBounds(20, 180, 80, 30);
 		id1.setBounds(80, 180, 140, 30);
-		searchButton.setText("查找");
 //		searchButton.setBounds(220, 180, 70, 30);//!!!!!!!!!!!!!!
 		
 		nameLabel2.setText("姓名");
@@ -105,7 +109,7 @@ public class GManager_ManageSalaryUI extends JPanel{
 		RMB.setText("RMB");
 		RMB.setBounds(490, 200, 60, 30);
 		
-		sureButton1.setText("确认");
+		sureButton1.setIcon(new ImageIcon("photo/Gsure.png"));
 		sureButton1.setBounds(580, 200, 80, 30);
 		
 		fromLabel.setText("出发地");
@@ -118,7 +122,9 @@ public class GManager_ManageSalaryUI extends JPanel{
 		from.setBounds(50, 300, 130, 30);
 		to.setBounds(230, 300, 130, 30);
 		distance.setBounds(410, 300, 130, 30);
-		sureButton2.setText("确定");
+		sureButton2.setIcon(new ImageIcon("photo/Gsure.png"));
+		sureButton2.setBorderPainted(false);
+		sureButton1.setBorderPainted(false);
 		sureButton2.setBounds(580, 300, 80, 30);
 		this.add(positionLabel);
 		this.add(position);
@@ -152,8 +158,10 @@ public class GManager_ManageSalaryUI extends JPanel{
 		this.add(sureButton2);
 		//name1.addActionListener(new Listener1());
 		//
-		searchButton2.setBounds(80, 140, 70, 30);//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-		searchButton.setBounds(80,220,70,30);
+		searchButton2.setBounds(220, 100, 30, 30);//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+		searchButton.setBounds(220,180,30,30);
+		searchButton.setIcon(new ImageIcon("photo/Gsearch.png"));
+		searchButton2.setIcon(new ImageIcon("photo/Gsearch.png"));
 		this.add(searchButton2);
 		position.addItemListener(new Listener1(position,name1));
 		searchButton2.addActionListener(new Listener2(position,name1));
