@@ -2,6 +2,7 @@ package nju.ztww.ui.commodity;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -12,16 +13,15 @@ import java.util.Vector;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import confligUI.MyButton;
 import confligUI.MyScrollPane;
 import confligUI.MyTable;
+import confligUI.MyTextField;
 import nju.ztww.serviceimpl.OrderServiceImpl;
 import nju.ztww.ui.user.ResultMessageUI;
 import nju.ztww.vo.LoadingVO;
@@ -31,6 +31,7 @@ public class ClerkOfCenterTransferPanel extends JPanel {
 	
 	   public MyTable table;
 
+	   Font myFont = new Font("微软雅黑", Font.PLAIN, 12);
 	   public JDialog dlg;
 	
 	   DefaultTableModel defaultTableModel;
@@ -45,7 +46,7 @@ public class ClerkOfCenterTransferPanel extends JPanel {
 	   
 	   private ArrayList<TransferVO> alltransferVO=new ArrayList<TransferVO>();
 	   
-	   private JTextField findtextArea=new JTextField("");
+	   private MyTextField findtextArea=new MyTextField("");
 		private OrderServiceImpl orderServiceImpl=new OrderServiceImpl();
 		private ResultMessageUI resultMessageUI=new ResultMessageUI();
 		private TransferVO transferVO=new TransferVO(8);
@@ -76,6 +77,7 @@ public class ClerkOfCenterTransferPanel extends JPanel {
 				  //创建表格: 建立一个显示二维数组数据的表格，且可以显示列的名称。 
 				  defaultTableModel = new DefaultTableModel( playerInfo,Names); 
 				  table = new MyTable(defaultTableModel);
+				  table.setFont(myFont);
 				  MyScrollPane scrollPane = new MyScrollPane(table);
 //				  table = new JTable( defaultTableModel);       //字段名称
 //				  Dimension size = table.getTableHeader().getPreferredSize();

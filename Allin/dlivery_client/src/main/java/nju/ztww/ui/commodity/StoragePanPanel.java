@@ -1,6 +1,7 @@
 package nju.ztww.ui.commodity;
 
 import java.awt.Color;
+
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -12,6 +13,7 @@ import java.util.Vector;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -20,7 +22,13 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
+
+
+import confligUI.MyLabel;
+import confligUI.MyTextField;
+
 import nju.ztww.bl.commodity.CheckOrderBL;
+
 import nju.ztww.po.StorageListLineofInPO;
 import nju.ztww.po.TracePO;
 import nju.ztww.service.CommodityListService;
@@ -35,14 +43,15 @@ import nju.ztww.vo.StorageListVO;
 public class StoragePanPanel extends JPanel  implements ActionListener{
 	DefaultTableModel defaultTableModel;
 	JTable  table;
-	public JLabel time=new JLabel();
-	public JTextField timefield=new JTextField();
-	public JLabel countall=new JLabel("总数量");
-	public JTextField countshuliang=new JTextField(5);
+	public MyLabel time=new MyLabel();
+	public MyTextField timefield=new MyTextField();
+	public MyLabel countall=new MyLabel("总数量");
+	public MyTextField countshuliang=new MyTextField(5);
 	public JButton panagain=new JButton();
 	public JButton excel=new JButton();
-	public JLabel baojing=new JLabel("库存警戒线");
-	public JTextField baojingshuliang=new JTextField(5);
+	public MyLabel baojing=new MyLabel("库存警戒线");
+	public MyTextField baojingshuliang=new MyTextField(5);
+
 	public JButton baojingxiugai=new JButton("设置新的警戒线");
 	public JTextField baojingnew=new JTextField(5);
 	public JButton xiugai=new JButton("修改警戒线");

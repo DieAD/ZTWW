@@ -15,17 +15,17 @@ import java.util.Vector;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
 import confligUI.MyButton;
+import confligUI.MyLabel;
 import confligUI.MyScrollPane;
 import confligUI.MyTable;
+import confligUI.MyTextField;
 import nju.ztww.serviceimpl.OrderServiceImpl;
 import nju.ztww.vo.BusinessArriveVO;
 import nju.ztww.vo.CarManageVO;
@@ -36,15 +36,15 @@ import nju.ztww.vo.TransferVO;
 
 public class ClerkOfCenterArriveMidPanel extends JPanel{
 	
-	private JTextField businesstextArea=new JTextField("");
-	private  JLabel business=new  JLabel("到达日期");
-	private JTextField arrivetextArea=new JTextField("");
-	private  JLabel arrive=new  JLabel("出发地");
-	private JTextField transferNumbertextArea=new JTextField("");
-	private  JLabel transferNumber=new  JLabel("中转中心编号");
-	private JTextField findtextArea=new JTextField("");
-	private JTextField findTransfertextArea=new JTextField("请输入中转单号");
-	private JTextField findCarLoadtextArea=new JTextField("请输入装车单号");
+	private MyTextField businesstextArea=new MyTextField("");
+	private  MyLabel business=new  MyLabel("到达日期");
+	private MyTextField arrivetextArea=new MyTextField("");
+	private  MyLabel arrive=new  MyLabel("出发地");
+	private MyTextField transferNumbertextArea=new MyTextField("");
+	private  MyLabel transferNumber=new  MyLabel("中转中心编号");
+	private MyTextField findtextArea=new MyTextField("");
+	private MyTextField findTransfertextArea=new MyTextField("请输入中转单号");
+	private MyTextField findCarLoadtextArea=new MyTextField("请输入装车单号");
 	
 	private MyButton sendButton=new MyButton('a');
 	private MyButton deleteSendButton=new MyButton('c');
