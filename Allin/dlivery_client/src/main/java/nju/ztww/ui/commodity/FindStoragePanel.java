@@ -367,7 +367,8 @@ public class FindStoragePanel extends JPanel {
 				// 2biao  shi qiche
 				for(int i=0;i<temp.length;i++){
 					StorageListLineofOutVO StorageListLineofOutVO=new StorageListLineofOutVO("idofdanzi",temp[i],datatextArea.getText(),
-							arrivetextArea.getText(),2,cartextArea.getText());
+							arrivetextArea.getText(),2,cartextArea.getText(),"02501");
+					//需要改的
 					arraylist.add(StorageListLineofOutVO);
 				}
 				//中转中心编号未确定
@@ -411,7 +412,8 @@ public class FindStoragePanel extends JPanel {
 				for(int i=0;i<temp.length;i++){
 					StringToInt st=new StringToInt();
 					StorageListLineofOutVO StorageListLineofOutVO=new StorageListLineofOutVO("idofdanzi",temp[i],loadDataText.getText(),
-							methodText.getText(),st.changetoint(transferArriveText.getText()),transferNumberText.getText());
+							methodText.getText(),st.changetoint(transferArriveText.getText()),transferNumberText.getText(),"02501");
+					// 需要改的
 					arraylist.add(StorageListLineofOutVO);
 				}
 				//中转中心编号未确定

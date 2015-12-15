@@ -9,6 +9,14 @@ public class EntryFormDO {
 	private String qu;
 	private String pai;
 	private String jia;
+    private String idofcenter;
+	public String getIdofcenter() {
+		return idofcenter;
+	}
+
+	public void setIdofcenter(String idofcenter) {
+		this.idofcenter = idofcenter;
+	}
 
 	public int getIndex() {
 		return index;

@@ -55,7 +55,7 @@ public class InofStoragePanel extends JPanel{
 	   public MyButton  submitbutton=new MyButton('a');
 	   public MyButton  deletebutton=new MyButton('c');
 	   public CommodityService commodity=new StorageInListServiceImpl();
-	   String idofcenter=UserInfoUI.getUserID();//idbianhao 
+	   
 	   long l = System.currentTimeMillis();
 	  Date time=new Date(l);
 	  SimpleDateFormat dateFormat = new SimpleDateFormat("yy-MM-dd ");
@@ -186,11 +186,11 @@ public class InofStoragePanel extends JPanel{
 			row.add(weifield.getText());
 			//idoforder 不知道怎么用  用1替代。
 			
-			String index=commodity.getLastidofcenter(idofcenter);
+			String index=commodity.getLastidofcenter(UserInfoUI.getUserID().substring(0,5));
 			System.out.println(index);
 			String idofdanzi=UserInfoUI.getUserID().substring(0,8)+dateFormatindex.format(time)+index;
 			System.out.println(idofdanzi);
-			storagelineIn=new StorageListLineofInVO(1,idofdanzi,ordernumberfield.getText(), datafield.getText(), arrivefield.getText(), qufield.getText(), paifield.getText(), jiafield.getText(), weifield.getText(),0);
+			storagelineIn=new StorageListLineofInVO(1,idofdanzi,ordernumberfield.getText(), datafield.getText(), arrivefield.getText(), qufield.getText(), paifield.getText(), jiafield.getText(), weifield.getText(),0,UserInfoUI.getUserID().substring(0,5));
 			arraylist.add(storagelineIn);
 			
 			ordernumberfield.setText(null);

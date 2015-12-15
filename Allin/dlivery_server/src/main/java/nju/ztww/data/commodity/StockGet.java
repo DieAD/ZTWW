@@ -14,7 +14,7 @@ public class StockGet {
 	String tableName="stocktable";
 	ArrayList<StockDO>stocklist=new ArrayList<StockDO>();
 	ArrayList<StorageListLineofInPO> storagelistline=new ArrayList<StorageListLineofInPO>();
-	stocklist=dbforstock.queryALL(tableName);
+	stocklist=dbforstock.queryALL(tableName,id);
 	System.out.println("在服务器");
 	for(int k=0;k<stocklist.size();k++){
 		StorageListLineofInPO storagelistlinreofin=new StorageListLineofInPO(1,
@@ -26,7 +26,8 @@ public class StockGet {
 				stocklist.get(k).getPai(),
 				stocklist.get(k).getJia(),
 				stocklist.get(k).getWei(),
-				stocklist.get(k).getState()
+				stocklist.get(k).getState(),
+				stocklist.get(k).getIdofcenter()
 	                         );
 		
 		storagelistline.add(storagelistlinreofin);
@@ -41,7 +42,7 @@ public class StockGet {
 		String tableName="stocktable";//要改
 		ArrayList<StockDO>stocklist=new ArrayList<StockDO>();
 		ArrayList<StorageListLineofInPO> storagelistline=new ArrayList<StorageListLineofInPO>();
-		stocklist=dbforstock.queryByQu(string, tableName);
+		stocklist=dbforstock.queryByQu(string, tableName,idofcenter);
 		System.out.println("在服务器");
 		System.out.println(stocklist.size());
 		for(int k=0;k<stocklist.size();k++){
@@ -54,7 +55,8 @@ public class StockGet {
 					stocklist.get(k).getPai(),
 					stocklist.get(k).getJia(),
 					stocklist.get(k).getWei(),
-					stocklist.get(k).getState()
+					stocklist.get(k).getState(),
+					stocklist.get(k).getIdofcenter()
 		                         );
 			
 			storagelistline.add(storagelistlinreofin);
@@ -67,8 +69,8 @@ public class StockGet {
 	public static void main(String[]args){
 		StockGet sg=new StockGet();
 		 ArrayList<StorageListLineofInPO>stocklist=new  ArrayList<StorageListLineofInPO>();
-		 StorageListLineofInPO ss=new StorageListLineofInPO(1, "", "001", "", "", "航运区", "22", "22", "23", 0);
-		stocklist=sg.getStockByQu("航运区", "1");
+		 StorageListLineofInPO ss=new StorageListLineofInPO(1, "", "001", "", "", "航运区", "22", "22", "23", 0,"02501");
+		stocklist=sg.getStock("02501");
 	}
 	public void modify(ArrayList<StorageListLineofInPO> arraylistinpo,
 			String idofcenter) {
@@ -79,7 +81,7 @@ public class StockGet {
 		ArrayList<StockDO>stocklistall=new ArrayList<StockDO>();
 		for(int i=0;i<arraylistinpo.size();i++){
 			ArrayList<StockDO>stocklist=new ArrayList<StockDO>();
-			stocklist=dbforstock.queryByID(arraylistinpo.get(i).getId(), tableName);
+			stocklist=dbforstock.queryByID(arraylistinpo.get(i).getId(), tableName,idofcenter);
 			stocklist.get(0).setQu(arraylistinpo.get(i).getQu());
 			stocklist.get(0).setJia(arraylistinpo.get(i).getJia());
 			stocklist.get(0).setPai(arraylistinpo.get(i).getPai());

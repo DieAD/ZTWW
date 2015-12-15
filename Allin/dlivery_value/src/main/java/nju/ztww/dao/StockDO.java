@@ -11,6 +11,13 @@ public class StockDO {
     private String jia;
     private String wei;
     private int state;
+    private String idofcenter;
+	public String getIdofcenter() {
+		return idofcenter;
+	}
+	public void setIdofcenter(String idofcenter) {
+		this.idofcenter = idofcenter;
+	}
 	public int getState() {
 		return state;
 	}

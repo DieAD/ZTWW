@@ -55,7 +55,8 @@ public class StorageTiaoPanel extends JPanel {
 	public JTextField weifield=new JTextField();
 	ArrayList<StorageListLineofInVO> arraylistshow=new ArrayList<StorageListLineofInVO>();
 	JButton surebutton=new JButton("确定");
-	String idofcenter="";//中转中心的编号
+	
+	
   public StorageTiaoPanel() {
 	// TODO Auto-generated constructor stub
 		this.setBackground(new Color(250, 240, 230));
@@ -165,7 +166,7 @@ public class StorageTiaoPanel extends JPanel {
 		
 		public void actionPerformed(ActionEvent e) {
 			
-			StorageListLineofInVO storagelistlineinvo=new StorageListLineofInVO(1, "", ordernumberfield.getText(), "", "", dbtype2.getSelectedItem().toString(), paifield.getText(), jiafield.getText(), weifield.getText(), 0);			
+			StorageListLineofInVO storagelistlineinvo=new StorageListLineofInVO(1, "", ordernumberfield.getText(), "", "", dbtype2.getSelectedItem().toString(), paifield.getText(), jiafield.getText(), weifield.getText(), 0,UserInfoUI.getUserID().substring(0,5));			
 			arraylist.add(storagelistlineinvo);
 			System.out.println(ordernumberfield.getText());
 			
@@ -193,6 +194,7 @@ public class StorageTiaoPanel extends JPanel {
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			defaultTableModel.setRowCount(0);
+			String idofcenter=UserInfoUI.getUserID().substring(0,5);
 	arraylistshow=commodityservice.getStockbyQu(dbtype.getSelectedItem().toString(),idofcenter);
 	
 	
@@ -214,6 +216,7 @@ ActionListener tijiaolisten=new ActionListener() {
 	
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
+			String idofcenter=UserInfoUI.getUserID().substring(0,5);
 			commodityservice.modify(arraylist,idofcenter);
 			defaultTableModel.setRowCount(0);
 			arraylist.clear();

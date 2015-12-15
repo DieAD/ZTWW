@@ -13,6 +13,7 @@ import javax.swing.table.DefaultTableModel;
 import nju.ztww.bl.commodity.WayToString;
 import nju.ztww.service.CommodityListService;
 import nju.ztww.serviceimpl.CommodityListServiceImpl;
+import nju.ztww.ui.main.UserInfoUI;
 import nju.ztww.vo.StorageListLineofInVO;
 import nju.ztww.vo.StorageListLineofOutVO;
 
@@ -24,7 +25,7 @@ public class StorageCheckPanel extends JPanel {
  public JLabel labelout=new JLabel("出库信息");
  public JLabel labelinnumber=new JLabel("入库数量");
  public JLabel labeloutnumber=new JLabel("出库数量");
- String idofcenter="0001";//需要根据中转中心人员身份来确定
+ 
  
  public JTextField  textfield1=new JTextField(10);
  public JTextField  textfield2=new JTextField(10);
@@ -136,6 +137,7 @@ public class StorageCheckPanel extends JPanel {
 }
  ActionListener listener=new ActionListener(){
    public void actionPerformed(ActionEvent e) {
+	   String idofcenter=UserInfoUI.getUserID().substring(0,5);
 	   arraylistin=commoditylistservice.getInListbytime(textfieldBegin.getText(), textfieldEnd.getText(),idofcenter);
 	   for(int i=0;i<arraylistin.size();i++){
 		   System.out.println(arraylistin.get(i).getDestination());
