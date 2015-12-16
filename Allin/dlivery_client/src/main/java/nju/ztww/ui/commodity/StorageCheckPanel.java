@@ -62,10 +62,10 @@ public class StorageCheckPanel extends JPanel {
 	 this.setBackground(new Color(250, 240, 230));
 	 this.setLayout(null);
 	   label1.setBounds(0, 0, 70, 20);
-	   textfieldBegin.setBounds(70, 0, 50, 20);
-	   label2.setBounds(130, 0, 70, 20);
+	   textfieldBegin.setBounds(70, 0, 80, 20);
+	   label2.setBounds(160, 0, 70, 20);
 	   labelin.setBounds(300, 20, 100, 30);
-	   textfieldEnd.setBounds(200, 0, 50, 20);
+	   textfieldEnd.setBounds(240, 0, 80, 20);
 	   surebutton.setBounds(600,0, 70, 20);//确认时要加监听
 	   surebutton.setIcon(new ImageIcon("photo/wj_queding.png"));
 	   surebutton.addActionListener(listener);
@@ -79,6 +79,7 @@ public class StorageCheckPanel extends JPanel {
 	   labelinnumber.setBounds(500, 200, 60, 20);
 	   this.add(labelinnumber);
 	   textfieldin.setBounds(570, 200, 60, 20);
+	   textfieldin.setEditable(false);
 	   this.add(textfieldin);
 	 Object[][] playerInfo =
 			{
@@ -116,6 +117,7 @@ public class StorageCheckPanel extends JPanel {
 				labeloutnumber.setBounds(500, 430, 60, 20);
 				this.add(labeloutnumber);
 				textfieldout.setBounds(570, 430, 60, 20);
+				textfieldout.setEditable(false);
 				this.add(textfieldout);
 				Object[][] playerInfo1 =
 					{
@@ -151,6 +153,9 @@ public class StorageCheckPanel extends JPanel {
 }
  ActionListener listener=new ActionListener(){
    public void actionPerformed(ActionEvent e) {
+	   //arraylistin.clear();
+	   defaultTableModel1.setRowCount(0);
+	   
 	   String idofcenter=UserInfoUI.getUserID().substring(0,5);
 	   arraylistin=commoditylistservice.getInListbytime(textfieldBegin.getText(), textfieldEnd.getText(),idofcenter);
 	   for(int i=0;i<arraylistin.size();i++){
@@ -165,9 +170,12 @@ public class StorageCheckPanel extends JPanel {
 			defaultTableModel1.addRow(row);
 		    table1.revalidate();
 		}
+	   //arraylistout.clear();
+	   defaultTableModel2.setRowCount(0);
 	   textfieldin.setText(String.valueOf(arraylistin.size()));
 	   arraylistout=commoditylistservice.getOutListbytime(textfieldBegin.getText(), textfieldEnd.getText(),idofcenter);
 	  WayToString way=new WayToString();
+	  
 	   for(int i=0;i<arraylistout.size();i++){
 		   Vector<String> row = new Vector<String>(5);
 		   row.add(arraylistout.get(i).getId());

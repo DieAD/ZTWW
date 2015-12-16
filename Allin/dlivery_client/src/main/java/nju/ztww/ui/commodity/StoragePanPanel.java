@@ -83,11 +83,14 @@ public class StoragePanPanel extends JPanel  implements ActionListener{
 	   panagain.setBorderPainted(false);
 	   panagain.addActionListener(this);
 	   countall.setFont(font1);
+	   //countall.setEnabled(false);
 	   baojing.setFont(font1);
 	   baojing.setBounds(520, 370, 100, 30);
 	   baojingshuliang.setBounds(620, 370, 80, 30);
+	   baojingshuliang.setEditable(false);
 	   countall.setBounds(550,340, 60, 30);
 	   countshuliang.setBounds(620, 340, 80, 30);
+	   countshuliang.setEditable(false);
 	   excel.setBounds(580, 0, 120, 30);
 	   excel.setIcon(new ImageIcon("photo/wj_excel.png"));
 	   excel.setBorderPainted(false);
@@ -132,6 +135,7 @@ public class StoragePanPanel extends JPanel  implements ActionListener{
   public void actionPerformed(ActionEvent e) {
 	// TODO Auto-generated method stub
 	//实现接口 需要传一个满足要求的arraylist
+	  defaultTableModel.setRowCount(0);
 	arraylist=commodityservice.getStock(UserInfoUI.getUserID().substring(0, 5));//ZHE 个String 是id一部分
 	CheckOrderBL checks=new CheckOrderBL();
 	ArrayList<TracePO> stringlist=new ArrayList<TracePO>();
