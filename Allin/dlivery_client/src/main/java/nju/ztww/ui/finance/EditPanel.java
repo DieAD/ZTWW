@@ -1,17 +1,17 @@
 package nju.ztww.ui.finance;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import nju.ztww.dao.AccountDO;
+import nju.ztww.service.FinanceService;
+import nju.ztww.serviceimpl.FinanceServiceImpl;
 import confligUI.MyButton;
 import confligUI.MyScrollPane;
 import confligUI.MyTable;
@@ -27,7 +27,8 @@ public class EditPanel extends JPanel {
        public MyButton button2 = new MyButton('a');
        protected MyButton button3 = new MyButton('b');
        public MyScrollPane scrollPane;
-      
+       private FinanceService fs = new FinanceServiceImpl();
+       public Listener Accountlistener = new Listener();
        java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit()
    			.getScreenSize();
        
@@ -88,7 +89,24 @@ public class EditPanel extends JPanel {
    	}
        
       
+   public class Listener implements ActionListener{
 
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+	   int rowCount = tableModel.getRowCount();
+	   for(int i=0;i<rowCount;i++){
+		   tableModel.removeRow(0);
+	   }
+	   ArrayList<AccountDO> list=fs.getAllAccount();
+	   for(AccountDO account : list){
+		   String name = account.getName();
+		   double remain = account.getRemain();
+		   tableModel.addRow(new Object[]{new String(name),new Double(remain)});
+	   }
+	   
+	}
+	   
+   }
 	
 
 
