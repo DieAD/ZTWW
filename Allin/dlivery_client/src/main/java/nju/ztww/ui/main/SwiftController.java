@@ -39,7 +39,10 @@ public class SwiftController {
 	private int id;
 	private boolean jump = true;
 	public SwiftController(JFrame frame){
-		this.frame = frame;
+		this.frame = frame;	
+	}
+	
+	private void initPanel(){
 		courierUI = new TestCourierUI(frame);
 		businessUI = new TextBussinessUI(frame);
 		financeUI =  new FinanceUI(frame);
@@ -47,15 +50,12 @@ public class SwiftController {
 		storageUI = new StorageUi();
 		ccUI = new ClerkOfCenterUi();
 		MUI = new TextManageUI();
-		
 	}
-	
-	
 	public void switchUI(){
 
 //		panelList = GMUI.getPanelList();
 		userInfoUI = new UserInfoUI(ID);
-
+		initPanel();
 //		panelList = courierUI.getPanelList();
 
 
