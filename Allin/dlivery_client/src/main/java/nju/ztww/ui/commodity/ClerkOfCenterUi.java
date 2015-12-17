@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import nju.ztww.ui.user.PersonalMesageUI;
+
 
 //date 11-18 name wh
 public class ClerkOfCenterUi extends JFrame {
@@ -16,6 +18,7 @@ public class ClerkOfCenterUi extends JFrame {
     ClerkOfCenterArriveEndPanel ArriveEndpanel;
    static ClerkOfCenterCarloadPanel CarloadPanel;
     FindStoragePanel findStoragePanel;
+    PersonalMesageUI personInfo;
     ArrayList<JPanel>arraylist=new ArrayList<JPanel>();
     //modify
     private ArrayList<JPanel> list = new ArrayList<JPanel>();
@@ -42,6 +45,8 @@ public class ClerkOfCenterUi extends JFrame {
 		ArriveEndpanel=new ClerkOfCenterArriveEndPanel();
 		CarloadPanel=new ClerkOfCenterCarloadPanel();
 		findStoragePanel=new FindStoragePanel();
+		personInfo = new PersonalMesageUI();
+		personInfo.setVisible(false);
 	}
 	public void setPosition(){
 		this.setLayout(null);
@@ -52,6 +57,7 @@ public class ClerkOfCenterUi extends JFrame {
 		ArriveEndpanel.setBounds(150, 100, 750, 450);
 		CarloadPanel.setBounds(150, 100, 750, 450);
 		findStoragePanel.setBounds(150, 100, 750, 450);
+		personInfo.setBounds(150, 100, 750, 450);
 		//注掉
 	
 //		this.add(navigationpanel);
@@ -69,11 +75,13 @@ public class ClerkOfCenterUi extends JFrame {
 		arraylist.add(ArriveEndpanel);
 		arraylist.add(CarloadPanel);
 		arraylist.add(findStoragePanel);
+		arraylist.add(personInfo);
 		navigationpanel.ArriveMid.addActionListener(new ClerkOfCenterController(this, ArriveMidpanel, arraylist));
 		navigationpanel.Transfer.addActionListener(new ClerkOfCenterController(this, Transferpanel, arraylist));
 //		navigationpanel.ArriveEnd.addActionListener(new ClerkOfCenterController(this, ArriveEndpanel, arraylist));
 		navigationpanel.CarLoadbutton.addActionListener(new ClerkOfCenterController(this, CarloadPanel, arraylist));
 		navigationpanel.StorageFind.addActionListener(new ClerkOfCenterController(this, findStoragePanel, arraylist));
+		navigationpanel.yourMessageButton.addActionListener(new ClerkOfCenterController(this, personInfo, arraylist));
 	}
 
 //	public static void main(String[] args) {
@@ -90,6 +98,7 @@ public class ClerkOfCenterUi extends JFrame {
 		list.add(ArriveEndpanel);
 		list.add(CarloadPanel);
 		list.add(findStoragePanel);
+		list.add(personInfo);
 		return list;
 	}
 }

@@ -20,6 +20,7 @@ import nju.ztww.po.TracePO;
 import nju.ztww.ui.main.ListenerEndUI;
 import nju.ztww.ui.main.Listener_Return;
 import nju.ztww.ui.main.UserInfoUI;
+import nju.ztww.ui.user.PersonalMesageUI;
 //date 11-18 name wh
 //需要根据中转中心业务员身份知道中转中心的id
 public class StorageUi extends JFrame implements Runnable{
@@ -31,6 +32,7 @@ public class StorageUi extends JFrame implements Runnable{
     StoragePanPanel storagepanpanel;
     StorageTiaoPanel storagetiaopanel;
     StorageBaoJingPanel storagebaojingpanel;
+    PersonalMesageUI personInfo;
     ArrayList<JPanel>arraylist=new ArrayList<JPanel>();
     ArrayList<TracePO>arraylistpo=new ArrayList<TracePO>();
     public JDialog dlg=new JDialog();
@@ -69,6 +71,7 @@ public class StorageUi extends JFrame implements Runnable{
 		storagecheckpanel=new StorageCheckPanel();
 		storagepanpanel=new StoragePanPanel();
 		storagetiaopanel=new StorageTiaoPanel();
+		personInfo = new PersonalMesageUI();
 		
 		//storagebaojingpanel=new StorageBaoJingPanel();
 	}
@@ -82,6 +85,7 @@ public class StorageUi extends JFrame implements Runnable{
 		storagecheckpanel.setBounds(150, 100, 750, 450);
 		storagepanpanel.setBounds(150, 100, 750, 450);
 		storagetiaopanel.setBounds(150, 100, 750, 450);
+		personInfo.setBounds(150, 100, 750, 450);
 		//storagebaojingpanel.setBounds(150, 100, 750, 450);
 		this.add(navigationpanel);
 		this.add(toppanel);
@@ -102,6 +106,7 @@ public class StorageUi extends JFrame implements Runnable{
 		outofStoragepanel.setVisible(false);
 		storagepanpanel.setVisible(false);
 	    storagetiaopanel.setVisible(false);
+	    personInfo.setVisible(false);
 	}
 	public void setController(){
 		arraylist.add(outofStoragepanel);
@@ -115,7 +120,7 @@ public class StorageUi extends JFrame implements Runnable{
 		navigationpanel.Checkbutton.addActionListener(new StorageControllerUi(this, storagecheckpanel, arraylist));
 		navigationpanel.LogoutButton.addActionListener(new Listener_Return());
 		navigationpanel.Tiaobutton.addActionListener(new StorageControllerUi(this, storagetiaopanel, arraylist));
-		
+		navigationpanel.YourMessageButton.addActionListener(new StorageControllerUi(this, personInfo, arraylist));
 	}
 
 //public static void main(String[] args) {
@@ -131,6 +136,7 @@ public class StorageUi extends JFrame implements Runnable{
 		list.add(inofStoragepanel);
 		list.add(storagepanpanel);
 		list.add(storagetiaopanel);
+		list.add(personInfo);
 		return list;
 	}
 public void run() {
