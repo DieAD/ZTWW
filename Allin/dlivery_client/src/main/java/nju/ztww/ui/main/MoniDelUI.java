@@ -23,6 +23,11 @@ public class MoniDelUI extends JPanel implements Runnable{
 			if(x>350){
 				x=20;
 			}
+			if(x>300){
+				this.car.setVisible(false);
+			}else{
+				this.car.setVisible(true);
+			}
 			
 			try {
 				Thread.sleep(150);
