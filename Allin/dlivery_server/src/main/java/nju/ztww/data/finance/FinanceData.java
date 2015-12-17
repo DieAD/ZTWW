@@ -171,9 +171,24 @@ public class FinanceData {
       public void initAccount(AccountDO account){
     	  dbAccount.init();
     	  dbAccount.insert(account, "accounttable");
+    	  dbAccount.insert(account,"mainaccount");
     	  dbAccount.close();
       }
       
+      public ArrayList<AccountDO> getAllAccount(){
+    	  ArrayList<AccountDO> list = new ArrayList<AccountDO>();
+    	  dbAccount.init();
+    	  list = dbAccount.selectAll("mainaccount");
+    	  dbAccount.close();
+    	  return list;
+    	  
+      }
+      
+      public void updateAccount(AccountDO account){
+    	  dbAccount.init();
+    	  dbAccount.updateRemain(account, "mainaccount");
+    	  dbAccount.close();
+      }
       
     
 }

@@ -71,6 +71,9 @@ public interface FinanceDataService {
 			public void initCar(ArrayList<CarManagePO> listPO)throws RemoteException;
 			public void initStock(ArrayList<StockDO> list)throws RemoteException;
 			public void initAccount(AccountDO account)throws RemoteException;
+			public ArrayList<AccountDO> selectAllAccount()throws RemoteException;
+			public void updateAccount(AccountDO account)throws RemoteException;
+
 		/*
 		 * 在数据库中更改信息？？
 		 */

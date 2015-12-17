@@ -4,13 +4,13 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import nju.ztww.dao.AccountDO;
 import nju.ztww.service.FinanceService;
 import nju.ztww.serviceimpl.FinanceServiceImpl;
 import nju.ztww.vo.BenefitVO;
@@ -54,6 +54,9 @@ public class EditBenefit extends EditPanel {
 		BenefitVO benefitVO= fs.getBenefit();
 		tableModel.removeRow(0);
 		tableModel.addRow(new Object[]{new Double(benefitVO.totalCollection),new Double(benefitVO.totalPayment),new Double(benefitVO.totalBenefit)});
+		AccountDO account  = new AccountDO();
+		account.setRemain(benefitVO.totalBenefit);
+		fs.updateAccount(account);
 	}
 	   
    }

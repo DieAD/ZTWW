@@ -83,4 +83,14 @@ public class FinanceServiceImpl implements FinanceService {
 		financeBL.initAccount(account);
 	}
 
+	public ArrayList<AccountDO> getAllAccount() {
+		// TODO Auto-generated method stub
+		return financeBL.getAllAccount();
+	}
+
+	public void updateAccount(AccountDO account) {
+		// TODO Auto-generated method stub
+		financeBL.updateAccount(account);
+	}
+
 }

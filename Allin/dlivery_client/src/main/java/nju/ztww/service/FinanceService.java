@@ -50,4 +50,8 @@ public interface FinanceService {
 	public void initStock(ArrayList<StockDO> list);
 
 	public void initAccount(AccountDO account);
+	
+	public ArrayList<AccountDO> getAllAccount();
+	
+	public void updateAccount(AccountDO account);
 }

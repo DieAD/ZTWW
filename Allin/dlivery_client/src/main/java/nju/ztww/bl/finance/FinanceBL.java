@@ -187,5 +187,28 @@ public class FinanceBL {
 		}
 	}
 	
+	public ArrayList<AccountDO> getAllAccount(){
+		financeDataService = (FinanceDataService) rmi
+				.findService("FinanceDataService");
+		
+		ArrayList<AccountDO> list = new ArrayList<AccountDO>();
+		try {
+			list = financeDataService.selectAllAccount();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
+	}
 	
+	public void updateAccount(AccountDO account){
+		financeDataService = (FinanceDataService) rmi
+				.findService("FinanceDataService");
+		try {
+			financeDataService.updateAccount(account);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }
