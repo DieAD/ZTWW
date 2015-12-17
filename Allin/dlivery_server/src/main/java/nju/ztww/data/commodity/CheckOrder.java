@@ -19,7 +19,7 @@ public class CheckOrder {
 		for(int i=0;i<traceformdolist.size();i++){
 			TracePO tpo=new TracePO();
 			 tpo.setTrace(traceformdolist.get(i).getTrace());
-			System.out.println(tpo.getTrace());
+			//System.out.println(tpo.getTrace());
 			stringist.add(tpo);
 		}
 		return stringist;

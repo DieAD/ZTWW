@@ -1,7 +1,6 @@
 package nju.ztww.ui.commodity;
 
 import java.awt.Color;
-
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -13,7 +12,6 @@ import java.util.Vector;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -24,11 +22,15 @@ import javax.swing.table.DefaultTableModel;
 
 
 
+
+
+
+import confligUI.MyButton;
 import confligUI.MyLabel;
 import confligUI.MyTextField;
-
 import nju.ztww.bl.commodity.CheckOrderBL;
-
+import nju.ztww.bl.commodity.GetStockListBL;
+import nju.ztww.bl.commodity.PanExcelDaoBL;
 import nju.ztww.po.StorageListLineofInPO;
 import nju.ztww.po.TracePO;
 import nju.ztww.service.CommodityListService;
@@ -54,7 +56,7 @@ public class StoragePanPanel extends JPanel  implements ActionListener{
 
 	public JButton baojingxiugai=new JButton("设置新的警戒线");
 	public JTextField baojingnew=new JTextField(5);
-	public JButton xiugai=new JButton("修改警戒线");
+	public MyButton xiugai=new MyButton();
 	public JButton sure=new JButton("确定");
 	public JDialog dlg;
 	long l = System.currentTimeMillis();
@@ -93,8 +95,10 @@ public class StoragePanPanel extends JPanel  implements ActionListener{
 	   countshuliang.setEditable(false);
 	   excel.setBounds(580, 0, 120, 30);
 	   excel.setIcon(new ImageIcon("photo/wj_excel.png"));
+	   excel.addActionListener(listenerdao);
 	   excel.setBorderPainted(false);
-	   xiugai.setBounds(580, 400, 120, 30);
+	   xiugai.setBounds(580, 420, 140, 30);
+	   xiugai.setIcon(new ImageIcon("photo/ModifyAlarm.png"));
 	   xiugai.addActionListener(listenerxiugai);
 	   this.add(countall);
 	   this.add(time);
@@ -200,6 +204,16 @@ ActionListener listenersure=new ActionListener() {
 			sure.removeActionListener(listenersure);
 		}
 	};
+ActionListener listenerdao=new ActionListener() {
+	
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		PanExcelDaoBL dao=new PanExcelDaoBL();
+		dao.dao(UserInfoUI.getUserID().substring(0,5), timefield.getText());
+		//getstockbl
+		excel.removeActionListener(listenerdao);
+	}
+};
   }
    
 
