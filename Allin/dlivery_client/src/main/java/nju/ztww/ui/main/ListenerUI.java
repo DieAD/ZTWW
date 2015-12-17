@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 import nju.ztww.vo.MemberVO;
@@ -14,6 +15,8 @@ public class ListenerUI implements MouseListener{
 	private Login login;
 	private String ID;
 	private String password;
+	ImageIcon l1 = new ImageIcon("photo/login1.png");
+	ImageIcon l2 = new ImageIcon("photo/login2.png");
 	public ListenerUI(JFrame frame){ //改成Login类    By zyz
 		this.frame = frame;		
 		this.login = (Login)frame;
@@ -23,6 +26,10 @@ public class ListenerUI implements MouseListener{
 	}
 
 
+	public void switchUI(){
+		this.swiftController.setMember(login.getID(), login.getPassword());
+		swiftController.setUI();
+	}
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
@@ -30,8 +37,7 @@ public class ListenerUI implements MouseListener{
 
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
-		this.swiftController.setMember(login.getID(), login.getPassword());
-		swiftController.setUI();
+		this.switchUI();
 		//by zyz  move here
 	}
 
@@ -42,12 +48,12 @@ public class ListenerUI implements MouseListener{
 
 	public void mouseEntered(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+		login.loginbButton.setIcon(l2);
 	}
 
 	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+		login.loginbButton.setIcon(l1);
 	}
 	
 	

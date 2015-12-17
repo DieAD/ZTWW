@@ -7,6 +7,7 @@ package nju.ztww.ui.user;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.TextArea;
 import java.awt.event.ActionEvent;
@@ -26,6 +27,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.text.TableView.TableRow;
 
 import confligUI.MyButton;
+import confligUI.MyDialog;
 import confligUI.MyLabel;
 import confligUI.MyScrollPane;
 import confligUI.MyTable;
@@ -71,7 +73,7 @@ public class CarLoadingUI extends JPanel{
 	private MyButton sendButton=new MyButton('a');
 	private JButton sureButton=new JButton("确定");
 	DefaultTableModel defaultTableModel ;
-	JDialog dlg;
+	MyDialog dlg;
 	 MyTable table;
 	java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit()
 			.getScreenSize();
@@ -144,7 +146,7 @@ public class CarLoadingUI extends JPanel{
 
 					public void actionPerformed(ActionEvent e) {
 						loadingVO=(LoadingVO) orderServiceImpl.getOrder(4);
-						dlg= new JDialog(); 
+						dlg= new MyDialog(); 
 						dlg.setSize(new Dimension(350, 550));
 			            dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
 			            //装车日期
@@ -211,7 +213,10 @@ public class CarLoadingUI extends JPanel{
 			            dlg.add(sureButton);
 			            sureButton.setBounds(100, 450, 60, 40);
 			            sureButton.addActionListener(listener);
-			            
+//			            GridLayout layout = new GridLayout(0,2);
+//			            layout.setHgap(20);
+//			            layout.setVgap(40);
+//			            dlg.setLayout(layout);
 			            dlg.setLayout(null);
 						dlg.setVisible(true);
 					}
@@ -243,7 +248,7 @@ public class CarLoadingUI extends JPanel{
 			  findButton.addActionListener(new ActionListener(){
 
 					public void actionPerformed(ActionEvent e) {
-						dlg= new JDialog(); 
+						dlg= new MyDialog(); 
 						dlg.setSize(new Dimension(350, 150));
 			            dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
 			            findtextArea.setBounds(50, 30, 150, 30);
