@@ -16,7 +16,8 @@ public class StorageListLineofOutPO extends OrderPO implements Serializable {
 	int way;
 	String number;//具体实现时要分两种情况
 	String destination;
-  public StorageListLineofOutPO(String idofdanzi,String id,String data,String destination,int way,String number) {
+	String idofcenter;
+  public StorageListLineofOutPO(String idofdanzi,String id,String data,String destination,int way,String number,String idofcenter) {
 	  super(idOfOrder);
 	  this.idofdanzi=idofdanzi;
 	  this.id=id;
@@ -24,7 +25,20 @@ public class StorageListLineofOutPO extends OrderPO implements Serializable {
 	  this.way=way;
 	  this.number=number;
 	  this.destination=destination;
+	  this.idofcenter=idofcenter;
 	// TODO Auto-generated constructor stub
+}
+public String getIdofdanzi() {
+	return idofdanzi;
+}
+public void setIdofdanzi(String idofdanzi) {
+	this.idofdanzi = idofdanzi;
+}
+public String getIdofcenter() {
+	return idofcenter;
+}
+public void setIdofcenter(String idofcenter) {
+	this.idofcenter = idofcenter;
 }
 public String getId() {
 	return id;
@@ -64,7 +78,7 @@ public void setDestination(String destination) {
 //这个change to vo 要分情况讨论
 public StorageListLineofOutVO changetovo() {
 	// TODO Auto-generated method stub
-	return new StorageListLineofOutVO(idofdanzi,id,data,destination,way,number);
+	return new StorageListLineofOutVO(idofdanzi,id,data,destination,way,number,idofcenter);
 }
 //差一个id 单子的   //差一个number
  public OutStockFormDO changetodo(){
@@ -77,6 +91,7 @@ public StorageListLineofOutVO changetovo() {
 	 outstockformdo.setTime(data);
 	 outstockformdo.setNumber(number);
 	 outstockformdo.setTransmethod(way);
+	 outstockformdo.setIdofcenter(idofcenter);
 	 return outstockformdo;
     
  }

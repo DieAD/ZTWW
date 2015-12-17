@@ -16,7 +16,7 @@ public class INIT extends JPanel{
 	//"总经理", "管理员" };
    INIT_Table1 table1 = new INIT_Table1(new String[]{"机构编号","机构名称","快递员人数","营业厅业务员人数", "中转中心业务员人数", "中转中心仓库管理人员人数", "财务人员人数","总经理人数", "管理员人数"},new Object[][]{{new String(""),new String(""),new Integer(0),
 	   new Integer(0),new Integer(0),new Integer(0),new Integer(0),new Integer(0),new Integer(0)}});
-   INIT_Table2 table2 = new INIT_Table2(new String[]{"ID","姓名","年龄","职务","性别"},new Object[][]{{new String(""),new String(""),new String(""),new String(""),new String("")}} );
+   INIT_Table2 table2 = new INIT_Table2(new String[]{"ID","姓名","年龄","职务","性别"},new Object[][]{{new String(""),new String(""),new Integer(0),new String(""),new String("")}} );
    ///INIT_Table3 table3 = new 
    INIT_Table3 table3 = new INIT_Table3(new String[]{ "ID","车辆代号", "车牌号", "车辆状态", "服役时间", "备注"},new Object[][]{{new String(""),new String(""),new String(""),new String(""),new String(""),new String("")}});
    INIT_Table4 table4 = new INIT_Table4(new String[]{ "快件编号", "入库日期", "目的地", "区号", "排号" ,"架号","位号"},new Object[][]{{new String(""),new String(""),new String(""),new String(""),new String(""),new String(""),new String("")}});

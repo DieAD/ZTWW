@@ -81,6 +81,7 @@ public class DBForOutStockForm extends DB{
 				form.setExe(rs.getInt(7));
 				form.setState(rs.getInt(8));
 				form.setNumber(rs.getString(9));
+				form.setIdofcenter(rs.getString(10));
 
 				list.add(form);
 			}
@@ -93,9 +94,9 @@ public class DBForOutStockForm extends DB{
 	}
 
 
-	public ArrayList<OutStockFormDO> queryByID(String ID, String tableName) {
+	public ArrayList<OutStockFormDO> queryByID(String ID, String tableName,String idofcenter) {
 		ArrayList<OutStockFormDO> list = new ArrayList<OutStockFormDO>();
-		String sql = "select * from " + tableName + " where id=" + ID;
+		String sql = "select * from " + tableName + " where id=" + ID+" and idofcenter=" + idofcenter;
 		try {
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
@@ -111,6 +112,7 @@ public class DBForOutStockForm extends DB{
 				form.setExe(rs.getInt(7));
 				form.setState(rs.getInt(8));
 				form.setNumber(rs.getString(9));
+				form.setIdofcenter(rs.getString(10));
 
 				list.add(form);
 			}
@@ -125,7 +127,7 @@ public class DBForOutStockForm extends DB{
 	public void insert(ArrayList<OutStockFormDO> list, String tableName) {
 		String sql = "insert into "
 				+ tableName
-				+ "(id,goodsid,time,address,transmethod,exe,state,number)values(?,?,?,?,?,?,?,?)";
+				+ "(id,goodsid,time,address,transmethod,exe,state,number,idofcenter)values(?,?,?,?,?,?,?,?,?)";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			for (OutStockFormDO form : list) {
@@ -134,9 +136,11 @@ public class DBForOutStockForm extends DB{
 				pstmt.setString(3, form.getTime());
 				pstmt.setString(4, form.getAddress());
 				pstmt.setInt(5, form.getTransmethod());
-				pstmt.setString(8, form.getNumber());
+				
 				pstmt.setInt(6, form.getExe());
 				pstmt.setInt(7, form.getState());
+				pstmt.setString(8, form.getNumber());
+				pstmt.setString(9, form.getIdofcenter());
 				
 				
 
@@ -153,7 +157,7 @@ public class DBForOutStockForm extends DB{
 		String sql = "update "
 				+ tableName
 				+ " set id=?,goodsid=?,time=?,address=?,transmethod=?,exe=?,state=?,"
-				+ "number=? where id=?";
+				+ "number=?,idofcenter=? where id=?";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			for (OutStockFormDO form : list) {
@@ -165,7 +169,8 @@ public class DBForOutStockForm extends DB{
 				pstmt.setInt(6, form.getExe());
 				pstmt.setInt(7, form.getState());
 				pstmt.setString(8, form.getNumber());
-				pstmt.setString(9, form.getId());
+				pstmt.setString(9, form.getIdofcenter());
+				pstmt.setString(10, form.getId());
 
 				pstmt.executeUpdate();
 
@@ -187,9 +192,9 @@ public class DBForOutStockForm extends DB{
 			e.printStackTrace();
 		}
 	}
-	public ArrayList<OutStockFormDO> queryByTime(String time, String tableName) {
+	public ArrayList<OutStockFormDO> queryByTime(String time, String tableName,String idofcenter) {
 		ArrayList<OutStockFormDO> list = new ArrayList<OutStockFormDO>();
-		String sql = "select * from " + tableName + " where time= '"+time+"'and exe=1";
+		String sql = "select * from " + tableName + " where time= '"+time+"'and exe=1 "+" and idofcenter="+idofcenter ;
 		try {
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
@@ -205,6 +210,7 @@ public class DBForOutStockForm extends DB{
 				form.setExe(rs.getInt(7));
 				form.setState(rs.getInt(8));
 				form.setNumber(rs.getString(9));
+				form.setIdofcenter(rs.getString(10));
 				list.add(form);
 			}
 		} catch (SQLException e) {
@@ -232,6 +238,7 @@ public class DBForOutStockForm extends DB{
 				form.setExe(rs.getInt(7));
 				form.setState(rs.getInt(8));
 				form.setNumber(rs.getString(9));
+				form.setIdofcenter(rs.getString(10));
 				list.add(form);
 			}
 		} catch (SQLException e) {
@@ -245,10 +252,12 @@ public class DBForOutStockForm extends DB{
 	public static void main(String[] args){
 		DBForOutStockForm db = new DBForOutStockForm();
 		db.init();
-		ArrayList<OutStockFormDO> list = db.queryALL("outstockform");
+		ArrayList<OutStockFormDO> list = db.queryByTime("15/12/10", "outstockform", "02501");
 		for(OutStockFormDO form : list){
-			System.out.println(form.getTime());
+			System.out.println(form.getIdofcenter());
+			
 		}
+		
 		db.update(list, "outstockform");
 		db.close();
 	}

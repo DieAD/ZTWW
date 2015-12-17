@@ -173,7 +173,7 @@ public class OutofStoragePanel extends JPanel {
 		String idofcenter=UserInfoUI.getUserID().substring(0, 5);
         String index=UserInfoUI.getUserID().substring(0,8)+dateFormat.format(time)+commodity.getLastidofcenter(idofcenter);
 		StringToInt way=new StringToInt();
-		storagelineout=new StorageListLineofOutVO(index,ordernumberfield.getText(), datafield.getText(), arrivefield.getText(),way.changetoint(dbtype.getSelectedItem().toString()), yunshufield.getText());
+		storagelineout=new StorageListLineofOutVO(index,ordernumberfield.getText(), datafield.getText(), arrivefield.getText(),way.changetoint(dbtype.getSelectedItem().toString()), yunshufield.getText(),idofcenter);
       
 		
 

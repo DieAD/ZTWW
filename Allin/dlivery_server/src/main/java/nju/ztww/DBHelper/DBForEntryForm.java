@@ -82,6 +82,7 @@ public class DBForEntryForm extends DB{
 				form.setWei(rs.getString(9));
 				form.setExe(rs.getInt(10));
 				form.setState(rs.getInt(11));
+				form.setIdofcenter(rs.getString(12));
 				list.add(form);
 			}
 		} catch (SQLException e) {
@@ -91,9 +92,9 @@ public class DBForEntryForm extends DB{
 		return list;
 	}
 
-	public ArrayList<EntryFormDO> queryByID(String ID, String tableName) {
+	public ArrayList<EntryFormDO> queryByID(String ID, String tableName,String idofcenter) {
 		ArrayList<EntryFormDO> list = new ArrayList<EntryFormDO>();
-		String sql = "select * from " + tableName + " where goodsid=" + ID;
+		String sql = "select * from " + tableName + " where goodsid=" + ID+" and idofcenter="+idofcenter;
 		try {
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
@@ -110,6 +111,7 @@ public class DBForEntryForm extends DB{
 				form.setWei(rs.getString(9));
 				form.setExe(rs.getInt(10));
 				form.setState(rs.getInt(11));
+				form.setIdofcenter(rs.getString(12));
 				list.add(form);
 			}
 		} catch (SQLException e) {
@@ -122,7 +124,7 @@ public class DBForEntryForm extends DB{
 	public void insert(ArrayList<EntryFormDO> list, String tableName) {
 		String sql = "insert into "
 				+ tableName
-				+ "(goodsid,entrytime,address,qu,pai,jia,wei,id,exe,state)values(?,?,?,?,?,?,?,?,?,?)";
+				+ "(goodsid,entrytime,address,qu,pai,jia,wei,id,exe,state,idofcenter)values(?,?,?,?,?,?,?,?,?,?,?)";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			for (EntryFormDO form : list) {
@@ -136,6 +138,7 @@ public class DBForEntryForm extends DB{
 				pstmt.setString(8, form.getId());
 				pstmt.setInt(9, form.getExe());
 				pstmt.setInt(10, form.getState());
+				pstmt.setString(11,form.getIdofcenter());
 
 				pstmt.executeUpdate();
 			}
@@ -146,7 +149,7 @@ public class DBForEntryForm extends DB{
 	}
 	
 	public void update(ArrayList<EntryFormDO> list,String tableName){
-     String sql = "update "+ tableName +" set goodsid=?,entrytime=?,address=?,qu=?,pai=?,jia=?,wei=?,id=?,exe=?,state=? where goodsid=?";
+     String sql = "update "+ tableName +" set goodsid=?,entrytime=?,address=?,qu=?,pai=?,jia=?,wei=?,id=?,exe=?,state=?,idofcenter=? where goodsid=?";
 		
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -161,7 +164,8 @@ public class DBForEntryForm extends DB{
 				pstmt.setString(8, form.getId());
 				pstmt.setInt(9, form.getExe());
 				pstmt.setInt(10, form.getState());
-				pstmt.setString(11,form.getGoodsid());
+				pstmt.setString(11,form.getIdofcenter());
+				pstmt.setString(12,form.getGoodsid());
 				
 				
 				pstmt.executeUpdate();
@@ -182,9 +186,9 @@ public class DBForEntryForm extends DB{
 			e.printStackTrace();
 		}
 	}
-	public ArrayList<EntryFormDO> queryByTime(String time, String tableName) {
+	public ArrayList<EntryFormDO> queryByTime(String time, String tableName,String idofcenter) {
 		ArrayList<EntryFormDO> list = new ArrayList<EntryFormDO>();
-		String sql = "select * from " + tableName + " where entrytime= '"+time+"'and exe=1 " ;
+		String sql = "select * from " + tableName + " where entrytime= '"+time+"'and exe=1 "+" and idofcenter="+idofcenter ;
 		try {
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
@@ -201,6 +205,7 @@ public class DBForEntryForm extends DB{
 				form.setWei(rs.getString(9));
 				form.setExe(rs.getInt(10));
 				form.setState(rs.getInt(11));
+				form.setIdofcenter(rs.getString(12));
 				list.add(form);
 			}
 		} catch (SQLException e) {
@@ -228,6 +233,7 @@ public class DBForEntryForm extends DB{
 				form.setWei(rs.getString(9));
 				form.setExe(rs.getInt(10));
 				form.setState(rs.getInt(11));
+				form.setIdofcenter(rs.getString(12));
 				list.add(form);
 			}
 		} catch (SQLException e) {
@@ -236,9 +242,9 @@ public class DBForEntryForm extends DB{
 		}
 		return list;
 	}
-	public ArrayList<EntryFormDO> queryByCenterID(String ID, String tableName) {
+	public ArrayList<EntryFormDO> queryByCenterID(String ID, String tableName,String idofcenter) {
 		ArrayList<EntryFormDO> list = new ArrayList<EntryFormDO>();
-		String sql = "select * from " + tableName + " where id=" + ID;
+		String sql = "select * from " + tableName + " where id=" + ID+" where idofcenter"+idofcenter;
 		try {
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
@@ -255,6 +261,7 @@ public class DBForEntryForm extends DB{
 				form.setWei(rs.getString(9));
 				form.setExe(rs.getInt(10));
 				form.setState(rs.getInt(11));
+				form.setIdofcenter(rs.getString(12));
 				list.add(form);
 			}
 		} catch (SQLException e) {
@@ -268,12 +275,15 @@ public class DBForEntryForm extends DB{
 		DBForEntryForm db = new DBForEntryForm();
 		db.init();
 		
-		ArrayList<EntryFormDO>list=db.queryALL("entryform");
-		
+		ArrayList<EntryFormDO>list=db.queryByTime("15/12/10", "entryform", "02501");
+		EntryFormDO entrydo=new EntryFormDO();
+	          
 		for(int i=0;i<list.size();i++){
-			System.out.println(list.get(i).getId());
-		}
+			System.out.println(list.get(i).getExe());
 		
+		}
+		list.get(list.size()-1).setExe(1);
+		db.update(list, "entryform");
 		db.close();
 	
 		

@@ -153,7 +153,7 @@ public void run() {
 		dlg.add(tishi);
 		dlg.add(sure);	
 		dlg.setVisible(true);
-		//t.stop();
+		t.stop();
 		}
 	}
 }
@@ -167,8 +167,8 @@ public void run() {
 	   int baojing=Integer.parseInt(arraylistpo.get(0).getTrace());
 	   int storage=storagelist.size();
 	   
-	   System.out.println(storagelist.size());
-	   System.out.println(arraylistpo.get(0).getTrace());
+	   //System.out.println(storagelist.size());
+	   //System.out.println(arraylistpo.get(0).getTrace());
 	   if(storage>baojing){
 		 ispast=true;
 		   }

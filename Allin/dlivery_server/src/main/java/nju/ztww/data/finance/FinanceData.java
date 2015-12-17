@@ -10,11 +10,13 @@ import nju.ztww.DBHelper.DBForNewIns;
 import nju.ztww.DBHelper.DBForPayeeForm;
 import nju.ztww.DBHelper.DBForPaymentForm;
 import nju.ztww.DBHelper.DBForStock;
+import nju.ztww.DBHelper.DBHelper;
 import nju.ztww.dao.AccountDO;
 import nju.ztww.dao.InsDO;
 import nju.ztww.dao.PayeeFormDO;
 import nju.ztww.dao.PaymentFormDO;
 import nju.ztww.dao.StockDO;
+import nju.ztww.dao.UserDO;
 import nju.ztww.po.CarManagePO;
 import nju.ztww.po.CollectionPO;
 import nju.ztww.po.PaymentPO;
@@ -29,6 +31,7 @@ public class FinanceData {
       DBForNewCar dbNewCar = new DBForNewCar();
       DBForStock dbStock = new DBForStock();
       DBForAccount dbAccount = new DBForAccount();
+      DBHelper dbUser = new DBHelper();
       
       public ArrayList<CollectionPO> queryByDate(String date,String holl){
     	  ArrayList<PayeeFormDO> listDO = new ArrayList<PayeeFormDO>();
@@ -190,5 +193,11 @@ public class FinanceData {
     	  dbAccount.close();
       }
       
+      public void initUser(ArrayList<UserDO> list){
+    	  dbUser.init();
+    	  dbUser.insert(list, "userstable");
+    	  dbUser.insert(list, "simpleuser");
+    	  dbUser.close();
+      }
     
 }

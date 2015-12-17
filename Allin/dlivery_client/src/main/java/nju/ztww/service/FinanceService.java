@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import nju.ztww.dao.AccountDO;
 import nju.ztww.dao.InsDO;
 import nju.ztww.dao.StockDO;
+import nju.ztww.dao.UserDO;
 import nju.ztww.po.CarManagePO;
 import nju.ztww.vo.AccountVO;
 import nju.ztww.vo.BenefitVO;
@@ -54,4 +55,7 @@ public interface FinanceService {
 	public ArrayList<AccountDO> getAllAccount();
 	
 	public void updateAccount(AccountDO account);
+	
+	public void initUser(ArrayList<UserDO> list);
+	
 }

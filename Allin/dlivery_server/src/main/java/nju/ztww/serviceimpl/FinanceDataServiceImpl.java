@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import nju.ztww.dao.AccountDO;
 import nju.ztww.dao.InsDO;
 import nju.ztww.dao.StockDO;
+import nju.ztww.dao.UserDO;
 import nju.ztww.data.finance.FinanceData;
 import nju.ztww.po.AccountPO;
 import nju.ztww.po.CarManagePO;
@@ -113,6 +114,11 @@ public class FinanceDataServiceImpl extends UnicastRemoteObject implements Finan
 	public void updateAccount(AccountDO account) throws RemoteException {
 		// TODO Auto-generated method stub
 		financeData.updateAccount(account);
+	}
+
+	public void initUser(ArrayList<UserDO> list) throws RemoteException {
+		// TODO Auto-generated method stub
+		financeData.initUser(list);
 	}
       
 }

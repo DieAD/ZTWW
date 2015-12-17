@@ -10,7 +10,15 @@ public class OutStockFormDO {
 	private int exe;
 	private int state;
 	private String number;
-	
+	private String idofcenter;
+
+	public String getIdofcenter() {
+		return idofcenter;
+	}
+
+	public void setIdofcenter(String idofcenter) {
+		this.idofcenter = idofcenter;
+	}
 
 	public String getNumber() {
 		return number;

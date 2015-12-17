@@ -7,6 +7,7 @@ import nju.ztww.RMI.RMIHelper;
 import nju.ztww.dao.AccountDO;
 import nju.ztww.dao.InsDO;
 import nju.ztww.dao.StockDO;
+import nju.ztww.dao.UserDO;
 import nju.ztww.po.CarManagePO;
 import nju.ztww.po.CollectionPO;
 import nju.ztww.po.PaymentPO;
@@ -206,6 +207,17 @@ public class FinanceBL {
 				.findService("FinanceDataService");
 		try {
 			financeDataService.updateAccount(account);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void initUser(ArrayList<UserDO> list){
+		financeDataService = (FinanceDataService) rmi
+				.findService("FinanceDataService");
+		try {
+			financeDataService.initUser(list);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
