@@ -19,11 +19,11 @@ public void changeExeAddStock(ArrayList<String> list) {
 	 dbentry.init();
 	 dbstock.init();
 	 for(int i=0;i<list.size();i++){
-		 String idofcenter=list.get(i).substring(0,8);//还没检测
+		 String idofcenter=list.get(i).substring(0,5);//还没检测
 		 ArrayList<EntryFormDO>entrylist=new  ArrayList<EntryFormDO>(); 
 		 ArrayList<StockDO>stocklist=new ArrayList<StockDO>();
 		 //之后需要用到 idofcenter
-		 entrylist=dbentry.queryByCenterID(list.get(i), "entryform");
+		 entrylist=dbentry.queryByCenterID(list.get(i), "entryform",idofcenter);
 		 for(int j=0;j<entrylist.size();j++){
 			 entrylist.get(j).setExe(1);
 			 StockDO stockdo=new StockDO();
@@ -51,9 +51,9 @@ public void changeExeAddStock(ArrayList<String> list) {
 	  for(int i=0;i<list.size();i++){
 		  ArrayList<OutStockFormDO> outstockdolist=new  ArrayList<OutStockFormDO>();
 		  System.out.println(list.get(i));
-		  String idofCenter=list.get(i).substring(0, 8);
+		  String idofCenter=list.get(i).substring(0, 5);
 		  ArrayList<StockDO>stocklist=new ArrayList<StockDO>();
-		  outstockdolist=dbout.queryByID(list.get(i), "outstockform");//表名需要改
+		  outstockdolist=dbout.queryByID(list.get(i), "outstockform",idofCenter);//表名需要改
 		  for(int j=0;j<outstockdolist.size();j++){
 			  outstockdolist.get(j).setExe(1);
 			  dbstock.delete( outstockdolist.get(j).getGoodsid(), "stocktable");

@@ -22,7 +22,7 @@ public class StorageListInGetByTime {
 		String tableName="stocktable";
 		ArrayList<StockDO>stocklist=new ArrayList<StockDO>();
 		ArrayList<StorageListLineofInPO> storagelistline=new ArrayList<StorageListLineofInPO>();
-		stocklist=dbforstock.queryByTime(time, tableName);
+		stocklist=dbforstock.queryByTime(time, tableName,idofcenter);
 		for(int k=0;k<storagelistline.size();k++){
 		StorageListLineofInPO storagelistlinreofin=new StorageListLineofInPO(1,
 				" 没有用",
@@ -33,7 +33,9 @@ public class StorageListInGetByTime {
 				stocklist.get(k).getPai(),
 				stocklist.get(k).getJia(),
 				stocklist.get(k).getWei(),
-				stocklist.get(k).getState()
+				stocklist.get(k).getState(),
+				stocklist.get(k).getIdofcenter()
+				
 	                         );
 		storagelistline.add(storagelistlinreofin);
 		}
@@ -51,7 +53,7 @@ public class StorageListInGetByTime {
         String tableName="entryform";
         if(timebegin.equals(timeend)){
         	
-        	entryfromdolist=dbforentryform.queryByTime(timebegin, tableName);
+        	entryfromdolist=dbforentryform.queryByTime(timebegin, tableName,idofcenter);
         	for(int k=0;k<entryfromdolist.size();k++){
         		 StorageListLineofInPO storagelistlinreofin=new StorageListLineofInPO(1,
         				 "没有用",
@@ -62,7 +64,8 @@ public class StorageListInGetByTime {
         		    		entryfromdolist.get(k).getPai(),
         		    		entryfromdolist.get(k).getJia(),
         		    		entryfromdolist.get(k).getWei(),
-        		    		entryfromdolist.get(k).getState()
+        		    		entryfromdolist.get(k).getState(),
+        		    		entryfromdolist.get(k).getIdofcenter()
         		                         );
         		 storagelistlineofinpo.add(storagelistlinreofin);
         	}
@@ -77,10 +80,10 @@ public class StorageListInGetByTime {
         ArrayList<String>  timelist=new ArrayList<String>();
         TimeChange time=new TimeChange();
         timelist=time.timechange(timebegin, timeend);
-        entryfromdolist=dbforentryform.queryByTime(timebegin,tableName);
+        entryfromdolist=dbforentryform.queryByTime(timebegin,tableName,idofcenter);
         for(int i=0;i<timelist.size();i++){
         ArrayList<EntryFormDO> entryfromdolist2 =new ArrayList<EntryFormDO>();
-        entryfromdolist2=dbforentryform.queryByTime(timelist.get(i), tableName);
+        entryfromdolist2=dbforentryform.queryByTime(timelist.get(i), tableName,idofcenter);
        
         for(int j=0;j<entryfromdolist2.size();j++){
         	entryfromdolist.add(entryfromdolist2.get(j));	
@@ -96,7 +99,8 @@ public class StorageListInGetByTime {
 	    		entryfromdolist.get(k).getPai(),
 	    		entryfromdolist.get(k).getJia(),
 	    		entryfromdolist.get(k).getWei(),
-	    		entryfromdolist.get(k).getState()
+	    		entryfromdolist.get(k).getState(),
+	    		entryfromdolist.get(k).getIdofcenter()
 	                         );
 	    
 	    storagelistlineofinpo.add(storagelistlinreofin);
@@ -111,7 +115,7 @@ public class StorageListInGetByTime {
 		StorageListInGetByTime slig=new StorageListInGetByTime();
 		ArrayList<EntryFormDO> entryfromdolist =new ArrayList<EntryFormDO>();
 		ArrayList<StorageListLineofInPO> storagelistlineofinpo=new ArrayList<StorageListLineofInPO>();
-		storagelistlineofinpo=slig.findInList("15/11/24", "15/12/01", "111");
+		storagelistlineofinpo=slig.findInList("15/12/09", "15/12/10", "0008");
 	}
 }
 
