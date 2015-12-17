@@ -7,12 +7,17 @@ import java.util.ArrayList;
 import nju.ztww.po.CarManagePO;
 import nju.ztww.service.FinanceService;
 import nju.ztww.serviceimpl.FinanceServiceImpl;
+import confligUI.MyButton;
 
 public class INIT_Table3 extends EditPanel {
-	   FinanceService FS  = new FinanceServiceImpl();	   
+	   FinanceService FS  = new FinanceServiceImpl();
+	   Dialog_init3 dia = new Dialog_init3(this);
+	   MyButton add = new MyButton('c');
 	   public INIT_Table3(String[] strings,Object[][] objects){
 		   super(strings,objects);
 		   button1.addActionListener(new Listener());
+		   add.addActionListener(new Listener2());
+		   this.add(add);
 	   }
 	   
 	   
@@ -37,6 +42,19 @@ public class INIT_Table3 extends EditPanel {
 			}
 			FS.initCar(list);
 			
+		}
+		   
+	   }
+	   
+	   public class Listener2 implements ActionListener{
+
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			int rowNum = tableModel.getRowCount();
+			for(int i=0;i<rowNum;i++){
+				tableModel.removeRow(0);
+			}
+			dia.show();
 		}
 		   
 	   }

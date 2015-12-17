@@ -104,5 +104,15 @@ public class FinanceDataServiceImpl extends UnicastRemoteObject implements Finan
 		// TODO Auto-generated method stub
 		financeData.initAccount(account);
 	}
+
+	public ArrayList<AccountDO> selectAllAccount() throws RemoteException {
+		// TODO Auto-generated method stub
+		return financeData.getAllAccount();
+	}
+
+	public void updateAccount(AccountDO account) throws RemoteException {
+		// TODO Auto-generated method stub
+		financeData.updateAccount(account);
+	}
       
 }

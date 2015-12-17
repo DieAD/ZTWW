@@ -20,7 +20,7 @@ public class INIT extends JPanel{
    ///INIT_Table3 table3 = new 
    INIT_Table3 table3 = new INIT_Table3(new String[]{ "ID","车辆代号", "车牌号", "车辆状态", "服役时间", "备注"},new Object[][]{{new String(""),new String(""),new String(""),new String(""),new String(""),new String("")}});
    INIT_Table4 table4 = new INIT_Table4(new String[]{ "快件编号", "入库日期", "目的地", "区号", "排号" ,"架号","位号"},new Object[][]{{new String(""),new String(""),new String(""),new String(""),new String(""),new String(""),new String("")}});
-   INIT_Table5 table5 = new INIT_Table5(new String[]{"账户id","账户名称","账户余额"},new Object[][]{{new String(""),new String(""),new Double(0)}});
+   INIT_Table5 table5 = new INIT_Table5(new String[]{"账户id","账户名称","账户余额"},new Object[][]{{new String(""),new String(""),new Double(0.0)}});
    public INIT(JPanel home){
 	   this.home = home;
 	   setUp();
