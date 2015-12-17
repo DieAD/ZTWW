@@ -40,6 +40,7 @@ public class Login extends JFrame{
 	private ListenerUI uiListener;
 	public static JFrame frame;
 	public static JPanel panel;
+	private MoniDelUI moni;
 	
 	public Login(){
 		
@@ -94,6 +95,8 @@ public class Login extends JFrame{
 		panel.add(searchButton);
 		panel.add(bg);
 		
+		moni = new MoniDelUI();
+		moni.setBounds(0, 200, 400, 400);
 		uiListener = new ListenerUI(this);
 		loginbButton.addMouseListener(uiListener);
 		searchButton.addMouseListener(new Listener_Trace(this));
@@ -110,7 +113,7 @@ public class Login extends JFrame{
 		this.add(panel);
 		this.setVisible(true);
 		this.getContentPane().repaint();
-
+		this.add(moni);
 		
 		///FRAME = this;
 		
