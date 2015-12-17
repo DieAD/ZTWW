@@ -10,8 +10,10 @@ import javax.swing.JPanel;
 public class MoniDelUI extends JPanel implements Runnable{
 	Thread t=new Thread(this);
 	JLabel car = new JLabel();
+	JLabel home = new JLabel();
 	int x = 100;
 	int y = 100;
+	int iy = 100;
 
 	public void run() {
 		// TODO Auto-generated method stub
@@ -20,13 +22,15 @@ public class MoniDelUI extends JPanel implements Runnable{
 			this.repaint();
 			car.setBounds(x, y, 60, 40);
 			x+=5;
-			if(x>350){
+			if(x>260){
 				x=20;
+				iy=100;
 			}
-			if(x>300){
-				this.car.setVisible(false);
+			if(x>200){
+				this.home.setVisible(true);
+				iy+=4;
 			}else{
-				this.car.setVisible(true);
+				this.home.setVisible(false);
 			}
 			
 			try {
@@ -43,15 +47,18 @@ public class MoniDelUI extends JPanel implements Runnable{
 		this.setLayout(null);
 		car.setIcon(new ImageIcon("photo/Lcar.png"));
 		car.setBounds(x, y, 60, 40);
+		home.setIcon(new ImageIcon("photo/Lhome.png"));
+		home.setBounds(320, iy, 60, 40);
 		this.add(car);
+		this.add(home);
 		t.start();
 	}
 	
-	public static void main(String[] args) {
-		JFrame f = new JFrame();
-		f.setSize(400, 400);
-		f.setVisible(true);
-		MoniDelUI m = new MoniDelUI();
-		f.add(m);
-	}
+//	public static void main(String[] args) {
+//		JFrame f = new JFrame();
+//		f.setSize(400, 400);
+//		f.setVisible(true);
+//		MoniDelUI m = new MoniDelUI();
+//		f.add(m);
+//	}
 }
