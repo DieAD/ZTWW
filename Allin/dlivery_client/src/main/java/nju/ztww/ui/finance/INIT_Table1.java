@@ -17,6 +17,8 @@ public class INIT_Table1 extends EditPanel {
    public INIT_Table1(String[] strings,Object[][] objects){
 	   super(strings,objects);
 	   button1.addActionListener(new Listener());
+	   add.addActionListener(new Listener2());
+	   this.add(add);
    }
    
    

@@ -17,11 +17,11 @@ public class Dialog_init1 extends JDialog{
    public Dialog_init1(EditPanel tablePanel){
 	   this.tablePanel = tablePanel;
 		this.setLayout(null);
-		mainPanel.setBounds(0,0,600,450);
-	//	mainPanel.submit.addActionListener(new Listener(this));
+		mainPanel.setBounds(0,0,600,650);
+		mainPanel.submit.addActionListener(new Listener(this));
 		this.setContentPane(mainPanel);
 		this.setTitle("机构建账");
-		this.setSize(500, 450);
+		this.setSize(600, 650);
 		this.setResizable(false);
 		// this.pack();
 
@@ -68,7 +68,8 @@ public class Dialog_init1 extends JDialog{
       	 _setBounds(input8,7,2,"");
       	 _setBounds(name9,8,1,"管理员人数");
       	 _setBounds(input9,8,2,"");
-      	 submit.setBounds(200,350, 80, 30);
+      	 submit.setBounds(200,450, 80, 30);
+      	// submit.addActionListener(new Listener());
       	 this.add(submit);
       	 
        }
@@ -100,12 +101,19 @@ public class Dialog_init1 extends JDialog{
 			String id = mainPanel.input1.getText();
 			String date = mainPanel.input2.getText();
 			String address = mainPanel.input3.getText();
+			int colum3 = Integer.parseInt(address);
 			String qu = mainPanel.input4.getText();
+			int colum4 = Integer.parseInt(qu);
 			String pai = mainPanel.input5.getText();
+			int colum5 = Integer.parseInt(pai);
 			String jia = mainPanel.input6.getText();
+			int colum6 = Integer.parseInt(jia);
 			String wei = mainPanel.input7.getText();
-			String colum8 = mainPanel.input8.getText();
-			String colum9 = mainPanel.input9.getText();
+			int colum7 = Integer.parseInt(wei);
+			String _colum8 = mainPanel.input8.getText();
+			int colum8 = Integer.parseInt(_colum8);
+			String _colum9 = mainPanel.input9.getText();
+			int colum9 = Integer.parseInt(_colum9);
 			mainPanel.input1.setText("");
 			mainPanel.input2.setText("");
 			mainPanel.input3.setText("");
@@ -116,8 +124,8 @@ public class Dialog_init1 extends JDialog{
 			mainPanel.input8.setText("");
 			mainPanel.input9.setText("");
 			//mainPanel.input1.setText("");
-			Object[] contain = new Object[]{new String(id),new String(date),new String(address),new String(qu)
-			,new String(pai),new String(jia),new String(wei),new String(colum8),new String(colum9)};
+			Object[] contain = new Object[]{new String(id),new String(date),new Integer(colum3),new Integer(colum4)
+			,new Integer(colum5),new Integer(colum6),new Integer(colum7),new Integer(colum8),new Integer(colum9)};
 			
 			tablePanel.tableModel.addRow(contain);
 			dia.dispose();

@@ -6,6 +6,7 @@ import nju.ztww.bl.finance.FinanceBL;
 import nju.ztww.dao.AccountDO;
 import nju.ztww.dao.InsDO;
 import nju.ztww.dao.StockDO;
+import nju.ztww.dao.UserDO;
 import nju.ztww.po.CarManagePO;
 import nju.ztww.service.FinanceService;
 import nju.ztww.vo.AccountVO;
@@ -91,6 +92,11 @@ public class FinanceServiceImpl implements FinanceService {
 	public void updateAccount(AccountDO account) {
 		// TODO Auto-generated method stub
 		financeBL.updateAccount(account);
+	}
+
+	public void initUser(ArrayList<UserDO> list) {
+		// TODO Auto-generated method stub
+		financeBL.initUser(list);
 	}
 
 }
