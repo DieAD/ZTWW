@@ -121,6 +121,9 @@ public class FinanceData {
     	  for(PayeeFormDO form: listDO){
     		  CollectionPO po = new CollectionPO();
     		  po.setMoney(form.getMoney());
+    		  po.setCourierid(form.getCourierid());
+    		  po.setDate(form.getDate());
+    		  po.setGoodsid(form.getGoodsid());
     		  listPO.add(po);
     	  }
     	  
@@ -199,5 +202,25 @@ public class FinanceData {
     	  dbUser.insert(list, "simpleuser");
     	  dbUser.close();
       }
+      
+      public ArrayList<PaymentPO> totalPaymentDO(){
+    	  ArrayList<PaymentPO> listPO = new ArrayList<PaymentPO>();
+    	  ArrayList<PaymentFormDO> listDO = new ArrayList<PaymentFormDO>();
+    	  db2.init();
+    	  listDO = db2.totalPayment("paymentform");
+    	  for(PaymentFormDO form : listDO){
+    		  PaymentPO po  = new PaymentPO();
+    		  po.setDate(form.getDate());
+    		  po.setMoney(form.getMoney());
+    		  po.setPayaccount(form.getPayaccount());
+    		  po.setPaymen(form.getPaymen());
+    		  po.setPaycat(form.getPaycat());
+    		  po.setPs(form.getPs());
+    		  listPO.add(po);
+    	  }
+    	  return listPO;
+      }
+      
+      
     
 }

@@ -16,7 +16,7 @@ public class INIT_Table4 extends EditPanel {
 	   public INIT_Table4(String[] strings,Object[][] objects){
 		   super(strings,objects);
 		   button1.addActionListener(new Listener());
-		   add.addActionListener(new Listener2());
+		   button3.addActionListener(new Listener2());
 		   this.add(add);
 	   }
 	   
@@ -53,9 +53,9 @@ public class INIT_Table4 extends EditPanel {
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			int rowCount = tableModel.getRowCount();
-			for(int i=0;i<rowCount;i++){
-				tableModel.removeRow(0);
-			}
+//			for(int i=0;i<rowCount;i++){
+//				tableModel.removeRow(0);
+//			}
 			dia.show();
 		}
 		   
