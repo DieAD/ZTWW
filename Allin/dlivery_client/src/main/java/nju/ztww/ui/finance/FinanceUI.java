@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-//date 11-18 name wh
+//date 11-18 name wh//
 public class FinanceUI  {
     JFrame frame ;
     EditPanel accountPanel = new EditPanel();
