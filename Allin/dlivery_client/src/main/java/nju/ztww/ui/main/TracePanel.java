@@ -41,11 +41,12 @@ public class TracePanel extends JPanel {
     	int size = traceList.size();
     	trace = new String[size];
     	for(int i=0;i<size;i++){
-    	//	trace[i] = traceist(i);
+    		trace[i] = traceList.get(i).getTrace();
     	}
     }
     public TracePanel(String id){
     	this.id = id;
+    	getTrace();
     	button.setBounds(700,500,150,50);
     	this.add(button);
     	button.addActionListener(new Listener_Return());

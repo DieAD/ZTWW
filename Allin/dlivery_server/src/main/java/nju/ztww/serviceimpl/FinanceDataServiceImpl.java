@@ -125,5 +125,10 @@ public class FinanceDataServiceImpl extends UnicastRemoteObject implements Finan
 		// TODO Auto-generated method stub
 		return financeData.totalPaymentDO();
 	}
+
+	public String getInsName(String id) throws RemoteException {
+		// TODO Auto-generated method stub
+		return financeData.findIns(id);
+	}
       
 }
