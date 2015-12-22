@@ -21,11 +21,13 @@ import nju.ztww.ui.main.ListenerEndUI;
 import nju.ztww.ui.main.Listener_Return;
 import nju.ztww.ui.main.UserInfoUI;
 import nju.ztww.ui.user.PersonalMesageUI;
+import nju.ztww.ui.user.ThemeLabelUI;
 //date 11-18 name wh
 //需要根据中转中心业务员身份知道中转中心的id
 public class StorageUi extends JFrame implements Runnable{
 	StorageNavigationPanel navigationpanel;
-    TopPanel toppanel;
+    //TopPanel toppanel;
+	ThemeLabelUI lablePanel;
     OutofStoragePanel outofStoragepanel;
     InofStoragePanel  inofStoragepanel;
     StorageCheckPanel storagecheckpanel;
@@ -65,7 +67,8 @@ public class StorageUi extends JFrame implements Runnable{
 	public  void setup(){
 		
 		navigationpanel=new StorageNavigationPanel();
-		toppanel=new TopPanel();
+		//toppanel=new TopPanel();
+		lablePanel=new ThemeLabelUI();
 		outofStoragepanel=new OutofStoragePanel();
 		inofStoragepanel=new InofStoragePanel();
 		storagecheckpanel=new StorageCheckPanel();
@@ -79,7 +82,7 @@ public class StorageUi extends JFrame implements Runnable{
 		this.setLayout(null);
 		
 		navigationpanel.setBounds(0, 100, 150, 500);
-		toppanel.setBounds(150, 0, 750, 60);
+		lablePanel.setBounds(150, 0, 750, 60);
 		outofStoragepanel.setBounds(150, 100, 750, 450);
 		inofStoragepanel.setBounds(150, 100, 750, 450);
 		storagecheckpanel.setBounds(150, 100, 750, 450);
@@ -88,7 +91,7 @@ public class StorageUi extends JFrame implements Runnable{
 		personInfo.setBounds(150, 100, 750, 450);
 		//storagebaojingpanel.setBounds(150, 100, 750, 450);
 		this.add(navigationpanel);
-		this.add(toppanel);
+		this.add(lablePanel);
 		this.add(storagecheckpanel);
 		this.add(outofStoragepanel);
 		this.add(inofStoragepanel);
@@ -101,7 +104,7 @@ public class StorageUi extends JFrame implements Runnable{
 		
 		
 		//this.add(storagebaojingpanel);
-	
+	   
 		inofStoragepanel.setVisible(false);
 		outofStoragepanel.setVisible(false);
 		storagepanpanel.setVisible(false);
@@ -130,12 +133,13 @@ public class StorageUi extends JFrame implements Runnable{
 //}
 	public ArrayList<JPanel> getPanelList(){
 		list.add(navigationpanel);
-		list.add(toppanel);
+		//list.add(toppanel);
 		list.add(storagecheckpanel);
 		list.add(outofStoragepanel);
 		list.add(inofStoragepanel);
 		list.add(storagepanpanel);
 		list.add(storagetiaopanel);
+		list.add(lablePanel);
 		list.add(personInfo);
 		return list;
 	}
