@@ -7,12 +7,17 @@ import java.util.ArrayList;
 import nju.ztww.dao.UserDO;
 import nju.ztww.service.FinanceService;
 import nju.ztww.serviceimpl.FinanceServiceImpl;
+import confligUI.MyButton;
 
 public class INIT_Table2 extends EditPanel {
 	FinanceService fs =  new FinanceServiceImpl();
+	Dialog_init2 dia = new Dialog_init2(this);
+	MyButton add  = new MyButton('c');
   public INIT_Table2(String[] strings,Object[][] objects){
 	  super(strings,objects);
-	  this.button1.addActionListener(new Listener());
+	  button1.addActionListener(new Listener());
+	  button3.addActionListener(new Listener2());
+	  this.add(add);
   }
   
   public class Listener implements ActionListener{
@@ -43,6 +48,15 @@ public class INIT_Table2 extends EditPanel {
 			tableModel.removeRow(0);
 		}
 		fs.initUser(list);
+	}
+	  
+  }
+  
+  public class Listener2 implements ActionListener {
+
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		dia.show();
 	}
 	  
   }

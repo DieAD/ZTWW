@@ -1,8 +1,11 @@
 package nju.ztww.RMI;
 
+import java.io.FileReader;
+import java.io.Reader;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
+import java.util.Properties;
 
 import nju.ztww.service.UserDataService;
 
@@ -19,13 +22,26 @@ public class RMIHelper {
 	 * 
 	 * 
 	 */
-    private String IP;
-    private String port;
+    private static String IP;
+    private static String port;
     private String serviceName;
+    static{
+    	Properties prop = new Properties();
+		Reader in;
+		try {
+			in = new FileReader("src\\main\\java\\config.properties");
+			prop.load(in);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		IP = prop.getProperty("ip");
+		port = prop.getProperty("port");
+    }
     
     public RMIHelper(String IP,String port){
-    	this.IP = IP;
-    	this.port = port;
+    	
+//    	this.IP = IP;
+//    	this.port = port;
     }
     
     public Object findService(String serviceName) {

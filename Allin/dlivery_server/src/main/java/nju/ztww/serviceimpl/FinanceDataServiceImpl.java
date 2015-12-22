@@ -120,5 +120,10 @@ public class FinanceDataServiceImpl extends UnicastRemoteObject implements Finan
 		// TODO Auto-generated method stub
 		financeData.initUser(list);
 	}
+
+	public ArrayList<PaymentPO> getAllPaymentDO() throws RemoteException {
+		// TODO Auto-generated method stub
+		return financeData.totalPaymentDO();
+	}
       
 }
