@@ -142,16 +142,17 @@ public class DBForTraceForm extends DB {
 	  
 	   db.init();
 	   TraceFormDO dos=new TraceFormDO();
-	   //dos.setGoodsid("02501");
-	   //dos.setTrace("45");
+	   dos.setGoodsid("盘点02501");
+	   dos.setTrace("2015-12-2000");
+	   //db.insert(dos, "tracetable");
 	   //list=db.queryALL("tracetable");
-	   //db.update(dos, "tracetable");
+	   db.update(dos, "tracetable");
 	   
-	   ArrayList<TraceFormDO> fdo=new ArrayList<TraceFormDO>();
-	   fdo=db.queryByID("02501", "tracetable");
-	   for(int i=0;i<fdo.size();i++){
-		   System.out.println(fdo.get(i).getTrace());
-	   }
+//	   ArrayList<TraceFormDO> fdo=new ArrayList<TraceFormDO>();
+//	   fdo=db.queryByID("盘点02501", "tracetable");
+//	   for(int i=0;i<fdo.size();i++){
+//		   System.out.println(fdo.get(i).getTrace());
+//	   }
 	   db.close();
    }
 }
