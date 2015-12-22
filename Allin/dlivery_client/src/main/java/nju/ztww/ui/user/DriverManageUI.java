@@ -111,36 +111,36 @@ public class DriverManageUI extends JPanel{
 					public void actionPerformed(ActionEvent e) {
 						driverMessageVO=(DriverMessageVO) orderServiceImpl.getOrder(10);
 						dlg= new JDialog(); 
-						dlg.setSize(new Dimension(350, 550));
+						dlg.setSize(new Dimension(400, 500));
 			            dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
 			            //身份证号
-			            carNumbertextArea.setBounds(100, 205, 150, 30);
+			            carNumbertextArea.setBounds(150, 205, 150, 30);
 			            carNumber.setIcon(null);
-			            carNumber.setBounds(0, 200, 100, 40);
+			            carNumber.setBounds(50, 200, 100, 40);
 			            //司机编号
-			            businesstextArea.setBounds(100, 55, 150, 30);
+			            businesstextArea.setBounds(150, 55, 150, 30);
 			            business.setIcon(null);
-			            business.setBounds(0, 50, 100, 40);
+			            business.setBounds(50, 50, 100, 40);
 			            //出生日期
-			            arrivetextArea.setBounds(100, 155, 150, 30);
+			            arrivetextArea.setBounds(150, 155, 150, 30);
 			            arrive.setIcon(null);
-			            arrive.setBounds(0, 150, 100, 40);
+			            arrive.setBounds(50, 150, 100, 40);
 			            //姓名
-			            cartextArea.setBounds(100, 105, 150, 30);
+			            cartextArea.setBounds(150, 105, 150, 30);
 			            car.setIcon(null);
-			            car.setBounds(0, 100, 100, 40);
+			            car.setBounds(50, 100, 100, 40);
 			            //手机
-			            orderNumbertextArea.setBounds(100, 255, 150, 30);
+			            orderNumbertextArea.setBounds(150, 255, 150, 30);
 			            orderNumber.setIcon(null);
-			            orderNumber.setBounds(0, 250, 100, 40);
+			            orderNumber.setBounds(50, 250, 100, 40);
 			            //行驶证期限
-			            deadlinetextArea.setBounds(100, 305, 150, 30);
+			            deadlinetextArea.setBounds(150, 305, 150, 30);
 			            deadline.setIcon(null);
-			            deadline.setBounds(0, 300, 100, 40);
+			            deadline.setBounds(50, 300, 100, 40);
 			            //性别
-			            driverSex.setBounds(100, 355, 150, 30);
+			            driverSex.setBounds(150, 355, 150, 30);
 			            driver.setIcon(null);
-			            driver.setBounds(0, 350, 100, 40);
+			            driver.setBounds(50, 350, 100, 40);
 			      
 			            dlg.add(driver);
 			            dlg.add(driverSex);
@@ -157,7 +157,7 @@ public class DriverManageUI extends JPanel{
 			            dlg.add(business);
 			            dlg.add(businesstextArea);
 			            dlg.add(sureButton);
-			            sureButton.setBounds(100, 450, 60, 40);
+			            sureButton.setBounds(230, 415, 70, 30);
 			            sureButton.addActionListener(listener);
 			            
 			            dlg.setLayout(null);
@@ -194,7 +194,7 @@ public class DriverManageUI extends JPanel{
 						dlg.setSize(new Dimension(350, 150));
 			            dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
 			            findtextArea.setBounds(50, 30, 150, 30);
-			            findSureButton.setBounds(100, 80, 70, 40);
+			            findSureButton.setBounds(250, 30, 70, 30);
 			            findSureButton.addActionListener(listener2);
 			            dlg.add(findSureButton);
 			            dlg.add(findtextArea);
