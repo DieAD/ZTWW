@@ -91,7 +91,7 @@ public class DBForReciveForm extends DB{
 		return list;
 	}
 	
-	public void insert(ArrayList<ReciveFormDO> list,String tableName){
+	public String insert(ArrayList<ReciveFormDO> list,String tableName){
 		String sql = "insert into "+tableName+"(id,holl,recip,realtime,courierid,exe,state)"
 				+ "values(?,?,?,?,?,?,?)";
 		
@@ -110,9 +110,9 @@ public class DBForReciveForm extends DB{
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			return "fail";
 		}
-		
+		return "success";
 	}
 	
 	public void update(ArrayList<ReciveFormDO> list,String tableName){

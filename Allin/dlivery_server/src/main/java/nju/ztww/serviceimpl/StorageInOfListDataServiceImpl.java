@@ -51,19 +51,19 @@ public class StorageInOfListDataServiceImpl extends UnicastRemoteObject
 		return null;
 	}
 
-	public void insertOut(ArrayList<StorageListLineofOutPO> arraylist,String idofcenter)
+	public String insertOut(ArrayList<StorageListLineofOutPO> arraylist,String idofcenter)
 			throws RemoteException {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
-	public void insertIn(ArrayList<StorageListLineofInPO>  arraylistinpo,String idofcenter)
+	public String insertIn(ArrayList<StorageListLineofInPO>  arraylistinpo,String idofcenter)
 			throws RemoteException {
 		// TODO Auto-generated method stub
 		
 		StorageListIn storagelistlinein=new StorageListIn();
-		storagelistlinein.insertin(arraylistinpo,idofcenter);
-		
+		String result=storagelistlinein.insertin(arraylistinpo,idofcenter);
+		return result;
 	}
 
 	public String getLastidofcenter(String idofcenter) throws RemoteException {

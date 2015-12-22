@@ -121,10 +121,10 @@ public class DBForEntryForm extends DB{
 		return list;
 	}
 
-	public void insert(ArrayList<EntryFormDO> list, String tableName) {
+	public String insert(ArrayList<EntryFormDO> list, String tableName) {
 		String sql = "insert into "
 				+ tableName
-				+ "(goodsid,entrytime,address,qu,pai,jia,wei,id,exe,state,idofcenter)values(?,?,?,?,?,?,?,?,?,?,?)";
+				+ "(goodsid,entrytime,address,qu,pai,jia,wei,id,exe,state)values(?,?,?,?,?,?,?,?,?,?)";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			for (EntryFormDO form : list) {
@@ -138,14 +138,14 @@ public class DBForEntryForm extends DB{
 				pstmt.setString(8, form.getId());
 				pstmt.setInt(9, form.getExe());
 				pstmt.setInt(10, form.getState());
-				pstmt.setString(11,form.getIdofcenter());
 
 				pstmt.executeUpdate();
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			return "fail";
 		}
+		return "success";
 	}
 	
 	public void update(ArrayList<EntryFormDO> list,String tableName){

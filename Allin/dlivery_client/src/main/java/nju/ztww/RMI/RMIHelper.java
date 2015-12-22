@@ -8,6 +8,7 @@ import java.rmi.RemoteException;
 import java.util.Properties;
 
 import nju.ztww.service.UserDataService;
+import nju.ztww.ui.main.remindDialog;
 
 public class RMIHelper {
 	/*
@@ -45,7 +46,7 @@ public class RMIHelper {
     }
     
     public Object findService(String serviceName) {
-    //	Object service ;
+    	this.serviceName=serviceName;
     	try{
     		Object	service =(Object) Naming.lookup("rmi://"+IP+":"+port+"/"+serviceName);
     		return service;
@@ -53,13 +54,14 @@ public class RMIHelper {
     		System.out.println("NOT BOUND");
     		return null;
     	}catch (RemoteException e){
-    		System.out.println("NOT CONNECTED");
-    		return null;
+    		System.out.println("和服务器断开连接");
+    		remindDialog r=new remindDialog(IP,port,serviceName);
+    		while(r.ifLine){};
+    		
+    		return r.service;
     	}
     	
     	catch(Exception e){
-    		
-    	
     		System.out.println("RMI error!");
     		return null;
     	}
