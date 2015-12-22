@@ -141,17 +141,17 @@ public class ClerkOfCenterArriveMidPanel extends JPanel{
 			 sureCarLoadButton.addActionListener(findCarLoad);
 			 sureTransferButton.addActionListener(findTransfer);
           //中转中心编号
-            transferNumbertextArea.setBounds(80, 355, width, hight);
+            transferNumbertextArea.setBounds(130, 355, width, hight);
             transferNumber.setIcon(null);
-            transferNumber.setBounds(0, 350, 100, 40);
+            transferNumber.setBounds(50, 350, 100, 40);
             //到达日期
-            businesstextArea.setBounds(80, 455, width, hight);
+            businesstextArea.setBounds(80, 405, width, hight);
             business.setIcon(null);
-            business.setBounds(0, 450, 100, 40);
+            business.setBounds(0, 400, 100, 40);
             //出发地
             arrivetextArea.setBounds(320, 355, width, hight);
             arrive.setIcon(null);
-            arrive.setBounds(240, 350, 100, 40);
+            arrive.setBounds(260, 350, 100, 40);
             
             dlg.add(findTransfertextArea);
             dlg.add(sureTransferButton);
@@ -165,7 +165,7 @@ public class ClerkOfCenterArriveMidPanel extends JPanel{
             dlg.add(businesstextArea);
             dlg.add(sureButton);
             dlg.add(SmallscrollPane);
-            sureButton.setBounds(336, 450, 60, 40);
+            sureButton.setBounds(336, 400, 70, 30);
             sureButton.addActionListener(listener);
             
             dlg.setLayout(null);
