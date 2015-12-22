@@ -43,4 +43,15 @@ public void modifyBaoJing(String idofcenter, String number) {
 	dbfortraceform.close();
 	
 }
+public void modifyDao(String idofcenter, String number) {
+	// TODO Auto-generated method stub
+	dbfortraceform.init();
+	TraceFormDO tdo=new TraceFormDO();
+	tdo.setGoodsid(idofcenter);// idofcenter 设置为盘点 加5位
+	tdo.setTrace(number);
+	System.out.println(number);
+	dbfortraceform.update(tdo, "tracetable");
+	dbfortraceform.close();
+	
+}
 }

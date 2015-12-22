@@ -7,6 +7,8 @@ public class PaymentPO implements Serializable{
 	private double money;
 	private String paymen;
 	private String payaccount;
+	
+	
 	public String getDate() {
 		return date;
 	}
