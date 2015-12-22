@@ -27,10 +27,12 @@ public class CheckOrderBL {
 	checkorderdataservice=(CheckOrderDataService)rhelper.findService("CheckOrderDataService");
 	checkorderdataservice.modifyBaoJing(idofcenter,number);
 	}
+
 //	public static void main(String[]args){
 //		CheckOrderBL s=new CheckOrderBL();
 //		ArrayList<TracePO> stringlist=new ArrayList<TracePO>();
 //		stringlist=s.findTrace("库存警戒线");
 //	}
+
 
 }
