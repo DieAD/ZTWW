@@ -55,17 +55,17 @@ public class UserManageUI extends JPanel{
 	 MyLabel timeLabel = new MyLabel("工作时间");
 	 MyLabel onLineLabel = new MyLabel("是否离职");
 	 
-	 MyTextField ID = new MyTextField("id");
-	 MyTextField name = new MyTextField("姓名");
-	 MyTextField password = new MyTextField("密码");
-	 MyTextField authority = new MyTextField("权限");
-	 MyTextField age = new MyTextField("年龄");
-	 MyTextField IDCard = new MyTextField("身份证");
-	 MyTextField sex = new MyTextField("性别");
-	 MyTextField phone = new MyTextField("联系方式");
-	 MyTextField position = new MyTextField("快递员");
-	 MyTextField time = new MyTextField("工作时间");
-	 MyTextField onLine = new MyTextField("是否离职");
+	 MyTextField ID = new MyTextField("");
+	 MyTextField name = new MyTextField("");
+	 MyTextField password = new MyTextField("");
+	 MyTextField authority = new MyTextField("");
+	 MyTextField age = new MyTextField("");
+	 MyTextField IDCard = new MyTextField("");
+	 MyTextField sex = new MyTextField("");
+	 MyTextField phone = new MyTextField("");
+	 MyTextField position = new MyTextField("");
+	 MyTextField time = new MyTextField("");
+	 MyTextField onLine = new MyTextField("");
 	
 	 private ArrayList<ManaUserVO> list = new ArrayList<ManaUserVO>();
 	 private ManaUserVO user;
@@ -171,45 +171,45 @@ public class UserManageUI extends JPanel{
             addDlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
             
             IDLabel.setBounds(50, 20, 150, 20);
-            IDLabel.setText(userVO.getID());
-            ID.setBounds(120, 20, 100, 20);
+            ID.setText(userVO.getID());
+            ID.setBounds(100, 20, 100, 20);
             nameLabel.setBounds(300, 20, 150, 20);
-            nameLabel.setText(userVO.getName());
-            name.setBounds(350, 20, 100, 20);
+            name.setText(userVO.getName());
+            name.setBounds(370, 20, 100, 20);
             passwordLabel.setBounds(50, 70, 150, 20);
-            passwordLabel.setText(userVO.getPassword());
+            password.setText(userVO.getPassword());
             password.setBounds(100, 70, 100, 20);
             authorityLabel.setBounds(300, 70, 150, 20);
-            authorityLabel.setText(userVO.getAuthority());
-            authority.setBounds(350, 70, 150, 20);
+            authority.setText(userVO.getAuthority());
+            authority.setBounds(370, 70, 150, 20);
             ageLabel.setBounds(50, 100, 150, 20);
-            ageLabel.setText(Integer.toString(userVO.getAge()));
+            age.setText(Integer.toString(userVO.getAge()));
             age.setBounds(100, 100, 150, 20);
             IDCardLabel.setBounds(300, 100, 150, 20);
-            IDCardLabel.setText(userVO.getIDCard());
-            IDCard.setBounds(350, 100, 150, 20);
+            IDCard.setText(userVO.getIDCard());
+            IDCard.setBounds(370, 100, 150, 20);
             sexLabel.setBounds(50, 150, 150, 20);
             if(userVO.getSex()==0){
-            	sexLabel.setText("男");
+            	sex.setText("男");
             }else{
-            	sexLabel.setText("女");
+            	sex.setText("女");
             }
             sex.setBounds(100, 150, 150, 20);
             phoneLabel.setBounds(300, 150, 150, 20);
-            phoneLabel.setText(userVO.getPhone());
-            phone.setBounds(350, 150, 150, 20);
+            phone.setText(userVO.getPhone());
+            phone.setBounds(370, 150, 150, 20);
             timeLabel.setBounds(300, 180, 150, 20);
-            timeLabel.setText(Integer.toString(userVO.getWorktime()));
-            time.setBounds(350, 180, 150, 20);
+            time.setText(Integer.toString(userVO.getWorktime()));
+            time.setBounds(370, 180, 150, 20);
             onLineLabel.setBounds(300, 210, 150, 20);
             if(userVO.getWetherwork()==0){
-            	onLineLabel.setText("否");
+            	onLine.setText("否");
             }else{
-            	onLineLabel.setText("是");
+            	onLine.setText("是");
             }
-            onLine.setBounds(350, 210, 150, 20);
+            onLine.setBounds(370, 210, 150, 20);
             positionLabel.setBounds(50, 180, 150, 20);
-            positionLabel.setText(userVO.getPosition());
+            position.setText(userVO.getPosition());
             position.setBounds(100, 180, 150, 20);
             sureChangeButton.setBounds(200, 250, 150, 40);
             sureChangeButton.addActionListener(sureChange);

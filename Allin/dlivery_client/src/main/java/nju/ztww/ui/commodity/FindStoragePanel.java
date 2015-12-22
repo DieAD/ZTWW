@@ -24,6 +24,7 @@ import nju.ztww.bl.commodity.StringToInt;
 import nju.ztww.serviceimpl.CommodityListServiceImpl;
 import nju.ztww.serviceimpl.OrderServiceImpl;
 import nju.ztww.serviceimpl.StorageOutListServiceImpl;
+import nju.ztww.ui.main.UserInfoUI;
 import nju.ztww.vo.DeliverFeesVO;
 import nju.ztww.vo.ShippingVO;
 import nju.ztww.vo.StorageListLineofInVO;
@@ -313,7 +314,7 @@ public class FindStoragePanel extends JPanel {
 			  find.addActionListener(new ActionListener(){
 
 					public void actionPerformed(ActionEvent e) {
-						getStorage=commodityListServiceImpl.getStock("0251111");
+						getStorage=commodityListServiceImpl.getStock(UserInfoUI.getUserID().substring(0,5));
 						for(StorageListLineofInVO storageListLineofInVO:getStorage){
 							Vector<String> row = new Vector(9);
 							row.add(storageListLineofInVO.getId());

@@ -109,7 +109,7 @@ public class OrderHandler {
 
 		case 11:
 			AcceptPO acceptPO = (AcceptPO) orderPO;
-			acceptOrderData.insert(acceptPO);
+			result=acceptOrderData.insert(acceptPO);
 			break;
 		}
 		
