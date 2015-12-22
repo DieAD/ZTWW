@@ -12,6 +12,9 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+import nju.ztww.bl.commodity.CheckOrderBL;
+import nju.ztww.po.TracePO;
 /**
  * 
  * @author Administrator
@@ -20,6 +23,7 @@ import javax.swing.JTextField;
  */
 public class TracePanel extends JPanel {
 	JFrame frame = new JFrame();
+	String id;
     partTracePanel part1 = new partTracePanel(1,"2015/11/25 12:00 ：                                                             营业厅已揽件     上海");
     partTracePanel part2 = new partTracePanel(0,"2015/11/29 01:00 ：                                                            中转中心已接收  南京");
     String[] trace = {"2015/11/25 12:00 ：                                                             营业厅已揽件     上海","2015/11/29 01:00 ：                                                            中转中心已接收  南京",
@@ -30,10 +34,18 @@ public class TracePanel extends JPanel {
     ArrayList<partTracePanel> tracelist = new ArrayList<partTracePanel>();
     Thread thread ;
     JButton button = new JButton("返回");
+    CheckOrderBL checkOrder = new CheckOrderBL();
     	
-    	
-    
-    public TracePanel(){
+    public void getTrace(){
+    	ArrayList<TracePO> traceList = checkOrder.findTrace(id);
+    	int size = traceList.size();
+    	trace = new String[size];
+    	for(int i=0;i<size;i++){
+    		
+    	}
+    }
+    public TracePanel(String id){
+    	this.id = id;
     	button.setBounds(700,500,150,50);
     	this.add(button);
     	button.addActionListener(new Listener_Return());
@@ -113,9 +125,9 @@ public class TracePanel extends JPanel {
 	    g.drawImage(title, -30, 20, 700, 70, null);
 	}
 	
-	public static void main(String[] args){
-		new TracePanel().animate();;
-	}
+//	public static void main(String[] args){
+//		new TracePanel().animate();;
+//	}
 	
 	/**
 	 * 内部类 
