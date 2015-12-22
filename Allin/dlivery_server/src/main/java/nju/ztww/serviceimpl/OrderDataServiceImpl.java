@@ -80,9 +80,9 @@ public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDa
 		return mailingTrackPO;
 	}
 
-	public void addTrack(TrackPO mailingTrackPO) throws RemoteException {
+	public String addTrack(TrackPO mailingTrackPO) throws RemoteException {
 		// TODO Auto-generated method stub
-		mailingOrderData.addTrack(mailingTrackPO);
+		return mailingOrderData.addTrack(mailingTrackPO);
 	}
 
 	public TrackPO passAcceptOrder(String order) throws RemoteException {

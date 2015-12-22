@@ -8,6 +8,7 @@ import nju.ztww.po.BusinessArrivePO;
 import nju.ztww.po.OrderPO;
 import nju.ztww.service.OrderDataService;
 import nju.ztww.ui.main.Login;
+import nju.ztww.ui.main.TipsUI;
 import nju.ztww.vo.BusinessArriveVO;
 import nju.ztww.vo.IDVO;
 import nju.ztww.vo.MailingVO;
@@ -80,6 +81,12 @@ public class BusinessArriveOrderBl {
 		orderDataService=(OrderDataService)rhelper.findService("OrderDataService");
 		String result=orderDataService.insertToDateFactory(this.list, 2);
 		orderDataService.addTrace(this.list, 2);
+		if(result.equals("success")){
+			TipsUI.tip.setText("操作成功！");
+		}else if(result.equals("fasil")){
+			TipsUI.tip.setText("数据库错误！");
+		}
+		TipsUI.ifLine=true;
 		return result;
 		
 	}

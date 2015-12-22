@@ -7,7 +7,6 @@ package nju.ztww.ui.user;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.TextArea;
 import java.awt.event.ActionEvent;
@@ -20,45 +19,42 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.TableView.TableRow;
 
-import confligUI.MyButton;
-import confligUI.MyDialog;
-import confligUI.MyLabel;
-import confligUI.MyScrollPane;
-import confligUI.MyTable;
-import confligUI.MyTextField;
 import nju.ztww.serviceimpl.OrderServiceImpl;
+import nju.ztww.ui.order.MyButton;
+import nju.ztww.ui.order.MyScrollPane;
+import nju.ztww.ui.order.MyTable;
 import nju.ztww.vo.CarManageVO;
 import nju.ztww.vo.LoadingVO;
 
 public class CarLoadingUI extends JPanel{
 	
-	private MyTextField datatextArea=new MyTextField();
-	private  MyLabel data=new  MyLabel();
-	private MyTextField businesstextArea=new MyTextField();
-	private  MyLabel business=new  MyLabel();
-	private MyTextField cartextArea=new MyTextField();
-	private  MyLabel car=new  MyLabel();
-	private MyTextField arrivetextArea=new MyTextField();
-	private  MyLabel arrive=new  MyLabel();
-	private MyTextField carNumbertextArea=new MyTextField();
-	private  MyLabel carNumber=new  MyLabel();
-	private MyTextField jianzhuangtextArea=new MyTextField();
-	private  MyLabel jianzhuang=new  MyLabel();
-	private MyTextField yayuntextArea=new MyTextField();
-	private  MyLabel yayun=new  MyLabel();
-	private MyTextField orderNumbertextArea=new MyTextField();
-	private  MyLabel orderNumber=new  MyLabel();
-	private MyTextField moneytextArea=new MyTextField();
-	private  MyLabel money=new  MyLabel();
-	private MyTextField departtextArea=new MyTextField();
-	private  MyLabel depart=new  MyLabel();
-	private MyTextField findtextArea=new MyTextField();
+	private JTextField datatextArea=new JTextField("");
+	private  JLabel data=new  JLabel();
+	private JTextField businesstextArea=new JTextField("");
+	private  JLabel business=new  JLabel();
+	private JTextField cartextArea=new JTextField("");
+	private  JLabel car=new  JLabel();
+	private JTextField arrivetextArea=new JTextField("");
+	private  JLabel arrive=new  JLabel();
+	private JTextField carNumbertextArea=new JTextField("");
+	private  JLabel carNumber=new  JLabel();
+	private JTextField jianzhuangtextArea=new JTextField("");
+	private  JLabel jianzhuang=new  JLabel();
+	private JTextField yayuntextArea=new JTextField("");
+	private  JLabel yayun=new  JLabel();
+	private JTextField orderNumbertextArea=new JTextField("");
+	private  JLabel orderNumber=new  JLabel();
+	private JTextField departtextArea=new JTextField("");
+	private  JLabel depart=new  JLabel("出发地");
+	private JTextField findtextArea=new JTextField("");
 	private OrderServiceImpl orderServiceImpl=new OrderServiceImpl();
 	private LoadingVO loadingVO;
 	
@@ -73,7 +69,7 @@ public class CarLoadingUI extends JPanel{
 	private MyButton sendButton=new MyButton('a');
 	private JButton sureButton=new JButton("确定");
 	DefaultTableModel defaultTableModel ;
-	MyDialog dlg;
+	JDialog dlg;
 	 MyTable table;
 	java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit()
 			.getScreenSize();
@@ -92,14 +88,6 @@ public class CarLoadingUI extends JPanel{
 		ImageIcon add=new ImageIcon("photo/add.gif");
 		final ImageIcon dataLable=new ImageIcon("photo/dataLable.gif");
 
-//		addButton.setBounds(500, 420, 110, 38);
-//		addButton.setIcon(add);
-//		deleteButton.setBounds(220, 420, 110, 38);
-//		deleteButton.setIcon(null);
-//		sendButton.setBounds(360, 420, 110, 38);
-//		sendButton.setIcon(null);
-//		findButton.setBounds(90, 420, 110, 38);
-//		findButton.setIcon(null);
 
 		this.setLayout(null);
 		this.add(findButton);
@@ -146,7 +134,7 @@ public class CarLoadingUI extends JPanel{
 
 					public void actionPerformed(ActionEvent e) {
 						loadingVO=(LoadingVO) orderServiceImpl.getOrder(4);
-						dlg= new MyDialog(); 
+						dlg= new JDialog(); 
 						dlg.setSize(new Dimension(350, 550));
 			            dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
 			            //装车日期
@@ -181,19 +169,15 @@ public class CarLoadingUI extends JPanel{
 			            yayuntextArea.setBounds(100, 355, 150, 30);
 			            yayun.setIcon(Yayun);
 			            yayun.setBounds(0, 350, 100, 40);
-			            //运费
-			            moneytextArea.setBounds(100, 405, 150, 30);
-			            money.setIcon(Money);
-			            money.setBounds(0, 400, 100, 40);
+			    
 			            //出发地
 			            departtextArea.setBounds(100, 455, 150, 30);
-			            depart.setIcon(Money);
+			            depart.setIcon(null);
 			            depart.setBounds(0, 450, 100, 40);
 			            
 			            dlg.add(depart);
 			            dlg.add(departtextArea);
-			            dlg.add(money);
-			            dlg.add(moneytextArea);
+
 			            dlg.add(yayun);
 			            dlg.add(yayuntextArea);
 			            dlg.add(jianzhuang);
@@ -213,10 +197,7 @@ public class CarLoadingUI extends JPanel{
 			            dlg.add(sureButton);
 			            sureButton.setBounds(100, 450, 60, 40);
 			            sureButton.addActionListener(listener);
-//			            GridLayout layout = new GridLayout(0,2);
-//			            layout.setHgap(20);
-//			            layout.setVgap(40);
-//			            dlg.setLayout(layout);
+			            
 			            dlg.setLayout(null);
 						dlg.setVisible(true);
 					}
@@ -248,7 +229,7 @@ public class CarLoadingUI extends JPanel{
 			  findButton.addActionListener(new ActionListener(){
 
 					public void actionPerformed(ActionEvent e) {
-						dlg= new MyDialog(); 
+						dlg= new JDialog(); 
 						dlg.setSize(new Dimension(350, 150));
 			            dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
 			            findtextArea.setBounds(50, 30, 150, 30);
@@ -278,9 +259,10 @@ public class CarLoadingUI extends JPanel{
 			loadingVO.setArrive(arrivetextArea.getText());
 			loadingVO.setCarNumber(carNumbertextArea.getText());
 			loadingVO.setJianZhuangName(jianzhuangtextArea.getText());
-			double money=orderServiceImpl.getMoney(departtextArea.getText(), arrivetextArea.getText(), 1);
+			String [] temp=orderNumbertextArea.getText().split(";");
+			double money=30*2*temp.length*0.01;
 			loadingVO.setMoney(money);
-			loadingVO.setOrderNumber(orderNumber.getText());
+			loadingVO.setOrderNumber(orderNumbertextArea.getText());
 			loadingVO.setQiYunNumber(cartextArea.getText());
 			loadingVO.setYaYunName(yayuntextArea.getText());
 			loadingVO.setYingYeNumber(businesstextArea.getText());
@@ -294,13 +276,12 @@ public class CarLoadingUI extends JPanel{
 			row.add(cartextArea.getText());
 			row.add(arrivetextArea.getText());
 			row.add(carNumbertextArea.getText());
-			row.add(moneytextArea.getText());
+			row.add(Double.toString(loadingVO.getMoney()));
 			datatextArea.setText("");
 			businesstextArea.setText("");
 			cartextArea.setText("");
 			arrivetextArea.setText("");
 			carNumbertextArea.setText("");
-			moneytextArea.setText("");
 			defaultTableModel.addRow(row);
 		    table.revalidate();
 		    dlg.dispose();

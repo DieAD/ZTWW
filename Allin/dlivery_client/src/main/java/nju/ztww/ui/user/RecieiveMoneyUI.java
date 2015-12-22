@@ -12,18 +12,21 @@ import java.util.Vector;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-import confligUI.MyButton;
-import confligUI.MyLabel;
-import confligUI.MyScrollPane;
-import confligUI.MyTable;
-import confligUI.MyTextField;
 import nju.ztww.serviceimpl.OrderServiceImpl;
+
 import nju.ztww.ui.main.UserInfoUI;
+
+import nju.ztww.ui.order.MyButton;
+import nju.ztww.ui.order.MyScrollPane;
+import nju.ztww.ui.order.MyTable;
+
 import nju.ztww.vo.DriverMessageVO;
 import nju.ztww.vo.LoadingVO;
 import nju.ztww.vo.ReceiveVO;
@@ -31,17 +34,17 @@ import nju.ztww.vo.SendVO;
 
 public class RecieiveMoneyUI extends JPanel{
 	
-	private MyTextField businesstextArea=new MyTextField("");
-	private  MyLabel business=new  MyLabel("收款日期");
-	private MyTextField cartextArea=new MyTextField("");
-	private  MyLabel car=new  MyLabel("收款金额");
-	private MyTextField arrivetextArea=new MyTextField("");
-	private  MyLabel arrive=new  MyLabel("收款快递员");
-	private MyTextField carNumbertextArea=new MyTextField("");
-	private  MyLabel carNumber=new  MyLabel("订单号");
-	private MyTextField orderNumbertextArea=new MyTextField("");
-	private  MyLabel orderNumber=new  MyLabel("备注");
-	private MyTextField findtextArea=new MyTextField("");
+	private JTextField businesstextArea=new JTextField("");
+	private  JLabel business=new  JLabel("收款日期");
+	private JTextField cartextArea=new JTextField("");
+	private  JLabel car=new  JLabel("收款金额");
+	private JTextField arrivetextArea=new JTextField("");
+	private  JLabel arrive=new  JLabel("收款快递员");
+	private JTextField carNumbertextArea=new JTextField("");
+	private  JLabel carNumber=new  JLabel("订单号");
+	private JTextField orderNumbertextArea=new JTextField("");
+	private  JLabel orderNumber=new  JLabel("备注");
+	private JTextField findtextArea=new JTextField("");
 	
 	private MyButton findButton=new MyButton('d');
 	private JButton findSureButton=new JButton("确定");

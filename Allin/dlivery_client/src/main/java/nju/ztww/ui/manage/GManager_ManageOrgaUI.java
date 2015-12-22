@@ -1,20 +1,18 @@
 package nju.ztww.ui.manage;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JDialog;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
-import confligUI.MyComboBox;
-import confligUI.MyLabel;
-import confligUI.MyTextField;
 import nju.ztww.dao.InsDO;
 import nju.ztww.service.ManageService;
 import nju.ztww.serviceimpl.ManageServiceImpl;
@@ -25,35 +23,33 @@ public class GManager_ManageOrgaUI extends JPanel {
 	JButton searchButton = new JButton();
 	JButton modifyButton = new JButton();
 	JButton deletebButton = new JButton();
-	MyLabel nameLabel = new MyLabel();
-	MyLabel idLabel = new MyLabel();
-	MyLabel membersLabel = new MyLabel();
-	MyTextField search = new MyTextField();
-	MyTextField name = new MyTextField();
-	MyTextField id = new MyTextField();
-	MyTextField members1 = new MyTextField();
-	MyTextField members2 = new MyTextField();
-	MyTextField members3 = new MyTextField();
+	JLabel nameLabel = new JLabel();
+	JLabel idLabel = new JLabel();
+	JLabel membersLabel = new JLabel();
+	JTextField search = new JTextField();
+	JTextField name = new JTextField();
+	JTextField id = new JTextField();
+	JTextField members1 = new JTextField();
+	JTextField members2 = new JTextField();
+	JTextField members3 = new JTextField();
 	JDialog delete;
 	JButton yesButton = new JButton();
 	JButton cancelButton = new JButton();
-	MyLabel tips = new MyLabel();
+	JLabel tips = new JLabel();
 	InsDO info;
 	ManageService MS = new ManageServiceImpl();
 
 	java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit()
 			.getScreenSize();
 
-	MyComboBox mem1 = new MyComboBox(position);
-	MyComboBox mem2 = new MyComboBox(position);
-	MyComboBox mem3 = new MyComboBox(position);
+	JComboBox mem1 = new JComboBox(position);
+	JComboBox mem2 = new JComboBox(position);
+	JComboBox mem3 = new JComboBox(position);
 
 	public GManager_ManageOrgaUI() {
 		this.setLayout(null);
-		this.setBackground(new Color(250, 240, 230));
 		search.setBounds(60, 20, 160, 30);
-		searchButton.setIcon(new ImageIcon("photo/search.png"));
-		searchButton.setBorderPainted(false);
+		searchButton.setText("查询");
 		searchButton.setBounds(240, 20, 80, 30);
 
 		nameLabel.setText("机构名称");
@@ -73,12 +69,10 @@ public class GManager_ManageOrgaUI extends JPanel {
 		mem3.setBounds(240, 300, 160, 30);
 		members3.setBounds(440, 300, 100, 30);
 
-		modifyButton.setIcon(new ImageIcon("photo/modify.png"));
-		modifyButton.setBorderPainted(false);
+		modifyButton.setText("修改");
 		modifyButton.setBounds(540, 400, 80, 30);
 
-		deletebButton.setIcon(new ImageIcon("photo/delete.png"));
-		deletebButton.setBorderPainted(false);
+		deletebButton.setText("删除");
 		deletebButton.setBounds(430, 400, 80, 30);
 		deletebButton.addActionListener(new ActionListener() {
 
@@ -154,10 +148,10 @@ public class GManager_ManageOrgaUI extends JPanel {
 	}
 
 	public class Listener2 implements ItemListener {
-		MyComboBox box;
-		MyTextField text;
+		JComboBox box;
+		JTextField text;
 
-		public Listener2(MyComboBox box, MyTextField text) {
+		public Listener2(JComboBox box, JTextField text) {
 			this.box = box;
 			this.text = text;
 		}
@@ -218,7 +212,7 @@ public class GManager_ManageOrgaUI extends JPanel {
 			MS.updateIns(ins);
 		}
 
-		public int swfit(MyComboBox box, MyTextField text) {
+		public int swfit(JComboBox box, JTextField text) {
 			int index = 0;
 			String item = (String) box.getSelectedItem();
 			if (item.equals("快递员")) {

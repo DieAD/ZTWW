@@ -6,6 +6,4 @@ import nju.ztww.po.TracePO;
 
 public interface CheckOrderDataService {
   public ArrayList<TracePO>findTrace(String id);
-
-public void modifyBaoJing(String idofcenter, String number);
 }

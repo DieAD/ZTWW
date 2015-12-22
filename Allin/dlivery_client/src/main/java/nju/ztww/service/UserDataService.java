@@ -31,7 +31,7 @@ public interface UserDataService extends Remote{
 	public UserPO findUser(String ID);
 	
 	//管理员添加用户
-	public boolean addUser(ManaUserPO user);
+	public String addUser(ManaUserPO user);
 	
 	public ArrayList<ManaUserPO> findAll();
 	

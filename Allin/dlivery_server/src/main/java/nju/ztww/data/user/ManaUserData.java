@@ -13,7 +13,7 @@ public class ManaUserData {
 	DBHelper dbHelper = new DBHelper();
     ArrayList<UserDO> list ;   
     
-	public boolean addUser(ManaUserPO user) {
+	public String addUser(ManaUserPO user) {
 		// TODO Auto-generated method stub
 		list = new ArrayList<UserDO>();
 		dbHelper.init();
@@ -32,10 +32,8 @@ public class ManaUserData {
 		userDO.setPhone(user.getPhone());
 		userDO.setTimes(user.getTimes());
 		list.add(userDO);
-		dbHelper.insert(list, "userstable");
+		String result=dbHelper.insert(list, "userstable");
 		dbHelper.close();
-		boolean result = true;
-//		System.out.println("successful!!!!!!!!");
 		return result;
 	}
 	

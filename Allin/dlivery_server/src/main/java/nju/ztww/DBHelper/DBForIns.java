@@ -35,7 +35,7 @@ public class DBForIns extends DB {
     	return form;
     }
     
-    public void update(InsDO form){
+    public String update(InsDO form){
     	String sql = "update instable set id=?, name=?,number1=?,number2=?,number3=?,number4=?,number5=?,number6=?,number7=? where id=?";
         try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -53,12 +53,12 @@ public class DBForIns extends DB {
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			return "fail";
 		}
-        
+        return "success";
     }
     
-    public void insert(InsDO form){
+    public String insert(InsDO form){
     	String sql = "insert into instable(id,name,number1,number2,number3,number4,number5,number6,number7)values(?,?,?,?,?,?,?,?,?)";
     	 try {
  			PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -76,7 +76,8 @@ public class DBForIns extends DB {
  			pstmt.executeUpdate();
  		} catch (SQLException e) {
  			// TODO Auto-generated catch block
- 			e.printStackTrace();
+ 			return "fail";
  		} 
+    	 return "success";
     }
 }

@@ -4,13 +4,9 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
-import nju.ztww.dao.AccountDO;
 import nju.ztww.dao.InsDO;
-import nju.ztww.dao.StockDO;
-import nju.ztww.dao.UserDO;
 import nju.ztww.data.finance.FinanceData;
 import nju.ztww.po.AccountPO;
-import nju.ztww.po.CarManagePO;
 import nju.ztww.po.CollectionPO;
 import nju.ztww.po.MemberPO;
 import nju.ztww.po.OrderPO;
@@ -89,36 +85,6 @@ public class FinanceDataServiceImpl extends UnicastRemoteObject implements Finan
 	public void init(ArrayList<InsDO> list) throws RemoteException {
 		// TODO Auto-generated method stub
 		financeData.init(list);
-	}
-
-	public void initCar(ArrayList<CarManagePO> listPO) throws RemoteException {
-		// TODO Auto-generated method stub
-		financeData.initCar(listPO);
-	}
-
-	public void initStock(ArrayList<StockDO> list) throws RemoteException {
-		// TODO Auto-generated method stub
-		financeData.initStock(list);
-	}
-
-	public void initAccount(AccountDO account) throws RemoteException {
-		// TODO Auto-generated method stub
-		financeData.initAccount(account);
-	}
-
-	public ArrayList<AccountDO> selectAllAccount() throws RemoteException {
-		// TODO Auto-generated method stub
-		return financeData.getAllAccount();
-	}
-
-	public void updateAccount(AccountDO account) throws RemoteException {
-		// TODO Auto-generated method stub
-		financeData.updateAccount(account);
-	}
-
-	public void initUser(ArrayList<UserDO> list) throws RemoteException {
-		// TODO Auto-generated method stub
-		financeData.initUser(list);
 	}
       
 }

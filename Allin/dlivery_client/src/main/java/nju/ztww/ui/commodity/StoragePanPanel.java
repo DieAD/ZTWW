@@ -12,7 +12,6 @@ import java.util.Vector;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -20,19 +19,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-
-
-
-
-
-import confligUI.MyButton;
-import confligUI.MyLabel;
-import confligUI.MyTextField;
-import nju.ztww.bl.commodity.CheckOrderBL;
-import nju.ztww.bl.commodity.GetStockListBL;
-import nju.ztww.bl.commodity.PanExcelDaoBL;
 import nju.ztww.po.StorageListLineofInPO;
-import nju.ztww.po.TracePO;
 import nju.ztww.service.CommodityListService;
 import nju.ztww.service.CommodityService;
 import nju.ztww.serviceimpl.CommodityListServiceImpl;
@@ -45,27 +32,20 @@ import nju.ztww.vo.StorageListVO;
 public class StoragePanPanel extends JPanel  implements ActionListener{
 	DefaultTableModel defaultTableModel;
 	JTable  table;
-	public MyLabel time=new MyLabel();
-	public MyTextField timefield=new MyTextField();
-	public MyLabel countall=new MyLabel("总数量");
-	public MyTextField countshuliang=new MyTextField(5);
+	public JLabel time=new JLabel();
+	public JTextField timefield=new JTextField();
+	public JLabel countall=new JLabel("总数量");
+	public JTextField countshuliang=new JTextField(5);
 	public JButton panagain=new JButton();
 	public JButton excel=new JButton();
-	public MyLabel baojing=new MyLabel("库存警戒线");
-	public MyTextField baojingshuliang=new MyTextField(5);
-
-	public JButton baojingxiugai=new JButton("设置新的警戒线");
-	public JTextField baojingnew=new JTextField(5);
-	public MyButton xiugai=new MyButton();
-	public JButton sure=new JButton("确定");
-	public JDialog dlg;
+	public JLabel baojing=new JLabel("库存警戒线");
+	public JTextField baojingshuliang=new JTextField(5);
 	long l = System.currentTimeMillis();
 	Date data=new Date(l);
 	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd ");
 	public ArrayList<StorageListLineofInVO> arraylist;//存储一个库存单的信息
 	public CommodityListService commodityservice=new CommodityListServiceImpl();
-	 java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit()
-				.getScreenSize();
+	
   public StoragePanPanel() {
 		this.setBackground(new Color(250, 240, 230));
 	  this.setLayout(null);
@@ -80,26 +60,19 @@ public class StoragePanPanel extends JPanel  implements ActionListener{
 	   timefield.setText(dateFormat.format(data));
 	   //重新盘点按钮
 	   panagain.setFont(font1);
-	   panagain.setBounds(450, 0, 120, 30);
+	   panagain.setBounds(550, 0, 120, 30);
 	   panagain.setIcon(new ImageIcon("photo/wj_pandian.png"));
 	   panagain.setBorderPainted(false);
 	   panagain.addActionListener(this);
 	   countall.setFont(font1);
-	   //countall.setEnabled(false);
 	   baojing.setFont(font1);
-	   baojing.setBounds(520, 370, 100, 30);
-	   baojingshuliang.setBounds(620, 370, 80, 30);
-	   baojingshuliang.setEditable(false);
-	   countall.setBounds(550,340, 60, 30);
-	   countshuliang.setBounds(620, 340, 80, 30);
-	   countshuliang.setEditable(false);
-	   excel.setBounds(580, 0, 120, 30);
+	   baojing.setBounds(400, 400, 80, 30);
+	   baojingshuliang.setBounds(480, 400, 40, 30);
+	   countall.setBounds(550,400, 60, 30);
+	   countshuliang.setBounds(620, 400, 80, 30);
+	   excel.setBounds(210, 400, 120, 30);
 	   excel.setIcon(new ImageIcon("photo/wj_excel.png"));
-	   excel.addActionListener(listenerdao);
 	   excel.setBorderPainted(false);
-	   xiugai.setBounds(580, 420, 140, 30);
-	   xiugai.setIcon(new ImageIcon("photo/ModifyAlarm.png"));
-	   xiugai.addActionListener(listenerxiugai);
 	   this.add(countall);
 	   this.add(time);
 	   this.add(timefield);
@@ -108,7 +81,6 @@ public class StoragePanPanel extends JPanel  implements ActionListener{
 	   this.add(excel);
 	   this.add(baojing);
 	   this.add(baojingshuliang);
-	   this.add(xiugai);
 	// TODO Auto-generated constructor stub
 	   Object[][] playerInfo =
 	{
@@ -131,7 +103,7 @@ public class StoragePanPanel extends JPanel  implements ActionListener{
 		//绑定滚动条
 		JScrollPane scrollPane = new JScrollPane(table);
 		 table.setRowHeight(25);
-		scrollPane.setBounds(0, 40, 700, 300);
+		scrollPane.setBounds(0, 40, 700, 360);
 		scrollPane.getViewport().setOpaque(false);
 		scrollPane.setOpaque(false);
 		this.add(scrollPane); 
@@ -139,11 +111,7 @@ public class StoragePanPanel extends JPanel  implements ActionListener{
   public void actionPerformed(ActionEvent e) {
 	// TODO Auto-generated method stub
 	//实现接口 需要传一个满足要求的arraylist
-	  defaultTableModel.setRowCount(0);
 	arraylist=commodityservice.getStock(UserInfoUI.getUserID().substring(0, 5));//ZHE 个String 是id一部分
-	CheckOrderBL checks=new CheckOrderBL();
-	ArrayList<TracePO> stringlist=new ArrayList<TracePO>();
-	stringlist=checks.findTrace("库存警戒线"+UserInfoUI.getUserID().substring(0, 5));
 	for(int i=0;i<arraylist.size();i++){
 		Vector<String> row = new Vector<String>(7);
 		row.add(arraylist.get(i).getId());
@@ -157,7 +125,7 @@ public class StoragePanPanel extends JPanel  implements ActionListener{
 	    table.revalidate();
 	}
 	countshuliang.setText(String.valueOf(arraylist.size()));
-	baojingshuliang.setText(stringlist.get(0).getTrace());
+	
 	ActionListener listenerdao=new ActionListener() {
 		
 		public void actionPerformed(ActionEvent e) {
@@ -165,55 +133,6 @@ public class StoragePanPanel extends JPanel  implements ActionListener{
 			
 		}
 	};
-  }
-ActionListener listenerxiugai=new ActionListener() {
-		
-		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
-			dlg=new JDialog();
-			dlg.setLayout(null);
-			dlg.setSize(240, 150);
-			dlg.setVisible(true);
-			dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
-			baojingxiugai.setBounds(40, 0, 140, 30);
-			baojingnew.setBounds(60,50,100,30);
-			sure.setBounds(160, 80, 80, 30);
-			sure.addActionListener(listenersure);
-			dlg.add(baojingxiugai);
-			dlg.add(baojingnew);
-			dlg.add(sure);
-			
-			
-			//baojingxiugai.removeActionListener(listenerxiugai);;
-		}
-	};
-ActionListener listenersure=new ActionListener() {
-		
-		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
-			dlg.setVisible(false);
-			//需要改到库存中
-			CheckOrderBL checks2=new CheckOrderBL();
-			String number=baojingnew.getText();
-			ArrayList<TracePO> stringlist2=new ArrayList<TracePO>();
-			checks2.modifyBaoJing("库存警戒线"+UserInfoUI.getUserID().substring(0, 5), number);
-			baojingnew.setText(null);
-			baojingshuliang.setText(number);
-			
-			
-			sure.removeActionListener(listenersure);
-		}
-	};
-ActionListener listenerdao=new ActionListener() {
-	
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		PanExcelDaoBL dao=new PanExcelDaoBL();
-		dao.dao(UserInfoUI.getUserID().substring(0,5), timefield.getText());
-		//getstockbl
-		excel.removeActionListener(listenerdao);
-	}
-};
-  }
+}
    
-
+}

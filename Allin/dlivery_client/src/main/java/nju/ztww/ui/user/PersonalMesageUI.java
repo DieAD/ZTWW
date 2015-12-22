@@ -8,10 +8,10 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
-import confligUI.MyLabel;
-import confligUI.MyTextField;
 import nju.ztww.service.UserService;
 import nju.ztww.serviceimpl.UserLoginImpl;
 import nju.ztww.ui.main.UserInfoUI;
@@ -19,22 +19,22 @@ import nju.ztww.vo.UserVO;
 
 public class PersonalMesageUI extends JPanel{
 	
-	private  MyLabel name=new  MyLabel("姓名");
-	private MyTextField nametextArea=new MyTextField("");
-	private  MyLabel sex=new  MyLabel("性别");
-	private MyTextField sextextArea=new MyTextField("");
-	private  MyLabel ID=new  MyLabel("ID");
-	private MyTextField itextArea=new MyTextField("");
-	private  MyLabel area=new  MyLabel("身份证号");
-	private MyTextField areatextArea=new MyTextField("");
-	private  MyLabel position=new  MyLabel("职位");
-	private MyTextField positiontextArea=new MyTextField("");
-	private  MyLabel age=new  MyLabel("年龄");
-	private MyTextField agetextArea=new MyTextField("");
-	private  MyLabel workyear=new  MyLabel("工作时间");
-	private MyTextField worktextArea=new MyTextField("");
-	private  MyLabel salary=new  MyLabel("薪水");
-	private MyTextField salarytextArea=new MyTextField("");
+	private  JLabel name=new  JLabel("姓名");
+	private JTextField nametextArea=new JTextField("");
+	private  JLabel sex=new  JLabel("性别");
+	private JTextField sextextArea=new JTextField("");
+	private  JLabel ID=new  JLabel("ID");
+	private JTextField itextArea=new JTextField("");
+	private  JLabel area=new  JLabel("身份证号");
+	private JTextField areatextArea=new JTextField("");
+	private  JLabel position=new  JLabel("职位");
+	private JTextField positiontextArea=new JTextField("");
+	private  JLabel age=new  JLabel("年龄");
+	private JTextField agetextArea=new JTextField("");
+	private  JLabel workyear=new  JLabel("工作时间");
+	private JTextField worktextArea=new JTextField("");
+	private  JLabel salary=new  JLabel("薪水");
+	private JTextField salarytextArea=new JTextField("");
 	
 	private JButton changeButton=new JButton();
 	private String MyID = UserInfoUI.getUserID();

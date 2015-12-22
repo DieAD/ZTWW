@@ -64,7 +64,7 @@ public class DBForTraceForm extends DB {
 	}
    public ArrayList<TraceFormDO> queryByID(String id,String tableName){
 	   ArrayList<TraceFormDO> list = new ArrayList<TraceFormDO>();
-	   String sql = "select * from "+tableName+" where goodsid='"+id+"'";
+	   String sql = "select * from "+tableName+" where goodsid="+id;
 	   try {
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
@@ -83,7 +83,7 @@ public class DBForTraceForm extends DB {
 	  
    }
    //直接插入一行
-   public void insert(TraceFormDO traceformdo, String tableName){
+   public String insert(TraceFormDO traceformdo, String tableName){
 	   String sql = "insert into "
 				+ tableName
 				+ "(goodsid,trace)values(?,?)";
@@ -95,8 +95,9 @@ public class DBForTraceForm extends DB {
 		
 	} catch (SQLException e) {
 		// TODO Auto-generated catch block
-		e.printStackTrace();
+		return "fail";
 	}
+	   return "success";
    }
 	   public ArrayList<TraceFormDO> queryALL(String tableName){
 		   ArrayList<TraceFormDO> list = new ArrayList<TraceFormDO>();
@@ -120,15 +121,11 @@ public class DBForTraceForm extends DB {
 	   }
    
    public void update(TraceFormDO traceformdo, String tableName){
-	   String sql = "update "
-				+ tableName
-				+ " set goodsid=?,trace=?"
-				+ " where goodsid=?";
+	   String sql = "update "+ tableName +" set goodsid=?,entrytime=?where goodsid=?";
 	   try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, traceformdo.getGoodsid());
 			pstmt.setString(2, traceformdo.getTrace());
-			pstmt.setString(3, traceformdo.getGoodsid());
 			pstmt.executeUpdate();
 		
 	} catch (SQLException e) {
@@ -139,16 +136,16 @@ public class DBForTraceForm extends DB {
    public static void main(String[]args){
 	   DBForTraceForm db=new  DBForTraceForm();
 	   ArrayList<TraceFormDO>list=new  ArrayList<TraceFormDO>();
+	   TraceFormDO tdo=new TraceFormDO();
 	  
+	   tdo.setTrace("上海");
+	   tdo.setGoodsid("000000002");
 	   db.init();
-	   TraceFormDO dos=new TraceFormDO();
-	   //dos.setGoodsid("02501");
-	   //dos.setTrace("45");
-	   //list=db.queryALL("tracetable");
-	   //db.update(dos, "tracetable");
+	   list=db.queryALL("tracetable");
+	   
 	   
 	   ArrayList<TraceFormDO> fdo=new ArrayList<TraceFormDO>();
-	   fdo=db.queryByID("02501", "tracetable");
+	   fdo=db.queryByID("000000002", "tracetable");
 	   for(int i=0;i<fdo.size();i++){
 		   System.out.println(fdo.get(i).getTrace());
 	   }

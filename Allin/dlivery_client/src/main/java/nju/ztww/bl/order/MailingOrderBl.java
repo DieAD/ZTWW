@@ -16,6 +16,7 @@ import nju.ztww.po.TrackPO;
 import nju.ztww.po.OrderPO;
 import nju.ztww.po.PriceDataPO;
 import nju.ztww.service.OrderDataService;
+import nju.ztww.ui.main.TipsUI;
 import nju.ztww.vo.DeliverFeesVO;
 import nju.ztww.vo.IDVO;
 import nju.ztww.vo.MailingVO;
@@ -114,7 +115,8 @@ public class MailingOrderBl {
 		return random;
 	}
 
-	public boolean passOrders(ArrayList<IDVO> list){
+	public void passOrders(ArrayList<IDVO> list){
+		String result="success";
 		 ArrayList<String> orders  = new ArrayList<String>();
 	        for(IDVO vo : list){
 	        	String temp = vo.id;
@@ -125,9 +127,18 @@ public class MailingOrderBl {
 		for(String order : orders){
 			TrackPO mailingTrackPO = orderDataService.passMailingOrder(order);
 			mailingTrackPO = adjust(mailingTrackPO);
-			orderDataService.addTrack(mailingTrackPO);
+			String temp=orderDataService.addTrack(mailingTrackPO);
+			if(temp.equals("fail")){
+				result="fail";
+			}
 		}
-		return true;
+		if(result.equals("success")){
+			TipsUI.tip.setText("操作成功！");
+		}else if(result.equals("fasil")){
+			TipsUI.tip.setText("数据库错误！");
+		}
+		TipsUI.ifLine=true;
+		
 	}
 	
 	public TrackPO adjust(TrackPO mailingTrackPO){

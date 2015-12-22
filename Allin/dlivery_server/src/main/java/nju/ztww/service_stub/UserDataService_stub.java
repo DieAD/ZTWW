@@ -40,9 +40,9 @@ public class UserDataService_stub extends UnicastRemoteObject implements UserDat
 		return null;
 	}
 
-	public boolean addUser(ManaUserPO user) throws RemoteException {
+	public String addUser(ManaUserPO user) throws RemoteException {
 		// TODO Auto-generated method stub
-		return false;
+		return null;
 	}
 
 	public ArrayList<ManaUserPO> findAll() throws RemoteException {

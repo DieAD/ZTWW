@@ -16,19 +16,19 @@ import java.util.Vector;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-import confligUI.MyButton;
-import confligUI.MyLabel;
-import confligUI.MyScrollPane;
-import confligUI.MyTable;
-import confligUI.MyTextField;
 import nju.ztww.service.UserService;
 import nju.ztww.serviceimpl.OrderServiceImpl;
 import nju.ztww.serviceimpl.UserLoginImpl;
+import nju.ztww.ui.order.MyButton;
+import nju.ztww.ui.order.MyScrollPane;
+import nju.ztww.ui.order.MyTable;
 import nju.ztww.vo.ManaUserVO;
 
 public class UserManageUI extends JPanel{
@@ -43,29 +43,29 @@ public class UserManageUI extends JPanel{
 	 JButton sureChangeButton = new JButton("确认修改");
 	 JDialog addDlg;
 	 
-	 MyLabel IDLabel = new MyLabel("ID");
-	 MyLabel nameLabel = new MyLabel("姓名");
-	 MyLabel passwordLabel = new MyLabel("密码");
-	 MyLabel authorityLabel = new MyLabel("权限");
-	 MyLabel ageLabel = new MyLabel("年龄");
-	 MyLabel IDCardLabel = new MyLabel("身份证");
-	 MyLabel sexLabel = new MyLabel("性别");
-	 MyLabel phoneLabel = new MyLabel("联系方式");
-	 MyLabel positionLabel = new MyLabel("职位");
-	 MyLabel timeLabel = new MyLabel("工作时间");
-	 MyLabel onLineLabel = new MyLabel("是否离职");
+	 JLabel IDLabel = new JLabel("ID");
+	 JLabel nameLabel = new JLabel("姓名");
+	 JLabel passwordLabel = new JLabel("密码");
+	 JLabel authorityLabel = new JLabel("权限");
+	 JLabel ageLabel = new JLabel("年龄");
+	 JLabel IDCardLabel = new JLabel("身份证");
+	 JLabel sexLabel = new JLabel("性别");
+	 JLabel phoneLabel = new JLabel("联系方式");
+	 JLabel positionLabel = new JLabel("职位");
+	 JLabel timeLabel = new JLabel("工作时间");
+	 JLabel onLineLabel = new JLabel("是否离职");
 	 
-	 MyTextField ID = new MyTextField("id");
-	 MyTextField name = new MyTextField("姓名");
-	 MyTextField password = new MyTextField("密码");
-	 MyTextField authority = new MyTextField("权限");
-	 MyTextField age = new MyTextField("年龄");
-	 MyTextField IDCard = new MyTextField("身份证");
-	 MyTextField sex = new MyTextField("性别");
-	 MyTextField phone = new MyTextField("联系方式");
-	 MyTextField position = new MyTextField("快递员");
-	 MyTextField time = new MyTextField("工作时间");
-	 MyTextField onLine = new MyTextField("是否离职");
+	 JTextField ID = new JTextField("id");
+	 JTextField name = new JTextField("姓名");
+	 JTextField password = new JTextField("密码");
+	 JTextField authority = new JTextField("权限");
+	 JTextField age = new JTextField("年龄");
+	 JTextField IDCard = new JTextField("身份证");
+	 JTextField sex = new JTextField("性别");
+	 JTextField phone = new JTextField("联系方式");
+	 JTextField position = new JTextField("快递员");
+	 JTextField time = new JTextField("工作时间");
+	 JTextField onLine = new JTextField("是否离职");
 	
 	 private ArrayList<ManaUserVO> list = new ArrayList<ManaUserVO>();
 	 private ManaUserVO user;

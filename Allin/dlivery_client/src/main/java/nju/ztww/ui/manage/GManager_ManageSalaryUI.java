@@ -12,13 +12,13 @@ import java.awt.event.ItemListener;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
-import confligUI.MyComboBox;
-import confligUI.MyLabel;
-import confligUI.MyTextField;
 import nju.ztww.dao.DCFormDO;
 import nju.ztww.po.MUserPO;
 import nju.ztww.service.ManageService;
@@ -35,33 +35,33 @@ public class GManager_ManageSalaryUI extends JPanel{
 	JButton sureButton1 = new JButton();
 	JButton sureButton2 = new JButton();
 	JButton searchButton = new JButton();
-	MyLabel positionLabel = new MyLabel();
-	MyLabel nameLabel = new MyLabel();
-	MyLabel idLabel = new MyLabel();
-	MyLabel nameLabel2 = new MyLabel();
-	MyLabel idLabel2 = new MyLabel();
-	MyLabel numLabel = new MyLabel();
-	MyLabel moneyLabel = new MyLabel();
-	MyLabel strategyLabel = new MyLabel();
-	MyLabel sumSalaryLabel = new MyLabel();
-	MyLabel fromLabel = new MyLabel();
-	MyLabel toLabel = new MyLabel();
-	MyLabel distanceLabel = new MyLabel();
-	MyLabel RMB = new MyLabel();
-	MyComboBox position = new MyComboBox(Position);
-	MyComboBox from = new MyComboBox(Places);
-	MyComboBox to = new MyComboBox(Places);
-	MyTextField id1 = new MyTextField();
-	MyTextField name2 = new MyTextField();
-	MyTextField id2 = new MyTextField();
-	MyTextField num = new MyTextField();
-	MyTextField money = new MyTextField();
-	MyTextField sumSalary = new MyTextField();
-	MyTextField distance = new MyTextField();
+	JLabel positionLabel = new JLabel();
+	JLabel nameLabel = new JLabel();
+	JLabel idLabel = new JLabel();
+	JLabel nameLabel2 = new JLabel();
+	JLabel idLabel2 = new JLabel();
+	JLabel numLabel = new JLabel();
+	JLabel moneyLabel = new JLabel();
+	JLabel strategyLabel = new JLabel();
+	JLabel sumSalaryLabel = new JLabel();
+	JLabel fromLabel = new JLabel();
+	JLabel toLabel = new JLabel();
+	JLabel distanceLabel = new JLabel();
+	JLabel RMB = new JLabel();
+	JComboBox position = new JComboBox(Position);
+	JComboBox from = new JComboBox(Places);
+	JComboBox to = new JComboBox(Places);
+	JTextField id1 = new JTextField();
+	JTextField name2 = new JTextField();
+	JTextField id2 = new JTextField();
+	JTextField num = new JTextField();
+	JTextField money = new JTextField();
+	JTextField sumSalary = new JTextField();
+	JTextField distance = new JTextField();
 	JRadioButton monthly = new JRadioButton("按月提成");
 	JRadioButton timely = new JRadioButton("按次提成");
 	//
-	JButton searchButton2  =new JButton();
+	JButton searchButton2  =new JButton("查找");
 	private ManageService MS = new ManageServiceImpl();
 	//TQ的修改
 	ButtonGroup group = new ButtonGroup ();
@@ -76,12 +76,13 @@ public class GManager_ManageSalaryUI extends JPanel{
 		// delete name jbox ;
 		nameLabel.setText("姓名");
 		nameLabel.setBounds(20, 100, 80, 30);
-		MyComboBox name1 = new MyComboBox(name);
+		JComboBox name1 = new JComboBox(name);
 		name1.setBounds(80, 100, 140, 30);
 		//change id text dy;
 		idLabel.setText("ID");
 		idLabel.setBounds(20, 180, 80, 30);
 		id1.setBounds(80, 180, 140, 30);
+		searchButton.setText("查找");
 //		searchButton.setBounds(220, 180, 70, 30);//!!!!!!!!!!!!!!
 		
 		nameLabel2.setText("姓名");
@@ -109,7 +110,7 @@ public class GManager_ManageSalaryUI extends JPanel{
 		RMB.setText("RMB");
 		RMB.setBounds(490, 200, 60, 30);
 		
-		sureButton1.setIcon(new ImageIcon("photo/Gsure.png"));
+		sureButton1.setText("确认");
 		sureButton1.setBounds(580, 200, 80, 30);
 		
 		fromLabel.setText("出发地");
@@ -122,9 +123,7 @@ public class GManager_ManageSalaryUI extends JPanel{
 		from.setBounds(50, 300, 130, 30);
 		to.setBounds(230, 300, 130, 30);
 		distance.setBounds(410, 300, 130, 30);
-		sureButton2.setIcon(new ImageIcon("photo/Gsure.png"));
-		sureButton2.setBorderPainted(false);
-		sureButton1.setBorderPainted(false);
+		sureButton2.setText("确定");
 		sureButton2.setBounds(580, 300, 80, 30);
 		this.add(positionLabel);
 		this.add(position);
@@ -158,30 +157,28 @@ public class GManager_ManageSalaryUI extends JPanel{
 		this.add(sureButton2);
 		//name1.addActionListener(new Listener1());
 		//
-		searchButton2.setBounds(220, 100, 30, 30);//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-		searchButton.setBounds(220,180,30,30);
-		searchButton.setIcon(new ImageIcon("photo/Gsearch.png"));
-		searchButton2.setIcon(new ImageIcon("photo/Gsearch.png"));
+		searchButton2.setBounds(80, 140, 70, 30);//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+		searchButton.setBounds(80,220,70,30);
 		this.add(searchButton2);
 		position.addItemListener(new Listener1(position,name1));
 		searchButton2.addActionListener(new Listener2(position,name1));
 		searchButton.addActionListener(new Listener3(name1));
 		sureButton1.addActionListener(new Listener4());
 		
-		name2.setHorizontalAlignment(MyTextField.CENTER);
+		name2.setHorizontalAlignment(JTextField.CENTER);
 		name2.setEditable(false);
-		id2.setHorizontalAlignment(MyTextField.CENTER);
+		id2.setHorizontalAlignment(JTextField.CENTER);
 		id2.setEditable(false);
-		num.setHorizontalAlignment(MyTextField.CENTER);
+		num.setHorizontalAlignment(JTextField.CENTER);
 		num.setEditable(false);
-		money.setHorizontalAlignment(MyTextField.CENTER);
+		money.setHorizontalAlignment(JTextField.CENTER);
 		money.setEditable(true);
 	}
 	
 	public class Listener1 implements ItemListener{
-		MyComboBox box  ;
-		MyComboBox boxToDis;
-		public Listener1(MyComboBox box,MyComboBox boxToDis){
+		JComboBox box  ;
+		JComboBox boxToDis;
+		public Listener1(JComboBox box,JComboBox boxToDis){
 			this.box = box;
 			this.boxToDis = boxToDis;
 		}
@@ -216,9 +213,9 @@ public class GManager_ManageSalaryUI extends JPanel{
 	
 	public class Listener2 implements ActionListener{
 		
-		private MyComboBox index;
-		private MyComboBox name;
-		public Listener2(MyComboBox index,MyComboBox name){
+		private JComboBox index;
+		private JComboBox name;
+		public Listener2(JComboBox index,JComboBox name){
 			this.index = index;
 			this.name =name;
 		}
@@ -251,8 +248,8 @@ public class GManager_ManageSalaryUI extends JPanel{
 		
 	}
 	public class Listener3 implements ActionListener{
-		MyComboBox nameBox;
-		public Listener3(MyComboBox box){
+		JComboBox nameBox;
+		public Listener3(JComboBox box){
 			this.nameBox = box;
 		}
 
@@ -298,9 +295,9 @@ public class GManager_ManageSalaryUI extends JPanel{
 
 
 	public class Listener5 implements ItemListener{
-        MyComboBox box1;
-        MyComboBox box2;
-        public Listener5(MyComboBox box1,MyComboBox box2){
+        JComboBox box1;
+        JComboBox box2;
+        public Listener5(JComboBox box1,JComboBox box2){
         	this.box1 = box1;
         	this.box2 = box2;
         	

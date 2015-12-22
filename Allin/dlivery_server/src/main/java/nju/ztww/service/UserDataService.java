@@ -40,7 +40,7 @@ public interface UserDataService extends Remote {
 	public UserPO findUser(String ID) throws RemoteException ;
 	
 	//管理员添加用户
-	public boolean addUser(ManaUserPO user) throws RemoteException;
+	public String addUser(ManaUserPO user) throws RemoteException;
 	
 	public ArrayList<ManaUserPO> findAll() throws RemoteException;
 	

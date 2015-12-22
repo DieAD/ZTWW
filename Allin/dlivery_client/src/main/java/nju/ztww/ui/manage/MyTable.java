@@ -2,7 +2,6 @@ package nju.ztww.ui.manage;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.Graphics;
 
 import javax.swing.DefaultCellEditor;
@@ -16,7 +15,6 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
 public class MyTable extends JPanel{
-	Font myFont = new Font("微软雅黑", Font.PLAIN, 12);
 	String[] head = {"  ", "单据号", "当前状态", "最后处理人", "详情"};
 	Model tableModel;
 	JTable table = new JTable();
@@ -28,7 +26,7 @@ public class MyTable extends JPanel{
 	
 	
 	public MyTable(Object[][] Orders){
-		this.setBounds(0,0,600,400);
+		this.setBounds(0,0,600,390);
 		this.init(Orders);
 		this.setBackground(new Color(250, 240, 230));
 
@@ -42,7 +40,6 @@ public class MyTable extends JPanel{
 //	tableModel = new DefaultTableModel(Orders, head);
 	tableModel = new Model(Orders, head);
 	table = new JTable(tableModel);
-	table.setFont(myFont);
 	table.getTableHeader().setBackground(new Color(249,231,212));//208,168,125
 	table.setBackground(new Color(208,168,125)); //226,203,170
 	Dimension size = table.getTableHeader().getPreferredSize();	
@@ -52,7 +49,7 @@ public class MyTable extends JPanel{
 	
 	JScrollPane scrollPane = new JScrollPane(table);
 	table.setRowHeight(25);
-	scrollPane.setBounds(0, 0, 600, 400);
+	scrollPane.setBounds(0, 0, 600, 390);
 	scrollPane.getViewport().setOpaque(false);
 	scrollPane.setOpaque(false);
 	this.add(scrollPane);

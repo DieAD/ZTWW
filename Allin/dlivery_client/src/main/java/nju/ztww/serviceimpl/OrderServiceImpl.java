@@ -26,6 +26,7 @@ import nju.ztww.bl.order.ShipingOrderBl;
 import nju.ztww.bl.order.TransferOrderBl;
 import nju.ztww.bl.order.getMoneyBl;
 import nju.ztww.service.OrderService;
+import nju.ztww.ui.main.TipsUI;
 import nju.ztww.ui.main.UserInfoUI;
 import nju.ztww.vo.AcceptVO;
 import nju.ztww.vo.BusinessArriveVO;
@@ -134,50 +135,56 @@ public class OrderServiceImpl implements OrderService{
 		case 1:
 			MailingVO mainingVO=(MailingVO)order;
 			result=mailingOrderBl.handleVO(mainingVO);
-			return result;
+			break;
 		case 2:
 			BusinessArriveVO businessArriveVO=(BusinessArriveVO) order;
 			result=businessArriveOrderBl.handleVO(businessArriveVO);
-		    return result;
+			break;
 		case 3:
 			CenterReceiveVO centerReceiveVO=(CenterReceiveVO) order;
 			result=centerReceiveOrderBl.handleVO(centerReceiveVO);
-		    return result;
+			break;
 		case 4:
 			LoadingVO loadingVO=(LoadingVO) order;
 			result=loadingOrderBl.handleVO(loadingVO);
-			return result;
+			break;
 		case 5:
 			ReceiveVO receiveVO=(ReceiveVO) order;
 			result=receiveOrderBl.handleVO(receiveVO);
-			return result;
+			break;
 		case 6:
 			SendVO sendVO=(SendVO) order;
 			result=sendOrderBl.handleVO(sendVO);
-			return result;
+			break;
 		case 7:
 			ShippingVO shippingVO=(ShippingVO) order;
 			result=shipingOrderBl.handleVO(shippingVO);
-			return result;
+			break;
 		case 8:
 			TransferVO transferVO=(TransferVO) order;
 			result=transferOrderBl.handleVO(transferVO);
-			return result;
+			break;
 		case 9:
 			CarManageVO carManageVO=(CarManageVO) order;
 			result=carManageBl.handleVO(carManageVO);
-			return result;
+			break;
 		case 10:
 			DriverMessageVO driverMessageVO=(DriverMessageVO) order;
 			result=driverMessageBl.handleVO(driverMessageVO);
-			return result;
+			break;
 		case 11:
 			AcceptVO acceptVO = (AcceptVO) order;
 			result = acceptOrderBl.handleVO(acceptVO);
-			return result;
+			break;
 		}
-		
-		return null;
+		System.out.println(result+"!!!!!!!");
+		if(result.equals("success")){
+			TipsUI.tip.setText("操作成功！");
+		}else if(result.equals("fasil")){
+			TipsUI.tip.setText("数据库错误！");
+		}
+		TipsUI.ifLine=true;
+		return result;
 	}
 	
 	public OrderVO find(String id,int number) {

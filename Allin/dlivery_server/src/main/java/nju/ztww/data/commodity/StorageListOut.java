@@ -37,7 +37,7 @@ public class StorageListOut {
 		
 	}
 	//还需要写，没写完
-	public void insertout(ArrayList<StorageListLineofOutPO> arraylistout,String idofcenter) {
+	public String insertout(ArrayList<StorageListLineofOutPO> arraylistout,String idofcenter) {
 		// TODO Auto-generated method stub
 		DBForOutStockForm dbforoutstockform=new  DBForOutStockForm();
 		ArrayList<OutStockFormDO>outstock=new ArrayList<OutStockFormDO>();
@@ -47,9 +47,9 @@ public class StorageListOut {
 			System.out.println(arraylistout.get(i).getData()+" ");
 			outstock.add(arraylistout.get(i).changetodo());
 		}
-		dbforoutstockform.insert(outstock, "outstockform");
+		String result=dbforoutstockform.insert(outstock, "outstockform");
 		dbforoutstockform.close();
-		
+		return result;
 	}
 	public void delete(String idoforder, String idofcenter) {
 		// TODO Auto-generated method stub

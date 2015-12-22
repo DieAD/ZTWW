@@ -7,6 +7,7 @@ import nju.ztww.RMI.RMIHelper;
 import nju.ztww.po.OrderPO;
 import nju.ztww.po.SendPO;
 import nju.ztww.service.OrderDataService;
+import nju.ztww.ui.main.TipsUI;
 import nju.ztww.vo.IDVO;
 import nju.ztww.vo.SendVO;
 
@@ -67,6 +68,12 @@ public class SendOrderBl {
 			}
 			orderDataService=(OrderDataService)rhelper.findService("OrderDataService");
 			 String result=orderDataService.insertToDateFactory(this.list,6);
+			 if(result.equals("success")){
+					TipsUI.tip.setText("操作成功！");
+			}else if(result.equals("fasil")){
+					TipsUI.tip.setText("数据库错误！");
+			}
+			TipsUI.ifLine=true;			 
 			return result;
 			
 		}

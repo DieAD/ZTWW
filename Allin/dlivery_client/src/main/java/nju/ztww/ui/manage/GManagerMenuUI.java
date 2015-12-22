@@ -9,8 +9,7 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-import confligUI.MyButton;
-import nju.ztww.ui.main.Listener_Return;
+import nju.ztww.ui.order.MyButton;
 
 public class GManagerMenuUI extends JPanel{
 	MyButton ViewFormsButton = new MyButton(0);
@@ -71,7 +70,6 @@ public class GManagerMenuUI extends JPanel{
 		
 		LogoutButton.setIcon(Logout);
 //		LogoutButton.setBounds(0,408,209,58);
-		LogoutButton.addActionListener(logout);
 		
 		this.add(ViewFormsButton);
 		this.add(CheckOrdersButton);
@@ -91,6 +89,7 @@ public class GManagerMenuUI extends JPanel{
 			removeButton(panel);
 			ViewFormsButton.setIcon(ViewForms2);
 			panel = 0;
+			MyButton.type=0;
 		}
 	};
 	
@@ -101,6 +100,7 @@ public class GManagerMenuUI extends JPanel{
 			removeButton(panel);
 			CheckOrdersButton.setIcon(CheckOrders2);
 			panel = 1;
+			MyButton.type=1;
 		}
 	};
 	
@@ -111,6 +111,7 @@ public class GManagerMenuUI extends JPanel{
 			removeButton(panel);
 			ManageSalaryButton.setIcon(ManageSalary2);
 			panel = 2;
+			MyButton.type=2;
 		}
 	};
 	
@@ -121,6 +122,7 @@ public class GManagerMenuUI extends JPanel{
 			removeButton(panel);
 			ManageOrgaButton.setIcon(ManageOrga2);
 			panel = 3;
+			MyButton.type=3;
 		}
 	};
 	
@@ -131,6 +133,7 @@ public class GManagerMenuUI extends JPanel{
 			removeButton(panel);
 			CheckOrderButton.setIcon(CheckOrder2);
 			panel = 4;
+			MyButton.type=4;
 		}
 	};
 	
@@ -141,16 +144,7 @@ public class GManagerMenuUI extends JPanel{
 			removeButton(panel);
 			YourMessageButton.setIcon(YourMessage2);
 			panel = 5;
-		}
-	};
-	
-	
-	ActionListener logout = new ActionListener() {
-		
-		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
-			Listener_Return re = new Listener_Return();
-			re.actionPerformed(e);
+			MyButton.type=5;
 		}
 	};
 	

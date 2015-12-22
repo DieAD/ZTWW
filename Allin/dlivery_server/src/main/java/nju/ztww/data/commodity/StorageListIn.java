@@ -42,7 +42,7 @@ public void insert(OrderPO storagelinein){
 		
 	}
 
-public void insertin(ArrayList<StorageListLineofInPO> arraylist ,String idofcenter) {
+public String insertin(ArrayList<StorageListLineofInPO> arraylist ,String idofcenter) {
 	// TODO Auto-generated method stub
 	//找到本中转中心的库存和入库信息两个表
  DBForEntryForm dbforentryform=new DBForEntryForm();
@@ -54,9 +54,9 @@ public void insertin(ArrayList<StorageListLineofInPO> arraylist ,String idofcent
 		
 	}
 	dbforentryform.init();
-	dbforentryform.insert(entryfromdolist, "entryform");
+    String result=dbforentryform.insert(entryfromdolist, "entryform");
 	dbforentryform.close();
-	
+	return result;
 	
 }
 

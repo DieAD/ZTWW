@@ -12,18 +12,18 @@ import java.util.Vector;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
-import confligUI.MyButton;
-import confligUI.MyLabel;
-import confligUI.MyScrollPane;
-import confligUI.MyTable;
-import confligUI.MyTextField;
 import nju.ztww.serviceimpl.OrderServiceImpl;
+import nju.ztww.ui.order.MyButton;
+import nju.ztww.ui.order.MyScrollPane;
+import nju.ztww.ui.order.MyTable;
 import nju.ztww.vo.BusinessArriveVO;
 import nju.ztww.vo.DriverMessageVO;
 import nju.ztww.vo.LoadingVO;
@@ -37,14 +37,14 @@ import nju.ztww.vo.ShippingVO;
  */
 public class ReceiveAndSendUI extends JPanel{
 	
-	private MyTextField businesstextArea=new MyTextField("");
-	private  MyLabel business=new  MyLabel("到达日期");
-	private MyTextField arrivetextArea=new MyTextField("");
-	private  MyLabel arrive=new  MyLabel("出发地");
-	private MyTextField orderNumbertextArea=new MyTextField("");
-	private  MyLabel orderNumber=new  MyLabel("备注");
-	private MyTextField findTransfertextArea=new MyTextField("请输入中转单号");
-	private MyTextField findArrivetextArea=new MyTextField("");
+	private JTextField businesstextArea=new JTextField("");
+	private  JLabel business=new  JLabel("到达日期");
+	private JTextField arrivetextArea=new JTextField("");
+	private  JLabel arrive=new  JLabel("出发地");
+	private JTextField orderNumbertextArea=new JTextField("");
+	private  JLabel orderNumber=new  JLabel("备注");
+	private JTextField findTransfertextArea=new JTextField("请输入中转单号");
+	private JTextField findArrivetextArea=new JTextField("");
 	
 	private JButton sureButton=new JButton("确定");
 	private JButton findArriveSureButton=new JButton("确定");

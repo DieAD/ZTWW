@@ -1,8 +1,6 @@
 package nju.ztww.dao;
 
-import java.io.Serializable;
-
-public class UserDO implements Serializable{
+public class UserDO {
      private int index;
      private String id;
      private String name;

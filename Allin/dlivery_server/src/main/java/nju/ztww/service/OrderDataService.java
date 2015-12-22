@@ -38,7 +38,7 @@ public interface OrderDataService extends Remote  {
 
 	public TrackPO passMailingOrder(String order) throws RemoteException;
 	
-	public void addTrack(TrackPO mailingTrackPO) throws RemoteException;
+	public String addTrack(TrackPO mailingTrackPO) throws RemoteException;
 	
 	public TrackPO passAcceptOrder(String order) throws RemoteException;
 

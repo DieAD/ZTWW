@@ -9,17 +9,24 @@ import nju.ztww.po.StorageListLineofOutPO;
 import nju.ztww.po.StorageListodOutPO;
 import nju.ztww.service.CommodityDataService;
 import nju.ztww.service.UserDataService;
+import nju.ztww.ui.main.TipsUI;
 
 public class StorageOutofListBL {
 	private static String IP = "127.0.0.1";
     private RMIHelper rhelper = new RMIHelper(IP,"1010");
     private CommodityDataService commoditydata;
     //两个操作 增加信息到出库列表， 在库存中删除信息
-    public void addorder(ArrayList<StorageListLineofOutPO> outList,String idofcenter){
+    public String addorder(ArrayList<StorageListLineofOutPO> outList,String idofcenter){
     	
     	commoditydata = (CommodityDataService)rhelper.findService("CommodityDataServiceOut");
-    	commoditydata.insertOut(outList, idofcenter);
-    	
+    	String result=commoditydata.insertOut(outList, idofcenter);
+    	if(result.equals("success")){
+			TipsUI.tip.setText("操作成功！");
+		}else if(result.equals("fasil")){
+			TipsUI.tip.setText("数据库错误！");
+		}
+		TipsUI.ifLine=true;
+    	return result;
     }
 
 	public void addorder(StorageListLineofOutPO storagelistlinepo) {

@@ -16,9 +16,7 @@ public class StorageListLineofInPO extends OrderPO implements Serializable {
     String jia;//架号
     String wei;//位号
     int belong;//需不需要转运
-    String idofcenter;
-	
-	public StorageListLineofInPO(int idOfOrder,String idofdanzi,String id,String data,String destination,String qu,String pai,String jia,String wei,int belong,String idofcenter) {
+	public StorageListLineofInPO(int idOfOrder,String idofdanzi,String id,String data,String destination,String qu,String pai,String jia,String wei,int belong) {
 		super(idOfOrder);
 		this.belong=belong;
 		this.id=id;
@@ -29,14 +27,7 @@ public class StorageListLineofInPO extends OrderPO implements Serializable {
 		this.jia=jia;
 		this.wei=wei;
 		this.idofdanzi=idofdanzi;
-		this.idofcenter=idofcenter;
 		// TODO Auto-generated constructor stub
-	}
-	public String getIdofcenter() {
-		return idofcenter;
-	}
-	public void setIdofcenter(String idofcenter) {
-		this.idofcenter = idofcenter;
 	}
 	public String getIdofdanzi() {
 		return idofdanzi;
@@ -94,7 +85,7 @@ public class StorageListLineofInPO extends OrderPO implements Serializable {
 	}
 	public StorageListLineofInVO changetovo() {
 		// TODO Auto-generated method stub
-		return new StorageListLineofInVO(idOfOrder,"不需要用的idofcenter" ,id, data, destination, qu, pai, jia, wei,0,idofcenter);
+		return new StorageListLineofInVO(idOfOrder,"不需要用的idofcenter" ,id, data, destination, qu, pai, jia, wei,0);
 		
 	}
 	public EntryFormDO changetoIndo(){
@@ -109,7 +100,6 @@ public class StorageListLineofInPO extends OrderPO implements Serializable {
 		entryformdo.setWei(wei);
 		entryformdo.setExe(0);
 		entryformdo.setState(belong);
-		entryformdo.setIdofcenter(idofcenter);
 		return entryformdo;
 	}
    public StockDO  changetoSdo(){
@@ -122,7 +112,6 @@ public class StorageListLineofInPO extends OrderPO implements Serializable {
 	   stockdo.setPai(pai);
 	   stockdo.setQu(qu);
 	   stockdo.setWei(wei);
-	   stockdo.setIdofcenter(idofcenter);
 	   return stockdo;
    }
 

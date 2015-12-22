@@ -11,18 +11,13 @@ import java.util.Vector;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-import confligUI.MyButton;
-import confligUI.MyComboBox;
-import confligUI.MyDialog;
-import confligUI.MyLabel;
-import confligUI.MyScrollPane;
-import confligUI.MyTable;
-import confligUI.MyTextField;
 import nju.ztww.service.OrderService;
 import nju.ztww.serviceimpl.OrderServiceImpl;
 import nju.ztww.ui.main.UserInfoUI;
@@ -33,41 +28,41 @@ public class Courier_OrderInputUI extends JPanel{
 	
 	MyButton addButton = new MyButton('b');
 	MyButton sureButton = new MyButton();
-	MyDialog addDlg ;
+	JDialog addDlg ;
 	DefaultTableModel defaultTableModel;
 	MyTable table ;
 	OrderService orderServiceImpl = new OrderServiceImpl();
 	
-	private MyLabel numbersLabel = new MyLabel();
-	private MyTextField numbers = new MyTextField();
-	private MyLabel orderNumLabel = new MyLabel();
-	private MyTextField orderNum = new MyTextField();
-	private MyLabel senderLabel = new MyLabel();
-	private MyTextField sender = new MyTextField();
-	private MyLabel ognizationLabel = new MyLabel();
-	private MyTextField ognization = new MyTextField();
-	private MyLabel senderTELLabel = new MyLabel();
-	private MyTextField senderTEL = new MyTextField();
-	private MyLabel senderPhoneLabel = new MyLabel();
-	private MyTextField senderPhone = new MyTextField();
-	private MyLabel receiverLabel = new MyLabel();
-	private MyTextField receiver = new MyTextField();
-	private MyLabel placeLabel = new MyLabel();
-	private MyTextField place = new MyTextField();
-//	private MyLabel receiverTELLabel = new MyLabel();
-//	private MyTextField receiverTEL = new MyTextField();
-	private MyLabel receiverPhoneLabel = new MyLabel();
-	private MyTextField receiverPhone = new MyTextField();
-	private MyLabel goodInfoLabel = new MyLabel();
-	private MyTextField goodInfo = new MyTextField();
-	private MyLabel costLabel = new MyLabel();
-//	private MyTextField cost = new MyTextField();
-	private MyLabel typeLabel = new MyLabel();
-	private MyTextField type = new MyTextField();
-	private MyLabel estTimeLabel = new MyLabel();
-	private MyTextField estTime = new MyTextField();
-	private MyLabel packLabel = new MyLabel();
-	private MyTextField pack = new MyTextField();
+	private JLabel numbersLabel = new JLabel();
+	private JTextField numbers = new JTextField();
+	private JLabel orderNumLabel = new JLabel();
+	private JTextField orderNum = new JTextField();
+	private JLabel senderLabel = new JLabel();
+	private JTextField sender = new JTextField();
+	private JLabel ognizationLabel = new JLabel();
+	private JTextField ognization = new JTextField();
+	private JLabel senderTELLabel = new JLabel();
+	private JTextField senderTEL = new JTextField();
+	private JLabel senderPhoneLabel = new JLabel();
+	private JTextField senderPhone = new JTextField();
+	private JLabel receiverLabel = new JLabel();
+	private JTextField receiver = new JTextField();
+	private JLabel placeLabel = new JLabel();
+	private JTextField place = new JTextField();
+//	private JLabel receiverTELLabel = new JLabel();
+//	private JTextField receiverTEL = new JTextField();
+	private JLabel receiverPhoneLabel = new JLabel();
+	private JTextField receiverPhone = new JTextField();
+	private JLabel goodInfoLabel = new JLabel();
+	private JTextField goodInfo = new JTextField();
+	private JLabel costLabel = new JLabel();
+//	private JTextField cost = new JTextField();
+	private JLabel typeLabel = new JLabel();
+	private JTextField type = new JTextField();
+	private JLabel estTimeLabel = new JLabel();
+	private JTextField estTime = new JTextField();
+	private JLabel packLabel = new JLabel();
+	private JTextField pack = new JTextField();
 	private MyButton submitButton = new MyButton('a');
 	private MyButton deleteButton = new MyButton('c');
 	private String[] pl = {"北京", "上海", "广州", "南京"};
@@ -85,7 +80,7 @@ public class Courier_OrderInputUI extends JPanel{
 //		
 //	}
 	
-	private MyComboBox<String> places = new MyComboBox<String>(pl);
+	private JComboBox<String> places = new JComboBox<String>(pl);
 	private ArrayList<MailingVO> mailingOrders = new ArrayList<MailingVO>();
 	
 	
@@ -167,7 +162,7 @@ public class Courier_OrderInputUI extends JPanel{
 				
 			}
 			mailingOrders.clear();
-			defaultTableModel.setColumnCount(0);
+			defaultTableModel.setRowCount(0);
 		}
 	};
 	
@@ -263,10 +258,10 @@ public class Courier_OrderInputUI extends JPanel{
 			String ID = UserInfoUI.getUserID();
 			businID = ID.substring(0, 8);
 			
-			addDlg = new MyDialog();
+			addDlg = new JDialog();
 			addDlg.setSize(new Dimension(600, 450));
             addDlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
-            sureButton.setIcon(new ImageIcon("photo/courierSure.png"));
+            sureButton.setText("确定");
             String  mailingOrderID = orderServiceImpl.getOrderID();
  
             numbersLabel.setBounds(50, 20, 150, 20);
@@ -305,7 +300,7 @@ public class Courier_OrderInputUI extends JPanel{
             place.setBounds(100, 210, 400, 30);
             
             goodInfoLabel.setBounds(50, 260, 150, 20);
-            goodInfoLabel.setText("货物重量");
+            goodInfoLabel.setText("货物信息");
             goodInfo.setBounds(120, 260, 150, 20);
 //            costLabel.setBounds(300, 260, 150, 20);
 //            costLabel.setText("运费");
