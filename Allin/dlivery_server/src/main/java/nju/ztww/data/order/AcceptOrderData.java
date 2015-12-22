@@ -45,7 +45,7 @@ public class AcceptOrderData {
 			receive.setExe(1);
 			ArrayList<ReciveFormDO> newList = new ArrayList<ReciveFormDO>();
 			newList.add(receive);
-			dbForReciveForm.insert(newList, "reciveform");
+			dbForReciveForm.insert(newList, "recivetable");
 
 			acceptTrackPO.setID(receive.getId());
 			acceptTrackPO.setTrack(receive.getHoll() + "/"

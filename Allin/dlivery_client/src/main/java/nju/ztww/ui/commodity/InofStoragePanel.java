@@ -117,30 +117,30 @@ public class InofStoragePanel extends JPanel{
 		public void actionPerformed(ActionEvent arg0) {
 			// TODO Auto-generated method stub
 			dlg=new JDialog();
-			dlg.setSize(new Dimension(350, 550));
+			dlg.setSize(new Dimension(350, 470));
             dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
-            ordernumberfield.setBounds(100, 5, 150, 30);
-            ordernumber.setFont(new Font("黑体",0,18));
-            ordernumber.setBounds(0, 0, 100, 40);;
-            datafield.setBounds(100, 55, 150, 30);
-            data.setFont(new Font("黑体",0,18));
-            data.setBounds(0, 50,100, 40);
-            arrivefield.setBounds(100, 105, 150, 30);
-            arrive.setFont(new Font("黑体",0,18));
-            arrive.setBounds(0, 100, 100, 40);
-            dbtype.setBounds(100, 155, 150, 30);
-           qu.setFont(new Font("黑体",0,18));
-           qu.setBounds(0, 150, 100, 40);
-            paifield.setBounds(100, 205, 150, 30);
-            pai.setFont(new Font("黑体",0,18));
-            pai.setBounds(0, 200, 100, 40);
-            jiafield.setBounds(100, 255, 150, 30);
+            ordernumberfield.setBounds(120, 5, 150, 30);
+//            ordernumber.setFont(new Font("黑体",0,18));
+            ordernumber.setBounds(20, 0, 100, 40);;
+            datafield.setBounds(120, 55, 150, 30);
+//            data.setFont(new Font("黑体",0,18));
+            data.setBounds(20, 50,100, 40);
+            arrivefield.setBounds(120, 105, 150, 30);
+//            arrive.setFont(new Font("黑体",0,18));
+            arrive.setBounds(20, 100, 100, 40);
+            dbtype.setBounds(120, 155, 150, 30);
+//           qu.setFont(new Font("黑体",0,18));
+           qu.setBounds(20, 150, 100, 40);
+            paifield.setBounds(120, 205, 150, 30);
+//            pai.setFont(new Font("黑体",0,18));
+            pai.setBounds(20, 200, 100, 40);
+            jiafield.setBounds(120, 255, 150, 30);
             
-            jia.setBounds(0, 250, 100, 40);
-            jia.setFont(new Font("黑体",0,18));
-            weifield.setBounds(100, 305, 150, 30);
-            wei.setFont(new Font("黑体",0,18));
-            wei.setBounds(0, 300, 100, 40);
+            jia.setBounds(20, 250, 100, 40);
+//            jia.setFont(new Font("黑体",0,18));
+            weifield.setBounds(120, 305, 150, 30);
+//            wei.setFont(new Font("黑体",0,18));
+            wei.setBounds(20, 300, 100, 40);
             dlg.setLayout(null);
             dlg.add(ordernumberfield);
             dlg.add(ordernumber);
@@ -157,7 +157,7 @@ public class InofStoragePanel extends JPanel{
             dlg.add(wei);
             dlg.add(weifield);
            
-            surebutton.setBounds(200, 350, 80, 40);
+            surebutton.setBounds(150, 350,100, 30);
             dlg.add(surebutton);
             
             surebutton.addActionListener(surelistener);

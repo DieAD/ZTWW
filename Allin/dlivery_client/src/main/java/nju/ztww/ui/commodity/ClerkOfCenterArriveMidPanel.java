@@ -141,13 +141,13 @@ public class ClerkOfCenterArriveMidPanel extends JPanel{
 			 sureCarLoadButton.addActionListener(findCarLoad);
 			 sureTransferButton.addActionListener(findTransfer);
           //中转中心编号
-            transferNumbertextArea.setBounds(130, 355, width, hight);
+            transferNumbertextArea.setBounds(110, 355, width, hight);
             transferNumber.setIcon(null);
-            transferNumber.setBounds(50, 350, 100, 40);
+            transferNumber.setBounds(20, 350, 100, 40);
             //到达日期
-            businesstextArea.setBounds(80, 405, width, hight);
+            businesstextArea.setBounds(110, 405, width, hight);
             business.setIcon(null);
-            business.setBounds(0, 400, 100, 40);
+            business.setBounds(20, 400, 100, 40);
             //出发地
             arrivetextArea.setBounds(320, 355, width, hight);
             arrive.setIcon(null);
