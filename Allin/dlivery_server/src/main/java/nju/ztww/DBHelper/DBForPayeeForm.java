@@ -26,6 +26,7 @@ public class DBForPayeeForm extends DB{
 					form.setExe(rs.getInt(6));
 					form.setState(rs.getInt(7));
 					form.setDate(rs.getString(8));
+					form.setHoll(rs.getString(9));
 					list.add(form);
 				}
 			} catch (SQLException e) {
@@ -53,6 +54,7 @@ public class DBForPayeeForm extends DB{
 				form.setExe(rs.getInt(6));
 				form.setState(rs.getInt(7));
 				form.setDate(rs.getString(8));
+				form.setHoll(rs.getString(9));
 				list.add(form);
 			}
 		} catch (SQLException e) {
@@ -93,9 +95,9 @@ public class DBForPayeeForm extends DB{
     }
     
     
-    public void insert(ArrayList<PayeeFormDO> list,String tableName){
-    	String sql = "insert into "+tableName+"(id,goodsid,courierid,money,exe,state)"
-    			+ "values(?,?,?,?,?,?,?)";
+    public String insert(ArrayList<PayeeFormDO> list,String tableName){
+    	String sql = "insert into "+tableName+"(id,goodsid,courierid,money,exe,state,date,holl)"
+    			+ "values(?,?,?,?,?,?,?,?)";
     	
     	try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -107,17 +109,18 @@ public class DBForPayeeForm extends DB{
 				pstmt.setInt(5, form.getExe());
 				pstmt.setInt(6, form.getState());
 				pstmt.setString(7, form.getDate());
+				pstmt.setString(8, form.getHoll());
 				pstmt.executeUpdate();
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-    	
+    	return "success";
     }
     
-    public void update(ArrayList<PayeeFormDO> list,String tableName){
-    	String sql = "update "+tableName+" set id=?,goodsid=?,courierid=?,money=?,exe=?,state=?,date=? where id=?";
+    public String update(ArrayList<PayeeFormDO> list,String tableName){
+    	String sql = "update "+tableName+" set id=?,goodsid=?,courierid=?,money=?,exe=?,state=?,date=?,holl=? where id=?";
     	try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			for(PayeeFormDO form : list){
@@ -128,14 +131,16 @@ public class DBForPayeeForm extends DB{
 				pstmt.setInt(5, form.getExe());
 				pstmt.setInt(6, form.getState());
 				pstmt.setString(7,form.getDate());
-				pstmt.setString(8, form.getId());
+				pstmt.setString(8,form.getHoll());
+				pstmt.setString(9, form.getId());
 				
 				pstmt.executeUpdate();
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			return "fail";
 		}
+    	return "success";
     }
     
     public ArrayList<PayeeFormDO> totalCollection(String tableName){

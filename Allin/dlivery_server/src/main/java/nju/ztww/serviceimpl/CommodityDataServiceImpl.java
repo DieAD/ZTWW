@@ -49,16 +49,16 @@ public class CommodityDataServiceImpl extends UnicastRemoteObject implements Com
 		return null;
 	}
 
-	public void insertOut(ArrayList<StorageListLineofOutPO>  arraylistoutpo,String idofcenter)
+	public String insertOut(ArrayList<StorageListLineofOutPO>  arraylistoutpo,String idofcenter)
 			throws RemoteException {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
-	public void insertIn(ArrayList<StorageListLineofInPO>  arraylistinpo,String idofcenter)
+	public String insertIn(ArrayList<StorageListLineofInPO>  arraylistinpo,String idofcenter)
 			throws RemoteException {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 	public String getLastidofcenter(String idofcenter) throws RemoteException {

@@ -246,10 +246,12 @@ public class Courier_OrderInputUI extends JPanel{
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			int selected = table.getSelectedRow();
+			if(selected>=0&&mailingOrders.size()!=0){
+				
+				mailingOrders.remove(selected); //暂时不能删除第一个
+			}
 			defaultTableModel.removeRow(selected);
-			System.out.println("selected = "+selected);
-			mailingOrders.remove(selected-1); //暂时不能删除第一个
-		}
+			}
 	};
 
 	ActionListener add = new ActionListener() {

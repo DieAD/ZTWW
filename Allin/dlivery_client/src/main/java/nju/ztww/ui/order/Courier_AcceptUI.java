@@ -234,8 +234,10 @@ public class Courier_AcceptUI extends JPanel{
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			int selected = table.getSelectedRow();
+			if(selected>=0&&acceptOrders.size()!=0){
+				acceptOrders.remove(selected);
+			}
 			de.removeRow(selected);
-			acceptOrders.remove(selected-1);
 		}
 	};
 	
