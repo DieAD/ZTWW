@@ -169,7 +169,7 @@ public class Courier_AcceptUI extends JPanel{
 		{/* for Table*/
 			Object[][] Accept = 
 				{
-					{"H12", "123455", "Jerry", "2015/11/2  14:00", "123456789"}
+				
 				};
 			String[] names = {"营业厅编号", "收件信息编号", "收件人", "收件时间", "快递员编号"};
 		

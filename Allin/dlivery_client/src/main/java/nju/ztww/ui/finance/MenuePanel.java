@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
+import nju.ztww.ui.main.Listener_Return;
 import confligUI.MyButton;
 
 public class MenuePanel extends JPanel {
@@ -18,6 +19,9 @@ public class MenuePanel extends JPanel {
        MyButton benefitButton = new MyButton(3);
        MyButton businessButton = new MyButton(4);
        MyButton initButton = new MyButton(5);
+       MyButton personInfoButton = new MyButton(6);
+       MyButton checkOrderButton  = new MyButton(7);
+       MyButton logoutButton = new MyButton(8);
        
 
 	   final ImageIcon accout = new ImageIcon("photo/account.png");
@@ -26,12 +30,18 @@ public class MenuePanel extends JPanel {
 	   final ImageIcon benefit = new ImageIcon("photo/benefit.png");
 	   final ImageIcon init = new ImageIcon("photo/init.png");
 	   final ImageIcon business = new ImageIcon("photo/business.png");
+	   ImageIcon perIn = new ImageIcon("photo/PersonInfo.png");
+	   ImageIcon check = new ImageIcon("photo/CheckOrder.png");
+	   ImageIcon lo = new ImageIcon("photo/Logout.png");
 	   ImageIcon accout2 = new ImageIcon("photo/account2.png");
 	  ImageIcon collection2 = new ImageIcon("photo/collection2.png");
 	   ImageIcon payment2 = new ImageIcon("photo/payment2.png");
 	   ImageIcon benefit2 = new ImageIcon("photo/benefit2.png");
 	   ImageIcon init2 = new ImageIcon("photo/init2.png");
 	   ImageIcon business2 = new ImageIcon("photo/business2.png");
+	   ImageIcon perIn2 = new ImageIcon("photo/PersonInfo2.png");
+	   ImageIcon check2 = new ImageIcon("photo/CheckOrder2.png");
+	   ImageIcon lo2 = new ImageIcon("photo/Logout2.png");
        int panel = 0;
 //       public static int width = 209;
 //       public static int height = 58;
@@ -51,6 +61,9 @@ public class MenuePanel extends JPanel {
     	   benefitButton.addActionListener(benefitListener);
     	   businessButton.addActionListener(businessListener);
     	   initButton.addActionListener(initListener);
+    	   personInfoButton.addActionListener(yourMessage);
+    	   checkOrderButton.addActionListener(checkOrder);
+    	   logoutButton.addActionListener(logout);
 //    	   accountButton.setBounds(0, 60, width, height);
 //    	   collectionButton.setBounds(0,60+height*1,width,height);
 //    	   paymentButton.setBounds(0, 60+height*2, width, height);
@@ -64,6 +77,9 @@ public class MenuePanel extends JPanel {
     	   this.add(collectionButton);
     	   this.add(paymentButton);
     	   this.add(initButton);
+    	   this.add(personInfoButton);
+    	   this.add(checkOrderButton);
+    	   this.add(logoutButton);
     	  
        }
        public void setPicture(){
@@ -75,6 +91,9 @@ public class MenuePanel extends JPanel {
     	   benefitButton.setIcon(benefit);
     	   initButton.setIcon(init);
     	   businessButton.setIcon(business);
+    	   personInfoButton.setIcon(perIn);
+    	   checkOrderButton.setIcon(check);
+    	   logoutButton.setIcon(lo);
        }
 //       public void paintComponent(Graphics g){
 //   		super.paintComponent(g);
@@ -144,6 +163,35 @@ public class MenuePanel extends JPanel {
 				panel = 5;
 			}
 		};
+		
+		ActionListener yourMessage = new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				removeButton(panel);
+				personInfoButton.setIcon(perIn2);
+				panel = 6;
+			}
+		};
+		
+		ActionListener checkOrder = new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				removeButton(panel);
+				checkOrderButton.setIcon(check2);
+				panel = 7;
+			}
+		};
+		
+		ActionListener logout = new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				Listener_Return re = new Listener_Return();
+				re.actionPerformed(e);
+			}
+		};
 	
 	private void removeButton(int n){
 
@@ -154,6 +202,8 @@ public class MenuePanel extends JPanel {
 		case 3: benefitButton.setIcon(benefit);break;
 		case 4: businessButton.setIcon(business);break;
 		case 5: initButton.setIcon(init);break;
+		case 6: personInfoButton.setIcon(perIn);break;
+		case 7: checkOrderButton.setIcon(check);break;
 		default:
 			break;
 		}
