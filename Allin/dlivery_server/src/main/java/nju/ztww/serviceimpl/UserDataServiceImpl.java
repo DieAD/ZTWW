@@ -42,9 +42,9 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 		return user;
 	}
 
-	public boolean addUser(ManaUserPO user) throws RemoteException {
+	public String addUser(ManaUserPO user) throws RemoteException {
 		// TODO Auto-generated method stub
-		boolean result = manaUserData.addUser(user);
+		String result = manaUserData.addUser(user);
 		return result;
 	}
 

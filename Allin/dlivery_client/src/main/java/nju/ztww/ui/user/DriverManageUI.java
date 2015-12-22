@@ -12,17 +12,17 @@ import java.util.Vector;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-import confligUI.MyButton;
-import confligUI.MyLabel;
-import confligUI.MyScrollPane;
-import confligUI.MyTable;
-import confligUI.MyTextField;
 import nju.ztww.serviceimpl.OrderServiceImpl;
+import nju.ztww.ui.order.MyButton;
+import nju.ztww.ui.order.MyScrollPane;
+import nju.ztww.ui.order.MyTable;
 import nju.ztww.vo.CarManageVO;
 import nju.ztww.vo.DriverMessageVO;
 import nju.ztww.vo.LoadingVO;
@@ -34,21 +34,21 @@ import nju.ztww.vo.LoadingVO;
  */
 public class DriverManageUI extends JPanel{
 
-	private MyTextField businesstextArea=new MyTextField("");
-	private  MyLabel business=new  MyLabel("司机编号");
-	private MyTextField cartextArea=new MyTextField("");
-	private  MyLabel car=new  MyLabel("姓名");
-	private MyTextField driverSex=new MyTextField("");
-	private  MyLabel driver=new  MyLabel("性别");
-	private MyTextField arrivetextArea=new MyTextField("");
-	private  MyLabel arrive=new  MyLabel("出生日期");
-	private MyTextField carNumbertextArea=new MyTextField("");
-	private  MyLabel carNumber=new  MyLabel("身份证号");
-	private MyTextField orderNumbertextArea=new MyTextField("");
-	private  MyLabel orderNumber=new  MyLabel("手机");
-	private MyTextField deadlinetextArea=new MyTextField("");
-	private  MyLabel deadline=new  MyLabel("行驶证期限");
-	private MyTextField findtextArea=new MyTextField("");
+	private JTextField businesstextArea=new JTextField("");
+	private  JLabel business=new  JLabel("司机编号");
+	private JTextField cartextArea=new JTextField("");
+	private  JLabel car=new  JLabel("姓名");
+	private JTextField driverSex=new JTextField("");
+	private  JLabel driver=new  JLabel("性别");
+	private JTextField arrivetextArea=new JTextField("");
+	private  JLabel arrive=new  JLabel("出生日期");
+	private JTextField carNumbertextArea=new JTextField("");
+	private  JLabel carNumber=new  JLabel("身份证号");
+	private JTextField orderNumbertextArea=new JTextField("");
+	private  JLabel orderNumber=new  JLabel("手机");
+	private JTextField deadlinetextArea=new JTextField("");
+	private  JLabel deadline=new  JLabel("行驶证期限");
+	private JTextField findtextArea=new JTextField("");
 	
 	private ArrayList<DriverMessageVO> allDriverMessageVO=new ArrayList<DriverMessageVO>();
 	
@@ -111,36 +111,36 @@ public class DriverManageUI extends JPanel{
 					public void actionPerformed(ActionEvent e) {
 						driverMessageVO=(DriverMessageVO) orderServiceImpl.getOrder(10);
 						dlg= new JDialog(); 
-						dlg.setSize(new Dimension(400, 500));
+						dlg.setSize(new Dimension(350, 550));
 			            dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
 			            //身份证号
-			            carNumbertextArea.setBounds(150, 205, 150, 30);
+			            carNumbertextArea.setBounds(100, 205, 150, 30);
 			            carNumber.setIcon(null);
-			            carNumber.setBounds(50, 200, 100, 40);
+			            carNumber.setBounds(0, 200, 100, 40);
 			            //司机编号
-			            businesstextArea.setBounds(150, 55, 150, 30);
+			            businesstextArea.setBounds(100, 55, 150, 30);
 			            business.setIcon(null);
-			            business.setBounds(50, 50, 100, 40);
+			            business.setBounds(0, 50, 100, 40);
 			            //出生日期
-			            arrivetextArea.setBounds(150, 155, 150, 30);
+			            arrivetextArea.setBounds(100, 155, 150, 30);
 			            arrive.setIcon(null);
-			            arrive.setBounds(50, 150, 100, 40);
+			            arrive.setBounds(0, 150, 100, 40);
 			            //姓名
-			            cartextArea.setBounds(150, 105, 150, 30);
+			            cartextArea.setBounds(100, 105, 150, 30);
 			            car.setIcon(null);
-			            car.setBounds(50, 100, 100, 40);
+			            car.setBounds(0, 100, 100, 40);
 			            //手机
-			            orderNumbertextArea.setBounds(150, 255, 150, 30);
+			            orderNumbertextArea.setBounds(100, 255, 150, 30);
 			            orderNumber.setIcon(null);
-			            orderNumber.setBounds(50, 250, 100, 40);
+			            orderNumber.setBounds(0, 250, 100, 40);
 			            //行驶证期限
-			            deadlinetextArea.setBounds(150, 305, 150, 30);
+			            deadlinetextArea.setBounds(100, 305, 150, 30);
 			            deadline.setIcon(null);
-			            deadline.setBounds(50, 300, 100, 40);
+			            deadline.setBounds(0, 300, 100, 40);
 			            //性别
-			            driverSex.setBounds(150, 355, 150, 30);
+			            driverSex.setBounds(100, 355, 150, 30);
 			            driver.setIcon(null);
-			            driver.setBounds(50, 350, 100, 40);
+			            driver.setBounds(0, 350, 100, 40);
 			      
 			            dlg.add(driver);
 			            dlg.add(driverSex);
@@ -157,7 +157,7 @@ public class DriverManageUI extends JPanel{
 			            dlg.add(business);
 			            dlg.add(businesstextArea);
 			            dlg.add(sureButton);
-			            sureButton.setBounds(230, 415, 70, 30);
+			            sureButton.setBounds(100, 450, 60, 40);
 			            sureButton.addActionListener(listener);
 			            
 			            dlg.setLayout(null);
@@ -194,7 +194,7 @@ public class DriverManageUI extends JPanel{
 						dlg.setSize(new Dimension(350, 150));
 			            dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
 			            findtextArea.setBounds(50, 30, 150, 30);
-			            findSureButton.setBounds(250, 30, 70, 30);
+			            findSureButton.setBounds(100, 80, 70, 40);
 			            findSureButton.addActionListener(listener2);
 			            dlg.add(findSureButton);
 			            dlg.add(findtextArea);

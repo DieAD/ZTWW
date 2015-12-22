@@ -13,23 +13,26 @@ import java.util.Vector;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JDialog;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-import confligUI.MyButton;
-import confligUI.MyComboBox;
-import confligUI.MyLabel;
-import confligUI.MyScrollPane;
-import confligUI.MyTable;
-import confligUI.MyTextField;
 import nju.ztww.bl.commodity.StringToInt;
 import nju.ztww.service.CommodityService;
 import nju.ztww.serviceimpl.CommodityServiceImp;
 import nju.ztww.serviceimpl.StorageOutListServiceImpl;
+
 import nju.ztww.ui.main.UserInfoUI;
+
+import nju.ztww.ui.order.MyButton;
+import nju.ztww.ui.order.MyScrollPane;
+import nju.ztww.ui.order.MyTable;
+
 import nju.ztww.vo.OrderVO;
 import nju.ztww.vo.StorageListLineofOutVO;
 import nju.ztww.vo.StorageListVO;
@@ -45,23 +48,23 @@ public class OutofStoragePanel extends JPanel {
    public MyButton  submitofbutton=new MyButton('a');
    public MyButton deletebutton=new MyButton('c');
    public CommodityService commodity=new StorageOutListServiceImpl();
-   public MyLabel submitlabel=new MyLabel();
+   public JLabel submitlabel=new JLabel();
    java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit()
 			.getScreenSize();
-   public MyLabel ordernumber=new MyLabel("快递编号");
-   public MyLabel data=new MyLabel("出库日期");
-   public MyLabel arrive=new MyLabel("目的地");
-   public MyLabel zhuangyun=new MyLabel("装运形式");
-   public MyLabel yunshu=new MyLabel("运输编号");
-   public MyTextField ordernumberfield=new MyTextField();
-   public MyTextField datafield=new MyTextField();
-   public MyTextField arrivefield=new MyTextField();
-   public MyTextField zhuangyunfield=new MyTextField();
-   public MyTextField yunshufield=new MyTextField();
+   public JLabel ordernumber=new JLabel("快递编号");
+   public JLabel data=new JLabel("出库日期");
+   public JLabel arrive=new JLabel("目的地");
+   public JLabel zhuangyun=new JLabel("装运形式");
+   public JLabel yunshu=new JLabel("运输编号");
+   public JTextField ordernumberfield=new JTextField();
+   public JTextField datafield=new JTextField();
+   public JTextField arrivefield=new JTextField();
+   public JTextField zhuangyunfield=new JTextField();
+   public JTextField yunshufield=new JTextField();
    long l = System.currentTimeMillis();
    Date time=new Date(l);
   SimpleDateFormat dateFormat = new SimpleDateFormat("yyMMdd");
-   public MyComboBox dbtype = new MyComboBox();
+   public JComboBox dbtype = new JComboBox();
     
    public ArrayList<StorageListLineofOutVO>arraylist=new ArrayList<StorageListLineofOutVO>();
    public OutofStoragePanel() {
@@ -173,7 +176,7 @@ public class OutofStoragePanel extends JPanel {
 		String idofcenter=UserInfoUI.getUserID().substring(0, 5);
         String index=UserInfoUI.getUserID().substring(0,8)+dateFormat.format(time)+commodity.getLastidofcenter(idofcenter);
 		StringToInt way=new StringToInt();
-		storagelineout=new StorageListLineofOutVO(index,ordernumberfield.getText(), datafield.getText(), arrivefield.getText(),way.changetoint(dbtype.getSelectedItem().toString()), yunshufield.getText(),idofcenter);
+		storagelineout=new StorageListLineofOutVO(index,ordernumberfield.getText(), datafield.getText(), arrivefield.getText(),way.changetoint(dbtype.getSelectedItem().toString()), yunshufield.getText());
       
 		
 

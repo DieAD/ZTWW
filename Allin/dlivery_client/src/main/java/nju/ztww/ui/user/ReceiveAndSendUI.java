@@ -12,18 +12,18 @@ import java.util.Vector;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
-import confligUI.MyButton;
-import confligUI.MyLabel;
-import confligUI.MyScrollPane;
-import confligUI.MyTable;
-import confligUI.MyTextField;
 import nju.ztww.serviceimpl.OrderServiceImpl;
+import nju.ztww.ui.order.MyButton;
+import nju.ztww.ui.order.MyScrollPane;
+import nju.ztww.ui.order.MyTable;
 import nju.ztww.vo.BusinessArriveVO;
 import nju.ztww.vo.DriverMessageVO;
 import nju.ztww.vo.LoadingVO;
@@ -37,18 +37,18 @@ import nju.ztww.vo.ShippingVO;
  */
 public class ReceiveAndSendUI extends JPanel{
 	
-	private MyTextField businesstextArea=new MyTextField("");
-	private  MyLabel business=new  MyLabel("到达日期");
-	private MyTextField arrivetextArea=new MyTextField("");
-	private  MyLabel arrive=new  MyLabel("出发地");
-	private MyTextField orderNumbertextArea=new MyTextField("");
-	private  MyLabel orderNumber=new  MyLabel("备注");
-	private MyTextField findTransfertextArea=new MyTextField("请输入中转单号");
-	private MyTextField findArrivetextArea=new MyTextField("");
+	private JTextField businesstextArea=new JTextField("");
+	private  JLabel business=new  JLabel("到达日期");
+	private JTextField arrivetextArea=new JTextField("");
+	private  JLabel arrive=new  JLabel("出发地");
+	private JTextField orderNumbertextArea=new JTextField("");
+	private  JLabel orderNumber=new  JLabel("备注");
+	private JTextField findTransfertextArea=new JTextField("请输入中转单号");
+	private JTextField findArrivetextArea=new JTextField("");
 	
 	private JButton sureButton=new JButton("确定");
 	private JButton findArriveSureButton=new JButton("确定");
-	private JButton sureTransferButton=new JButton();
+	private JButton sureTransferButton=new JButton("确定");
 	
 	 private MyButton findArriveButton=new MyButton('d');
      private MyButton deleteReceiveButton=new MyButton('c');
@@ -126,21 +126,20 @@ public class ReceiveAndSendUI extends JPanel{
 						 findTransfertextArea.setBounds(100, 40, width, hight);
 						 sureTransferButton.setBounds(280,40 , 80, 25);
 						 sureTransferButton.addActionListener(findTransfer);
-						 sureTransferButton.setIcon(new ImageIcon("photo/BusinessSure.png"));
 			            //到达日期
-			            businesstextArea.setBounds(120, 355, width, hight);
+			            businesstextArea.setBounds(80, 355, width, hight);
 			            business.setIcon(null);
-			            business.setBounds(50, 350, 100, 40);
+			            business.setBounds(0, 350, 100, 40);
 			            //出发地
-			            arrivetextArea.setBounds(120, 405, width, hight);
+			            arrivetextArea.setBounds(80, 455, width, hight);
 			            arrive.setIcon(null);
-			            arrive.setBounds(50, 400, 100, 40);
+			            arrive.setBounds(0, 450, 100, 40);
 			           
 			           
 			            //备注
 			            orderNumbertextArea.setBounds(320, 355, width, hight);
 			            orderNumber.setIcon(null);
-			            orderNumber.setBounds(270, 350, 100, 40);
+			            orderNumber.setBounds(240, 350, 100, 40);
 			            
 			            dlg.add(findTransfertextArea);
 			            dlg.add(sureTransferButton);
@@ -152,7 +151,7 @@ public class ReceiveAndSendUI extends JPanel{
 			            dlg.add(business);
 			            dlg.add(businesstextArea);
 			            dlg.add(sureButton);
-			            sureButton.setBounds(336, 400, 70, 30);
+			            sureButton.setBounds(336, 450, 60, 40);
 			            sureButton.addActionListener(listener);
 			            
 			            dlg.setLayout(null);
@@ -191,7 +190,7 @@ public class ReceiveAndSendUI extends JPanel{
 						dlg.setSize(new Dimension(350, 150));
 			            dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
 			            findArrivetextArea.setBounds(50, 30, 150, 30);
-			            findArriveSureButton.setBounds(240, 30, 70, 30);
+			            findArriveSureButton.setBounds(100, 80, 70, 40);
 			            findArriveSureButton.addActionListener(listener3);
 			            dlg.add(findArriveSureButton);
 			            dlg.add(findArrivetextArea);

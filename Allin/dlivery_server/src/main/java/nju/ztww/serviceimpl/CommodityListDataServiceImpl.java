@@ -64,19 +64,19 @@ public class CommodityListDataServiceImpl extends UnicastRemoteObject implements
 		  
 	}
 
-	public void changeExeAddStock(ArrayList<String> list)
+	public String changeExeAddStock(ArrayList<String> list)
 			throws RemoteException {
 		// TODO Auto-generated method stub
 		HandleExe handle=new HandleExe();
-		handle.changeExeAddStock(list);
-		
+		String result=handle.changeExeAddStock(list);
+		return result;
 	}
-	public void changeExeDeleteStock(ArrayList<String> list)
+	public String changeExeDeleteStock(ArrayList<String> list)
 			throws RemoteException {
 		// TODO Auto-generated method stub
 		HandleExe handle=new HandleExe();
-		handle.changeExeDeleteStock(list);
-		
+		String result=handle.changeExeDeleteStock(list);
+		return result;
 	}
 
 	public ArrayList<StorageListLineofInPO> getStockByQu(String string,

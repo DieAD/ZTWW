@@ -91,7 +91,7 @@ public class DBForReciveForm extends DB{
 		return list;
 	}
 	
-	public void insert(ArrayList<ReciveFormDO> list,String tableName){
+	public String insert(ArrayList<ReciveFormDO> list,String tableName){
 		String sql = "insert into "+tableName+"(id,holl,recip,realtime,courierid,exe,state)"
 				+ "values(?,?,?,?,?,?,?)";
 		
@@ -110,12 +110,12 @@ public class DBForReciveForm extends DB{
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			return "fail";
 		}
-		
+		return "success";
 	}
 	
-	public void update(ArrayList<ReciveFormDO> list,String tableName){
+	public String update(ArrayList<ReciveFormDO> list,String tableName){
 		String sql = " update "+tableName+" set id=?,holl=?,recip=?,realtime=?,courierid=?,exe=?,state=? where id=?";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -133,9 +133,9 @@ public class DBForReciveForm extends DB{
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			return "fail";
 		}
-		
+		return "success";
 	}
 	public void delete(String ID,String tableName){
 		 String sql = "delete from "+tableName+" where ordernumber="+ID;

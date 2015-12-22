@@ -3,11 +3,7 @@ package nju.ztww.serviceimpl;
 import java.util.ArrayList;
 
 import nju.ztww.bl.finance.FinanceBL;
-import nju.ztww.dao.AccountDO;
 import nju.ztww.dao.InsDO;
-import nju.ztww.dao.StockDO;
-import nju.ztww.dao.UserDO;
-import nju.ztww.po.CarManagePO;
 import nju.ztww.service.FinanceService;
 import nju.ztww.vo.AccountVO;
 import nju.ztww.vo.BenefitVO;
@@ -17,9 +13,8 @@ import nju.ztww.vo.PCVO;
 import nju.ztww.vo.PaymentVO;
 import nju.ztww.vo.SalaryVO;
 
-public class FinanceServiceImpl implements FinanceService {
-	private FinanceBL financeBL = new FinanceBL();
-
+public class FinanceServiceImpl implements FinanceService{
+    private FinanceBL financeBL = new FinanceBL();
 	public AccountVO checkAccount(String account) {
 		// TODO Auto-generated method stub
 		return null;
@@ -35,8 +30,7 @@ public class FinanceServiceImpl implements FinanceService {
 		return null;
 	}
 
-	public ArrayList<CollectionVO> queryCollection(String querydate,
-			String queryholl) {
+	public ArrayList<CollectionVO> queryCollection(String querydate, String queryholl) {
 		// TODO Auto-generated method stub
 		return financeBL.queryCollection(querydate, queryholl);
 	}
@@ -69,34 +63,6 @@ public class FinanceServiceImpl implements FinanceService {
 		financeBL.init(list);
 	}
 
-	public void initCar(ArrayList<CarManagePO> list) {
-		// TODO Auto-generated method stub
-		financeBL.initCar(list);
-	}
-
-	public void initStock(ArrayList<StockDO> list) {
-		// TODO Auto-generated method stub
-		financeBL.initStock(list);
-	}
-
-	public void initAccount(AccountDO account) {
-		// TODO Auto-generated method stub
-		financeBL.initAccount(account);
-	}
-
-	public ArrayList<AccountDO> getAllAccount() {
-		// TODO Auto-generated method stub
-		return financeBL.getAllAccount();
-	}
-
-	public void updateAccount(AccountDO account) {
-		// TODO Auto-generated method stub
-		financeBL.updateAccount(account);
-	}
-
-	public void initUser(ArrayList<UserDO> list) {
-		// TODO Auto-generated method stub
-		financeBL.initUser(list);
-	}
+	
 
 }

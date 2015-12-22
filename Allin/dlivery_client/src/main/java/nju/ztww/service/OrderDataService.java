@@ -37,7 +37,7 @@ public interface OrderDataService extends Remote{
 
 	public TrackPO passMailingOrder(String order);
 
-	public void addTrack(TrackPO mailingTrackPO);
+	public String addTrack(TrackPO mailingTrackPO);
 
 	public TrackPO passAcceptOrder(String order);
 

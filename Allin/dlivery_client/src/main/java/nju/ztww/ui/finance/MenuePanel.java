@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-import confligUI.MyButton;
+import nju.ztww.ui.order.MyButton;
 
 public class MenuePanel extends JPanel {
        MyButton accountButton = new MyButton(0);
@@ -69,7 +69,7 @@ public class MenuePanel extends JPanel {
        public void setPicture(){
 
     	   
-    	   accountButton.setIcon(accout);
+    	   accountButton.setIcon(accout2);
     	   collectionButton.setIcon(collection);
     	   paymentButton.setIcon(payment);
     	   benefitButton.setIcon(benefit);
@@ -90,6 +90,7 @@ public class MenuePanel extends JPanel {
 			removeButton(panel);
 			accountButton.setIcon(accout2);
 			panel = 0;
+			MyButton.type=0;
 		}
 	};
 	
@@ -100,6 +101,7 @@ public class MenuePanel extends JPanel {
 				removeButton(panel);
 				collectionButton.setIcon(collection2);
 				panel = 1;
+				MyButton.type=1;
 			}
 		};
        
@@ -110,6 +112,7 @@ public class MenuePanel extends JPanel {
 				removeButton(panel);
 				paymentButton.setIcon(payment2);
 				panel = 2;
+				MyButton.type=2;
 			}
 		};
 	
@@ -120,6 +123,7 @@ public class MenuePanel extends JPanel {
 				removeButton(panel);
 				benefitButton.setIcon(benefit2);
 				panel = 3;
+				MyButton.type=3;
 			}
 		};
 		
@@ -130,6 +134,7 @@ public class MenuePanel extends JPanel {
 				removeButton(panel);
 				businessButton.setIcon(business2);
 				panel  = 4;
+				MyButton.type=4;
 			}
 		};
 		
@@ -142,6 +147,7 @@ public class MenuePanel extends JPanel {
 				removeButton(panel);
 				initButton.setIcon(init2);
 				panel = 5;
+				MyButton.type=5;
 			}
 		};
 	

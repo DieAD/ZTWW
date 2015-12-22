@@ -19,8 +19,9 @@ public class DBForCarManageForm extends DB {
 	 public String insert(ArrayList<CarManagePO> list,String tableName){
     	 String sql = "insert into "+tableName+"(id,carNumber,plateNUmber,serviceTime,carState,exe,state)"
     	 		+ "values(?,?,?,?,?,?,?)";
+    	 
     	 try {
-			PreparedStatement pstmt = conn.prepareStatement(sql);
+    		 PreparedStatement pstmt = conn.prepareStatement(sql);
 			for(CarManagePO form : list){
 				pstmt.setString(1, form.getId());
 				pstmt.setString(2,form.getCarNumber());
@@ -30,11 +31,11 @@ public class DBForCarManageForm extends DB {
 				pstmt.setInt(6,form.getExe());
 				pstmt.setInt(7,form.getState());
 				
-				pstmt.executeUpdate();
+				
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace(); 
+			return "fail";
 		}
 		return "success";    	     	     	 
      }

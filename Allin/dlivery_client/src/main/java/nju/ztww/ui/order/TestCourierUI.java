@@ -7,7 +7,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import nju.ztww.ui.user.CheckOrdersUI;
-import nju.ztww.ui.user.PersonalMesageUI;
 import nju.ztww.ui.user.ThemeLabelUI;
 
 //最近修改  王焕 11-17；
@@ -22,7 +21,7 @@ public class TestCourierUI {
 
 	static Courier_OrderInputUI OrderInput = new Courier_OrderInputUI();
 	static Courier_AcceptUI Accept = new Courier_AcceptUI();
-	static PersonalMesageUI personalMessagePanel;
+
 	static CheckOrdersUI checkOrder = new CheckOrdersUI();
 
 	public void init() {
@@ -37,7 +36,7 @@ public class TestCourierUI {
 		Theme.setBounds(150, 0, 750, 60);
 		OrderInput.setBounds(150, 100, 750, 450);
 		Accept.setBounds(150, 100, 750, 450);
-		 
+		// personalInformation.setBounds(210,60,690,480);
 		checkOrder.setBounds(150, 100, 750, 450);
 
 		// frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -67,9 +66,7 @@ public class TestCourierUI {
 			checkOrder.setVisible(true);
 			type = 3;
 		} else if (i == 4) {
-			personalMessagePanel = new PersonalMesageUI();
-			personalMessagePanel.setBounds(150, 100, 750, 450);
-			 frame.getContentPane().add(personalMessagePanel);	 
+			// frame.getContentPane().add(personalInformation);
 			type = 4;
 		}
 	}
@@ -85,8 +82,8 @@ public class TestCourierUI {
 			checkOrder.setVisible(false);
 			frame.remove(checkOrder);
 		} else if (type == 4) {
-			personalMessagePanel.setVisible(false);
-			 frame.remove(personalMessagePanel);
+
+			// frame.remove(personalInformation);
 		}
 	}
 

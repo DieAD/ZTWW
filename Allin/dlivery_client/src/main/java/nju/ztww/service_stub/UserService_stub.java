@@ -35,9 +35,9 @@ public class UserService_stub implements UserService {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	public boolean addUser(ManaUserVO user) {
+	public String addUser(ManaUserVO user) {
 		// TODO Auto-generated method stub
-		return false;
+		return null;
 	}
 	public ArrayList<ManaUserVO> findAll() {
 		// TODO Auto-generated method stub

@@ -1,6 +1,7 @@
 package nju.ztww.ui.commodity;
 
 import java.awt.Color;
+
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -12,18 +13,19 @@ import java.util.Vector;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-import confligUI.MyButton;
-import confligUI.MyLabel;
-import confligUI.MyTextField;
 import nju.ztww.bl.commodity.StringToInt;
 import nju.ztww.serviceimpl.CommodityListServiceImpl;
 import nju.ztww.serviceimpl.OrderServiceImpl;
 import nju.ztww.serviceimpl.StorageOutListServiceImpl;
+import nju.ztww.ui.order.MyButton;
+
 import nju.ztww.vo.DeliverFeesVO;
 import nju.ztww.vo.ShippingVO;
 import nju.ztww.vo.StorageListLineofInVO;
@@ -39,44 +41,44 @@ public class FindStoragePanel extends JPanel {
 	
 	private static String OrderNumber="";
 	private int down=0;
-	private MyTextField datatextArea=new MyTextField("");
-	private  MyLabel data=new  MyLabel();
-	private MyTextField businesstextArea=new MyTextField("");
-	private  MyLabel business=new  MyLabel();
-	private MyTextField cartextArea=new MyTextField("");
-	private  MyLabel car=new  MyLabel();
-	private MyTextField arrivetextArea=new MyTextField("");
-	private  MyLabel arrive=new  MyLabel();
-	private MyTextField carNumbertextArea=new MyTextField("");
-	private  MyLabel carNumber=new  MyLabel();
-	private MyTextField jianzhuangtextArea=new MyTextField("");
-	private  MyLabel jianzhuang=new  MyLabel();
-	private MyTextField yayuntextArea=new MyTextField("");
-	private  MyLabel yayun=new  MyLabel();
-	private MyTextField orderNumbertextArea=new MyTextField("");
-	private  MyLabel orderNumber=new  MyLabel();
+	private JTextField datatextArea=new JTextField("");
+	private  JLabel data=new  JLabel();
+	private JTextField businesstextArea=new JTextField("");
+	private  JLabel business=new  JLabel();
+	private JTextField cartextArea=new JTextField("");
+	private  JLabel car=new  JLabel();
+	private JTextField arrivetextArea=new JTextField("");
+	private  JLabel arrive=new  JLabel();
+	private JTextField carNumbertextArea=new JTextField("");
+	private  JLabel carNumber=new  JLabel();
+	private JTextField jianzhuangtextArea=new JTextField("");
+	private  JLabel jianzhuang=new  JLabel();
+	private JTextField yayuntextArea=new JTextField("");
+	private  JLabel yayun=new  JLabel();
+	private JTextField orderNumbertextArea=new JTextField("");
+	private  JLabel orderNumber=new  JLabel();
 
-	private MyTextField departtextArea=new MyTextField("");
-	private  MyLabel depart=new  MyLabel();
+	private JTextField departtextArea=new JTextField("");
+	private  JLabel depart=new  JLabel();
 
-	private MyTextField loadDataText=new MyTextField("");
-	private  MyLabel loadData=new  MyLabel();
-	private MyTextField transferNumberText=new MyTextField("");
-	private  MyLabel transferNumber=new  MyLabel();
-	private MyTextField methodText=new MyTextField("");
-	private  MyLabel method=new  MyLabel();
-	private MyTextField AirOrCarNumberText=new MyTextField("");
-	private  MyLabel AirOrCarNumber=new  MyLabel();
-	private MyTextField transferArriveText=new MyTextField("");
-	private  MyLabel transferArrive=new  MyLabel();
-	private MyTextField transferSendText=new MyTextField("");
-	private  MyLabel transferSend=new  MyLabel();
-	private MyTextField counterText=new MyTextField("");
-	private  MyLabel counter=new  MyLabel();
-	private MyTextField jianzhuangText=new MyTextField("");
-	private  MyLabel transferJianzhuang=new  MyLabel();
-	private MyTextField allOrderText=new MyTextField("");
-	private  MyLabel allOrder=new  MyLabel();
+	private JTextField loadDataText=new JTextField("");
+	private  JLabel loadData=new  JLabel();
+	private JTextField transferNumberText=new JTextField("");
+	private  JLabel transferNumber=new  JLabel();
+	private JTextField methodText=new JTextField("");
+	private  JLabel method=new  JLabel();
+	private JTextField AirOrCarNumberText=new JTextField("");
+	private  JLabel AirOrCarNumber=new  JLabel();
+	private JTextField transferArriveText=new JTextField("");
+	private  JLabel transferArrive=new  JLabel();
+	private JTextField transferSendText=new JTextField("");
+	private  JLabel transferSend=new  JLabel();
+	private JTextField counterText=new JTextField("");
+	private  JLabel counter=new  JLabel();
+	private JTextField jianzhuangText=new JTextField("");
+	private  JLabel transferJianzhuang=new  JLabel();
+	private JTextField allOrderText=new JTextField("");
+	private  JLabel allOrder=new  JLabel();
 
 	JDialog dlg;
 	
@@ -367,8 +369,7 @@ public class FindStoragePanel extends JPanel {
 				// 2biao  shi qiche
 				for(int i=0;i<temp.length;i++){
 					StorageListLineofOutVO StorageListLineofOutVO=new StorageListLineofOutVO("idofdanzi",temp[i],datatextArea.getText(),
-							arrivetextArea.getText(),2,cartextArea.getText(),"02501");
-					//需要改的
+							arrivetextArea.getText(),2,cartextArea.getText());
 					arraylist.add(StorageListLineofOutVO);
 				}
 				//中转中心编号未确定
@@ -412,8 +413,7 @@ public class FindStoragePanel extends JPanel {
 				for(int i=0;i<temp.length;i++){
 					StringToInt st=new StringToInt();
 					StorageListLineofOutVO StorageListLineofOutVO=new StorageListLineofOutVO("idofdanzi",temp[i],loadDataText.getText(),
-							methodText.getText(),st.changetoint(transferArriveText.getText()),transferNumberText.getText(),"02501");
-					// 需要改的
+							methodText.getText(),st.changetoint(transferArriveText.getText()),transferNumberText.getText());
 					arraylist.add(StorageListLineofOutVO);
 				}
 				//中转中心编号未确定

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import nju.ztww.RMI.RMIHelper;
 import nju.ztww.service.CommodityListDataService;
+import nju.ztww.ui.main.TipsUI;
 import nju.ztww.vo.IDVO;
 //list 还没赋值
 public class StorageListOutAftercheckBL {
@@ -18,8 +19,13 @@ public class StorageListOutAftercheckBL {
 			  list.add(temp);
 		  }
 		  commoditylistdata = (CommodityListDataService)rhelper.findService("CommodityListDataService");
-		  commoditylistdata.changeExeDeleteStock(list);
-		  
+		  String result=commoditylistdata.changeExeDeleteStock(list);
+			 if(result.equals("success")){
+					TipsUI.tip.setText("操作成功！");
+			}else if(result.equals("fasil")){
+					TipsUI.tip.setText("数据库错误！");
+			}
+			TipsUI.ifLine=true;		
 		  
 		  
 	  }

@@ -9,31 +9,31 @@ import java.util.Vector;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-import confligUI.MyButton;
-import confligUI.MyLabel;
-import confligUI.MyScrollPane;
-import confligUI.MyTable;
-import confligUI.MyTextField;
 import nju.ztww.serviceimpl.OrderServiceImpl;
+import nju.ztww.ui.order.MyButton;
+import nju.ztww.ui.order.MyScrollPane;
+import nju.ztww.ui.order.MyTable;
 import nju.ztww.vo.BusinessArriveVO;
 import nju.ztww.vo.SendVO;
 
 public class SendUI extends JPanel{
 	
-	private MyTextField datetextArea=new MyTextField("");
-	private  MyLabel date=new  MyLabel("到达日期");
-	private MyTextField numbertextArea=new MyTextField("");
-	private  MyLabel number=new  MyLabel("托运订单号");
-	private MyTextField sendertextArea=new MyTextField("");
-	private  MyLabel sender=new  MyLabel("派送员");
-	private MyTextField othertextArea=new MyTextField("");
-	private  MyLabel other=new  MyLabel("备注");
-	private MyTextField findSendtextArea=new MyTextField("");
+	private JTextField datetextArea=new JTextField("");
+	private  JLabel date=new  JLabel("到达日期");
+	private JTextField numbertextArea=new JTextField("");
+	private  JLabel number=new  JLabel("托运订单号");
+	private JTextField sendertextArea=new JTextField("");
+	private  JLabel sender=new  JLabel("派送员");
+	private JTextField othertextArea=new JTextField("");
+	private  JLabel other=new  JLabel("备注");
+	private JTextField findSendtextArea=new JTextField("");
 	
 	private OrderServiceImpl orderServiceImpl=new OrderServiceImpl();
 	private SendVO sendVO;
@@ -80,26 +80,26 @@ public class SendUI extends JPanel{
 				public void actionPerformed(ActionEvent e) {
 					sendVO=(SendVO) orderServiceImpl.getOrder(6);
 					dlg= new JDialog(); 
-					dlg.setSize(new Dimension(400, 380));
+					dlg.setSize(new Dimension(350, 550));
 		            dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
 		            //到达日期
-		            datetextArea.setBounds(150, 55, 150, 30);
+		            datetextArea.setBounds(100, 55, 150, 30);
 		            date.setIcon(null);
-		            date.setBounds(50, 50, 100, 40);
+		            date.setBounds(0, 50, 100, 40);
 		            //托运订单号
-		            numbertextArea.setBounds(150, 155, 150, 30);
+		            numbertextArea.setBounds(100, 155, 150, 30);
 		            number.setIcon(null);
-		            number.setBounds(50, 150, 100, 40);
+		            number.setBounds(0, 150, 100, 40);
 		            //派送员
-		           sendertextArea.setBounds(150, 105, 150, 30);
+		           sendertextArea.setBounds(100, 105, 150, 30);
 		            sender.setIcon(null);
-		            sender.setBounds(50, 100, 100, 40);
+		            sender.setBounds(0, 100, 100, 40);
 		           
 		           
 		            //备注
-		           othertextArea.setBounds(150, 205, 150, 30);
+		           othertextArea.setBounds(100, 255, 150, 30);
 		            other.setIcon(null);
-		            other.setBounds(50, 200, 100, 40);
+		            other.setBounds(0, 250, 100, 40);
 		            
 		      
 		            dlg.add(other);
@@ -111,7 +111,7 @@ public class SendUI extends JPanel{
 		            dlg.add(date);
 		            dlg.add(datetextArea);
 		            dlg.add(sureSendButton);
-		            sureSendButton.setBounds(230, 265, 70, 30);
+		            sureSendButton.setBounds(100, 450, 60, 40);
 		            sureSendButton.addActionListener(listenerSend);
 		            
 		            dlg.setLayout(null);
@@ -147,7 +147,7 @@ public class SendUI extends JPanel{
 					dlg.setSize(new Dimension(350, 150));
 		            dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
 		            findSendtextArea.setBounds(50, 30, 150, 30);
-		            findSendSureButton.setBounds(250, 30, 70, 30);
+		            findSendSureButton.setBounds(100, 80, 70, 40);
 		            findSendSureButton.addActionListener(listener2);
 		            dlg.add(findSendSureButton);
 		            dlg.add(findSendtextArea);

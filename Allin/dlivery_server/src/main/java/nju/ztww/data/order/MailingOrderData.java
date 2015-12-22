@@ -63,10 +63,10 @@ public class MailingOrderData {
 		orderFormDO.setOrdernumber(mailingPO.getStripNumber());
 		list.add(orderFormDO);
 		System.out.println("result = successful!!!!!!!!!!!!!!!!!!!!!!S");
-		dbForOrderForm.insert(list, "ordertable");
+		String result=dbForOrderForm.insert(list, "ordertable");
 		dbForOrderForm.close();
 		System.out.println("result = successful!");
-		return "successful!";
+		return result;
 	}
 	
 	 public String delete(String id){
@@ -101,15 +101,16 @@ public class MailingOrderData {
 		return mailingTrackPO;
 	}
 
-	public void addTrack(TrackPO mailingTrackPO) {
+	public String addTrack(TrackPO mailingTrackPO) {
 		// TODO Auto-generated method stub
 		DBForTraceForm traceForm = new DBForTraceForm();
 		TraceFormDO traceDO = new TraceFormDO();
 		traceDO.setGoodsid(mailingTrackPO.getID());
 		traceDO.setTrace(mailingTrackPO.getTrack());
 		traceForm.init();
-		traceForm.insert(traceDO, "traceform");
+		String result=traceForm.insert(traceDO, "traceform");
 		traceForm.close();
+		return result;
 	}
 
 

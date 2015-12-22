@@ -7,7 +7,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import nju.ztww.ui.finance.MenuePanel;
-import nju.ztww.ui.user.PersonalMesageUI;
 import nju.ztww.ui.user.ThemeLabelUI;
 
 public class TestGManagerUI {
@@ -18,7 +17,6 @@ public class TestGManagerUI {
 	GManager_CheckOrders checkOrdersUI = new GManager_CheckOrders();
 	GManager_ManageOrgaUI manageOrgaUI = new GManager_ManageOrgaUI();
 	GManager_ManageSalaryUI manageSalaryUI = new GManager_ManageSalaryUI();
-	PersonalMesageUI personInfo = new PersonalMesageUI();
 	private ArrayList<JPanel> panelList = new ArrayList<JPanel>();
 	private ArrayList<JPanel> list = new ArrayList<JPanel>();
 	
@@ -33,7 +31,6 @@ public class TestGManagerUI {
 		
 		MenuPanel.setBounds(0, 100, 150, 500);
 		Theme.setBounds(150, 0, 750, 60);
-		personInfo.setVisible(false);
 //		manageSalaryUI.setBounds(210,60,690,480)
 //		
 //		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -51,7 +48,6 @@ public class TestGManagerUI {
 		panelList.add(checkOrdersUI);
 		panelList.add(manageOrgaUI);
 		panelList.add(manageSalaryUI);
-		panelList.add(personInfo);
 	//	panelList.add(viewFormsUI);
 		
 		for(JPanel p : panelList){
@@ -64,7 +60,7 @@ public class TestGManagerUI {
 		MenuPanel.ManageOrgaButton.addActionListener(new GManager_Listener(frame,manageOrgaUI,panelList));
 		MenuPanel.ManageSalaryButton.addActionListener(new GManager_Listener(frame,manageSalaryUI,panelList));
 		MenuPanel.ViewFormsButton.addActionListener(new GManager_Listener(frame,viewFormsUI,panelList));
-		MenuPanel.YourMessageButton.addActionListener(new GManager_Listener(frame, personInfo, panelList));
+		
 	}
 	
 	public TestGManagerUI(JFrame frame){

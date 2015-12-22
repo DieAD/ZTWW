@@ -17,7 +17,7 @@ public class ReceiveData {
 	
 	 DBForPayeeForm dbHelper=new DBForPayeeForm();
 	 private ArrayList<PayeeFormDO> list=new ArrayList<PayeeFormDO>();   
-	 private PayeeFormDO payeeFormDO;
+	 private PayeeFormDO payeeFormDO=new PayeeFormDO();
 	 private ReceivePO receivePO=new ReceivePO(5);
 	
     public String insert(ReceivePO receivePO){
@@ -31,10 +31,10 @@ public class ReceiveData {
     	payeeFormDO.setMoney(receivePO.getReceiveMoney());
     	payeeFormDO.setState(receivePO.getState());
     	list.add(payeeFormDO);
-    	dbHelper.insert(list, "payeeform");
+    	String result=dbHelper.insert(list, "payeeform");
 		list.clear();
 		dbHelper.close();
-		return "success";
+		return result;
 		
 	}
 	
@@ -54,7 +54,9 @@ public class ReceiveData {
 	   receivePO.setOrderNumber(payeeFormDO.getGoodsid());
 	   receivePO.setReceiveMoney(payeeFormDO.getMoney());
 	   receivePO.setReceiverName(payeeFormDO.getCourierid());
-	   return null;
+	   receivePO.setHoll(payeeFormDO.getHoll());
+	   dbHelper.close();
+	   return receivePO;
 		
 	}
    
@@ -62,9 +64,9 @@ public class ReceiveData {
 	   dbHelper.init();
 	   ArrayList<PayeeFormDO> list= dbHelper.queryByID(Id.id, "payeeform");
 	   list.get(0).setExe(1);
-	   dbHelper.update(list, "payeeform");
+	   String result=dbHelper.update(list, "payeeform");
 	   dbHelper.close();
-	   return "success";
+	   return result;
 	   
    }
 

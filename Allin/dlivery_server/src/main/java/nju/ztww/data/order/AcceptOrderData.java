@@ -24,10 +24,10 @@ public class AcceptOrderData {
 		reciveFormDO.setState(acceptPO.getState());
 		reciveFormDO.setExe(acceptPO.getExe());
 		list.add(reciveFormDO);
-		dbForReciveForm.insert(list, "reciveform");
+        String result=dbForReciveForm.insert(list, "reciveform");
 		dbForReciveForm.close();
 		System.out.println("Insert successful!");
-		return "successful!";
+		return result;
 	}
 ///
 	public TrackPO passOrder(String order) {
