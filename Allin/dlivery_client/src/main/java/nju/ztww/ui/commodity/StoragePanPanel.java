@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -25,12 +26,18 @@ import javax.swing.table.DefaultTableModel;
 
 
 
+
+
+
+import org.apache.poi.ss.usermodel.DataFormat;
+
 import confligUI.MyButton;
 import confligUI.MyLabel;
 import confligUI.MyTextField;
 import nju.ztww.bl.commodity.CheckOrderBL;
 import nju.ztww.bl.commodity.GetStockListBL;
 import nju.ztww.bl.commodity.PanExcelDaoBL;
+import nju.ztww.bl.commodity.PlayMusic;
 import nju.ztww.po.StorageListLineofInPO;
 import nju.ztww.po.TracePO;
 import nju.ztww.service.CommodityListService;
@@ -61,7 +68,7 @@ public class StoragePanPanel extends JPanel  implements ActionListener{
 	public JDialog dlg;
 	long l = System.currentTimeMillis();
 	Date data=new Date(l);
-	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd ");
+	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 	public ArrayList<StorageListLineofInVO> arraylist;//存储一个库存单的信息
 	public CommodityListService commodityservice=new CommodityListServiceImpl();
 	 java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit()
@@ -158,13 +165,7 @@ public class StoragePanPanel extends JPanel  implements ActionListener{
 	}
 	countshuliang.setText(String.valueOf(arraylist.size()));
 	baojingshuliang.setText(stringlist.get(0).getTrace());
-	ActionListener listenerdao=new ActionListener() {
-		
-		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-	};
+	
   }
 ActionListener listenerxiugai=new ActionListener() {
 		
@@ -209,9 +210,39 @@ ActionListener listenerdao=new ActionListener() {
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		PanExcelDaoBL dao=new PanExcelDaoBL();
-		dao.dao(UserInfoUI.getUserID().substring(0,5), timefield.getText());
+		SimpleDateFormat dateFormat1 = new SimpleDateFormat("dd");
+		CheckOrderBL checks=new CheckOrderBL();
+		ArrayList<TracePO> stringlist=new ArrayList<TracePO>();
+		stringlist=checks.findTrace("盘点"+UserInfoUI.getUserID().substring(0, 5));
+		String lasttime=stringlist.get(0).getTrace().substring(0,10);
+		int index=0;
+		if(lasttime.equals(timefield.getText())){
+			//时间相等
+			index=Integer.parseInt(stringlist.get(0).getTrace().substring(10,12))+1;
+		}
+		else{
+			index=1;
+		}
+		String nowindex=null;
+		if(index<10){
+			nowindex='0'+String.valueOf(index);
+		}
+		else{
+			nowindex=String.valueOf(index);
+		}
+		
+		String name=timefield.getText()+"第"+nowindex+"批";
+		dao.dao(UserInfoUI.getUserID().substring(0,5), name);
+		String nowtrace=timefield.getText()+nowindex;
+		checks.modifyDao("盘点"+UserInfoUI.getUserID().substring(0,5), nowtrace);
 		//getstockbl
-		excel.removeActionListener(listenerdao);
+		//excel.removeActionListener(listenerdao);
+		try {
+			PlayMusic.play("music/success.wav");
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 	}
 };
   }
