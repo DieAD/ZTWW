@@ -59,7 +59,6 @@ public class ManageUI extends JPanel{
 		this.add(CheckOrderButton);
 		this.add(YourMessageButton);
 		this.add(LogoutButton);
-
 	}
 	
 	
@@ -78,7 +77,7 @@ public class ManageUI extends JPanel{
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			removeButton(panel);
-			YourMessageButton.setIcon(UserManage2);
+			YourMessageButton.setIcon(YourMessage2);
 			panel = 1;
 		}
 	};

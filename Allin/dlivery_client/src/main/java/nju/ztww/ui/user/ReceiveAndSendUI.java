@@ -48,7 +48,7 @@ public class ReceiveAndSendUI extends JPanel{
 	
 	private JButton sureButton=new JButton("确定");
 	private JButton findArriveSureButton=new JButton("确定");
-	private JButton sureTransferButton=new JButton("确定");
+	private JButton sureTransferButton=new JButton();
 	
 	 private MyButton findArriveButton=new MyButton('d');
      private MyButton deleteReceiveButton=new MyButton('c');
@@ -126,20 +126,21 @@ public class ReceiveAndSendUI extends JPanel{
 						 findTransfertextArea.setBounds(100, 40, width, hight);
 						 sureTransferButton.setBounds(280,40 , 80, 25);
 						 sureTransferButton.addActionListener(findTransfer);
+						 sureTransferButton.setIcon(new ImageIcon("photo/BusinessSure.png"));
 			            //到达日期
-			            businesstextArea.setBounds(80, 355, width, hight);
+			            businesstextArea.setBounds(120, 355, width, hight);
 			            business.setIcon(null);
-			            business.setBounds(0, 350, 100, 40);
+			            business.setBounds(50, 350, 100, 40);
 			            //出发地
-			            arrivetextArea.setBounds(80, 455, width, hight);
+			            arrivetextArea.setBounds(120, 405, width, hight);
 			            arrive.setIcon(null);
-			            arrive.setBounds(0, 450, 100, 40);
+			            arrive.setBounds(50, 400, 100, 40);
 			           
 			           
 			            //备注
 			            orderNumbertextArea.setBounds(320, 355, width, hight);
 			            orderNumber.setIcon(null);
-			            orderNumber.setBounds(240, 350, 100, 40);
+			            orderNumber.setBounds(270, 350, 100, 40);
 			            
 			            dlg.add(findTransfertextArea);
 			            dlg.add(sureTransferButton);
@@ -151,7 +152,7 @@ public class ReceiveAndSendUI extends JPanel{
 			            dlg.add(business);
 			            dlg.add(businesstextArea);
 			            dlg.add(sureButton);
-			            sureButton.setBounds(336, 450, 60, 40);
+			            sureButton.setBounds(336, 400, 70, 30);
 			            sureButton.addActionListener(listener);
 			            
 			            dlg.setLayout(null);
@@ -190,7 +191,7 @@ public class ReceiveAndSendUI extends JPanel{
 						dlg.setSize(new Dimension(350, 150));
 			            dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
 			            findArrivetextArea.setBounds(50, 30, 150, 30);
-			            findArriveSureButton.setBounds(100, 80, 70, 40);
+			            findArriveSureButton.setBounds(240, 30, 70, 30);
 			            findArriveSureButton.addActionListener(listener3);
 			            dlg.add(findArriveSureButton);
 			            dlg.add(findArrivetextArea);
