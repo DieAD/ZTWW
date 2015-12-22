@@ -21,8 +21,8 @@ public interface CommodityListDataService {
 	ArrayList<StorageListLineofInPO> getStock(String idofcenter);
 
 
-	void changeExeAddStock(ArrayList<String> list);
-	void changeExeDeleteStock(ArrayList<String> list);
+	String changeExeAddStock(ArrayList<String> list);
+	String changeExeDeleteStock(ArrayList<String> list);
 
    //得到各分区库存
 	ArrayList<StorageListLineofInPO> getStockByQu(String string,

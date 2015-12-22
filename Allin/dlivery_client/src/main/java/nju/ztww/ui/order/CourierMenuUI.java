@@ -10,7 +10,6 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-import confligUI.MyButton;
 import nju.ztww.ui.main.Listener_Return;
 
 public class CourierMenuUI extends JPanel{
@@ -57,6 +56,7 @@ public class CourierMenuUI extends JPanel{
 				removeButton(panel);
 				OrderInputButton.setIcon(OrderInput2);
 				panel = 0;
+				MyButton.type=0;
 			}
 		});
 		
@@ -72,6 +72,7 @@ public class CourierMenuUI extends JPanel{
 				removeButton(panel);
 				AcceptButton.setIcon(Accept2);
 				panel = 1;
+				MyButton.type=1;
 			}
 		});
 		
@@ -87,6 +88,7 @@ public class CourierMenuUI extends JPanel{
 				removeButton(panel);
 				CheckOrderButton.setIcon(CheckOrder2);
 				panel = 2;
+				MyButton.type=2;
 			}
 		});
 		
@@ -102,6 +104,7 @@ public class CourierMenuUI extends JPanel{
 				removeButton(panel);
 				YourMessageButton.setIcon(YourMessage2);
 				panel = 3;
+				MyButton.type=3;
 			}
 		});
 		

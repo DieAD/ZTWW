@@ -2,22 +2,13 @@ package nju.ztww.data.finance;
 
 import java.util.ArrayList;
 
-import nju.ztww.DBHelper.DBForAccount;
-import nju.ztww.DBHelper.DBForCarManageForm;
 import nju.ztww.DBHelper.DBForIns;
-import nju.ztww.DBHelper.DBForNewCar;
 import nju.ztww.DBHelper.DBForNewIns;
 import nju.ztww.DBHelper.DBForPayeeForm;
 import nju.ztww.DBHelper.DBForPaymentForm;
-import nju.ztww.DBHelper.DBForStock;
-import nju.ztww.DBHelper.DBHelper;
-import nju.ztww.dao.AccountDO;
 import nju.ztww.dao.InsDO;
 import nju.ztww.dao.PayeeFormDO;
 import nju.ztww.dao.PaymentFormDO;
-import nju.ztww.dao.StockDO;
-import nju.ztww.dao.UserDO;
-import nju.ztww.po.CarManagePO;
 import nju.ztww.po.CollectionPO;
 import nju.ztww.po.PaymentPO;
 
@@ -27,11 +18,6 @@ public class FinanceData {
       DateHelper dh = new DateHelper();
       DBForIns dbIns = new DBForIns();
       DBForNewIns dbNewIns = new DBForNewIns();
-      DBForCarManageForm dbCar = new DBForCarManageForm();
-      DBForNewCar dbNewCar = new DBForNewCar();
-      DBForStock dbStock = new DBForStock();
-      DBForAccount dbAccount = new DBForAccount();
-      DBHelper dbUser = new DBHelper();
       
       public ArrayList<CollectionPO> queryByDate(String date,String holl){
     	  ArrayList<PayeeFormDO> listDO = new ArrayList<PayeeFormDO>();
@@ -121,9 +107,6 @@ public class FinanceData {
     	  for(PayeeFormDO form: listDO){
     		  CollectionPO po = new CollectionPO();
     		  po.setMoney(form.getMoney());
-    		  po.setCourierid(form.getCourierid());
-    		  po.setDate(form.getDate());
-    		  po.setGoodsid(form.getGoodsid());
     		  listPO.add(po);
     	  }
     	  
@@ -155,70 +138,6 @@ public class FinanceData {
     	  }
     	  dbIns.close();
     	  dbNewIns.close();
-      }
-      
-      public void initCar(ArrayList<CarManagePO> listDO){
-    	dbCar.init();
-    	dbNewCar.init();
-    	dbCar.insert(listDO, "carmanageform");
-    	dbNewCar.insert(listDO,"newcarmanageform");
-    	dbCar.close();
-    	dbNewCar.close();
-    	
-      }
-      
-      public void initStock(ArrayList<StockDO> list){
-    	  dbStock.init();
-    	  dbStock.insert(list, "stocktable");
-    	  dbStock.insert(list, "newstocktable");
-    	  dbStock.close();
-      }
-      
-      public void initAccount(AccountDO account){
-    	  dbAccount.init();
-    	  dbAccount.insert(account, "accounttable");
-    	  dbAccount.insert(account,"mainaccount");
-    	  dbAccount.close();
-      }
-      
-      public ArrayList<AccountDO> getAllAccount(){
-    	  ArrayList<AccountDO> list = new ArrayList<AccountDO>();
-    	  dbAccount.init();
-    	  list = dbAccount.selectAll("mainaccount");
-    	  dbAccount.close();
-    	  return list;
-    	  
-      }
-      
-      public void updateAccount(AccountDO account){
-    	  dbAccount.init();
-    	  dbAccount.updateRemain(account, "mainaccount");
-    	  dbAccount.close();
-      }
-      
-      public void initUser(ArrayList<UserDO> list){
-    	  dbUser.init();
-    	  dbUser.insert(list, "userstable");
-    	  dbUser.insert(list, "simpleuser");
-    	  dbUser.close();
-      }
-      
-      public ArrayList<PaymentPO> totalPaymentDO(){
-    	  ArrayList<PaymentPO> listPO = new ArrayList<PaymentPO>();
-    	  ArrayList<PaymentFormDO> listDO = new ArrayList<PaymentFormDO>();
-    	  db2.init();
-    	  listDO = db2.totalPayment("paymentform");
-    	  for(PaymentFormDO form : listDO){
-    		  PaymentPO po  = new PaymentPO();
-    		  po.setDate(form.getDate());
-    		  po.setMoney(form.getMoney());
-    		  po.setPayaccount(form.getPayaccount());
-    		  po.setPaymen(form.getPaymen());
-    		  po.setPaycat(form.getPaycat());
-    		  po.setPs(form.getPs());
-    		  listPO.add(po);
-    	  }
-    	  return listPO;
       }
       
       

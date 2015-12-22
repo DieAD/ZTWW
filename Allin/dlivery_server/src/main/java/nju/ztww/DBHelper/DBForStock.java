@@ -62,9 +62,9 @@ public class DBForStock extends DB{
 		}
 	}
 	
-	public ArrayList<StockDO> queryByID(String ID,String tableName,String idofcenter){
+	public ArrayList<StockDO> queryByID(String ID,String tableName){
 		ArrayList<StockDO> list  = new ArrayList<StockDO>();
-		String sql = "select * from "+tableName+" where goodsid="+ID+" and idofcenter="+idofcenter;
+		String sql = "select * from "+tableName+" where goodsid="+ID;
 		
 		try {
 			Statement stmt = conn.createStatement();
@@ -81,7 +81,6 @@ public class DBForStock extends DB{
 				stock.setJia(rs.getString(7));
 				stock.setWei(rs.getString(8));
 				stock.setState(rs.getInt(9));
-				stock.setIdofcenter(rs.getString(10));
 				list.add(stock);
 			}
 		} catch (SQLException e) {
@@ -92,8 +91,8 @@ public class DBForStock extends DB{
 		return list;
 	}
 	
-	public void insert(ArrayList<StockDO> list, String tableName){
-		String sql = "insert into "+tableName+"(goodsid,entrytime,address,qu,pai,jia,wei,state,idofcenter)values(?,?,?,?,?,?,?,?,?)";
+	public String insert(ArrayList<StockDO> list, String tableName){
+		String sql = "insert into "+tableName+"(goodsid,entrytime,address,qu,pai,jia,wei,state)values(?,?,?,?,?,?,?,?)";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			for(StockDO stock : list){
@@ -105,19 +104,19 @@ public class DBForStock extends DB{
 				pstmt.setString(6, stock.getJia());
 				pstmt.setString(7, stock.getWei());
 				pstmt.setInt(8,stock.getState());
-				pstmt.setString(9,stock.getIdofcenter());
 				pstmt.executeUpdate();
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			return "fail";
 		}
+		return "success";
 	}
 	
-	public void update(ArrayList<StockDO> list,String tableName){
+	public String update(ArrayList<StockDO> list,String tableName){
 		String sql = "update "
 				+ tableName
-				+ " set goodsid=?,entrytime=?,address=?,qu=?,pai=?,jia=?,wei=?,state=?,idofcenter=?"
+				+ " set goodsid=?,entrytime=?,address=?,qu=?,pai=?,jia=?,wei=?,state=?"
 				+ " where goodsid=?";
 		
 		try {
@@ -131,15 +130,15 @@ public class DBForStock extends DB{
 				pstmt.setString(6, stock.getJia());
 				pstmt.setString(7, stock.getWei());
 				pstmt.setInt(8, stock.getState());
-				pstmt.setString(9, stock.getIdofcenter());
-				pstmt.setString(10,stock.getGoodsid());
+				pstmt.setString(9,stock.getGoodsid());
 				
 				pstmt.executeUpdate();
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			return "fail";
 		}
+		return "success";
 	}
 	
 	public void delete(String ID,String tableName){
@@ -152,9 +151,9 @@ public class DBForStock extends DB{
 			e.printStackTrace();
 		}
 	}
-	public ArrayList<StockDO> queryByTime(String time,String tableName,String idofcenter){
+	public ArrayList<StockDO> queryByTime(String time,String tableName){
 		ArrayList<StockDO> list  = new ArrayList<StockDO>();
-		String sql = "select * from "+tableName+" where entrytime='"+time+"'"+"and idofcenter="+idofcenter;
+		String sql = "select * from "+tableName+" where entrytime='"+time+"'";
 		
 		try {
 			Statement stmt = conn.createStatement();
@@ -171,7 +170,6 @@ public class DBForStock extends DB{
 				stock.setJia(rs.getString(7));
 				stock.setWei(rs.getString(8));
 				stock.setState(rs.getInt(9));
-				stock.setIdofcenter(rs.getString(10));
 				list.add(stock);
 			}
 		} catch (SQLException e) {
@@ -181,65 +179,7 @@ public class DBForStock extends DB{
 		
 		return list;
 	}
-	public ArrayList<StockDO> queryALL(String tableName,String idofcenter){
-		ArrayList<StockDO> list  = new ArrayList<StockDO>();
-		String sql = "select * from "+tableName+" where idofcenter="+idofcenter;
-		
-		try {
-			Statement stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery(sql);
-			
-			while(rs.next()){
-				StockDO stock = new StockDO();
-				stock.setIndex(rs.getInt(1));
-				stock.setGoodsid(rs.getString(2));
-				stock.setEntrytime(rs.getString(3));
-				stock.setAddress(rs.getString(4));
-				stock.setQu(rs.getString(5));
-				stock.setPai(rs.getString(6));
-				stock.setJia(rs.getString(7));
-				stock.setWei(rs.getString(8));
-				stock.setState(rs.getInt(9));
-				stock.setIdofcenter(rs.getString(10));
-				list.add(stock);
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		return list;
-	}
-	public ArrayList<StockDO> queryByQu(String qu,String tableName,String idofcenter){
-		ArrayList<StockDO> list  = new ArrayList<StockDO>();
-		String sql = "select * from "+tableName+" where qu='"+qu+"'"+"and idofcenter="+idofcenter;
-		
-		try {
-			Statement stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery(sql);
-			
-			while(rs.next()){
-				StockDO stock = new StockDO();
-				stock.setIndex(rs.getInt(1));
-				stock.setGoodsid(rs.getString(2));
-				stock.setEntrytime(rs.getString(3));
-				stock.setAddress(rs.getString(4));
-				stock.setQu(rs.getString(5));
-				stock.setPai(rs.getString(6));
-				stock.setJia(rs.getString(7));
-				stock.setWei(rs.getString(8));
-				stock.setState(rs.getInt(9));
-				stock.setIdofcenter(rs.getString(10));
-				list.add(stock);
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		return list;
-	}
-	public ArrayList<StockDO> queryEvery(String tableName){
+	public ArrayList<StockDO> queryALL(String tableName){
 		ArrayList<StockDO> list  = new ArrayList<StockDO>();
 		String sql = "select * from "+tableName;
 		
@@ -258,7 +198,34 @@ public class DBForStock extends DB{
 				stock.setJia(rs.getString(7));
 				stock.setWei(rs.getString(8));
 				stock.setState(rs.getInt(9));
-				stock.setIdofcenter(rs.getString(10));
+				list.add(stock);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+	public ArrayList<StockDO> queryByQu(String qu,String tableName){
+		ArrayList<StockDO> list  = new ArrayList<StockDO>();
+		String sql = "select * from "+tableName+" where qu='"+qu+"'";
+		
+		try {
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+			
+			while(rs.next()){
+				StockDO stock = new StockDO();
+				stock.setIndex(rs.getInt(1));
+				stock.setGoodsid(rs.getString(2));
+				stock.setEntrytime(rs.getString(3));
+				stock.setAddress(rs.getString(4));
+				stock.setQu(rs.getString(5));
+				stock.setPai(rs.getString(6));
+				stock.setJia(rs.getString(7));
+				stock.setWei(rs.getString(8));
+				stock.setState(rs.getInt(9));
 				list.add(stock);
 			}
 		} catch (SQLException e) {
@@ -273,11 +240,11 @@ public class DBForStock extends DB{
 		ArrayList<StockDO> list=new ArrayList<StockDO>();
 		db.init();
 		
+		list=db.queryByID("234", "stocktable");
 		
-		list=db.queryByQu("航运区", "stocktable", "02501");
 		for(int i=0;i<list.size();i++){
-			
-		System.out.println(list.get(i).getIdofcenter());
+			System.out.println(list.get(i).getGoodsid());
+			System.out.println(list.get(i).getQu());
 			//list.get(i).setQu("航运区");
 		}
 		

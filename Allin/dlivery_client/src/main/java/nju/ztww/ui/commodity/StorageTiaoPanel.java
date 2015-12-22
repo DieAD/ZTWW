@@ -10,23 +10,18 @@ import java.util.Vector;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JDialog;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-import confligUI.MyButton;
-import confligUI.MyComboBox;
-import confligUI.MyLabel;
-import confligUI.MyTextField;
 import nju.ztww.service.CommodityListService;
 import nju.ztww.serviceimpl.CommodityListServiceImpl;
-
-import nju.ztww.ui.main.UserInfoUI;
-
-
-
+import nju.ztww.ui.order.MyButton;
 import nju.ztww.vo.StorageListLineofInVO;
 
 public class StorageTiaoPanel extends JPanel {
@@ -37,26 +32,25 @@ public class StorageTiaoPanel extends JPanel {
 	public ArrayList<StorageListLineofInVO> arraylist=new ArrayList<StorageListLineofInVO>() ;//存储一个库存单的信息
 	public CommodityListService commodityservice=new CommodityListServiceImpl();
 	public MyButton tiaozheng=new MyButton('b');
-	public MyLabel ordernumber=new MyLabel("快递编号");
-	public MyTextField ordernumberfield=new MyTextField();
-	public MyLabel    xuanze=new MyLabel("分区选择");
+	public JLabel ordernumber=new JLabel("快递编号");
+	public JTextField ordernumberfield=new JTextField();
+	public JLabel    xuanze=new JLabel("分区选择");
 	public JButton  showbutton=new JButton();
 	public MyButton tijiao=new MyButton('a');
-	public MyTextField idoforder=new MyTextField(10);
+	public JTextField idoforder=new JTextField(10);
 	public JDialog dlg=new JDialog();
-	public MyComboBox dbtype = new MyComboBox();
-	public MyComboBox dbtype2 = new MyComboBox();
-	public MyLabel qu=new MyLabel("区号");
-	public MyLabel pai=new MyLabel("排号");
-	public MyLabel jia=new MyLabel("架号");
-	public MyLabel wei=new MyLabel("位号");
-	public MyTextField paifield=new MyTextField();
-	public MyTextField jiafield=new MyTextField();
-	public MyTextField weifield=new MyTextField();
+	public JComboBox dbtype = new JComboBox();
+	public JComboBox dbtype2 = new JComboBox();
+	public JLabel qu=new JLabel("区号");
+	public JLabel pai=new JLabel("排号");
+	public JLabel jia=new JLabel("架号");
+	public JLabel wei=new JLabel("位号");
+	public JTextField paifield=new JTextField();
+	public JTextField jiafield=new JTextField();
+	public JTextField weifield=new JTextField();
 	ArrayList<StorageListLineofInVO> arraylistshow=new ArrayList<StorageListLineofInVO>();
 	JButton surebutton=new JButton("确定");
-	
-	
+	String idofcenter="";//中转中心的编号
   public StorageTiaoPanel() {
 	// TODO Auto-generated constructor stub
 		this.setBackground(new Color(250, 240, 230));
@@ -74,8 +68,6 @@ public class StorageTiaoPanel extends JPanel {
 	    tiaozheng.addActionListener(listenertiao);
 //	    tijiao.setBounds(610, 400, 100, 60);
 	    tijiao.addActionListener(tijiaolisten);
-	    System.out.println("ss");
-		System.out.println(UserInfoUI.getUserID());
 	    this.add(xuanze);
 		this.add(dbtype);
 		this.add(showbutton);
@@ -166,7 +158,7 @@ public class StorageTiaoPanel extends JPanel {
 		
 		public void actionPerformed(ActionEvent e) {
 			
-			StorageListLineofInVO storagelistlineinvo=new StorageListLineofInVO(1, "", ordernumberfield.getText(), "", "", dbtype2.getSelectedItem().toString(), paifield.getText(), jiafield.getText(), weifield.getText(), 0,UserInfoUI.getUserID().substring(0,5));			
+			StorageListLineofInVO storagelistlineinvo=new StorageListLineofInVO(1, "", ordernumberfield.getText(), "", "", dbtype2.getSelectedItem().toString(), paifield.getText(), jiafield.getText(), weifield.getText(), 0);			
 			arraylist.add(storagelistlineinvo);
 			System.out.println(ordernumberfield.getText());
 			
@@ -194,7 +186,6 @@ public class StorageTiaoPanel extends JPanel {
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			defaultTableModel.setRowCount(0);
-			String idofcenter=UserInfoUI.getUserID().substring(0,5);
 	arraylistshow=commodityservice.getStockbyQu(dbtype.getSelectedItem().toString(),idofcenter);
 	
 	
@@ -216,7 +207,6 @@ ActionListener tijiaolisten=new ActionListener() {
 	
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
-			String idofcenter=UserInfoUI.getUserID().substring(0,5);
 			commodityservice.modify(arraylist,idofcenter);
 			defaultTableModel.setRowCount(0);
 			arraylist.clear();

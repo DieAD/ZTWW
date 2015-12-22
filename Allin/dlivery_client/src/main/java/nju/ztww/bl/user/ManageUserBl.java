@@ -16,7 +16,7 @@ public class ManageUserBl {
 	private ManaUserPO userPO;
 	private ManaUserVO userVO;
 	ArrayList<ManaUserVO> list2=new ArrayList<ManaUserVO>();
-	public boolean addUser(ManaUserVO user) {
+	public String addUser(ManaUserVO user) {
 		// TODO Auto-generated method stub
 		rHelper = new RMIHelper(IP, port);
 		userDataService = (UserDataService)rHelper.findService("UserDataService");
@@ -39,7 +39,7 @@ public class ManageUserBl {
 		userPO.setSalary(0);
 		userPO.setTimes(0);
 		
-		boolean result = userDataService.addUser(userPO);
+		String result = userDataService.addUser(userPO);
 		return result;
 	}
 	

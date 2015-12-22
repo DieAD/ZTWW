@@ -12,18 +12,21 @@ import java.util.Vector;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-import confligUI.MyButton;
-import confligUI.MyLabel;
-import confligUI.MyScrollPane;
-import confligUI.MyTable;
-import confligUI.MyTextField;
 import nju.ztww.serviceimpl.OrderServiceImpl;
+
 import nju.ztww.ui.main.UserInfoUI;
+
+import nju.ztww.ui.order.MyButton;
+import nju.ztww.ui.order.MyScrollPane;
+import nju.ztww.ui.order.MyTable;
+
 import nju.ztww.vo.DriverMessageVO;
 import nju.ztww.vo.LoadingVO;
 import nju.ztww.vo.ReceiveVO;
@@ -31,17 +34,17 @@ import nju.ztww.vo.SendVO;
 
 public class RecieiveMoneyUI extends JPanel{
 	
-	private MyTextField businesstextArea=new MyTextField("");
-	private  MyLabel business=new  MyLabel("收款日期");
-	private MyTextField cartextArea=new MyTextField("");
-	private  MyLabel car=new  MyLabel("收款金额");
-	private MyTextField arrivetextArea=new MyTextField("");
-	private  MyLabel arrive=new  MyLabel("收款快递员");
-	private MyTextField carNumbertextArea=new MyTextField("");
-	private  MyLabel carNumber=new  MyLabel("订单号");
-	private MyTextField orderNumbertextArea=new MyTextField("");
-	private  MyLabel orderNumber=new  MyLabel("备注");
-	private MyTextField findtextArea=new MyTextField("");
+	private JTextField businesstextArea=new JTextField("");
+	private  JLabel business=new  JLabel("收款日期");
+	private JTextField cartextArea=new JTextField("");
+	private  JLabel car=new  JLabel("收款金额");
+	private JTextField arrivetextArea=new JTextField("");
+	private  JLabel arrive=new  JLabel("收款快递员");
+	private JTextField carNumbertextArea=new JTextField("");
+	private  JLabel carNumber=new  JLabel("订单号");
+	private JTextField orderNumbertextArea=new JTextField("");
+	private  JLabel orderNumber=new  JLabel("备注");
+	private JTextField findtextArea=new JTextField("");
 	
 	private MyButton findButton=new MyButton('d');
 	private JButton findSureButton=new JButton("确定");
@@ -105,30 +108,30 @@ public class RecieiveMoneyUI extends JPanel{
 					public void actionPerformed(ActionEvent e) {
 						receiveVO=(ReceiveVO) orderServiceImpl.getOrder(5);
 						dlg= new JDialog(); 
-						dlg.setSize(new Dimension(400, 450));
+						dlg.setSize(new Dimension(350, 550));
 			            dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
 			            //订单号
-			            carNumbertextArea.setBounds(150, 205, 150, 30);
+			            carNumbertextArea.setBounds(100, 205, 150, 30);
 			            carNumber.setIcon(null);
-			            carNumber.setBounds(50, 200, 100, 40);
+			            carNumber.setBounds(0, 200, 100, 40);
 			            //收款日期
-			            businesstextArea.setBounds(150, 55, 150, 30);
+			            businesstextArea.setBounds(100, 55, 150, 30);
 			            business.setIcon(null);
-			            business.setBounds(50, 50, 100, 40);
+			            business.setBounds(0, 50, 100, 40);
 			            //收款快递员
-			            arrivetextArea.setBounds(150, 155, 150, 30);
+			            arrivetextArea.setBounds(100, 155, 150, 30);
 			            arrive.setIcon(null);
-			            arrive.setBounds(50, 150, 100, 40);
+			            arrive.setBounds(0, 150, 100, 40);
 			            //收款金额
-			            cartextArea.setBounds(150, 105, 150, 30);
+			            cartextArea.setBounds(100, 105, 150, 30);
 			            car.setIcon(null);
-			            car.setBounds(50, 100, 100, 40);
+			            car.setBounds(0, 100, 100, 40);
 			           
 			           
 			            //备注
-			            orderNumbertextArea.setBounds(150, 255, 150, 30);
+			            orderNumbertextArea.setBounds(100, 255, 150, 30);
 			            orderNumber.setIcon(null);
-			            orderNumber.setBounds(50, 250, 100, 40);
+			            orderNumber.setBounds(0, 250, 100, 40);
 			            
 			      
 			            dlg.add(orderNumber);
@@ -142,7 +145,7 @@ public class RecieiveMoneyUI extends JPanel{
 			            dlg.add(business);
 			            dlg.add(businesstextArea);
 			            dlg.add(sureButton);
-			            sureButton.setBounds(230, 315, 70, 30);
+			            sureButton.setBounds(100, 450, 60, 40);
 			            sureButton.addActionListener(listener);
 			            
 			            dlg.setLayout(null);
@@ -179,7 +182,7 @@ public class RecieiveMoneyUI extends JPanel{
 						dlg.setSize(new Dimension(350, 150));
 			            dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
 			            findtextArea.setBounds(50, 30, 150, 30);
-			            findSureButton.setBounds(240, 30, 70, 30);
+			            findSureButton.setBounds(100, 80, 70, 40);
 			            findSureButton.addActionListener(listener2);
 			            dlg.add(findSureButton);
 			            dlg.add(findtextArea);

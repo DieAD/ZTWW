@@ -34,7 +34,7 @@ public interface UserService {
 	public UserVO getUser(String ID);
 	
 	//管理员添加用户
-	public boolean addUser(ManaUserVO user);
+	public String addUser(ManaUserVO user);
 	
 	public ArrayList<ManaUserVO> findAll();
 	

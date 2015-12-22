@@ -84,6 +84,7 @@ public class OrderHandler {
 			break;
 		case 5:
 			ReceivePO receivePO=(ReceivePO) orderPO;
+			System.out.println(receivePO.getData());
 			result=receiveData.insert(receivePO);
 			break;
 		case 6:
@@ -109,7 +110,7 @@ public class OrderHandler {
 
 		case 11:
 			AcceptPO acceptPO = (AcceptPO) orderPO;
-			acceptOrderData.insert(acceptPO);
+			result=acceptOrderData.insert(acceptPO);
 			break;
 		}
 		

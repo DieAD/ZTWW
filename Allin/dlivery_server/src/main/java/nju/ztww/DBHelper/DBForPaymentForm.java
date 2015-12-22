@@ -69,7 +69,7 @@ public class DBForPaymentForm extends DB{
     	 return list;
      }
      
-     public void insert(ArrayList<PaymentFormDO> list ,String tableName){
+     public String insert(ArrayList<PaymentFormDO> list ,String tableName){
     	 String sql = "insert into "+tableName+"(id,date,money,paymen,payaccount,paycat,ps,exe,state)values(?,?,?,?,?,?,?,?,?)";
     	 
     	 try {
@@ -89,12 +89,12 @@ public class DBForPaymentForm extends DB{
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			return "fail";
 		}
-    	 
+    	 return "success";
      }
      
-     public void update(ArrayList<PaymentFormDO> list,String tableName){
+     public String update(ArrayList<PaymentFormDO> list,String tableName){
     	 String sql = "update "+tableName+" set id=?,date=?,money=?,paymen=?,payaccount=?,paycat=?,ps=?,exe=?,state=? where id=?";
     	 try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -114,9 +114,9 @@ public class DBForPaymentForm extends DB{
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			return "fail";
 		}
-    	 
+    	 return "success";
      }
      
      public ArrayList<PaymentFormDO> totalPayment(String tableName){

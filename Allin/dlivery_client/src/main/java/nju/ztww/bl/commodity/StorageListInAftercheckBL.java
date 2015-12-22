@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import nju.ztww.RMI.RMIHelper;
 import nju.ztww.service.CommodityListDataService;
+import nju.ztww.ui.main.TipsUI;
 import nju.ztww.vo.IDVO;
 //得到参数ArrayList<>
 public class StorageListInAftercheckBL {
@@ -17,8 +18,13 @@ public class StorageListInAftercheckBL {
 		  list.add(temp);
 	  }
 	  commoditylistdata = (CommodityListDataService)rhelper.findService("CommodityListDataService");
-	  commoditylistdata.changeExeAddStock(list);
-	  
+	  String result=commoditylistdata.changeExeAddStock(list);
+	  if(result.equals("success")){
+			TipsUI.tip.setText("操作成功！");
+		}else if(result.equals("fasil")){
+			TipsUI.tip.setText("数据库错误！");
+		}
+	TipsUI.ifLine=true;
 	  
 	  
   }

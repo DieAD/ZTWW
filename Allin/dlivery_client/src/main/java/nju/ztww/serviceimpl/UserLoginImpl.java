@@ -7,6 +7,7 @@ import nju.ztww.bl.user.ManageUserBl;
 import nju.ztww.bl.user.UserLogin;
 import nju.ztww.service.UserService;
 import nju.ztww.ui.finance.Position;
+import nju.ztww.ui.main.TipsUI;
 import nju.ztww.vo.ManaUserVO;
 import nju.ztww.vo.MemberVO;
 import nju.ztww.vo.OrderVO;
@@ -41,9 +42,15 @@ public class UserLoginImpl implements UserService{
 		return user;
 	}
 
-	public boolean addUser(ManaUserVO user) {
+	public String addUser(ManaUserVO user) {
 		// TODO Auto-generated method stub
-		boolean result = manageUser.addUser(user);
+		String result = manageUser.addUser(user);
+		if(result.equals("success")){
+			TipsUI.tip.setText("操作成功！");
+		}else if(result.equals("fasil")){
+			TipsUI.tip.setText("数据库错误！");
+		}
+		TipsUI.ifLine=true;
 		return result;
 	}
 

@@ -205,8 +205,7 @@ public class DBHelper extends DB{
 				list.add(userDO);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("未连接网络");
 		}
 		return list;
 	}
@@ -215,7 +214,7 @@ public class DBHelper extends DB{
 	 * @param userDOList
 	 * @param tableName
 	 */
-	public void insert(ArrayList<UserDO> userDOList, String tableName) {
+	public String insert(ArrayList<UserDO> userDOList, String tableName) {
 		String sql = "insert into "
 				+ tableName
 				+ "(id,name,psw,authority,age,worktime,idcard,salarymethod,salary,wetherwork,sex,phone,times,sp,position)"
@@ -242,8 +241,9 @@ public class DBHelper extends DB{
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			return "fail";
 		}
+		return "success";
 	}
 
 	/**修改
@@ -276,7 +276,7 @@ public class DBHelper extends DB{
 				pstmt.executeUpdate();
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			return "fail"; 
 		}
 		return "success";
 	}

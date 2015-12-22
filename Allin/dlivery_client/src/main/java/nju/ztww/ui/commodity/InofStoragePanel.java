@@ -12,22 +12,22 @@ import java.util.Vector;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JDialog;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-import confligUI.MyButton;
-import confligUI.MyComboBox;
-import confligUI.MyLabel;
-import confligUI.MyScrollPane;
-import confligUI.MyTable;
-import confligUI.MyTextField;
 import nju.ztww.service.CommodityService;
 import nju.ztww.serviceimpl.CommodityServiceImp;
 import nju.ztww.serviceimpl.StorageInListServiceImpl;
 import nju.ztww.ui.main.UserInfoUI;
+import nju.ztww.ui.order.MyButton;
+import nju.ztww.ui.order.MyScrollPane;
+import nju.ztww.ui.order.MyTable;
 import nju.ztww.vo.StorageListLineofInVO;
 import nju.ztww.vo.StorageListLineofOutVO;
 
@@ -36,26 +36,26 @@ public class InofStoragePanel extends JPanel{
 	   public JDialog dlg;
 	   DefaultTableModel defaultTableModel ;
 	   public MyButton addbutton;
-	   public MyLabel ordernumber=new MyLabel("快递编号");
-	   public MyLabel data=new MyLabel("入库日期");
-	   public MyLabel arrive=new MyLabel("目的地");
-	   public MyLabel qu=new MyLabel("区号");
-	   public MyLabel pai=new MyLabel("排号");
-	   public MyLabel jia=new MyLabel("架号");
-	   public MyLabel wei=new MyLabel("位号");
-	   public MyTextField ordernumberfield=new MyTextField();
-	   public MyTextField datafield=new MyTextField();
-	   public MyTextField arrivefield=new MyTextField();
-	   public MyTextField qufield=new MyTextField();
-	   public MyTextField paifield=new MyTextField();
-	   public MyTextField jiafield=new MyTextField();
-	   public MyTextField weifield=new MyTextField();
+	   public JLabel ordernumber=new JLabel("快递编号");
+	   public JLabel data=new JLabel("入库日期");
+	   public JLabel arrive=new JLabel("目的地");
+	   public JLabel qu=new JLabel("区号");
+	   public JLabel pai=new JLabel("排号");
+	   public JLabel jia=new JLabel("架号");
+	   public JLabel wei=new JLabel("位号");
+	   public JTextField ordernumberfield=new JTextField();
+	   public JTextField datafield=new JTextField();
+	   public JTextField arrivefield=new JTextField();
+	   public JTextField qufield=new JTextField();
+	   public JTextField paifield=new JTextField();
+	   public JTextField jiafield=new JTextField();
+	   public JTextField weifield=new JTextField();
 	   public JButton  surebutton=new JButton("确定");
 	   public JButton  sureofbutton=new JButton("确定");
 	   public MyButton  submitbutton=new MyButton('a');
 	   public MyButton  deletebutton=new MyButton('c');
 	   public CommodityService commodity=new StorageInListServiceImpl();
-	   
+	   String idofcenter=UserInfoUI.getUserID();//idbianhao 
 	   long l = System.currentTimeMillis();
 	  Date time=new Date(l);
 	  SimpleDateFormat dateFormat = new SimpleDateFormat("yy-MM-dd ");
@@ -64,7 +64,7 @@ public class InofStoragePanel extends JPanel{
 	   public ArrayList<StorageListLineofInVO>arraylist=new ArrayList<StorageListLineofInVO>();//成员变量
 	   java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit()
 				.getScreenSize();
-	   public MyComboBox dbtype = new MyComboBox();
+	   public JComboBox dbtype = new JComboBox();
 	  
 	   public InofStoragePanel() {
 			this.setBackground(new Color(250, 240, 230));
@@ -167,7 +167,6 @@ public class InofStoragePanel extends JPanel{
 		
 					}
 				});
-		//ShowIdOfCenter();
 		
 	   }
 
@@ -186,11 +185,11 @@ public class InofStoragePanel extends JPanel{
 			row.add(weifield.getText());
 			//idoforder 不知道怎么用  用1替代。
 			
-			String index=commodity.getLastidofcenter(UserInfoUI.getUserID().substring(0,5));
+			String index=commodity.getLastidofcenter(idofcenter);
 			System.out.println(index);
 			String idofdanzi=UserInfoUI.getUserID().substring(0,8)+dateFormatindex.format(time)+index;
 			System.out.println(idofdanzi);
-			storagelineIn=new StorageListLineofInVO(1,idofdanzi,ordernumberfield.getText(), datafield.getText(), arrivefield.getText(), qufield.getText(), paifield.getText(), jiafield.getText(), weifield.getText(),0,UserInfoUI.getUserID().substring(0,5));
+			storagelineIn=new StorageListLineofInVO(1,idofdanzi,ordernumberfield.getText(), datafield.getText(), arrivefield.getText(), qufield.getText(), paifield.getText(), jiafield.getText(), weifield.getText(),0);
 			arraylist.add(storagelineIn);
 			
 			ordernumberfield.setText(null);
@@ -232,11 +231,6 @@ public class InofStoragePanel extends JPanel{
 				}
 				
 			};	
-//	public void ShowIdOfCenter(){
-//		String idofcenter2=UserInfoUI.getUserID();
-//		System.out.println(idofcenter2);
-		
-	//}
 }
 	
 

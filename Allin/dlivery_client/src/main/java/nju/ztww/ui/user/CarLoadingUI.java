@@ -7,7 +7,6 @@ package nju.ztww.ui.user;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.TextArea;
 import java.awt.event.ActionEvent;
@@ -16,50 +15,46 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Vector;
 
-import javax.security.auth.x500.X500Principal;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.TableView.TableRow;
 
-import confligUI.MyButton;
-import confligUI.MyDialog;
-import confligUI.MyLabel;
-import confligUI.MyScrollPane;
-import confligUI.MyTable;
-import confligUI.MyTextField;
 import nju.ztww.serviceimpl.OrderServiceImpl;
+import nju.ztww.ui.order.MyButton;
+import nju.ztww.ui.order.MyScrollPane;
+import nju.ztww.ui.order.MyTable;
 import nju.ztww.vo.CarManageVO;
 import nju.ztww.vo.LoadingVO;
 
 public class CarLoadingUI extends JPanel{
 	
-	private MyTextField datatextArea=new MyTextField();
-	private  MyLabel data=new  MyLabel();
-	private MyTextField businesstextArea=new MyTextField();
-	private  MyLabel business=new  MyLabel();
-	private MyTextField cartextArea=new MyTextField();
-	private  MyLabel car=new  MyLabel();
-	private MyTextField arrivetextArea=new MyTextField();
-	private  MyLabel arrive=new  MyLabel();
-	private MyTextField carNumbertextArea=new MyTextField();
-	private  MyLabel carNumber=new  MyLabel();
-	private MyTextField jianzhuangtextArea=new MyTextField();
-	private  MyLabel jianzhuang=new  MyLabel();
-	private MyTextField yayuntextArea=new MyTextField();
-	private  MyLabel yayun=new  MyLabel();
-	private MyTextField orderNumbertextArea=new MyTextField();
-	private  MyLabel orderNumber=new  MyLabel();
-	private MyTextField moneytextArea=new MyTextField();
-	private  MyLabel money=new  MyLabel();
-	private MyTextField departtextArea=new MyTextField();
-	private  MyLabel depart=new  MyLabel();
-	private MyTextField findtextArea=new MyTextField();
+	private JTextField datatextArea=new JTextField("");
+	private  JLabel data=new  JLabel();
+	private JTextField businesstextArea=new JTextField("");
+	private  JLabel business=new  JLabel();
+	private JTextField cartextArea=new JTextField("");
+	private  JLabel car=new  JLabel();
+	private JTextField arrivetextArea=new JTextField("");
+	private  JLabel arrive=new  JLabel();
+	private JTextField carNumbertextArea=new JTextField("");
+	private  JLabel carNumber=new  JLabel();
+	private JTextField jianzhuangtextArea=new JTextField("");
+	private  JLabel jianzhuang=new  JLabel();
+	private JTextField yayuntextArea=new JTextField("");
+	private  JLabel yayun=new  JLabel();
+	private JTextField orderNumbertextArea=new JTextField("");
+	private  JLabel orderNumber=new  JLabel();
+	private JTextField departtextArea=new JTextField("");
+	private  JLabel depart=new  JLabel("出发地");
+	private JTextField findtextArea=new JTextField("");
 	private OrderServiceImpl orderServiceImpl=new OrderServiceImpl();
 	private LoadingVO loadingVO;
 	
@@ -72,16 +67,14 @@ public class CarLoadingUI extends JPanel{
 	private MyButton findButton=new MyButton('d');
 	private MyButton deleteButton=new MyButton('c');
 	private MyButton sendButton=new MyButton('a');
-	private JButton sureButton=new JButton();
+	private JButton sureButton=new JButton("确定");
 	DefaultTableModel defaultTableModel ;
-	MyDialog dlg;
+	JDialog dlg;
 	 MyTable table;
 	java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit()
 			.getScreenSize();
-	private int width = 150;
-	private int height = 20;
+	
 	public CarLoadingUI(){
-
 		this.setBackground(new Color(250, 240, 230));
 		
 		final ImageIcon BusinessNumber=new ImageIcon("photo/businessNumberLabel.gif");
@@ -95,14 +88,6 @@ public class CarLoadingUI extends JPanel{
 		ImageIcon add=new ImageIcon("photo/add.gif");
 		final ImageIcon dataLable=new ImageIcon("photo/dataLable.gif");
 
-//		addButton.setBounds(500, 420, 110, 38);
-//		addButton.setIcon(add);
-//		deleteButton.setBounds(220, 420, 110, 38);
-//		deleteButton.setIcon(null);
-//		sendButton.setBounds(360, 420, 110, 38);
-//		sendButton.setIcon(null);
-//		findButton.setBounds(90, 420, 110, 38);
-//		findButton.setIcon(null);
 
 		this.setLayout(null);
 		this.add(findButton);
@@ -149,84 +134,50 @@ public class CarLoadingUI extends JPanel{
 
 					public void actionPerformed(ActionEvent e) {
 						loadingVO=(LoadingVO) orderServiceImpl.getOrder(4);
-						dlg= new MyDialog(); 
-						dlg.setSize(new Dimension(600, 400));
+						dlg= new JDialog(); 
+						dlg.setSize(new Dimension(350, 550));
 			            dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
 			            //装车日期
-//			            datatextArea.setBounds(100, 5, 150, 30);
-//			            data.setIcon(dataLable);
-//			            data.setBounds(0, 0, 100, 40);
-//			            //营业厅编号
-//			            businesstextArea.setBounds(100, 55, 150, 30);
-//			            business.setIcon(BusinessNumber);
-//			            business.setBounds(0, 50, 100, 40);
-//			            //汽运编号
-//			            cartextArea.setBounds(100, 105, 150, 30);
-//			            car.setIcon(Car);
-//			            car.setBounds(0, 100, 100, 40);
-//			            //到达地
-//			            arrivetextArea.setBounds(100, 155, 150, 30);
-//			            arrive.setIcon(Arrive);
-//			            arrive.setBounds(0, 150, 100, 40);
-//			            //车辆代号
-//			            carNumbertextArea.setBounds(100, 205, 150, 30);
-//			            carNumber.setIcon(CarNumber);
-//			            carNumber.setBounds(0, 200, 100, 40);
-//			            //订单号
-//			            orderNumbertextArea.setBounds(100, 255, 150, 30);
-//			            orderNumber.setIcon(OrderNumber);
-//			            orderNumber.setBounds(0, 250, 100, 40);
-//			            //监装员
-//			            jianzhuangtextArea.setBounds(100, 305, 150, 30);
-//			            jianzhuang.setIcon(Jianzhuang);
-//			            jianzhuang.setBounds(0, 300, 100, 40);
-//			            //押运员
-//			            yayuntextArea.setBounds(100, 355, 150, 30);
-//			            yayun.setIcon(Yayun);
-//			            yayun.setBounds(0, 350, 100, 40);
-//			            //运费
-//			            moneytextArea.setBounds(100, 405, 150, 30);
-//			            money.setIcon(Money);
-//			            money.setBounds(0, 400, 100, 40);
-//			            //出发地
-//			            departtextArea.setBounds(100, 455, 150, 30);
-//			            depart.setIcon(Money);
-//			            depart.setBounds(0, 450, 100, 40);
-			            data.setText("装车日期");
-			            data.setBounds(setX(1), setY(1), width, height);
-			            datatextArea.setBounds(setX(2), setY(1), width, height);
-			            business.setText("营业厅编号");
-			            business.setBounds(setX(3), setY(1), width, height);
-			            businesstextArea.setBounds(setX(4), setY(1), width, height);
-			            car.setText("汽运编号");
-			            car.setBounds(setX(1), setY(2), width, height);
-			            cartextArea.setBounds(setX(2), setY(2), width, height);
-			            arrive.setText("到达地");
-			            arrive.setBounds(setX(3), setY(2), width, height);
-			            arrivetextArea.setBounds(setX(4), setY(2), width, height);
-			            carNumber.setText("车辆代号");
-			            carNumber.setBounds(setX(1), setY(3), width, height);
-			            carNumbertextArea.setBounds(setX(2), setY(3), width, height);
-			            orderNumber.setText("订单号");
-			            orderNumber.setBounds(setX(3), setY(3), width, height);
-			            orderNumbertextArea.setBounds(setX(4), setY(3), width, height);
-			           jianzhuang.setText("监装员");
-			           jianzhuang.setBounds(setX(1), setY(4), width, height);
-			           jianzhuangtextArea.setBounds(setX(2), setY(4), width, height);
-			           yayun.setText("押运员");
-			           yayun.setBounds(setX(3), setY(4), width, height);
-			           yayuntextArea.setBounds(setX(4), setY(4), width, height);
-			           money.setText("运费");
-			           money.setBounds(setX(1), setY(5), width, height);
-			           moneytextArea.setBounds(setX(2), setY(5), width, height);
-			           depart.setText("出发地");
-			           depart.setBounds(setX(3), setY(5), width, height);
-			           departtextArea.setBounds(setX(4), setY(5), width, height);
+			            datatextArea.setBounds(100, 5, 150, 30);
+			            data.setIcon(dataLable);
+			            data.setBounds(0, 0, 100, 40);
+			            //营业厅编号
+			            businesstextArea.setBounds(100, 55, 150, 30);
+			            business.setIcon(BusinessNumber);
+			            business.setBounds(0, 50, 100, 40);
+			            //汽运编号
+			            cartextArea.setBounds(100, 105, 150, 30);
+			            car.setIcon(Car);
+			            car.setBounds(0, 100, 100, 40);
+			            //到达地
+			            arrivetextArea.setBounds(100, 155, 150, 30);
+			            arrive.setIcon(Arrive);
+			            arrive.setBounds(0, 150, 100, 40);
+			            //车辆代号
+			            carNumbertextArea.setBounds(100, 205, 150, 30);
+			            carNumber.setIcon(CarNumber);
+			            carNumber.setBounds(0, 200, 100, 40);
+			            //订单号
+			            orderNumbertextArea.setBounds(100, 255, 150, 30);
+			            orderNumber.setIcon(OrderNumber);
+			            orderNumber.setBounds(0, 250, 100, 40);
+			            //监装员
+			            jianzhuangtextArea.setBounds(100, 305, 150, 30);
+			            jianzhuang.setIcon(Jianzhuang);
+			            jianzhuang.setBounds(0, 300, 100, 40);
+			            //押运员
+			            yayuntextArea.setBounds(100, 355, 150, 30);
+			            yayun.setIcon(Yayun);
+			            yayun.setBounds(0, 350, 100, 40);
+			    
+			            //出发地
+			            departtextArea.setBounds(100, 455, 150, 30);
+			            depart.setIcon(null);
+			            depart.setBounds(0, 450, 100, 40);
 			            
-			           dlg.add(depart);
+			            dlg.add(depart);
 			            dlg.add(departtextArea);
-			            dlg.add(money);
-			            dlg.add(moneytextArea);
+
 			            dlg.add(yayun);
 			            dlg.add(yayuntextArea);
 			            dlg.add(jianzhuang);
@@ -244,13 +195,9 @@ public class CarLoadingUI extends JPanel{
 			            dlg.add(business);
 			            dlg.add(businesstextArea);
 			            dlg.add(sureButton);
-			            sureButton.setBounds(460, 270, 70, 30);
-			            sureButton.setIcon(new ImageIcon("photo/courierSure.png"));
+			            sureButton.setBounds(100, 450, 60, 40);
 			            sureButton.addActionListener(listener);
-//			            GridLayout layout = new GridLayout(0,2);
-//			            layout.setHgap(20);
-//			            layout.setVgap(40);
-//			            dlg.setLayout(layout);
+			            
 			            dlg.setLayout(null);
 						dlg.setVisible(true);
 					}
@@ -282,11 +229,11 @@ public class CarLoadingUI extends JPanel{
 			  findButton.addActionListener(new ActionListener(){
 
 					public void actionPerformed(ActionEvent e) {
-						dlg= new MyDialog(); 
+						dlg= new JDialog(); 
 						dlg.setSize(new Dimension(350, 150));
 			            dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
 			            findtextArea.setBounds(50, 30, 150, 30);
-			            findSureButton.setBounds(220, 30, 70, 30);
+			            findSureButton.setBounds(100, 80, 70, 40);
 			            findSureButton.addActionListener(listener2);
 			            dlg.add(findSureButton);
 			            dlg.add(findtextArea);
@@ -295,33 +242,27 @@ public class CarLoadingUI extends JPanel{
 					}
 			  });
 	}
-
-	private int setX(int type){
-		switch(type){
-		case 1:return 50;
-		case 2:return 120;
-		case 3:return 300;
-		case 4:return 380;
-		default:System.out.println("error!");return 0;
-		}
-	}
 	
-	private int setY(int line){
-		return 20+(line-1)*50;
-	}
+//	public void paintComponent(Graphics g){
+//		super.paintComponent(g);
+//		
+//		Image background=new ImageIcon("photo/background2.gif").getImage();
+//		g.drawImage(background, 0,0,null);
+//		
+//	}
+	
 	ActionListener listener = new ActionListener(){
 
-
 		public void actionPerformed(ActionEvent e) {
-
 			
 			loadingVO.setData(datatextArea.getText());
 			loadingVO.setArrive(arrivetextArea.getText());
 			loadingVO.setCarNumber(carNumbertextArea.getText());
 			loadingVO.setJianZhuangName(jianzhuangtextArea.getText());
-			double money=orderServiceImpl.getMoney(departtextArea.getText(), arrivetextArea.getText(), 1);
+			String [] temp=orderNumbertextArea.getText().split(";");
+			double money=30*2*temp.length*0.01;
 			loadingVO.setMoney(money);
-			loadingVO.setOrderNumber(orderNumber.getText());
+			loadingVO.setOrderNumber(orderNumbertextArea.getText());
 			loadingVO.setQiYunNumber(cartextArea.getText());
 			loadingVO.setYaYunName(yayuntextArea.getText());
 			loadingVO.setYingYeNumber(businesstextArea.getText());
@@ -335,13 +276,12 @@ public class CarLoadingUI extends JPanel{
 			row.add(cartextArea.getText());
 			row.add(arrivetextArea.getText());
 			row.add(carNumbertextArea.getText());
-			row.add(moneytextArea.getText());
+			row.add(Double.toString(loadingVO.getMoney()));
 			datatextArea.setText("");
 			businesstextArea.setText("");
 			cartextArea.setText("");
 			arrivetextArea.setText("");
 			carNumbertextArea.setText("");
-			moneytextArea.setText("");
 			defaultTableModel.addRow(row);
 		    table.revalidate();
 		    dlg.dispose();
@@ -352,9 +292,7 @@ public class CarLoadingUI extends JPanel{
 	
 	ActionListener listener2 = new ActionListener(){
 
-
 		public void actionPerformed(ActionEvent e) {
-
 			LoadingVO loadingVO=(LoadingVO) orderServiceImpl.find(findtextArea.getText(), 4);
 			Vector<String> row = new Vector(7);
 			row.add(loadingVO.getId());
@@ -371,13 +309,5 @@ public class CarLoadingUI extends JPanel{
 		    findSureButton.removeActionListener(listener2);
 		}
 	};
-	
-//	public void paintComponent(Graphics g){
-//		super.paintComponent(g);
-//		
-//		Image background=new ImageIcon("photo/background2.gif").getImage();
-//		g.drawImage(background, 0,0,null);
-//		
-//	}
 	
 }

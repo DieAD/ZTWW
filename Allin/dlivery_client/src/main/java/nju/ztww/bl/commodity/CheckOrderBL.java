@@ -23,18 +23,10 @@ public class CheckOrderBL {
 		
 		return stringlist;
 	}
-	public  void modifyBaoJing(String idofcenter,String number){
-	checkorderdataservice=(CheckOrderDataService)rhelper.findService("CheckOrderDataService");
-	checkorderdataservice.modifyBaoJing(idofcenter,number);
-	}
-	public  void modifyDao(String idofcenter,String number){
-		checkorderdataservice=(CheckOrderDataService)rhelper.findService("CheckOrderDataService");
-		checkorderdataservice.modifyDao(idofcenter,number);
-	}
 	public static void main(String[]args){
 		CheckOrderBL s=new CheckOrderBL();
 		ArrayList<TracePO> stringlist=new ArrayList<TracePO>();
-		stringlist=s.findTrace("库存警戒线");
+		stringlist=s.findTrace("000000002");
 	}
 
 }

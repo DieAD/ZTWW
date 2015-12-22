@@ -73,7 +73,7 @@ public class DBForTrainForm extends DB{
     	return list;
     }
     
-    public void insert(ArrayList<TrainFormDO> list,String tableName){
+    public String insert(ArrayList<TrainFormDO> list,String tableName){
     	String sql = "insert into "+ tableName+"(id,goodsid,transmethod,time,fltn,bddress,address,containernumber,loadmen,cost,exe,state)"
     			+ "values(?,?,?,?,?,?,?,?,?,?,?,?)";
     	try {
@@ -96,12 +96,12 @@ public class DBForTrainForm extends DB{
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			return "fail";
 		}
-    	
+    	return "success";
     }
     
-    public void update(ArrayList<TrainFormDO> list,String tableName){
+    public String update(ArrayList<TrainFormDO> list,String tableName){
     	//(id,goodsid,transmethod,time,fltn,bddress,address,containernumber,loadmen,cost,exe,state)
     	
     	String sql = " update "+tableName+" set id=?,goodsid=?,transmethod=?,time=?,fltn=?,bddress=?,address=?,containernumber=?,loadmen=?,cost=?,exe=?,state=? where id=? ";
@@ -126,8 +126,9 @@ public class DBForTrainForm extends DB{
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			return "fail";
 		}
+    	return "success";
     }
     public static void main(String[] args){
     	DBForTrainForm db= new DBForTrainForm();

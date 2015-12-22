@@ -23,7 +23,7 @@ public interface CommodityDataService extends Remote{
 		//得到一个中转中心仓库此时的库存表
 		public ArrayList<StorageListLinePO> findList(String idofcenter)throws RemoteException;
 	//TODO
-		public void insertOut(ArrayList<StorageListLineofOutPO>  arraylistoutpo,String idofcenter)throws RemoteException;
-		public void insertIn(ArrayList<StorageListLineofInPO>  arraylistinpo,String idofcenter)throws RemoteException;
+		public String insertOut(ArrayList<StorageListLineofOutPO>  arraylistoutpo,String idofcenter)throws RemoteException;
+		public String insertIn(ArrayList<StorageListLineofInPO>  arraylistinpo,String idofcenter)throws RemoteException;
 		public String getLastidofcenter(String idofcenter)throws RemoteException;
 }

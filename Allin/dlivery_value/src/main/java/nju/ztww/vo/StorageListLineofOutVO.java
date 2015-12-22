@@ -6,19 +6,12 @@ import nju.ztww.po.StorageListLineofOutPO;
 //库存中记录order的类
 public class StorageListLineofOutVO extends OrderVO {
 	String idofdanzi;
-	String idofcenter;
-	public String getIdofcenter() {
-		return idofcenter;
-	}
-	public void setIdofcenter(String idofcenter) {
-		this.idofcenter = idofcenter;
-	}
 	String id;//快递的编号
 	String data;
 	int way;
 	String destination;
 	String number;//具体实现时要分两种情况
-  public StorageListLineofOutVO(String idofdanzi,String id,String data,String destination,int way,String number,String idofcenter) {
+  public StorageListLineofOutVO(String idofdanzi,String id,String data,String destination,int way,String number) {
 	  super(idOfOrder);
 	  this.id=id;
 	  this.data=data;
@@ -26,7 +19,6 @@ public class StorageListLineofOutVO extends OrderVO {
 	  this.number=number;
 	  this.destination=destination;
 	  this.idofdanzi=idofdanzi;
-	  this.idofcenter=idofcenter;
 	// TODO Auto-generated constructor stub
 }
 public String getIdofdanzi() {
@@ -67,7 +59,7 @@ public void setNumber(String number) {
 }
 //将此vo装换成po
 public StorageListLineofOutPO changetopo(){
-	return new StorageListLineofOutPO(idofdanzi,id,data,destination,way,number,idofcenter);
+	return new StorageListLineofOutPO(idofdanzi,id,data,destination,way,number);
 }
  
  
