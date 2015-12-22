@@ -41,7 +41,7 @@ public class TracePanel extends JPanel {
     	int size = traceList.size();
     	trace = new String[size];
     	for(int i=0;i<size;i++){
-    		
+    	//	trace[i] = traceist(i);
     	}
     }
     public TracePanel(String id){
