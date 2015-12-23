@@ -83,10 +83,6 @@ public class AnnounceForManageUI extends JPanel implements Runnable{
 				Socket client = serverSocket.accept();
 				System.out.println("accept");
 				new WriteHandlerThread (client);
-//				while(true){
-//					PrintWriter out = new PrintWriter( new BufferedWriter( new OutputStreamWriter(client.getOutputStream())),true);      
-//					out.println("aaaa"); 
-//					}
 			}
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
