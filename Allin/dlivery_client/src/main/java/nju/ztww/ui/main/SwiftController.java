@@ -1,10 +1,8 @@
 package nju.ztww.ui.main;
 
 import java.util.ArrayList;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-
 import nju.ztww.service.UserService;
 import nju.ztww.serviceimpl.UserLoginImpl;
 import nju.ztww.ui.commodity.ClerkOfCenterUi;

@@ -221,6 +221,12 @@ public class FinanceData {
     	  return listPO;
       }
       
+      public String findIns(String id){
+    	  dbIns.init();
+    	  InsDO insDO = dbIns.queryByID(id);
+    	  dbIns.close();
+    	  return insDO.getName();
+      }
       
     
 }

@@ -7,7 +7,6 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.Properties;
 
-import nju.ztww.service.UserDataService;
 import nju.ztww.ui.main.remindDialog;
 
 public class RMIHelper {

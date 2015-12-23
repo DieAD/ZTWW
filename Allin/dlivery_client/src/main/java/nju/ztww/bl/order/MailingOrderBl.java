@@ -6,7 +6,10 @@ package nju.ztww.bl.order;
  * @author TQ
   */
 
+import java.rmi.RemoteException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import nju.ztww.RMI.RMIHelper;
@@ -15,6 +18,7 @@ import nju.ztww.po.MailingPO;
 import nju.ztww.po.TrackPO;
 import nju.ztww.po.OrderPO;
 import nju.ztww.po.PriceDataPO;
+import nju.ztww.service.FinanceDataService;
 import nju.ztww.service.OrderDataService;
 import nju.ztww.vo.DeliverFeesVO;
 import nju.ztww.vo.IDVO;
@@ -131,12 +135,27 @@ public class MailingOrderBl {
 	}
 	
 	public TrackPO adjust(TrackPO mailingTrackPO){
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String time = df.format(new Date());
+		String id = mailingTrackPO.getTrack();
 		String place = mailingTrackPO.getTrack().substring(0, 3);
+		//add By wh;
+		FinanceDataService financeDataService = (FinanceDataService)rhelper
+				.findService("FinanceDataService");
+		String insName="";
+		try {
+			 insName = financeDataService.getInsName(id);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		if(place.equals("025")) place = "南京";
 		else if(place.equals("010")) place = "北京";
 		else if(place.equals("020")) place = "广州";
 		else if(place.equals("021")) place = "上海";
-		mailingTrackPO.setTrack("出发地："+place);
+		
+		String position = place + insName +"已揽件";
+		mailingTrackPO.setTrack(time+"          "+position);
 		return mailingTrackPO;
 	}
 }

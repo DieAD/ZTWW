@@ -93,6 +93,8 @@ public class MailingOrderData {
 			mailingOrder.setExe(1);
 			mailingTrackPO.setID(order);
 			mailingTrackPO.setTrack(mailingOrder.getHoll());
+			//add by wh;
+			
 			ArrayList<OrderFormDO> newOrders = new ArrayList<OrderFormDO>();
 			newOrders.add(mailingOrder);
 			dbForOrderForm.update(newOrders, "orderform");
