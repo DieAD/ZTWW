@@ -17,35 +17,35 @@ public class ReceiveData {
 	
 	 DBForPayeeForm dbHelper=new DBForPayeeForm();
 	 private ArrayList<PayeeFormDO> list=new ArrayList<PayeeFormDO>();   
-	 private PayeeFormDO payeeFormDO;
+	 private PayeeFormDO payeeFormDO=new PayeeFormDO();
 	 private ReceivePO receivePO=new ReceivePO(5);
 	
-    public String insert(ReceivePO receivePO){
-    	dbHelper.init();
-    	payeeFormDO.setCourierid(receivePO.getReceiverName());
-    	payeeFormDO.setDate(receivePO.getData());
-    	payeeFormDO.setExe(receivePO.getExe());
-    	payeeFormDO.setGoodsid(receivePO.getOrderNumber());
-    	payeeFormDO.setHoll(receivePO.getHoll());
-    	payeeFormDO.setId(receivePO.getId());
-    	payeeFormDO.setMoney(receivePO.getReceiveMoney());
-    	payeeFormDO.setState(receivePO.getState());
-    	list.add(payeeFormDO);
-    	dbHelper.insert(list, "payeeform");
+   public String insert(ReceivePO receivePO){
+   	dbHelper.init();
+   	payeeFormDO.setCourierid(receivePO.getReceiverName());
+   	payeeFormDO.setDate(receivePO.getData());
+   	payeeFormDO.setExe(receivePO.getExe());
+   	payeeFormDO.setGoodsid(receivePO.getOrderNumber());
+   	payeeFormDO.setHoll(receivePO.getHoll());
+   	payeeFormDO.setId(receivePO.getId());
+   	payeeFormDO.setMoney(receivePO.getReceiveMoney());
+   	payeeFormDO.setState(receivePO.getState());
+   	list.add(payeeFormDO);
+   	String result=dbHelper.insert(list, "payeeform");
 		list.clear();
 		dbHelper.close();
-		return "success";
+		return result;
 		
 	}
 	
-   public String delete(String id){
+  public String delete(String id){
 	   dbHelper.init();
 	   dbHelper.delete(id, "payeeform");
 	   dbHelper.close();
 	   return "success";
 		
 	}
-   public ReceivePO find(String id){
+  public ReceivePO find(String id){
 	   dbHelper.init();
 	   ArrayList<PayeeFormDO> list= dbHelper.queryByID(id, "payeeform");
 	   PayeeFormDO payeeFormDO=list.get(0);
@@ -54,18 +54,20 @@ public class ReceiveData {
 	   receivePO.setOrderNumber(payeeFormDO.getGoodsid());
 	   receivePO.setReceiveMoney(payeeFormDO.getMoney());
 	   receivePO.setReceiverName(payeeFormDO.getCourierid());
-	   return null;
+	   receivePO.setHoll(payeeFormDO.getHoll());
+	   dbHelper.close();
+	   return receivePO;
 		
 	}
-   
-   public String update(IDVO Id){
+  
+  public String update(IDVO Id){
 	   dbHelper.init();
 	   ArrayList<PayeeFormDO> list= dbHelper.queryByID(Id.id, "payeeform");
 	   list.get(0).setExe(1);
-	   dbHelper.update(list, "payeeform");
+	   String result=dbHelper.update(list, "payeeform");
 	   dbHelper.close();
-	   return "success";
+	   return result;
 	   
-   }
+  }
 
 }

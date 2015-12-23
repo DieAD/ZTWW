@@ -9,6 +9,7 @@ import nju.ztww.po.StorageListLineofOutPO;
 import nju.ztww.po.StorageListodOutPO;
 import nju.ztww.service.CommodityDataService;
 import nju.ztww.service.UserDataService;
+import nju.ztww.ui.main.TipsUI;
 
 public class StorageOutofListBL {
 	private static String IP = "127.0.0.1";
@@ -18,7 +19,14 @@ public class StorageOutofListBL {
     public void addorder(ArrayList<StorageListLineofOutPO> outList,String idofcenter){
     	
     	commoditydata = (CommodityDataService)rhelper.findService("CommodityDataServiceOut");
-    	commoditydata.insertOut(outList, idofcenter);
+    	String result=commoditydata.insertOut(outList, idofcenter);
+    	if(result.equals("success")){
+			TipsUI.tip.setText("操作成功");
+		}else if(result.equals("fasil")){
+			TipsUI.tip.setText("数据库操作失败");
+		}
+		TipsUI.ifLine=true;
+  
     	
     }
 

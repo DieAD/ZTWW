@@ -124,10 +124,10 @@ public class DBForOutStockForm extends DB{
 		return list;
 	}
 
-	public void insert(ArrayList<OutStockFormDO> list, String tableName) {
+	public String insert(ArrayList<OutStockFormDO> list, String tableName) {
 		String sql = "insert into "
 				+ tableName
-				+ "(id,goodsid,time,address,transmethod,exe,state,number,idofcenter)values(?,?,?,?,?,?,?,?,?)";
+				+ "(id,goodsid,time,address,transmethod,exe,state,number)values(?,?,?,?,?,?,?,?)";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			for (OutStockFormDO form : list) {
@@ -136,11 +136,9 @@ public class DBForOutStockForm extends DB{
 				pstmt.setString(3, form.getTime());
 				pstmt.setString(4, form.getAddress());
 				pstmt.setInt(5, form.getTransmethod());
-				
+				pstmt.setString(8, form.getNumber());
 				pstmt.setInt(6, form.getExe());
 				pstmt.setInt(7, form.getState());
-				pstmt.setString(8, form.getNumber());
-				pstmt.setString(9, form.getIdofcenter());
 				
 				
 
@@ -148,9 +146,9 @@ public class DBForOutStockForm extends DB{
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			return "fail";
 		}
-
+		return "success";
 	}
 
 	public void update(ArrayList<OutStockFormDO> list, String tableName) {

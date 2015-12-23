@@ -29,7 +29,8 @@ public class SwiftController {
 	private TextManageUI   MUI;
 	private UserInfoUI userInfoUI;
 	private TipsUI tipsUI;
-	private AnnounceUI announceUI;
+	private AnnounceUI otherAnnounceUI;
+	private AnnounceForManageUI announceForManageUI;
 	//
 	private JFrame frame;
 	private MemberVO member; 
@@ -61,13 +62,20 @@ public class SwiftController {
 
 		switch(id){
 		case 0: jump = false;break;
-		case 1: panelList = courierUI.getPanelList();break;
-		case 2: panelList = businessUI.getPanelList();break;
-		case 3: panelList = ccUI.getPanelList();break;
-		case 4: panelList = storageUI.getPanelList();storageUI.startThread();;break;
-		case 5: panelList = financeUI.getPanelList();break;
-		case 6: panelList = GMUI.getPanelList();break;
-		case 7: panelList = MUI.getPanelList();break;
+		case 1: panelList = courierUI.getPanelList();
+		otherAnnounceUI=new AnnounceUI();panelList.add(otherAnnounceUI);break;
+		case 2: panelList = businessUI.getPanelList();
+		otherAnnounceUI=new AnnounceUI();panelList.add(otherAnnounceUI);break;
+		case 3: panelList = ccUI.getPanelList();
+		otherAnnounceUI=new AnnounceUI();panelList.add(otherAnnounceUI);break;
+		case 4: panelList = storageUI.getPanelList();
+		otherAnnounceUI=new AnnounceUI();panelList.add(otherAnnounceUI);break;
+		case 5: panelList = financeUI.getPanelList();
+		otherAnnounceUI=new AnnounceUI();panelList.add(otherAnnounceUI);break;
+		case 6: panelList = GMUI.getPanelList();
+		announceForManageUI = new AnnounceForManageUI();panelList.add(announceForManageUI);break;
+		case 7: panelList = MUI.getPanelList();
+		otherAnnounceUI=new AnnounceUI();panelList.add(otherAnnounceUI);break;
 		default:{System.out.println("Switch UI error!");jump = false;}break;
 		
 		}
@@ -75,8 +83,7 @@ public class SwiftController {
 		panelList.add(userInfoUI);
 		tipsUI = new TipsUI();
 		panelList.add(tipsUI);
-		announceUI = new AnnounceUI();
-		panelList.add(announceUI);
+		
 	}
 	
 	public void setUI(){

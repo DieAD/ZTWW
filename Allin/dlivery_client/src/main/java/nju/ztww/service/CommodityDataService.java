@@ -22,7 +22,7 @@ public interface CommodityDataService {
 		public ArrayList<StorageListLinePO> findList(String idofcenter);
 	//TODO
 		//插入一个列表
-		public void insertOut(ArrayList<StorageListLineofOutPO>  arraylistoutpo,String idofcenter);
-		public void insertIn(ArrayList<StorageListLineofInPO> arraylistinpo,String idofcenter);
+		public String insertOut(ArrayList<StorageListLineofOutPO>  arraylistoutpo,String idofcenter);
+		public String insertIn(ArrayList<StorageListLineofInPO> arraylistinpo,String idofcenter);
 		public String getLastidofcenter(String idofcenter);
 }
