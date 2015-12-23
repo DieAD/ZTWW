@@ -24,15 +24,17 @@ import confligUI.MyLabel;
 import confligUI.MyScrollPane;
 import confligUI.MyTable;
 import confligUI.MyTextField;
+import nju.ztww.bl.commodity.IsEmpty;
 import nju.ztww.service.CommodityService;
 import nju.ztww.serviceimpl.CommodityServiceImp;
 import nju.ztww.serviceimpl.StorageInListServiceImpl;
+import nju.ztww.ui.main.Login;
 import nju.ztww.ui.main.UserInfoUI;
 import nju.ztww.vo.StorageListLineofInVO;
 import nju.ztww.vo.StorageListLineofOutVO;
 
 public class InofStoragePanel extends JPanel{
-	public MyTable table;
+	   public MyTable table;
 	   public JDialog dlg;
 	   DefaultTableModel defaultTableModel ;
 	   public MyButton addbutton;
@@ -50,6 +52,7 @@ public class InofStoragePanel extends JPanel{
 	   public MyTextField paifield=new MyTextField();
 	   public MyTextField jiafield=new MyTextField();
 	   public MyTextField weifield=new MyTextField();
+	   MyLabel mylabel=new MyLabel();
 	   public JButton  surebutton=new JButton("确定");
 	   public JButton  sureofbutton=new JButton("确定");
 	   public MyButton  submitbutton=new MyButton('a');
@@ -117,7 +120,7 @@ public class InofStoragePanel extends JPanel{
 		public void actionPerformed(ActionEvent arg0) {
 			// TODO Auto-generated method stub
 			dlg=new JDialog();
-			dlg.setSize(new Dimension(350, 550));
+			dlg.setSize(new Dimension(350, 400));
             dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
             ordernumberfield.setBounds(100, 5, 150, 30);
             ordernumber.setFont(new Font("黑体",0,18));
@@ -158,9 +161,13 @@ public class InofStoragePanel extends JPanel{
             dlg.add(weifield);
            
             surebutton.setBounds(200, 350, 80, 40);
+            mylabel.setBounds(100, 350, 90, 40);
+            dlg.add( mylabel);
+            
             dlg.add(surebutton);
             
             surebutton.addActionListener(surelistener);
+            mylabel.setVisible(false);
             dlg.setVisible(true);
             
       
@@ -175,8 +182,19 @@ public class InofStoragePanel extends JPanel{
 		
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
+			ArrayList<String>stringlist=new ArrayList<String>();
+			stringlist.add(ordernumberfield.getText());
+			stringlist.add(datafield.getText());
+			stringlist.add(arrivefield.getText());
+			stringlist.add(dbtype.getSelectedItem().toString());
+			stringlist.add(paifield.getText());
+			stringlist.add(jiafield.getText());
+			stringlist.add(weifield.getText());
+			IsEmpty is=new IsEmpty();
+			boolean isempty=false;
+			isempty=is.isempty(stringlist);
+			if(!isempty){
 			Vector<String> row = new Vector(7);
-			
 			row.add(ordernumberfield.getText());
 			row.add(datafield.getText());
 			row.add(arrivefield.getText());
@@ -204,7 +222,10 @@ public class InofStoragePanel extends JPanel{
 		    table.revalidate();
 		    dlg.dispose();
 		    surebutton.removeActionListener(surelistener);
-		    
+			}
+			else{
+			mylabel.setVisible(true);
+			}
 		}
 	};
 	ActionListener listener2=new ActionListener(){

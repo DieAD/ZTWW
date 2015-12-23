@@ -5,14 +5,17 @@ import java.awt.Image;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
-public class AnnounceUI extends JPanel{
-
+public class AnnounceUI extends JPanel {
+	
 	public AnnounceUI(){
+		
 		this.setLayout(null);
 		this.setBounds(150, 550, 750, 50);
 		this.setVisible(true);
 	}
+	
 	 public void paintComponent(Graphics g){
 			super.paintComponent(g);
 			
@@ -20,4 +23,5 @@ public class AnnounceUI extends JPanel{
 			g.drawImage(background, 0,0,null);
 			
 		}
+	
 }

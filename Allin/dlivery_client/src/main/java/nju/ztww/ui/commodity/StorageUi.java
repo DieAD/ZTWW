@@ -17,6 +17,7 @@ import nju.ztww.bl.commodity.CheckOrderBL;
 import nju.ztww.bl.commodity.GetStockListBL;
 import nju.ztww.po.StorageListLineofInPO;
 import nju.ztww.po.TracePO;
+import nju.ztww.ui.main.AnnounceUI;
 import nju.ztww.ui.main.ListenerEndUI;
 import nju.ztww.ui.main.Listener_Return;
 import nju.ztww.ui.main.UserInfoUI;
@@ -25,6 +26,7 @@ import nju.ztww.ui.user.ThemeLabelUI;
 //date 11-18 name wh
 //需要根据中转中心业务员身份知道中转中心的id
 public class StorageUi extends JFrame implements Runnable{
+	
 	StorageNavigationPanel navigationpanel;
     //TopPanel toppanel;
 	ThemeLabelUI lablePanel;
@@ -39,6 +41,7 @@ public class StorageUi extends JFrame implements Runnable{
     ArrayList<TracePO>arraylistpo=new ArrayList<TracePO>();
     public JDialog dlg=new JDialog();
     boolean ispast=false;
+    
     public JLabel tishi=new JLabel("库存已超出警戒线");
     public JButton sure=new JButton("确定");
     Thread t=new Thread(this);
@@ -56,6 +59,7 @@ public class StorageUi extends JFrame implements Runnable{
 //		setController();
 
 //		 TODO Auto-generated constructor stub
+		
 		setup();
 		setPosition();
 		setController();
@@ -117,6 +121,8 @@ public class StorageUi extends JFrame implements Runnable{
 		arraylist.add(storagecheckpanel);
 		arraylist.add(storagepanpanel);
 		arraylist.add(storagetiaopanel);
+		//GetAnnouceUI e=new GetAnnouceUI();
+		
 		navigationpanel.Inbutton.addActionListener(new StorageControllerUi(this, inofStoragepanel, arraylist));
 		navigationpanel.Outbutton.addActionListener(new StorageControllerUi(this, outofStoragepanel, arraylist));
 		navigationpanel.Panbutton.addActionListener(new StorageControllerUi(this, storagepanpanel, arraylist));

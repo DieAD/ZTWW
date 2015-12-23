@@ -33,6 +33,7 @@ import confligUI.MyLabel;
 import confligUI.MyScrollPane;
 import confligUI.MyTable;
 import confligUI.MyTextField;
+import nju.ztww.bl.commodity.IsEmpty;
 import nju.ztww.serviceimpl.OrderServiceImpl;
 import nju.ztww.vo.CarManageVO;
 import nju.ztww.vo.LoadingVO;
@@ -223,7 +224,7 @@ public class CarLoadingUI extends JPanel{
 			           depart.setBounds(setX(3), setY(5), width, height);
 			           departtextArea.setBounds(setX(4), setY(5), width, height);
 			            
-			           dlg.add(depart);
+			            dlg.add(depart);
 			            dlg.add(departtextArea);
 			            dlg.add(money);
 			            dlg.add(moneytextArea);
@@ -314,6 +315,19 @@ public class CarLoadingUI extends JPanel{
 
 		public void actionPerformed(ActionEvent e) {
 
+			ArrayList<String> stringlist=new ArrayList<String>();
+			stringlist.add(datatextArea.getText());
+			stringlist.add(arrivetextArea.getText());
+			stringlist.add(carNumbertextArea.getText());
+			stringlist.add(jianzhuangtextArea.getText());
+			stringlist.add(orderNumber.getText());
+			stringlist.add(cartextArea.getText());
+			stringlist.add(yayuntextArea.getText());
+			stringlist.add(departtextArea.getText());
+			stringlist.add(businesstextArea.getText());
+			IsEmpty is=new IsEmpty();
+			boolean isempty=is.isempty(stringlist);
+			if(!isempty){
 			
 			loadingVO.setData(datatextArea.getText());
 			loadingVO.setArrive(arrivetextArea.getText());
@@ -328,6 +342,7 @@ public class CarLoadingUI extends JPanel{
 			allLoadingVO.add(loadingVO);
 
 			//增加行
+			
 			Vector<String> row = new Vector(7);
 			row.add(loadingVO.getId());
 			row.add(datatextArea.getText());
@@ -346,6 +361,10 @@ public class CarLoadingUI extends JPanel{
 		    table.revalidate();
 		    dlg.dispose();
 		    sureButton.removeActionListener(listener);
+			}
+			else{
+				
+			}
 		}
 		
 	};

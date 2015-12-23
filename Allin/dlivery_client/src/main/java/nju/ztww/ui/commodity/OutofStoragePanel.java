@@ -25,6 +25,7 @@ import confligUI.MyLabel;
 import confligUI.MyScrollPane;
 import confligUI.MyTable;
 import confligUI.MyTextField;
+import nju.ztww.bl.commodity.IsEmpty;
 import nju.ztww.bl.commodity.StringToInt;
 import nju.ztww.service.CommodityService;
 import nju.ztww.serviceimpl.CommodityServiceImp;
@@ -58,6 +59,8 @@ public class OutofStoragePanel extends JPanel {
    public MyTextField arrivefield=new MyTextField();
    public MyTextField zhuangyunfield=new MyTextField();
    public MyTextField yunshufield=new MyTextField();
+   public MyLabel mylabel=new MyLabel();//提示未正确
+	
    long l = System.currentTimeMillis();
    Date time=new Date(l);
   SimpleDateFormat dateFormat = new SimpleDateFormat("yyMMdd");
@@ -117,11 +120,11 @@ public class OutofStoragePanel extends JPanel {
 	public void actionPerformed(ActionEvent arg0) {
 		dlg=new JDialog();
 		dlg.setLayout(null);
-		dlg.setSize(new Dimension(350, 550));
+		dlg.setSize(new Dimension(350, 300));
         dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
         surebutton=new JButton("确定");
         surebutton.setBounds(200, 250, 80, 40);
-        
+        mylabel.setBounds(100, 250, 90, 40);
         ordernumberfield.setBounds(100, 5, 150, 30);
         ordernumber.setFont(new Font("黑体",0,18));
         ordernumber.setBounds(0, 0, 100, 40);;
@@ -151,7 +154,9 @@ public class OutofStoragePanel extends JPanel {
         dlg.add(yunshufield);
         dlg.add(zhuangyun);
         dlg.add(zhuangyunfield);
+        dlg.add(mylabel);
         surebutton.addActionListener(listener);
+        mylabel.setVisible(false);
         dlg.setVisible(true);
 		// TODO Auto-generated method stub
 	
@@ -163,6 +168,16 @@ public class OutofStoragePanel extends JPanel {
 	
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
+		ArrayList<String> stringlist=new ArrayList<String>();
+		stringlist.add(ordernumberfield.getText());
+		stringlist.add(datafield.getText());
+		stringlist.add(arrivefield.getText());
+		stringlist.add(dbtype.getSelectedItem().toString());
+		stringlist.add(yunshufield.getText());
+		boolean isempty=false;
+		IsEmpty is=new IsEmpty();
+		isempty=is.isempty(stringlist);
+		if(!isempty){
 		Vector<String> row = new Vector(5);
 		row.add(ordernumberfield.getText());
 		row.add(datafield.getText());
@@ -189,6 +204,11 @@ public class OutofStoragePanel extends JPanel {
 	    dlg.dispose();
 	    surebutton.removeActionListener(listener);
 	}
+		else{
+			mylabel.setVisible(true);
+		}
+	}
+	
 }; 
 ActionListener listener2=new ActionListener(){
 //需要界面提供给我idofcenter
@@ -209,6 +229,7 @@ ActionListener listener3=new ActionListener(){
 			if(table.getSelectedRow()>=0){
 		arraylist.remove(table.getSelectedRow());
 		defaultTableModel.removeRow(table.getSelectedRow());
+		
 		
 			}
 		}
