@@ -82,6 +82,7 @@ public interface FinanceDataService extends Remote {
 		public void updateAccount(AccountDO account)throws RemoteException;
 		public void initUser(ArrayList<UserDO> list)throws RemoteException;
 		public ArrayList<PaymentPO> getAllPaymentDO()throws RemoteException;
+		public String getInsName(String id)throws RemoteException;
 	/*
 	 * 在数据库中更改信息？？
 	 */

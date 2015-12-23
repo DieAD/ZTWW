@@ -61,7 +61,7 @@ public class StoragePanPanel extends JPanel  implements ActionListener{
 	public MyLabel baojing=new MyLabel("库存警戒线");
 	public MyTextField baojingshuliang=new MyTextField(5);
 
-	public JButton baojingxiugai=new JButton("设置新的警戒线");
+	public MyLabel baojingxiugai=new MyLabel("设置新的警戒线");
 	public JTextField baojingnew=new JTextField(5);
 	public MyButton xiugai=new MyButton();
 	public JButton sure=new JButton("确定");
@@ -173,12 +173,12 @@ ActionListener listenerxiugai=new ActionListener() {
 			// TODO Auto-generated method stub
 			dlg=new JDialog();
 			dlg.setLayout(null);
-			dlg.setSize(240, 150);
+			dlg.setSize(340, 150);
 			dlg.setVisible(true);
 			dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
-			baojingxiugai.setBounds(40, 0, 140, 30);
-			baojingnew.setBounds(60,50,100,30);
-			sure.setBounds(160, 80, 80, 30);
+			baojingxiugai.setBounds(0, 5, 140, 30);
+			baojingnew.setBounds(30,50,120,30);
+			sure.setBounds(160, 50, 80, 30);
 			sure.addActionListener(listenersure);
 			dlg.add(baojingxiugai);
 			dlg.add(baojingnew);

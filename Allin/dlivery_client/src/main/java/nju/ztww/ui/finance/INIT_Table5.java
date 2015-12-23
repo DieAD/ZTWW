@@ -3,6 +3,8 @@ package nju.ztww.ui.finance;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
+
 import nju.ztww.dao.AccountDO;
 import nju.ztww.service.FinanceService;
 import nju.ztww.serviceimpl.FinanceServiceImpl;
@@ -18,6 +20,8 @@ public class INIT_Table5 extends EditPanel {
 		   
 		   button1.addActionListener(new Listener());
 		   button3.addActionListener(new Listener2());
+		   save.setIcon(new ImageIcon("photo/return.png"));
+		   this.add(button3);
 		   this.add(save);
 	   }
 	   

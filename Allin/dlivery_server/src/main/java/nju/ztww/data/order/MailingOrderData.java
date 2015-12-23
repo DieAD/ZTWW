@@ -63,7 +63,7 @@ public class MailingOrderData {
 		orderFormDO.setOrdernumber(mailingPO.getStripNumber());
 		list.add(orderFormDO);
 		System.out.println("result = successful!!!!!!!!!!!!!!!!!!!!!!S");
-		dbForOrderForm.insert(list, "ordertable");
+		dbForOrderForm.insert(list, "orderform");
 		dbForOrderForm.close();
 		System.out.println("result = successful!");
 		return "successful!";
@@ -93,6 +93,8 @@ public class MailingOrderData {
 			mailingOrder.setExe(1);
 			mailingTrackPO.setID(order);
 			mailingTrackPO.setTrack(mailingOrder.getHoll());
+			//add by wh;
+			
 			ArrayList<OrderFormDO> newOrders = new ArrayList<OrderFormDO>();
 			newOrders.add(mailingOrder);
 			dbForOrderForm.update(newOrders, "orderform");

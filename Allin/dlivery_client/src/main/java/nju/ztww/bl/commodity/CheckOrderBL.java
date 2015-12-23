@@ -27,6 +27,10 @@ public class CheckOrderBL {
 	checkorderdataservice=(CheckOrderDataService)rhelper.findService("CheckOrderDataService");
 	checkorderdataservice.modifyBaoJing(idofcenter,number);
 	}
+	public  void modifyDao(String idofcenter,String number){
+		checkorderdataservice=(CheckOrderDataService)rhelper.findService("CheckOrderDataService");
+		checkorderdataservice.modifyDao(idofcenter,number);
+		}
 
 	public  void modifyDao(String idofcenter,String number){
 		checkorderdataservice=(CheckOrderDataService)rhelper.findService("CheckOrderDataService");

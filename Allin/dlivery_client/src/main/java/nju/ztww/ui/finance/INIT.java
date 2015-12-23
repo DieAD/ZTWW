@@ -1,10 +1,15 @@
 package nju.ztww.ui.finance;
 
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+
+import confligUI.MyButton;
 
 public class INIT extends JPanel{
 
@@ -65,20 +70,26 @@ public class INIT extends JPanel{
    }
    
    public class ButtonPanel extends JPanel{
-	   JButton button1  = new JButton("机构建账");
-	   JButton button2  = new JButton("人员建账");
-	   JButton button3  = new JButton("车辆建账");
-	   JButton button4  = new JButton("库存建账");
-	   JButton button5  = new JButton("银行账户建账");
-	   JButton button6  = new JButton("返回");
+	   MyButton button1  = new MyButton();
+	   MyButton button2  = new MyButton();
+	   MyButton button3  = new MyButton();
+	   MyButton button4  = new MyButton();
+	   MyButton button5  = new MyButton();
+	   MyButton button6  = new MyButton();
 	   public ButtonPanel(){
 		   this.setLayout(null);
-		   button1.setBounds(10,10,100,50);
-		   button2.setBounds(10,70,100,50);
-		   button3.setBounds(10,130,100,50);
-		   button4.setBounds(10,190,100,50);
-		   button5.setBounds(10,250,100,50);
-		   button6.setBounds(10,310,100,50);
+		   button1.setBounds(10,10,80,30);
+		   button2.setBounds(10,50,80,30);
+		   button3.setBounds(10,90,80,30);
+		   button4.setBounds(10,130,80,30);
+		   button5.setBounds(10,170,80,30);
+		   button6.setBounds(10,210,80,30);
+		   button1.setIcon(new ImageIcon("photo/InitOrga.png"));
+		   button2.setIcon(new ImageIcon("photo/InitStaff.png"));
+		   button3.setIcon(new ImageIcon("photo/InitCars.png"));
+		   button4.setIcon(new ImageIcon("photo/InitStorage.png"));
+		   button5.setIcon(new ImageIcon("photo/InitAccount.png"));
+		   button6.setIcon(new ImageIcon("photo/InitReturn.png"));
 		   
 		   this.add(button1);
 		   this.add(button2);
@@ -88,6 +99,13 @@ public class INIT extends JPanel{
 		   this.add(button6);
 	   }
    }
+   
+   public void paintComponent(Graphics g){
+		super.paintComponent(g);
+		
+		Image background=new ImageIcon("photo/PersonInfoBG.png").getImage();
+		g.drawImage(background, 0,0,null);
+	}
    
    public class Listener3 implements ActionListener{
 

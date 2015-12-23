@@ -120,6 +120,7 @@ public class OutofStoragePanel extends JPanel {
 	public void actionPerformed(ActionEvent arg0) {
 		dlg=new JDialog();
 		dlg.setLayout(null);
+
 		dlg.setSize(new Dimension(350, 300));
         dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
         surebutton=new JButton("确定");
@@ -134,14 +135,30 @@ public class OutofStoragePanel extends JPanel {
         arrivefield.setBounds(100, 105, 150, 30);
         arrive.setFont(new Font("黑体",0,18));
         arrive.setBounds(0, 100, 100, 40);
-        //zhuangyunfield.setBounds(100, 155, 150, 30);
-        zhuangyun.setFont(new Font("黑体",0,18));
-        zhuangyun.setBounds(0, 150, 100, 40);
-        yunshufield.setBounds(100, 205, 150, 30);
-        yunshu.setFont(new Font("黑体",0,18));
-        yunshu.setBounds(0, 200, 100, 40);
+
+		//dlg.setSize(new Dimension(350, 400));
+        dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
+        surebutton=new JButton("确定");
+        surebutton.setBounds(190, 270, 80, 30);
         
- 	    dbtype.setBounds(100, 155, 150, 30);
+        ordernumberfield.setBounds(120, 15, 150, 30);
+//        ordernumber.setFont(new Font("黑体",0,18));
+        ordernumber.setBounds(20, 10, 100, 40);;
+        datafield.setBounds(120, 65, 150, 30);
+//        data.setFont(new Font("黑体",0,18));
+        data.setBounds(20, 60,100, 40);
+        arrivefield.setBounds(120, 115, 150, 30);
+//        arrive.setFont(new Font("黑体",0,18));
+        arrive.setBounds(20, 110, 100, 40);
+
+        zhuangyunfield.setBounds(100, 155, 150, 30);
+//        zhuangyun.setFont(new Font("黑体",0,18));
+        zhuangyun.setBounds(20, 160, 100, 40);
+        yunshufield.setBounds(120, 215, 150, 30);
+//        yunshu.setFont(new Font("黑体",0,18));
+        yunshu.setBounds(20, 210, 100, 40);
+        
+ 	    dbtype.setBounds(120, 165, 150, 30);
  	    dlg.add(dbtype);
         dlg.add(surebutton);
         dlg.add(arrive);

@@ -61,21 +61,21 @@ public class FindStoragePanel extends JPanel {
 	private  MyLabel depart=new  MyLabel();
 
 	private MyTextField loadDataText=new MyTextField("");
-	private  MyLabel loadData=new  MyLabel();
+	private  MyLabel loadData=new  MyLabel("装运日期");
 	private MyTextField transferNumberText=new MyTextField("");
-	private  MyLabel transferNumber=new  MyLabel();
+	private  MyLabel transferNumber=new  MyLabel("中转运输编号");
 	private MyTextField methodText=new MyTextField("");
-	private  MyLabel method=new  MyLabel();
+	private  MyLabel method=new  MyLabel("运输方式");
 	private MyTextField AirOrCarNumberText=new MyTextField("");
-	private  MyLabel AirOrCarNumber=new  MyLabel();
+	private  MyLabel AirOrCarNumber=new  MyLabel("航班(车次)号");
 	private MyTextField transferArriveText=new MyTextField("");
-	private  MyLabel transferArrive=new  MyLabel();
+	private  MyLabel transferArrive=new  MyLabel("到达地");
 	private MyTextField transferSendText=new MyTextField("");
-	private  MyLabel transferSend=new  MyLabel();
+	private  MyLabel transferSend=new  MyLabel("出发地");
 	private MyTextField counterText=new MyTextField("");
-	private  MyLabel counter=new  MyLabel();
+	private  MyLabel counter=new  MyLabel("货柜号");
 	private MyTextField jianzhuangText=new MyTextField("");
-	private  MyLabel transferJianzhuang=new  MyLabel();
+	private  MyLabel transferJianzhuang=new  MyLabel("监装员");
 	private MyTextField allOrderText=new MyTextField("");
 	private  MyLabel allOrder=new  MyLabel();
 
@@ -169,7 +169,7 @@ public class FindStoragePanel extends JPanel {
 			  JScrollPane scrollPane = new JScrollPane(table);
 		      table.setRowHeight(25);
 		      //
-			  scrollPane.setBounds(0, 0, 750, 400);
+			  scrollPane.setBounds(0, 0, 650, 400);
 				scrollPane.getViewport().setOpaque(false);
 				scrollPane.setOpaque(false);
 				table.getTableHeader().setBackground(new Color(249,231,212));//208,168,125
@@ -183,38 +183,38 @@ public class FindStoragePanel extends JPanel {
 						dlg.setSize(new Dimension(350, 550));
 			            dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
 			            //装车日期
-			            datatextArea.setBounds(100, 5, 150, 30);
-			            data.setIcon(dataLable);
-			            data.setBounds(0, 0, 100, 40);
+			            datatextArea.setBounds(120, 5, 150, 30);
+			            data.setText("装车日期");
+			            data.setBounds(20, 0, 100, 40);
 			            //汽运编号
-			            cartextArea.setBounds(100, 105, 150, 30);
-			            car.setIcon(Car);
-			            car.setBounds(0, 100, 100, 40);
+			            cartextArea.setBounds(120, 105, 150, 30);
+			            car.setText("汽运编号");
+			            car.setBounds(20, 100, 100, 40);
 			            //到达地
-			            arrivetextArea.setBounds(100, 155, 150, 30);
-			            arrive.setIcon(Arrive);
-			            arrive.setBounds(0, 150, 100, 40);
+			            arrivetextArea.setBounds(120, 155, 150, 30);
+			            arrive.setText("到达地");
+			            arrive.setBounds(20, 150, 100, 40);
 			            //车辆代号
-			            carNumbertextArea.setBounds(100, 205, 150, 30);
-			            carNumber.setIcon(CarNumber);
-			            carNumber.setBounds(0, 200, 100, 40);
+			            carNumbertextArea.setBounds(120, 55, 150, 30);
+			            carNumber.setText("车辆编号");
+			            carNumber.setBounds(20, 50, 100, 40);
 //			            //订单号
 //			            orderNumbertextArea.setBounds(100, 255, 150, 30);
 //			            orderNumber.setIcon(OrderNumber);
 //			            orderNumber.setBounds(0, 250, 100, 40);
 			            //监装员
-			            jianzhuangtextArea.setBounds(100, 305, 150, 30);
-			            jianzhuang.setIcon(Jianzhuang);
-			            jianzhuang.setBounds(0, 300, 100, 40);
+			            jianzhuangtextArea.setBounds(120, 205, 150, 30);
+			            jianzhuang.setText("监装员");
+			            jianzhuang.setBounds(20, 200, 100, 40);
 			            //押运员
-			            yayuntextArea.setBounds(100, 355, 150, 30);
-			            yayun.setIcon(Yayun);
-			            yayun.setBounds(0, 350, 100, 40);
+			            yayuntextArea.setBounds(120, 255, 150, 30);
+			           yayun.setText("押运员");
+			            yayun.setBounds(20, 250, 100, 40);
 			          
 			            //出发地
-			            departtextArea.setBounds(100, 455, 150, 30);
-			            depart.setIcon(Money);
-			            depart.setBounds(0, 450, 100, 40);
+			            departtextArea.setBounds(120, 305, 150, 30);
+			            depart.setText("出发地");
+			            depart.setBounds(20, 320, 100, 40);
 			            
 			            dlg.add(depart);
 			            dlg.add(departtextArea);
@@ -234,7 +234,7 @@ public class FindStoragePanel extends JPanel {
 			            dlg.add(datatextArea);
 			    
 			            dlg.add(sureButton);
-			            sureButton.setBounds(100, 450, 60, 40);
+			            sureButton.setBounds(180, 350, 100, 30);
 			            sureButton.addActionListener(listener);
 			            
 			            dlg.setLayout(null);
@@ -249,37 +249,37 @@ public class FindStoragePanel extends JPanel {
 						dlg.setSize(new Dimension(350, 550));
 			            dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
 			           //运输方式
-			            methodText.setBounds(100, 5, 150, 30);
+			            methodText.setBounds(120, 5, 150, 30);
 			            method.setIcon(null);
-			            method.setBounds(0, 0, 100, 40);
+			            method.setBounds(20, 0, 100, 40);
 			            //装车日期
-			            loadDataText.setBounds(100, 55, 150, 30);
+			            loadDataText.setBounds(120, 55, 150, 30);
 			            loadData.setIcon(null);
-			            loadData.setBounds(0, 50, 100, 40);
+			            loadData.setBounds(20, 50, 100, 40);
 			            //中转运输编号
-			            transferNumberText.setBounds(100, 105, 150, 30);
+			            transferNumberText.setBounds(120, 105, 150, 30);
 			            transferNumber.setIcon(null);
-			            transferNumber.setBounds(0, 100, 100, 40);
+			            transferNumber.setBounds(20, 100, 100, 40);
 			            //航班（车次）号
-			            AirOrCarNumberText.setBounds(100, 155, 150, 30);
+			            AirOrCarNumberText.setBounds(120, 155, 150, 30);
 			            AirOrCarNumber.setIcon(null);
-			            AirOrCarNumber.setBounds(0, 150, 100, 40);
+			            AirOrCarNumber.setBounds(20, 150, 100, 40);
 			            //出发地
-			            transferSendText.setBounds(100, 205, 150, 30);
+			            transferSendText.setBounds(120, 205, 150, 30);
 			            transferSend.setIcon(null);
-			            transferSend.setBounds(0, 200, 100, 40);
+			            transferSend.setBounds(20, 200, 100, 40);
 			            //到达地
-			            transferArriveText.setBounds(100, 255, 150, 30);
+			            transferArriveText.setBounds(120, 255, 150, 30);
 			            transferArrive.setIcon(null);
-			            transferArrive.setBounds(0, 250, 100, 40);
+			            transferArrive.setBounds(20, 250, 100, 40);
 			            //监装员
-			            jianzhuangText.setBounds(100, 305, 150, 30);
+			            jianzhuangText.setBounds(120, 305, 150, 30);
 			            transferJianzhuang.setIcon(null);
-			            transferJianzhuang.setBounds(0, 300, 100, 40);
+			            transferJianzhuang.setBounds(20, 300, 100, 40);
 			            //货柜号
-			            counterText.setBounds(100, 355, 150, 30);
+			            counterText.setBounds(120, 355, 150, 30);
 			            counter.setIcon(null);
-			            counter.setBounds(0, 350, 100, 40);
+			            counter.setBounds(20, 350, 100, 40);
 //			            //托运单号
 //			            allOrderText.setBounds(100, 405, 150, 30);
 //			            allOrder.setIcon(null);
@@ -304,7 +304,7 @@ public class FindStoragePanel extends JPanel {
 //			            dlg.add(allOrderText);
 //			            dlg.add(allOrder);
 			            dlg.add(sureTransferButton);
-			            sureTransferButton.setBounds(100, 450, 60, 40);
+			            sureTransferButton.setBounds(200, 415, 100, 30);
 			            sureTransferButton.addActionListener(listener2);
 			            
 			            dlg.setLayout(null);

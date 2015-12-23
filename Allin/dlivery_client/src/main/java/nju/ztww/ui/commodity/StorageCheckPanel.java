@@ -66,7 +66,7 @@ public class StorageCheckPanel extends JPanel {
 	   label2.setBounds(160, 0, 70, 20);
 	   labelin.setBounds(300, 20, 100, 30);
 	   textfieldEnd.setBounds(240, 0, 80, 20);
-	   surebutton.setBounds(600,0, 70, 20);//确认时要加监听
+	   surebutton.setBounds(400,0, 70, 20);//确认时要加监听
 	   surebutton.setIcon(new ImageIcon("photo/wj_queding.png"));
 	   surebutton.addActionListener(listener);
 	   surebutton.setBorderPainted(false);

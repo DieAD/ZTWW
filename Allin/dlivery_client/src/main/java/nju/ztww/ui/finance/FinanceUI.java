@@ -5,6 +5,8 @@ import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import nju.ztww.ui.user.PersonalMesageUI;
 //date 11-18 name wh//
 public class FinanceUI  {
     JFrame frame ;
@@ -17,6 +19,7 @@ public class FinanceUI  {
     EditPanel initPanel = new EditInit(new String[]{"账号","创建时间","创建人","是否使用中"},new Object[][]{{new String("000001"),new String("2014/1"),new String("manager"),new String("是")}});
     HeaderPanel headerPanel = new HeaderPanel();
     MenuePanel menuePanel = new MenuePanel();
+    PersonalMesageUI personInfo = new PersonalMesageUI();
     ArrayList<EditPanel> panelList = new ArrayList<EditPanel>();
     //modify
     private ArrayList<JPanel> list = new ArrayList<JPanel>();
@@ -36,11 +39,13 @@ public class FinanceUI  {
 //		frame.getContentPane().add(headerPanel);
 //		frame.getContentPane().add(menuePanel);
 //		frame.setVisible(true);
+    	personInfo.setVisible(false);
     }
     
     public void setPanelBounds(){
     	menuePanel.setBounds(0, 100, 150, 500);
     	headerPanel.setBounds(150, 0, 750, 60);
+    	personInfo.setBounds(150, 100, 750, 450);
     	//
 //    	accountPanel.setBounds(210,60,690,480);
 //    	paymentPanel.setBounds(210,60,690,480);
@@ -69,6 +74,7 @@ public class FinanceUI  {
     	menuePanel.benefitButton.addActionListener(new ListenerTable(frame,benefitPanel,panelList));
     	menuePanel.businessButton.addActionListener(new ListenerTable(frame,businessPanel,panelList));
     	menuePanel.initButton.addActionListener(new ListenerTable(frame,initPanel,panelList));
+    	menuePanel.personInfoButton.addActionListener(new ListenerTable(frame, personInfo, panelList));
     }
     public FinanceUI(JFrame frame){
     	this.frame = frame;
@@ -81,6 +87,7 @@ public class FinanceUI  {
     public ArrayList<JPanel> getPanelList(){
     	list.add(headerPanel);
     	list.add(menuePanel);
+    	list.add(personInfo);
     	for(EditPanel p : panelList){
     		list.add(p);
     	}
