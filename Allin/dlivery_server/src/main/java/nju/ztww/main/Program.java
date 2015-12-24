@@ -22,7 +22,7 @@ import nju.ztww.serviceimpl.UserDataServiceImpl;
 
 public class Program {
          public static String IP = "127.0.0.1";
-         public static int PORT = 1020;
+         public static int PORT = 1010;
          public static void main(String[] args){
         	 try{
 
