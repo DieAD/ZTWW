@@ -34,10 +34,10 @@ public class DBMatrix extends DB{
 		ResultSet rs = stmt.executeQuery(sql);
 		while(rs.next()){
 			matrixDO form = new matrixDO();
-			form.setId(rs.getString(1));
-			form.setTime(rs.getString(2));
-			form.setMen(rs.getString(3));
-			form.setState(rs.getString(4));
+			form.setId(rs.getString(2));
+			form.setTime(rs.getString(3));
+			form.setMen(rs.getString(4));
+			form.setState(rs.getString(5));
 			
 			list.add(form);
 		}

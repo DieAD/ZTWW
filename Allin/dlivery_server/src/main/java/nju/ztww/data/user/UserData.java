@@ -71,6 +71,7 @@ public class UserData{
 			userPO.setSalary(user.getSalary());
 			userPO.setSex(user.getSex());
 			userPO.setWorkTime(user.getWorktime());
+			userPO.setPosition(user.getPosition());
 		}else {
 			System.out.println("用户信息找不到！");
 		}

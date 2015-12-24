@@ -40,7 +40,43 @@ public class ExcelHelper {
 //	public void BusinessToExcel(ArrayList<>){
 //		
 //	}
-	
+	public void BusinessToExcel(Double totalCollection,Double totalPay,Double totalBenefit){
+		String[] title = {"总收入","总支出","总利润"};
+		HSSFWorkbook workbook=new HSSFWorkbook();
+		HSSFSheet sheet=workbook.createSheet();
+		
+		HSSFRow row=sheet.createRow(0);
+	    HSSFCell cell=null;
+	    for(int i=0;i<title.length;i++){
+	   	 cell=row.createCell(i);
+	   	 cell.setCellValue(title[i]);
+	    }
+	    HSSFRow nextrow=sheet.createRow(1);
+    	HSSFCell cell2=nextrow.createCell(0);
+    	cell2.setCellValue(totalCollection);
+    	
+    	cell2 = nextrow.createCell(1);
+    	cell2.setCellValue(totalPay);
+    	
+    	cell2 = nextrow.createCell(2);
+    	cell2.setCellValue(totalBenefit);
+    	//
+    	 SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss收益表");
+ 		String fileName = df.format(new Date());
+ 		
+ 		File file = new File("e:/"+fileName+".xls");
+ 		 try {
+ 			file.createNewFile();
+ 			FileOutputStream stream= new FileOutputStream(file);
+ 		   	 workbook.write(stream);
+ 		   	 stream.close();
+ 		} catch (IOException e) {
+ 			// TODO Auto-generated catch block
+ 			e.printStackTrace();
+ 		}
+    	
+	}
+	//-------------------------------------
 	public void CollectionToExcel(){
 		financeDataService = (FinanceDataService) rmi
 				.findService("FinanceDataService");

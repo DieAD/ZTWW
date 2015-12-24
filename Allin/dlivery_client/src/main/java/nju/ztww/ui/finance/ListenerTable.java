@@ -42,6 +42,7 @@ public class ListenerTable implements ActionListener {
 		}
 		EditPanel init = new EditInit(new String[]{"账号","创建时间","创建人","是否使用中"}, null);
 		init.setBounds(150,100,750,450);
+		init.setVisible(true);
 		list.add(init);
 	    frame.add(init);
 	    frame.repaint();
