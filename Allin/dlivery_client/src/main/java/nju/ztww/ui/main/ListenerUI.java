@@ -29,7 +29,7 @@ public class ListenerUI implements MouseListener{
 
 
 	public void switchUI(){
-		frame.add(new LoadingPanel());
+	//	frame.add(new LoadingPanel());
 		
 		this.swiftController.setMember(login.getID(), login.getPassword());
 		swiftController.setUI();
