@@ -22,6 +22,7 @@ import confligUI.MyLabel;
 import confligUI.MyScrollPane;
 import confligUI.MyTable;
 import confligUI.MyTextField;
+import nju.ztww.bl.commodity.IsEmpty;
 import nju.ztww.service.OrderService;
 import nju.ztww.serviceimpl.OrderServiceImpl;
 import nju.ztww.ui.main.UserInfoUI;
@@ -37,7 +38,7 @@ public class Courier_OrderInputUI extends JPanel{
 	MyTable table ;
 	OrderService orderServiceImpl = new OrderServiceImpl();
 	String[] TYPES = {"特快", "标准", "经济"};
-	
+	private MyLabel mylabel=new MyLabel();
 	private MyLabel numbersLabel = new MyLabel();
 	private MyTextField numbers = new MyTextField();
 	private MyLabel orderNumLabel = new MyLabel();
@@ -177,6 +178,25 @@ public class Courier_OrderInputUI extends JPanel{
 		public void actionPerformed(ActionEvent e) {
 
 			// TODO Auto-generated method stub
+			ArrayList<String>stringlist=new ArrayList<String>();
+			stringlist.add(numbers.getText());
+			stringlist.add(orderNum.getText());
+			stringlist.add(sender.getText());
+			stringlist.add(senderPhone.getText());
+			stringlist.add(ognization.getText());
+			stringlist.add(senderTEL.getText());
+			stringlist.add(receiver.getText());
+			stringlist.add(receiverPhone.getText());
+			stringlist.add(goodInfo.getText());
+			stringlist.add(estTime.getText());
+			stringlist.add(pack.getText());
+			stringlist.add(place.getText());
+			stringlist.add(places.getSelectedItem().toString());
+			stringlist.add(type.getSelectedItem().toString());
+			IsEmpty is=new IsEmpty();
+			boolean isempty=false;
+			isempty=is.isempty(stringlist);
+			if(!isempty){
 			Vector<String> row = new Vector<String>();
 			
 			String ID = UserInfoUI.getUserID();
@@ -236,7 +256,10 @@ public class Courier_OrderInputUI extends JPanel{
 
 			 addDlg.dispose();
 			 sureButton.removeActionListener(listener);
-			 
+			}
+			else{
+				mylabel.setVisible(true);
+			}
 	
 		}
 		
@@ -271,7 +294,8 @@ public class Courier_OrderInputUI extends JPanel{
             addDlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
             sureButton.setIcon(new ImageIcon("photo/courierSure.png"));
             String  mailingOrderID = orderServiceImpl.getOrderID();
- 
+            mylabel.setText("信息未填全！");
+            mylabel.setBounds(440, 460, 100, 40);
             numbersLabel.setBounds(50, 20, 150, 30);
             numbersLabel.setText("营业厅编号");
             numbers.setBounds(130, 20, 120, 30);
@@ -357,7 +381,8 @@ public class Courier_OrderInputUI extends JPanel{
             addDlg.add(type);
             addDlg.add(packLabel);
             addDlg.add(pack);
-            
+            addDlg.add(mylabel);
+            mylabel.setVisible(false);
             
             addDlg.add(sureButton);
             

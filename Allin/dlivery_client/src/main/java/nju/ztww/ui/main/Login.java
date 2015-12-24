@@ -135,6 +135,18 @@ public class Login extends JFrame{
 	
 	
 	
+	public ListenerUI getUiListener() {
+		return uiListener;
+	}
+
+
+
+	public void setUiListener(ListenerUI uiListener) {
+		this.uiListener = uiListener;
+	}
+
+
+
 	public String getID(){
 		return id.getText();
 	}

@@ -13,6 +13,7 @@ import javax.swing.table.DefaultTableModel;
 
 import confligUI.MyLabel;
 import confligUI.MyTextField;
+import nju.ztww.bl.commodity.DateChooser;
 import nju.ztww.bl.commodity.WayToString;
 import nju.ztww.service.CommodityListService;
 import nju.ztww.serviceimpl.CommodityListServiceImpl;
@@ -50,7 +51,8 @@ public class StorageCheckPanel extends JPanel {
  public ArrayList<StorageListLineofInVO>arraylistin;//盘点时所需的入库信息
  public ArrayList<StorageListLineofOutVO>arraylistout;
  public CommodityListService commoditylistservice=new CommodityListServiceImpl();
- 
+ public DateChooser chos1=new DateChooser("yy/MM/dd");
+ public DateChooser chos2=new DateChooser("yy/MM/dd");
  public JTable table1;
  public JTable table2;
  public StorageCheckPanel() {
@@ -62,20 +64,24 @@ public class StorageCheckPanel extends JPanel {
 	 this.setBackground(new Color(250, 240, 230));
 	 this.setLayout(null);
 	   label1.setBounds(0, 0, 70, 20);
-	   textfieldBegin.setBounds(70, 0, 80, 20);
+	   //textfieldBegin.setBounds(70, 0, 70, 20);
+	   chos1.setBounds(70, 0, 70, 20);
 	   label2.setBounds(160, 0, 70, 20);
 	   labelin.setBounds(300, 20, 100, 30);
-	   textfieldEnd.setBounds(240, 0, 80, 20);
+	   chos2.setBounds(240, 0, 70, 20);
+	   //textfieldEnd.setBounds(240, 0, 80, 20);
 	   surebutton.setBounds(400,0, 70, 20);//确认时要加监听
 	   surebutton.setIcon(new ImageIcon("photo/wj_queding.png"));
 	   surebutton.addActionListener(listener);
 	   surebutton.setBorderPainted(false);
 	   this.add(surebutton);
+	   this.add(chos1);
 	   this.add(label1);
-	   this.add(textfieldBegin);
+	   //this.add(textfieldBegin);
 	   this.add(label2);
 	   this.add(labelin);
-	   this.add(textfieldEnd);
+	   this.add(chos2);
+	   //this.add(textfieldEnd);
 	   labelinnumber.setBounds(500, 200, 60, 20);
 	   this.add(labelinnumber);
 	   textfieldin.setBounds(570, 200, 60, 20);
@@ -155,9 +161,10 @@ public class StorageCheckPanel extends JPanel {
    public void actionPerformed(ActionEvent e) {
 	   //arraylistin.clear();
 	   defaultTableModel1.setRowCount(0);
-	   
+	   System.out.println(chos1.getTime());
+	   System.out.println(chos2.getTime());
 	   String idofcenter=UserInfoUI.getUserID().substring(0,5);
-	   arraylistin=commoditylistservice.getInListbytime(textfieldBegin.getText(), textfieldEnd.getText(),idofcenter);
+	   arraylistin=commoditylistservice.getInListbytime(chos1.getTime(), chos2.getTime(),idofcenter);
 	   for(int i=0;i<arraylistin.size();i++){
 		   System.out.println(arraylistin.get(i).getDestination());
 			Vector<String> row = new Vector<String>(5);
@@ -173,7 +180,7 @@ public class StorageCheckPanel extends JPanel {
 	   //arraylistout.clear();
 	   defaultTableModel2.setRowCount(0);
 	   textfieldin.setText(String.valueOf(arraylistin.size()));
-	   arraylistout=commoditylistservice.getOutListbytime(textfieldBegin.getText(), textfieldEnd.getText(),idofcenter);
+	   arraylistout=commoditylistservice.getOutListbytime(chos1.getTime(), chos2.getTime(),idofcenter);
 	  WayToString way=new WayToString();
 	  
 	   for(int i=0;i<arraylistout.size();i++){

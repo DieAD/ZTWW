@@ -22,6 +22,7 @@ import confligUI.MyLabel;
 import confligUI.MyScrollPane;
 import confligUI.MyTable;
 import confligUI.MyTextField;
+import nju.ztww.bl.commodity.IsEmpty;
 import nju.ztww.serviceimpl.OrderServiceImpl;
 import nju.ztww.ui.main.UserInfoUI;
 import nju.ztww.vo.DriverMessageVO;
@@ -42,7 +43,7 @@ public class RecieiveMoneyUI extends JPanel{
 	private MyTextField orderNumbertextArea=new MyTextField("");
 	private  MyLabel orderNumber=new  MyLabel("备注");
 	private MyTextField findtextArea=new MyTextField("");
-	
+	private MyLabel mylabel=new MyLabel();
 	private MyButton findButton=new MyButton('d');
 	private MyButton findSureButton=new MyButton();
 	private MyButton deleteButton=new MyButton('c');
@@ -145,7 +146,10 @@ public class RecieiveMoneyUI extends JPanel{
 			            sureButton.setIcon(new ImageIcon("photo/BusinessSure.png"));
 			            sureButton.setBounds(230, 315, 70, 30);
 			            sureButton.addActionListener(listener);
-			            
+			            mylabel.setText("信息未填完！");
+			            mylabel.setBounds(230, 345, 100, 40);
+			            mylabel.setVisible(false);
+			            dlg.add(mylabel);
 			            dlg.setLayout(null);
 						dlg.setVisible(true);
 					}
@@ -207,6 +211,14 @@ public class RecieiveMoneyUI extends JPanel{
 	ActionListener listener = new ActionListener(){
 
 		public void actionPerformed(ActionEvent e) {
+			ArrayList<String>stringlist =new ArrayList<String>();
+			stringlist.add(businesstextArea.getText());
+			stringlist.add(carNumbertextArea.getText());
+			stringlist.add(cartextArea.getText());
+			stringlist.add(arrivetextArea.getText());
+			IsEmpty is=new IsEmpty();
+			boolean isempty=is.isempty(stringlist);
+			if(!isempty){
 			receiveVO.setData(businesstextArea.getText());
 			receiveVO.setOrderNumber(carNumbertextArea.getText());
 			double money=Double.parseDouble(cartextArea.getText());
@@ -234,6 +246,10 @@ public class RecieiveMoneyUI extends JPanel{
 		    table.revalidate();
 		    dlg.dispose();
 		    sureButton.removeActionListener(listener);
+			}
+			else{
+				mylabel.setVisible(true);
+			}
 		}
 		
 	};

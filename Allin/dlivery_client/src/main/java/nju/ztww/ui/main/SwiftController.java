@@ -117,7 +117,5 @@ public class SwiftController {
 	public void setMember(String ID, String password){
 		this.ID = ID;
 		this.password = password;
-		
-		
-	}	//by zyz
+		}
 }

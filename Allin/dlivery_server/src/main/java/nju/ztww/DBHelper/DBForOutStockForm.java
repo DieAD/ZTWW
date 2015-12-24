@@ -250,9 +250,10 @@ public class DBForOutStockForm extends DB{
 	public static void main(String[] args){
 		DBForOutStockForm db = new DBForOutStockForm();
 		db.init();
-		ArrayList<OutStockFormDO> list = db.queryByTime("15/12/10", "outstockform", "02501");
+		ArrayList<OutStockFormDO> list = db.queryALL("outstockform");
 		for(OutStockFormDO form : list){
-			System.out.println(form.getIdofcenter());
+			System.out.println(form.getIdofcenter()+form.getExe());
+			
 			
 		}
 		
