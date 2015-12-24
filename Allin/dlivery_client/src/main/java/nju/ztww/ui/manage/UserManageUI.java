@@ -15,13 +15,13 @@ import java.util.Vector;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import confligUI.MyButton;
+import confligUI.MyDialog;
 import confligUI.MyLabel;
 import confligUI.MyScrollPane;
 import confligUI.MyTable;
@@ -34,14 +34,14 @@ import nju.ztww.vo.ManaUserVO;
 public class UserManageUI extends JPanel{
 	int row=0;
 	DefaultTableModel defaultTableModel ;
-	JDialog dlg;
+	MyDialog dlg;
 	 MyTable table;
 	 private MyButton addButton=new MyButton('b');
 	 private MyButton deleteButton=new MyButton('c');
 	 private MyButton changeButton=new MyButton('a');
 	 JButton sureAddButton = new JButton("确认添加");
 	 JButton sureChangeButton = new JButton("确认修改");
-	 JDialog addDlg;
+	 MyDialog addDlg;
 	 
 	 MyLabel IDLabel = new MyLabel("ID");
 	 MyLabel nameLabel = new MyLabel("姓名");
@@ -166,52 +166,75 @@ public class UserManageUI extends JPanel{
 			row=table.getSelectedRow();
 			if(row>=0){
 			ManaUserVO userVO=userService.findByID((String)table.getValueAt(row, 1));
-			addDlg = new JDialog();
+			addDlg = new MyDialog();
 			addDlg.setSize(new Dimension(600, 350));
             addDlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
-            
-            IDLabel.setBounds(50, 20, 150, 20);
+         
+            IDLabel.setBounds(50, 20, 150, 25);
+            ID.setBounds(100, 20, 100, 25);
+            nameLabel.setBounds(300, 20, 150, 25);
+            name.setBounds(370, 20, 100, 25);
+            passwordLabel.setBounds(50, 75, 150, 25);
+            password.setBounds(100, 75, 100, 25);
+            authorityLabel.setBounds(300, 75, 150, 25);
+            authority.setBounds(370, 75, 150, 25);
+            ageLabel.setBounds(50, 110, 150, 25);
+            age.setBounds(100, 110, 150, 25);
+            IDCardLabel.setBounds(300, 110, 150, 25);
+            IDCard.setBounds(370, 110, 150, 25);
+            sexLabel.setBounds(50, 165, 150, 25);
+            sex.setBounds(100, 165, 150, 25);
+            phoneLabel.setBounds(300, 165, 150, 25);
+            phone.setBounds(370, 165, 150, 25);
+            timeLabel.setBounds(300, 200, 150, 25);
+            time.setBounds(370, 200, 150, 25);
+            onLineLabel.setBounds(300, 235, 150, 25);
+            onLine.setBounds(370, 235, 150, 25);
+            positionLabel.setBounds(50, 200, 150, 25);
+            position.setBounds(100, 200, 150, 25);
+            sureAddButton.setBounds(200, 280, 150, 40);
+//            IDLabel.setBounds(50, 20, 50, 20);
             ID.setText(userVO.getID());
-            ID.setBounds(100, 20, 100, 20);
-            nameLabel.setBounds(300, 20, 150, 20);
+//            ID.setBounds(100, 20, 100, 20);
+//            nameLabel.setBounds(300, 20, 150, 20);
             name.setText(userVO.getName());
-            name.setBounds(370, 20, 100, 20);
-            passwordLabel.setBounds(50, 70, 150, 20);
+//            name.setBounds(370, 20, 100, 20);
+//            passwordLabel.setBounds(50, 70, 150, 20);
             password.setText(userVO.getPassword());
-            password.setBounds(100, 70, 100, 20);
-            authorityLabel.setBounds(300, 70, 150, 20);
+//            password.setBounds(100, 70, 100, 20);
+//            authorityLabel.setBounds(300, 70, 150, 20);
             authority.setText(userVO.getAuthority());
-            authority.setBounds(370, 70, 150, 20);
-            ageLabel.setBounds(50, 100, 150, 20);
+//            authority.setBounds(370, 70, 150, 20);
+//            ageLabel.setBounds(50, 100, 150, 20);
             age.setText(Integer.toString(userVO.getAge()));
-            age.setBounds(100, 100, 150, 20);
-            IDCardLabel.setBounds(300, 100, 150, 20);
+//            age.setBounds(100, 100, 150, 20);
+//            IDCardLabel.setBounds(300, 100, 150, 20);
             IDCard.setText(userVO.getIDCard());
-            IDCard.setBounds(370, 100, 150, 20);
-            sexLabel.setBounds(50, 150, 150, 20);
+//            IDCard.setBounds(370, 100, 150, 20);
+//            sexLabel.setBounds(50, 150, 150, 20);
             if(userVO.getSex()==0){
             	sex.setText("男");
             }else{
             	sex.setText("女");
             }
-            sex.setBounds(100, 150, 150, 20);
-            phoneLabel.setBounds(300, 150, 150, 20);
+//            sex.setBounds(100, 150, 150, 20);
+//            phoneLabel.setBounds(300, 150, 150, 20);
             phone.setText(userVO.getPhone());
-            phone.setBounds(370, 150, 150, 20);
-            timeLabel.setBounds(300, 180, 150, 20);
+//            phone.setBounds(370, 150, 150, 20);
+//            timeLabel.setBounds(300, 180, 150, 20);
             time.setText(Integer.toString(userVO.getWorktime()));
-            time.setBounds(370, 180, 150, 20);
-            onLineLabel.setBounds(300, 210, 150, 20);
+//            time.setBounds(370, 180, 150, 20);
+//            onLineLabel.setBounds(300, 210, 150, 20);
             if(userVO.getWetherwork()==0){
             	onLine.setText("否");
             }else{
             	onLine.setText("是");
             }
-            onLine.setBounds(370, 210, 150, 20);
-            positionLabel.setBounds(50, 180, 150, 20);
+//            onLine.setBounds(370, 210, 150, 20);
+//            positionLabel.setBounds(50, 180, 150, 20);
             position.setText(userVO.getPosition());
-            position.setBounds(100, 180, 150, 20);
-            sureChangeButton.setBounds(200, 250, 150, 40);
+//            position.setBounds(100, 180, 150, 20);
+//            sureChangeButton.setBounds(200, 250, 150, 40);
             sureChangeButton.addActionListener(sureChange);
             
             addDlg.add(onLineLabel);
@@ -284,7 +307,7 @@ public class UserManageUI extends JPanel{
 //
 //			row=table.getSelectedRow();
 //			ManaUserVO userVO=userService.findByID((String)table.getValueAt(row, 1));
-//			addDlg = new JDialog();
+//			addDlg = new MyDialog();
 //			addDlg.setSize(new Dimension(600, 350));
 //            addDlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
 //            
@@ -398,33 +421,56 @@ public class UserManageUI extends JPanel{
 		
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
-			addDlg = new JDialog();
-			addDlg.setSize(new Dimension(600, 350));
+			addDlg = new MyDialog();
+			addDlg.setSize(new Dimension(600, 420));
             addDlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
             
-            IDLabel.setBounds(50, 20, 150, 20);
-            ID.setBounds(120, 20, 100, 20);
-            nameLabel.setBounds(300, 20, 150, 20);
-            name.setBounds(350, 20, 100, 20);
-            passwordLabel.setBounds(50, 70, 150, 20);
-            password.setBounds(100, 70, 100, 20);
-            authorityLabel.setBounds(300, 70, 150, 20);
-            authority.setBounds(350, 70, 150, 20);
-            ageLabel.setBounds(50, 100, 150, 20);
-            age.setBounds(100, 100, 150, 20);
-            IDCardLabel.setBounds(300, 100, 150, 20);
-            IDCard.setBounds(350, 100, 150, 20);
-            sexLabel.setBounds(50, 150, 150, 20);
-            sex.setBounds(100, 150, 150, 20);
-            phoneLabel.setBounds(300, 150, 150, 20);
-            phone.setBounds(350, 150, 150, 20);
-            timeLabel.setBounds(300, 180, 150, 20);
-            time.setBounds(350, 180, 150, 20);
-            onLineLabel.setBounds(300, 210, 150, 20);
-            onLine.setBounds(350, 210, 150, 20);
-            positionLabel.setBounds(50, 180, 150, 20);
-            position.setBounds(100, 180, 150, 20);
-            sureAddButton.setBounds(200, 250, 150, 40);
+//            IDLabel.setBounds(50, 20, 150, 25);
+//            ID.setBounds(100, 20, 100, 25);
+//            nameLabel.setBounds(300, 20, 150, 25);
+//            name.setBounds(360, 20, 100, 25);
+//            passwordLabel.setBounds(50, 75, 150, 25);
+//            password.setBounds(100, 75, 100, 25);
+//            authorityLabel.setBounds(300, 75, 150, 25);
+//            authority.setBounds(360, 75, 150, 25);
+//            ageLabel.setBounds(50, 110, 150, 25);
+//            age.setBounds(100, 110, 150, 25);
+//            IDCardLabel.setBounds(300, 110, 150, 25);
+//            IDCard.setBounds(360, 110, 150, 25);
+//            sexLabel.setBounds(50, 165, 150, 25);
+//            sex.setBounds(100, 165, 150, 25);
+//            phoneLabel.setBounds(300, 165, 150, 25);
+//            phone.setBounds(360, 165, 150, 25);
+//            timeLabel.setBounds(300, 200, 150, 25);
+//            time.setBounds(360, 200, 150, 25);
+//            onLineLabel.setBounds(300, 235, 150, 25);
+//            onLine.setBounds(360, 235, 150, 25);
+//            positionLabel.setBounds(50, 200, 150, 25);
+//            position.setBounds(100, 200, 150, 25);
+//            sureAddButton.setBounds(200, 280, 150, 40);
+            IDLabel.setBounds(50, 20, 150, 25);
+            ID.setBounds(100, 20, 100, 25);
+            nameLabel.setBounds(300, 20, 150, 25);
+            name.setBounds(370, 20, 100, 25);
+            passwordLabel.setBounds(50, 75, 150, 25);
+            password.setBounds(100, 75, 100, 25);
+            authorityLabel.setBounds(300, 75, 150, 25);
+            authority.setBounds(370, 75, 150, 25);
+            ageLabel.setBounds(50, 110, 150, 25);
+            age.setBounds(100, 110, 150, 25);
+            IDCardLabel.setBounds(300, 110, 150, 25);
+            IDCard.setBounds(370, 110, 150, 25);
+            sexLabel.setBounds(50, 165, 150, 25);
+            sex.setBounds(100, 165, 150, 25);
+            phoneLabel.setBounds(300, 165, 150, 25);
+            phone.setBounds(370, 165, 150, 25);
+            timeLabel.setBounds(300, 200, 150, 25);
+            time.setBounds(370, 200, 150, 25);
+            onLineLabel.setBounds(300, 235, 150, 25);
+            onLine.setBounds(370, 235, 150, 25);
+            positionLabel.setBounds(50, 200, 150, 25);
+            position.setBounds(100, 200, 150, 25);
+            sureAddButton.setBounds(200, 280, 150, 40);
             sureAddButton.addActionListener(sureAdd);
             
             addDlg.add(onLineLabel);

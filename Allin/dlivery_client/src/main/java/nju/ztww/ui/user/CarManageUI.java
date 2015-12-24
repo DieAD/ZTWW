@@ -11,13 +11,13 @@ import java.util.Vector;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import confligUI.MyButton;
+import confligUI.MyDialog;
 import confligUI.MyLabel;
 import confligUI.MyScrollPane;
 import confligUI.MyTable;
@@ -50,16 +50,16 @@ public class CarManageUI extends JPanel{
 	private MyButton sendButton=new MyButton('a');
 	private MyButton findButton=new MyButton('d');
 	private MyButton deleteButton=new MyButton('c');
-	private JButton findSureButton=new JButton("确定");
+	private MyButton findSureButton=new MyButton();
 	private MyButton addButton=new MyButton('b');
-	private JButton sureButton=new JButton("确定");
+	private MyButton sureButton=new MyButton();
 	
 	private OrderServiceImpl orderServiceImpl=new OrderServiceImpl();
 	private CarManageVO carManageVO;
 	
 	DefaultTableModel defaultTableModel ;
 	 MyTable table;
-	 JDialog dlg;
+	 MyDialog dlg;
 	 java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit()
 				.getScreenSize();
 	
@@ -106,7 +106,7 @@ public class CarManageUI extends JPanel{
 
 					public void actionPerformed(ActionEvent e) {
 						carManageVO=(CarManageVO) orderServiceImpl.getOrder(9);
-						dlg= new JDialog(); 
+						dlg= new MyDialog(); 
 						dlg.setSize(new Dimension(400, 420));
 			            dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
 			            //服役时间
@@ -145,6 +145,7 @@ public class CarManageUI extends JPanel{
 			            dlg.add(businesstextArea);
 			            dlg.add(sureButton);
 			            sureButton.setBounds(230, 315, 70, 30);
+			            sureButton.setIcon(new ImageIcon("photo/BusinessSure.png"));
 			            sureButton.addActionListener(listener);
 			            
 			            dlg.setLayout(null);
@@ -177,12 +178,13 @@ public class CarManageUI extends JPanel{
 			  findButton.addActionListener(new ActionListener(){
 
 					public void actionPerformed(ActionEvent e) {
-						dlg= new JDialog(); 
+						dlg= new MyDialog(); 
 						dlg.setSize(new Dimension(350, 150));
 			            dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
 			            findtextArea.setBounds(50, 30, 150, 30);
 			            findSureButton.setBounds(240, 30, 70, 30);
 			            findSureButton.addActionListener(listener2);
+			            findSureButton.setIcon(new ImageIcon("photo/BusinessSure.png"));
 			            dlg.add(findSureButton);
 			            dlg.add(findtextArea);
 			            dlg.setLayout(null);

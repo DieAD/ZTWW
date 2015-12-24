@@ -11,13 +11,13 @@ import java.util.Vector;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import confligUI.MyButton;
+import confligUI.MyDialog;
 import confligUI.MyLabel;
 import confligUI.MyScrollPane;
 import confligUI.MyTable;
@@ -64,7 +64,7 @@ public class DriverManageUI extends JPanel{
 	
 	DefaultTableModel defaultTableModel ;
 	 MyTable table;
-	 JDialog dlg;
+	 MyDialog dlg;
 	 java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit()
 				.getScreenSize();
 	
@@ -110,7 +110,7 @@ public class DriverManageUI extends JPanel{
 
 					public void actionPerformed(ActionEvent e) {
 						driverMessageVO=(DriverMessageVO) orderServiceImpl.getOrder(10);
-						dlg= new JDialog(); 
+						dlg= new MyDialog(); 
 						dlg.setSize(new Dimension(400, 500));
 			            dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
 			            //身份证号
@@ -190,7 +190,7 @@ public class DriverManageUI extends JPanel{
 			  findButton.addActionListener(new ActionListener(){
 
 					public void actionPerformed(ActionEvent e) {
-						dlg= new JDialog(); 
+						dlg= new MyDialog(); 
 						dlg.setSize(new Dimension(350, 150));
 			            dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
 			            findtextArea.setBounds(50, 30, 150, 30);

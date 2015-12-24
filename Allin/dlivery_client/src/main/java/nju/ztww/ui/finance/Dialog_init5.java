@@ -21,7 +21,7 @@ public class Dialog_init5 extends JDialog {
 		mainPanel.submit.addActionListener(new Listener(this));
 		this.setContentPane(mainPanel);
 		this.setTitle("账户建账");
-		this.setSize(500, 450);
+		this.setSize(500, 350);
 		this.setResizable(false);
 		// this.pack();
 
@@ -73,7 +73,7 @@ public class Dialog_init5 extends JDialog {
         	 _setBounds(accountRemain_input,2,2);
         	 this.add(accountRemain_input);
         	 
-        	 submit.setBounds(200,300,80,30);
+        	 submit.setBounds(200,200,80,30);
         	// submit.addActionListener(new Listener(this));
         	// cancel.setBounds(270,400,100,30);
         	 this.add(submit);

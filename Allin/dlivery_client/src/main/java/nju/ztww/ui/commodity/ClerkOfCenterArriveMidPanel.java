@@ -14,7 +14,6 @@ import java.util.Vector;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -22,6 +21,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
 import confligUI.MyButton;
+import confligUI.MyDialog;
 import confligUI.MyLabel;
 import confligUI.MyScrollPane;
 import confligUI.MyTable;
@@ -48,11 +48,11 @@ public class ClerkOfCenterArriveMidPanel extends JPanel{
 	
 	private MyButton sendButton=new MyButton('a');
 	private MyButton deleteSendButton=new MyButton('c');
-	private JButton sureButton=new JButton("确定");
+	private MyButton sureButton=new MyButton();
 	private MyButton findButton=new MyButton('d');
-	private JButton sureTransferButton=new JButton("确定");
-	private JButton sureCarLoadButton=new JButton("确定");
-	private JButton findSureButton=new JButton("确定");
+	private MyButton sureTransferButton=new MyButton();
+	private MyButton sureCarLoadButton=new MyButton();
+	private MyButton findSureButton=new MyButton();
 	
 	private ArrayList<CenterReceiveVO> allcenterReceiveVO=new ArrayList<CenterReceiveVO>();
 	
@@ -64,7 +64,7 @@ public class ClerkOfCenterArriveMidPanel extends JPanel{
 	 private OrderServiceImpl orderServiceImpl=new OrderServiceImpl();
 	
 	 public MyTable table;
-	   public JDialog dlg;
+	   public MyDialog dlg;
 	   DefaultTableModel defaultTableModel ;
 	   DefaultTableModel SmalldefaultTableModel;
 	   MyTable SmallreceiveTable;
@@ -100,7 +100,7 @@ public class ClerkOfCenterArriveMidPanel extends JPanel{
 		addbutton.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent arg0) {
 			centerReceiveVO=(CenterReceiveVO) orderServiceImpl.getOrder(3);
-			dlg= new JDialog(); 
+			dlg= new MyDialog(); 
 			dlg.setSize(new Dimension(520, 550));
             dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
             
@@ -135,9 +135,11 @@ public class ClerkOfCenterArriveMidPanel extends JPanel{
 			 SmallscrollPane.setBounds(85, 100, 330, 200);
 			 
 			 findTransfertextArea.setBounds(100, 25, width, hight);
-			 sureTransferButton.setBounds(280,25 , 80, 25);
+			 sureTransferButton.setBounds(280,25 , 70, 30);
+			 sureTransferButton.setIcon(new ImageIcon("photo/BusinessSure.png"));
 			 findCarLoadtextArea.setBounds(100, 65, width, hight);
-			 sureCarLoadButton.setBounds(280,65 , 80, 25);
+			 sureCarLoadButton.setBounds(280,65 , 70, 35);
+			 sureCarLoadButton.setIcon(new ImageIcon("photo/BusinessSure.png"));
 			 sureCarLoadButton.addActionListener(findCarLoad);
 			 sureTransferButton.addActionListener(findTransfer);
           //中转中心编号
@@ -166,6 +168,7 @@ public class ClerkOfCenterArriveMidPanel extends JPanel{
             dlg.add(sureButton);
             dlg.add(SmallscrollPane);
             sureButton.setBounds(336, 400, 70, 30);
+            sureButton.setIcon(new ImageIcon("photo/BusinessSure.png"));
             sureButton.addActionListener(listener);
             
             dlg.setLayout(null);
@@ -197,12 +200,13 @@ public class ClerkOfCenterArriveMidPanel extends JPanel{
 		findButton.addActionListener(new ActionListener(){
 
 			public void actionPerformed(ActionEvent e) {
-				dlg= new JDialog(); 
+				dlg= new MyDialog(); 
 				dlg.setSize(new Dimension(350, 150));
 	            dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
 	            findtextArea.setBounds(50, 30, 150, 30);
-	            findSureButton.setBounds(100, 80, 70, 40);
+	            findSureButton.setBounds(240, 30, 70, 30);
 	            findSureButton.addActionListener(listener2);
+	            findSureButton.setIcon(new ImageIcon("photo/BusinessSure.png"));
 	            dlg.add(findSureButton);
 	            dlg.add(findtextArea);
 	            dlg.setLayout(null);

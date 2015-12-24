@@ -12,13 +12,13 @@ import java.util.Vector;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import confligUI.MyButton;
+import confligUI.MyDialog;
 import confligUI.MyScrollPane;
 import confligUI.MyTable;
 import confligUI.MyTextField;
@@ -32,11 +32,11 @@ public class ClerkOfCenterTransferPanel extends JPanel {
 	   public MyTable table;
 
 	   Font myFont = new Font("微软雅黑", Font.PLAIN, 12);
-	   public JDialog dlg;
+	   public MyDialog dlg;
 	
 	   DefaultTableModel defaultTableModel;
 
-		private JButton findSureButton=new JButton("确定");
+		private MyButton findSureButton=new MyButton();
 		private MyButton findButton=new MyButton('d');
 		private MyButton deleteButton=new MyButton('c');
 		private MyButton sendButton=new MyButton('a');
@@ -117,12 +117,13 @@ public class ClerkOfCenterTransferPanel extends JPanel {
 				  findButton.addActionListener(new ActionListener(){
 
 						public void actionPerformed(ActionEvent e) {
-							dlg= new JDialog(); 
+							dlg= new MyDialog(); 
 							dlg.setSize(new Dimension(350, 150));
 				            dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
 				            findtextArea.setBounds(50, 30, 150, 30);
 				            findSureButton.setBounds(240, 30, 70, 30);
 				            findSureButton.addActionListener(listener2);
+				            findSureButton.setIcon(new ImageIcon("photo/BusinessSure.png"));
 				            dlg.add(findSureButton);
 				            dlg.add(findtextArea);
 				            dlg.setLayout(null);

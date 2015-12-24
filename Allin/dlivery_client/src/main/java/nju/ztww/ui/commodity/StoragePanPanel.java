@@ -13,7 +13,6 @@ import java.util.Vector;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -29,9 +28,11 @@ import javax.swing.table.DefaultTableModel;
 
 
 
+
 import org.apache.poi.ss.usermodel.DataFormat;
 
 import confligUI.MyButton;
+import confligUI.MyDialog;
 import confligUI.MyLabel;
 import confligUI.MyTextField;
 import nju.ztww.bl.commodity.CheckOrderBL;
@@ -64,8 +65,8 @@ public class StoragePanPanel extends JPanel  implements ActionListener{
 	public MyLabel baojingxiugai=new MyLabel("设置新的警戒线");
 	public JTextField baojingnew=new JTextField(5);
 	public MyButton xiugai=new MyButton();
-	public JButton sure=new JButton("确定");
-	public JDialog dlg;
+	public MyButton sure=new MyButton();
+	public MyDialog dlg;
 	long l = System.currentTimeMillis();
 	Date data=new Date(l);
 	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -171,15 +172,16 @@ ActionListener listenerxiugai=new ActionListener() {
 		
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
-			dlg=new JDialog();
+			dlg=new MyDialog();
 			dlg.setLayout(null);
 			dlg.setSize(340, 150);
 			dlg.setVisible(true);
 			dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
-			baojingxiugai.setBounds(0, 5, 140, 30);
+			baojingxiugai.setBounds(20, 5, 140, 30);
 			baojingnew.setBounds(30,50,120,30);
-			sure.setBounds(160, 50, 80, 30);
+			sure.setBounds(160, 50, 70, 30);
 			sure.addActionListener(listenersure);
+			sure.setIcon(new ImageIcon("photo/BusinessSure.png"));
 			dlg.add(baojingxiugai);
 			dlg.add(baojingnew);
 			dlg.add(sure);

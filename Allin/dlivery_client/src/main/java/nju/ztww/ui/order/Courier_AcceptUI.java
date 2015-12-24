@@ -10,13 +10,13 @@ import java.util.Date;
 import java.util.Vector;
 
 import javax.swing.ImageIcon;
-import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import confligUI.MyButton;
+import confligUI.MyDialog;
 import confligUI.MyLabel;
 import confligUI.MyScrollPane;
 import confligUI.MyTable;
@@ -35,8 +35,8 @@ public class Courier_AcceptUI extends JPanel{
 	MyButton deleteButton = new MyButton('c');
 	MyButton submitButton = new MyButton('a');
 	DefaultTableModel de;
-	JDialog searchDlg;
-	JDialog addDlg;
+	MyDialog searchDlg;
+	MyDialog addDlg;
 	MyTable table;
 	
 //	private ArrayList<E>
@@ -77,7 +77,7 @@ public class Courier_AcceptUI extends JPanel{
 					// to add a dialog to complete
 					//very important
 					//including a textfield
-					searchDlg = new JDialog();
+					searchDlg = new MyDialog();
 					searchDlg.setSize(new Dimension(300, 120));
 					searchDlg.setLocation((screenSize.width)/2, (screenSize.height)/2);
 					sureSearchButton.setBounds(200, 25, 70, 30);
@@ -107,32 +107,32 @@ public class Courier_AcceptUI extends JPanel{
 					String ID = UserInfoUI.getUserID();
 					businID = ID.substring(0, 8);
 					
-					addDlg = new JDialog();
-					addDlg.setSize(new Dimension(360, 320));
+					addDlg = new MyDialog();
+					addDlg.setSize(new Dimension(360, 340));
 		            addDlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
 		            sureAddButton.setIcon(new ImageIcon("photo/courierSure.png"));
-		            sureAddButton.setBounds(220, 230, 70, 30);
+		            sureAddButton.setBounds(220, 255, 70, 30);
 		            sureAddButton.addActionListener(listener);
 		 
-		            numbersLabel.setBounds(50, 20, 150, 20);
+		            numbersLabel.setBounds(50, 20, 150, 25);
 		            numbersLabel.setText("营业厅编号");
-		            numbers.setBounds(140, 20, 100, 20);
+		            numbers.setBounds(140, 20, 100, 25);
 		            numbers.setText(businID);
 		            
-		            acceptNumLabel.setBounds(50, 60, 150, 20);
+		            acceptNumLabel.setBounds(50, 65, 150, 25);
 		            acceptNumLabel.setText("收件信息编号");
-		            acceptNum.setBounds(140, 60, 150, 20);
-		            receiverLabel.setBounds(50, 100, 150, 20);
+		            acceptNum.setBounds(140, 65, 150, 25);
+		            receiverLabel.setBounds(50, 110, 150, 25);
 		            receiverLabel.setText("收件人");
-		            receiver.setBounds(140, 100, 150, 20);
-		            timeLabel.setBounds(50, 140, 150, 20);
+		            receiver.setBounds(140, 110, 150, 25);
+		            timeLabel.setBounds(50, 155, 150, 25);
 		            timeLabel.setText("收件日期");
-		            time.setBounds(140, 140, 150, 20);
+		            time.setBounds(140, 155, 150, 25);
 		            timer = getDate();
 		            time.setText(timer);
-		            courierLabel.setBounds(50, 180, 150, 20);
+		            courierLabel.setBounds(50, 200, 150, 25);
 		            courierLabel.setText("快递员编号");
-		            courier.setBounds(140, 180, 150, 20);
+		            courier.setBounds(140, 200, 150, 25);
 		            courier.setText(ID);
 		            
 		            addDlg.add(numbersLabel);
