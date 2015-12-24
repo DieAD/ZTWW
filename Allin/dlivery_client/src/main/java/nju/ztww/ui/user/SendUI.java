@@ -20,6 +20,7 @@ import confligUI.MyLabel;
 import confligUI.MyScrollPane;
 import confligUI.MyTable;
 import confligUI.MyTextField;
+import nju.ztww.bl.commodity.IsEmpty;
 import nju.ztww.serviceimpl.OrderServiceImpl;
 import nju.ztww.ui.main.GetDate;
 import nju.ztww.vo.BusinessArriveVO;
@@ -36,7 +37,7 @@ public class SendUI extends JPanel{
 	private MyTextField othertextArea=new MyTextField("");
 	private  MyLabel other=new  MyLabel("备注");
 	private MyTextField findSendtextArea=new MyTextField("");
-	
+	private MyLabel mylabel=new MyLabel();
 	private OrderServiceImpl orderServiceImpl=new OrderServiceImpl();
 	private SendVO sendVO;
 	private ArrayList<SendVO> allSendVO=new ArrayList<SendVO>();
@@ -118,7 +119,10 @@ public class SendUI extends JPanel{
 		            sureSendButton.setBounds(230, 265, 70, 30);
 		            sureSendButton.setIcon(new ImageIcon("photo/BusinessSure.png"));
 		            sureSendButton.addActionListener(listenerSend);
-		            
+		            mylabel.setText("信息未填全！");
+		            mylabel.setBounds(230, 295, 100, 40);
+		            mylabel.setVisible(false);
+		            dlg.add(mylabel);
 		            dlg.setLayout(null);
 					dlg.setVisible(true);
 				}
@@ -183,6 +187,15 @@ public class SendUI extends JPanel{
 		ActionListener listenerSend = new ActionListener(){
 
 			public void actionPerformed(ActionEvent e) {
+				ArrayList<String>stringlist=new ArrayList<String>();
+				stringlist.add(datetextArea.getText());
+				stringlist.add(numbertextArea.getText());
+				stringlist.add(sendertextArea.getText());
+				stringlist.add(othertextArea.getText());
+				IsEmpty is=new IsEmpty();
+				boolean isempty=false;
+				isempty=is.isempty(stringlist);
+				if(!isempty){
 				sendVO.setData(datetextArea.getText());
 				sendVO.setOrderNumber(numbertextArea.getText());
 				sendVO.setSenderName(sendertextArea.getText());
@@ -206,7 +219,10 @@ public class SendUI extends JPanel{
 			    dlg.dispose();
 			    sureSendButton.removeActionListener(listenerSend);
 			}
-			
+				else{
+					mylabel.setVisible(true);
+				}
+			}
 		};
 
 }
