@@ -2,6 +2,7 @@ package nju.ztww.ui.main;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
@@ -32,6 +33,7 @@ public class Login extends JFrame{
 	int y = 100;
 	int iy = 100;
 	//
+	Image icon1=new ImageIcon("photo2/feidie.png").getImage();
 	Border border2 = new LineBorder(new Color(232,181,53), 1, true);
 	Border border1 = new LineBorder(new Color(155,122,90),1,true);
 	JLabel theme = new JLabel();
@@ -121,6 +123,8 @@ public class Login extends JFrame{
 		this.add(panel);
 		this.setVisible(true);
 		this.getContentPane().repaint();
+		this.setIconImage(icon1);
+		this.setTitle("快递物流信息系统");
 //		this.add(moni);
 		
 		///FRAME = this;
