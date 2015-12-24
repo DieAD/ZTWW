@@ -121,11 +121,12 @@ public class OutofStoragePanel extends JPanel {
 		dlg=new JDialog();
 		dlg.setLayout(null);
 
-		dlg.setSize(new Dimension(350, 300));
+		dlg.setSize(new Dimension(350, 420));
         dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
         surebutton=new JButton("确定");
-        surebutton.setBounds(200, 250, 80, 40);
-        mylabel.setBounds(100, 250, 90, 40);
+        //surebutton.setBounds(200, 250, 80, 40);
+        mylabel.setText("信息未填全！");
+        mylabel.setBounds(150, 300, 120, 40);
         ordernumberfield.setBounds(100, 5, 150, 30);
         ordernumber.setFont(new Font("黑体",0,18));
         ordernumber.setBounds(0, 0, 100, 40);;
@@ -137,9 +138,9 @@ public class OutofStoragePanel extends JPanel {
         arrive.setBounds(0, 100, 100, 40);
 
 		//dlg.setSize(new Dimension(350, 400));
-        dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
-        surebutton=new JButton("确定");
-        surebutton.setBounds(190, 270, 80, 30);
+        //dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
+        //surebutton=new JButton("确定");
+        surebutton.setBounds(140, 270, 90, 30);
         
         ordernumberfield.setBounds(120, 15, 150, 30);
 //        ordernumber.setFont(new Font("黑体",0,18));
@@ -151,7 +152,7 @@ public class OutofStoragePanel extends JPanel {
 //        arrive.setFont(new Font("黑体",0,18));
         arrive.setBounds(20, 110, 100, 40);
 
-        zhuangyunfield.setBounds(100, 155, 150, 30);
+        //zhuangyunfield.setBounds(100, 155, 150, 30);
 //        zhuangyun.setFont(new Font("黑体",0,18));
         zhuangyun.setBounds(20, 160, 100, 40);
         yunshufield.setBounds(120, 215, 150, 30);
@@ -170,8 +171,9 @@ public class OutofStoragePanel extends JPanel {
         dlg.add(yunshu);
         dlg.add(yunshufield);
         dlg.add(zhuangyun);
-        dlg.add(zhuangyunfield);
+        //dlg.add(zhuangyunfield);
         dlg.add(mylabel);
+        dlg.add(surebutton);
         surebutton.addActionListener(listener);
         mylabel.setVisible(false);
         dlg.setVisible(true);

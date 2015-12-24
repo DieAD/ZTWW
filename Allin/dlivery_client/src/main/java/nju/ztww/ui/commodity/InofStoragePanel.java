@@ -166,7 +166,8 @@ public class InofStoragePanel extends JPanel{
            
 
             //surebutton.setBounds(200, 350, 80, 40);
-            mylabel.setBounds(100, 350, 90, 40);
+            mylabel.setBounds(150, 380, 100, 40);
+            mylabel.setText("信息未填全！");
             dlg.add( mylabel);
             
 
@@ -199,9 +200,13 @@ public class InofStoragePanel extends JPanel{
 			stringlist.add(jiafield.getText());
 			stringlist.add(weifield.getText());
 			IsEmpty is=new IsEmpty();
+			for(int i=0;i<stringlist.size();i++){
+				System.out.println(stringlist.get(i));
+			}
 			boolean isempty=false;
 			isempty=is.isempty(stringlist);
 			if(!isempty){
+				System.out.println("ss");
 			Vector<String> row = new Vector(7);
 			row.add(ordernumberfield.getText());
 			row.add(datafield.getText());
@@ -232,6 +237,7 @@ public class InofStoragePanel extends JPanel{
 		    surebutton.removeActionListener(surelistener);
 			}
 			else{
+				System.out.println("false");
 			mylabel.setVisible(true);
 			}
 		}
