@@ -3,19 +3,17 @@ package nju.ztww.ui.user;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import confligUI.MyLabel;
-import confligUI.MyTextField;
 import nju.ztww.service.UserService;
 import nju.ztww.serviceimpl.UserLoginImpl;
 import nju.ztww.ui.main.UserInfoUI;
 import nju.ztww.vo.UserVO;
+import confligUI.MyLabel;
+import confligUI.MyTextField;
 
 public class PersonalMesageUI extends JPanel{
 	
@@ -118,10 +116,10 @@ public class PersonalMesageUI extends JPanel{
 	
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
-		
+		String path = loadImage();
 		Image background=new ImageIcon("photo/PersonInfoBG.png").getImage();
 		g.drawImage(background, 0,0,null);
-		Image touxiang=new ImageIcon("photo/touxiang.gif").getImage();
+		Image touxiang=new ImageIcon(path).getImage();
 		g.drawImage(touxiang, 30,30,null);
 	}
 	
@@ -151,5 +149,20 @@ public class PersonalMesageUI extends JPanel{
 			sex = "女";
 		}
 		return sex;
+	}
+	public String loadImage(){
+		String path = "photo2/";
+		char pos = MyID.charAt(8);
+		switch (pos) {
+		case '0':path+="L1.png";break;	
+		case '1':path+="L2.png"; break;
+		case '2':path+="L3.png";break;
+		case '3':path+="L4.png";break;
+		case '4':path+="L5.png";break;
+		case '5':path+="L6.png";break;
+		case '6':path+="L7.png";break;
+		default:path+="L1.png";break;
+		}
+		return path;
 	}
 }

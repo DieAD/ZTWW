@@ -75,9 +75,10 @@ public class FinanceUI  {
     	for(EditPanel p : panelList){
     		p.setBounds(150,100,750,450);
     		//frame.getContentPane().add(p);
-    		//p.setVisible(false);
+    		p.setVisible(false);
     		
     	}
+    	accountPanel.setVisible(true);
     	menuePanel.accountButton.addActionListener(new ListenerTable(frame,accountPanel,panelList,0));
     	menuePanel.paymentButton.addActionListener(new ListenerTable(frame,paymentPanel,panelList,0));
     	menuePanel.collectionButton.addActionListener(new ListenerTable(frame,collectionPanel,panelList,0));
