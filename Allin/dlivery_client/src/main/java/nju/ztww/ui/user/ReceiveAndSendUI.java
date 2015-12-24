@@ -24,6 +24,7 @@ import confligUI.MyScrollPane;
 import confligUI.MyTable;
 import confligUI.MyTextField;
 import nju.ztww.serviceimpl.OrderServiceImpl;
+import nju.ztww.ui.main.GetDate;
 import nju.ztww.vo.BusinessArriveVO;
 import nju.ztww.vo.DriverMessageVO;
 import nju.ztww.vo.LoadingVO;
@@ -93,7 +94,7 @@ public class ReceiveAndSendUI extends JPanel{
 						dlg.setSize(new Dimension(520, 550));
 			            dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
 			            
-			            Object[][] p = {{"123456"} };
+			            Object[][] p = { };
 
 						 //字段名称
 						 String[] n = { "快递单号","完整", "丢失", "损坏"};
@@ -129,6 +130,7 @@ public class ReceiveAndSendUI extends JPanel{
 						 sureTransferButton.setIcon(new ImageIcon("photo/BusinessSure.png"));
 			            //到达日期
 			            businesstextArea.setBounds(120, 355, width, hight);
+			            businesstextArea.setText(GetDate.getDate());
 			            business.setIcon(null);
 			            business.setBounds(50, 350, 100, 40);
 			            //出发地
