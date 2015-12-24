@@ -10,6 +10,8 @@ import nju.ztww.ui.user.PersonalMesageUI;
 //date 11-18 name wh//
 public class FinanceUI  {
     JFrame frame ;
+    EditPanel searchPanel = new EditSearch();
+    EditPanel excelPanel = new EditExcel();
     EditPanel accountPanel = new EditPanel();
     EditPanel paymentPanel = new EditPanel(new String[]{"付款日期","付款金额","付款人","付款账号","条目","备注"},new Object[][]{{new String("2015/11/1"),new Double(35.5),new String("Manager"),
     	new String("000000001"),new String("人员工资"),new String("11月")}});
@@ -39,6 +41,7 @@ public class FinanceUI  {
 //		frame.getContentPane().add(headerPanel);
 //		frame.getContentPane().add(menuePanel);
 //		frame.setVisible(true);
+    	paymentPanel.add(paymentPanel.button3);
     	personInfo.setVisible(false);
     }
     
@@ -63,6 +66,8 @@ public class FinanceUI  {
     	panelList.add(businessPanel);
     	panelList.add(initPanel);
     	panelList.add(personInfo);
+    	panelList.add(excelPanel);
+    	panelList.add(searchPanel);
     	//-------
     	
     	for(EditPanel p : panelList){
@@ -78,6 +83,8 @@ public class FinanceUI  {
     	menuePanel.businessButton.addActionListener(new ListenerTable(frame,businessPanel,panelList,0));
     	menuePanel.initButton.addActionListener(new ListenerTable(frame,initPanel,panelList,1));
     	menuePanel.personInfoButton.addActionListener(new ListenerTable(frame, personInfo, panelList,0));
+    	menuePanel.exportFormButton.addActionListener(new ListenerTable(frame,excelPanel,panelList,0));
+    	menuePanel.checkOrderButton.addActionListener(new ListenerTable(frame,searchPanel,panelList,2));
     }
     public FinanceUI(JFrame frame){
     	this.frame = frame;
@@ -90,7 +97,7 @@ public class FinanceUI  {
     public ArrayList<JPanel> getPanelList(){
     	list.add(headerPanel);
     	list.add(menuePanel);
-    	list.add(personInfo);
+    	//list.add(personInfo);
     	for(EditPanel p : panelList){
     		list.add(p);
     	}

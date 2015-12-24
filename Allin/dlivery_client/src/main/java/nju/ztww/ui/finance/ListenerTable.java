@@ -27,20 +27,35 @@ public class ListenerTable implements ActionListener {
 			p.setVisible(false);
 		}
 		panel.setVisible(true);}
-		else{
-			special();
+		else if(flag==1){
+			special1();
+		}
+		else if(flag==2){
+			special2();
 		}
 		//frame.add(panel);
 	}
 	
-	public void special(){
+	public void special1(){
 		for(EditPanel p:list){
 			p.setVisible(false);
 		}
-		EditPanel init = new EditInit(null, null);
+		EditPanel init = new EditInit(new String[]{"账号","创建时间","创建人","是否使用中"}, null);
 		init.setBounds(150,100,750,450);
 		list.add(init);
 	    frame.add(init);
+	    frame.repaint();
+	}
+	
+	public void special2(){
+		for(EditPanel p:list){
+			p.setVisible(false);
+		}
+		EditPanel search = new EditSearch();
+		search.setBounds(150,100,750,450);
+		search.setVisible(true);
+		list.add(search);
+	    frame.add(search);
 	    frame.repaint();
 	}
 

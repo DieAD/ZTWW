@@ -58,4 +58,6 @@ public interface FinanceService {
 	
 	public void initUser(ArrayList<UserDO> list);
 	
+	public void exportExcel(int index);
+	
 }

@@ -99,4 +99,9 @@ public class FinanceServiceImpl implements FinanceService {
 		financeBL.initUser(list);
 	}
 
+	public void exportExcel(int index) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

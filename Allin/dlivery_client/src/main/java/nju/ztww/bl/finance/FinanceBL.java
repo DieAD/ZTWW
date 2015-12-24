@@ -223,4 +223,12 @@ public class FinanceBL {
 			e.printStackTrace();
 		}
 	}
+	
+	public void exportExcel(int index){
+	  ExcelHelper myHelper = new ExcelHelper();
+	  if(index==1){
+		  myHelper.CollectionToExcel();
+		  myHelper.PaymentToExcel();
+	  }
+	}
 }
