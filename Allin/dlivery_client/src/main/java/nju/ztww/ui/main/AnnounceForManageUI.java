@@ -1,14 +1,13 @@
 package nju.ztww.ui.main;
 
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.BufferedWriter;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -27,6 +26,7 @@ public class AnnounceForManageUI extends JPanel implements Runnable{
 	private JButton sure=new JButton("确定发送");
 	private JDialog dlg=new JDialog();
 	private JLabel label=new JLabel("请输入消息");
+	private JLabel textlabel=new JLabel("添加新公告：");
 	private JTextArea text=new JTextArea();
 	java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit()
 			.getScreenSize();
@@ -35,6 +35,9 @@ public class AnnounceForManageUI extends JPanel implements Runnable{
 		final ImageIcon ADD=new ImageIcon("photo/1.gif");
 		add.setIcon(null);
 		add.setBounds(700, 5, 40, 40);
+		textlabel.setBounds(600, -5, 100, 30);
+		textlabel.setFont(new Font(Font.DIALOG,0,14));
+		textlabel.setForeground(new Color(135,51,36));
 		add.addActionListener(new ActionListener(){
 
 			public void actionPerformed(ActionEvent e) {
@@ -52,6 +55,7 @@ public class AnnounceForManageUI extends JPanel implements Runnable{
 			}
 			
 		});
+		this.add(textlabel);
 		this.add(add);
 		this.setLayout(null);
 		this.setBounds(150, 550, 750, 50);
@@ -61,7 +65,14 @@ public class AnnounceForManageUI extends JPanel implements Runnable{
 	
 	ActionListener sureListener=new ActionListener(){
 		public void actionPerformed(ActionEvent e) {
-			WriteHandlerThread.message=text.getText();
+			String s=text.getText().replace('\n',' ');
+			String [] temp=s.split(" ");
+			String message=temp[0];
+			for(int i=0;i<temp.length;i++){
+				
+			}
+			System.out.println(s);
+			WriteHandlerThread.message=s;
 			WriteHandlerThread.ifSend=false;
 			text.setText("");
 		}

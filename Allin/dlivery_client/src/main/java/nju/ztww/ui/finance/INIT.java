@@ -36,6 +36,8 @@ public class INIT extends JPanel{
 	   mainPanel = this;
 
 	   //
+	   this.setLayout(null);
+	   this.repaint();
 	   buttonPanel.setBounds(0,0,750,450);
 	   this.add(buttonPanel);
 	   buttonPanel.button1.addActionListener(new Listener(table1));
