@@ -39,7 +39,9 @@ public class EditInit extends EditPanel{
 			// TODO Auto-generated method stub
 		    panel.removeAll();
 			init.setBounds(0, 0, 750, 450);
+		//	init.repaint();
 			panel.add(init);
+			//init.repaint();
 			panel.repaint();
 		}
     	

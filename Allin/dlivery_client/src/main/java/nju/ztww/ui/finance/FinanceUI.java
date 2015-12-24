@@ -71,13 +71,13 @@ public class FinanceUI  {
     		//p.setVisible(false);
     		
     	}
-    	menuePanel.accountButton.addActionListener(new ListenerTable(frame,accountPanel,panelList));
-    	menuePanel.paymentButton.addActionListener(new ListenerTable(frame,paymentPanel,panelList));
-    	menuePanel.collectionButton.addActionListener(new ListenerTable(frame,collectionPanel,panelList));
-    	menuePanel.benefitButton.addActionListener(new ListenerTable(frame,benefitPanel,panelList));
-    	menuePanel.businessButton.addActionListener(new ListenerTable(frame,businessPanel,panelList));
-    	menuePanel.initButton.addActionListener(new ListenerTable(frame,initPanel,panelList));
-    	menuePanel.personInfoButton.addActionListener(new ListenerTable(frame, personInfo, panelList));
+    	menuePanel.accountButton.addActionListener(new ListenerTable(frame,accountPanel,panelList,0));
+    	menuePanel.paymentButton.addActionListener(new ListenerTable(frame,paymentPanel,panelList,0));
+    	menuePanel.collectionButton.addActionListener(new ListenerTable(frame,collectionPanel,panelList,0));
+    	menuePanel.benefitButton.addActionListener(new ListenerTable(frame,benefitPanel,panelList,0));
+    	menuePanel.businessButton.addActionListener(new ListenerTable(frame,businessPanel,panelList,0));
+    	menuePanel.initButton.addActionListener(new ListenerTable(frame,initPanel,panelList,1));
+    	menuePanel.personInfoButton.addActionListener(new ListenerTable(frame, personInfo, panelList,0));
     }
     public FinanceUI(JFrame frame){
     	this.frame = frame;
