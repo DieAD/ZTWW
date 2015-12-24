@@ -19,9 +19,10 @@ public class MenuePanel extends JPanel {
        MyButton benefitButton = new MyButton(3);
        MyButton businessButton = new MyButton(4);
        MyButton initButton = new MyButton(5);
-       MyButton personInfoButton = new MyButton(6);
-       MyButton checkOrderButton  = new MyButton(7);
-       MyButton logoutButton = new MyButton(8);
+       MyButton exportFormButton = new MyButton(6);
+       MyButton personInfoButton = new MyButton(7);
+       MyButton checkOrderButton  = new MyButton(8);
+       MyButton logoutButton = new MyButton(9);
        
 
 	   final ImageIcon accout = new ImageIcon("photo/account.png");
@@ -30,6 +31,7 @@ public class MenuePanel extends JPanel {
 	   final ImageIcon benefit = new ImageIcon("photo/benefit.png");
 	   final ImageIcon init = new ImageIcon("photo/init.png");
 	   final ImageIcon business = new ImageIcon("photo/business.png");
+	   ImageIcon exportForm = new ImageIcon("photo/ExportForm.png");
 	   ImageIcon perIn = new ImageIcon("photo/PersonInfo.png");
 	   ImageIcon check = new ImageIcon("photo/CheckOrder.png");
 	   ImageIcon lo = new ImageIcon("photo/Logout.png");
@@ -39,6 +41,7 @@ public class MenuePanel extends JPanel {
 	   ImageIcon benefit2 = new ImageIcon("photo/benefit2.png");
 	   ImageIcon init2 = new ImageIcon("photo/init2.png");
 	   ImageIcon business2 = new ImageIcon("photo/business2.png");
+	   ImageIcon exportForm2 = new ImageIcon("photo/ExportForm2.png");
 	   ImageIcon perIn2 = new ImageIcon("photo/PersonInfo2.png");
 	   ImageIcon check2 = new ImageIcon("photo/CheckOrder2.png");
 	   ImageIcon lo2 = new ImageIcon("photo/Logout2.png");
@@ -61,6 +64,7 @@ public class MenuePanel extends JPanel {
     	   benefitButton.addActionListener(benefitListener);
     	   businessButton.addActionListener(businessListener);
     	   initButton.addActionListener(initListener);
+    	   exportFormButton.addActionListener(export);
     	   personInfoButton.addActionListener(yourMessage);
     	   checkOrderButton.addActionListener(checkOrder);
     	   logoutButton.addActionListener(logout);
@@ -77,6 +81,7 @@ public class MenuePanel extends JPanel {
     	   this.add(collectionButton);
     	   this.add(paymentButton);
     	   this.add(initButton);
+    	   this.add(exportFormButton);
     	   this.add(personInfoButton);
     	   this.add(checkOrderButton);
     	   this.add(logoutButton);
@@ -91,6 +96,7 @@ public class MenuePanel extends JPanel {
     	   benefitButton.setIcon(benefit);
     	   initButton.setIcon(init);
     	   businessButton.setIcon(business);
+    	   exportFormButton.setIcon(exportForm);
     	   personInfoButton.setIcon(perIn);
     	   checkOrderButton.setIcon(check);
     	   logoutButton.setIcon(lo);
@@ -192,6 +198,16 @@ public class MenuePanel extends JPanel {
 				re.actionPerformed(e);
 			}
 		};
+		
+		ActionListener export = new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				removeButton(panel);
+				exportFormButton.setIcon(exportForm2);
+				panel=8;
+			}
+		};
 	
 	private void removeButton(int n){
 
@@ -204,6 +220,7 @@ public class MenuePanel extends JPanel {
 		case 5: initButton.setIcon(init);break;
 		case 6: personInfoButton.setIcon(perIn);break;
 		case 7: checkOrderButton.setIcon(check);break;
+		case 8: exportFormButton.setIcon(exportForm);break;
 		default:
 			break;
 		}
