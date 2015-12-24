@@ -22,6 +22,7 @@ import confligUI.MyLabel;
 import confligUI.MyScrollPane;
 import confligUI.MyTable;
 import confligUI.MyTextField;
+import nju.ztww.bl.commodity.IsEmpty;
 import nju.ztww.serviceimpl.OrderServiceImpl;
 import nju.ztww.vo.CarManageVO;
 import nju.ztww.vo.LoadingVO;
@@ -45,6 +46,7 @@ public class CarManageUI extends JPanel{
 	private MyTextField orderNumbertextArea=new MyTextField("");
 	private  MyLabel orderNumber=new  MyLabel("备注");
 	private MyTextField findtextArea=new MyTextField("");
+	private MyLabel mylabel=new MyLabel();
 	private ArrayList<CarManageVO> allCarManageVO=new ArrayList<CarManageVO>();
 	
 	private MyButton sendButton=new MyButton('a');
@@ -145,9 +147,12 @@ public class CarManageUI extends JPanel{
 			            dlg.add(businesstextArea);
 			            dlg.add(sureButton);
 			            sureButton.setBounds(230, 315, 70, 30);
+			            mylabel.setText("信息未填全！");
+			            mylabel.setBounds(230, 345,100, 40);
+			            mylabel.setVisible(false);
+			            dlg.add(mylabel);
 			            sureButton.setIcon(new ImageIcon("photo/BusinessSure.png"));
 			            sureButton.addActionListener(listener);
-			            
 			            dlg.setLayout(null);
 						dlg.setVisible(true);
 					}
@@ -209,6 +214,16 @@ public class CarManageUI extends JPanel{
 	ActionListener listener = new ActionListener(){
 
 		public void actionPerformed(ActionEvent e) {
+			ArrayList<String>stringlist=new ArrayList<String>();
+			stringlist.add(businesstextArea.getText());
+			stringlist.add(arrivetextArea.getText());
+			stringlist.add(cartextArea.getText());
+			stringlist.add(carNumbertextArea.getText());
+			stringlist.add(orderNumbertextArea.getText());
+			IsEmpty is=new IsEmpty();
+			boolean isempty=false;
+			isempty=is.isempty(stringlist);
+			if(!isempty){
 			carManageVO.setCarNumber(businesstextArea.getText());
 			carManageVO.setCarState(arrivetextArea.getText());
 			carManageVO.setPlateNUmber(cartextArea.getText());
@@ -234,6 +249,10 @@ public class CarManageUI extends JPanel{
 		    table.revalidate();
 		    dlg.dispose();
 		    sureButton.removeActionListener(listener);
+		}
+			else{
+				mylabel.setVisible(true);
+			}
 		}
 		
 	};

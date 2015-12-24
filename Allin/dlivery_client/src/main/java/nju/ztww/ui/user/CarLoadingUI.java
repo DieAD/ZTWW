@@ -62,7 +62,7 @@ public class CarLoadingUI extends JPanel{
 	private MyTextField findtextArea=new MyTextField();
 	private OrderServiceImpl orderServiceImpl=new OrderServiceImpl();
 	private LoadingVO loadingVO;
-	
+	private MyLabel mylabel=new MyLabel();
 	private ArrayList<LoadingVO> allLoadingVO=new ArrayList<LoadingVO>();
 	
 	private ResultMessageUI resultMessageUI=new ResultMessageUI();
@@ -245,12 +245,16 @@ public class CarLoadingUI extends JPanel{
 			            dlg.add(businesstextArea);
 			            dlg.add(sureButton);
 			            sureButton.setBounds(460, 270, 70, 30);
+			            mylabel.setText("信息未填全!");
+			            mylabel.setBounds(460, 300, 100, 40);
 			            sureButton.setIcon(new ImageIcon("photo/courierSure.png"));
 			            sureButton.addActionListener(listener);
 //			            GridLayout layout = new GridLayout(0,2);
 //			            layout.setHgap(20);
 //			            layout.setVgap(40);
 //			            dlg.setLayout(layout);
+			            dlg.add(mylabel);
+			            mylabel.setVisible(false);
 			            dlg.setLayout(null);
 						dlg.setVisible(true);
 					}
@@ -325,6 +329,7 @@ public class CarLoadingUI extends JPanel{
 			stringlist.add(yayuntextArea.getText());
 			stringlist.add(departtextArea.getText());
 			stringlist.add(businesstextArea.getText());
+			
 			IsEmpty is=new IsEmpty();
 			boolean isempty=is.isempty(stringlist);
 			if(!isempty){
@@ -363,7 +368,7 @@ public class CarLoadingUI extends JPanel{
 		    sureButton.removeActionListener(listener);
 			}
 			else{
-				
+				mylabel.setVisible(true);
 			}
 		}
 		
