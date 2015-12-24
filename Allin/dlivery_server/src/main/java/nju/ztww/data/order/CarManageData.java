@@ -47,6 +47,13 @@ public class CarManageData {
 		return carManagePO;
 		
 	}
+   public ArrayList<CarManagePO> findAll(){
+	   dbHelper.init();
+	   ArrayList<CarManagePO> list= dbHelper.queryAll("carmanageform");
+	   dbHelper.close();
+		return list;
+		
+	}
    
    public String update(IDVO Id){
 	   dbHelper.init();

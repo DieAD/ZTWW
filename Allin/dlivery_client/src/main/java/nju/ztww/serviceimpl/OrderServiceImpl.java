@@ -9,6 +9,7 @@ package nju.ztww.serviceimpl;
 
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 import nju.ztww.bl.order.AcceptOrderBl;
@@ -25,6 +26,7 @@ import nju.ztww.bl.order.SendOrderBl;
 import nju.ztww.bl.order.ShipingOrderBl;
 import nju.ztww.bl.order.TransferOrderBl;
 import nju.ztww.bl.order.getMoneyBl;
+import nju.ztww.po.CarManagePO;
 import nju.ztww.service.OrderService;
 import nju.ztww.ui.main.TipsUI;
 import nju.ztww.ui.main.UserInfoUI;
@@ -248,6 +250,10 @@ public class OrderServiceImpl implements OrderService{
 		}else{
 			return 0;
 		}
+	}
+	
+	public ArrayList<CarManagePO> findAllCar(){
+		return carManageBl.findAll();
 	}
 
 	public String getDate(String city, String city2,int type) {
