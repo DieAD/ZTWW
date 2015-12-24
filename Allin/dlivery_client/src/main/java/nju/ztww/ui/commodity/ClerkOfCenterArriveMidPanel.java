@@ -27,6 +27,8 @@ import confligUI.MyScrollPane;
 import confligUI.MyTable;
 import confligUI.MyTextField;
 import nju.ztww.serviceimpl.OrderServiceImpl;
+import nju.ztww.ui.main.GetDate;
+import nju.ztww.ui.main.UserInfoUI;
 import nju.ztww.vo.BusinessArriveVO;
 import nju.ztww.vo.CarManageVO;
 import nju.ztww.vo.CenterReceiveVO;
@@ -143,11 +145,15 @@ public class ClerkOfCenterArriveMidPanel extends JPanel{
 			 sureCarLoadButton.addActionListener(findCarLoad);
 			 sureTransferButton.addActionListener(findTransfer);
           //中转中心编号
+			 String ID = UserInfoUI.getUserID();
+	         String IDD=ID.substring(0, 5);
             transferNumbertextArea.setBounds(110, 355, width, hight);
+            transferNumbertextArea.setText(IDD);
             transferNumber.setIcon(null);
             transferNumber.setBounds(20, 350, 100, 40);
             //到达日期
             businesstextArea.setBounds(110, 405, width, hight);
+            businesstextArea.setText(GetDate.getDate());
             business.setIcon(null);
             business.setBounds(20, 400, 100, 40);
             //出发地

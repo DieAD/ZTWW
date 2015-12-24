@@ -17,13 +17,16 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import confligUI.MyButton;
+import confligUI.MyComboBox;
 import confligUI.MyDialog;
 import confligUI.MyLabel;
 import confligUI.MyTextField;
 import nju.ztww.bl.commodity.StringToInt;
+import nju.ztww.po.CarManagePO;
 import nju.ztww.serviceimpl.CommodityListServiceImpl;
 import nju.ztww.serviceimpl.OrderServiceImpl;
 import nju.ztww.serviceimpl.StorageOutListServiceImpl;
+import nju.ztww.ui.main.GetDate;
 import nju.ztww.ui.main.UserInfoUI;
 import nju.ztww.vo.DeliverFeesVO;
 import nju.ztww.vo.ShippingVO;
@@ -48,7 +51,7 @@ public class FindStoragePanel extends JPanel {
 	private  MyLabel car=new  MyLabel();
 	private MyTextField arrivetextArea=new MyTextField("");
 	private  MyLabel arrive=new  MyLabel();
-	private MyTextField carNumbertextArea=new MyTextField("");
+	public MyComboBox dbtype = new MyComboBox();
 	private  MyLabel carNumber=new  MyLabel();
 	private MyTextField jianzhuangtextArea=new MyTextField("");
 	private  MyLabel jianzhuang=new  MyLabel();
@@ -179,15 +182,20 @@ public class FindStoragePanel extends JPanel {
 
 					public void actionPerformed(ActionEvent e) {
 						loadingVO=(ShippingVO) orderServiceImpl.getOrder(7);
+						ArrayList<CarManagePO> list=orderServiceImpl.findAllCar();
 						dlg= new MyDialog(); 
 						dlg.setSize(new Dimension(350, 520));
 			            dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
 			            //装车日期
 			            datatextArea.setBounds(120, 5, 150, 30);
+			            datatextArea.setText(GetDate.getDate());
 			            data.setText("装车日期");
 			            data.setBounds(20, 0, 100, 40);
 			            //汽运编号
+			            String ID = UserInfoUI.getUserID();
+			            String IDD=ID.substring(0, 3)+ID.substring(5, 8);
 			            cartextArea.setBounds(120, 105, 150, 30);
+			            cartextArea.setText(IDD+GetDate.getDate2());
 			            car.setText("汽运编号");
 			            car.setBounds(20, 100, 100, 40);
 			            //到达地
@@ -195,7 +203,10 @@ public class FindStoragePanel extends JPanel {
 			            arrive.setText("到达地");
 			            arrive.setBounds(20, 150, 100, 40);
 			            //车辆代号
-			            carNumbertextArea.setBounds(120, 55, 150, 30);
+			            for(CarManagePO temp:list){
+			            	dbtype.addItem(temp.getCarNumber());
+			            }
+			            dbtype.setBounds(120, 55, 150, 30);
 			            carNumber.setText("车辆编号");
 			            carNumber.setBounds(20, 50, 100, 40);
 //			            //订单号
@@ -225,7 +236,7 @@ public class FindStoragePanel extends JPanel {
 //			            dlg.add(orderNumber);
 //			            dlg.add(orderNumbertextArea);
 			            dlg.add(carNumber);
-			            dlg.add(carNumbertextArea);
+			            dlg.add(dbtype);
 			            dlg.add(arrive);
 			            dlg.add(arrivetextArea);
 			            dlg.add(car);
@@ -255,6 +266,7 @@ public class FindStoragePanel extends JPanel {
 			            method.setBounds(20, 0, 100, 40);
 			            //装车日期
 			            loadDataText.setBounds(120, 55, 150, 30);
+			            loadDataText.setText(GetDate.getDate());
 			            loadData.setIcon(null);
 			            loadData.setBounds(20, 50, 100, 40);
 			            //中转运输编号
@@ -345,7 +357,7 @@ public class FindStoragePanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				loadingVO.setData(datatextArea.getText());
 				loadingVO.setArrivePlace(arrivetextArea.getText());
-				loadingVO.setCarNumber(carNumbertextArea.getText());
+				loadingVO.setCarNumber(dbtype.getSelectedItem().toString());
 				loadingVO.setJianZhuangName(jianzhuangtextArea.getText());
 				getSelectString();
 				double money=30*2*row.size()*0.01;
@@ -374,8 +386,9 @@ public class FindStoragePanel extends JPanel {
 					//需要改的
 					arraylist.add(StorageListLineofOutVO);
 				}
-				//中转中心编号未确定
-				StorageOutListServiceImpl.addoutOrder(arraylist, "0251111");
+				String ID = UserInfoUI.getUserID();
+	            String IDD=ID.substring(0, 5);
+				StorageOutListServiceImpl.addoutOrder(arraylist, IDD);
 				arraylist.clear();
 				OrderNumber="";
 			    dlg.dispose();
@@ -419,8 +432,9 @@ public class FindStoragePanel extends JPanel {
 					// 需要改的
 					arraylist.add(StorageListLineofOutVO);
 				}
-				//中转中心编号未确定
-				StorageOutListServiceImpl.addoutOrder(arraylist, "0251111");
+				String ID = UserInfoUI.getUserID();
+	            String IDD=ID.substring(0, 5);
+				StorageOutListServiceImpl.addoutOrder(arraylist, IDD);
 				arraylist.clear();
 				OrderNumber="";
 			    dlg.dispose();

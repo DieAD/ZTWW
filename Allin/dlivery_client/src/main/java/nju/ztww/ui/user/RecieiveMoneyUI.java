@@ -24,6 +24,7 @@ import confligUI.MyTable;
 import confligUI.MyTextField;
 import nju.ztww.bl.commodity.IsEmpty;
 import nju.ztww.serviceimpl.OrderServiceImpl;
+import nju.ztww.ui.main.GetDate;
 import nju.ztww.ui.main.UserInfoUI;
 import nju.ztww.vo.DriverMessageVO;
 import nju.ztww.vo.LoadingVO;
@@ -114,6 +115,7 @@ public class RecieiveMoneyUI extends JPanel{
 			            carNumber.setBounds(50, 200, 100, 40);
 			            //收款日期
 			            businesstextArea.setBounds(150, 55, 150, 30);
+			            businesstextArea.setText(GetDate.getDate());
 			            business.setIcon(null);
 			            business.setBounds(50, 50, 100, 40);
 			            //收款快递员
