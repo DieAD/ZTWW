@@ -7,6 +7,7 @@ import nju.ztww.dao.AccountDO;
 import nju.ztww.dao.InsDO;
 import nju.ztww.dao.StockDO;
 import nju.ztww.dao.UserDO;
+import nju.ztww.dao.matrixDO;
 import nju.ztww.po.CarManagePO;
 import nju.ztww.service.FinanceService;
 import nju.ztww.vo.AccountVO;
@@ -101,7 +102,17 @@ public class FinanceServiceImpl implements FinanceService {
 
 	public void exportExcel(int index) {
 		// TODO Auto-generated method stub
-		
+		financeBL.exportExcel(index);
+	}
+
+	public void insertM(matrixDO form) {
+		// TODO Auto-generated method stub
+		financeBL.insertM(form);
+	}
+
+	public ArrayList<matrixDO> queryM() {
+		// TODO Auto-generated method stub
+		return financeBL.queryM();
 	}
 
 }

@@ -1,11 +1,13 @@
 package nju.ztww.service;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import nju.ztww.dao.AccountDO;
 import nju.ztww.dao.InsDO;
 import nju.ztww.dao.StockDO;
 import nju.ztww.dao.UserDO;
+import nju.ztww.dao.matrixDO;
 import nju.ztww.po.CarManagePO;
 import nju.ztww.vo.AccountVO;
 import nju.ztww.vo.BenefitVO;
@@ -59,5 +61,8 @@ public interface FinanceService {
 	public void initUser(ArrayList<UserDO> list);
 	
 	public void exportExcel(int index);
+	
+	public void insertM(matrixDO form);
+	public ArrayList<matrixDO> queryM();
 	
 }

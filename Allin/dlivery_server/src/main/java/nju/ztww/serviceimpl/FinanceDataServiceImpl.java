@@ -8,6 +8,7 @@ import nju.ztww.dao.AccountDO;
 import nju.ztww.dao.InsDO;
 import nju.ztww.dao.StockDO;
 import nju.ztww.dao.UserDO;
+import nju.ztww.dao.matrixDO;
 import nju.ztww.data.finance.FinanceData;
 import nju.ztww.po.AccountPO;
 import nju.ztww.po.CarManagePO;
@@ -129,6 +130,16 @@ public class FinanceDataServiceImpl extends UnicastRemoteObject implements Finan
 	public String getInsName(String id) throws RemoteException {
 		// TODO Auto-generated method stub
 		return financeData.findIns(id);
+	}
+
+	public void insertM(matrixDO form) throws RemoteException {
+		// TODO Auto-generated method stub
+		financeData.insertMatrix(form);
+	}
+
+	public ArrayList<matrixDO> queryM() throws RemoteException {
+		// TODO Auto-generated method stub
+		return financeData.queryM();
 	}
       
 }
