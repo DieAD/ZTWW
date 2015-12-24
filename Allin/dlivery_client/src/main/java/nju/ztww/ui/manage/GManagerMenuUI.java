@@ -91,6 +91,7 @@ public class GManagerMenuUI extends JPanel{
 			removeButton(panel);
 			ViewFormsButton.setIcon(ViewForms2);
 			panel = 0;
+			MyButton.type=0;
 		}
 	};
 	
@@ -101,6 +102,7 @@ public class GManagerMenuUI extends JPanel{
 			removeButton(panel);
 			CheckOrdersButton.setIcon(CheckOrders2);
 			panel = 1;
+			MyButton.type=1;
 		}
 	};
 	
@@ -111,6 +113,7 @@ public class GManagerMenuUI extends JPanel{
 			removeButton(panel);
 			ManageSalaryButton.setIcon(ManageSalary2);
 			panel = 2;
+			MyButton.type=2;
 		}
 	};
 	
@@ -121,6 +124,7 @@ public class GManagerMenuUI extends JPanel{
 			removeButton(panel);
 			ManageOrgaButton.setIcon(ManageOrga2);
 			panel = 3;
+			MyButton.type=3;
 		}
 	};
 	
@@ -131,6 +135,7 @@ public class GManagerMenuUI extends JPanel{
 			removeButton(panel);
 			CheckOrderButton.setIcon(CheckOrder2);
 			panel = 4;
+			MyButton.type=4;
 		}
 	};
 	
@@ -141,6 +146,7 @@ public class GManagerMenuUI extends JPanel{
 			removeButton(panel);
 			YourMessageButton.setIcon(YourMessage2);
 			panel = 5;
+			MyButton.type=5;
 		}
 	};
 	

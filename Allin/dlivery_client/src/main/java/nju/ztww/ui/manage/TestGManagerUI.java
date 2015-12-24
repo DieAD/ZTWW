@@ -1,12 +1,11 @@
 package nju.ztww.ui.manage;
 
-import java.awt.Toolkit;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import nju.ztww.ui.finance.MenuePanel;
+import nju.ztww.ui.finance.EditSearch;
 import nju.ztww.ui.user.PersonalMesageUI;
 import nju.ztww.ui.user.ThemeLabelUI;
 
@@ -18,6 +17,7 @@ public class TestGManagerUI {
 	GManager_CheckOrders checkOrdersUI = new GManager_CheckOrders();
 	GManager_ManageOrgaUI manageOrgaUI = new GManager_ManageOrgaUI();
 	GManager_ManageSalaryUI manageSalaryUI = new GManager_ManageSalaryUI();
+	EditSearch editSearch=new EditSearch();
 	PersonalMesageUI personInfo = new PersonalMesageUI();
 	private ArrayList<JPanel> panelList = new ArrayList<JPanel>();
 	private ArrayList<JPanel> list = new ArrayList<JPanel>();
@@ -51,6 +51,7 @@ public class TestGManagerUI {
 		panelList.add(checkOrdersUI);
 		panelList.add(manageOrgaUI);
 		panelList.add(manageSalaryUI);
+		panelList.add(editSearch);
 		panelList.add(personInfo);
 	//	panelList.add(viewFormsUI);
 		
@@ -60,6 +61,7 @@ public class TestGManagerUI {
 // 			frame.add(p);
 //			p.setVisible(false);
 		}
+		MenuPanel.CheckOrderButton.addActionListener(new GManager_Listener(frame,editSearch,panelList));
 		MenuPanel.CheckOrdersButton.addActionListener(new GManager_Listener(frame,checkOrdersUI,panelList));
 		MenuPanel.ManageOrgaButton.addActionListener(new GManager_Listener(frame,manageOrgaUI,panelList));
 		MenuPanel.ManageSalaryButton.addActionListener(new GManager_Listener(frame,manageSalaryUI,panelList));

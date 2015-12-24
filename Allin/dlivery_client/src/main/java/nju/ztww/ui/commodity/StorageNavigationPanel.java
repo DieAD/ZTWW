@@ -118,7 +118,7 @@ public class StorageNavigationPanel extends JPanel {
 		Panbutton = new MyButton(1);
 		Panbutton.setIcon(pan);
 		Checkbutton = new MyButton(0);
-		Checkbutton.setIcon(Check);
+		Checkbutton.setIcon(Check2);
 		
 		YourMessageButton = new MyButton(5);
 		YourMessageButton.setIcon(yourMessage);
@@ -167,6 +167,7 @@ public class StorageNavigationPanel extends JPanel {
 			removeButton(panel);
 			Checkbutton.setIcon(Check2);
 			panel = 0;
+			MyButton.type=0;
 		}
 	};
 	
@@ -177,6 +178,7 @@ public class StorageNavigationPanel extends JPanel {
 			removeButton(panel);
 			Panbutton.setIcon(pan2);
 			panel = 1;
+			MyButton.type=1;
 		}
 	};
 	
@@ -187,6 +189,7 @@ public class StorageNavigationPanel extends JPanel {
 			removeButton(panel);
 			Inbutton.setIcon(In2);
 			panel = 2;
+			MyButton.type=2;
 		}
 	};
 	
@@ -198,6 +201,7 @@ public class StorageNavigationPanel extends JPanel {
 			removeButton(panel);
 			Outbutton.setIcon(Out2);
 			panel = 3;
+			MyButton.type=3;
 		}
 	};
      ActionListener tiao  = new ActionListener() {
@@ -208,6 +212,7 @@ public class StorageNavigationPanel extends JPanel {
 			removeButton(panel);
 			Tiaobutton.setIcon(tiaozheng2);
 			panel = 4;
+			MyButton.type=4;
 		}
 	};
 	
@@ -218,6 +223,7 @@ public class StorageNavigationPanel extends JPanel {
 			removeButton(panel);
 			YourMessageButton.setIcon(yourMessage2);
 			panel = 5;
+			MyButton.type=5;
 		}
 	};
 	
@@ -228,6 +234,7 @@ public class StorageNavigationPanel extends JPanel {
 			removeButton(panel);
 			CheckOrderButton.setIcon(checkOrder2);
 			panel = 6;
+			MyButton.type=6;
 		}
 	};
 

@@ -46,7 +46,7 @@ public class ManageUI extends JPanel{
 		
 		this.setLayout(null);
 		this.setBackground(new Color(155,122,90));
-		UserManageButton.setIcon(UserManage);
+		UserManageButton.setIcon(UserManage2);
 //		UserManageButton.setBounds(0,60,209,58);
 		YourMessageButton.setIcon(YourMessage);
 		CheckOrderButton.setIcon(CheckOrder);
@@ -69,6 +69,7 @@ public class ManageUI extends JPanel{
 			removeButton(panel);
 			UserManageButton.setIcon(UserManage2);
 			panel = 0;
+			MyButton.type=0;
 		}
 	};
 
@@ -79,6 +80,7 @@ public class ManageUI extends JPanel{
 			removeButton(panel);
 			YourMessageButton.setIcon(YourMessage2);
 			panel = 1;
+			MyButton.type=1;
 		}
 	};
 	
@@ -89,6 +91,7 @@ public class ManageUI extends JPanel{
 			removeButton(panel);
 			CheckOrderButton.setIcon(CheckOrder2);
 			panel = 2;
+			MyButton.type=2;
 		}
 	};
 	

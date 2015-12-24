@@ -6,14 +6,18 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import nju.ztww.ui.finance.EditSearch;
 import nju.ztww.ui.user.PersonalMesageUI;
+import nju.ztww.ui.user.ThemeLabelUI;
 
 
 //date 11-18 name wh
 public class ClerkOfCenterUi extends JFrame {
 	ClerkOfCenterNavigationPanel navigationpanel;
-    ClerkOfCenterTopPanel toppanel;
+
     ClerkOfCenterArriveMidPanel ArriveMidpanel;
+    ThemeLabelUI Theme = new ThemeLabelUI();
+    EditSearch editSearch;
    static ClerkOfCenterTransferPanel  Transferpanel;
     ClerkOfCenterArriveEndPanel ArriveEndpanel;
    static ClerkOfCenterCarloadPanel CarloadPanel;
@@ -38,8 +42,8 @@ public class ClerkOfCenterUi extends JFrame {
 		//
 		}
 	public  void setup(){
+		editSearch=new EditSearch();
 		navigationpanel=new ClerkOfCenterNavigationPanel();
-		toppanel=new ClerkOfCenterTopPanel();
 		ArriveMidpanel=new ClerkOfCenterArriveMidPanel();
 		Transferpanel=new ClerkOfCenterTransferPanel();
 		ArriveEndpanel=new ClerkOfCenterArriveEndPanel();
@@ -51,7 +55,8 @@ public class ClerkOfCenterUi extends JFrame {
 	public void setPosition(){
 		this.setLayout(null);
 		navigationpanel.setBounds(0, 100, 150, 500);
-		toppanel.setBounds(150, 0, 750, 60);
+		Theme.setBounds(150, 0, 750, 60);
+		editSearch.setBounds(150, 100, 750, 450);
 		ArriveMidpanel.setBounds(150, 100, 750, 450);
 		Transferpanel.setBounds(150, 100, 750, 450);
 		ArriveEndpanel.setBounds(150, 100, 750, 450);
@@ -75,12 +80,14 @@ public class ClerkOfCenterUi extends JFrame {
 		arraylist.add(ArriveEndpanel);
 		arraylist.add(CarloadPanel);
 		arraylist.add(findStoragePanel);
+		arraylist.add(editSearch);
 		arraylist.add(personInfo);
 		navigationpanel.ArriveMid.addActionListener(new ClerkOfCenterController(this, ArriveMidpanel, arraylist));
 		navigationpanel.Transfer.addActionListener(new ClerkOfCenterController(this, Transferpanel, arraylist));
 //		navigationpanel.ArriveEnd.addActionListener(new ClerkOfCenterController(this, ArriveEndpanel, arraylist));
 		navigationpanel.CarLoadbutton.addActionListener(new ClerkOfCenterController(this, CarloadPanel, arraylist));
 		navigationpanel.StorageFind.addActionListener(new ClerkOfCenterController(this, findStoragePanel, arraylist));
+		navigationpanel.checkOrderButton.addActionListener(new ClerkOfCenterController(this, editSearch, arraylist));
 		navigationpanel.yourMessageButton.addActionListener(new ClerkOfCenterController(this, personInfo, arraylist));
 	}
 
@@ -92,13 +99,13 @@ public class ClerkOfCenterUi extends JFrame {
 	
 	public ArrayList<JPanel> getPanelList(){
 		list.add(navigationpanel);
-		list.add(toppanel);
+		list.add(Theme);
 		list.add(ArriveMidpanel);
 		list.add(Transferpanel);
-		list.add(ArriveEndpanel);
 		list.add(CarloadPanel);
 		list.add(findStoragePanel);
 		list.add(personInfo);
+		list.add(editSearch);
 		return list;
 	}
 }

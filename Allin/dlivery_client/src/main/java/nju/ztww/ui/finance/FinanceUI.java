@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import nju.ztww.ui.user.PersonalMesageUI;
+import nju.ztww.ui.user.ThemeLabelUI;
 //date 11-18 name wh//
 public class FinanceUI  {
     JFrame frame ;
@@ -19,9 +20,10 @@ public class FinanceUI  {
     EditPanel benefitPanel = new EditBenefit(new String[]{"总收入","总支出","总利润"},new Object[][]{{new Double(2222.3),new Double("333.2"),new Double("0000.2")}});
     EditPanel businessPanel = new EditBusiness(new String[]{"付款日期","付款金额","付款人","付款账号","条目","备注"},new Object[][]{{new String("2015/11/1"),new Double(35.5),new String("Manager"),new String("000000001"),new String("人员工资"),new String("11月")}});
     EditPanel initPanel = new EditInit(new String[]{"账号","创建时间","创建人","是否使用中"},new Object[][]{{new String("000001"),new String("2014/1"),new String("manager"),new String("是")}});
-    HeaderPanel headerPanel = new HeaderPanel();
+
     MenuePanel menuePanel = new MenuePanel();
     EditPerson personInfo = new EditPerson();
+    ThemeLabelUI Theme = new ThemeLabelUI();
     ArrayList<EditPanel> panelList = new ArrayList<EditPanel>();
     //modify
     private ArrayList<JPanel> list = new ArrayList<JPanel>();
@@ -47,7 +49,7 @@ public class FinanceUI  {
     
     public void setPanelBounds(){
     	menuePanel.setBounds(0, 100, 150, 500);
-    	headerPanel.setBounds(150, 0, 750, 60);
+    	Theme.setBounds(150, 0, 750, 60);
     	personInfo.setBounds(150, 100, 750, 450);
     	//
 //    	accountPanel.setBounds(210,60,690,480);
@@ -95,7 +97,7 @@ public class FinanceUI  {
     }
     
     public ArrayList<JPanel> getPanelList(){
-    	list.add(headerPanel);
+    	list.add(Theme);
     	list.add(menuePanel);
     	//list.add(personInfo);
     	for(EditPanel p : panelList){
