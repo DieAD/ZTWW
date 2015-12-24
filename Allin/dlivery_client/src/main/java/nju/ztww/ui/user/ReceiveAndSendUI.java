@@ -11,7 +11,6 @@ import java.util.Vector;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -19,6 +18,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
 import confligUI.MyButton;
+import confligUI.MyDialog;
 import confligUI.MyLabel;
 import confligUI.MyScrollPane;
 import confligUI.MyTable;
@@ -46,8 +46,8 @@ public class ReceiveAndSendUI extends JPanel{
 	private MyTextField findTransfertextArea=new MyTextField("请输入中转单号");
 	private MyTextField findArrivetextArea=new MyTextField("");
 	
-	private JButton sureButton=new JButton("确定");
-	private JButton findArriveSureButton=new JButton("确定");
+	private MyButton sureButton=new MyButton();
+	private MyButton findArriveSureButton=new MyButton();
 	private JButton sureTransferButton=new JButton();
 	
 	 private MyButton findArriveButton=new MyButton('d');
@@ -64,7 +64,7 @@ public class ReceiveAndSendUI extends JPanel{
 	MyTable receiveTable;
 	MyTable SmallreceiveTable;
 
-	 JDialog dlg;
+	 MyDialog dlg;
 	 java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit()
 				.getScreenSize();
 	int width=130;
@@ -89,7 +89,7 @@ public class ReceiveAndSendUI extends JPanel{
 
 					public void actionPerformed(ActionEvent e) {
 						businessArriveVO=(BusinessArriveVO) orderServiceImpl.getOrder(2);
-						dlg= new JDialog(); 
+						dlg= new MyDialog(); 
 						dlg.setSize(new Dimension(520, 550));
 			            dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
 			            
@@ -152,7 +152,8 @@ public class ReceiveAndSendUI extends JPanel{
 			            dlg.add(business);
 			            dlg.add(businesstextArea);
 			            dlg.add(sureButton);
-			            sureButton.setBounds(336, 400, 70, 30);
+			            sureButton.setBounds(336, 432, 70, 30);
+			            sureButton.setIcon(new ImageIcon("photo/BusinessSure.png"));
 			            sureButton.addActionListener(listener);
 			            
 			            dlg.setLayout(null);
@@ -187,12 +188,13 @@ public class ReceiveAndSendUI extends JPanel{
 			  findArriveButton.addActionListener(new ActionListener(){
 
 					public void actionPerformed(ActionEvent e) {
-						dlg= new JDialog(); 
+						dlg= new MyDialog(); 
 						dlg.setSize(new Dimension(350, 150));
 			            dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
 			            findArrivetextArea.setBounds(50, 30, 150, 30);
 			            findArriveSureButton.setBounds(240, 30, 70, 30);
 			            findArriveSureButton.addActionListener(listener3);
+			            findArriveSureButton.setIcon(new ImageIcon("photo/BusinessSure.png"));
 			            dlg.add(findArriveSureButton);
 			            dlg.add(findArrivetextArea);
 			            dlg.setLayout(null);

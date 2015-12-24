@@ -13,7 +13,6 @@ import java.util.Vector;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -21,6 +20,7 @@ import javax.swing.table.DefaultTableModel;
 
 import confligUI.MyButton;
 import confligUI.MyComboBox;
+import confligUI.MyDialog;
 import confligUI.MyLabel;
 import confligUI.MyScrollPane;
 import confligUI.MyTable;
@@ -36,7 +36,7 @@ import nju.ztww.vo.StorageListVO;
 
 public class OutofStoragePanel extends JPanel {
    public MyTable table;
-   public JDialog dlg;
+   public MyDialog dlg;
    DefaultTableModel defaultTableModel ;
    public MyButton addbutton;
    public JButton surebutton;
@@ -115,7 +115,7 @@ public class OutofStoragePanel extends JPanel {
     dbtype.addItem("汽车");
 	addbutton.addActionListener(new ActionListener() {
 	public void actionPerformed(ActionEvent arg0) {
-		dlg=new JDialog();
+		dlg=new MyDialog();
 		dlg.setLayout(null);
 		dlg.setSize(new Dimension(350, 400));
         dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);

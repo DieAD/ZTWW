@@ -11,13 +11,13 @@ import java.util.Vector;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import confligUI.MyButton;
+import confligUI.MyDialog;
 import confligUI.MyLabel;
 import confligUI.MyScrollPane;
 import confligUI.MyTable;
@@ -44,11 +44,11 @@ public class RecieiveMoneyUI extends JPanel{
 	private MyTextField findtextArea=new MyTextField("");
 	
 	private MyButton findButton=new MyButton('d');
-	private JButton findSureButton=new JButton("确定");
+	private MyButton findSureButton=new MyButton();
 	private MyButton deleteButton=new MyButton('c');
 	private MyButton addButton=new MyButton('b');
 	private MyButton addSendButton=new MyButton('a');
-	private JButton sureButton=new JButton("确定");
+	private MyButton sureButton=new MyButton();
 	
 	private OrderServiceImpl orderServiceImpl=new OrderServiceImpl();
 	private ReceiveVO receiveVO;
@@ -58,7 +58,7 @@ public class RecieiveMoneyUI extends JPanel{
 	
 	DefaultTableModel defaultTableModel ;
 	 MyTable table;
-	 JDialog dlg;
+	 MyDialog dlg;
 	 java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit()
 				.getScreenSize();
 	
@@ -104,7 +104,7 @@ public class RecieiveMoneyUI extends JPanel{
 
 					public void actionPerformed(ActionEvent e) {
 						receiveVO=(ReceiveVO) orderServiceImpl.getOrder(5);
-						dlg= new JDialog(); 
+						dlg= new MyDialog(); 
 						dlg.setSize(new Dimension(400, 450));
 			            dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
 			            //订单号
@@ -142,6 +142,7 @@ public class RecieiveMoneyUI extends JPanel{
 			            dlg.add(business);
 			            dlg.add(businesstextArea);
 			            dlg.add(sureButton);
+			            sureButton.setIcon(new ImageIcon("photo/BusinessSure.png"));
 			            sureButton.setBounds(230, 315, 70, 30);
 			            sureButton.addActionListener(listener);
 			            
@@ -175,12 +176,13 @@ public class RecieiveMoneyUI extends JPanel{
 			  findButton.addActionListener(new ActionListener(){
 
 					public void actionPerformed(ActionEvent e) {
-						dlg= new JDialog(); 
+						dlg= new MyDialog(); 
 						dlg.setSize(new Dimension(350, 150));
 			            dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
 			            findtextArea.setBounds(50, 30, 150, 30);
 			            findSureButton.setBounds(240, 30, 70, 30);
 			            findSureButton.addActionListener(listener2);
+			            findSureButton.setIcon(new ImageIcon("photo/BusinessSure.png"));
 			            dlg.add(findSureButton);
 			            dlg.add(findtextArea);
 			            dlg.setLayout(null);

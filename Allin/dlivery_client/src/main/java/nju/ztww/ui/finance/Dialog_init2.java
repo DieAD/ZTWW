@@ -21,7 +21,7 @@ public class Dialog_init2 extends JDialog {
 		mainPanel.submit.addActionListener(new Listener(this));
 		this.setContentPane(mainPanel);
 		this.setTitle("机构建账");
-		this.setSize(600, 450);
+		this.setSize(500, 370);
 		this.setResizable(false);
 		// this.pack();
 
@@ -67,7 +67,7 @@ public class Dialog_init2 extends JDialog {
       	// _setBounds(input5,4,2,"");
       	
 //      	
-      	 submit.setBounds(200,350, 80, 30);
+      	 submit.setBounds(200,290, 80, 30);
       	 this.add(submit);
       	 
        }

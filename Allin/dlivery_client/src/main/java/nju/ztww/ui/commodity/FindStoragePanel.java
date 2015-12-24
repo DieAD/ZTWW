@@ -11,13 +11,13 @@ import java.util.Vector;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import confligUI.MyButton;
+import confligUI.MyDialog;
 import confligUI.MyLabel;
 import confligUI.MyTextField;
 import nju.ztww.bl.commodity.StringToInt;
@@ -79,13 +79,13 @@ public class FindStoragePanel extends JPanel {
 	private MyTextField allOrderText=new MyTextField("");
 	private  MyLabel allOrder=new  MyLabel();
 
-	JDialog dlg;
+	MyDialog dlg;
 	
 	   private MyButton find=new MyButton('c');
 	   private MyButton addTransferOrder=new MyButton('b');
 	   private MyButton addLoadOrder=new MyButton('a');
-	   private JButton sureButton=new JButton("确定");
-	   private JButton sureTransferButton=new JButton("确定");
+	   private MyButton sureButton=new MyButton();
+	   private MyButton sureTransferButton=new MyButton();
 	  
 	   DefaultTableModel defaultTableModel ;
 	   static JTable table;
@@ -179,7 +179,7 @@ public class FindStoragePanel extends JPanel {
 
 					public void actionPerformed(ActionEvent e) {
 						loadingVO=(ShippingVO) orderServiceImpl.getOrder(7);
-						dlg= new JDialog(); 
+						dlg= new MyDialog(); 
 						dlg.setSize(new Dimension(350, 550));
 			            dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
 			            //装车日期
@@ -234,7 +234,8 @@ public class FindStoragePanel extends JPanel {
 			            dlg.add(datatextArea);
 			    
 			            dlg.add(sureButton);
-			            sureButton.setBounds(180, 350, 100, 30);
+			            sureButton.setBounds(180, 350, 70, 30);
+			            sureButton.setIcon(new ImageIcon("photo/BusinessSure.png"));
 			            sureButton.addActionListener(listener);
 			            
 			            dlg.setLayout(null);
@@ -245,7 +246,7 @@ public class FindStoragePanel extends JPanel {
 
 					public void actionPerformed(ActionEvent e) {
 						transferVO=(TransferVO) orderServiceImpl.getOrder(8);
-						dlg= new JDialog(); 
+						dlg= new MyDialog(); 
 						dlg.setSize(new Dimension(350, 550));
 			            dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
 			           //运输方式
@@ -304,7 +305,8 @@ public class FindStoragePanel extends JPanel {
 //			            dlg.add(allOrderText);
 //			            dlg.add(allOrder);
 			            dlg.add(sureTransferButton);
-			            sureTransferButton.setBounds(200, 415, 100, 30);
+			            sureTransferButton.setBounds(200, 415, 70, 30);
+			            sureTransferButton.setIcon(new ImageIcon("photo/BusinessSure.png"));
 			            sureTransferButton.addActionListener(listener2);
 			            
 			            dlg.setLayout(null);
