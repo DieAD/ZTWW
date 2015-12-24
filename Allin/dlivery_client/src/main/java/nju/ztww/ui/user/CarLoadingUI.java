@@ -262,7 +262,7 @@ public class CarLoadingUI extends JPanel{
 			stringlist.add(arrivetextArea.getText());
 			stringlist.add(dbtype.getSelectedItem().toString());
 			stringlist.add(jianzhuangtextArea.getText());
-			stringlist.add(orderNumber.getText());
+			stringlist.add(orderNumbertextArea.getText());
 			stringlist.add(cartextArea.getText());
 			stringlist.add(yayuntextArea.getText());
 			stringlist.add(departtextArea.getText());
@@ -278,7 +278,7 @@ public class CarLoadingUI extends JPanel{
 			loadingVO.setJianZhuangName(jianzhuangtextArea.getText());
 			double money=orderServiceImpl.getMoney(departtextArea.getText(), arrivetextArea.getText(), 1);
 			loadingVO.setMoney(money);
-			loadingVO.setOrderNumber(orderNumber.getText());
+			loadingVO.setOrderNumber(orderNumbertextArea.getText());
 			loadingVO.setQiYunNumber(cartextArea.getText());
 			loadingVO.setYaYunName(yayuntextArea.getText());
 			loadingVO.setYingYeNumber(businesstextArea.getText());
