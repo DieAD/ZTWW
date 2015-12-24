@@ -119,6 +119,7 @@ public class MailingOrderBl {
 	}
 
 	public boolean passOrders(ArrayList<IDVO> list){
+		//System.out.print("step one");
 		 ArrayList<String> orders  = new ArrayList<String>();
 	        for(IDVO vo : list){
 	        	String temp = vo.id;
@@ -129,12 +130,15 @@ public class MailingOrderBl {
 		for(String order : orders){
 			TrackPO mailingTrackPO = orderDataService.passMailingOrder(order);
 			mailingTrackPO = adjust(mailingTrackPO);
+			System.out.print(mailingTrackPO.getID());
+			System.out.print(mailingTrackPO.getTrack());
 			orderDataService.addTrack(mailingTrackPO);
 		}
 		return true;
 	}
 	
 	public TrackPO adjust(TrackPO mailingTrackPO){
+		//System.out.print("step two");
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String time = df.format(new Date());
 		String id = mailingTrackPO.getTrack();
