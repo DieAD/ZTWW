@@ -15,21 +15,26 @@ public class ListenerUI implements MouseListener{
 	private Login login;
 	private String ID;
 	private String password;
+	
 	ImageIcon l1 = new ImageIcon("photo/login1.png");
 	ImageIcon l2 = new ImageIcon("photo/login2.png");
-	Thread animate;
 	public ListenerUI(JFrame frame){ //改成Login类    By zyz
 		this.frame = frame;		
 		this.login = (Login)frame;
 		this.swiftController = new SwiftController(frame);
+	//	frame.add(loading);
 		
 	
 	}
 
 
 	public void switchUI(){
+		frame.add(new LoadingPanel());
+		
 		this.swiftController.setMember(login.getID(), login.getPassword());
 		swiftController.setUI();
+		//frame.remove(loading);
+		//loading.thread.destroy();
 	}
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
@@ -38,7 +43,11 @@ public class ListenerUI implements MouseListener{
 
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
+		//frame.add(loading);
+		//loading.thread.start();
 		this.switchUI();
+		//loading.thread.destroy();
+		//frame.remove(loading);
 		//by zyz  move here
 	}
 
@@ -66,6 +75,8 @@ public class ListenerUI implements MouseListener{
 		// TODO Auto-generated method stub
 		login.loginbButton.setIcon(l1);
 	}
+	
+	
 	
 	
 }
