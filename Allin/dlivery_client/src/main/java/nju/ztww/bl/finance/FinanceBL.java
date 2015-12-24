@@ -8,6 +8,7 @@ import nju.ztww.dao.AccountDO;
 import nju.ztww.dao.InsDO;
 import nju.ztww.dao.StockDO;
 import nju.ztww.dao.UserDO;
+import nju.ztww.dao.matrixDO;
 import nju.ztww.po.CarManagePO;
 import nju.ztww.po.CollectionPO;
 import nju.ztww.po.PaymentPO;
@@ -222,5 +223,35 @@ public class FinanceBL {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public void exportExcel(int index){
+	  ExcelHelper myHelper = new ExcelHelper();
+	  if(index==1){
+		  myHelper.CollectionToExcel();
+		  myHelper.PaymentToExcel();
+	  }
+	}
+	public void insertM(matrixDO form){
+		financeDataService = (FinanceDataService) rmi
+				.findService("FinanceDataService");
+		try {
+			financeDataService.insertM(form);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	public ArrayList<matrixDO> queryM(){
+		ArrayList<matrixDO> list = new ArrayList<matrixDO>();
+		financeDataService = (FinanceDataService) rmi
+				.findService("FinanceDataService");
+		try {
+			list = financeDataService.queryM();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
 	}
 }

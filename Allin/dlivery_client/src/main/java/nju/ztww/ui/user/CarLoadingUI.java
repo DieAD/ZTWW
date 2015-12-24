@@ -136,7 +136,7 @@ public class CarLoadingUI extends JPanel{
 			            car.setText("汽运编号");
 			            car.setBounds(setX(1), setY(2), width, height);
 			            cartextArea.setBounds(setX(2), setY(2), width, height);
-			            cartextArea.setText(ID+GetDate.getDate2());
+			            cartextArea.setText(IDD+GetDate.getDate2());
 			            arrive.setText("到达地");
 			            arrive.setBounds(setX(3), setY(2), width, height);
 			            arrivetextArea.setBounds(setX(4), setY(2), width, height);

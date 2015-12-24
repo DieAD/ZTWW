@@ -22,6 +22,7 @@ import confligUI.MyTable;
 import confligUI.MyTextField;
 import nju.ztww.bl.commodity.IsEmpty;
 import nju.ztww.serviceimpl.OrderServiceImpl;
+import nju.ztww.ui.main.GetDate;
 import nju.ztww.vo.BusinessArriveVO;
 import nju.ztww.vo.SendVO;
 
@@ -86,6 +87,8 @@ public class SendUI extends JPanel{
 		            dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
 		            //到达日期
 		            datetextArea.setBounds(150, 55, 150, 30);
+		            datetextArea.setText(GetDate.getDate());
+		            
 		            date.setIcon(null);
 		            date.setBounds(50, 50, 100, 40);
 		            //托运订单号
