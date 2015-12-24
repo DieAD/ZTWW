@@ -10,7 +10,6 @@ import java.util.Vector;
 
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
-import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -37,6 +36,7 @@ public class Courier_OrderInputUI extends JPanel{
 	DefaultTableModel defaultTableModel;
 	MyTable table ;
 	OrderService orderServiceImpl = new OrderServiceImpl();
+	String[] TYPES = {"特快", "标准", "经济"};
 	
 	private MyLabel numbersLabel = new MyLabel();
 	private MyTextField numbers = new MyTextField();
@@ -63,7 +63,7 @@ public class Courier_OrderInputUI extends JPanel{
 	private MyLabel costLabel = new MyLabel();
 //	private MyTextField cost = new MyTextField();
 	private MyLabel typeLabel = new MyLabel();
-	private MyTextField type = new MyTextField();
+	private MyComboBox<String> type = new MyComboBox<String>(TYPES);
 	private MyLabel estTimeLabel = new MyLabel();
 	private MyTextField estTime = new MyTextField();
 	private MyLabel packLabel = new MyLabel();
@@ -188,7 +188,7 @@ public class Courier_OrderInputUI extends JPanel{
 			else System.out.println("无法获得当前城市！");
 			
 			DeliverFeesVO deliverFees = new DeliverFeesVO(from, (String)places.getSelectedItem(), 
-					type.getText(), Double.valueOf(pack.getText()), goodInfo.getText());
+					(String) type.getSelectedItem(), Double.valueOf(pack.getText()), goodInfo.getText());
 			
 			double result = orderServiceImpl.getCost(deliverFees);
 			MailingVO mailOrder = new MailingVO(1);
@@ -214,7 +214,8 @@ public class Courier_OrderInputUI extends JPanel{
 			row.add(receiver.getText());
 			row.add(receiverPhone.getText());
 			row.add(result+"");
-			row.add(type.getText());
+			row.add((String) type.getSelectedItem());
+			row.add(places.getSelectedItem()+place.getText());
 			defaultTableModel.addRow(row);
 			 table.revalidate();
 			 numbers.setText("");
@@ -228,7 +229,7 @@ public class Courier_OrderInputUI extends JPanel{
 			 place.setText("");
 			 goodInfo.setText("");
 //			 cost.setText("");
-			 type.setText("");
+//			 type.setText("");
 			 estTime.setText("");
 			 pack.setText("");
 			 
@@ -266,65 +267,65 @@ public class Courier_OrderInputUI extends JPanel{
 			businID = ID.substring(0, 8);
 			
 			addDlg = new MyDialog();
-			addDlg.setSize(new Dimension(600, 450));
+			addDlg.setSize(new Dimension(600, 550));
             addDlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
             sureButton.setIcon(new ImageIcon("photo/courierSure.png"));
             String  mailingOrderID = orderServiceImpl.getOrderID();
  
-            numbersLabel.setBounds(50, 20, 150, 20);
+            numbersLabel.setBounds(50, 20, 150, 30);
             numbersLabel.setText("营业厅编号");
-            numbers.setBounds(120, 20, 100, 20);
+            numbers.setBounds(130, 20, 120, 30);
             numbers.setText(businID);
-            orderNumLabel.setBounds(300, 20, 150, 20);
+            orderNumLabel.setBounds(300, 20, 120, 30);
             orderNumLabel.setText("订单号");
-            orderNum.setBounds(350, 20, 100, 20);
+            orderNum.setBounds(350, 20, 150, 30);
             orderNum.setText(mailingOrderID);
             
-            senderLabel.setBounds(50, 70, 150, 20);
+            senderLabel.setBounds(50, 85, 120, 30);
             senderLabel.setText("寄件人");
-            sender.setBounds(100, 70, 100, 20); 
-            senderPhoneLabel.setBounds(300, 70, 150, 20);   
+            sender.setBounds(100, 85, 140, 30); 
+            senderPhoneLabel.setBounds(300, 85, 150, 30);   
             senderPhoneLabel.setText("手机");
-            senderPhone.setBounds(350, 70, 150, 20);  
+            senderPhone.setBounds(350, 85, 150, 30);  
             
-            ognizationLabel.setBounds(50, 100, 150, 20);
+            ognizationLabel.setBounds(50, 130, 150, 30);
             ognizationLabel.setText("单位");
-            ognization.setBounds(100, 100, 150, 20);
-            senderTELLabel.setBounds(300, 100, 150, 20);
+            ognization.setBounds(100, 130, 150, 30);
+            senderTELLabel.setBounds(300, 130, 150, 30);
             senderTELLabel.setText("电话");
-            senderTEL.setBounds(350, 100, 150, 20);
+            senderTEL.setBounds(350, 130, 150, 30);
             
-            receiverLabel.setBounds(50, 150, 150, 20);
+            receiverLabel.setBounds(50, 195, 150, 30);
             receiverLabel.setText("收件人");
-            receiver.setBounds(100, 150, 150, 20);
-            receiverPhoneLabel.setBounds(300, 150, 150, 20);
+            receiver.setBounds(100, 195, 150, 30);
+            receiverPhoneLabel.setBounds(300, 195, 150, 30);
             receiverPhoneLabel.setText("手机");
-            receiverPhone.setBounds(350, 150, 150, 20);
+            receiverPhone.setBounds(350, 195, 150, 30);
             
-            placeLabel.setBounds(50, 180, 150, 20);
+            placeLabel.setBounds(50, 240, 150, 30);
             placeLabel.setText("地址");
-            places.setBounds(100, 180, 150, 20);
-            place.setBounds(100, 210, 400, 30);
+            places.setBounds(100, 240, 150, 30);
+            place.setBounds(100, 270, 400, 40);
             
-            goodInfoLabel.setBounds(50, 260, 150, 20);
+            goodInfoLabel.setBounds(50, 335, 150, 30);
             goodInfoLabel.setText("货物重量");
-            goodInfo.setBounds(120, 260, 150, 20);
+            goodInfo.setBounds(120, 335, 150, 30);
 //            costLabel.setBounds(300, 260, 150, 20);
 //            costLabel.setText("运费");
 //            cost.setBounds(370, 260, 150, 20);
             
-            typeLabel.setBounds(50, 290, 150, 20);
+            typeLabel.setBounds(50, 380, 150, 30);
             typeLabel.setText("货物类型");
-            type.setBounds(120, 290, 150, 20);
-            estTimeLabel.setBounds(300, 290, 150, 20);
+            type.setBounds(120, 380, 150, 30);
+            estTimeLabel.setBounds(300, 380, 150, 30);
             estTimeLabel.setText("预估时间");
-            estTime.setBounds(370, 290, 150, 20);
+            estTime.setBounds(370, 380, 150, 30);
             
             packLabel.setText("包装费");
-            packLabel.setBounds(300, 260, 150, 20);
-            pack.setBounds(370, 260, 150, 20);
+            packLabel.setBounds(300, 335, 150, 30);
+            pack.setBounds(370, 335, 150, 30);
     
-            sureButton.setBounds(450, 350, 70, 30);
+            sureButton.setBounds(450, 430, 70, 30);
             sureButton.addActionListener(listener);
             
             addDlg.add(numbersLabel);

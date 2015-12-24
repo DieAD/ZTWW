@@ -10,7 +10,6 @@ import java.util.Vector;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -18,11 +17,11 @@ import javax.swing.table.DefaultTableModel;
 
 import confligUI.MyButton;
 import confligUI.MyComboBox;
+import confligUI.MyDialog;
 import confligUI.MyLabel;
 import confligUI.MyTextField;
 import nju.ztww.service.CommodityListService;
 import nju.ztww.serviceimpl.CommodityListServiceImpl;
-
 import nju.ztww.ui.main.UserInfoUI;
 
 
@@ -43,7 +42,7 @@ public class StorageTiaoPanel extends JPanel {
 	public JButton  showbutton=new JButton();
 	public MyButton tijiao=new MyButton('a');
 	public MyTextField idoforder=new MyTextField(10);
-	public JDialog dlg=new JDialog();
+	public MyDialog dlg=new MyDialog();
 	public MyComboBox dbtype = new MyComboBox();
 	public MyComboBox dbtype2 = new MyComboBox();
 	public MyLabel qu=new MyLabel("区号");
@@ -54,7 +53,7 @@ public class StorageTiaoPanel extends JPanel {
 	public MyTextField jiafield=new MyTextField();
 	public MyTextField weifield=new MyTextField();
 	ArrayList<StorageListLineofInVO> arraylistshow=new ArrayList<StorageListLineofInVO>();
-	JButton surebutton=new JButton("确定");
+	MyButton surebutton=new MyButton();
 	
 	
   public StorageTiaoPanel() {
@@ -122,7 +121,7 @@ public class StorageTiaoPanel extends JPanel {
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			if(table.getSelectedRow()>=0){
-			dlg=new JDialog();
+			dlg=new MyDialog();
 			dlg.setLayout(null);
 			dlg.setSize(new Dimension(350, 380));
             dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
@@ -144,7 +143,8 @@ public class StorageTiaoPanel extends JPanel {
              weifield.setBounds(120, 215, 150, 30);
 //             wei.setFont(new Font("黑体",0,18));
              wei.setBounds(20, 210, 100, 40);
-             surebutton.setBounds(200, 280, 80, 30);
+             surebutton.setBounds(200, 280, 70, 30);
+             surebutton.setIcon(new ImageIcon("photo/BusinessSure.png"));
              dlg.add(qu);
              dlg.add(dbtype2);
              dlg.add(pai);

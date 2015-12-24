@@ -7,14 +7,15 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import confligUI.MyButton;
+import confligUI.MyDialog;
 import confligUI.MyLabel;
 import confligUI.MyScrollPane;
 import confligUI.MyTable;
@@ -39,7 +40,7 @@ public class SendUI extends JPanel{
 	private SendVO sendVO;
 	private ArrayList<SendVO> allSendVO=new ArrayList<SendVO>();
 	
-	 JDialog dlg;
+	 MyDialog dlg;
 	
 	 DefaultTableModel defaultTableModel2 ;
 	 MyTable sendTable;
@@ -47,8 +48,8 @@ public class SendUI extends JPanel{
      private MyButton deleteSendButton=new MyButton('c');
 	 private MyButton sendButton=new MyButton('a');
 	 private MyButton addSendButton=new MyButton('b');
-	 private JButton sureSendButton=new JButton("确定");
-	 private JButton findSendSureButton=new JButton("确定");
+	 private MyButton sureSendButton=new MyButton();
+	 private MyButton findSendSureButton=new MyButton();
 	 
 	 java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit()
 				.getScreenSize();
@@ -79,7 +80,7 @@ public class SendUI extends JPanel{
 
 				public void actionPerformed(ActionEvent e) {
 					sendVO=(SendVO) orderServiceImpl.getOrder(6);
-					dlg= new JDialog(); 
+					dlg= new MyDialog(); 
 					dlg.setSize(new Dimension(400, 380));
 		            dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
 		            //到达日期
@@ -112,6 +113,7 @@ public class SendUI extends JPanel{
 		            dlg.add(datetextArea);
 		            dlg.add(sureSendButton);
 		            sureSendButton.setBounds(230, 265, 70, 30);
+		            sureSendButton.setIcon(new ImageIcon("photo/BusinessSure.png"));
 		            sureSendButton.addActionListener(listenerSend);
 		            
 		            dlg.setLayout(null);
@@ -143,12 +145,13 @@ public class SendUI extends JPanel{
 		  findSendButton.addActionListener(new ActionListener(){
 
 				public void actionPerformed(ActionEvent e) {
-					dlg= new JDialog(); 
+					dlg= new MyDialog(); 
 					dlg.setSize(new Dimension(350, 150));
 		            dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
 		            findSendtextArea.setBounds(50, 30, 150, 30);
 		            findSendSureButton.setBounds(250, 30, 70, 30);
 		            findSendSureButton.addActionListener(listener2);
+		            findSendSureButton.setIcon(new ImageIcon("photo/BusinessSure.png"));
 		            dlg.add(findSendSureButton);
 		            dlg.add(findSendtextArea);
 		            dlg.setLayout(null);

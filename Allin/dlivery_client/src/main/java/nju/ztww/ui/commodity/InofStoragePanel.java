@@ -13,7 +13,6 @@ import java.util.Vector;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -21,6 +20,7 @@ import javax.swing.table.DefaultTableModel;
 
 import confligUI.MyButton;
 import confligUI.MyComboBox;
+import confligUI.MyDialog;
 import confligUI.MyLabel;
 import confligUI.MyScrollPane;
 import confligUI.MyTable;
@@ -36,8 +36,10 @@ import nju.ztww.vo.StorageListLineofInVO;
 import nju.ztww.vo.StorageListLineofOutVO;
 
 public class InofStoragePanel extends JPanel{
-	   public MyTable table;
-	   public JDialog dlg;
+
+	  public MyTable table;
+	   public MyDialog dlg;
+
 	   DefaultTableModel defaultTableModel ;
 	   public MyButton addbutton;
 	   public MyLabel ordernumber=new MyLabel("快递编号");
@@ -54,9 +56,12 @@ public class InofStoragePanel extends JPanel{
 	   public MyTextField paifield=new MyTextField();
 	   public MyTextField jiafield=new MyTextField();
 	   public MyTextField weifield=new MyTextField();
+
 	   MyLabel mylabel=new MyLabel();
-	   public JButton  surebutton=new JButton("确定");
-	   public JButton  sureofbutton=new JButton("确定");
+	  
+	   public MyButton  surebutton=new MyButton();
+	  
+
 	   public MyButton  submitbutton=new MyButton('a');
 	   public MyButton  deletebutton=new MyButton('c');
 	   public CommodityService commodity=new StorageInListServiceImpl();
@@ -121,35 +126,38 @@ public class InofStoragePanel extends JPanel{
 		addbutton.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent arg0) {
 			// TODO Auto-generated method stub
-			dlg=new JDialog();
+
 
 			
+
+
+			dlg=new MyDialog();
 
 			dlg.setSize(new Dimension(350, 470));
 
             dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
-            ordernumberfield.setBounds(120, 5, 150, 30);
+            ordernumberfield.setBounds(120, 15, 150, 30);
 //            ordernumber.setFont(new Font("黑体",0,18));
-            ordernumber.setBounds(20, 0, 100, 40);;
-            datafield.setBounds(120, 55, 150, 30);
+            ordernumber.setBounds(20, 10, 100, 40);;
+            datafield.setBounds(120, 65, 150, 30);
 //            data.setFont(new Font("黑体",0,18));
-            data.setBounds(20, 50,100, 40);
-            arrivefield.setBounds(120, 105, 150, 30);
+            data.setBounds(20, 60,100, 40);
+            arrivefield.setBounds(120, 115, 150, 30);
 //            arrive.setFont(new Font("黑体",0,18));
-            arrive.setBounds(20, 100, 100, 40);
-            dbtype.setBounds(120, 155, 150, 30);
+            arrive.setBounds(20, 110, 100, 40);
+            dbtype.setBounds(120, 165, 150, 30);
 //           qu.setFont(new Font("黑体",0,18));
-           qu.setBounds(20, 150, 100, 40);
-            paifield.setBounds(120, 205, 150, 30);
+           qu.setBounds(20, 160, 100, 40);
+            paifield.setBounds(120, 215, 150, 30);
 //            pai.setFont(new Font("黑体",0,18));
-            pai.setBounds(20, 200, 100, 40);
-            jiafield.setBounds(120, 255, 150, 30);
+            pai.setBounds(20, 210, 100, 40);
+            jiafield.setBounds(120, 265, 150, 30);
             
-            jia.setBounds(20, 250, 100, 40);
+            jia.setBounds(20, 260, 100, 40);
 //            jia.setFont(new Font("黑体",0,18));
-            weifield.setBounds(120, 305, 150, 30);
+            weifield.setBounds(120, 315, 150, 30);
 //            wei.setFont(new Font("黑体",0,18));
-            wei.setBounds(20, 300, 100, 40);
+            wei.setBounds(20, 310, 100, 40);
             dlg.setLayout(null);
             dlg.add(ordernumberfield);
             dlg.add(ordernumber);
@@ -167,6 +175,7 @@ public class InofStoragePanel extends JPanel{
             dlg.add(weifield);
            
 
+
             //surebutton.setBounds(200, 350, 80, 40);
             mylabel.setBounds(150, 380, 100, 40);
             mylabel.setText("信息未填全！");
@@ -174,6 +183,10 @@ public class InofStoragePanel extends JPanel{
             
 
             surebutton.setBounds(150, 350,100, 30);
+
+
+            surebutton.setBounds(150, 370,70, 30);
+            surebutton.setIcon(new ImageIcon("photo/BusinessSure.png"));
 
             dlg.add(surebutton);
             

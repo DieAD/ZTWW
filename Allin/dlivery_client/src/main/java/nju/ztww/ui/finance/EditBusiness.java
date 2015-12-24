@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import confligUI.MyComboBox;
 import nju.ztww.service.FinanceService;
 import nju.ztww.serviceimpl.FinanceServiceImpl;
 import nju.ztww.vo.CollectionVO;
@@ -59,13 +60,13 @@ public class EditBusiness extends EditPanel{
     	public JButton button1  = new JButton("查看");
     	public JTextField text1 = new JTextField();
     	public JTextField text2 = new JTextField();
-    	public JComboBox jbox1;
-    	public JComboBox jbox2;
+    	public MyComboBox jbox1;
+    	public MyComboBox jbox2;
     	public String[] startTime = {"15/11/23","15/11/24","15/11/25","15/11/26"};
     	public String[] endTime = {"15/11/23","15/11/24","15/11/26"};
     	public Header(){
-    		jbox1 =   new JComboBox(startTime);
-    		jbox2 = new JComboBox(endTime);
+    		jbox1 =   new MyComboBox(startTime);
+    		jbox2 = new MyComboBox(endTime);
     		this.setLayout(new GridLayout(1,5));
     		this.add(label1);
     		//this.add(text1);

@@ -19,7 +19,6 @@ import java.util.Vector;
 import javax.security.auth.x500.X500Principal;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -69,18 +68,18 @@ public class CarLoadingUI extends JPanel{
 	private ResultMessageUI resultMessageUI=new ResultMessageUI();
 	
 	private MyButton addButton=new MyButton('b');
-	private JButton findSureButton=new JButton("确定");
+	private MyButton findSureButton=new MyButton();
 	private MyButton findButton=new MyButton('d');
 	private MyButton deleteButton=new MyButton('c');
 	private MyButton sendButton=new MyButton('a');
-	private JButton sureButton=new JButton();
+	private MyButton sureButton=new MyButton();
 	DefaultTableModel defaultTableModel ;
 	MyDialog dlg;
 	 MyTable table;
 	java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit()
 			.getScreenSize();
 	private int width = 150;
-	private int height = 20;
+	private int height = 25;
 	public CarLoadingUI(){
 
 		this.setBackground(new Color(250, 240, 230));
@@ -151,7 +150,7 @@ public class CarLoadingUI extends JPanel{
 					public void actionPerformed(ActionEvent e) {
 						loadingVO=(LoadingVO) orderServiceImpl.getOrder(4);
 						dlg= new MyDialog(); 
-						dlg.setSize(new Dimension(600, 400));
+						dlg.setSize(new Dimension(600, 390));
 			            dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
 			            //装车日期
 //			            datatextArea.setBounds(100, 5, 150, 30);
@@ -288,6 +287,7 @@ public class CarLoadingUI extends JPanel{
 			            dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
 			            findtextArea.setBounds(50, 30, 150, 30);
 			            findSureButton.setBounds(220, 30, 70, 30);
+			            findSureButton.setIcon(new ImageIcon("photo/BusinessSure.png"));
 			            findSureButton.addActionListener(listener2);
 			            dlg.add(findSureButton);
 			            dlg.add(findtextArea);
