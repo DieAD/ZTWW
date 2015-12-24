@@ -295,6 +295,7 @@ public class CarLoadingUI extends JPanel{
 			row.add(arrivetextArea.getText());
 			row.add(loadingVO.getCarNumber());
 			row.add(Double.toString(money));
+			
 			datatextArea.setText("");
 			businesstextArea.setText("");
 			cartextArea.setText("");

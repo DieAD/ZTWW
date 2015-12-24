@@ -183,7 +183,7 @@ public class MenuePanel extends JPanel {
 				removeButton(panel);
 				personInfoButton.setIcon(perIn2);
 				panel = 6;
-				MyButton.type=6;
+				MyButton.type=7;
 			}
 		};
 		
@@ -194,7 +194,7 @@ public class MenuePanel extends JPanel {
 				removeButton(panel);
 				checkOrderButton.setIcon(check2);
 				panel = 7;
-				MyButton.type=7;
+				MyButton.type=8;
 			}
 		};
 		
@@ -214,6 +214,7 @@ public class MenuePanel extends JPanel {
 				removeButton(panel);
 				exportFormButton.setIcon(exportForm2);
 				panel=8;
+				MyButton.type=6;
 			}
 		};
 	
