@@ -58,7 +58,7 @@ public class DriverManageUI extends JPanel{
 	private MyButton addButton=new MyButton('b');
 	private MyButton sureButton=new MyButton();
 	private MyButton sendButton=new MyButton('a');
-	
+	private MyLabel mylabel=new MyLabel();
 	private OrderServiceImpl orderServiceImpl=new OrderServiceImpl();
 	private DriverMessageVO driverMessageVO;
 	
@@ -114,6 +114,7 @@ public class DriverManageUI extends JPanel{
 						dlg.setSize(new Dimension(400, 500));
 			            dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
 			            //身份证号
+			            
 			            carNumbertextArea.setBounds(150, 205, 150, 30);
 			            carNumber.setIcon(null);
 			            carNumber.setBounds(50, 200, 100, 40);
@@ -160,7 +161,9 @@ public class DriverManageUI extends JPanel{
 			            sureButton.setBounds(230, 415, 70, 30);
 			            sureButton.setIcon(new ImageIcon("photo/BusinessSure.png"));
 			            sureButton.addActionListener(listener);
-			            
+			            mylabel.setText("信息未填全！");
+			            mylabel.setBounds(230, 445, 100, 40);
+			            mylabel.setVisible(false);
 			            dlg.setLayout(null);
 						dlg.setVisible(true);
 					}
