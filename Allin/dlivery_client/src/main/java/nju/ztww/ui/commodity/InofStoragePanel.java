@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -25,6 +26,7 @@ import confligUI.MyScrollPane;
 import confligUI.MyTable;
 import confligUI.MyTextField;
 import nju.ztww.bl.commodity.IsEmpty;
+import nju.ztww.bl.commodity.PlayMusic;
 import nju.ztww.service.CommodityService;
 import nju.ztww.serviceimpl.CommodityServiceImp;
 import nju.ztww.serviceimpl.StorageInListServiceImpl;
@@ -238,7 +240,7 @@ public class InofStoragePanel extends JPanel{
 			}
 			else{
 				System.out.println("false");
-			mylabel.setVisible(true);
+		        mylabel.setVisible(true);
 			}
 		}
 	};
@@ -260,7 +262,7 @@ public class InofStoragePanel extends JPanel{
 					System.out.println(table.getSelectedRow());
 				if(table.getSelectedRow()>=0){
 					// TODO Auto-generated method stub
-					arraylist.remove(table.getSelectedRow());
+				arraylist.remove(table.getSelectedRow());
 				defaultTableModel.removeRow(table.getSelectedRow());
 				
 				}
