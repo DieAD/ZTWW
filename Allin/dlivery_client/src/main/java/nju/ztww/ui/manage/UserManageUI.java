@@ -39,8 +39,8 @@ public class UserManageUI extends JPanel{
 	 private MyButton addButton=new MyButton('b');
 	 private MyButton deleteButton=new MyButton('c');
 	 private MyButton changeButton=new MyButton('a');
-	 JButton sureAddButton = new JButton("确认添加");
-	 JButton sureChangeButton = new JButton("确认修改");
+	 MyButton sureAddButton = new MyButton();
+	 MyButton sureChangeButton = new MyButton();
 	 MyDialog addDlg;
 	 
 	 MyLabel IDLabel = new MyLabel("ID");
@@ -167,7 +167,7 @@ public class UserManageUI extends JPanel{
 			if(row>=0){
 			ManaUserVO userVO=userService.findByID((String)table.getValueAt(row, 1));
 			addDlg = new MyDialog();
-			addDlg.setSize(new Dimension(600, 350));
+			addDlg.setSize(new Dimension(600, 380));
             addDlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
          
             IDLabel.setBounds(50, 20, 150, 25);
@@ -193,6 +193,7 @@ public class UserManageUI extends JPanel{
             positionLabel.setBounds(50, 200, 150, 25);
             position.setBounds(100, 200, 150, 25);
             sureAddButton.setBounds(200, 280, 150, 40);
+            sureAddButton.setIcon(new ImageIcon("photo/MSureAdd.png"));
 //            IDLabel.setBounds(50, 20, 50, 20);
             ID.setText(userVO.getID());
 //            ID.setBounds(100, 20, 100, 20);
@@ -234,7 +235,8 @@ public class UserManageUI extends JPanel{
 //            positionLabel.setBounds(50, 180, 150, 20);
             position.setText(userVO.getPosition());
 //            position.setBounds(100, 180, 150, 20);
-//            sureChangeButton.setBounds(200, 250, 150, 40);
+            sureChangeButton.setBounds(200, 280, 150, 40);
+            sureChangeButton.setIcon(new ImageIcon("photo/MSureModify.png"));
             sureChangeButton.addActionListener(sureChange);
             
             addDlg.add(onLineLabel);
@@ -470,7 +472,8 @@ public class UserManageUI extends JPanel{
             onLine.setBounds(370, 235, 150, 25);
             positionLabel.setBounds(50, 200, 150, 25);
             position.setBounds(100, 200, 150, 25);
-            sureAddButton.setBounds(200, 280, 150, 40);
+            sureAddButton.setBounds(200, 290, 150, 40);
+            sureAddButton.setIcon(new ImageIcon("photo/MSureAdd.png"));
             sureAddButton.addActionListener(sureAdd);
             
             addDlg.add(onLineLabel);

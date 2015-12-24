@@ -138,7 +138,7 @@ public class ClerkOfCenterArriveMidPanel extends JPanel{
 			 sureTransferButton.setBounds(280,25 , 70, 30);
 			 sureTransferButton.setIcon(new ImageIcon("photo/BusinessSure.png"));
 			 findCarLoadtextArea.setBounds(100, 65, width, hight);
-			 sureCarLoadButton.setBounds(280,65 , 70, 35);
+			 sureCarLoadButton.setBounds(280,65 , 70, 30);
 			 sureCarLoadButton.setIcon(new ImageIcon("photo/BusinessSure.png"));
 			 sureCarLoadButton.addActionListener(findCarLoad);
 			 sureTransferButton.addActionListener(findTransfer);

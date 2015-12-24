@@ -201,7 +201,7 @@ public class Courier_OrderInputUI extends JPanel{
 			
 			String ID = UserInfoUI.getUserID();
 			String PLACE = ID.substring(0, 3);
-			if(PLACE.equals("025")) from = "南京";
+			if(PLACE.equals("025")) from = "北京";
 			else if(PLACE.equals("010")) from = "北京";
 			else if(PLACE.equals("020")) from = "广州";
 			else if(PLACE.equals("021")) from = "上海";

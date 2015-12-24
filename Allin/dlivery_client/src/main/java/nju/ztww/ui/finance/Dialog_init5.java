@@ -1,5 +1,6 @@
 package nju.ztww.ui.finance;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -15,6 +16,7 @@ public class Dialog_init5 extends JDialog {
 	MainPanel mainPanel = new MainPanel();
     EditPanel tablePanel;
 	public Dialog_init5(EditPanel tablePanel) {
+		this.getContentPane().setBackground(new Color(250, 240, 230));
 		this.tablePanel= tablePanel;
 		this.setLayout(null);
 		mainPanel.setBounds(0,0,600,450);

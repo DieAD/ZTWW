@@ -40,9 +40,9 @@ public class OutofStoragePanel extends JPanel {
    public MyDialog dlg;
    DefaultTableModel defaultTableModel ;
    public MyButton addbutton;
-   public JButton surebutton;
+   public MyButton surebutton;
    public StorageListLineofOutVO  storagelineout;
-   public JButton  sureofbutton=new JButton("确定");
+   public MyButton  sureofbutton=new MyButton();
    public MyButton  submitofbutton=new MyButton('a');
    public MyButton deletebutton=new MyButton('c');
    public CommodityService commodity=new StorageOutListServiceImpl();
@@ -63,7 +63,7 @@ public class OutofStoragePanel extends JPanel {
 	
    long l = System.currentTimeMillis();
    Date time=new Date(l);
-  SimpleDateFormat dateFormat = new SimpleDateFormat("yyMMdd");
+   SimpleDateFormat dateFormat = new SimpleDateFormat("yyMMdd");
    public MyComboBox dbtype = new MyComboBox();
     
    public ArrayList<StorageListLineofOutVO>arraylist=new ArrayList<StorageListLineofOutVO>();
@@ -123,7 +123,7 @@ public class OutofStoragePanel extends JPanel {
 
 		dlg.setSize(new Dimension(350, 420));
         dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
-        surebutton=new JButton("确定");
+
         //surebutton.setBounds(200, 250, 80, 40);
         mylabel.setText("信息未填全！");
         mylabel.setBounds(150, 300, 120, 40);
@@ -140,7 +140,12 @@ public class OutofStoragePanel extends JPanel {
 		//dlg.setSize(new Dimension(350, 400));
         //dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
         //surebutton=new JButton("确定");
-        surebutton.setBounds(140, 270, 90, 30);
+        
+
+        surebutton=new MyButton();
+        surebutton.setIcon(new ImageIcon("photo/BusinessSure.png"));
+        surebutton.setBounds(190, 270, 80, 30);
+
         
         ordernumberfield.setBounds(120, 15, 150, 30);
 //        ordernumber.setFont(new Font("黑体",0,18));
@@ -184,8 +189,10 @@ public class OutofStoragePanel extends JPanel {
 	   
 }
  ActionListener listener=new ActionListener() {
+
 	
 	public void actionPerformed(ActionEvent e) {
+
 		// TODO Auto-generated method stub
 		ArrayList<String> stringlist=new ArrayList<String>();
 		stringlist.add(ordernumberfield.getText());
@@ -230,8 +237,10 @@ public class OutofStoragePanel extends JPanel {
 	
 }; 
 ActionListener listener2=new ActionListener(){
+
 //需要界面提供给我idofcenter
 	public void actionPerformed(ActionEvent e) {
+
 		String idofcenter=UserInfoUI.getUserID().substring(0, 5);//表名改啦
 		// TODO Auto-generated method stub
 	 commodity.addoutOrder(arraylist,idofcenter);
@@ -243,8 +252,10 @@ ActionListener listener2=new ActionListener(){
 	
 };
 ActionListener listener3=new ActionListener(){
+
 	//需要界面提供给我idofcenter
 		public void actionPerformed(ActionEvent e) {
+
 			if(table.getSelectedRow()>=0){
 		arraylist.remove(table.getSelectedRow());
 		defaultTableModel.removeRow(table.getSelectedRow());

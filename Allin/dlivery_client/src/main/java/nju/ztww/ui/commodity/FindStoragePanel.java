@@ -169,7 +169,7 @@ public class FindStoragePanel extends JPanel {
 			  JScrollPane scrollPane = new JScrollPane(table);
 		      table.setRowHeight(25);
 		      //
-			  scrollPane.setBounds(0, 0, 650, 400);
+			  scrollPane.setBounds(0, 0, 700, 400);
 				scrollPane.getViewport().setOpaque(false);
 				scrollPane.setOpaque(false);
 				table.getTableHeader().setBackground(new Color(249,231,212));//208,168,125
@@ -180,7 +180,7 @@ public class FindStoragePanel extends JPanel {
 					public void actionPerformed(ActionEvent e) {
 						loadingVO=(ShippingVO) orderServiceImpl.getOrder(7);
 						dlg= new MyDialog(); 
-						dlg.setSize(new Dimension(350, 550));
+						dlg.setSize(new Dimension(350, 520));
 			            dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
 			            //装车日期
 			            datatextArea.setBounds(120, 5, 150, 30);
@@ -234,7 +234,7 @@ public class FindStoragePanel extends JPanel {
 			            dlg.add(datatextArea);
 			    
 			            dlg.add(sureButton);
-			            sureButton.setBounds(180, 350, 70, 30);
+			            sureButton.setBounds(190, 360, 70, 30);
 			            sureButton.setIcon(new ImageIcon("photo/BusinessSure.png"));
 			            sureButton.addActionListener(listener);
 			            

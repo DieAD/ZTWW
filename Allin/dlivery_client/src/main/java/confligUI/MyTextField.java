@@ -25,6 +25,7 @@ public class MyTextField extends JTextField {
 	public MyTextField(String str){
 		super(str);
 		this.setFont(myFont);
+		this.setBorder(border1);
 		this.addMouseListener(ad);
 		
 	}
@@ -32,6 +33,14 @@ public class MyTextField extends JTextField {
 	public MyTextField(int n){
 		super(n);
 		this.setFont(myFont);
+		this.setBorder(border1);
+		this.addMouseListener(ad);
+	}
+	
+	public MyTextField(String str, int n){
+		super(str, n);
+		this.setFont(myFont);
+		this.setBorder(border1);
 		this.addMouseListener(ad);
 	}
 	

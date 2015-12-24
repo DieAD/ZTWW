@@ -11,6 +11,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import confligUI.MyLabel;
+import confligUI.MyTextField;
 import nju.ztww.service.FinanceService;
 import nju.ztww.serviceimpl.FinanceServiceImpl;
 import nju.ztww.vo.CollectionVO;
@@ -39,11 +41,11 @@ public class EditCollection extends EditPanel{
      
     public class Header extends JPanel{
     	
-    	public JLabel label1  = new JLabel("日期：",JLabel.CENTER);
-    	public JLabel label2 = new JLabel("营业厅编号：",JLabel.CENTER);
+    	public MyLabel label1  = new MyLabel("日期：",JLabel.CENTER);
+    	public MyLabel label2 = new MyLabel("营业厅编号：",JLabel.CENTER);
     	public JButton button1  = new JButton("查看");
-    	public JTextField text1 = new JTextField();
-    	public JTextField text2 = new JTextField();
+    	public MyTextField text1 = new MyTextField();
+    	public MyTextField text2 = new MyTextField();
     	private Listener listener = new Listener();
     	public Header(){
     		this.setLayout(new GridLayout(1,5));
