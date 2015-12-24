@@ -20,6 +20,7 @@ import confligUI.MyLabel;
 import confligUI.MyScrollPane;
 import confligUI.MyTable;
 import confligUI.MyTextField;
+import nju.ztww.bl.commodity.IsEmpty;
 import nju.ztww.serviceimpl.OrderServiceImpl;
 import nju.ztww.vo.BusinessArriveVO;
 import nju.ztww.vo.SendVO;
@@ -118,6 +119,7 @@ public class SendUI extends JPanel{
 		            mylabel.setText("信息未填全！");
 		            mylabel.setBounds(230, 295, 100, 40);
 		            mylabel.setVisible(false);
+		            dlg.add(mylabel);
 		            dlg.setLayout(null);
 					dlg.setVisible(true);
 				}
@@ -182,6 +184,15 @@ public class SendUI extends JPanel{
 		ActionListener listenerSend = new ActionListener(){
 
 			public void actionPerformed(ActionEvent e) {
+				ArrayList<String>stringlist=new ArrayList<String>();
+				stringlist.add(datetextArea.getText());
+				stringlist.add(numbertextArea.getText());
+				stringlist.add(sendertextArea.getText());
+				stringlist.add(othertextArea.getText());
+				IsEmpty is=new IsEmpty();
+				boolean isempty=false;
+				isempty=is.isempty(stringlist);
+				if(!isempty){
 				sendVO.setData(datetextArea.getText());
 				sendVO.setOrderNumber(numbertextArea.getText());
 				sendVO.setSenderName(sendertextArea.getText());
@@ -205,7 +216,10 @@ public class SendUI extends JPanel{
 			    dlg.dispose();
 			    sureSendButton.removeActionListener(listenerSend);
 			}
-			
+				else{
+					mylabel.setVisible(true);
+				}
+			}
 		};
 
 }

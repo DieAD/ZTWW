@@ -20,6 +20,7 @@ import confligUI.MyButton;
 import confligUI.MyDialog;
 import confligUI.MyLabel;
 import confligUI.MyTextField;
+import nju.ztww.bl.commodity.IsEmpty;
 import nju.ztww.bl.commodity.StringToInt;
 import nju.ztww.serviceimpl.CommodityListServiceImpl;
 import nju.ztww.serviceimpl.OrderServiceImpl;
@@ -56,7 +57,8 @@ public class FindStoragePanel extends JPanel {
 	private  MyLabel yayun=new  MyLabel();
 	private MyTextField orderNumbertextArea=new MyTextField("");
 	private  MyLabel orderNumber=new  MyLabel();
-
+    private MyLabel label1=new MyLabel();
+    private MyLabel label2=new MyLabel();
 	private MyTextField departtextArea=new MyTextField("");
 	private  MyLabel depart=new  MyLabel();
 
@@ -128,10 +130,7 @@ public class FindStoragePanel extends JPanel {
 
 		      final Object[][] p =
 				  {
-					 { "1212121212", new Integer(66), new Integer(32), new Integer(98),  new Integer(16),
-						 new Integer(16), new Integer(16),new Integer(16), new Boolean(false) },
-						 { "4545454545", new Integer(66), new Integer(32), new Integer(98),  new Integer(16),
-							 new Integer(16), new Integer(16),new Integer(16), new Boolean(false) }
+					
 				  };
 
 				  //字段名称
@@ -237,7 +236,10 @@ public class FindStoragePanel extends JPanel {
 			            sureButton.setBounds(190, 360, 70, 30);
 			            sureButton.setIcon(new ImageIcon("photo/BusinessSure.png"));
 			            sureButton.addActionListener(listener);
-			            
+			            label1.setVisible(false);
+			            label1.setText("信息未填完！");
+			            label1.setBounds(190, 390, 100, 40);
+			            dlg.add(label1);
 			            dlg.setLayout(null);
 						dlg.setVisible(true);
 					}
@@ -308,7 +310,10 @@ public class FindStoragePanel extends JPanel {
 			            sureTransferButton.setBounds(200, 415, 70, 30);
 			            sureTransferButton.setIcon(new ImageIcon("photo/BusinessSure.png"));
 			            sureTransferButton.addActionListener(listener2);
-			            
+			            label2.setVisible(false);
+			            label2.setText("信息未填全！");
+			            label2.setBounds(200, 445, 100, 40);
+			            dlg.add(label2);
 			            dlg.setLayout(null);
 						dlg.setVisible(true);
 					}
@@ -316,6 +321,7 @@ public class FindStoragePanel extends JPanel {
 			  find.addActionListener(new ActionListener(){
 
 					public void actionPerformed(ActionEvent e) {
+						defaultTableModel.setRowCount(0);
 						getStorage=commodityListServiceImpl.getStock(UserInfoUI.getUserID().substring(0,5));
 						for(StorageListLineofInVO storageListLineofInVO:getStorage){
 							Vector<String> row = new Vector(9);
@@ -343,6 +349,19 @@ public class FindStoragePanel extends JPanel {
 	   ActionListener listener = new ActionListener(){
 
 			public void actionPerformed(ActionEvent e) {
+				ArrayList<String>stringlist=new ArrayList<String>();
+				stringlist.add(datatextArea.getText());
+				stringlist.add(arrivetextArea.getText());
+				stringlist.add(carNumbertextArea.getText());
+				stringlist.add(jianzhuangtextArea.getText());
+				stringlist.add(departtextArea.getText());
+				stringlist.add(yayuntextArea.getText());
+				stringlist.add(cartextArea.getText());
+				IsEmpty is=new IsEmpty();
+				boolean isempty=false;
+				isempty=is.isempty(stringlist);
+				if(!isempty){		
+				
 				loadingVO.setData(datatextArea.getText());
 				loadingVO.setArrivePlace(arrivetextArea.getText());
 				loadingVO.setCarNumber(carNumbertextArea.getText());
@@ -381,10 +400,27 @@ public class FindStoragePanel extends JPanel {
 			    dlg.dispose();
 			    sureButton.removeActionListener(listener);
 			}
+				else{
+					label1.setVisible(true);
+				}
+			}
 		};
 		ActionListener listener2 = new ActionListener(){
 			
 			public void actionPerformed(ActionEvent e) {
+				ArrayList<String>stringlist=new ArrayList<String>();
+				stringlist.add(transferArriveText.getText());
+				stringlist.add(loadDataText.getText());
+				stringlist.add(counterText.getText());
+				stringlist.add(jianzhuangText.getText());
+				stringlist.add(methodText.getText());
+				stringlist.add(AirOrCarNumberText.getText());
+				stringlist.add(transferSendText.getText());
+				stringlist.add(transferNumberText.getText());
+				IsEmpty is=new IsEmpty();
+				boolean isempty=false;
+				isempty=is.isempty(stringlist);
+				if(!isempty){
 				transferVO.setArrivePlace(transferArriveText.getText());
 				transferVO.setCarData(loadDataText.getText());
 				transferVO.setCounterNumber(counterText.getText());
@@ -425,6 +461,10 @@ public class FindStoragePanel extends JPanel {
 				OrderNumber="";
 			    dlg.dispose();
 			    sureTransferButton.removeActionListener(listener2);
+				}
+				else{
+					label2.setVisible(true);
+				}
 			}
 		};
 		
