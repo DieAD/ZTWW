@@ -279,6 +279,7 @@ public class CarLoadingUI extends JPanel{
 			double money=orderServiceImpl.getMoney(departtextArea.getText(), arrivetextArea.getText(), 1);
 			loadingVO.setMoney(money);
 			loadingVO.setOrderNumber(orderNumbertextArea.getText());
+			
 			loadingVO.setQiYunNumber(cartextArea.getText());
 			loadingVO.setYaYunName(yayuntextArea.getText());
 			loadingVO.setYingYeNumber(businesstextArea.getText());
