@@ -143,7 +143,7 @@ public class Login extends JFrame{
 		//password.setText("");   //by zyz at 11/22
 		String psw = new String(password.getPassword());
 		password.setText("");
-		return psw;//
+		return psw;/////
 		
 	}
 	public static void main(String[] args) {
