@@ -35,7 +35,7 @@ public class SendUI extends JPanel{
 	private MyTextField othertextArea=new MyTextField("");
 	private  MyLabel other=new  MyLabel("备注");
 	private MyTextField findSendtextArea=new MyTextField("");
-	
+	private MyLabel mylabel=new MyLabel();
 	private OrderServiceImpl orderServiceImpl=new OrderServiceImpl();
 	private SendVO sendVO;
 	private ArrayList<SendVO> allSendVO=new ArrayList<SendVO>();
@@ -115,7 +115,9 @@ public class SendUI extends JPanel{
 		            sureSendButton.setBounds(230, 265, 70, 30);
 		            sureSendButton.setIcon(new ImageIcon("photo/BusinessSure.png"));
 		            sureSendButton.addActionListener(listenerSend);
-		            
+		            mylabel.setText("信息未填全！");
+		            mylabel.setBounds(230, 295, 100, 40);
+		            mylabel.setVisible(false);
 		            dlg.setLayout(null);
 					dlg.setVisible(true);
 				}

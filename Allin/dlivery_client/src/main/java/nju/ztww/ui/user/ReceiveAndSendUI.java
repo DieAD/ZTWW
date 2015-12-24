@@ -23,6 +23,7 @@ import confligUI.MyLabel;
 import confligUI.MyScrollPane;
 import confligUI.MyTable;
 import confligUI.MyTextField;
+import nju.ztww.bl.commodity.IsEmpty;
 import nju.ztww.serviceimpl.OrderServiceImpl;
 import nju.ztww.vo.BusinessArriveVO;
 import nju.ztww.vo.DriverMessageVO;
@@ -45,7 +46,7 @@ public class ReceiveAndSendUI extends JPanel{
 	private  MyLabel orderNumber=new  MyLabel("备注");
 	private MyTextField findTransfertextArea=new MyTextField("请输入中转单号");
 	private MyTextField findArrivetextArea=new MyTextField("");
-	
+	private MyLabel mylabel=new MyLabel();
 	private MyButton sureButton=new MyButton();
 	private MyButton findArriveSureButton=new MyButton();
 	private JButton sureTransferButton=new JButton();
@@ -155,7 +156,10 @@ public class ReceiveAndSendUI extends JPanel{
 			            sureButton.setBounds(336, 432, 70, 30);
 			            sureButton.setIcon(new ImageIcon("photo/BusinessSure.png"));
 			            sureButton.addActionListener(listener);
-			            
+			            mylabel.setText("信息未填全！");
+			            mylabel.setBounds(336, 462,100, 40);
+			            mylabel.setVisible(false);
+			            dlg.add(mylabel);
 			            dlg.setLayout(null);
 						dlg.setVisible(true);
 					}
@@ -216,6 +220,15 @@ public class ReceiveAndSendUI extends JPanel{
 	ActionListener listener = new ActionListener(){
 
 		public void actionPerformed(ActionEvent e) {
+			ArrayList<String>stringlist=new ArrayList<String>();
+			stringlist.add(businesstextArea.getText());
+			stringlist.add(arrivetextArea.getText());
+			stringlist.add(orderNumbertextArea.getText());
+			stringlist.add(findTransfertextArea.getText());
+			IsEmpty is=new IsEmpty();
+			boolean isempty=false;
+			isempty=is.isempty(stringlist);
+			if(!isempty){
 			for(int i=0;i<number;i++){
 				businessArriveVO.setData(businesstextArea.getText());
 				businessArriveVO.setNumber((String)SmallreceiveTable.getValueAt(i, 0));
@@ -251,6 +264,10 @@ public class ReceiveAndSendUI extends JPanel{
 			receiveTable.revalidate();
 		    dlg.dispose();
 		    sureButton.removeActionListener(listener);
+		}
+			else{
+				mylabel.setVisible(true);
+			}
 		}
 		
 	};
