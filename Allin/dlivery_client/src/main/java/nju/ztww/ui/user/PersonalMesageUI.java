@@ -152,4 +152,7 @@ public class PersonalMesageUI extends JPanel{
 		}
 		return sex;
 	}
+	public void loadImage(){
+		
+	}
 }
