@@ -19,7 +19,7 @@ public class FinanceUI  {
     EditPanel initPanel = new EditInit(new String[]{"账号","创建时间","创建人","是否使用中"},new Object[][]{{new String("000001"),new String("2014/1"),new String("manager"),new String("是")}});
     HeaderPanel headerPanel = new HeaderPanel();
     MenuePanel menuePanel = new MenuePanel();
-    PersonalMesageUI personInfo = new PersonalMesageUI();
+    EditPerson personInfo = new EditPerson();
     ArrayList<EditPanel> panelList = new ArrayList<EditPanel>();
     //modify
     private ArrayList<JPanel> list = new ArrayList<JPanel>();
@@ -62,6 +62,9 @@ public class FinanceUI  {
     	panelList.add(benefitPanel);
     	panelList.add(businessPanel);
     	panelList.add(initPanel);
+    	panelList.add(personInfo);
+    	//-------
+    	
     	for(EditPanel p : panelList){
     		p.setBounds(150,100,750,450);
     		//frame.getContentPane().add(p);
