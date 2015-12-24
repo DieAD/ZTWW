@@ -13,6 +13,10 @@ import java.net.UnknownHostException;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+
+
 
 public class AnnounceUI extends JPanel implements Runnable{
 	private String IP="127.0.0.1";
@@ -26,17 +30,22 @@ public class AnnounceUI extends JPanel implements Runnable{
 		notice.setFont(new Font(Font.DIALOG,0,15));
 		this.add(notice);
 		this.add(text);
+
 		this.setLayout(null);
 		this.setBounds(150, 550, 750, 50);
 		this.setVisible(true);
 		t.start();
 	}
+	
 	 public void paintComponent(Graphics g){
 			super.paintComponent(g);
 			
 			Image background=new ImageIcon("photo/bottom.png").getImage();
 			g.drawImage(background, 0,0,null);
 		}
+
+	
+
 	public void run() {
 		Socket client =null;
 		
@@ -62,4 +71,5 @@ public class AnnounceUI extends JPanel implements Runnable{
 		
 		
 	}
+
 }

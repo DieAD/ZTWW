@@ -21,6 +21,7 @@ import confligUI.MyLabel;
 import confligUI.MyScrollPane;
 import confligUI.MyTable;
 import confligUI.MyTextField;
+import nju.ztww.bl.commodity.IsEmpty;
 import nju.ztww.service.OrderService;
 import nju.ztww.serviceimpl.OrderServiceImpl;
 import nju.ztww.ui.main.UserInfoUI;
@@ -53,7 +54,7 @@ public class Courier_AcceptUI extends JPanel{
 	private MyTextField courier = new MyTextField();
 	private MyTextField search = new MyTextField();
 	private OrderService orderServiceImpl = new OrderServiceImpl();
-	
+	private MyLabel mylabel=new MyLabel();
 	private String businID;
 	private ArrayList<AcceptVO> acceptOrders = new ArrayList<AcceptVO>();
 	private String timer;
@@ -106,12 +107,13 @@ public class Courier_AcceptUI extends JPanel{
 					
 					String ID = UserInfoUI.getUserID();
 					businID = ID.substring(0, 8);
-					
 					addDlg = new MyDialog();
 					addDlg.setSize(new Dimension(360, 340));
 		            addDlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
 		            sureAddButton.setIcon(new ImageIcon("photo/courierSure.png"));
-		            sureAddButton.setBounds(220, 255, 70, 30);
+		            sureAddButton.setBounds(220, 235, 70, 30);
+		            mylabel.setText("信息未填全！");
+		            mylabel.setBounds(220, 265, 100, 40);
 		            sureAddButton.addActionListener(listener);
 		 
 		            numbersLabel.setBounds(50, 20, 150, 25);
@@ -145,9 +147,9 @@ public class Courier_AcceptUI extends JPanel{
 		            addDlg.add(time);
 		            addDlg.add(courierLabel);
 		            addDlg.add(courier);
-		            
+		            addDlg.add(mylabel);
 		            addDlg.add(sureAddButton);
-		            
+		            mylabel.setVisible(false);
 		            addDlg.setLayout(null);
 					addDlg.setVisible(true);
 				}
@@ -201,6 +203,16 @@ public class Courier_AcceptUI extends JPanel{
 		
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
+			ArrayList<String>stringlist=new ArrayList<String>();
+			stringlist.add(numbers.getText());
+			stringlist.add(acceptNum.getText());
+			stringlist.add(receiver.getText());
+			stringlist.add(time.getText());
+			stringlist.add(courier.getText());
+			IsEmpty is=new IsEmpty();
+			boolean isempty=false;
+			isempty=is.isempty(stringlist);
+			if(!isempty){
 			Vector<String> row =  new Vector<String>();
 			AcceptVO acceptOrder = new AcceptVO(11);
 			acceptOrder.setBusinID(numbers.getText());
@@ -226,7 +238,12 @@ public class Courier_AcceptUI extends JPanel{
 			 
 			addDlg.dispose();
 			sureAddButton.removeActionListener(listener);
+			}
+			else{
+				mylabel.setVisible(true);
+			}
 		}
+			
 	};
 
 	ActionListener delete = new ActionListener() {

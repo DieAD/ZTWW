@@ -17,15 +17,19 @@ import nju.ztww.bl.commodity.CheckOrderBL;
 import nju.ztww.bl.commodity.GetStockListBL;
 import nju.ztww.po.StorageListLineofInPO;
 import nju.ztww.po.TracePO;
+import nju.ztww.ui.main.AnnounceUI;
 import nju.ztww.ui.main.ListenerEndUI;
 import nju.ztww.ui.main.Listener_Return;
 import nju.ztww.ui.main.UserInfoUI;
 import nju.ztww.ui.user.PersonalMesageUI;
+import nju.ztww.ui.user.ThemeLabelUI;
 //date 11-18 name wh
 //需要根据中转中心业务员身份知道中转中心的id
 public class StorageUi extends JFrame implements Runnable{
+	
 	StorageNavigationPanel navigationpanel;
-    TopPanel toppanel;
+    //TopPanel toppanel;
+	ThemeLabelUI lablePanel;
     OutofStoragePanel outofStoragepanel;
     InofStoragePanel  inofStoragepanel;
     StorageCheckPanel storagecheckpanel;
@@ -37,6 +41,7 @@ public class StorageUi extends JFrame implements Runnable{
     ArrayList<TracePO>arraylistpo=new ArrayList<TracePO>();
     public JDialog dlg=new JDialog();
     boolean ispast=false;
+    
     public JLabel tishi=new JLabel("库存已超出警戒线");
     public JButton sure=new JButton("确定");
     Thread t=new Thread(this);
@@ -54,6 +59,7 @@ public class StorageUi extends JFrame implements Runnable{
 //		setController();
 
 //		 TODO Auto-generated constructor stub
+		
 		setup();
 		setPosition();
 		setController();
@@ -65,7 +71,8 @@ public class StorageUi extends JFrame implements Runnable{
 	public  void setup(){
 		
 		navigationpanel=new StorageNavigationPanel();
-		toppanel=new TopPanel();
+		//toppanel=new TopPanel();
+		lablePanel=new ThemeLabelUI();
 		outofStoragepanel=new OutofStoragePanel();
 		inofStoragepanel=new InofStoragePanel();
 		storagecheckpanel=new StorageCheckPanel();
@@ -79,7 +86,7 @@ public class StorageUi extends JFrame implements Runnable{
 		this.setLayout(null);
 		
 		navigationpanel.setBounds(0, 100, 150, 500);
-		toppanel.setBounds(150, 0, 750, 60);
+		lablePanel.setBounds(150, 0, 750, 60);
 		outofStoragepanel.setBounds(150, 100, 750, 450);
 		inofStoragepanel.setBounds(150, 100, 750, 450);
 		storagecheckpanel.setBounds(150, 100, 750, 450);
@@ -88,7 +95,7 @@ public class StorageUi extends JFrame implements Runnable{
 		personInfo.setBounds(150, 100, 750, 450);
 		//storagebaojingpanel.setBounds(150, 100, 750, 450);
 		this.add(navigationpanel);
-		this.add(toppanel);
+		this.add(lablePanel);
 		this.add(storagecheckpanel);
 		this.add(outofStoragepanel);
 		this.add(inofStoragepanel);
@@ -101,7 +108,7 @@ public class StorageUi extends JFrame implements Runnable{
 		
 		
 		//this.add(storagebaojingpanel);
-	
+	   
 		inofStoragepanel.setVisible(false);
 		outofStoragepanel.setVisible(false);
 		storagepanpanel.setVisible(false);
@@ -114,6 +121,8 @@ public class StorageUi extends JFrame implements Runnable{
 		arraylist.add(storagecheckpanel);
 		arraylist.add(storagepanpanel);
 		arraylist.add(storagetiaopanel);
+		//GetAnnouceUI e=new GetAnnouceUI();
+		
 		navigationpanel.Inbutton.addActionListener(new StorageControllerUi(this, inofStoragepanel, arraylist));
 		navigationpanel.Outbutton.addActionListener(new StorageControllerUi(this, outofStoragepanel, arraylist));
 		navigationpanel.Panbutton.addActionListener(new StorageControllerUi(this, storagepanpanel, arraylist));
@@ -130,12 +139,13 @@ public class StorageUi extends JFrame implements Runnable{
 //}
 	public ArrayList<JPanel> getPanelList(){
 		list.add(navigationpanel);
-		list.add(toppanel);
+		//list.add(toppanel);
 		list.add(storagecheckpanel);
 		list.add(outofStoragepanel);
 		list.add(inofStoragepanel);
 		list.add(storagepanpanel);
 		list.add(storagetiaopanel);
+		list.add(lablePanel);
 		list.add(personInfo);
 		return list;
 	}

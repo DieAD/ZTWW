@@ -46,6 +46,16 @@ public class ListenerUI implements MouseListener{
 		
 	}
 
+	public SwiftController getSwiftController() {
+		return swiftController;
+	}
+
+
+	public void setSwiftController(SwiftController swiftController) {
+		this.swiftController = swiftController;
+	}
+
+
 	public void mouseEntered(MouseEvent e) {
 		// TODO Auto-generated method stub
 		login.loginbButton.setIcon(l2);

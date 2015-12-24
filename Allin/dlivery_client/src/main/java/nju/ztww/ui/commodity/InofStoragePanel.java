@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -24,16 +25,21 @@ import confligUI.MyLabel;
 import confligUI.MyScrollPane;
 import confligUI.MyTable;
 import confligUI.MyTextField;
+import nju.ztww.bl.commodity.IsEmpty;
+import nju.ztww.bl.commodity.PlayMusic;
 import nju.ztww.service.CommodityService;
 import nju.ztww.serviceimpl.CommodityServiceImp;
 import nju.ztww.serviceimpl.StorageInListServiceImpl;
+import nju.ztww.ui.main.Login;
 import nju.ztww.ui.main.UserInfoUI;
 import nju.ztww.vo.StorageListLineofInVO;
 import nju.ztww.vo.StorageListLineofOutVO;
 
 public class InofStoragePanel extends JPanel{
-	public MyTable table;
+
+	  public MyTable table;
 	   public MyDialog dlg;
+
 	   DefaultTableModel defaultTableModel ;
 	   public MyButton addbutton;
 	   public MyLabel ordernumber=new MyLabel("快递编号");
@@ -50,8 +56,12 @@ public class InofStoragePanel extends JPanel{
 	   public MyTextField paifield=new MyTextField();
 	   public MyTextField jiafield=new MyTextField();
 	   public MyTextField weifield=new MyTextField();
+
+	   MyLabel mylabel=new MyLabel();
+	  
 	   public MyButton  surebutton=new MyButton();
-	   public MyButton  sureofbutton=new MyButton();
+	  
+
 	   public MyButton  submitbutton=new MyButton('a');
 	   public MyButton  deletebutton=new MyButton('c');
 	   public CommodityService commodity=new StorageInListServiceImpl();
@@ -116,8 +126,15 @@ public class InofStoragePanel extends JPanel{
 		addbutton.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent arg0) {
 			// TODO Auto-generated method stub
+
+
+			
+
+
 			dlg=new MyDialog();
+
 			dlg.setSize(new Dimension(350, 470));
+
             dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
             ordernumberfield.setBounds(120, 15, 150, 30);
 //            ordernumber.setFont(new Font("黑体",0,18));
@@ -157,11 +174,24 @@ public class InofStoragePanel extends JPanel{
             dlg.add(wei);
             dlg.add(weifield);
            
+
+
+            //surebutton.setBounds(200, 350, 80, 40);
+            mylabel.setBounds(150, 380, 100, 40);
+            mylabel.setText("信息未填全！");
+            dlg.add( mylabel);
+            
+
+            surebutton.setBounds(150, 350,100, 30);
+
+
             surebutton.setBounds(150, 370,70, 30);
             surebutton.setIcon(new ImageIcon("photo/BusinessSure.png"));
+
             dlg.add(surebutton);
             
             surebutton.addActionListener(surelistener);
+            mylabel.setVisible(false);
             dlg.setVisible(true);
             
       
@@ -176,8 +206,23 @@ public class InofStoragePanel extends JPanel{
 		
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
+			ArrayList<String>stringlist=new ArrayList<String>();
+			stringlist.add(ordernumberfield.getText());
+			stringlist.add(datafield.getText());
+			stringlist.add(arrivefield.getText());
+			stringlist.add(dbtype.getSelectedItem().toString());
+			stringlist.add(paifield.getText());
+			stringlist.add(jiafield.getText());
+			stringlist.add(weifield.getText());
+			IsEmpty is=new IsEmpty();
+			for(int i=0;i<stringlist.size();i++){
+				System.out.println(stringlist.get(i));
+			}
+			boolean isempty=false;
+			isempty=is.isempty(stringlist);
+			if(!isempty){
+				System.out.println("ss");
 			Vector<String> row = new Vector(7);
-			
 			row.add(ordernumberfield.getText());
 			row.add(datafield.getText());
 			row.add(arrivefield.getText());
@@ -205,7 +250,11 @@ public class InofStoragePanel extends JPanel{
 		    table.revalidate();
 		    dlg.dispose();
 		    surebutton.removeActionListener(surelistener);
-		    
+			}
+			else{
+				System.out.println("false");
+		        mylabel.setVisible(true);
+			}
 		}
 	};
 	ActionListener listener2=new ActionListener(){
@@ -226,7 +275,7 @@ public class InofStoragePanel extends JPanel{
 					System.out.println(table.getSelectedRow());
 				if(table.getSelectedRow()>=0){
 					// TODO Auto-generated method stub
-					arraylist.remove(table.getSelectedRow());
+				arraylist.remove(table.getSelectedRow());
 				defaultTableModel.removeRow(table.getSelectedRow());
 				
 				}

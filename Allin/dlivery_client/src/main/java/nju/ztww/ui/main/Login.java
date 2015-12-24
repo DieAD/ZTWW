@@ -135,6 +135,18 @@ public class Login extends JFrame{
 	
 	
 	
+	public ListenerUI getUiListener() {
+		return uiListener;
+	}
+
+
+
+	public void setUiListener(ListenerUI uiListener) {
+		this.uiListener = uiListener;
+	}
+
+
+
 	public String getID(){
 		return id.getText();
 	}
@@ -143,7 +155,7 @@ public class Login extends JFrame{
 		//password.setText("");   //by zyz at 11/22
 		String psw = new String(password.getPassword());
 		password.setText("");
-		return psw;
+		return psw;/////
 		
 	}
 	public static void main(String[] args) {
