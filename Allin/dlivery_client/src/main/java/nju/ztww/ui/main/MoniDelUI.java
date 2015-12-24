@@ -42,8 +42,10 @@ public class MoniDelUI extends JPanel implements Runnable{
 		}
 	}
 	MoniDelUI(){
-		this.setBackground(new Color(232,181,53));
-		this.setSize(400, 400);
+		this.setBackground(new Color(155,149,134));
+//		this.setBackground(null);
+//		this.setOpaque(false);
+		this.setSize(500, 200);
 		this.setLayout(null);
 		car.setIcon(new ImageIcon("photo/Lcar.png"));
 		car.setBounds(x, y, 60, 40);
