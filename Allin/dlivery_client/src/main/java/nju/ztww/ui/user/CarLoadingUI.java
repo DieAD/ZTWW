@@ -126,8 +126,8 @@ public class CarLoadingUI extends JPanel{
 			            business.setBounds(setX(3), setY(1), width, height);
 			            businesstextArea.setBounds(setX(4), setY(1), width, height);
 			            String ID = UserInfoUI.getUserID();
-			            ID=ID.substring(0, 6);
-			            businesstextArea.setText(ID);
+			            String IDD=ID.substring(0, 3)+ID.substring(5, 8);
+			            businesstextArea.setText(IDD);
 			            car.setText("汽运编号");
 			            car.setBounds(setX(1), setY(2), width, height);
 			            cartextArea.setBounds(setX(2), setY(2), width, height);
