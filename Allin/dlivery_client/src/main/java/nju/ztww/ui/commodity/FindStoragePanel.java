@@ -364,7 +364,7 @@ public class FindStoragePanel extends JPanel {
 				ArrayList<String>stringlist=new ArrayList<String>();
 				stringlist.add(datatextArea.getText());
 				stringlist.add(arrivetextArea.getText());
-				stringlist.add(carNumbertextArea.getText());
+				//stringlist.add(carNumbertextArea.getText());
 				stringlist.add(jianzhuangtextArea.getText());
 				stringlist.add(departtextArea.getText());
 				stringlist.add(yayuntextArea.getText());
