@@ -32,6 +32,7 @@ public class EditCollection extends EditPanel{
     	 this.remove(button1);
     	 this.remove(button2);
     	 this.remove(button3);
+    	 this.setVisible(false);
 	}
 
 //	public void setUp(){
