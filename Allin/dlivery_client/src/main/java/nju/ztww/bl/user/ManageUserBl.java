@@ -62,6 +62,8 @@ public class ManageUserBl {
 		ManaUserPO temp=userDataService.findByID(ID);
 		ManaUserVO userVO=new ManaUserVO(temp.getId(),temp.getName(),temp.getPsw(),temp.getAuthority(),
 				temp.getAge(),temp.getIdcard(),temp.getSex(),temp.getPhone(),temp.getPosition(),temp.getWorktime(),temp.getWetherwork());
+		userVO.position = temp.getPosition();
+		System.out.print(temp.getPosition());
 		return userVO;
 	}
 	

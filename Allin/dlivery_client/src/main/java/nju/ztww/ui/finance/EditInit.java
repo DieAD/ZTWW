@@ -37,6 +37,7 @@ public class EditInit extends EditPanel{
     	this.add(button);
     	button.addActionListener(new Listener(this));
     	setTable();
+    	this.setVisible(false);
     }
     
     public class Listener implements ActionListener{
