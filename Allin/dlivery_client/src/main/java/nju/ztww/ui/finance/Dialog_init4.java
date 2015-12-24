@@ -1,10 +1,13 @@
 package nju.ztww.ui.finance;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
 import confligUI.MyButton;
 import confligUI.MyTextField;
 
@@ -12,6 +15,7 @@ public class Dialog_init4 extends JDialog {
      EditPanel tablePanel ;
      MainPanel mainPanel = new MainPanel();
 	public Dialog_init4(EditPanel tablePanel){
+		this.getContentPane().setBackground(new Color(250, 240, 230));
 		this.tablePanel = tablePanel;
 		this.setLayout(null);
 		mainPanel.setBounds(0,0,600,450);

@@ -39,9 +39,9 @@ public class OutofStoragePanel extends JPanel {
    public MyDialog dlg;
    DefaultTableModel defaultTableModel ;
    public MyButton addbutton;
-   public JButton surebutton;
+   public MyButton surebutton;
    public StorageListLineofOutVO  storagelineout;
-   public JButton  sureofbutton=new JButton("确定");
+   public MyButton  sureofbutton=new MyButton();
    public MyButton  submitofbutton=new MyButton('a');
    public MyButton deletebutton=new MyButton('c');
    public CommodityService commodity=new StorageOutListServiceImpl();
@@ -60,7 +60,7 @@ public class OutofStoragePanel extends JPanel {
    public MyTextField yunshufield=new MyTextField();
    long l = System.currentTimeMillis();
    Date time=new Date(l);
-  SimpleDateFormat dateFormat = new SimpleDateFormat("yyMMdd");
+   SimpleDateFormat dateFormat = new SimpleDateFormat("yyMMdd");
    public MyComboBox dbtype = new MyComboBox();
     
    public ArrayList<StorageListLineofOutVO>arraylist=new ArrayList<StorageListLineofOutVO>();
@@ -119,7 +119,8 @@ public class OutofStoragePanel extends JPanel {
 		dlg.setLayout(null);
 		dlg.setSize(new Dimension(350, 400));
         dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
-        surebutton=new JButton("确定");
+        surebutton=new MyButton();
+        surebutton.setIcon(new ImageIcon("photo/BusinessSure.png"));
         surebutton.setBounds(190, 270, 80, 30);
         
         ordernumberfield.setBounds(120, 15, 150, 30);
@@ -160,8 +161,10 @@ public class OutofStoragePanel extends JPanel {
 	   
 }
  ActionListener listener=new ActionListener() {
+
 	
 	public void actionPerformed(ActionEvent e) {
+
 		// TODO Auto-generated method stub
 		Vector<String> row = new Vector(5);
 		row.add(ordernumberfield.getText());
@@ -191,8 +194,10 @@ public class OutofStoragePanel extends JPanel {
 	}
 }; 
 ActionListener listener2=new ActionListener(){
+
 //需要界面提供给我idofcenter
 	public void actionPerformed(ActionEvent e) {
+
 		String idofcenter=UserInfoUI.getUserID().substring(0, 5);//表名改啦
 		// TODO Auto-generated method stub
 	 commodity.addoutOrder(arraylist,idofcenter);
@@ -204,8 +209,10 @@ ActionListener listener2=new ActionListener(){
 	
 };
 ActionListener listener3=new ActionListener(){
+
 	//需要界面提供给我idofcenter
 		public void actionPerformed(ActionEvent e) {
+
 			if(table.getSelectedRow()>=0){
 		arraylist.remove(table.getSelectedRow());
 		defaultTableModel.removeRow(table.getSelectedRow());

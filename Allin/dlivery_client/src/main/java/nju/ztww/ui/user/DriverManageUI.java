@@ -53,10 +53,10 @@ public class DriverManageUI extends JPanel{
 	private ArrayList<DriverMessageVO> allDriverMessageVO=new ArrayList<DriverMessageVO>();
 	
 	private MyButton findButton=new MyButton('d');
-	private JButton findSureButton=new JButton("确定");
+	private MyButton findSureButton=new MyButton();
 	private MyButton deleteButton=new MyButton('c');
 	private MyButton addButton=new MyButton('b');
-	private JButton sureButton=new JButton("确定");
+	private MyButton sureButton=new MyButton();
 	private MyButton sendButton=new MyButton('a');
 	
 	private OrderServiceImpl orderServiceImpl=new OrderServiceImpl();
@@ -158,6 +158,7 @@ public class DriverManageUI extends JPanel{
 			            dlg.add(businesstextArea);
 			            dlg.add(sureButton);
 			            sureButton.setBounds(230, 415, 70, 30);
+			            sureButton.setIcon(new ImageIcon("photo/BusinessSure.png"));
 			            sureButton.addActionListener(listener);
 			            
 			            dlg.setLayout(null);
@@ -196,6 +197,7 @@ public class DriverManageUI extends JPanel{
 			            findtextArea.setBounds(50, 30, 150, 30);
 			            findSureButton.setBounds(250, 30, 70, 30);
 			            findSureButton.addActionListener(listener2);
+			            findSureButton.setIcon(new ImageIcon("photo/BusinessSure.png"));
 			            dlg.add(findSureButton);
 			            dlg.add(findtextArea);
 			            dlg.setLayout(null);

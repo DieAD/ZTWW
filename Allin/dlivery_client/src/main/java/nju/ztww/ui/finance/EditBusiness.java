@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import confligUI.MyComboBox;
+import confligUI.MyLabel;
 import nju.ztww.service.FinanceService;
 import nju.ztww.serviceimpl.FinanceServiceImpl;
 import nju.ztww.vo.CollectionVO;
@@ -21,8 +22,8 @@ import nju.ztww.vo.PaymentVO;
 public class EditBusiness extends EditPanel{
 	FinanceService fs = new FinanceServiceImpl();
     Header header = new Header();
-    JLabel label1 = new JLabel("付款单：",JLabel.LEFT);
-    JLabel label2 = new JLabel("收款单：",JLabel.LEFT);
+    MyLabel label1 = new MyLabel("付款单：",JLabel.LEFT);
+    MyLabel label2 = new MyLabel("收款单：",JLabel.LEFT);
     EditPanel scrollPanel2 = new EditPanel(new String[]{"收款日期","收款金额","收款快递员","订单条形码"},new Object[][]{{new String("2015/11"),new Integer(100),new String("000002"),new String("00000001")}});
 	public EditBusiness(String[] strings,Object[][] objects){
 		super(strings,objects);
@@ -55,8 +56,8 @@ public class EditBusiness extends EditPanel{
 	
 	
 	class Header extends JPanel {
-		public JLabel label1  = new JLabel("开始时间：",JLabel.CENTER);
-    	public JLabel label2 = new JLabel("结束时间：",JLabel.CENTER);
+		public MyLabel label1  = new MyLabel("开始时间：",JLabel.CENTER);
+    	public MyLabel label2 = new MyLabel("结束时间：",JLabel.CENTER);
     	public JButton button1  = new JButton("查看");
     	public JTextField text1 = new JTextField();
     	public JTextField text2 = new JTextField();

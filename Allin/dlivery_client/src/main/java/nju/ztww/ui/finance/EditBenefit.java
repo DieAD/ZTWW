@@ -10,6 +10,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import confligUI.MyLabel;
 import nju.ztww.dao.AccountDO;
 import nju.ztww.service.FinanceService;
 import nju.ztww.serviceimpl.FinanceServiceImpl;
@@ -34,7 +35,7 @@ public class EditBenefit extends EditPanel {
 		}
 	
 	class Header extends JPanel{
-		JLabel label1 = new JLabel();
+		MyLabel label1 = new MyLabel();
 		
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String info = "截止"+df.format(new Date())+"成本收益表为：";
