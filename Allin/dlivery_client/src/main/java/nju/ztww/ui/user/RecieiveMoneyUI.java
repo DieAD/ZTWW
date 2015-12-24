@@ -218,6 +218,7 @@ public class RecieiveMoneyUI extends JPanel{
 			stringlist.add(carNumbertextArea.getText());
 			stringlist.add(cartextArea.getText());
 			stringlist.add(arrivetextArea.getText());
+			stringlist.add(orderNumbertextArea.getText());
 			IsEmpty is=new IsEmpty();
 			boolean isempty=is.isempty(stringlist);
 			if(!isempty){

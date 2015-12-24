@@ -127,7 +127,7 @@ public class OutofStoragePanel extends JPanel {
 
         //surebutton.setBounds(200, 250, 80, 40);
         mylabel.setText("信息未填全！");
-        mylabel.setBounds(150, 300, 120, 40);
+        mylabel.setBounds(190, 300, 120, 40);
         ordernumberfield.setBounds(100, 5, 150, 30);
         ordernumber.setFont(new Font("黑体",0,18));
         ordernumber.setBounds(0, 0, 100, 40);;

@@ -3,8 +3,6 @@ package nju.ztww.ui.commodity;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -17,8 +15,7 @@ import nju.ztww.bl.commodity.CheckOrderBL;
 import nju.ztww.bl.commodity.GetStockListBL;
 import nju.ztww.po.StorageListLineofInPO;
 import nju.ztww.po.TracePO;
-import nju.ztww.ui.main.AnnounceUI;
-import nju.ztww.ui.main.ListenerEndUI;
+import nju.ztww.ui.finance.EditSearch;
 import nju.ztww.ui.main.Listener_Return;
 import nju.ztww.ui.main.UserInfoUI;
 import nju.ztww.ui.user.PersonalMesageUI;
@@ -34,6 +31,7 @@ public class StorageUi extends JFrame implements Runnable{
     InofStoragePanel  inofStoragepanel;
     StorageCheckPanel storagecheckpanel;
     StoragePanPanel storagepanpanel;
+    EditSearch editSearch;
     StorageTiaoPanel storagetiaopanel;
     StorageBaoJingPanel storagebaojingpanel;
     PersonalMesageUI personInfo;
@@ -69,7 +67,7 @@ public class StorageUi extends JFrame implements Runnable{
 //		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		}
 	public  void setup(){
-		
+		editSearch=new EditSearch();
 		navigationpanel=new StorageNavigationPanel();
 		//toppanel=new TopPanel();
 		lablePanel=new ThemeLabelUI();
@@ -84,7 +82,7 @@ public class StorageUi extends JFrame implements Runnable{
 	}
 	public void setPosition(){
 		this.setLayout(null);
-		
+		editSearch.setBounds(150, 100, 750, 450);
 		navigationpanel.setBounds(0, 100, 150, 500);
 		lablePanel.setBounds(150, 0, 750, 60);
 		outofStoragepanel.setBounds(150, 100, 750, 450);
@@ -101,7 +99,7 @@ public class StorageUi extends JFrame implements Runnable{
 		this.add(inofStoragepanel);
 		this.add(storagepanpanel);
 		this.add(storagetiaopanel);
-		
+		this.add(editSearch);
 		
 		
 		
@@ -121,8 +119,10 @@ public class StorageUi extends JFrame implements Runnable{
 		arraylist.add(storagecheckpanel);
 		arraylist.add(storagepanpanel);
 		arraylist.add(storagetiaopanel);
+		arraylist.add(editSearch);
+		arraylist.add(personInfo);
 		//GetAnnouceUI e=new GetAnnouceUI();
-		
+		navigationpanel.CheckOrderButton.addActionListener(new StorageControllerUi(this, editSearch, arraylist));
 		navigationpanel.Inbutton.addActionListener(new StorageControllerUi(this, inofStoragepanel, arraylist));
 		navigationpanel.Outbutton.addActionListener(new StorageControllerUi(this, outofStoragepanel, arraylist));
 		navigationpanel.Panbutton.addActionListener(new StorageControllerUi(this, storagepanpanel, arraylist));
@@ -147,6 +147,7 @@ public class StorageUi extends JFrame implements Runnable{
 		list.add(storagetiaopanel);
 		list.add(lablePanel);
 		list.add(personInfo);
+		list.add(editSearch);
 		return list;
 	}
 public void run() {

@@ -11,12 +11,14 @@ import nju.ztww.DBHelper.DBForPayeeForm;
 import nju.ztww.DBHelper.DBForPaymentForm;
 import nju.ztww.DBHelper.DBForStock;
 import nju.ztww.DBHelper.DBHelper;
+import nju.ztww.DBHelper.DBMatrix;
 import nju.ztww.dao.AccountDO;
 import nju.ztww.dao.InsDO;
 import nju.ztww.dao.PayeeFormDO;
 import nju.ztww.dao.PaymentFormDO;
 import nju.ztww.dao.StockDO;
 import nju.ztww.dao.UserDO;
+import nju.ztww.dao.matrixDO;
 import nju.ztww.po.CarManagePO;
 import nju.ztww.po.CollectionPO;
 import nju.ztww.po.PaymentPO;
@@ -32,6 +34,7 @@ public class FinanceData {
       DBForStock dbStock = new DBForStock();
       DBForAccount dbAccount = new DBForAccount();
       DBHelper dbUser = new DBHelper();
+      DBMatrix matrix = new DBMatrix();
       
       public ArrayList<CollectionPO> queryByDate(String date,String holl){
     	  ArrayList<PayeeFormDO> listDO = new ArrayList<PayeeFormDO>();
@@ -228,5 +231,17 @@ public class FinanceData {
     	  return insDO.getName();
       }
       
+      public void insertMatrix(matrixDO form){
+    	  matrix.init();
+    	  matrix.insert(form);
+    	  matrix.close();
+      }
+      public ArrayList<matrixDO> queryM(){
+    	  ArrayList<matrixDO> list = new ArrayList<matrixDO>();
+    	  matrix.init();
+          list = matrix.queryAll();
+          matrix.close();
+          return list;
+      }
     
 }

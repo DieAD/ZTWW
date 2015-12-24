@@ -7,9 +7,12 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import nju.ztww.ui.user.PersonalMesageUI;
+import nju.ztww.ui.user.ThemeLabelUI;
 //date 11-18 name wh//
 public class FinanceUI  {
     JFrame frame ;
+    EditPanel searchPanel = new EditSearch();
+    EditPanel excelPanel = new EditExcel();
     EditPanel accountPanel = new EditPanel();
     EditPanel paymentPanel = new EditPanel(new String[]{"付款日期","付款金额","付款人","付款账号","条目","备注"},new Object[][]{{new String("2015/11/1"),new Double(35.5),new String("Manager"),
     	new String("000000001"),new String("人员工资"),new String("11月")}});
@@ -17,9 +20,10 @@ public class FinanceUI  {
     EditPanel benefitPanel = new EditBenefit(new String[]{"总收入","总支出","总利润"},new Object[][]{{new Double(2222.3),new Double("333.2"),new Double("0000.2")}});
     EditPanel businessPanel = new EditBusiness(new String[]{"付款日期","付款金额","付款人","付款账号","条目","备注"},new Object[][]{{new String("2015/11/1"),new Double(35.5),new String("Manager"),new String("000000001"),new String("人员工资"),new String("11月")}});
     EditPanel initPanel = new EditInit(new String[]{"账号","创建时间","创建人","是否使用中"},new Object[][]{{new String("000001"),new String("2014/1"),new String("manager"),new String("是")}});
-    HeaderPanel headerPanel = new HeaderPanel();
+
     MenuePanel menuePanel = new MenuePanel();
     EditPerson personInfo = new EditPerson();
+    ThemeLabelUI Theme = new ThemeLabelUI();
     ArrayList<EditPanel> panelList = new ArrayList<EditPanel>();
     //modify
     private ArrayList<JPanel> list = new ArrayList<JPanel>();
@@ -39,12 +43,13 @@ public class FinanceUI  {
 //		frame.getContentPane().add(headerPanel);
 //		frame.getContentPane().add(menuePanel);
 //		frame.setVisible(true);
+    	paymentPanel.add(paymentPanel.button3);
     	personInfo.setVisible(false);
     }
     
     public void setPanelBounds(){
     	menuePanel.setBounds(0, 100, 150, 500);
-    	headerPanel.setBounds(150, 0, 750, 60);
+    	Theme.setBounds(150, 0, 750, 60);
     	personInfo.setBounds(150, 100, 750, 450);
     	//
 //    	accountPanel.setBounds(210,60,690,480);
@@ -63,21 +68,26 @@ public class FinanceUI  {
     	panelList.add(businessPanel);
     	panelList.add(initPanel);
     	panelList.add(personInfo);
+    	panelList.add(excelPanel);
+    	panelList.add(searchPanel);
     	//-------
     	
     	for(EditPanel p : panelList){
     		p.setBounds(150,100,750,450);
     		//frame.getContentPane().add(p);
-    		//p.setVisible(false);
+    		p.setVisible(false);
     		
     	}
-    	menuePanel.accountButton.addActionListener(new ListenerTable(frame,accountPanel,panelList));
-    	menuePanel.paymentButton.addActionListener(new ListenerTable(frame,paymentPanel,panelList));
-    	menuePanel.collectionButton.addActionListener(new ListenerTable(frame,collectionPanel,panelList));
-    	menuePanel.benefitButton.addActionListener(new ListenerTable(frame,benefitPanel,panelList));
-    	menuePanel.businessButton.addActionListener(new ListenerTable(frame,businessPanel,panelList));
-    	menuePanel.initButton.addActionListener(new ListenerTable(frame,initPanel,panelList));
-    	menuePanel.personInfoButton.addActionListener(new ListenerTable(frame, personInfo, panelList));
+    	accountPanel.setVisible(true);
+    	menuePanel.accountButton.addActionListener(new ListenerTable(frame,accountPanel,panelList,0));
+    	menuePanel.paymentButton.addActionListener(new ListenerTable(frame,paymentPanel,panelList,0));
+    	menuePanel.collectionButton.addActionListener(new ListenerTable(frame,collectionPanel,panelList,0));
+    	menuePanel.benefitButton.addActionListener(new ListenerTable(frame,benefitPanel,panelList,0));
+    	menuePanel.businessButton.addActionListener(new ListenerTable(frame,businessPanel,panelList,0));
+    	menuePanel.initButton.addActionListener(new ListenerTable(frame,initPanel,panelList,1));
+    	menuePanel.personInfoButton.addActionListener(new ListenerTable(frame, personInfo, panelList,0));
+    	menuePanel.exportFormButton.addActionListener(new ListenerTable(frame,excelPanel,panelList,0));
+    	menuePanel.checkOrderButton.addActionListener(new ListenerTable(frame,searchPanel,panelList,2));
     }
     public FinanceUI(JFrame frame){
     	this.frame = frame;
@@ -88,9 +98,9 @@ public class FinanceUI  {
     }
     
     public ArrayList<JPanel> getPanelList(){
-    	list.add(headerPanel);
+    	list.add(Theme);
     	list.add(menuePanel);
-    	list.add(personInfo);
+    	//list.add(personInfo);
     	for(EditPanel p : panelList){
     		list.add(p);
     	}

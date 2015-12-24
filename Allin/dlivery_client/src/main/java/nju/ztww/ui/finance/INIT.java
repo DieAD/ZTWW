@@ -16,6 +16,7 @@ public class INIT extends JPanel{
    JPanel home;
    INIT mainPanel ;
    ButtonPanel buttonPanel = new ButtonPanel();
+   Image background=new ImageIcon("photo/PersonInfoBG.png").getImage();
    
    //String[] position = { "快递员", "营业厅业务员", "中转中心业务员", "中转中心仓库管理人员", "财务人员",
 	//"总经理", "管理员" };
@@ -28,16 +29,16 @@ public class INIT extends JPanel{
    INIT_Table5 table5 = new INIT_Table5(new String[]{"账户id","账户名称","账户余额"},null);
    public INIT(JPanel home){
 	   this.home = home;
+	  
 	   setUp();
    }
    
    public void setUp(){
 	   
 	   mainPanel = this;
-
+	  // this.add(background);
 	   //
-	   this.setLayout(null);
-	   this.repaint();
+	  
 	   buttonPanel.setBounds(0,0,750,450);
 	   this.add(buttonPanel);
 	   buttonPanel.button1.addActionListener(new Listener(table1));
@@ -100,14 +101,13 @@ public class INIT extends JPanel{
 		   this.add(button5);
 		   this.add(button6);
 	   }
+	   public void paintComponent(Graphics g){
+			super.paintComponent(g);
+			g.drawImage(background, 0,0,null);
+		}
    }
    
-   public void paintComponent(Graphics g){
-		super.paintComponent(g);
-		
-		Image background=new ImageIcon("photo/PersonInfoBG.png").getImage();
-		g.drawImage(background, 0,0,null);
-	}
+  
    
    public class Listener3 implements ActionListener{
 

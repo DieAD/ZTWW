@@ -69,7 +69,7 @@ public class InofStoragePanel extends JPanel{
 	   
 	   long l = System.currentTimeMillis();
 	  Date time=new Date(l);
-	  SimpleDateFormat dateFormat = new SimpleDateFormat("yy-MM-dd ");
+	  SimpleDateFormat dateFormat = new SimpleDateFormat("yy/MM/dd ");
 	  SimpleDateFormat dateFormatindex=new SimpleDateFormat("yyMMdd");
 	   public StorageListLineofInVO  storagelineIn;
 	   public ArrayList<StorageListLineofInVO>arraylist=new ArrayList<StorageListLineofInVO>();//成员变量
@@ -141,6 +141,7 @@ public class InofStoragePanel extends JPanel{
 //            ordernumber.setFont(new Font("黑体",0,18));
             ordernumber.setBounds(20, 10, 100, 40);;
             datafield.setBounds(120, 65, 150, 30);
+            datafield.setText(dateFormat.format(time));
 //            data.setFont(new Font("黑体",0,18));
             data.setBounds(20, 60,100, 40);
             arrivefield.setBounds(120, 115, 150, 30);
@@ -177,16 +178,16 @@ public class InofStoragePanel extends JPanel{
            
 
 
-            //surebutton.setBounds(200, 350, 80, 40);
-            mylabel.setBounds(150, 380, 100, 40);
+            surebutton.setBounds(200, 350, 80, 30);
+            mylabel.setBounds(200, 390, 100, 40);
             mylabel.setText("信息未填全！");
             dlg.add( mylabel);
             
 
-            surebutton.setBounds(150, 350,100, 30);
+            //surebutton.setBounds(150, 350,100, 30);
 
 
-            surebutton.setBounds(150, 370,70, 30);
+            //surebutton.setBounds(150, 370,70, 30);
             surebutton.setIcon(new ImageIcon("photo/BusinessSure.png"));
 
             dlg.add(surebutton);

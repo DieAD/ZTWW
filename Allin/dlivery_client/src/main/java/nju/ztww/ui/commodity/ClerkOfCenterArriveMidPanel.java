@@ -26,6 +26,7 @@ import confligUI.MyLabel;
 import confligUI.MyScrollPane;
 import confligUI.MyTable;
 import confligUI.MyTextField;
+import nju.ztww.bl.commodity.IsEmpty;
 import nju.ztww.serviceimpl.OrderServiceImpl;
 import nju.ztww.ui.main.GetDate;
 import nju.ztww.ui.main.UserInfoUI;
@@ -47,7 +48,7 @@ public class ClerkOfCenterArriveMidPanel extends JPanel{
 	private MyTextField findtextArea=new MyTextField("");
 	private MyTextField findTransfertextArea=new MyTextField("请输入中转单号");
 	private MyTextField findCarLoadtextArea=new MyTextField("请输入装车单号");
-	
+	private MyLabel mylabel=new MyLabel();
 	private MyButton sendButton=new MyButton('a');
 	private MyButton deleteSendButton=new MyButton('c');
 	private MyButton sureButton=new MyButton();
@@ -176,7 +177,10 @@ public class ClerkOfCenterArriveMidPanel extends JPanel{
             sureButton.setBounds(336, 400, 70, 30);
             sureButton.setIcon(new ImageIcon("photo/BusinessSure.png"));
             sureButton.addActionListener(listener);
-            
+            mylabel.setText("信息未填全！");
+            mylabel.setVisible(false);
+            mylabel.setBounds(336, 430, 100, 40);
+            dlg.add(mylabel);
             dlg.setLayout(null);
 			dlg.setVisible(true);
 					}
@@ -255,6 +259,13 @@ public class ClerkOfCenterArriveMidPanel extends JPanel{
 	   ActionListener listener = new ActionListener(){
 
 			public void actionPerformed(ActionEvent e) {
+				ArrayList<String>stringlist=new ArrayList<String>();
+				stringlist.add(businesstextArea.getText());
+				stringlist.add(arrivetextArea.getText());
+				stringlist.add(arrivetextArea.getText());
+				IsEmpty is=new IsEmpty();
+				boolean isempty=is.isempty(stringlist);
+				if(!isempty){
 				for(int i=0;i<number;i++){
 					centerReceiveVO.setData(businesstextArea.getText());
 					centerReceiveVO.setTransferNumber((String)SmallreceiveTable.getValueAt(i, 0));
@@ -292,6 +303,10 @@ public class ClerkOfCenterArriveMidPanel extends JPanel{
 				table.revalidate();
 			    dlg.dispose();
 			    sureButton.removeActionListener(listener);
+			}
+				else{
+					mylabel.setVisible(true);
+				}
 			}
 			
 		};

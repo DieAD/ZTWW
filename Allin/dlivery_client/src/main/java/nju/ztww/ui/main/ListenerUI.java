@@ -17,6 +17,7 @@ public class ListenerUI implements MouseListener{
 	private String password;
 	ImageIcon l1 = new ImageIcon("photo/login1.png");
 	ImageIcon l2 = new ImageIcon("photo/login2.png");
+	Thread animate;
 	public ListenerUI(JFrame frame){ //改成Login类    By zyz
 		this.frame = frame;		
 		this.login = (Login)frame;

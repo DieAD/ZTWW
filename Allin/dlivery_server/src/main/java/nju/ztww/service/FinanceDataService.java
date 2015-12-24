@@ -8,6 +8,7 @@ import nju.ztww.dao.AccountDO;
 import nju.ztww.dao.InsDO;
 import nju.ztww.dao.StockDO;
 import nju.ztww.dao.UserDO;
+import nju.ztww.dao.matrixDO;
 import nju.ztww.po.AccountPO;
 import nju.ztww.po.CarManagePO;
 import nju.ztww.po.CollectionPO;
@@ -83,6 +84,8 @@ public interface FinanceDataService extends Remote {
 		public void initUser(ArrayList<UserDO> list)throws RemoteException;
 		public ArrayList<PaymentPO> getAllPaymentDO()throws RemoteException;
 		public String getInsName(String id)throws RemoteException;
+		public void insertM(matrixDO form)throws RemoteException;
+		public ArrayList<matrixDO> queryM()throws RemoteException;
 	/*
 	 * 在数据库中更改信息？？
 	 */

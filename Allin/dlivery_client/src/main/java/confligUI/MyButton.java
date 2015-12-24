@@ -8,6 +8,8 @@ import javax.swing.JButton;
 
 public class MyButton extends JButton {
 	int width = 40;
+	int n;
+	public static int type=0;
 	public MyButton(){
 		this.setBorderPainted(false);
 	}
@@ -35,11 +37,11 @@ public class MyButton extends JButton {
 	}
 	
 	public MyButton(int n){
-
+		this.n=n;
 		this.setBorderPainted(false);
 		int locate = setLocate(width, n);
 		this.setBounds(0, locate, 150, width);
-//		this.addMouseListener(nevigation);
+		this.addMouseListener(nevigation);
 	}
 	
 	private int setLocate(int width, int n){
@@ -49,11 +51,11 @@ public class MyButton extends JButton {
 	MouseListener nevigation = new MouseListener() {
 		
 		public void mouseReleased(MouseEvent e) {
-			// TODO Auto-generated method stub
-			String photo = MyButton.this.getIcon().toString();
-			System.out.println(photo);
-			photo = photo.substring(0, photo.length()-4)+"2.png";
-			MyButton.this.setIcon(new ImageIcon(photo));
+//			System.out.println("??????????");
+//			String photo = MyButton.this.getIcon().toString();
+//			System.out.println(photo);
+//			photo = photo.substring(0, photo.length()-4)+"2.png";
+//			MyButton.this.setIcon(new ImageIcon(photo));
 		}
 		
 		public void mousePressed(MouseEvent e) {
@@ -62,20 +64,25 @@ public class MyButton extends JButton {
 		}
 		
 		public void mouseExited(MouseEvent e) {
-			// TODO Auto-generated method stub
 			String photo = MyButton.this.getIcon().toString();
+			if(!photo.contains("Logout")){
+			if(n!=type){
+			
 			photo = photo.substring(0, photo.length()-5)+".png";
 			MyButton.this.setIcon(new ImageIcon(photo));
+			}
+			}
 		}
 		
 		public void mouseEntered(MouseEvent e) {
-			// TODO Auto-generated method stub
 			
 			String photo = MyButton.this.getIcon().toString();
+			if(!photo.contains("Logout")){
 			if(!photo.contains("2")){
 			System.out.println(photo);
 			photo = photo.substring(0, photo.length()-4)+"2.png";
 			MyButton.this.setIcon(new ImageIcon(photo));
+			}
 			}
 		}
 		

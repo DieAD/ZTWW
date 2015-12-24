@@ -64,6 +64,7 @@ public class ManaUserData {
 		userDO.setSex(user.getSex());
 		userDO.setPhone(user.getPhone());
 		userDO.setTimes(user.getTimes());
+		userDO.setPosition(user.getPosition());
 		return userDO;
 	}
 	
