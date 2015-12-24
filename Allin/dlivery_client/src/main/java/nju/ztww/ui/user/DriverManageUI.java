@@ -22,6 +22,7 @@ import confligUI.MyLabel;
 import confligUI.MyScrollPane;
 import confligUI.MyTable;
 import confligUI.MyTextField;
+import nju.ztww.bl.commodity.IsEmpty;
 import nju.ztww.serviceimpl.OrderServiceImpl;
 import nju.ztww.vo.CarManageVO;
 import nju.ztww.vo.DriverMessageVO;
@@ -158,11 +159,12 @@ public class DriverManageUI extends JPanel{
 			            dlg.add(business);
 			            dlg.add(businesstextArea);
 			            dlg.add(sureButton);
-			            sureButton.setBounds(230, 415, 70, 30);
+			            sureButton.setBounds(230, 400, 70, 30);
 			            sureButton.setIcon(new ImageIcon("photo/BusinessSure.png"));
 			            sureButton.addActionListener(listener);
 			            mylabel.setText("信息未填全！");
-			            mylabel.setBounds(230, 445, 100, 40);
+			            mylabel.setBounds(230, 430, 100, 40);
+			            dlg.add(mylabel);
 			            mylabel.setVisible(false);
 			            dlg.setLayout(null);
 						dlg.setVisible(true);
@@ -225,6 +227,17 @@ public class DriverManageUI extends JPanel{
 	ActionListener listener = new ActionListener(){
 
 		public void actionPerformed(ActionEvent e) {
+			ArrayList<String>stringlist=new ArrayList<String>();
+			stringlist.add(arrivetextArea.getText());
+			stringlist.add(carNumbertextArea.getText());
+			stringlist.add(cartextArea.getText());
+			stringlist.add(businesstextArea.getText());
+			stringlist.add(deadlinetextArea.getText());
+			stringlist.add(driverSex.getText());
+			stringlist.add(orderNumbertextArea.getText());
+			IsEmpty is=new IsEmpty();
+			boolean isempty=is.isempty(stringlist);
+			if(!isempty){
 			driverMessageVO.setDriverBirthday(arrivetextArea.getText());
 			driverMessageVO.setDriverId(carNumbertextArea.getText());
 			driverMessageVO.setDriverName(cartextArea.getText());
@@ -254,6 +267,10 @@ public class DriverManageUI extends JPanel{
 		    table.revalidate();
 		    dlg.dispose();
 		    sureButton.removeActionListener(listener);
+		}
+			else{
+				mylabel.setVisible(true);
+			}
 		}
 		
 	};
