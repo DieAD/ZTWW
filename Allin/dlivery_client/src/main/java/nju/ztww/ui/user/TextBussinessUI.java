@@ -1,11 +1,11 @@
 package nju.ztww.ui.user;
 
-import java.awt.Component;
-import java.awt.Toolkit;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import nju.ztww.ui.finance.EditSearch;
 //最近修改 王焕 11-17
 public class TextBussinessUI {
 	
@@ -19,7 +19,7 @@ public class TextBussinessUI {
 	static CarManageUI carManageUI=new CarManageUI();
 	static DriverManageUI driverManageUI=new DriverManageUI();
 	static SendUI sendUI=new SendUI();
-
+	static EditSearch editSearch=new EditSearch();
 	static ResultMessageUI resultMessageUI=new ResultMessageUI();
 
 	static PersonalMesageUI personalMessagePanel;
@@ -41,6 +41,7 @@ public class TextBussinessUI {
 		lablePanel.setBounds(150, 0, 750, 60);
 		
 		carLoadingPanel.setBounds(150, 100, 750, 450);
+		editSearch.setBounds(150, 100, 750, 450);
 		receiveAndSendPabel.setBounds(150, 100, 750, 450);
 		recieveMoneyUI.setBounds(150, 100, 750, 450);
 		carManageUI.setBounds(150, 100, 750, 450);
@@ -94,6 +95,10 @@ public class TextBussinessUI {
 			sendUI.setVisible(true);
 			frame.getContentPane().add(sendUI);
 			type=7;
+		}else if(i==8){
+			editSearch.setVisible(true);
+			frame.getContentPane().add(editSearch);
+			type=8;
 		}
 	
 	}
@@ -113,6 +118,8 @@ public class TextBussinessUI {
 			personalMessagePanel.setVisible(false);
 		}else if(type==7){
 			sendUI.setVisible(false);
+		}else if(type==8){
+			editSearch.setVisible(false);
 		}
 	}
 	

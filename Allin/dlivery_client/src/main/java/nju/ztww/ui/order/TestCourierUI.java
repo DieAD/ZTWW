@@ -1,11 +1,11 @@
 package nju.ztww.ui.order;
 
-import java.awt.Toolkit;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import nju.ztww.ui.finance.EditSearch;
 import nju.ztww.ui.user.CheckOrdersUI;
 import nju.ztww.ui.user.PersonalMesageUI;
 import nju.ztww.ui.user.ThemeLabelUI;
@@ -23,8 +23,8 @@ public class TestCourierUI {
 	static Courier_OrderInputUI OrderInput = new Courier_OrderInputUI();
 	static Courier_AcceptUI Accept = new Courier_AcceptUI();
 	static PersonalMesageUI personalMessagePanel;
-	static CheckOrdersUI checkOrder = new CheckOrdersUI();
-
+	
+	static EditSearch editSearch=new EditSearch();
 	public void init() {
 		// frame.setSize(900, 600);
 		// frame.setTitle("Courier");
@@ -37,8 +37,8 @@ public class TestCourierUI {
 		Theme.setBounds(150, 0, 750, 60);
 		OrderInput.setBounds(150, 100, 750, 450);
 		Accept.setBounds(150, 100, 750, 450);
-		 
-		checkOrder.setBounds(150, 100, 750, 450);
+		editSearch.setBounds(150, 100, 750, 450);
+		
 
 		// frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		// frame.getContentPane().setLayout(null);
@@ -63,8 +63,8 @@ public class TestCourierUI {
 			Accept.setVisible(true);
 			type = 2;
 		} else if (i == 3) {
-			frame.getContentPane().add(checkOrder);
-			checkOrder.setVisible(true);
+			frame.getContentPane().add(editSearch);
+			editSearch.setVisible(true);
 			type = 3;
 		} else if (i == 4) {
 			personalMessagePanel = new PersonalMesageUI();
@@ -82,8 +82,8 @@ public class TestCourierUI {
 			Accept.setVisible(false);
 			frame.remove(Accept);
 		} else if (type == 3) {
-			checkOrder.setVisible(false);
-			frame.remove(checkOrder);
+			editSearch.setVisible(false);
+			frame.remove(editSearch);
 		} else if (type == 4) {
 			personalMessagePanel.setVisible(false);
 			 frame.remove(personalMessagePanel);
@@ -95,7 +95,7 @@ public class TestCourierUI {
 		
 		panelList.add(MenuPanel);
 		panelList.add(Theme);
-		panelList.add(Accept);
+		panelList.add(OrderInput);
 
 		return panelList;
 	}
