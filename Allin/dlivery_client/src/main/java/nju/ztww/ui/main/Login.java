@@ -1,6 +1,8 @@
 package nju.ztww.ui.main;
 
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -122,6 +124,13 @@ public class Login extends JFrame{
 		//this.removeAll();
 		//jframe = this;
 
+		int windowWidth = frame.getWidth();                     //获得窗口宽  
+		 int windowHeight = frame.getHeight();                   //获得窗口高  
+		 Toolkit kit = Toolkit.getDefaultToolkit();              //定义工具包  
+		 Dimension screenSize = kit.getScreenSize();             //获取屏幕的尺寸  
+		 int screenWidth = screenSize.width;                     //获取屏幕的宽  
+		 int screenHeight = screenSize.height;                   //获取屏幕的高  
+		 frame.setLocation(screenWidth/2-windowWidth/2, screenHeight/2-windowHeight/2);
 	}
 	
 	
