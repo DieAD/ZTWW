@@ -15,4 +15,10 @@ public class MyLabel extends JLabel {
 		super();
 		this.setFont(myFont);
 	}
+
+	public MyLabel(String string, int center) {
+		// TODO Auto-generated constructor stub
+		super(string, center);
+		this.setFont(myFont);
+	}
 }
