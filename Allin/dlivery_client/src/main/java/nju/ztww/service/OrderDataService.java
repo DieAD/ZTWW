@@ -1,8 +1,10 @@
 package nju.ztww.service;
 
 import java.rmi.Remote;
+import java.util.ArrayList;
 import java.util.List;
 
+import nju.ztww.po.CarManagePO;
 import nju.ztww.po.TrackPO;
 import nju.ztww.po.OrderPO;
 import nju.ztww.po.PriceDataPO;
@@ -40,5 +42,7 @@ public interface OrderDataService extends Remote{
 	public void addTrack(TrackPO mailingTrackPO);
 
 	public TrackPO passAcceptOrder(String order);
+	
+	public ArrayList<CarManagePO> findAll();
 
 }
