@@ -24,7 +24,7 @@ public class UserInfoUI extends JPanel{
 	Image photo;
 	
 	public UserInfoUI(String userID){
-		loadImage();
+		
 		this.setBounds(0, 0, 150, 100);
 		this.setLayout(null);
 		MyLabel label=new MyLabel();
@@ -41,7 +41,7 @@ public class UserInfoUI extends JPanel{
 	
 	 public void paintComponent(Graphics g){
 			super.paintComponent(g);
-			
+			loadImage();
 			Image background=new ImageIcon("photo/User.png").getImage();
 			g.drawImage(background, 0,0,null);
 			g.drawImage(photo, 10, 10, 55, 55, null);
@@ -79,8 +79,22 @@ public class UserInfoUI extends JPanel{
 	}
 	
 	public void loadImage(){
+		String path = "photo2/";
+		System.out.print("flag="+UserInfoUI.getUserID());
+		char pos =(UserInfoUI.getUserID()).charAt(8);
+		//System.out.print(UserInfoUI.getUserID());
+		switch (pos) {
+		case '0':path+="S1.png";break;	
+		case '1':path+="S2.png"; break;
+		case '2':path+="S3.png";break;
+		case '3':path+="S4.png";break;
+		case '4':path+="S5.png";break;
+		case '5':path+="S6.png";break;
+		case '6':path+="S7.png";break;
+		default:path+="S1.png";break;
+		}
 		try {
-			 photo = ImageIO.read(new FileInputStream("photo2/icon.png"));
+			 photo = ImageIO.read(new FileInputStream(path));
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
