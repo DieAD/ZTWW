@@ -6,8 +6,10 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import nju.ztww.bl.finance.ExcelHelper;
 import nju.ztww.service.FinanceService;
 import nju.ztww.serviceimpl.FinanceServiceImpl;
+import nju.ztww.vo.BenefitVO;
 
 public class EditExcel extends EditPanel {
 
@@ -35,10 +37,21 @@ public class EditExcel extends EditPanel {
         }
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
-			
+			if(index==1){
 			FinanceService  fs = new FinanceServiceImpl();
-			fs.exportExcel(index);
+			fs.exportExcel(index);}
+			else{
+				special();
+			}
 			new DialogInfo().show();
+		}
+		
+		public void special(){
+			FinanceService  fs = new FinanceServiceImpl();
+			BenefitVO benefitVO= fs.getBenefit();
+			ExcelHelper helper = new ExcelHelper();
+			helper.BusinessToExcel(benefitVO.totalCollection, benefitVO.totalPayment,benefitVO.totalBenefit);
+			
 		}
 		
 	}
