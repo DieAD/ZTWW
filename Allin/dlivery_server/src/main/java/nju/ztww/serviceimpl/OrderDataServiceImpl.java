@@ -2,17 +2,18 @@ package nju.ztww.serviceimpl;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
 import java.util.List;
 
 import nju.ztww.data.order.AcceptOrderData;
+import nju.ztww.data.order.CarManageData;
 import nju.ztww.data.order.MailingOrderData;
 import nju.ztww.data.order.OrderHandler;
 import nju.ztww.po.CarManagePO;
-import nju.ztww.po.TrackPO;
 import nju.ztww.po.OrderPO;
 import nju.ztww.po.PriceDataPO;
+import nju.ztww.po.TrackPO;
 import nju.ztww.service.OrderDataService;
-import nju.ztww.vo.DeliverFeesVO;
 import nju.ztww.vo.IDVO;
 
 public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDataService{
@@ -20,10 +21,14 @@ public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDa
 	private OrderHandler orderHandler=new OrderHandler();
 	private MailingOrderData mailingOrderData = new MailingOrderData();
 	private AcceptOrderData acceptOrderData = new AcceptOrderData();
-	
+	private CarManageData carManageData=new CarManageData();
 	public OrderDataServiceImpl() throws RemoteException {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+	public ArrayList<CarManagePO> findAll()throws RemoteException {
+		ArrayList<CarManagePO> list=carManageData.findAll();
+		return list;
 	}
 
 	public String findID(String name) throws RemoteException {

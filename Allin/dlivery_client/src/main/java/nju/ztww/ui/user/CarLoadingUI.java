@@ -28,12 +28,16 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.text.TableView.TableRow;
 
 import confligUI.MyButton;
+import confligUI.MyComboBox;
 import confligUI.MyDialog;
 import confligUI.MyLabel;
 import confligUI.MyScrollPane;
 import confligUI.MyTable;
 import confligUI.MyTextField;
+import nju.ztww.po.CarManagePO;
 import nju.ztww.serviceimpl.OrderServiceImpl;
+import nju.ztww.ui.main.GetDate;
+import nju.ztww.ui.main.UserInfoUI;
 import nju.ztww.vo.CarManageVO;
 import nju.ztww.vo.LoadingVO;
 
@@ -47,7 +51,6 @@ public class CarLoadingUI extends JPanel{
 	private  MyLabel car=new  MyLabel();
 	private MyTextField arrivetextArea=new MyTextField();
 	private  MyLabel arrive=new  MyLabel();
-	private MyTextField carNumbertextArea=new MyTextField();
 	private  MyLabel carNumber=new  MyLabel();
 	private MyTextField jianzhuangtextArea=new MyTextField();
 	private  MyLabel jianzhuang=new  MyLabel();
@@ -55,8 +58,6 @@ public class CarLoadingUI extends JPanel{
 	private  MyLabel yayun=new  MyLabel();
 	private MyTextField orderNumbertextArea=new MyTextField();
 	private  MyLabel orderNumber=new  MyLabel();
-	private MyTextField moneytextArea=new MyTextField();
-	private  MyLabel money=new  MyLabel();
 	private MyTextField departtextArea=new MyTextField();
 	private  MyLabel depart=new  MyLabel();
 	private MyTextField findtextArea=new MyTextField();
@@ -73,6 +74,8 @@ public class CarLoadingUI extends JPanel{
 	private MyButton deleteButton=new MyButton('c');
 	private MyButton sendButton=new MyButton('a');
 	private JButton sureButton=new JButton();
+	
+	 public MyComboBox dbtype = new MyComboBox();
 	DefaultTableModel defaultTableModel ;
 	MyDialog dlg;
 	 MyTable table;
@@ -83,26 +86,6 @@ public class CarLoadingUI extends JPanel{
 	public CarLoadingUI(){
 
 		this.setBackground(new Color(250, 240, 230));
-		
-		final ImageIcon BusinessNumber=new ImageIcon("photo/businessNumberLabel.gif");
-		final ImageIcon CarNumber=new ImageIcon("photo/carNumberLabel.gif");
-		final ImageIcon Arrive=new ImageIcon("photo/arriveLabel.gif");
-		final ImageIcon Car=new ImageIcon("photo/carLabel.gif");
-		final ImageIcon Money=new ImageIcon("photo/moneyLabel.gif");
-		final ImageIcon Jianzhuang=new ImageIcon("photo/jianzhuangLabel.gif");
-		final ImageIcon Yayun=new ImageIcon("photo/yayunLabel.gif");
-		final ImageIcon OrderNumber=new ImageIcon("photo/orderNumberLanel.gif");
-		ImageIcon add=new ImageIcon("photo/add.gif");
-		final ImageIcon dataLable=new ImageIcon("photo/dataLable.gif");
-
-//		addButton.setBounds(500, 420, 110, 38);
-//		addButton.setIcon(add);
-//		deleteButton.setBounds(220, 420, 110, 38);
-//		deleteButton.setIcon(null);
-//		sendButton.setBounds(360, 420, 110, 38);
-//		sendButton.setIcon(null);
-//		findButton.setBounds(90, 420, 110, 38);
-//		findButton.setIcon(null);
 
 		this.setLayout(null);
 		this.add(findButton);
@@ -123,90 +106,41 @@ public class CarLoadingUI extends JPanel{
 			  table = new MyTable(defaultTableModel);
 			  MyScrollPane scrollPane = new MyScrollPane(table);
 			  
-//			  table = new JTable( defaultTableModel);       //字段名称
-//			  Dimension size = table.getTableHeader().getPreferredSize();
-//		
-//			  size.height = 30;//设置新的表头高度40
-//			  table.getTableHeader().setPreferredSize(size);
-//			  table.setAutoResizeMode(JTable.AUTO_RESIZE_NEXT_COLUMN);
-//			//  table.setPreferredScrollableViewportSize(new Dimension( 550,
-////			                60));
-//			  
-//			  //绑定滚动条
-//			  JScrollPane scrollPane = new JScrollPane(table);
-//		      table.setRowHeight(25);
-//			  scrollPane.setBounds(0, 0, 750, 400);
+
 			  this.add(scrollPane);
-//			  
-//			  //
-//			  table.getTableHeader().setBackground(new Color(249,231,212));//208,168,125
-//				table.setBackground(new Color(208,168,125)); //226,203,170
-//				scrollPane.getViewport().setOpaque(false);
-//				scrollPane.setOpaque(false);
-			  
+
 			  
 			  addButton.addActionListener(new ActionListener(){
 
 					public void actionPerformed(ActionEvent e) {
 						loadingVO=(LoadingVO) orderServiceImpl.getOrder(4);
+						ArrayList<CarManagePO> list=orderServiceImpl.findAllCar();
 						dlg= new MyDialog(); 
 						dlg.setSize(new Dimension(600, 400));
 			            dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
-			            //装车日期
-//			            datatextArea.setBounds(100, 5, 150, 30);
-//			            data.setIcon(dataLable);
-//			            data.setBounds(0, 0, 100, 40);
-//			            //营业厅编号
-//			            businesstextArea.setBounds(100, 55, 150, 30);
-//			            business.setIcon(BusinessNumber);
-//			            business.setBounds(0, 50, 100, 40);
-//			            //汽运编号
-//			            cartextArea.setBounds(100, 105, 150, 30);
-//			            car.setIcon(Car);
-//			            car.setBounds(0, 100, 100, 40);
-//			            //到达地
-//			            arrivetextArea.setBounds(100, 155, 150, 30);
-//			            arrive.setIcon(Arrive);
-//			            arrive.setBounds(0, 150, 100, 40);
-//			            //车辆代号
-//			            carNumbertextArea.setBounds(100, 205, 150, 30);
-//			            carNumber.setIcon(CarNumber);
-//			            carNumber.setBounds(0, 200, 100, 40);
-//			            //订单号
-//			            orderNumbertextArea.setBounds(100, 255, 150, 30);
-//			            orderNumber.setIcon(OrderNumber);
-//			            orderNumber.setBounds(0, 250, 100, 40);
-//			            //监装员
-//			            jianzhuangtextArea.setBounds(100, 305, 150, 30);
-//			            jianzhuang.setIcon(Jianzhuang);
-//			            jianzhuang.setBounds(0, 300, 100, 40);
-//			            //押运员
-//			            yayuntextArea.setBounds(100, 355, 150, 30);
-//			            yayun.setIcon(Yayun);
-//			            yayun.setBounds(0, 350, 100, 40);
-//			            //运费
-//			            moneytextArea.setBounds(100, 405, 150, 30);
-//			            money.setIcon(Money);
-//			            money.setBounds(0, 400, 100, 40);
-//			            //出发地
-//			            departtextArea.setBounds(100, 455, 150, 30);
-//			            depart.setIcon(Money);
-//			            depart.setBounds(0, 450, 100, 40);
 			            data.setText("装车日期");
 			            data.setBounds(setX(1), setY(1), width, height);
 			            datatextArea.setBounds(setX(2), setY(1), width, height);
+			            datatextArea.setText(GetDate.getDate());
 			            business.setText("营业厅编号");
 			            business.setBounds(setX(3), setY(1), width, height);
 			            businesstextArea.setBounds(setX(4), setY(1), width, height);
+			            String ID = UserInfoUI.getUserID();
+			            ID=ID.substring(0, 6);
+			            businesstextArea.setText(ID);
 			            car.setText("汽运编号");
 			            car.setBounds(setX(1), setY(2), width, height);
 			            cartextArea.setBounds(setX(2), setY(2), width, height);
+			            cartextArea.setText(ID+GetDate.getDate2());
 			            arrive.setText("到达地");
 			            arrive.setBounds(setX(3), setY(2), width, height);
 			            arrivetextArea.setBounds(setX(4), setY(2), width, height);
 			            carNumber.setText("车辆代号");
 			            carNumber.setBounds(setX(1), setY(3), width, height);
-			            carNumbertextArea.setBounds(setX(2), setY(3), width, height);
+			            for(CarManagePO temp:list){
+			            	dbtype.addItem(temp.getCarNumber());
+			            }
+			            dbtype.setBounds(setX(2), setY(3), width, height);
 			            orderNumber.setText("订单号");
 			            orderNumber.setBounds(setX(3), setY(3), width, height);
 			            orderNumbertextArea.setBounds(setX(4), setY(3), width, height);
@@ -216,17 +150,14 @@ public class CarLoadingUI extends JPanel{
 			           yayun.setText("押运员");
 			           yayun.setBounds(setX(3), setY(4), width, height);
 			           yayuntextArea.setBounds(setX(4), setY(4), width, height);
-			           money.setText("运费");
-			           money.setBounds(setX(1), setY(5), width, height);
-			           moneytextArea.setBounds(setX(2), setY(5), width, height);
+
 			           depart.setText("出发地");
-			           depart.setBounds(setX(3), setY(5), width, height);
-			           departtextArea.setBounds(setX(4), setY(5), width, height);
+			           depart.setBounds(setX(1), setY(5), width, height);
+			           departtextArea.setBounds(setX(2), setY(5), width, height);
 			            
 			           dlg.add(depart);
 			            dlg.add(departtextArea);
-			            dlg.add(money);
-			            dlg.add(moneytextArea);
+
 			            dlg.add(yayun);
 			            dlg.add(yayuntextArea);
 			            dlg.add(jianzhuang);
@@ -234,7 +165,7 @@ public class CarLoadingUI extends JPanel{
 			            dlg.add(orderNumber);
 			            dlg.add(orderNumbertextArea);
 			            dlg.add(carNumber);
-			            dlg.add(carNumbertextArea);
+			            dlg.add(dbtype);
 			            dlg.add(arrive);
 			            dlg.add(arrivetextArea);
 			            dlg.add(car);
@@ -247,10 +178,6 @@ public class CarLoadingUI extends JPanel{
 			            sureButton.setBounds(460, 270, 70, 30);
 			            sureButton.setIcon(new ImageIcon("photo/courierSure.png"));
 			            sureButton.addActionListener(listener);
-//			            GridLayout layout = new GridLayout(0,2);
-//			            layout.setHgap(20);
-//			            layout.setVgap(40);
-//			            dlg.setLayout(layout);
 			            dlg.setLayout(null);
 						dlg.setVisible(true);
 					}
@@ -317,7 +244,7 @@ public class CarLoadingUI extends JPanel{
 			
 			loadingVO.setData(datatextArea.getText());
 			loadingVO.setArrive(arrivetextArea.getText());
-			loadingVO.setCarNumber(carNumbertextArea.getText());
+			loadingVO.setCarNumber(dbtype.getSelectedItem().toString());
 			loadingVO.setJianZhuangName(jianzhuangtextArea.getText());
 			double money=orderServiceImpl.getMoney(departtextArea.getText(), arrivetextArea.getText(), 1);
 			loadingVO.setMoney(money);
@@ -334,14 +261,12 @@ public class CarLoadingUI extends JPanel{
 			row.add(businesstextArea.getText());
 			row.add(cartextArea.getText());
 			row.add(arrivetextArea.getText());
-			row.add(carNumbertextArea.getText());
-			row.add(moneytextArea.getText());
+			row.add(loadingVO.getCarNumber());
+			row.add(Double.toString(money));
 			datatextArea.setText("");
 			businesstextArea.setText("");
 			cartextArea.setText("");
 			arrivetextArea.setText("");
-			carNumbertextArea.setText("");
-			moneytextArea.setText("");
 			defaultTableModel.addRow(row);
 		    table.revalidate();
 		    dlg.dispose();

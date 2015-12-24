@@ -67,6 +67,34 @@ public class DBForCarManageForm extends DB {
 		    	 
 		    	 return list;
 		     }
+	 public ArrayList<CarManagePO> queryAll(String tableName){
+		    //	 System.out.print(ID);
+		    	 String sql = "select * from "+tableName;
+		    	 ArrayList<CarManagePO> list = new ArrayList<CarManagePO>();
+		    	 try {
+					Statement stmt = conn.createStatement();
+					ResultSet rs = stmt.executeQuery(sql);
+					while(rs.next()){
+						CarManagePO form = new CarManagePO(9);
+						
+						form.setId(rs.getString(2));
+						form.setCarNumber(rs.getString(3));
+						form.setPlateNUmber(rs.getString(4));
+						form.setServiceTime(rs.getString(5));
+						form.setCarState(rs.getString(6));
+						form.setExe(rs.getInt(7));
+						form.setState(rs.getInt(8));
+			//			System.out.print(rs.getString(2));
+						list.add(form);
+						
+					}
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		    	 
+		    	 return list;
+		     }
 	 
 	 public String update(ArrayList<CarManagePO> list,String tableName){
     	 String sql = "update "+tableName + " set id=?,carNumber=?,plateNUmber=?,serviceTime=?,"

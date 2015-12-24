@@ -63,6 +63,12 @@ public class CarManageBl {
 		return carManageVO;
 	}
 	
+	public ArrayList<CarManagePO> findAll(){
+		orderDataService=(OrderDataService)rhelper.findService("OrderDataService");
+		ArrayList<CarManagePO> list=orderDataService.findAll();
+		return list;
+	}
+	
 	/**
 	 * 修改物流数据库
 	 * 

@@ -16,7 +16,7 @@ import javax.swing.JPanel;
 
 public class AnnounceUI extends JPanel implements Runnable{
 	private String IP="127.0.0.1";
-	private JLabel text=new JLabel("");
+	public static JLabel text=new JLabel("");
 	private JLabel notice=new JLabel("公告：");
 	Thread t=new Thread(this);
 	public AnnounceUI(){
@@ -39,18 +39,19 @@ public class AnnounceUI extends JPanel implements Runnable{
 		}
 	public void run() {
 		Socket client =null;
-		
+		 DataInputStream dis = null;
 			while(true){
 				try {
 					client = new Socket(IP, 54421);
 					System.out.println("@@@@@@@@@@");
-					BufferedReader br = new BufferedReader(new InputStreamReader(client.getInputStream())); 
-					String msg = br.readLine(); 
-					System.out.println(msg+"&&&&&&&&&&&&&");
-					text.setText(msg);
+//					BufferedReader br = new BufferedReader(new InputStreamReader(client.getInputStream())); 
+//					String msg = br.readLine(); 
+					dis = new DataInputStream(client.getInputStream());  
+	                String receive = dis.readUTF(); 
+					System.out.println(receive+"&&&&&&&&&&&&&");
+					text.setText(receive);
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					
 				}
 				try {
 					Thread.sleep(5000);

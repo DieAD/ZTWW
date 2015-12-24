@@ -37,6 +37,7 @@ public class Login extends JFrame{
 	JLabel loginbButton = new JLabel();
 	JTextField order = new JTextField();
 	JLabel searchButton = new JLabel();
+	GetDate getDate=new GetDate();
 	private ListenerUI uiListener;
 	public static JFrame frame;
 	public static JPanel panel;
