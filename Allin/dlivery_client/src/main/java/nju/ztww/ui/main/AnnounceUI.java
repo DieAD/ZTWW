@@ -1,5 +1,6 @@
 package nju.ztww.ui.main;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -27,7 +28,8 @@ public class AnnounceUI extends JPanel implements Runnable{
 		text.setBounds(350, 0, 400, 20);
 		text.setFont(new Font(Font.DIALOG,0,15));
 		notice.setBounds(0, 0, 100, 20);
-		notice.setFont(new Font(Font.DIALOG,0,15));
+		notice.setFont(new Font(Font.DIALOG,1,15));
+		notice.setForeground(new Color(165,42,42));
 		this.add(notice);
 		this.add(text);
 

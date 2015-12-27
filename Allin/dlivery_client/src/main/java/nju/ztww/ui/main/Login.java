@@ -2,6 +2,7 @@ package nju.ztww.ui.main;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
@@ -27,8 +28,14 @@ public class Login extends JFrame{
 	//
 	//02501001110
 	//
-	Border border1 = new LineBorder(new Color(232,181,53), 1, true);
-	Border border2 = new LineBorder(new Color(155,122,90),1,true);
+	
+	int x = 100;
+	int y = 100;
+	int iy = 100;
+	//
+	Image icon1=new ImageIcon("photo2/feidie.png").getImage();
+	Border border2 = new LineBorder(new Color(232,181,53), 1, true);
+	Border border1 = new LineBorder(new Color(155,122,90),1,true);
 	JLabel theme = new JLabel();
 	JLabel bg = new JLabel();
 	JLabel idlLabel= new JLabel();
@@ -64,7 +71,7 @@ public class Login extends JFrame{
 		theme.setIcon(new ImageIcon("photo/system.png"));
 		theme.setBounds(200, 20, 300, 100);
 	
-		bg.setIcon(new ImageIcon("photo/LoginBG.png"));
+		bg.setIcon(new ImageIcon("photo/bg.png"));
 		bg.setBounds(0, 0, 900, 600);
 		
 		idlLabel.setIcon(new ImageIcon("photo/id.gif"));
@@ -97,9 +104,9 @@ public class Login extends JFrame{
 		panel.add(order);
 		panel.add(searchButton);
 		panel.add(bg);
-		
-		moni = new MoniDelUI();
-		moni.setBounds(0, 200, 400, 400);
+		startRun();
+//		moni = new MoniDelUI();
+//		moni.setBounds(0, 250, 500, 150);
 		uiListener = new ListenerUI(this);
 		loginbButton.addMouseListener(uiListener);
 		searchButton.addMouseListener(new Listener_Trace(this));
@@ -116,7 +123,9 @@ public class Login extends JFrame{
 		this.add(panel);
 		this.setVisible(true);
 		this.getContentPane().repaint();
-		this.add(moni);
+		this.setIconImage(icon1);
+		this.setTitle("快递物流信息系统");
+//		this.add(moni);
 		
 		///FRAME = this;
 		
@@ -250,6 +259,66 @@ public class Login extends JFrame{
 		
 		
 	};
+
+	class Moni implements Runnable{
+		JLabel car = new JLabel();
+		JLabel home = new JLabel();
+		public Moni() {
+			// TODO Auto-generated constructor stub
+			car.setIcon(new ImageIcon("photo/Lcar.png"));
+			home.setIcon(new ImageIcon("photo/Lhome.png"));
+			car.setBounds(x, y, 60, 40);
+			home.setBounds(320, iy, 60, 40);
+			panel.add(car);
+			panel.add(home);
+			panel.repaint();
+		}
+		public void run() {
+			// TODO Auto-generated method stub
+				// TODO Auto-generated method stub
+				while(x>1000){
+				car.repaint();
+				home.repaint();
+				
+				
+					car.repaint();
+					home.repaint();
+					car.setBounds(x, y, 60, 40);
+					x+=5;
+					if(x>260){
+						x=20;
+						iy=100;
+					}
+					if(x>200){
+						this.home.setVisible(true);
+						iy+=4;
+					}else{
+						this.home.setVisible(false);
+					}
+					
+					try {
+						Thread.sleep(150);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				
+			}
+			
+		}
+		
+	}
+	
+	private void startRun(){
+//		panel.setBackground(new Color(155,149,134));
+//		this.setBackground(null);
+//		this.setOpaque(false);
+//		panel.setSize(500, 200);
+//		panel.setLayout(null);
+		Moni m = new Moni();
+		Thread t = new Thread(m);
+		 t.start();
+	}
 
 	
 	

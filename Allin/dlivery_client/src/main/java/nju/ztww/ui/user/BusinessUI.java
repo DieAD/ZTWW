@@ -56,7 +56,7 @@ public class BusinessUI extends JPanel{
 				javax.swing.border.TitledBorder.DEFAULT_POSITION));
 				
 		this.setLayout(null);
-		CarLoadingButton.setIcon(CarLoading);
+		CarLoadingButton.setIcon(CarLoading2);
 //		CarLoadingButton.setBounds(0,60,209,58);
 		CarLoadingButton.addActionListener(new ActionListener(){
 
@@ -67,6 +67,7 @@ public class BusinessUI extends JPanel{
 				removeButton(panel);
 				CarLoadingButton.setIcon(CarLoading2);
 				panel = 0;
+				MyButton.type=0;
 			}});
 		
 		receiveAndSendButton.setIcon(AcceptGood);
@@ -80,6 +81,7 @@ public class BusinessUI extends JPanel{
 						removeButton(panel);
 						receiveAndSendButton.setIcon(AcceptGood2);
 						panel = 1;
+						MyButton.type=1;
 					}});
 		
 		ReceiveBillButton.setIcon(ReceiveBill);
@@ -93,6 +95,7 @@ public class BusinessUI extends JPanel{
 				removeButton(panel);
 				ReceiveBillButton.setIcon(ReceiveBill2);
 				panel = 2;
+				MyButton.type=2;
 			}});
 		
 		
@@ -107,6 +110,7 @@ public class BusinessUI extends JPanel{
 				removeButton(panel);
 				CarManageButton.setIcon(CarManage2);
 				panel = 3;
+				MyButton.type=3;
 			}});
 		
 		DriverManageButton.setIcon(DriverManage);
@@ -120,6 +124,7 @@ public class BusinessUI extends JPanel{
 				removeButton(panel);
 				DriverManageButton.setIcon(DriverManage2);
 				panel = 4;
+				MyButton.type=4;
 			}});
 		
 		YourMessageButton.setIcon(YourMessage);
@@ -137,6 +142,7 @@ public class BusinessUI extends JPanel{
 				removeButton(panel);
 				YourMessageButton.setIcon(YourMessage2);
 				panel = 6;
+				MyButton.type=6;
 			}});
 		
 		SendButton.setIcon(Deliver);
@@ -149,16 +155,18 @@ public class BusinessUI extends JPanel{
 				removeButton(panel);
 				SendButton.setIcon(Deliver2);
 				panel = 5;
+				MyButton.type=5;
 			}});
 	
 		CheckOrderButton.setIcon(CheckOrder);
 		CheckOrderButton.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				TextBussinessUI.changePanel(8);
 				removeButton(panel);
 				CheckOrderButton.setIcon(CheckOrder2);
 				panel = 7;
+				MyButton.type=7;
 			}
 		});
 		
@@ -189,8 +197,6 @@ public class BusinessUI extends JPanel{
 	
 	
 	private void removeButton(int n){
-
-
 
 		switch (n){
 		case 0:CarLoadingButton.setIcon(CarLoading);break;

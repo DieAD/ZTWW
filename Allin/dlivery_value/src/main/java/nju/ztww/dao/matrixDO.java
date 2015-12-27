@@ -1,6 +1,8 @@
 package nju.ztww.dao;
 
-public class matrixDO {
+import java.io.Serializable;
+
+public class matrixDO implements Serializable{
 	private int index;
 	private String id;
 	private String men;

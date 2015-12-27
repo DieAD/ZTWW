@@ -46,7 +46,7 @@ public class CourierMenuUI extends JPanel{
 				javax.swing.border.TitledBorder.DEFAULT_POSITION));
 		
 		
-		OrderInputButton.setIcon(OrderInput);
+		OrderInputButton.setIcon(OrderInput2);
 //		OrderInputButton.setBounds(0,0,150,40); //——by zyz 2015/12/3
 		OrderInputButton.addActionListener(new ActionListener() {
 			
@@ -57,6 +57,7 @@ public class CourierMenuUI extends JPanel{
 				removeButton(panel);
 				OrderInputButton.setIcon(OrderInput2);
 				panel = 0;
+				MyButton.type=0;
 			}
 		});
 		
@@ -72,6 +73,7 @@ public class CourierMenuUI extends JPanel{
 				removeButton(panel);
 				AcceptButton.setIcon(Accept2);
 				panel = 1;
+				MyButton.type=1;
 			}
 		});
 		
@@ -87,6 +89,7 @@ public class CourierMenuUI extends JPanel{
 				removeButton(panel);
 				CheckOrderButton.setIcon(CheckOrder2);
 				panel = 2;
+				MyButton.type=2;
 			}
 		});
 		
@@ -102,6 +105,7 @@ public class CourierMenuUI extends JPanel{
 				removeButton(panel);
 				YourMessageButton.setIcon(YourMessage2);
 				panel = 3;
+				MyButton.type=3;
 			}
 		});
 		

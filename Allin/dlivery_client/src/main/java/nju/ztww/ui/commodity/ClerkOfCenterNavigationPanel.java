@@ -61,7 +61,7 @@ public class ClerkOfCenterNavigationPanel extends JPanel {
 
 
 		ArriveMid = new MyButton(0);
-		ArriveMid.setIcon(arriveOrder);
+		ArriveMid.setIcon(arriveOrder2);
 		// ArriveEnd=new MyButton();
 		// ArriveEnd.setIcon(Train);
 		Transfer = new MyButton(1);
@@ -113,6 +113,7 @@ public class ClerkOfCenterNavigationPanel extends JPanel {
 			removeButton(panel);
 			ArriveMid.setIcon(arriveOrder2);
 			panel = 0;
+			MyButton.type=0;
 		}
 	};
 
@@ -125,6 +126,7 @@ public class ClerkOfCenterNavigationPanel extends JPanel {
 			removeButton(panel);
 			Transfer.setIcon(transit2);
 			panel = 1;
+			MyButton.type=1;
 		}
 	};
 
@@ -137,6 +139,7 @@ public class ClerkOfCenterNavigationPanel extends JPanel {
 			removeButton(panel);
 			CarLoadbutton.setIcon(carLoading2);
 			panel = 2;
+			MyButton.type=2;
 		}
 	};
 
@@ -149,6 +152,7 @@ public class ClerkOfCenterNavigationPanel extends JPanel {
 			removeButton(panel);
 			StorageFind.setIcon(checkStorage2);
 			panel =3;
+			MyButton.type=3;
 		}
 	};
 	
@@ -159,8 +163,10 @@ public class ClerkOfCenterNavigationPanel extends JPanel {
 			removeButton(panel);
 			yourMessageButton.setIcon(yourMessage2);
 			panel = 4;
+			MyButton.type=4;
 		}
 	};
+
 	
 	
 	ActionListener check = new ActionListener() {
@@ -170,6 +176,7 @@ public class ClerkOfCenterNavigationPanel extends JPanel {
 			removeButton(panel);
 			checkOrderButton.setIcon(checkOrder2);
 			panel = 5;
+			MyButton.type=5;
 		}
 	};
 	
