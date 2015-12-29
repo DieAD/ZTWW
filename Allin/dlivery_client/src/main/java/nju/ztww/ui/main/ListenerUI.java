@@ -45,7 +45,9 @@ public class ListenerUI implements MouseListener{
 		// TODO Auto-generated method stub
 		//frame.add(loading);
 		//loading.thread.start();
+		if(TestIfConnect.ifConnect()){
 		this.switchUI();
+		}
 		//loading.thread.destroy();
 		//frame.remove(loading);
 		//by zyz  move here

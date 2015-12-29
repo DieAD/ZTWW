@@ -28,6 +28,7 @@ import nju.ztww.serviceimpl.CommodityListServiceImpl;
 import nju.ztww.serviceimpl.OrderServiceImpl;
 import nju.ztww.serviceimpl.StorageOutListServiceImpl;
 import nju.ztww.ui.main.GetDate;
+import nju.ztww.ui.main.TestIfConnect;
 import nju.ztww.ui.main.UserInfoUI;
 import nju.ztww.vo.DeliverFeesVO;
 import nju.ztww.vo.ShippingVO;
@@ -180,6 +181,7 @@ public class FindStoragePanel extends JPanel {
 			  addLoadOrder.addActionListener(new ActionListener(){
 
 					public void actionPerformed(ActionEvent e) {
+						if(TestIfConnect.ifConnect()){
 						loadingVO=(ShippingVO) orderServiceImpl.getOrder(7);
 						ArrayList<CarManagePO> list=orderServiceImpl.findAllCar();
 						dlg= new MyDialog(); 
@@ -254,10 +256,12 @@ public class FindStoragePanel extends JPanel {
 			            dlg.setLayout(null);
 						dlg.setVisible(true);
 					}
+					}
 			  });
 			  addTransferOrder.addActionListener(new ActionListener(){
 
 					public void actionPerformed(ActionEvent e) {
+						if(TestIfConnect.ifConnect()){
 						transferVO=(TransferVO) orderServiceImpl.getOrder(8);
 						dlg= new MyDialog(); 
 						dlg.setSize(new Dimension(350, 550));
@@ -329,10 +333,12 @@ public class FindStoragePanel extends JPanel {
 			            dlg.setLayout(null);
 						dlg.setVisible(true);
 					}
+					}
 			  });
 			  find.addActionListener(new ActionListener(){
 
 					public void actionPerformed(ActionEvent e) {
+						if(TestIfConnect.ifConnect()){
 						defaultTableModel.setRowCount(0);
 						getStorage=commodityListServiceImpl.getStock(UserInfoUI.getUserID().substring(0,5));
 						for(StorageListLineofInVO storageListLineofInVO:getStorage){
@@ -346,7 +352,7 @@ public class FindStoragePanel extends JPanel {
 							row.add(storageListLineofInVO.getWei());
 							//设置状态
 							defaultTableModel.addRow(row);
-						    
+						}
 						}
 					}
 			  });
@@ -361,6 +367,7 @@ public class FindStoragePanel extends JPanel {
 	   ActionListener listener = new ActionListener(){
 
 			public void actionPerformed(ActionEvent e) {
+				if(TestIfConnect.ifConnect()){
 				ArrayList<String>stringlist=new ArrayList<String>();
 				stringlist.add(datatextArea.getText());
 				stringlist.add(arrivetextArea.getText());
@@ -417,10 +424,12 @@ public class FindStoragePanel extends JPanel {
 					label1.setVisible(true);
 				}
 			}
+			}
 		};
 		ActionListener listener2 = new ActionListener(){
 			
 			public void actionPerformed(ActionEvent e) {
+				if(TestIfConnect.ifConnect()){
 				ArrayList<String>stringlist=new ArrayList<String>();
 				stringlist.add(transferArriveText.getText());
 				stringlist.add(loadDataText.getText());
@@ -479,6 +488,7 @@ public class FindStoragePanel extends JPanel {
 				else{
 					label2.setVisible(true);
 				}
+			}
 			}
 		};
 		

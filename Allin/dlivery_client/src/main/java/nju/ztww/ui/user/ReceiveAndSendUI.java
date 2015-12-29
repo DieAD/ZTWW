@@ -26,6 +26,7 @@ import confligUI.MyTextField;
 import nju.ztww.bl.commodity.IsEmpty;
 import nju.ztww.serviceimpl.OrderServiceImpl;
 import nju.ztww.ui.main.GetDate;
+import nju.ztww.ui.main.TestIfConnect;
 import nju.ztww.vo.BusinessArriveVO;
 import nju.ztww.vo.DriverMessageVO;
 import nju.ztww.vo.LoadingVO;
@@ -90,6 +91,7 @@ public class ReceiveAndSendUI extends JPanel{
 			  addButton.addActionListener(new ActionListener(){
 
 					public void actionPerformed(ActionEvent e) {
+						if(TestIfConnect.ifConnect()){
 						businessArriveVO=(BusinessArriveVO) orderServiceImpl.getOrder(2);
 						dlg= new MyDialog(); 
 						dlg.setSize(new Dimension(520, 550));
@@ -165,17 +167,20 @@ public class ReceiveAndSendUI extends JPanel{
 			            dlg.setLayout(null);
 						dlg.setVisible(true);
 					}
+					}
 					});
 			 
 			  sendArriveButton.addActionListener(new ActionListener(){
 
 					public void actionPerformed(ActionEvent e) {
+						if(TestIfConnect.ifConnect()){
 						for(BusinessArriveVO businessArriveVOtemp:allbusinessArriveVO){
 							String result=orderServiceImpl.endSales(businessArriveVOtemp, 2);
 							 System.out.println(result);
 						}
 						allbusinessArriveVO.clear();
 						defaultTableModel.setRowCount(0);
+					}
 					}
 			  });
 			 
@@ -194,6 +199,7 @@ public class ReceiveAndSendUI extends JPanel{
 			  findArriveButton.addActionListener(new ActionListener(){
 
 					public void actionPerformed(ActionEvent e) {
+						if(TestIfConnect.ifConnect()){
 						dlg= new MyDialog(); 
 						dlg.setSize(new Dimension(350, 150));
 			            dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
@@ -205,6 +211,7 @@ public class ReceiveAndSendUI extends JPanel{
 			            dlg.add(findArrivetextArea);
 			            dlg.setLayout(null);
 						dlg.setVisible(true);
+						}
 					}
 			  });
 			  this.add(findArriveButton);
