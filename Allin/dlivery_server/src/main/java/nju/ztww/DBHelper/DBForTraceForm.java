@@ -142,8 +142,8 @@ public class DBForTraceForm extends DB {
 	  
 	   db.init();
 	   TraceFormDO dos=new TraceFormDO();
-	   dos.setGoodsid("盘点02501");
-	   dos.setTrace("2015-12-2000");
+	   dos.setGoodsid("库存警戒线02501");
+	   dos.setTrace("100");
 	   //db.insert(dos, "tracetable");
 	   //list=db.queryALL("tracetable");
 	   db.insert(dos, "tracetable");
