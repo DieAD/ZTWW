@@ -29,6 +29,7 @@ import confligUI.MyTextField;
 import nju.ztww.bl.commodity.IsEmpty;
 import nju.ztww.serviceimpl.OrderServiceImpl;
 import nju.ztww.ui.main.GetDate;
+import nju.ztww.ui.main.TestIfConnect;
 import nju.ztww.ui.main.UserInfoUI;
 import nju.ztww.vo.BusinessArriveVO;
 import nju.ztww.vo.CarManageVO;
@@ -102,6 +103,7 @@ public class ClerkOfCenterArriveMidPanel extends JPanel{
 		this.add(scrollPane); 
 		addbutton.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent arg0) {
+			if(TestIfConnect.ifConnect()){
 			centerReceiveVO=(CenterReceiveVO) orderServiceImpl.getOrder(3);
 			dlg= new MyDialog(); 
 			dlg.setSize(new Dimension(520, 550));
@@ -184,16 +186,19 @@ public class ClerkOfCenterArriveMidPanel extends JPanel{
             dlg.setLayout(null);
 			dlg.setVisible(true);
 					}
+		}
 				});
 		sendButton.addActionListener(new ActionListener(){
 
 			public void actionPerformed(ActionEvent e) {
+				if(TestIfConnect.ifConnect()){
 				for(CenterReceiveVO centerReceiveVOTemp:allcenterReceiveVO){
 					String result=orderServiceImpl.endSales(centerReceiveVOTemp, 3);
 					 System.out.println(result);
 				}
 				allcenterReceiveVO.clear();
 				defaultTableModel.setRowCount(0);
+			}
 			}
 	  });
 		deleteSendButton.addActionListener(new ActionListener(){
@@ -210,6 +215,7 @@ public class ClerkOfCenterArriveMidPanel extends JPanel{
 		findButton.addActionListener(new ActionListener(){
 
 			public void actionPerformed(ActionEvent e) {
+				if(TestIfConnect.ifConnect()){
 				dlg= new MyDialog(); 
 				dlg.setSize(new Dimension(350, 150));
 	            dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
@@ -221,6 +227,7 @@ public class ClerkOfCenterArriveMidPanel extends JPanel{
 	            dlg.add(findtextArea);
 	            dlg.setLayout(null);
 				dlg.setVisible(true);
+				}
 			}
 	  });
 		   
@@ -228,6 +235,7 @@ public class ClerkOfCenterArriveMidPanel extends JPanel{
 	   ActionListener findTransfer = new ActionListener(){
 
 			public void actionPerformed(ActionEvent e) {
+				if(TestIfConnect.ifConnect()){
 				TransferVO transferVO=(TransferVO) orderServiceImpl.find(findTransfertextArea.getText(), 8);
 				String OrderNumber=transferVO.getSendNumber();
 				String [] temp=OrderNumber.split(";");
@@ -239,10 +247,12 @@ public class ClerkOfCenterArriveMidPanel extends JPanel{
 				}
 				sureTransferButton.removeActionListener(findTransfer);
 			}
+			}
 	   };
 	   ActionListener findCarLoad = new ActionListener(){
 
 			public void actionPerformed(ActionEvent e) {
+				if(TestIfConnect.ifConnect()){
 				LoadingVO loadingVO=(LoadingVO) orderServiceImpl.find(findCarLoadtextArea.getText(), 4);
 				String OrderNumber=loadingVO.getOrderNumber();
 				String [] temp=OrderNumber.split(";");
@@ -253,6 +263,7 @@ public class ClerkOfCenterArriveMidPanel extends JPanel{
 					SmalldefaultTableModel.addRow(row);
 				}
 				sureCarLoadButton.removeActionListener(findCarLoad);
+			}
 			}
 	   };
 	   
@@ -314,6 +325,7 @@ public class ClerkOfCenterArriveMidPanel extends JPanel{
 		ActionListener listener2 = new ActionListener(){
 
 			public void actionPerformed(ActionEvent e) {
+				if(TestIfConnect.ifConnect()){
 				CenterReceiveVO centerReceiveVO=(CenterReceiveVO) orderServiceImpl.find(findtextArea.getText(), 3);
 				Vector<String> row = new Vector(6);
 				row.add(centerReceiveVO.getId());
@@ -328,6 +340,7 @@ public class ClerkOfCenterArriveMidPanel extends JPanel{
 			    findtextArea.setText("");
 			    dlg.dispose();
 			    findSureButton.removeActionListener(listener2);
+			}
 			}
 		};
 	

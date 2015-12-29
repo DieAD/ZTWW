@@ -29,6 +29,7 @@ import javax.swing.table.DefaultTableModel;
 
 
 
+
 import org.apache.poi.ss.usermodel.DataFormat;
 
 import confligUI.MyButton;
@@ -45,6 +46,7 @@ import nju.ztww.service.CommodityListService;
 import nju.ztww.service.CommodityService;
 import nju.ztww.serviceimpl.CommodityListServiceImpl;
 import nju.ztww.serviceimpl.CommodityServiceImp;
+import nju.ztww.ui.main.TestIfConnect;
 import nju.ztww.ui.main.UserInfoUI;
 import nju.ztww.vo.OrderVO;
 import nju.ztww.vo.StorageListLineofInVO;
@@ -145,7 +147,7 @@ public class StoragePanPanel extends JPanel  implements ActionListener{
 		this.add(scrollPane); 
 }
   public void actionPerformed(ActionEvent e) {
-	// TODO Auto-generated method stub
+	  if(TestIfConnect.ifConnect()){
 	//实现接口 需要传一个满足要求的arraylist
 	  defaultTableModel.setRowCount(0);
 	arraylist=commodityservice.getStock(UserInfoUI.getUserID().substring(0, 5));//ZHE 个String 是id一部分
@@ -166,7 +168,7 @@ public class StoragePanPanel extends JPanel  implements ActionListener{
 	}
 	countshuliang.setText(String.valueOf(arraylist.size()));
 	baojingshuliang.setText(stringlist.get(0).getTrace());
-	
+	  }
   }
 ActionListener listenerxiugai=new ActionListener() {
 		

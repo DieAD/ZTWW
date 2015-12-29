@@ -24,6 +24,7 @@ import confligUI.MyTable;
 import confligUI.MyTextField;
 import nju.ztww.bl.commodity.IsEmpty;
 import nju.ztww.serviceimpl.OrderServiceImpl;
+import nju.ztww.ui.main.TestIfConnect;
 import nju.ztww.vo.CarManageVO;
 import nju.ztww.vo.LoadingVO;
 
@@ -107,6 +108,7 @@ public class CarManageUI extends JPanel{
 			  addButton.addActionListener(new ActionListener(){
 
 					public void actionPerformed(ActionEvent e) {
+						if(TestIfConnect.ifConnect()){
 						carManageVO=(CarManageVO) orderServiceImpl.getOrder(9);
 						dlg= new MyDialog(); 
 						dlg.setSize(new Dimension(400, 420));
@@ -155,6 +157,7 @@ public class CarManageUI extends JPanel{
 			            sureButton.addActionListener(listener);
 			            dlg.setLayout(null);
 						dlg.setVisible(true);
+						}
 					}
 					});
 			  deleteButton.addActionListener(new ActionListener(){
@@ -172,6 +175,7 @@ public class CarManageUI extends JPanel{
 			  sendButton.addActionListener(new ActionListener(){
 
 					public void actionPerformed(ActionEvent e) {
+						if(TestIfConnect.ifConnect()){
 						for(CarManageVO carManageVOtemp : allCarManageVO){
 							String result=orderServiceImpl.endSales(carManageVOtemp, 9);
 							 System.out.println(result);
@@ -179,10 +183,12 @@ public class CarManageUI extends JPanel{
 						allCarManageVO.clear();
 						defaultTableModel.setRowCount(0);
 					}
+					}
 			  });
 			  findButton.addActionListener(new ActionListener(){
 
 					public void actionPerformed(ActionEvent e) {
+						if(TestIfConnect.ifConnect()){
 						dlg= new MyDialog(); 
 						dlg.setSize(new Dimension(350, 150));
 			            dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
@@ -194,6 +200,7 @@ public class CarManageUI extends JPanel{
 			            dlg.add(findtextArea);
 			            dlg.setLayout(null);
 						dlg.setVisible(true);
+					}
 					}
 			  });
 			  this.add(findButton);

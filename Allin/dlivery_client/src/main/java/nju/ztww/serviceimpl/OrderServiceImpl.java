@@ -137,6 +137,7 @@ public class OrderServiceImpl implements OrderService{
 		case 1:
 			MailingVO mainingVO=(MailingVO)order;
 			result=mailingOrderBl.handleVO(mainingVO);
+			System.out.println(result);
 			break;
 		case 2:
 			BusinessArriveVO businessArriveVO=(BusinessArriveVO) order;

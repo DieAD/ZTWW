@@ -1,7 +1,6 @@
 package nju.ztww.ui.order;
 
 import java.awt.Color;
-
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
@@ -26,6 +25,7 @@ import confligUI.MyTextField;
 import nju.ztww.bl.commodity.IsEmpty;
 import nju.ztww.service.OrderService;
 import nju.ztww.serviceimpl.OrderServiceImpl;
+import nju.ztww.ui.main.TestIfConnect;
 import nju.ztww.ui.main.UserInfoUI;
 import nju.ztww.vo.DeliverFeesVO;
 import nju.ztww.vo.MailingVO;
@@ -161,7 +161,7 @@ public class Courier_OrderInputUI extends JPanel{
 
 		
 		public void actionPerformed(ActionEvent e) {
-
+			if(TestIfConnect.ifConnect()){
 			// TODO Auto-generated method stub
 			int size = mailingOrders.size();
 			for(int i=0;i<size;i++){
@@ -170,6 +170,7 @@ public class Courier_OrderInputUI extends JPanel{
 			}
 			mailingOrders.clear();
 			defaultTableModel.setRowCount(0);
+		}
 		}
 	};
 	
@@ -282,6 +283,7 @@ public class Courier_OrderInputUI extends JPanel{
 	ActionListener add = new ActionListener() {
 		
 		public void actionPerformed(ActionEvent e) {
+			if(TestIfConnect.ifConnect()){
 			// TODO Auto-generated method stub
 			// TODO Auto-generated method stub
 			// to add a dialog to complete
@@ -390,7 +392,7 @@ public class Courier_OrderInputUI extends JPanel{
             
             addDlg.setLayout(null);
 			addDlg.setVisible(true);
-			
+			}
 		}
 	};
 }

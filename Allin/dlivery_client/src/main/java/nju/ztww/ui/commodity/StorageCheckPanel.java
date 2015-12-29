@@ -1,7 +1,6 @@
 package nju.ztww.ui.commodity;
 
 import java.awt.Color;
-
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -18,6 +17,7 @@ import nju.ztww.bl.commodity.DateChooser;
 import nju.ztww.bl.commodity.WayToString;
 import nju.ztww.service.CommodityListService;
 import nju.ztww.serviceimpl.CommodityListServiceImpl;
+import nju.ztww.ui.main.TestIfConnect;
 import nju.ztww.ui.main.UserInfoUI;
 import nju.ztww.vo.StorageListLineofInVO;
 import nju.ztww.vo.StorageListLineofOutVO;
@@ -160,7 +160,7 @@ public class StorageCheckPanel extends JPanel {
 }
  ActionListener listener=new ActionListener(){
    public void actionPerformed(ActionEvent e) {
-	   //arraylistin.clear();
+	   if(TestIfConnect.ifConnect()){
 	   defaultTableModel1.setRowCount(0);
 	   System.out.println(chos1.getTime());
 	   System.out.println(chos2.getTime());
@@ -196,7 +196,7 @@ public class StorageCheckPanel extends JPanel {
 	   }
 	   textfieldout.setText(String.valueOf(arraylistout.size()));
  }
-   
+   }
 	 };
 }
 	 
