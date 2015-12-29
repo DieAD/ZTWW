@@ -146,7 +146,7 @@ public class DBForTraceForm extends DB {
 	   dos.setTrace("2015-12-2000");
 	   //db.insert(dos, "tracetable");
 	   //list=db.queryALL("tracetable");
-	   db.update(dos, "tracetable");
+	   db.insert(dos, "tracetable");
 	   
 //	   ArrayList<TraceFormDO> fdo=new ArrayList<TraceFormDO>();
 //	   fdo=db.queryByID("盘点02501", "tracetable");
