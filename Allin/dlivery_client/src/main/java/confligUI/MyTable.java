@@ -22,6 +22,7 @@ public class MyTable extends JTable{
 		this.getTableHeader().setBackground(new Color(249,231,212));//208,168,125
 		this.setBackground(new Color(208,168,125)); //226,203,170
 		this.setFont(myFont);
+		//this.setRow
 	}
 	
 }
