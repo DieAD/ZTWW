@@ -1,7 +1,6 @@
 package nju.ztww.ui.commodity;
 //debug 时注意成员变量arraylist 是否会造成添加
 import java.awt.Color;
-
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -31,6 +30,7 @@ import nju.ztww.bl.commodity.StringToInt;
 import nju.ztww.service.CommodityService;
 import nju.ztww.serviceimpl.CommodityServiceImp;
 import nju.ztww.serviceimpl.StorageOutListServiceImpl;
+import nju.ztww.ui.main.TestIfConnect;
 import nju.ztww.ui.main.UserInfoUI;
 import nju.ztww.vo.OrderVO;
 import nju.ztww.vo.StorageListLineofOutVO;
@@ -119,6 +119,7 @@ public class OutofStoragePanel extends JPanel {
     dbtype.addItem("汽车");
 	addbutton.addActionListener(new ActionListener() {
 	public void actionPerformed(ActionEvent arg0) {
+		if(TestIfConnect.ifConnect()){
 		dlg=new MyDialog();
 		dlg.setLayout(null);
 
@@ -186,6 +187,7 @@ public class OutofStoragePanel extends JPanel {
 		// TODO Auto-generated method stub
 	
 				}
+	        }
 			});
 	   
 }
@@ -194,7 +196,7 @@ public class OutofStoragePanel extends JPanel {
 	
 	public void actionPerformed(ActionEvent e) {
 
-		// TODO Auto-generated method stub
+		if(TestIfConnect.ifConnect()){
 		ArrayList<String> stringlist=new ArrayList<String>();
 		stringlist.add(ordernumberfield.getText());
 		stringlist.add(datafield.getText());
@@ -235,7 +237,7 @@ public class OutofStoragePanel extends JPanel {
 			mylabel.setVisible(true);
 		}
 	}
-	
+	}
 }; 
 ActionListener listener2=new ActionListener(){
 

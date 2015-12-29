@@ -67,12 +67,12 @@ public class AnnounceForManageUI extends JPanel implements Runnable{
 		public void actionPerformed(ActionEvent e) {
 			String s=text.getText().replace('\n',' ');
 			String [] temp=s.split(" ");
-			String message=temp[0];
+			String message="";
 			for(int i=0;i<temp.length;i++){
-				
+				message=message+(i+1)+"，"+temp[i]+"。";
 			}
-			System.out.println(s);
-			WriteHandlerThread.message=s;
+			System.out.println(message);
+			WriteHandlerThread.message=message;
 			WriteHandlerThread.ifSend=false;
 			text.setText("");
 		}

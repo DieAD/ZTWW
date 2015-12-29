@@ -22,6 +22,7 @@ import confligUI.MyLabel;
 import confligUI.MyTextField;
 import nju.ztww.service.CommodityListService;
 import nju.ztww.serviceimpl.CommodityListServiceImpl;
+import nju.ztww.ui.main.TestIfConnect;
 import nju.ztww.ui.main.UserInfoUI;
 
 
@@ -192,7 +193,7 @@ public class StorageTiaoPanel extends JPanel {
   ActionListener show=new ActionListener() {
 		
 		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
+			if(TestIfConnect.ifConnect()){
 			defaultTableModel.setRowCount(0);
 			String idofcenter=UserInfoUI.getUserID().substring(0,5);
 	arraylistshow=commodityservice.getStockbyQu(dbtype.getSelectedItem().toString(),idofcenter);
@@ -210,16 +211,18 @@ public class StorageTiaoPanel extends JPanel {
 		defaultTableModel.addRow(row);
 	    table.revalidate();
 	}
+	}
 		}
 	};
 ActionListener tijiaolisten=new ActionListener() {
 	
 		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
+			if(TestIfConnect.ifConnect()){
 			String idofcenter=UserInfoUI.getUserID().substring(0,5);
 			commodityservice.modify(arraylist,idofcenter);
 			defaultTableModel.setRowCount(0);
 			arraylist.clear();
+			}
 		}
 	};
 }

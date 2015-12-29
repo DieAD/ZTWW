@@ -23,6 +23,7 @@ import nju.ztww.dao.DCFormDO;
 import nju.ztww.po.MUserPO;
 import nju.ztww.service.ManageService;
 import nju.ztww.serviceimpl.ManageServiceImpl;
+import nju.ztww.ui.main.TestIfConnect;
 import nju.ztww.vo.UserSalaryVO;
 //
 
@@ -224,7 +225,7 @@ public class GManager_ManageSalaryUI extends JPanel{
 		}
 
 		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
+			if(TestIfConnect.ifConnect()){
 			String sindex = (String)index.getSelectedItem();
 			String sname = (String)name.getSelectedItem();
 			System.out.print(sindex + sname);
@@ -245,7 +246,7 @@ public class GManager_ManageSalaryUI extends JPanel{
 				monthly.setSelected(false);
 				timely.setSelected(true);
 			}
-			
+			}
 		}
 		
 		
@@ -257,7 +258,7 @@ public class GManager_ManageSalaryUI extends JPanel{
 		}
 
 		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
+			if(TestIfConnect.ifConnect()){
 			String id = id1.getText();
 			System.out.print(id);
 			MUserPO userInfo = MS.getUserInfoById(id);
@@ -281,7 +282,7 @@ public class GManager_ManageSalaryUI extends JPanel{
 			}
 			nameBox.removeAllItems();
 		}
-		
+		}
 	}
 	
 	public class Listener4 implements ActionListener{
