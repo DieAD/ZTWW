@@ -31,6 +31,7 @@ import confligUI.MyScrollPane;
 import confligUI.MyTable;
 import confligUI.MyTextField;
 import nju.ztww.serviceimpl.OrderServiceImpl;
+import nju.ztww.ui.main.TestIfConnect;
 import nju.ztww.ui.user.ResultMessageUI;
 import nju.ztww.vo.CarManageVO;
 import nju.ztww.vo.LoadingVO;
@@ -138,6 +139,7 @@ public class ClerkOfCenterCarloadPanel extends JPanel{
 			  sendButton.addActionListener(new ActionListener(){
 
 					public void actionPerformed(ActionEvent e) {
+						if(TestIfConnect.ifConnect()){
 						for(ShippingVO shippingVOtemp : allLoadingVO){
 							String result=orderServiceImpl.endSales(shippingVOtemp, 7);
 							resultMessageUI.setPhoto(result);
@@ -146,6 +148,7 @@ public class ClerkOfCenterCarloadPanel extends JPanel{
 						resultMessageUI.setPhoto("success");
 						allLoadingVO.clear();
 						defaultTableModel.setRowCount(0);
+					}
 					}
 			  });
 			  deleteButton.addActionListener(new ActionListener(){
@@ -163,6 +166,7 @@ public class ClerkOfCenterCarloadPanel extends JPanel{
 			  findButton.addActionListener(new ActionListener(){
 
 					public void actionPerformed(ActionEvent e) {
+						if(TestIfConnect.ifConnect()){
 						dlg= new MyDialog(); 
 						dlg.setSize(new Dimension(350, 150));
 			            dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
@@ -174,6 +178,7 @@ public class ClerkOfCenterCarloadPanel extends JPanel{
 			            dlg.add(findtextArea);
 			            dlg.setLayout(null);
 						dlg.setVisible(true);
+						}
 					}
 			  });
 	}
@@ -205,6 +210,7 @@ public class ClerkOfCenterCarloadPanel extends JPanel{
 	ActionListener listener2 = new ActionListener(){
 
 		public void actionPerformed(ActionEvent e) {
+			if(TestIfConnect.ifConnect()){
 			ShippingVO loadingVO=(ShippingVO) orderServiceImpl.find(findtextArea.getText(), 7);
 			Vector<String> row = new Vector(6);
 			row.add(loadingVO.getId());
@@ -218,6 +224,7 @@ public class ClerkOfCenterCarloadPanel extends JPanel{
 		    findtextArea.setText("");
 		    dlg.dispose();
 		    findSureButton.removeActionListener(listener2);
+		}
 		}
 	};
 

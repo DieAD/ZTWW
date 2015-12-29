@@ -23,6 +23,7 @@ import confligUI.MyTextField;
 import nju.ztww.bl.commodity.IsEmpty;
 import nju.ztww.serviceimpl.OrderServiceImpl;
 import nju.ztww.ui.main.GetDate;
+import nju.ztww.ui.main.TestIfConnect;
 import nju.ztww.vo.BusinessArriveVO;
 import nju.ztww.vo.SendVO;
 
@@ -81,6 +82,7 @@ public class SendUI extends JPanel{
 			addSendButton.addActionListener(new ActionListener(){
 
 				public void actionPerformed(ActionEvent e) {
+					if(TestIfConnect.ifConnect()){
 					sendVO=(SendVO) orderServiceImpl.getOrder(6);
 					dlg= new MyDialog(); 
 					dlg.setSize(new Dimension(400, 380));
@@ -125,17 +127,20 @@ public class SendUI extends JPanel{
 		            dlg.add(mylabel);
 		            dlg.setLayout(null);
 					dlg.setVisible(true);
+					}
 				}
 				});
 			sendButton.addActionListener(new ActionListener(){
 
 				public void actionPerformed(ActionEvent e) {
+					if(TestIfConnect.ifConnect()){
 					for(SendVO sendVOtemp:allSendVO){
 						String result=orderServiceImpl.endSales(sendVOtemp, 6);
 						 System.out.println(result);
 					}
 					allSendVO.clear();
 					defaultTableModel2.setRowCount(0);
+					}
 				}
 		  });
 		  deleteSendButton.addActionListener(new ActionListener(){
@@ -152,6 +157,7 @@ public class SendUI extends JPanel{
 		  findSendButton.addActionListener(new ActionListener(){
 
 				public void actionPerformed(ActionEvent e) {
+					if(TestIfConnect.ifConnect()){
 					dlg= new MyDialog(); 
 					dlg.setSize(new Dimension(350, 150));
 		            dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
@@ -163,6 +169,7 @@ public class SendUI extends JPanel{
 		            dlg.add(findSendtextArea);
 		            dlg.setLayout(null);
 					dlg.setVisible(true);
+					}
 				}
 		  });
 	}

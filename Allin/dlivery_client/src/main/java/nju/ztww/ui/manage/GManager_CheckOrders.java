@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 import nju.ztww.bl.manage.ManageBL;
 import nju.ztww.service.ManageService;
 import nju.ztww.serviceimpl.ManageServiceImpl;
+import nju.ztww.ui.main.TestIfConnect;
 import nju.ztww.vo.GenerateVO;
 import nju.ztww.vo.IDVO;
 
@@ -99,15 +100,17 @@ public class GManager_CheckOrders extends JPanel {
 		order1Button.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				if(TestIfConnect.ifConnect()){
 				getCheckOrderVO(1);
+				}
 			}
 		});
 		order2Button.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				if(TestIfConnect.ifConnect()){
 				getCheckOrderVO(2);
+				}
 			}
 		});
 		order3Button.addActionListener(new ActionListener() {

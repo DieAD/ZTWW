@@ -1,7 +1,6 @@
 package nju.ztww.ui.order;
 
 import java.awt.Color;
-
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -25,6 +24,7 @@ import confligUI.MyTextField;
 import nju.ztww.bl.commodity.IsEmpty;
 import nju.ztww.service.OrderService;
 import nju.ztww.serviceimpl.OrderServiceImpl;
+import nju.ztww.ui.main.TestIfConnect;
 import nju.ztww.ui.main.UserInfoUI;
 import nju.ztww.vo.AcceptVO;
 
@@ -79,6 +79,7 @@ public class Courier_AcceptUI extends JPanel{
 					// to add a dialog to complete
 					//very important
 					//including a textfield
+					if(TestIfConnect.ifConnect()){
 					searchDlg = new MyDialog();
 					searchDlg.setSize(new Dimension(300, 120));
 					searchDlg.setLocation((screenSize.width)/2, (screenSize.height)/2);
@@ -92,6 +93,7 @@ public class Courier_AcceptUI extends JPanel{
 					
 					searchDlg.setLayout(null);
 					searchDlg.setVisible(true);
+					}
 					
 				}
 				
@@ -105,7 +107,7 @@ public class Courier_AcceptUI extends JPanel{
 				
 				public void actionPerformed(ActionEvent e) {
 					// TODO Auto-generated method stub
-					
+					if(TestIfConnect.ifConnect()){
 					String ID = UserInfoUI.getUserID();
 					businID = ID.substring(0, 8);
 					addDlg = new MyDialog();
@@ -153,6 +155,7 @@ public class Courier_AcceptUI extends JPanel{
 		            mylabel.setVisible(false);
 		            addDlg.setLayout(null);
 					addDlg.setVisible(true);
+					}
 				}
 			});
 		

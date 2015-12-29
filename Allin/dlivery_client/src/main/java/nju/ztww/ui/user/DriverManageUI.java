@@ -24,6 +24,7 @@ import confligUI.MyTable;
 import confligUI.MyTextField;
 import nju.ztww.bl.commodity.IsEmpty;
 import nju.ztww.serviceimpl.OrderServiceImpl;
+import nju.ztww.ui.main.TestIfConnect;
 import nju.ztww.vo.CarManageVO;
 import nju.ztww.vo.DriverMessageVO;
 import nju.ztww.vo.LoadingVO;
@@ -110,6 +111,7 @@ public class DriverManageUI extends JPanel{
 			  addButton.addActionListener(new ActionListener(){
 
 					public void actionPerformed(ActionEvent e) {
+						if(TestIfConnect.ifConnect()){
 						driverMessageVO=(DriverMessageVO) orderServiceImpl.getOrder(10);
 						dlg= new MyDialog(); 
 						dlg.setSize(new Dimension(400, 500));
@@ -168,6 +170,7 @@ public class DriverManageUI extends JPanel{
 			            mylabel.setVisible(false);
 			            dlg.setLayout(null);
 						dlg.setVisible(true);
+						}
 					}
 					});
 			  deleteButton.addActionListener(new ActionListener(){
@@ -185,6 +188,7 @@ public class DriverManageUI extends JPanel{
 			  sendButton.addActionListener(new ActionListener(){
 
 					public void actionPerformed(ActionEvent e) {
+						if(TestIfConnect.ifConnect()){
 						for(DriverMessageVO DriverMessageVOTemp : allDriverMessageVO){
 							String result=orderServiceImpl.endSales(DriverMessageVOTemp, 10);
 							 System.out.println(result);
@@ -192,10 +196,12 @@ public class DriverManageUI extends JPanel{
 						allDriverMessageVO.clear();
 						defaultTableModel.setRowCount(0);
 					}
+					}
 			  });
 			  findButton.addActionListener(new ActionListener(){
 
 					public void actionPerformed(ActionEvent e) {
+						if(TestIfConnect.ifConnect()){
 						dlg= new MyDialog(); 
 						dlg.setSize(new Dimension(350, 150));
 			            dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
@@ -207,6 +213,7 @@ public class DriverManageUI extends JPanel{
 			            dlg.add(findtextArea);
 			            dlg.setLayout(null);
 						dlg.setVisible(true);
+						}
 					}
 			  });
 			  this.add(findButton);
