@@ -53,6 +53,7 @@ public class EditInit extends EditPanel{
 			addMatrix();
 		    panel.removeAll();
 			init.setBounds(0, 0, 750, 450);
+			init.setVisible(true);
 		//	init.repaint();
 			panel.add(init);
 			//init.repaint();
