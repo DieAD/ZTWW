@@ -24,7 +24,7 @@ public class EditBusiness extends EditPanel{
     Header header = new Header();
     MyLabel label1 = new MyLabel("付款单：",JLabel.LEFT);
     MyLabel label2 = new MyLabel("收款单：",JLabel.LEFT);
-    EditPanel scrollPanel2 = new EditPanel(new String[]{"收款日期","收款金额","收款快递员","订单条形码"},new Object[][]{{new String("2015/11"),new Integer(100),new String("000002"),new String("00000001")}});
+    EditPanel scrollPanel2 = new EditPanel(new String[]{"收款日期","收款金额","收款快递员","订单条形码"},null);
 	public EditBusiness(String[] strings,Object[][] objects){
 		super(strings,objects);
 		this.setBackground(new Color(250, 240, 230));
@@ -32,14 +32,16 @@ public class EditBusiness extends EditPanel{
 		scrollPanel2.remove(button2);
 		scrollPanel2.remove(button3);
 		
-		header.setBounds(0, 0, 690, 25);
-		label1.setBounds(0, 25, 690, 25);
-		label2.setBounds(0,225,690,25);
-		this.scrollPane.setBounds(0, 50, 690, 175);
-		scrollPanel2.setBounds(0, 250, 690, 175);
-		
-		this.scrollPane.setBackground(new Color(250, 240, 230));
-		scrollPanel2.setBackground(new Color(250, 240, 230)); //by zyz
+		header.setBounds(0, 0, 670, 25);
+		label1.setBounds(0, 25, 670, 25);
+		label1.setForeground(new Color(255,255,255));
+		label2.setBounds(0,225,670,25);
+		label2.setForeground(new Color(255,255,255));
+		this.scrollPane.setBounds(0, 50, 670, 175);
+		scrollPanel2.setBounds(0, 250, 670, 160);
+		scrollPanel2.setOpaque(false);
+//		this.scrollPane.setBackground(new Color(250, 240, 230));
+//		scrollPanel2.setBackground(new Color(250, 240, 230)); //by zyz
 		
 		this.add(header);
 		this.add(label1);
@@ -69,6 +71,8 @@ public class EditBusiness extends EditPanel{
     		jbox1 =   new MyComboBox(startTime);
     		jbox2 = new MyComboBox(endTime);
     		this.setLayout(new GridLayout(1,5));
+    		label1.setForeground(new Color(255,255,255));
+    		label2.setForeground(new Color(255,255,255));
     		this.add(label1);
     		//this.add(text1);
     		this.add(jbox1);
@@ -76,6 +80,7 @@ public class EditBusiness extends EditPanel{
     		//this.add(text2);
     		this.add(jbox2);
     		this.add(button1);
+    		this.setOpaque(false);
     		button1.addActionListener(new Listener());
     	}
 	}

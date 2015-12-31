@@ -54,15 +54,15 @@ public class ClerkOfCenterUi extends JFrame {
 	}
 	public void setPosition(){
 		this.setLayout(null);
-		navigationpanel.setBounds(0, 100, 150, 500);
-		Theme.setBounds(150, 0, 750, 60);
-		editSearch.setBounds(150, 100, 750, 450);
-		ArriveMidpanel.setBounds(150, 100, 750, 450);
-		Transferpanel.setBounds(150, 100, 750, 450);
-		ArriveEndpanel.setBounds(150, 100, 750, 450);
-		CarloadPanel.setBounds(150, 100, 750, 450);
-		findStoragePanel.setBounds(150, 100, 750, 450);
-		personInfo.setBounds(150, 100, 750, 450);
+		navigationpanel.setBounds(25, 150, 150, 400);
+		Theme.setBounds(200, 0, 670, 120);
+		editSearch.setBounds(200,120,670,410);
+		ArriveMidpanel.setBounds(200,120,670,410);
+		Transferpanel.setBounds(200,120,670,410);
+		ArriveEndpanel.setBounds(200,120,670,410);
+		CarloadPanel.setBounds(200,120,670,410);
+		findStoragePanel.setBounds(200,120,670,410);
+		personInfo.setBounds(200,120,670,410);
 		//注掉
 	
 //		this.add(navigationpanel);
@@ -82,6 +82,10 @@ public class ClerkOfCenterUi extends JFrame {
 		arraylist.add(findStoragePanel);
 		arraylist.add(editSearch);
 		arraylist.add(personInfo);
+		for(JPanel panel : arraylist){
+			panel.setVisible(false);
+			panel.setOpaque(false);
+		}
 		navigationpanel.ArriveMid.addActionListener(new ClerkOfCenterController(this, ArriveMidpanel, arraylist));
 		navigationpanel.Transfer.addActionListener(new ClerkOfCenterController(this, Transferpanel, arraylist));
 //		navigationpanel.ArriveEnd.addActionListener(new ClerkOfCenterController(this, ArriveEndpanel, arraylist));

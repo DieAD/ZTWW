@@ -18,19 +18,19 @@ public class MyButton extends JButton {
 		switch (a) {
 		case 'a':
 			this.setIcon(new ImageIcon("photo/submit.png"));
-			this.setBounds(620, 400, 80, 30);
+			this.setBounds(570, 370, 80, 30);
 			break;
 		case 'b':
 			this.setIcon(new ImageIcon("photo/add.png"));
-			this.setBounds(530, 400, 80, 30);
+			this.setBounds(440, 370, 80, 30);
 			break;
 		case 'c':
 			this.setIcon(new ImageIcon("photo/delete.png"));
-			this.setBounds(440, 400, 80, 30);
+			this.setBounds(310, 370, 80, 30);
 			break;
 		case 'd':
 			this.setIcon(new ImageIcon("photo/search.png"));
-			this.setBounds(350, 400, 80, 30);
+			this.setBounds(180, 370, 80, 30);
 		default:
 			break;
 		}

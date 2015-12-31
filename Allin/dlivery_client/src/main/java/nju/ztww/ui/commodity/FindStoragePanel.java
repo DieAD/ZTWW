@@ -2,25 +2,15 @@ package nju.ztww.ui.commodity;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Vector;
 
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-import confligUI.MyButton;
-import confligUI.MyComboBox;
-import confligUI.MyDialog;
-import confligUI.MyLabel;
-import confligUI.MyTextField;
 import nju.ztww.bl.commodity.IsEmpty;
 import nju.ztww.bl.commodity.StringToInt;
 import nju.ztww.po.CarManagePO;
@@ -35,6 +25,13 @@ import nju.ztww.vo.ShippingVO;
 import nju.ztww.vo.StorageListLineofInVO;
 import nju.ztww.vo.StorageListLineofOutVO;
 import nju.ztww.vo.TransferVO;
+import confligUI.MyButton;
+import confligUI.MyComboBox;
+import confligUI.MyDialog;
+import confligUI.MyLabel;
+import confligUI.MyScrollPane;
+import confligUI.MyTable;
+import confligUI.MyTextField;
 
 /**
  * 查看库存面板
@@ -94,7 +91,7 @@ public class FindStoragePanel extends JPanel {
 	   private MyButton sureTransferButton=new MyButton();
 	  
 	   DefaultTableModel defaultTableModel ;
-	   static JTable table;
+	   static MyTable table;
 	   
 	   java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit()
 				.getScreenSize();
@@ -141,43 +138,43 @@ public class FindStoragePanel extends JPanel {
 				  String[] n = { "快递编号","入库日期", "目的地", "区号", "排号", "架号" ,"位号","状态","选择"};
 			  
 			  //创建表格: 建立一个显示二维数组数据的表格，且可以显示列的名称。 
-				  defaultTableModel=new DefaultTableModel(p,n){
-					  public Class getColumnClass(int column) {
-				            for (int row = 0; row < getRowCount(); row++)  {
-				                Object o = getValueAt(row, column);
-				                if(column==8){
-				                	return Boolean.class;
-				                }
-				                if (o != null)
-				                {
-				                    return o.getClass();
-				                }
-				            }
-
-				            return Object.class;
-				        }
-					
-				  };
+//				  defaultTableModel=new DefaultTableModel(p,n){
+//					  public Class getColumnClass(int column) {
+//				            for (int row = 0; row < getRowCount(); row++)  {
+//				                Object o = getValueAt(row, column);
+//				                if(column==8){
+//				                	return Boolean.class;
+//				                }
+//				                if (o != null)
+//				                {
+//				                    return o.getClass();
+//				                }
+//				            }
+//
+//				            return Object.class;
+//				        }
+//					
+//				  };
 //			  defaultTableModel = new DefaultTableModel( playerInfo,Names); 
-			  table = new JTable(defaultTableModel);       //字段名称
-			  Dimension size = table.getTableHeader().getPreferredSize();
-		
-			  size.height = 30;//设置新的表头高度40
-			  table.getTableHeader().setPreferredSize(size);
-			  table.setAutoResizeMode(JTable.AUTO_RESIZE_NEXT_COLUMN);
+			  table = new MyTable(new DefaultTableModel(p,n));       //字段名称
+//			  Dimension size = table.getTableHeader().getPreferredSize();
+//		
+//			  size.height = 30;//设置新的表头高度40
+//			  table.getTableHeader().setPreferredSize(size);
+//			  table.setAutoResizeMode(JTable.AUTO_RESIZE_NEXT_COLUMN);
 			//  table.setPreferredScrollableViewportSize(new Dimension( 550,
 //			                60));
 			  
 			  //绑定滚动条
-			  JScrollPane scrollPane = new JScrollPane(table);
-		      table.setRowHeight(25);
+			  MyScrollPane scrollPane = new MyScrollPane(table);
+		    //  table.setRowHeight(25);
 		      //
-			  scrollPane.setBounds(0, 0, 700, 400);
-				scrollPane.getViewport().setOpaque(false);
-				scrollPane.setOpaque(false);
-				table.getTableHeader().setBackground(new Color(249,231,212));//208,168,125
-				table.setBackground(new Color(208,168,125)); //226,203,170
-			  //
+//			  scrollPane.setBounds(0, 0, 700, 400);
+//				scrollPane.getViewport().setOpaque(false);
+//				scrollPane.setOpaque(false);
+//				table.getTableHeader().setBackground(new Color(249,231,212));//208,168,125
+//				table.setBackground(new Color(208,168,125)); //226,203,170
+//			  //
 			  addLoadOrder.addActionListener(new ActionListener(){
 
 					public void actionPerformed(ActionEvent e) {

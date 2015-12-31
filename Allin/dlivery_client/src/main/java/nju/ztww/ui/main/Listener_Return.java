@@ -7,9 +7,11 @@ public class Listener_Return implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
+		SwiftController.bg.removeAll();
 		Login.frame.getContentPane().removeAll();
 		Login.frame.getContentPane().add(Login.panel);
 		Login.frame.repaint();
+		
 	}
 
 }

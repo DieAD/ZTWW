@@ -82,15 +82,15 @@ public class StorageUi extends JFrame implements Runnable{
 	}
 	public void setPosition(){
 		this.setLayout(null);
-		editSearch.setBounds(150, 100, 750, 450);
-		navigationpanel.setBounds(0, 100, 150, 500);
-		lablePanel.setBounds(150, 0, 750, 60);
-		outofStoragepanel.setBounds(150, 100, 750, 450);
-		inofStoragepanel.setBounds(150, 100, 750, 450);
-		storagecheckpanel.setBounds(150, 100, 750, 450);
-		storagepanpanel.setBounds(150, 100, 750, 450);
-		storagetiaopanel.setBounds(150, 100, 750, 450);
-		personInfo.setBounds(150, 100, 750, 450);
+		editSearch.setBounds(200,120,670,410);
+		navigationpanel.setBounds(25, 150, 150, 400);
+		lablePanel.setBounds(200, 0, 670, 120);
+		outofStoragepanel.setBounds(200,120,670,410);
+		inofStoragepanel.setBounds(200,120,670,410);
+		storagecheckpanel.setBounds(200,120,670,410);
+		storagepanpanel.setBounds(200,120,670,410);
+		storagetiaopanel.setBounds(200,120,670,410);
+		personInfo.setBounds(200,120,670,410);
 		//storagebaojingpanel.setBounds(150, 100, 750, 450);
 		this.add(navigationpanel);
 		this.add(lablePanel);

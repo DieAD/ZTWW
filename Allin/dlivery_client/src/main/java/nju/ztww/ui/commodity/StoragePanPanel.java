@@ -1,7 +1,6 @@
 package nju.ztww.ui.commodity;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,48 +12,29 @@ import java.util.Vector;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-
-
-
-
-
-
-
-
-
-
-import org.apache.poi.ss.usermodel.DataFormat;
-
+import nju.ztww.bl.commodity.CheckOrderBL;
+import nju.ztww.bl.commodity.PanExcelDaoBL;
+import nju.ztww.bl.commodity.PlayMusic;
+import nju.ztww.po.TracePO;
+import nju.ztww.service.CommodityListService;
+import nju.ztww.serviceimpl.CommodityListServiceImpl;
+import nju.ztww.ui.main.TestIfConnect;
+import nju.ztww.ui.main.UserInfoUI;
+import nju.ztww.vo.StorageListLineofInVO;
 import confligUI.MyButton;
 import confligUI.MyDialog;
 import confligUI.MyLabel;
+import confligUI.MyScrollPane;
+import confligUI.MyTable;
 import confligUI.MyTextField;
-import nju.ztww.bl.commodity.CheckOrderBL;
-import nju.ztww.bl.commodity.GetStockListBL;
-import nju.ztww.bl.commodity.PanExcelDaoBL;
-import nju.ztww.bl.commodity.PlayMusic;
-import nju.ztww.po.StorageListLineofInPO;
-import nju.ztww.po.TracePO;
-import nju.ztww.service.CommodityListService;
-import nju.ztww.service.CommodityService;
-import nju.ztww.serviceimpl.CommodityListServiceImpl;
-import nju.ztww.serviceimpl.CommodityServiceImp;
-import nju.ztww.ui.main.TestIfConnect;
-import nju.ztww.ui.main.UserInfoUI;
-import nju.ztww.vo.OrderVO;
-import nju.ztww.vo.StorageListLineofInVO;
-import nju.ztww.vo.StorageListVO;
 
 public class StoragePanPanel extends JPanel  implements ActionListener{
 	DefaultTableModel defaultTableModel;
-	JTable  table;
+	MyTable  table;
 	public MyLabel time=new MyLabel();
 	public MyTextField timefield=new MyTextField();
 	public MyLabel countall=new MyLabel("总数量");
@@ -82,6 +62,7 @@ public class StoragePanPanel extends JPanel  implements ActionListener{
 	  Font font11=new Font("微软雅黑",Font.BOLD,20);
 	   time.setFont(font11);	
 	   time.setText("此次盘点时间：");
+	   time.setForeground(new Color(255,255,255));
 	   time.setBounds(20, 0, 150, 30);
 	   Font font1=new Font("微软雅黑",Font.PLAIN,15);
 	   timefield.setFont(font1);
@@ -90,24 +71,26 @@ public class StoragePanPanel extends JPanel  implements ActionListener{
 	   timefield.setText(dateFormat.format(data));
 	   //重新盘点按钮
 	   panagain.setFont(font1);
-	   panagain.setBounds(450, 0, 120, 30);
+	   panagain.setBounds(420, 0, 120, 30);
 	   panagain.setIcon(new ImageIcon("photo/wj_pandian.png"));
 	   panagain.setBorderPainted(false);
 	   panagain.addActionListener(this);
 	   countall.setFont(font1);
+	   countall.setForeground(new Color(255,255,255));
 	   //countall.setEnabled(false);
 	   baojing.setFont(font1);
-	   baojing.setBounds(520, 370, 100, 30);
-	   baojingshuliang.setBounds(620, 370, 80, 30);
+	   baojing.setForeground(new Color(255,255,255));
+	   baojing.setBounds(490, 370, 100, 30);
+	   baojingshuliang.setBounds(590, 370, 80, 30);
 	   baojingshuliang.setEditable(false);
-	   countall.setBounds(550,340, 60, 30);
-	   countshuliang.setBounds(620, 340, 80, 30);
+	   countall.setBounds(520,340, 60, 30);
+	   countshuliang.setBounds(590, 340, 80, 30);
 	   countshuliang.setEditable(false);
-	   excel.setBounds(580, 0, 120, 30);
+	   excel.setBounds(550, 0, 120, 30);
 	   excel.setIcon(new ImageIcon("photo/wj_excel.png"));
 	   excel.addActionListener(listenerdao);
 	   excel.setBorderPainted(false);
-	   xiugai.setBounds(580, 420, 140, 30);
+	   xiugai.setBounds(0, 340, 140, 30);
 	   xiugai.setIcon(new ImageIcon("photo/ModifyAlarm.png"));
 	   xiugai.addActionListener(listenerxiugai);
 	   this.add(countall);
@@ -131,19 +114,19 @@ public class StoragePanPanel extends JPanel  implements ActionListener{
 				  
 	  //创建表格: 建立一个显示二维数组数据的表格，且可以显示列的名称。 
 		defaultTableModel = new DefaultTableModel( playerInfo,Names); 
-		table = new JTable( defaultTableModel);       //字段名称
-		Dimension size = table.getTableHeader().getPreferredSize();
-		size.height = 30;//设置新的表头高度40
-		table.getTableHeader().setPreferredSize(size);
-		table.setAutoResizeMode(JTable.AUTO_RESIZE_NEXT_COLUMN);
-		table.getTableHeader().setBackground(new Color(249,231,212));//208,168,125
-		table.setBackground(new Color(208,168,125)); //226,203,170
+		table = new MyTable( defaultTableModel);       //字段名称
+//		Dimension size = table.getTableHeader().getPreferredSize();
+//		size.height = 30;//设置新的表头高度40
+//		table.getTableHeader().setPreferredSize(size);
+//		table.setAutoResizeMode(JTable.AUTO_RESIZE_NEXT_COLUMN);
+//		table.getTableHeader().setBackground(new Color(249,231,212));//208,168,125
+//		table.setBackground(new Color(208,168,125)); //226,203,170
 		//绑定滚动条
-		JScrollPane scrollPane = new JScrollPane(table);
-		 table.setRowHeight(25);
-		scrollPane.setBounds(0, 40, 700, 300);
-		scrollPane.getViewport().setOpaque(false);
-		scrollPane.setOpaque(false);
+		MyScrollPane scrollPane = new MyScrollPane(table);
+//		 table.setRowHeight(25);
+		scrollPane.setBounds(0, 40, 670, 300);
+//		scrollPane.getViewport().setOpaque(false);
+//		scrollPane.setOpaque(false);
 		this.add(scrollPane); 
 }
   public void actionPerformed(ActionEvent e) {

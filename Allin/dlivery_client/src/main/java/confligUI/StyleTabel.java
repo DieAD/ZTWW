@@ -7,10 +7,12 @@ import java.awt.Dimension;
  
 import java.util.Enumeration;
  
+
 import javax.swing.JTable;
 import javax.swing.RowSorter;
 import javax.swing.table.DefaultTableCellRenderer;
  
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
@@ -28,10 +30,45 @@ import javax.swing.table.TableRowSorter;
 public class StyleTabel extends JTable 
 {
     private String[] color = null; //用于设定行颜色的数组
+    colorTableRender colorRender = new colorTableRender ();  
+   
+
+public class colorTableRender extends DefaultTableCellRenderer {
+
+public Component getTableCellRendererComponent(JTable table,
+        Object value, boolean isSelected, boolean hasFocus, int row,
+        int column) {
+    Component cell = super.getTableCellRendererComponent(table, value,
+            isSelected, hasFocus, row, column);
+    if (row <6)  //这里设置行数
+        cell.setBackground(Color.WHITE);
+    else
+        cell.setBackground(new Color(0xee,0xee,0xee));
+    return cell;
+
+}
+}
  
-    public StyleTabel() 
+    public StyleTabel(DefaultTableModel defaultTableModel) 
     {
-        super();
+        super(defaultTableModel);
+        this.getColumn(0).setCellRenderer(colorRender);//A,B,C分别代表列名
+        this.getColumn(1).setCellRenderer(colorRender);
+        this.getColumn(2).setCellRenderer(colorRender);
+        this.setShowHorizontalLines(false);
+       this.setShowVerticalLines(false);
+        paintRow(); //将奇偶行分别设置为不同颜色
+        
+        //setFixColumnWidth(this); //固定表格的列宽
+         
+        //通过点击表头来排序列中数据resort data by clicking table header
+        RowSorter<TableModel> sorter = new TableRowSorter<TableModel>(this.getModel());
+        this.setRowSorter(sorter);
+         
+        this.setIntercellSpacing(new Dimension(5,5)); //设置数据与单元格边框的眉边距
+         
+        //根据单元内的数据内容自动调整列宽resize column width accordng to content of cell automatically
+        fitTableColumns(this);
     }
  
     public StyleTabel(Object[][] rowData, Object[] columnNames) 

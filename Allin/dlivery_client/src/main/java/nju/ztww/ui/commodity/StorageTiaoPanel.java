@@ -2,7 +2,6 @@ package nju.ztww.ui.commodity;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -11,27 +10,24 @@ import java.util.Vector;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-import confligUI.MyButton;
-import confligUI.MyComboBox;
-import confligUI.MyDialog;
-import confligUI.MyLabel;
-import confligUI.MyTextField;
 import nju.ztww.service.CommodityListService;
 import nju.ztww.serviceimpl.CommodityListServiceImpl;
 import nju.ztww.ui.main.TestIfConnect;
 import nju.ztww.ui.main.UserInfoUI;
-
-
-
 import nju.ztww.vo.StorageListLineofInVO;
+import confligUI.MyButton;
+import confligUI.MyComboBox;
+import confligUI.MyDialog;
+import confligUI.MyLabel;
+import confligUI.MyScrollPane;
+import confligUI.MyTable;
+import confligUI.MyTextField;
 
 public class StorageTiaoPanel extends JPanel {
 	DefaultTableModel defaultTableModel;
-	JTable  table;
+	MyTable  table;
 	 java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit()
 				.getScreenSize();
 	public ArrayList<StorageListLineofInVO> arraylist=new ArrayList<StorageListLineofInVO>() ;//存储一个库存单的信息
@@ -82,6 +78,7 @@ public class StorageTiaoPanel extends JPanel {
 		this.add(tiaozheng);
 		this.add(tijiao);
 	  xuanze.setBounds(20, 10, 60, 30);
+	  xuanze.setForeground(new Color(255,255,255));
 	  dbtype.setBounds(90, 10, 100, 30);
 	  showbutton.setBounds(200, 10, 100, 30);
 	  showbutton.setIcon(new ImageIcon("photo/wj_show.png"));
@@ -98,19 +95,19 @@ public class StorageTiaoPanel extends JPanel {
 						  
 			  //创建表格: 建立一个显示二维数组数据的表格，且可以显示列的名称。 
 				defaultTableModel = new DefaultTableModel( playerInfo,Names); 
-				table = new JTable( defaultTableModel);       //字段名称
-				Dimension size = table.getTableHeader().getPreferredSize();
-				size.height = 30;//设置新的表头高度40
-				table.getTableHeader().setPreferredSize(size);
-				table.setAutoResizeMode(JTable.AUTO_RESIZE_NEXT_COLUMN);
+				table = new MyTable( defaultTableModel);       //字段名称
+//				Dimension size = table.getTableHeader().getPreferredSize();
+//				size.height = 30;//设置新的表头高度40
+//				table.getTableHeader().setPreferredSize(size);
+//				table.setAutoResizeMode(JTable.AUTO_RESIZE_NEXT_COLUMN);
 				//绑定滚动条
-				JScrollPane scrollPane = new JScrollPane(table);
-				 table.setRowHeight(25);
-				 table.getTableHeader().setBackground(new Color(249,231,212));//208,168,125
-				 table.setBackground(new Color(208,168,125)); //226,203,170
-				scrollPane.setBounds(0, 40, 700, 360);
-				scrollPane.getViewport().setOpaque(false);
-				scrollPane.setOpaque(false);
+				 MyScrollPane scrollPane = new MyScrollPane(table);
+//				 table.setRowHeight(25);
+//				 table.getTableHeader().setBackground(new Color(249,231,212));//208,168,125
+//				 table.setBackground(new Color(208,168,125)); //226,203,170
+				scrollPane.setBounds(0, 40, 670, 310);
+//				scrollPane.getViewport().setOpaque(false);
+//				scrollPane.setOpaque(false);
 				this.add(scrollPane); 
 		}
 	 

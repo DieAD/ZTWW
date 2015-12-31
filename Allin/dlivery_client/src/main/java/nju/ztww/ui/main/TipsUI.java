@@ -17,7 +17,7 @@ public class TipsUI extends JPanel implements Runnable{
 	private boolean ifrun=true;
 	Thread t=new Thread(this);
 	public TipsUI(){
-		tip.setBounds(350, 15, 160, 20);
+		tip.setBounds(200, 90, 670, 30);
 		tip.setFont(new Font(Font.DIALOG,1,15));
 		tip.setForeground(new Color(155,122,90));
 		tip.setText("");
@@ -28,13 +28,13 @@ public class TipsUI extends JPanel implements Runnable{
 		t.start();
 	}
 	
-	 public void paintComponent(Graphics g){
-			super.paintComponent(g);
-			
-			Image background=new ImageIcon("photo/Tips.png").getImage();
-			g.drawImage(background, 0,0,null);
-			
-		}
+//	 public void paintComponent(Graphics g){
+//			super.paintComponent(g);
+//			
+//			Image background=new ImageIcon("photo/Tips.png").getImage();
+//			g.drawImage(background, 0,0,null);
+//			
+//		}
 	 public Color getColor(){
 		 switch(i){
 		 case 0:

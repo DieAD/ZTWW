@@ -30,9 +30,10 @@ public class TestGManagerUI {
 //		int height=Toolkit.getDefaultToolkit().getScreenSize().height;
 //		frame.setLocation((width-900)/2, (height-600)/2);
 //		frame.setResizable(false);
-		
-		MenuPanel.setBounds(0, 100, 150, 500);
-		Theme.setBounds(150, 0, 750, 60);
+//		menuePanel.setBounds(25, 150, 150, 400);
+//    	Theme.setBounds(200, 0, 670, 120);
+		MenuPanel.setBounds(25, 150, 150, 400);
+		Theme.setBounds(200, 0, 670, 120);
 		personInfo.setVisible(false);
 //		manageSalaryUI.setBounds(210,60,690,480)
 //		
@@ -56,8 +57,9 @@ public class TestGManagerUI {
 	//	panelList.add(viewFormsUI);
 		
 		for(JPanel p : panelList){
-			p.setBounds(150,100,750,450);
+			p.setBounds(200,120,670,410);
 			p.setVisible(false);
+			p.setOpaque(false);
 // 			frame.add(p);
 //			p.setVisible(false);
 		}

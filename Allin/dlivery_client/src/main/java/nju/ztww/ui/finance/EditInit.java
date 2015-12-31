@@ -37,6 +37,8 @@ public class EditInit extends EditPanel{
     	this.add(button);
     	button.addActionListener(new Listener(this));
     	setTable();
+    	this.setOpaque(false);
+    	this.setBounds(200,120,670,410);
     	this.setVisible(false);
     }
     

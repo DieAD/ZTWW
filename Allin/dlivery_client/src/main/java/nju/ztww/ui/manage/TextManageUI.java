@@ -35,12 +35,12 @@ public class TextManageUI {
 		// frame.setResizable(false);
 
 		//
-		panel.setBounds(0, 100, 150, 500);
-		lablePanel.setBounds(150, 0, 750, 60);
-		userManagePanel.setBounds(150, 100, 750, 450);
-		editSearch.setBounds(150, 100, 750, 450);
+		panel.setBounds(25, 150, 150, 400);
+		lablePanel.setBounds(200, 0, 670, 120);
+		userManagePanel.setBounds(200,120,670,410);
+		editSearch.setBounds(200,120,670,410);
 		personInfo = new PersonalMesageUI();
-		personInfo.setBounds(150, 100, 750, 450);
+		personInfo.setBounds(200,120,670,410);
 		personInfo.setVisible(false);
 
 		// 注掉

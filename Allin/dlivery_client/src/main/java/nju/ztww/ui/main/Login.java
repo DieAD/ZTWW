@@ -2,9 +2,9 @@ package nju.ztww.ui.main;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
@@ -19,8 +19,6 @@ import javax.swing.JTextField;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 
-import confligUI.MyTextField;
-
 
 //最近修改： 王焕 11-17
 //date 11-18 name wh
@@ -34,6 +32,7 @@ public class Login extends JFrame{
 	int iy = 100;
 	//
 	Image icon1=new ImageIcon("photo2/feidie.png").getImage();
+	Image icon2=new ImageIcon("photo2/bg.png").getImage();
 	Border border2 = new LineBorder(new Color(232,181,53), 1, true);
 	Border border1 = new LineBorder(new Color(155,122,90),1,true);
 	JLabel theme = new JLabel();
@@ -321,7 +320,10 @@ public class Login extends JFrame{
 	}
 
 	
-	
+//	public void paintComponent(Graphics g){
+//		super.paintComponent(g);
+//		g.drawImage(icon2, 0, 0, 900, 600, null);
+//	}
 	
 
 }

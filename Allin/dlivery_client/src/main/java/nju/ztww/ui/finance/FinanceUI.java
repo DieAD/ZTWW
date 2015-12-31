@@ -48,8 +48,8 @@ public class FinanceUI  {
     }
     
     public void setPanelBounds(){
-    	menuePanel.setBounds(0, 100, 150, 500);
-    	Theme.setBounds(150, 0, 750, 60);
+    	menuePanel.setBounds(25, 150, 150, 400);
+    	Theme.setBounds(200, 0, 670, 120);
     	personInfo.setBounds(150, 100, 750, 450);
     	//
 //    	accountPanel.setBounds(210,60,690,480);
@@ -73,7 +73,7 @@ public class FinanceUI  {
     	//-------
     	
     	for(EditPanel p : panelList){
-    		p.setBounds(150,100,750,450);
+    		p.setBounds(200,120,670,410);
     		//frame.getContentPane().add(p);
     		p.setVisible(false);
     		

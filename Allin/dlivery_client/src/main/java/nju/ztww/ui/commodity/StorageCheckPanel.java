@@ -8,11 +8,13 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Vector;
 
-import javax.swing.*;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-import confligUI.MyLabel;
-import confligUI.MyTextField;
 import nju.ztww.bl.commodity.DateChooser;
 import nju.ztww.bl.commodity.WayToString;
 import nju.ztww.service.CommodityListService;
@@ -21,6 +23,10 @@ import nju.ztww.ui.main.TestIfConnect;
 import nju.ztww.ui.main.UserInfoUI;
 import nju.ztww.vo.StorageListLineofInVO;
 import nju.ztww.vo.StorageListLineofOutVO;
+import confligUI.MyLabel;
+import confligUI.MyScrollPane;
+import confligUI.MyTable;
+import confligUI.MyTextField;
 
 public class StorageCheckPanel extends JPanel {
 	Font myFont = new Font("微软雅黑", Font.PLAIN, 12);
@@ -54,8 +60,8 @@ public class StorageCheckPanel extends JPanel {
  public CommodityListService commoditylistservice=new CommodityListServiceImpl();
  public DateChooser chos1=new DateChooser("yy/MM/dd");
  public DateChooser chos2=new DateChooser("yy/MM/dd");
- public JTable table1;
- public JTable table2;
+ public MyTable table1;
+ public MyTable table2;
  public StorageCheckPanel() {
 	// TODO Auto-generated constructor stub
 	 setup();
@@ -64,7 +70,16 @@ public class StorageCheckPanel extends JPanel {
 	   //入库的表格
 	 this.setBackground(new Color(250, 240, 230));
 	 this.setLayout(null);
+	 //
+	  label1.setForeground(new Color(255,255,255));
+	  label2.setForeground(new Color(255,255,255));
+	  labelin.setForeground(new Color(255,255,255));
+	  labelout.setForeground(new Color(255,255,255));
+	  labelinnumber.setForeground(new Color(255,255,255));
+	  labeloutnumber.setForeground(new Color(255,255,255));
+	 //
 	   label1.setBounds(0, 0, 70, 20);
+	   
 	   //textfieldBegin.setBounds(70, 0, 70, 20);
 	   chos1.setBounds(70, 0, 70, 20);
 	   label2.setBounds(160, 0, 70, 20);
@@ -99,31 +114,31 @@ public class StorageCheckPanel extends JPanel {
 						  
 			  //创建表格: 建立一个显示二维数组数据的表格，且可以显示列的名称。 
 				defaultTableModel1= new DefaultTableModel( playerInfo,Names); 
-				table1 = new JTable( defaultTableModel1);       //字段名称
-				Dimension size = table1.getTableHeader().getPreferredSize();
+				table1 = new MyTable( defaultTableModel1);       //字段名称
+//				Dimension size = table1.getTableHeader().getPreferredSize();
 				table1.setFont(myFont);
-				size.height = 30;//设置新的表头高度40
-				table1.getTableHeader().setPreferredSize(size);
-				table1.setAutoResizeMode(JTable.AUTO_RESIZE_NEXT_COLUMN);
-				//绑定滚动条
-				JScrollPane scrollPane = new JScrollPane(table1);
-				 table1.setRowHeight(25);
-				 //
-				scrollPane.setBounds(0, 50, 700, 150);//——by zyz
-				scrollPane.getViewport().setOpaque(false);
-				scrollPane.setOpaque(false);
-				table1.getTableHeader().setBackground(new Color(249,231,212));//208,168,125
-				table1.setBackground(new Color(208,168,125)); //226,203,170
+//				size.height = 30;//设置新的表头高度40
+//				table1.getTableHeader().setPreferredSize(size);
+//				table1.setAutoResizeMode(JTable.AUTO_RESIZE_NEXT_COLUMN);
+//				//绑定滚动条
+				MyScrollPane scrollPane = new MyScrollPane(table1);
+//				 table1.setRowHeight(25);
+//				 //
+				scrollPane.setBounds(0, 50, 670, 150);//——by zyz
+//				scrollPane.getViewport().setOpaque(false);
+//				scrollPane.setOpaque(false);
+//				table1.getTableHeader().setBackground(new Color(249,231,212));//208,168,125
+//				table1.setBackground(new Color(208,168,125)); //226,203,170
 				//
 				this.add(scrollPane); 
 				
 				
 				//出库信息的表格
-				labelout.setBounds(300, 240, 100, 30);
+				labelout.setBounds(300, 200, 100, 30);
 				this.add(labelout);
-				labeloutnumber.setBounds(500, 430, 60, 20);
+				labeloutnumber.setBounds(500, 390, 60, 20);
 				this.add(labeloutnumber);
-				textfieldout.setBounds(570, 430, 60, 20);
+				textfieldout.setBounds(570, 390, 60, 20);
 				textfieldout.setEditable(false);
 				this.add(textfieldout);
 				Object[][] playerInfo1 =
@@ -137,21 +152,21 @@ public class StorageCheckPanel extends JPanel {
 											  
 			//创建表格: 建立一个显示二维数组数据的表格，且可以显示列的名称。 
 				defaultTableModel2= new DefaultTableModel( playerInfo1,Names1); 
-			    table2 = new JTable( defaultTableModel2);       //字段名称
-				Dimension size1 = table2.getTableHeader().getPreferredSize();
-				size.height = 30;//设置新的表头高度40
-				table2.getTableHeader().setPreferredSize(size);
-				table2.setAutoResizeMode(JTable.AUTO_RESIZE_NEXT_COLUMN);
+			    table2 = new MyTable( defaultTableModel2);       //字段名称
+//				Dimension size1 = table2.getTableHeader().getPreferredSize();
+//				size.height = 30;//设置新的表头高度40
+//				table2.getTableHeader().setPreferredSize(size);
+//				table2.setAutoResizeMode(JTable.AUTO_RESIZE_NEXT_COLUMN);
 				table2.setFont(myFont);
 									//绑定滚动条
-				JScrollPane scrollPane1 = new JScrollPane(table2);
-				table2.setRowHeight(25);
+				MyScrollPane scrollPane1 = new MyScrollPane(table2);
+//				table2.setRowHeight(25);
 				//
-				scrollPane1.setBounds(0, 280, 700, 150);
-				scrollPane1.getViewport().setOpaque(false);
-				scrollPane1.setOpaque(false);
-				table2.getTableHeader().setBackground(new Color(249,231,212));//208,168,125
-				table2.setBackground(new Color(208,168,125)); //226,203,170
+				scrollPane1.setBounds(0, 230, 670, 150);
+//				scrollPane1.getViewport().setOpaque(false);
+//				scrollPane1.setOpaque(false);
+//				table2.getTableHeader().setBackground(new Color(249,231,212));//208,168,125
+//				table2.setBackground(new Color(208,168,125)); //226,203,170
 				//
 				
 				this.add(scrollPane1);

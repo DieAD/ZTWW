@@ -29,13 +29,14 @@ public class AnnounceUI extends JPanel implements Runnable{
 		text.setFont(new Font(Font.DIALOG,0,15));
 		notice.setBounds(0, 0, 100, 20);
 		notice.setFont(new Font(Font.DIALOG,1,15));
-		notice.setForeground(new Color(165,42,42));
+		notice.setForeground(new Color(255,255,255));
 		this.add(notice);
 		this.add(text);
 
 		this.setLayout(null);
-		this.setBounds(150, 550, 750, 50);
+		this.setBounds(200, 550, 520, 30);
 		this.setVisible(true);
+		this.setOpaque(false);
 		t.start();
 	}
 	
@@ -43,7 +44,7 @@ public class AnnounceUI extends JPanel implements Runnable{
 			super.paintComponent(g);
 			
 			Image background=new ImageIcon("photo/bottom.png").getImage();
-			g.drawImage(background, 0,0,null);
+			//g.drawImage(background, 0,0,null);
 		}
 
 	
