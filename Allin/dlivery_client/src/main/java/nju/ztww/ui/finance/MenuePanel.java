@@ -20,9 +20,9 @@ public class MenuePanel extends JPanel {
        MyButton businessButton = new MyButton(4);
        MyButton initButton = new MyButton(5);
        MyButton exportFormButton = new MyButton(6);
-       MyButton personInfoButton = new MyButton(7);
-       MyButton checkOrderButton  = new MyButton(8);
-       MyButton logoutButton = new MyButton(9);
+       MyButton personInfoButton = new MyButton(6);
+       MyButton checkOrderButton  = new MyButton(7);
+       MyButton logoutButton = new MyButton(8);
        
 
 	   final ImageIcon accout = new ImageIcon("photo/account.png");
@@ -81,7 +81,7 @@ public class MenuePanel extends JPanel {
     	   this.add(collectionButton);
     	   this.add(paymentButton);
     	   this.add(initButton);
-    	   this.add(exportFormButton);
+    	  // this.add(exportFormButton);
     	   this.add(personInfoButton);
     	   this.add(checkOrderButton);
     	   this.add(logoutButton);

@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -19,10 +18,11 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 import nju.ztww.thread.WriteHandlerThread;
+import confligUI.MyButton;
 
 public class AnnounceForManageUI extends JPanel implements Runnable{
 	private boolean ifOK=true;
-	private JButton add=new JButton();
+	private MyButton add=new MyButton();
 	private JButton sure=new JButton("确定发送");
 	private JDialog dlg=new JDialog();
 	private JLabel label=new JLabel("请输入消息");
@@ -32,12 +32,13 @@ public class AnnounceForManageUI extends JPanel implements Runnable{
 			.getScreenSize();
 	Thread t=new Thread(this);
 	public AnnounceForManageUI(){
-		final ImageIcon ADD=new ImageIcon("photo/1.gif");
-		add.setIcon(null);
-		add.setBounds(700, 5, 40, 40);
-		textlabel.setBounds(600, -5, 100, 30);
+		this.setLayout(null);
+		//final ImageIcon ADD=new ImageIcon("photo2/AddAnoucement.png");
+		add.setIcon(new ImageIcon("photo2/AddAnouncement.png"));
+		add.setBounds(520, 0, 100, 25);
+		textlabel.setBounds(400, -5, 100, 30);
 		textlabel.setFont(new Font(Font.DIALOG,0,14));
-		textlabel.setForeground(new Color(135,51,36));
+		textlabel.setForeground(new Color(255,255,255));
 		add.addActionListener(new ActionListener(){
 
 			public void actionPerformed(ActionEvent e) {
@@ -55,10 +56,11 @@ public class AnnounceForManageUI extends JPanel implements Runnable{
 			}
 			
 		});
-		this.add(textlabel);
+		//this.add(textlabel);
 		this.add(add);
-		this.setLayout(null);
-		this.setBounds(150, 550, 750, 50);
+	
+		this.setBounds(200, 550, 670, 30);
+		this.setOpaque(false);
 		this.setVisible(true);
 		t.start();
 	}
@@ -81,8 +83,8 @@ public class AnnounceForManageUI extends JPanel implements Runnable{
 	 public void paintComponent(Graphics g){
 			super.paintComponent(g);
 			
-			Image background=new ImageIcon("photo/bottom.png").getImage();
-			g.drawImage(background, 0,0,null);
+//			Image background=new ImageIcon("photo/bottom.png").getImage();
+//			g.drawImage(background, 0,0,null);
 			
 		}
 

@@ -12,13 +12,20 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 
-import confligUI.MyComboBox;
-import confligUI.MyLabel;
-import confligUI.MyTextField;
 import nju.ztww.dao.InsDO;
 import nju.ztww.service.ManageService;
 import nju.ztww.serviceimpl.ManageServiceImpl;
 import nju.ztww.ui.main.TestIfConnect;
+import confligUI.MyComboBox;
+import confligUI.MyLabel;
+import confligUI.MyTextField;
+
+
+
+
+
+
+
 
 public class GManager_ManageOrgaUI extends JPanel {
 	String[] position = { "快递员", "营业厅业务员", "中转中心业务员", "中转中心仓库管理人员", "财务人员",
@@ -270,4 +277,5 @@ public class GManager_ManageOrgaUI extends JPanel {
 		}
 
 	}
+	
 }

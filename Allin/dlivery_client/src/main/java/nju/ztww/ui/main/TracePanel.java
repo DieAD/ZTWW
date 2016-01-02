@@ -85,7 +85,7 @@ public class TracePanel extends JPanel {
     		this.repaint();
     		try   
     		{   
-    		Thread.currentThread().sleep(100);//毫秒   
+    		Thread.currentThread().sleep(300);//毫秒   
     		}   
     		catch(Exception e){}
     	}
@@ -110,11 +110,13 @@ public class TracePanel extends JPanel {
 	public void getPart(){
 		this.setLayout(null);
 		for(int i=0;i<trace.length;i++){
-			if((i==0&&trace.length<1)||i==trace.length-1){
+			if((i==0&&trace.length>1)){
 			tracelist.add(new partTracePanel(1,trace[i]));}
-			else {
+			else if(i!=trace.length-1){
 			tracelist.add(new partTracePanel(0,trace[i]));	
-			}	
+			}else if(trace.length>1&&i==trace.length-1){
+				tracelist.add(new partTracePanel(2,trace[i]));	
+			}
 		}
 		int count = 0;
 		for(partTracePanel panel : tracelist){
@@ -179,11 +181,11 @@ public class TracePanel extends JPanel {
 		public void preState(){
 			try {
 				if(index ==1){
-				state = ImageIO.read(new FileInputStream("photo2/point(2).png"));}
+				state = ImageIO.read(new FileInputStream("photo2/top(2).png"));}
 				else if(index==0){
-				state = ImageIO.read(new FileInputStream("photo2/Pointline(3).png"));	
+				state = ImageIO.read(new FileInputStream("photo2/middle.png"));	
 				}else if(index==2){
-				state = ImageIO.read(new FileInputStream("photo2/p4.png"));	
+				state = ImageIO.read(new FileInputStream("photo2/bottom.png"));	
 				}
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
@@ -196,7 +198,7 @@ public class TracePanel extends JPanel {
 		public void paintComponent(Graphics g){
 			super.paintComponent(g);
 //			g.drawImage(background, 0, 0, 900, 600, null);
-			g.drawImage(state, 60,10, null);
+			g.drawImage(state, 60,0, null);
 		}
 	}
 }
