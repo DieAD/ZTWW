@@ -93,9 +93,9 @@ public class GManager_CheckOrders extends JPanel {
 //		order9Button.setBounds(10, 250, 120, 30);
 //		order10Button.setText("付款单");
 //		order10Button.setBounds(10, 280, 120, 30);
-		sureButton.setBounds(550, 390, 120, 30);
+		sureButton.setBounds(550, 380, 100, 25);
 		sureButton.setBorderPainted(false);
-		sureButton.setIcon(new ImageIcon("photo/GCheckOrders.png"));
+		sureButton.setIcon(new ImageIcon("photo2/shenpidanju.png"));
 		order1Button.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {

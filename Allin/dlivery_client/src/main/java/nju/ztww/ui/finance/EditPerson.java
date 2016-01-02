@@ -120,7 +120,7 @@ public class EditPerson extends EditPanel{
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
 		String path = loadImage();
-		Image background=new ImageIcon("photo/PersonInfoBG.png").getImage();
+		Image background=new ImageIcon("photo2/graybg.png").getImage();
 		g.drawImage(background, 0,0,null);
 		Image touxiang=new ImageIcon(path).getImage();
 		g.drawImage(touxiang, 30,30,null);

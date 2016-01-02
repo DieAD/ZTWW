@@ -67,6 +67,8 @@ public class GManager_ManageSalaryUI extends JPanel{
 	public GManager_ManageSalaryUI(){
 		group.add(timely);
 		group.add(monthly);
+		timely.setOpaque(false);
+		monthly.setOpaque(false);
 		String[] name = {" "};
 		this.setLayout(null);
 		positionLabel.setText("职位");

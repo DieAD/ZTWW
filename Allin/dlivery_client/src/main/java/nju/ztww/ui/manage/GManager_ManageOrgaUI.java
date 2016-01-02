@@ -2,6 +2,8 @@ package nju.ztww.ui.manage;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -83,11 +85,11 @@ public class GManager_ManageOrgaUI extends JPanel {
 
 		modifyButton.setIcon(new ImageIcon("photo/modify.png"));
 		modifyButton.setBorderPainted(false);
-		modifyButton.setBounds(540, 400, 80, 30);
+		modifyButton.setBounds(540, 350, 80, 30);
 
 		deletebButton.setIcon(new ImageIcon("photo/delete.png"));
 		deletebButton.setBorderPainted(false);
-		deletebButton.setBounds(430, 400, 80, 30);
+		deletebButton.setBounds(430, 350, 80, 30);
 		deletebButton.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
@@ -276,6 +278,11 @@ public class GManager_ManageOrgaUI extends JPanel {
 			return index;
 		}
 
+	}
+	
+	public void paintComponent(Graphics g){
+		Image background=new ImageIcon("photo2/graybg.png").getImage();
+		g.drawImage(background, 0,0,null);
 	}
 	
 }

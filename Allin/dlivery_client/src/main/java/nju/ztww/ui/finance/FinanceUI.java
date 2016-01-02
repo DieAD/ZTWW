@@ -78,6 +78,7 @@ public class FinanceUI  {
     		p.setVisible(false);
     		
     	}
+    	personInfo.setOpaque(false);
     	accountPanel.setVisible(true);
     	menuePanel.accountButton.addActionListener(new ListenerTable(frame,accountPanel,panelList,0));
     	menuePanel.paymentButton.addActionListener(new ListenerTable(frame,paymentPanel,panelList,0));
