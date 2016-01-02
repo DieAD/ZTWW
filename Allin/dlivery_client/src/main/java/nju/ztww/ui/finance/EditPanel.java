@@ -76,7 +76,7 @@ public class EditPanel extends JPanel {
 //    	   button1.setBounds(145,450,100,20);
 //    	   button2.setBounds(295,350, 100, 20);
 //    	   button3.setBounds(445,450, 100, 20);
-    	   button1.setIcon(new ImageIcon("photo/update.png"));
+    	   button1.setIcon(new ImageIcon("photo2/update.png"));
     	   this.add(button1);
 //    	   this.add(button2);
 //    	   this.add(button3);

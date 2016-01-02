@@ -2,6 +2,8 @@ package nju.ztww.ui.manage;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -12,13 +14,20 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 
-import confligUI.MyComboBox;
-import confligUI.MyLabel;
-import confligUI.MyTextField;
 import nju.ztww.dao.InsDO;
 import nju.ztww.service.ManageService;
 import nju.ztww.serviceimpl.ManageServiceImpl;
 import nju.ztww.ui.main.TestIfConnect;
+import confligUI.MyComboBox;
+import confligUI.MyLabel;
+import confligUI.MyTextField;
+
+
+
+
+
+
+
 
 public class GManager_ManageOrgaUI extends JPanel {
 	String[] position = { "快递员", "营业厅业务员", "中转中心业务员", "中转中心仓库管理人员", "财务人员",
@@ -76,11 +85,11 @@ public class GManager_ManageOrgaUI extends JPanel {
 
 		modifyButton.setIcon(new ImageIcon("photo/modify.png"));
 		modifyButton.setBorderPainted(false);
-		modifyButton.setBounds(540, 400, 80, 30);
+		modifyButton.setBounds(540, 350, 80, 30);
 
 		deletebButton.setIcon(new ImageIcon("photo/delete.png"));
 		deletebButton.setBorderPainted(false);
-		deletebButton.setBounds(430, 400, 80, 30);
+		deletebButton.setBounds(430, 350, 80, 30);
 		deletebButton.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
@@ -270,4 +279,10 @@ public class GManager_ManageOrgaUI extends JPanel {
 		}
 
 	}
+	
+	public void paintComponent(Graphics g){
+		Image background=new ImageIcon("photo2/graybg.png").getImage();
+		g.drawImage(background, 0,0,null);
+	}
+	
 }

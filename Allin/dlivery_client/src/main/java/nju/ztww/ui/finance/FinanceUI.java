@@ -1,12 +1,11 @@
 package nju.ztww.ui.finance;
 
-import java.awt.Toolkit;
 import java.util.ArrayList;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import nju.ztww.ui.user.PersonalMesageUI;
 import nju.ztww.ui.user.ThemeLabelUI;
 //date 11-18 name wh//
 public class FinanceUI  {
@@ -44,6 +43,7 @@ public class FinanceUI  {
 //		frame.getContentPane().add(menuePanel);
 //		frame.setVisible(true);
     	paymentPanel.add(paymentPanel.button3);
+    	paymentPanel.button1.setIcon(new ImageIcon("photo/submit.png"));
     	personInfo.setVisible(false);
     }
     
@@ -78,6 +78,7 @@ public class FinanceUI  {
     		p.setVisible(false);
     		
     	}
+    	personInfo.setOpaque(false);
     	accountPanel.setVisible(true);
     	menuePanel.accountButton.addActionListener(new ListenerTable(frame,accountPanel,panelList,0));
     	menuePanel.paymentButton.addActionListener(new ListenerTable(frame,paymentPanel,panelList,0));

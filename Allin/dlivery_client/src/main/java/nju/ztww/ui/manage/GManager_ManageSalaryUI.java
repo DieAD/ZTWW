@@ -1,7 +1,6 @@
 package nju.ztww.ui.manage;
 
 
-import java.awt.BorderLayout;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -14,17 +13,16 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
-import javax.swing.JTextArea;
 
-import confligUI.MyComboBox;
-import confligUI.MyLabel;
-import confligUI.MyTextField;
 import nju.ztww.dao.DCFormDO;
 import nju.ztww.po.MUserPO;
 import nju.ztww.service.ManageService;
 import nju.ztww.serviceimpl.ManageServiceImpl;
 import nju.ztww.ui.main.TestIfConnect;
-import nju.ztww.vo.UserSalaryVO;
+import confligUI.MyButton;
+import confligUI.MyComboBox;
+import confligUI.MyLabel;
+import confligUI.MyTextField;
 //
 
 
@@ -33,9 +31,9 @@ public class GManager_ManageSalaryUI extends JPanel{
 	String[] Position = {" ", "快递员", "营业厅业务员", "中转中心业务员", "仓库管理员", "财务人员", "总经理", "管理员"};
 	String names;
 	String[] Places = {"北京", "上海", "深圳", "广州", "南京"};
-	JButton sureButton1 = new JButton();
-	JButton sureButton2 = new JButton();
-	JButton searchButton = new JButton();
+	MyButton sureButton1 = new MyButton();
+	MyButton sureButton2 = new MyButton();
+	MyButton searchButton = new MyButton();
 	MyLabel positionLabel = new MyLabel();
 	MyLabel nameLabel = new MyLabel();
 	MyLabel idLabel = new MyLabel();
@@ -69,6 +67,8 @@ public class GManager_ManageSalaryUI extends JPanel{
 	public GManager_ManageSalaryUI(){
 		group.add(timely);
 		group.add(monthly);
+		timely.setOpaque(false);
+		monthly.setOpaque(false);
 		String[] name = {" "};
 		this.setLayout(null);
 		positionLabel.setText("职位");
@@ -110,7 +110,7 @@ public class GManager_ManageSalaryUI extends JPanel{
 		RMB.setText("RMB");
 		RMB.setBounds(490, 200, 60, 30);
 		
-		sureButton1.setIcon(new ImageIcon("photo/Gsure.png"));
+		sureButton1.setIcon(new ImageIcon("photo/sure.png"));
 		sureButton1.setBounds(580, 200, 80, 30);
 		
 		fromLabel.setText("出发地");
@@ -123,7 +123,7 @@ public class GManager_ManageSalaryUI extends JPanel{
 		from.setBounds(50, 300, 130, 30);
 		to.setBounds(230, 300, 130, 30);
 		distance.setBounds(410, 300, 130, 30);
-		sureButton2.setIcon(new ImageIcon("photo/Gsure.png"));
+		sureButton2.setIcon(new ImageIcon("photo/sure.png"));
 		sureButton2.setBorderPainted(false);
 		sureButton1.setBorderPainted(false);
 		sureButton2.setBounds(580, 300, 80, 30);
@@ -161,8 +161,8 @@ public class GManager_ManageSalaryUI extends JPanel{
 		//
 		searchButton2.setBounds(220, 100, 30, 30);//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 		searchButton.setBounds(220,180,30,30);
-		searchButton.setIcon(new ImageIcon("photo/Gsearch.png"));
-		searchButton2.setIcon(new ImageIcon("photo/Gsearch.png"));
+		searchButton.setIcon(new ImageIcon("photo2/littleSearch(2).png"));
+		searchButton2.setIcon(new ImageIcon("photo2/littleSearch(2).png"));
 		this.add(searchButton2);
 		position.addItemListener(new Listener1(position,name1));
 		searchButton2.addActionListener(new Listener2(position,name1));
@@ -329,7 +329,7 @@ public class GManager_ManageSalaryUI extends JPanel{
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
 		
-		Image background=new ImageIcon("photo/ManaSalary2.png").getImage();
+		Image background=new ImageIcon("photo2/bg3.png").getImage();
 		g.drawImage(background, 0,0,null);
 
 

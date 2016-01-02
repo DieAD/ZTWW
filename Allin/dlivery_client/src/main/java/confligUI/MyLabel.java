@@ -10,17 +10,21 @@ public class MyLabel extends JLabel {
 	public MyLabel(String str){
 		super(str);
 		this.setFont(myFont);
+
 		this.setForeground(new Color(225,225,225));
+
 	}
 	
 	public MyLabel(){
 		super();
 		this.setFont(myFont);
+		this.setForeground(new Color(255,255,255));
 	}
 
 	public MyLabel(String string, int center) {
 		// TODO Auto-generated constructor stub
 		super(string, center);
 		this.setFont(myFont);
+		this.setForeground(new Color(255,255,255));
 	}
 }

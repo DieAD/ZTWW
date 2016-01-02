@@ -34,11 +34,11 @@ public class GManager_ViewFormsUI extends JPanel {
 	public final String[] Month = { "1", "2", "3", "4", "5", "6", "7", "8",
 			"9", "10", "11", "12" };
 	MyLabel state = new MyLabel();
-	ImageIcon state1 = new ImageIcon("photo/state1.png");
-	ImageIcon state2 = new ImageIcon("photo/state2.png");;
+	ImageIcon state1 = new ImageIcon("photo2/BusinessForm.png");
+	ImageIcon state2 = new ImageIcon("photo2/BusinessForm2.png");;
 	MyLabel cost = new MyLabel();
-	ImageIcon cost1 = new ImageIcon("photo/cost1.png");
-	ImageIcon cost2 = new ImageIcon("photo/cost2.png");;
+	ImageIcon cost1 = new ImageIcon("photo2/BenefitForm.png");
+	ImageIcon cost2 = new ImageIcon("photo2/BenefitForm2.png");;
 	MyLabel year = new MyLabel();
 	MyLabel month = new MyLabel();
 	MyComboBox monthBox = new MyComboBox(Month);
@@ -62,7 +62,7 @@ public class GManager_ViewFormsUI extends JPanel {
 		month.setText("月");
 		month.setBounds(520, 10, 20, 20);
 		state.setIcon(state2);
-		state.setBounds(20, 10, 100, 20);
+		state.setBounds(0, 10, 120, 20);
 		state.addMouseListener(new MouseListener() {
 			public void mouseReleased(MouseEvent e) {
 				// TODO Auto-generated method stub
@@ -92,7 +92,7 @@ public class GManager_ViewFormsUI extends JPanel {
 		});
 
 		cost.setIcon(cost1);
-		cost.setBounds(120, 10, 100, 20);
+		cost.setBounds(120, 10, 120, 20);
 		cost.addMouseListener(new MouseListener() {
 
 			public void mouseReleased(MouseEvent e) {
