@@ -122,11 +122,11 @@ public class FindStoragePanel extends JPanel {
 			final ImageIcon dataLable=new ImageIcon("photo/dataLable.gif");
 		
 //		     find.setBounds(220, 420, 110, 38);
-		     find.setIcon(new ImageIcon("photo/ViewStorage.png"));
+		     find.setIcon(new ImageIcon("photo/littleCheckStorage.png"));
 //		     addTransferOrder.setBounds(360, 420, 110, 38);
-		     addTransferOrder.setIcon(new ImageIcon("photo/TransitOrder.png"));
+		     addTransferOrder.setIcon(new ImageIcon("photo/littleTransfer.png"));
 //		     addLoadOrder.setBounds(500, 420, 110, 38);
-		     addLoadOrder.setIcon(new ImageIcon("photo/LoadingOrder.png"));
+		     addLoadOrder.setIcon(new ImageIcon("photo/CarLoadingOrder.png"));
 
 
 		      final Object[][] p =

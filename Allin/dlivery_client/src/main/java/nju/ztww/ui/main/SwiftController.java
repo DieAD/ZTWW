@@ -111,7 +111,7 @@ public class SwiftController {
 			   bg.add(panel);
 			   bg.repaint();
 	    }
-		  // userInfoUI.setOpaque(true);
+		   userInfoUI.setOpaque(true);
 		   frame.add(bg);
 		   frame.repaint();
 	   }else{

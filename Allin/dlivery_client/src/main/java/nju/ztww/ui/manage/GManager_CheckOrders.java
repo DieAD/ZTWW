@@ -42,7 +42,7 @@ public class GManager_CheckOrders extends JPanel {
 	OrdersButton order9Button = new OrdersButton(9);
 	OrdersButton order10Button = new OrdersButton(10);
 	JButton sureButton = new JButton();
-	MyTable table;
+	MyTable2 table;
 	JPanel tablePanel = new JPanel();
 	int index = 0;
 
@@ -207,9 +207,9 @@ public class GManager_CheckOrders extends JPanel {
 			values[i][4] = new String("1");
 			i++;
 		}
-		tableModel = new DefaultTableModel(values,new String[]{"  ", "单据号", "当前状态", "最后处理人", "详情"});
-		table = new MyTable(tableModel);
-		table.setBounds(0,0,535, 370);
+	//	tableModel = new DefaultTableModel(values,new String[]{"  ", "单据号", "当前状态", "最后处理人", "详情"});
+		table = new MyTable2(values);
+		//table.setBounds(0,0,535, 370);
 		tablePanel.add(table);
 		tablePanel.repaint();
 	}
@@ -232,11 +232,11 @@ public class GManager_CheckOrders extends JPanel {
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			ArrayList<IDVO> list = new ArrayList<IDVO>();
-			int count = tableModel.getRowCount();
+			int count = table.tableModel.getRowCount();
 			for(int i=0;i<count;i++){
-				boolean flag = (Boolean) tableModel.getValueAt(i, 0);
+				boolean flag = (Boolean)table.tableModel.getValueAt(i, 0);
 				if(flag){
-					IDVO vo = new IDVO((String)tableModel.getValueAt(i, 1));
+					IDVO vo = new IDVO((String)table.tableModel.getValueAt(i, 1));
 					list.add(vo);
 				}
 			}

@@ -1,5 +1,7 @@
 package nju.ztww.ui.main;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.io.FileInputStream;
@@ -8,13 +10,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 
 import nju.ztww.bl.commodity.CheckOrderBL;
 import nju.ztww.po.TracePO;
+import confligUI.MyLabel;
+import confligUI.MyTextField;
 /**
  * 
  * @author Administrator
@@ -24,30 +28,42 @@ import nju.ztww.po.TracePO;
 public class TracePanel extends JPanel {
 	JFrame frame = new JFrame();
 	String id;
-    partTracePanel part1 = new partTracePanel(1,"2015/11/25 12:00 ：                                                             营业厅已揽件     上海");
-    partTracePanel part2 = new partTracePanel(0,"2015/11/29 01:00 ：                                                            中转中心已接收  南京");
-    String[] trace = {"2015/11/25 12:00 ：                                                             营业厅已揽件     上海","2015/11/29 01:00 ：                                                            中转中心已接收  南京",
-    		"2015/11/29 01:00 ：                                                            快件已入库等待出库  南京","2015/11/29 01:00 ：                                                            快件已出库  南京","2015/11/29 01:00 ：                                                            中转中心已接收  南京",
-    		"2015/11/29 01:00 ：                                                            营业厅已接收  南京","2015/11/29 01:00 ：                                                            阿呆派送中  南京"} ;
-    Image title;
+    partTracePanel part1 = new partTracePanel(1,"2015/11/25 12:00 ：  营业厅已揽件     上海");
+    partTracePanel part2 = new partTracePanel(0,"2015/11/29 01:00 ：    中转中心已接收  南京");
+    String[] trace = {"2015/11/25 12:00 ：  营业厅已揽件     上海","2015/11/29 01:00 ： 中转中心已接收  南京",
+    		"2015/11/29 01:00 ： 快件已入库等待出库  南京","2015/11/29 01:00 ：  快件已出库  南京","2015/11/29 01:00 ：  中转中心已接收  南京",
+    		"2015/11/29 01:00 ：  营业厅已接收  南京","2015/11/29 01:00 ：    阿呆派送中  南京"} ;
+   // Image title;
     Image background;
     ArrayList<partTracePanel> tracelist = new ArrayList<partTracePanel>();
     Thread thread ;
-    JButton button = new JButton("返回");
+    JButton button = new JButton("");
     CheckOrderBL checkOrder = new CheckOrderBL();
-    	
+    MyLabel title = new MyLabel("物流轨迹");	
     public void getTrace(){
     	ArrayList<TracePO> traceList = checkOrder.findTrace(id);
     	int size = traceList.size();
-    	trace = new String[size];
-    	for(int i=0;i<size;i++){
-    		trace[i] = traceList.get(i).getTrace();
-    	}
+//    	trace = new String[size];
+//    	for(int i=0;i<size;i++){
+//    		trace[i] = traceList.get(i).getTrace();
+//    	}
     }
     public TracePanel(String id){
     	this.id = id;
     	getTrace();
-    	button.setBounds(700,500,150,50);
+    	this.setLayout(null);
+    	//
+    	Font myFont = new Font("微软雅黑", Font.PLAIN, 24);
+    	
+    	title.setBounds(80, 50, 100, 30);
+    	title.setFont(myFont);
+    	title.setForeground(new Color(255,255,255));
+    	this.add(title);
+    	title.setOpaque(false);
+    	button.setBounds(700,500,103,30);
+    	button.setLayout(null);
+    	button.setIcon(new ImageIcon("photo2/back(2).png"));
+    	button.setOpaque(false);
     	this.add(button);
     	button.addActionListener(new Listener_Return());
     	//
@@ -69,7 +85,7 @@ public class TracePanel extends JPanel {
     		this.repaint();
     		try   
     		{   
-    		Thread.currentThread().sleep(1000);//毫秒   
+    		Thread.currentThread().sleep(100);//毫秒   
     		}   
     		catch(Exception e){}
     	}
@@ -94,23 +110,24 @@ public class TracePanel extends JPanel {
 	public void getPart(){
 		this.setLayout(null);
 		for(int i=0;i<trace.length;i++){
-			if(i<trace.length-1){
+			if((i==0&&trace.length<1)||i==trace.length-1){
 			tracelist.add(new partTracePanel(1,trace[i]));}
-			else{
+			else {
 			tracelist.add(new partTracePanel(0,trace[i]));	
 			}	
 		}
 		int count = 0;
 		for(partTracePanel panel : tracelist){
-			panel.setBounds(0, 100+50*count, 700, 50);
+			panel.setBounds(100, 100+50*count, 700, 50);
 			count++;		//	this.add(panel);
 		}
 	}
 	
 	public void getImage(){
 		 try {
-			title =ImageIO.read(new FileInputStream("Trace/title2.png"));
-			background = ImageIO.read(new FileInputStream("Trace/background.png"));
+		//	title =ImageIO.read(new FileInputStream("Trace/title2.png"));
+			background = ImageIO.read(new FileInputStream("photo2/bg.png"));
+			//button = ImageIO.read(new FileInputStream("photo2/bg.png"));
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -123,7 +140,7 @@ public class TracePanel extends JPanel {
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
 		g.drawImage(background, 0, 0, 900, 600, null);
-	    g.drawImage(title, -30, 20, 700, 70, null);
+	   // g.drawImage(title, -30, 20, 700, 70, null);
 	}
 	
 //	public static void main(String[] args){
@@ -137,7 +154,7 @@ public class TracePanel extends JPanel {
 	 */
 	public class partTracePanel extends JPanel{
 		Image state;
-		JTextField Date = new JTextField();
+		MyTextField Date = new MyTextField();
 		int index;
 		String info;
 		public partTracePanel(int index,String info){
@@ -145,20 +162,28 @@ public class TracePanel extends JPanel {
 			this.info = info;
 			preState();
 			init();
+			this.setOpaque(false);
 		}
 		public void init(){
+			Font myFont = new Font("微软雅黑", Font.PLAIN, 18);
 			this.setLayout(null);
 			Date.setEditable(false);
 			Date.setText(info);
 			Date.setBounds(100, 3, 800, 30);
+			Date.setFont(myFont);
+			Date.setOpaque(false);
+			Date.setForeground(new Color(255,255,255));
+			Date.setBorder(null);
 			this.add(Date);
 		}
 		public void preState(){
 			try {
 				if(index ==1){
-				state = ImageIO.read(new FileInputStream("Trace/accepetted.png"));}
-				else{
-				state = ImageIO.read(new FileInputStream("Trace/todeal.png"));	
+				state = ImageIO.read(new FileInputStream("photo2/point(2).png"));}
+				else if(index==0){
+				state = ImageIO.read(new FileInputStream("photo2/Pointline(3).png"));	
+				}else if(index==2){
+				state = ImageIO.read(new FileInputStream("photo2/p4.png"));	
 				}
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
@@ -170,8 +195,8 @@ public class TracePanel extends JPanel {
 		}
 		public void paintComponent(Graphics g){
 			super.paintComponent(g);
-			g.drawImage(background, 0, 0, 900, 600, null);
-			g.drawImage(state, 20, 0, 50, 39, null);
+//			g.drawImage(background, 0, 0, 900, 600, null);
+			g.drawImage(state, 60,10, null);
 		}
 	}
 }
