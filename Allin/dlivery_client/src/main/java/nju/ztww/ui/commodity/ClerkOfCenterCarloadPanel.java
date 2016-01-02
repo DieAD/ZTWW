@@ -69,7 +69,7 @@ public class ClerkOfCenterCarloadPanel extends JPanel{
 	
 	private MyButton addButton=new MyButton('b');
 	private MyButton findSureButton=new MyButton();
-	private MyButton findButton=new MyButton('d');
+	private MyButton findButton=new MyButton('b');
 	private MyButton deleteButton=new MyButton('c');
 	private MyButton sendButton=new MyButton('a');
 	private MyButton sureButton=new MyButton();
@@ -100,9 +100,9 @@ public class ClerkOfCenterCarloadPanel extends JPanel{
 //		deleteButton.setIcon(null);
 //		sendButton.setBounds(500, 420, 110, 38);
 //		sendButton.setIcon(null);
-		findButton.setBounds(50, 370, 80, 30);
+//		findButton.setBounds(50, 370, 80, 30);
 //		findButton.setIcon(null);
-
+		findButton.setIcon(new ImageIcon("photo/search.png"));
 		this.setLayout(null);
 		this.add(findButton);
 		this.add(deleteButton);

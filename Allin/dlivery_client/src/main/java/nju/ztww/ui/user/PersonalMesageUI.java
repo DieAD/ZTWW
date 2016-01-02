@@ -38,6 +38,7 @@ public class PersonalMesageUI extends JPanel{
 	private String MyID = UserInfoUI.getUserID();
 	private UserService userService = new UserLoginImpl();
 	private UserVO user;
+	private Font myfont = new Font("微软雅黑", Font.PLAIN, 20);
 	
 	public PersonalMesageUI(){
 
@@ -46,29 +47,29 @@ public class PersonalMesageUI extends JPanel{
 		changeButton.setBounds(430, 370, 110, 40);
 		changeButton.setIcon(change);
 		
-		name.setFont(new Font("SimSun", Font.BOLD, 20));
+		name.setFont(myfont);
 		name.setBounds(270, 50, 132, 41);
 		nametextArea.setBounds(320, 55, 72, 31);
-		sex.setFont(new Font("SimSun", Font.BOLD, 20));
+		sex.setFont(myfont);
 		sex.setBounds(270, 100, 132, 41);
 		sextextArea.setBounds(320, 105, 72, 31);
-		ID.setFont(new Font("SimSun", Font.BOLD, 20));
+		ID.setFont(myfont);
 		ID.setBounds(490, 50, 132, 41);
 		itextArea.setBounds(520, 55, 120, 31);
-		age.setFont(new Font("SimSun", Font.BOLD, 20));
+		age.setFont(myfont);
 		age.setBounds(475, 100, 132, 41);
 		agetextArea.setBounds(520, 105, 120, 31);
-		area.setFont(new Font("SimSun", Font.BOLD, 20));
+		area.setFont(myfont);
 		area.setBounds(270, 150, 132, 41);
 		areatextArea.setBounds(360, 155, 242, 31);
-		position.setFont(new Font("SimSun", Font.BOLD, 20));
+		position.setFont(myfont);
 		position.setBounds(270, 200, 132, 41);
 		positiontextArea.setBounds(320, 205, 222, 31);
 
-		workyear.setFont(new Font("SimSun", Font.BOLD, 20));
+		workyear.setFont(myfont);
 		workyear.setBounds(270, 250, 132, 41);
 		worktextArea.setBounds(360, 255, 182, 31);
-		salary.setFont(new Font("SimSun", Font.BOLD, 20));
+		salary.setFont(myfont);
 		salary.setBounds(270, 300, 132, 41);
 		salarytextArea.setBounds(320, 305, 222, 31);
 		

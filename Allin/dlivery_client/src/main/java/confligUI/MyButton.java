@@ -22,15 +22,15 @@ public class MyButton extends JButton {
 			break;
 		case 'b':
 			this.setIcon(new ImageIcon("photo/add.png"));
-			this.setBounds(440, 370, 80, 30);
+			this.setBounds(470, 370, 80, 30);
 			break;
 		case 'c':
 			this.setIcon(new ImageIcon("photo/delete.png"));
-			this.setBounds(310, 370, 80, 30);
+			this.setBounds(370, 370, 80, 30);
 			break;
 		case 'd':
 			this.setIcon(new ImageIcon("photo/search.png"));
-			this.setBounds(180, 370, 80, 30);
+			this.setBounds(270, 370, 80, 30);
 		default:
 			break;
 		}

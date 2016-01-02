@@ -2,6 +2,7 @@ package nju.ztww.ui.main;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -33,8 +34,8 @@ public class Login extends JFrame{
 	//
 	Image icon1=new ImageIcon("photo2/feidie.png").getImage();
 	//Image icon2=new ImageIcon("photo/Login2.png").getImage();
-	Border border2 = new LineBorder(new Color(232,181,53), 1, true);
-	Border border1 = new LineBorder(new Color(155,122,90),1,true);
+	Border border2 = new LineBorder(new Color(44,76,120), 1, true);
+	Border border1 = new LineBorder(new Color(225,225,225),1,true);
 	JLabel theme = new JLabel();
 	JLabel bg = new JLabel();
 	JLabel orderT = new JLabel();
@@ -51,6 +52,8 @@ public class Login extends JFrame{
 	public static JFrame frame;
 	public static JPanel panel;
 	private MoniDelUI moni;
+	private Font myfont = new Font("微软雅黑", Font.PLAIN, 18);
+	private Color mycolor = new Color(225, 225, 225);
 	
 	public Login(){
 		
@@ -74,22 +77,32 @@ public class Login extends JFrame{
 		bg.setIcon(new ImageIcon("photo/Login2(1).png"));
 		bg.setBounds(0, 0, 900, 600);
 		
-		idlLabel.setIcon(new ImageIcon("photo/id.gif"));
-		idlLabel.setBounds(505, 180, 120, 40);
-		id.setBounds(635, 190, 150, 30);
+//		idlLabel.setIcon(new ImageIcon("photo/id.gif"));
+		idlLabel.setText("ID:");
+		idlLabel.setFont(myfont);
+		idlLabel.setForeground(mycolor);
 		
-		passwordLabel.setIcon(new ImageIcon("photo/password.gif"));
-		passwordLabel.setBounds(505, 220, 120, 40);
-		password.setBounds(635, 230, 150, 30);
+		idlLabel.setBounds(585, 170, 120, 40);
+		id.setBounds(645, 175, 185, 30);
+		
+//		passwordLabel.setIcon(new ImageIcon("photo/password.gif"));
+		passwordLabel.setText("密码:");
+		passwordLabel.setFont(myfont);
+		passwordLabel.setForeground(mycolor);
+		passwordLabel.setBounds(575, 225, 135, 40);
+		password.setBounds(645, 230, 185, 30);
 		loginbButton.setIcon(new ImageIcon("photo/login.png"));
 		loginbButton.setBounds(760, 280, 80, 30);
 		
-		orderT.setIcon(new ImageIcon("photo2/OrderNum.png"));
-		orderT.setBounds(565, 440, 80, 30);
+//		orderT.setIcon(new ImageIcon("photo2/OrderNum.png"));
+		orderT.setText("订单号：");
+		orderT.setFont(myfont);
+		orderT.setForeground(mycolor);
+		orderT.setBounds(575, 440, 105, 30);
 		panel.add(orderT);
-		order.setBounds(655, 440, 150, 30);
+		order.setBounds(665, 440, 170, 30);
 		searchButton.setIcon(new ImageIcon("photo/search.png"));
-		searchButton.setBounds(760, 500, 80, 30);
+		searchButton.setBounds(760, 490, 80, 30);
 		
 		id.setBorder(border1);
 		id.addMouseListener(ad1);
