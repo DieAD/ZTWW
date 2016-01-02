@@ -38,7 +38,7 @@ public class ClerkOfCenterTransferPanel extends JPanel {
 	   DefaultTableModel defaultTableModel;
 
 		private MyButton findSureButton=new MyButton();
-		private MyButton findButton=new MyButton('d');
+		private MyButton findButton=new MyButton('b');
 		private MyButton deleteButton=new MyButton('c');
 		private MyButton sendButton=new MyButton('a');
 		
@@ -60,8 +60,8 @@ public class ClerkOfCenterTransferPanel extends JPanel {
 //			deleteButton.setIcon(null);
 //			sendButton.setBounds(500, 420, 110, 38);
 //			sendButton.setIcon(null);
-			findButton.setBounds(50, 370, 80, 30);
-//			findButton.setIcon(null);
+//			findButton.setBounds(50, 370, 80, 30);  //zyz
+			findButton.setIcon(new ImageIcon("photo/search.png"));
 			this.add(findButton);
 			this.add(deleteButton);
 			this.add(sendButton);

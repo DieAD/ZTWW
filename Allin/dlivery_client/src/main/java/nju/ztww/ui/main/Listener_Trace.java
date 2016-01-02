@@ -3,6 +3,8 @@ package nju.ztww.ui.main;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import javax.swing.ImageIcon;
+
 public class Listener_Trace implements MouseListener {
 	Login frame;
 
@@ -37,12 +39,12 @@ public class Listener_Trace implements MouseListener {
 
 	public void mouseEntered(MouseEvent e) {
 		// TODO Auto-generated method stub
-
+		frame.searchButton.setIcon(new ImageIcon("photo/search2.png"));
 	}
 
 	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
-
+		frame.searchButton.setIcon(new ImageIcon("photo/search.png"));
 	}
 
 }
