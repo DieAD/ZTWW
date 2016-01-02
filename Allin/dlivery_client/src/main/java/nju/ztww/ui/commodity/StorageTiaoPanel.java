@@ -141,8 +141,8 @@ public class StorageTiaoPanel extends JPanel {
              weifield.setBounds(120, 215, 150, 30);
 //             wei.setFont(new Font("黑体",0,18));
              wei.setBounds(20, 210, 100, 40);
-             surebutton.setBounds(200, 280, 70, 30);
-             surebutton.setIcon(new ImageIcon("photo/BusinessSure.png"));
+             surebutton.setBounds(200, 280, 80, 30);
+             surebutton.setIcon(new ImageIcon("photo/Sure.png"));
              dlg.add(qu);
              dlg.add(dbtype2);
              dlg.add(pai);

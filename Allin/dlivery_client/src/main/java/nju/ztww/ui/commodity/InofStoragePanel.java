@@ -188,7 +188,7 @@ public class InofStoragePanel extends JPanel{
 
 
             //surebutton.setBounds(150, 370,70, 30);
-            surebutton.setIcon(new ImageIcon("photo/BusinessSure.png"));
+            surebutton.setIcon(new ImageIcon("photo/Sure.png"));
 
             dlg.add(surebutton);
             

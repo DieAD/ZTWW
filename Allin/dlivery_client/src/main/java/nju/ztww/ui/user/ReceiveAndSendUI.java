@@ -51,7 +51,7 @@ public class ReceiveAndSendUI extends JPanel{
 	private MyLabel mylabel=new MyLabel();
 	private MyButton sureButton=new MyButton();
 	private MyButton findArriveSureButton=new MyButton();
-	private JButton sureTransferButton=new JButton();
+	private MyButton sureTransferButton=new MyButton();
 	
 	 private MyButton findArriveButton=new MyButton('d');
      private MyButton deleteReceiveButton=new MyButton('c');
@@ -128,9 +128,9 @@ public class ReceiveAndSendUI extends JPanel{
 						 SmallscrollPane.setBounds(85, 100, 330, 200);
 						 
 						 findTransfertextArea.setBounds(100, 40, width, hight);
-						 sureTransferButton.setBounds(280,40 , 80, 25);
+						 sureTransferButton.setBounds(280,40 , 80, 30);
 						 sureTransferButton.addActionListener(findTransfer);
-						 sureTransferButton.setIcon(new ImageIcon("photo/BusinessSure.png"));
+						 sureTransferButton.setIcon(new ImageIcon("photo/Sure.png"));
 			            //到达日期
 			            businesstextArea.setBounds(120, 355, width, hight);
 			            businesstextArea.setText(GetDate.getDate());
@@ -157,8 +157,8 @@ public class ReceiveAndSendUI extends JPanel{
 			            dlg.add(business);
 			            dlg.add(businesstextArea);
 			            dlg.add(sureButton);
-			            sureButton.setBounds(336, 432, 70, 30);
-			            sureButton.setIcon(new ImageIcon("photo/BusinessSure.png"));
+			            sureButton.setBounds(336, 432, 80, 30);
+			            sureButton.setIcon(new ImageIcon("photo/Sure.png"));
 			            sureButton.addActionListener(listener);
 			            mylabel.setText("信息未填全！");
 			            mylabel.setBounds(336, 462,100, 40);
@@ -204,9 +204,9 @@ public class ReceiveAndSendUI extends JPanel{
 						dlg.setSize(new Dimension(350, 150));
 			            dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
 			            findArrivetextArea.setBounds(50, 30, 150, 30);
-			            findArriveSureButton.setBounds(240, 30, 70, 30);
+			            findArriveSureButton.setBounds(240, 30, 80, 30);
 			            findArriveSureButton.addActionListener(listener3);
-			            findArriveSureButton.setIcon(new ImageIcon("photo/BusinessSure.png"));
+			            findArriveSureButton.setIcon(new ImageIcon("photo/Sure.png"));
 			            dlg.add(findArriveSureButton);
 			            dlg.add(findArrivetextArea);
 			            dlg.setLayout(null);

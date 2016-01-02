@@ -295,7 +295,7 @@ public class Courier_OrderInputUI extends JPanel{
 			addDlg = new MyDialog();
 			addDlg.setSize(new Dimension(600, 550));
             addDlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
-            sureButton.setIcon(new ImageIcon("photo/courierSure.png"));
+            sureButton.setIcon(new ImageIcon("photo/Sure.png"));
             String  mailingOrderID = orderServiceImpl.getOrderID();
             mylabel.setText("信息未填全！");
             mylabel.setBounds(440, 460, 100, 40);
@@ -352,7 +352,7 @@ public class Courier_OrderInputUI extends JPanel{
             packLabel.setBounds(300, 335, 150, 30);
             pack.setBounds(370, 335, 150, 30);
     
-            sureButton.setBounds(450, 430, 70, 30);
+            sureButton.setBounds(450, 430, 80, 30);
             sureButton.addActionListener(listener);
             
             addDlg.add(numbersLabel);

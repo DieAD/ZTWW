@@ -118,8 +118,8 @@ public class SendUI extends JPanel{
 		            dlg.add(date);
 		            dlg.add(datetextArea);
 		            dlg.add(sureSendButton);
-		            sureSendButton.setBounds(230, 265, 70, 30);
-		            sureSendButton.setIcon(new ImageIcon("photo/BusinessSure.png"));
+		            sureSendButton.setBounds(230, 265, 80, 30);
+		            sureSendButton.setIcon(new ImageIcon("photo/Sure.png"));
 		            sureSendButton.addActionListener(listenerSend);
 		            mylabel.setText("信息未填全！");
 		            mylabel.setBounds(230, 295, 100, 40);
@@ -162,9 +162,9 @@ public class SendUI extends JPanel{
 					dlg.setSize(new Dimension(350, 150));
 		            dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
 		            findSendtextArea.setBounds(50, 30, 150, 30);
-		            findSendSureButton.setBounds(250, 30, 70, 30);
+		            findSendSureButton.setBounds(250, 30, 80, 30);
 		            findSendSureButton.addActionListener(listener2);
-		            findSendSureButton.setIcon(new ImageIcon("photo/BusinessSure.png"));
+		            findSendSureButton.setIcon(new ImageIcon("photo/Sure.png"));
 		            dlg.add(findSendSureButton);
 		            dlg.add(findSendtextArea);
 		            dlg.setLayout(null);

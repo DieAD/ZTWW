@@ -145,7 +145,7 @@ public class OutofStoragePanel extends JPanel {
         
 
         surebutton=new MyButton();
-        surebutton.setIcon(new ImageIcon("photo/BusinessSure.png"));
+        surebutton.setIcon(new ImageIcon("photo/Sure.png"));
         surebutton.setBounds(190, 270, 80, 30);
 
         

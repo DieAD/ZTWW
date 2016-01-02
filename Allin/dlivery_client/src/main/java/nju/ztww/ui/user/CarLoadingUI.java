@@ -181,10 +181,10 @@ public class CarLoadingUI extends JPanel{
 			            dlg.add(business);
 			            dlg.add(businesstextArea);
 			            dlg.add(sureButton);
-			            sureButton.setBounds(460, 270, 70, 30);
+			            sureButton.setBounds(460, 270, 80, 30);
 			            mylabel.setText("信息未填全!");
 			            mylabel.setBounds(460, 300, 100, 40);
-			            sureButton.setIcon(new ImageIcon("photo/courierSure.png"));
+			            sureButton.setIcon(new ImageIcon("photo/Sure.png"));
 			            sureButton.addActionListener(listener);
 
 //			            GridLayout layout = new GridLayout(0,2);
@@ -233,8 +233,8 @@ public class CarLoadingUI extends JPanel{
 						dlg.setSize(new Dimension(350, 150));
 			            dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
 			            findtextArea.setBounds(50, 30, 150, 30);
-			            findSureButton.setBounds(220, 30, 70, 30);
-			            findSureButton.setIcon(new ImageIcon("photo/BusinessSure.png"));
+			            findSureButton.setBounds(220, 30, 80, 30);
+			            findSureButton.setIcon(new ImageIcon("photo/Sure.png"));
 			            findSureButton.addActionListener(listener2);
 			            dlg.add(findSureButton);
 			            dlg.add(findtextArea);
