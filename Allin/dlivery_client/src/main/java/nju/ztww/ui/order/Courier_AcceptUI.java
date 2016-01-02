@@ -113,8 +113,8 @@ public class Courier_AcceptUI extends JPanel{
 					addDlg = new MyDialog();
 					addDlg.setSize(new Dimension(360, 340));
 		            addDlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
-		            sureAddButton.setIcon(new ImageIcon("photo/courierSure.png"));
-		            sureAddButton.setBounds(220, 235, 70, 30);
+		            sureAddButton.setIcon(new ImageIcon("photo/Sure.png"));
+		            sureAddButton.setBounds(220, 235, 80, 30);
 		            mylabel.setText("信息未填全！");
 		            mylabel.setBounds(220, 265, 100, 40);
 		            sureAddButton.addActionListener(listener);

@@ -147,8 +147,8 @@ public class RecieiveMoneyUI extends JPanel{
 			            dlg.add(business);
 			            dlg.add(businesstextArea);
 			            dlg.add(sureButton);
-			            sureButton.setIcon(new ImageIcon("photo/BusinessSure.png"));
-			            sureButton.setBounds(230, 315, 70, 30);
+			            sureButton.setIcon(new ImageIcon("photo/Sure.png"));
+			            sureButton.setBounds(230, 315, 80, 30);
 			            sureButton.addActionListener(listener);
 			            mylabel.setText("信息未填完！");
 			            mylabel.setBounds(230, 345, 100, 40);
@@ -192,9 +192,9 @@ public class RecieiveMoneyUI extends JPanel{
 						dlg.setSize(new Dimension(350, 150));
 			            dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
 			            findtextArea.setBounds(50, 30, 150, 30);
-			            findSureButton.setBounds(240, 30, 70, 30);
+			            findSureButton.setBounds(240, 30, 80, 30);
 			            findSureButton.addActionListener(listener2);
-			            findSureButton.setIcon(new ImageIcon("photo/BusinessSure.png"));
+			            findSureButton.setIcon(new ImageIcon("photo/Sure.png"));
 			            dlg.add(findSureButton);
 			            dlg.add(findtextArea);
 			            dlg.setLayout(null);

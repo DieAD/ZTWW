@@ -243,8 +243,8 @@ public class FindStoragePanel extends JPanel {
 			            dlg.add(datatextArea);
 			    
 			            dlg.add(sureButton);
-			            sureButton.setBounds(190, 360, 70, 30);
-			            sureButton.setIcon(new ImageIcon("photo/BusinessSure.png"));
+			            sureButton.setBounds(190, 360, 80, 30);
+			            sureButton.setIcon(new ImageIcon("photo/Sure.png"));
 			            sureButton.addActionListener(listener);
 			            label1.setVisible(false);
 			            label1.setText("信息未填完！");
@@ -320,8 +320,8 @@ public class FindStoragePanel extends JPanel {
 //			            dlg.add(allOrderText);
 //			            dlg.add(allOrder);
 			            dlg.add(sureTransferButton);
-			            sureTransferButton.setBounds(200, 415, 70, 30);
-			            sureTransferButton.setIcon(new ImageIcon("photo/BusinessSure.png"));
+			            sureTransferButton.setBounds(200, 415, 80, 30);
+			            sureTransferButton.setIcon(new ImageIcon("photo/Sure.png"));
 			            sureTransferButton.addActionListener(listener2);
 			            label2.setVisible(false);
 			            label2.setText("信息未填全！");

@@ -140,11 +140,11 @@ public class ClerkOfCenterArriveMidPanel extends JPanel{
 			 SmallscrollPane.setBounds(85, 100, 330, 200);
 			 
 			 findTransfertextArea.setBounds(100, 25, width, hight);
-			 sureTransferButton.setBounds(280,25 , 70, 30);
-			 sureTransferButton.setIcon(new ImageIcon("photo/BusinessSure.png"));
+			 sureTransferButton.setBounds(280,25 , 80, 30);
+			 sureTransferButton.setIcon(new ImageIcon("photo/Sure.png"));
 			 findCarLoadtextArea.setBounds(100, 65, width, hight);
-			 sureCarLoadButton.setBounds(280,65 , 70, 30);
-			 sureCarLoadButton.setIcon(new ImageIcon("photo/BusinessSure.png"));
+			 sureCarLoadButton.setBounds(280,65 , 80, 30);
+			 sureCarLoadButton.setIcon(new ImageIcon("photo/Sure.png"));
 			 sureCarLoadButton.addActionListener(findCarLoad);
 			 sureTransferButton.addActionListener(findTransfer);
           //中转中心编号
@@ -176,8 +176,8 @@ public class ClerkOfCenterArriveMidPanel extends JPanel{
             dlg.add(businesstextArea);
             dlg.add(sureButton);
             dlg.add(SmallscrollPane);
-            sureButton.setBounds(336, 400, 70, 30);
-            sureButton.setIcon(new ImageIcon("photo/BusinessSure.png"));
+            sureButton.setBounds(336, 400, 80, 30);
+            sureButton.setIcon(new ImageIcon("photo/Sure.png"));
             sureButton.addActionListener(listener);
             mylabel.setText("信息未填全！");
             mylabel.setVisible(false);
@@ -220,9 +220,9 @@ public class ClerkOfCenterArriveMidPanel extends JPanel{
 				dlg.setSize(new Dimension(350, 150));
 	            dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
 	            findtextArea.setBounds(50, 30, 150, 30);
-	            findSureButton.setBounds(240, 30, 70, 30);
+	            findSureButton.setBounds(240, 30, 80, 30);
 	            findSureButton.addActionListener(listener2);
-	            findSureButton.setIcon(new ImageIcon("photo/BusinessSure.png"));
+	            findSureButton.setIcon(new ImageIcon("photo/Sure.png"));
 	            dlg.add(findSureButton);
 	            dlg.add(findtextArea);
 	            dlg.setLayout(null);
