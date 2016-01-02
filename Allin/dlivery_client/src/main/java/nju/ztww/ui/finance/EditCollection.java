@@ -24,10 +24,10 @@ public class EditCollection extends EditPanel{
      public EditCollection(String[] strings, Object[][] objects) {
 		// TODO Auto-generated constructor stub
     	 super( strings, objects);
-    	 this.setBackground(new Color(250, 240, 230));
-    	 this.scrollPane.setBounds(0, 25, 750, 395);//690->750
-    	 this.scrollPane.setBackground(new Color(250, 240, 230));
-    	 this.header.setBounds(0, 0, 750, 25);  //690->750
+    	// this.setBackground(new Color(250, 240, 230));
+    	 this.scrollPane.setBounds(0, 25, 670, 325);//690->750
+    	// this.scrollPane.setBackground(new Color(250, 240, 230));
+    	 this.header.setBounds(0, 0, 670, 25);  //690->750
     	 this.add(header);
     	 this.remove(button1);
     	 this.remove(button2);
@@ -50,13 +50,16 @@ public class EditCollection extends EditPanel{
     	private Listener listener = new Listener();
     	public Header(){
     		this.setLayout(new GridLayout(1,5));
-    		this.setBackground(new Color(250, 240, 230));
+    		//this.setBackground(new Color(250, 240, 230));
+    		label1.setForeground(new Color(255,255,255));
+    		label2.setForeground(new Color(255,255,255));
     		this.add(label1);
     		this.add(text1);
     		this.add(label2);
     		this.add(text2);
     		this.add(button1);
     		button1.addActionListener(listener);
+    		this.setOpaque(false);
     	}
     	
     	  public class Listener implements ActionListener{

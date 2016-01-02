@@ -26,8 +26,8 @@ public class UserInfoUI extends JPanel{
 	Image photo;
 	
 	public UserInfoUI(String userID){
-		
-		this.setBounds(0, 0, 150, 100);
+		this.setBackground(new Color(44,76,120));
+		this.setBounds(25,25, 150, 100);
 		this.setLayout(null);
 		MyLabel label=new MyLabel();
 		USERID.setText(userID);
@@ -45,7 +45,7 @@ public class UserInfoUI extends JPanel{
 			super.paintComponent(g);
 			loadImage();
 			Image background=new ImageIcon("photo/User.png").getImage();
-			g.drawImage(background, 0,0,null);
+			//g.drawImage(background, 0,0,null);
 			g.drawImage(photo, 10, 10, 55, 55, null);
 			
 		}
@@ -63,6 +63,10 @@ public class UserInfoUI extends JPanel{
 		text2.setFont(new Font("微软雅黑", Font.PLAIN, 15));
 		text3.setFont(new Font("微软雅黑", Font.PLAIN, 15));
 		text4.setFont(new Font("微软雅黑", Font.PLAIN, 15));
+		text1.setForeground(new Color(255,255,255));
+		text2.setForeground(new Color(255,255,255));
+		text3.setForeground(new Color(255,255,255));
+		text4.setForeground(new Color(255,255,255));
 		text1.setText(name);
 		text2.setText(position);
 		text3.setText(idField);

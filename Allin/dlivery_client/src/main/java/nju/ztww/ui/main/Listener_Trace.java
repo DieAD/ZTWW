@@ -18,13 +18,14 @@ public class Listener_Trace implements MouseListener {
 
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
-
+		if(TestIfConnect.ifConnect()){
 		String id = frame.order.getText();
 		TracePanel panel = new TracePanel(id);
 		panel.setBounds(0, 0, 900, 600);
 		frame.getContentPane().removeAll();
 		frame.getContentPane().add(panel);
 		frame.repaint();
+		}
 		// panel.animate();
 
 	}

@@ -55,9 +55,9 @@ public class RMIHelper {
     	}catch (RemoteException e){
     		System.out.println("和服务器断开连接");
     		remindDialog r=new remindDialog(IP,port,serviceName);
-    		while(r.ifLine){};
     		
-    		return r.service;
+    		
+    		return null;
     	}
     	
     	catch(Exception e){

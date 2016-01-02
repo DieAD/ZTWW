@@ -23,6 +23,7 @@ import confligUI.MyScrollPane;
 import confligUI.MyTable;
 import confligUI.MyTextField;
 import nju.ztww.serviceimpl.OrderServiceImpl;
+import nju.ztww.ui.main.TestIfConnect;
 import nju.ztww.ui.user.ResultMessageUI;
 import nju.ztww.vo.LoadingVO;
 import nju.ztww.vo.TransferVO;
@@ -59,7 +60,7 @@ public class ClerkOfCenterTransferPanel extends JPanel {
 //			deleteButton.setIcon(null);
 //			sendButton.setBounds(500, 420, 110, 38);
 //			sendButton.setIcon(null);
-			findButton.setBounds(530, 400, 80, 30);
+			findButton.setBounds(50, 370, 80, 30);
 //			findButton.setIcon(null);
 			this.add(findButton);
 			this.add(deleteButton);
@@ -96,11 +97,13 @@ public class ClerkOfCenterTransferPanel extends JPanel {
 				  sendButton.addActionListener(new ActionListener(){
 
 						public void actionPerformed(ActionEvent e) {
+							if(TestIfConnect.ifConnect()){
 							for(TransferVO alltransferVOTemp : alltransferVO){
 								String result=orderServiceImpl.endSales(alltransferVOTemp, 8);
 							}
 							alltransferVO.clear();
 							defaultTableModel.setRowCount(0);
+						}
 						}
 				  });
 				  deleteButton.addActionListener(new ActionListener(){
@@ -117,6 +120,7 @@ public class ClerkOfCenterTransferPanel extends JPanel {
 				  findButton.addActionListener(new ActionListener(){
 
 						public void actionPerformed(ActionEvent e) {
+							if(TestIfConnect.ifConnect()){
 							dlg= new MyDialog(); 
 							dlg.setSize(new Dimension(350, 150));
 				            dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
@@ -128,6 +132,7 @@ public class ClerkOfCenterTransferPanel extends JPanel {
 				            dlg.add(findtextArea);
 				            dlg.setLayout(null);
 							dlg.setVisible(true);
+						}
 						}
 				  });
 		   
@@ -160,6 +165,7 @@ public class ClerkOfCenterTransferPanel extends JPanel {
 	   ActionListener listener2 = new ActionListener(){
 
 			public void actionPerformed(ActionEvent e) {
+				if(TestIfConnect.ifConnect()){
 				TransferVO transferVO=(TransferVO) orderServiceImpl.find(findtextArea.getText(), 8);
 				Vector<String> row = new Vector(8);
 				row.add(transferVO.getId());
@@ -175,6 +181,7 @@ public class ClerkOfCenterTransferPanel extends JPanel {
 			    findtextArea.setText("");
 			    dlg.dispose();
 			    findSureButton.removeActionListener(listener2);
+			}
 			}
 		};
 }

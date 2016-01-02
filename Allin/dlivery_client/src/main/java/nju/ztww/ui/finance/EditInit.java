@@ -37,6 +37,8 @@ public class EditInit extends EditPanel{
     	this.add(button);
     	button.addActionListener(new Listener(this));
     	setTable();
+    	this.setOpaque(false);
+    	this.setBounds(200,120,670,410);
     	this.setVisible(false);
     }
     
@@ -53,6 +55,7 @@ public class EditInit extends EditPanel{
 			addMatrix();
 		    panel.removeAll();
 			init.setBounds(0, 0, 750, 450);
+			init.setVisible(true);
 		//	init.repaint();
 			panel.add(init);
 			//init.repaint();

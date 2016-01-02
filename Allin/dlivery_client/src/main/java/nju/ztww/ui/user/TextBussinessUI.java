@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import nju.ztww.ui.finance.EditSearch;
+import nju.ztww.ui.main.SwiftController;
 //最近修改 王焕 11-17
 public class TextBussinessUI {
 	
@@ -37,17 +38,25 @@ public class TextBussinessUI {
 //		frame.setLocation((width-900)/2, (height-600)/2);
 //		frame.setResizable(false);
 		//
-		panel.setBounds(0, 100, 150, 500);
-		lablePanel.setBounds(150, 0, 750, 60);
+		panel.setBounds(25, 150, 150, 400);
+		lablePanel.setBounds(200, 0, 670, 120);
 		
-		carLoadingPanel.setBounds(150, 100, 750, 450);
-		editSearch.setBounds(150, 100, 750, 450);
-		receiveAndSendPabel.setBounds(150, 100, 750, 450);
-		recieveMoneyUI.setBounds(150, 100, 750, 450);
-		carManageUI.setBounds(150, 100, 750, 450);
-		driverManageUI.setBounds(150, 100, 750, 450);
-		sendUI.setBounds(150, 100, 750, 450);
-	
+		carLoadingPanel.setBounds(200,120,670,410);
+		editSearch.setBounds(200,120,670,410);
+		receiveAndSendPabel.setBounds(200,120,670,410);
+		recieveMoneyUI.setBounds(200,120,670,410);
+		carManageUI.setBounds(200,120,670,410);
+		driverManageUI.setBounds(200,120,670,410);
+		sendUI.setBounds(200,120,670,410);
+//		personalMessagePanel.setBounds(200,120,670,410);
+	    
+		editSearch.setOpaque(false);
+		receiveAndSendPabel.setOpaque(false);
+		recieveMoneyUI.setOpaque(false);
+		carManageUI.setOpaque(false);
+		driverManageUI.setOpaque(false);
+		sendUI.setOpaque(false);
+//		personalMessagePanel.setOpaque(false);
 		//注掉
 //		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 //		frame.getContentPane().setLayout(null);
@@ -68,36 +77,37 @@ public class TextBussinessUI {
 		removePanel();
 		if(i==1){
 			carLoadingPanel.setVisible(true);
-			frame.getContentPane().add(carLoadingPanel);
+			SwiftController.bg.add(carLoadingPanel);
 
 			type=1;
 		}else if(i==2){
 			receiveAndSendPabel.setVisible(true);
-			frame.getContentPane().add(receiveAndSendPabel);
+			SwiftController.bg.add(receiveAndSendPabel);
 			type=2;
 		}else if(i==3){
 			recieveMoneyUI.setVisible(true);
-			frame.getContentPane().add(recieveMoneyUI);
+			SwiftController.bg.add(recieveMoneyUI);
 			type=3;
 		}else if(i==4){
 			carManageUI.setVisible(true);
-			frame.getContentPane().add(carManageUI);
+			SwiftController.bg.add(carManageUI);
 			type=4;
 		}else if(i==5){
 			driverManageUI.setVisible(true);
-			frame.getContentPane().add(driverManageUI);
+			SwiftController.bg.add(driverManageUI);
 			type=5;
 		}else if(i==6){
+			personalMessagePanel.setBounds(200,120,670,410);
 			personalMessagePanel.setVisible(true);
-			frame.getContentPane().add(personalMessagePanel);
+			SwiftController.bg.add(personalMessagePanel);
 			type=6;
 		}else if(i==7){
 			sendUI.setVisible(true);
-			frame.getContentPane().add(sendUI);
+			SwiftController.bg.add(sendUI);
 			type=7;
 		}else if(i==8){
 			editSearch.setVisible(true);
-			frame.getContentPane().add(editSearch);
+			SwiftController.bg.add(editSearch);
 			type=8;
 		}
 	

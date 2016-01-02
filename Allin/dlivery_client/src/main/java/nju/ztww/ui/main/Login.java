@@ -2,8 +2,9 @@ package nju.ztww.ui.main;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
@@ -18,8 +19,6 @@ import javax.swing.JTextField;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 
-import confligUI.MyTextField;
-
 
 //最近修改： 王焕 11-17
 //date 11-18 name wh
@@ -29,13 +28,16 @@ public class Login extends JFrame{
 	//
 	
 	int x = 100;
-	int y = 100;
-	int iy = 100;
+	int y = 300;
+	int iy = 300;
 	//
+	Image icon1=new ImageIcon("photo2/feidie.png").getImage();
+	//Image icon2=new ImageIcon("photo/Login2.png").getImage();
 	Border border2 = new LineBorder(new Color(232,181,53), 1, true);
 	Border border1 = new LineBorder(new Color(155,122,90),1,true);
 	JLabel theme = new JLabel();
 	JLabel bg = new JLabel();
+	JLabel orderT = new JLabel();
 	JLabel idlLabel= new JLabel();
 	JLabel passwordLabel = new JLabel();
 	JTextField id = new JTextField();
@@ -66,25 +68,28 @@ public class Login extends JFrame{
 		panel.setBounds(0, 0, 900, 600);
 		
 		
-		theme.setIcon(new ImageIcon("photo/system.png"));
-		theme.setBounds(200, 20, 300, 100);
+//		theme.setIcon(new ImageIcon("photo/system.png"));
+//		theme.setBounds(200, 20, 300, 100);
 	
-		bg.setIcon(new ImageIcon("photo/bg.png"));
+		bg.setIcon(new ImageIcon("photo/Login2(1).png"));
 		bg.setBounds(0, 0, 900, 600);
 		
 		idlLabel.setIcon(new ImageIcon("photo/id.gif"));
-		idlLabel.setBounds(505, 140, 120, 40);
-		id.setBounds(635, 150, 150, 30);
+		idlLabel.setBounds(505, 180, 120, 40);
+		id.setBounds(635, 190, 150, 30);
 		
 		passwordLabel.setIcon(new ImageIcon("photo/password.gif"));
-		passwordLabel.setBounds(505, 210, 120, 40);
-		password.setBounds(635, 220, 150, 30);
-		loginbButton.setIcon(new ImageIcon("photo/login1.png"));
-		loginbButton.setBounds(790, 210, 50, 50);
+		passwordLabel.setBounds(505, 220, 120, 40);
+		password.setBounds(635, 230, 150, 30);
+		loginbButton.setIcon(new ImageIcon("photo/login.png"));
+		loginbButton.setBounds(760, 280, 80, 30);
 		
-		order.setBounds(585, 320, 200, 30);
-		searchButton.setIcon(new ImageIcon("photo/searchOrder.gif"));
-		searchButton.setBounds(790, 320, 120, 30);
+		orderT.setIcon(new ImageIcon("photo2/OrderNum.png"));
+		orderT.setBounds(565, 440, 80, 30);
+		panel.add(orderT);
+		order.setBounds(655, 440, 150, 30);
+		searchButton.setIcon(new ImageIcon("photo/search.png"));
+		searchButton.setBounds(760, 500, 80, 30);
 		
 		id.setBorder(border1);
 		id.addMouseListener(ad1);
@@ -101,8 +106,9 @@ public class Login extends JFrame{
 		panel.add(loginbButton);
 		panel.add(order);
 		panel.add(searchButton);
-		panel.add(bg);
+		//panel.add(bg);
 		startRun();
+		panel.add(bg);
 //		moni = new MoniDelUI();
 //		moni.setBounds(0, 250, 500, 150);
 		uiListener = new ListenerUI(this);
@@ -121,6 +127,8 @@ public class Login extends JFrame{
 		this.add(panel);
 		this.setVisible(true);
 		this.getContentPane().repaint();
+		this.setIconImage(icon1);
+		this.setTitle("快递物流信息系统");
 //		this.add(moni);
 		
 		///FRAME = this;
@@ -166,6 +174,7 @@ public class Login extends JFrame{
 	}
 	public static void main(String[] args) {
 		new Login();
+
 	}
 	
 	MouseListener ad1 = new MouseListener() {
@@ -272,13 +281,14 @@ public class Login extends JFrame{
 		public void run() {
 			// TODO Auto-generated method stub
 				// TODO Auto-generated method stub
-				while(x>1000){
-				car.repaint();
-				home.repaint();
+				while(true){
+					panel.repaint();
+//				car.repaint();
+//				home.repaint();
 				
-				
-					car.repaint();
-					home.repaint();
+//				
+//					car.repaint();
+//					home.repaint();
 					car.setBounds(x, y, 60, 40);
 					x+=5;
 					if(x>260){
@@ -317,7 +327,10 @@ public class Login extends JFrame{
 	}
 
 	
-	
+//	public void paintComponent(Graphics g){
+//		super.paintComponent(g);
+//		g.drawImage(icon2, 0, 0, 900, 600, null);
+//	}
 	
 
 }

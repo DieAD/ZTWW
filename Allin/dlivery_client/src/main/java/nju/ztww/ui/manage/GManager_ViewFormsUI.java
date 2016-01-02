@@ -50,7 +50,8 @@ public class GManager_ViewFormsUI extends JPanel {
 
 	public GManager_ViewFormsUI() {
 		;
-		 this.setBackground(new Color(250, 240, 230));
+//		 this.setBackground(new Color(250, 240, 230));
+		this.setForeground(new Color(255,255,255));
 		this.setLayout(null);
 		sureButton.setText("确定");
 		sureButton.setBounds(500, 400, 120, 40);
@@ -120,8 +121,10 @@ public class GManager_ViewFormsUI extends JPanel {
 				state.setIcon(state1);
 			}
 		});
-		businessPanel.setBounds(0, 35, 690, 420);
-		benefitPanel.setBounds(0, 35, 690, 420);
+		businessPanel.setBounds(0, 35, 670, 375);
+		benefitPanel.setBounds(0, 35, 670, 375);
+		businessPanel.setOpaque(false);
+		benefitPanel.setOpaque(false);
        // benefitPanel.button2.setBounds(295,420, 100, 20);
 		this.add(state);
 		this.add(cost);
@@ -133,9 +136,9 @@ public class GManager_ViewFormsUI extends JPanel {
 		this.add(businessPanel);
 		this.add(benefitPanel);
 		//this.add(benefitPanel.button2);
-		benefitPanel.setBounds(5, 30, 735, 420);
-		benefitPanel.scrollPane.setBounds(0, 30, 690, 340);
-		benefitPanel.button2.setLocation(600, 370);
+		benefitPanel.setBounds(5, 30, 665, 375);
+		benefitPanel.scrollPane.setBounds(0, 30, 670, 340);
+		benefitPanel.button2.setLocation(580, 340);
 //		benefitPanel.button2.setBounds(500, 350, 120, 30);
 		benefitPanel.setVisible(false);
 		this.cost.addMouseListener(new ListenerForCost());

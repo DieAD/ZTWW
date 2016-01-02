@@ -1,7 +1,6 @@
 package nju.ztww.ui.commodity;
 
 import java.awt.Color;
-
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -32,6 +31,7 @@ import nju.ztww.service.CommodityService;
 import nju.ztww.serviceimpl.CommodityServiceImp;
 import nju.ztww.serviceimpl.StorageInListServiceImpl;
 import nju.ztww.ui.main.Login;
+import nju.ztww.ui.main.TestIfConnect;
 import nju.ztww.ui.main.UserInfoUI;
 import nju.ztww.vo.StorageListLineofInVO;
 import nju.ztww.vo.StorageListLineofOutVO;
@@ -128,7 +128,7 @@ public class InofStoragePanel extends JPanel{
 		public void actionPerformed(ActionEvent arg0) {
 			// TODO Auto-generated method stub
 
-
+			if(TestIfConnect.ifConnect()){
 			
 
 
@@ -197,7 +197,7 @@ public class InofStoragePanel extends JPanel{
             dlg.setVisible(true);
             
       
-		
+			}
 					}
 				});
 		//ShowIdOfCenter();
@@ -207,7 +207,7 @@ public class InofStoragePanel extends JPanel{
     ActionListener surelistener=new ActionListener() {
 		
 		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
+			if(TestIfConnect.ifConnect()){
 			ArrayList<String>stringlist=new ArrayList<String>();
 			stringlist.add(ordernumberfield.getText());
 			stringlist.add(datafield.getText());
@@ -256,6 +256,7 @@ public class InofStoragePanel extends JPanel{
 			else{
 				System.out.println("false");
 		        mylabel.setVisible(true);
+			}
 			}
 		}
 	};

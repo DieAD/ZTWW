@@ -18,6 +18,7 @@ import confligUI.MyTextField;
 import nju.ztww.dao.InsDO;
 import nju.ztww.service.ManageService;
 import nju.ztww.serviceimpl.ManageServiceImpl;
+import nju.ztww.ui.main.TestIfConnect;
 
 public class GManager_ManageOrgaUI extends JPanel {
 	String[] position = { "快递员", "营业厅业务员", "中转中心业务员", "中转中心仓库管理人员", "财务人员",
@@ -83,7 +84,7 @@ public class GManager_ManageOrgaUI extends JPanel {
 		deletebButton.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				if(TestIfConnect.ifConnect()){
 				tips.setText("确定删除该机构吗？");
 				tips.setBounds(50, 20, 150, 20);
 
@@ -114,7 +115,7 @@ public class GManager_ManageOrgaUI extends JPanel {
 				delete.add(tips);
 				delete.add(yesButton);
 				delete.add(cancelButton);
-
+				}
 			}
 		});
 
@@ -144,11 +145,12 @@ public class GManager_ManageOrgaUI extends JPanel {
 	public class Listener1 implements ActionListener {
 
 		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
+			if(TestIfConnect.ifConnect()){
 			String ids = search.getText();
 			info = MS.showInsInfo(ids);
 			name.setText(info.getName());
 			id.setText(info.getId());
+			}
 		}
 
 	}
@@ -207,7 +209,7 @@ public class GManager_ManageOrgaUI extends JPanel {
 		InsDO ins = new InsDO();
 
 		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
+			if(TestIfConnect.ifConnect()){
 			String ids = id.getText();
 			String names = name.getText();
 			ins.setId(ids);
@@ -216,6 +218,7 @@ public class GManager_ManageOrgaUI extends JPanel {
 			swfit(mem2, members2);
 			swfit(mem3, members3);
 			MS.updateIns(ins);
+			}
 		}
 
 		public int swfit(MyComboBox box, MyTextField text) {

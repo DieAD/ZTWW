@@ -25,6 +25,7 @@ import confligUI.MyTextField;
 import nju.ztww.bl.commodity.IsEmpty;
 import nju.ztww.serviceimpl.OrderServiceImpl;
 import nju.ztww.ui.main.GetDate;
+import nju.ztww.ui.main.TestIfConnect;
 import nju.ztww.ui.main.UserInfoUI;
 import nju.ztww.vo.DriverMessageVO;
 import nju.ztww.vo.LoadingVO;
@@ -105,6 +106,7 @@ public class RecieiveMoneyUI extends JPanel{
 			  addButton.addActionListener(new ActionListener(){
 
 					public void actionPerformed(ActionEvent e) {
+						if(TestIfConnect.ifConnect()){
 						receiveVO=(ReceiveVO) orderServiceImpl.getOrder(5);
 						dlg= new MyDialog(); 
 						dlg.setSize(new Dimension(400, 450));
@@ -155,16 +157,19 @@ public class RecieiveMoneyUI extends JPanel{
 			            dlg.setLayout(null);
 						dlg.setVisible(true);
 					}
+					}
 					});
 			  addSendButton.addActionListener(new ActionListener(){
 
 					public void actionPerformed(ActionEvent e) {
+						if(TestIfConnect.ifConnect()){
 						for(ReceiveVO receiveVOtemp:allreceiveVO){
 							String result=orderServiceImpl.endSales(receiveVOtemp, 5);
 							 System.out.println(result);
 						}
 						allreceiveVO.clear();
 						defaultTableModel.setRowCount(0);
+					}
 					}
 			  });
 			  deleteButton.addActionListener(new ActionListener(){
@@ -182,6 +187,7 @@ public class RecieiveMoneyUI extends JPanel{
 			  findButton.addActionListener(new ActionListener(){
 
 					public void actionPerformed(ActionEvent e) {
+						if(TestIfConnect.ifConnect()){
 						dlg= new MyDialog(); 
 						dlg.setSize(new Dimension(350, 150));
 			            dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
@@ -193,6 +199,7 @@ public class RecieiveMoneyUI extends JPanel{
 			            dlg.add(findtextArea);
 			            dlg.setLayout(null);
 						dlg.setVisible(true);
+						}
 					}
 			  });
 			  this.add(findButton);

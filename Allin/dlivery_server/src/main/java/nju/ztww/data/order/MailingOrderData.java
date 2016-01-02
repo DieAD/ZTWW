@@ -63,10 +63,10 @@ public class MailingOrderData {
 		orderFormDO.setOrdernumber(mailingPO.getStripNumber());
 		list.add(orderFormDO);
 		System.out.println("result = successful!!!!!!!!!!!!!!!!!!!!!!S");
-		dbForOrderForm.insert(list, "orderform");
+		String result=dbForOrderForm.insert(list, "orderform");
 		dbForOrderForm.close();
 		System.out.println("result = successful!");
-		return "successful!";
+		return result;
 	}
 	
 	 public String delete(String id){

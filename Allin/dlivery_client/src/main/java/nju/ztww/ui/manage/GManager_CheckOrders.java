@@ -1,26 +1,24 @@
 package nju.ztww.ui.manage;
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.ImageObserver;
-import java.awt.image.ImageProducer;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
-import nju.ztww.bl.manage.ManageBL;
 import nju.ztww.service.ManageService;
 import nju.ztww.serviceimpl.ManageServiceImpl;
+import nju.ztww.ui.main.TestIfConnect;
 import nju.ztww.vo.GenerateVO;
 import nju.ztww.vo.IDVO;
+import confligUI.MyTable;
 
 public class GManager_CheckOrders extends JPanel {
 	ManageService mService = new ManageServiceImpl();
+	 DefaultTableModel tableModel ;
 	// JTextField search = new JTextField();
 	// JButton searchButton = new JButton("搜索");
 	// JLabel nameLabel = new JLabel();
@@ -44,7 +42,7 @@ public class GManager_CheckOrders extends JPanel {
 	OrdersButton order9Button = new OrdersButton(9);
 	OrdersButton order10Button = new OrdersButton(10);
 	JButton sureButton = new JButton();
-	MyTable table;
+	MyTable2 table;
 	JPanel tablePanel = new JPanel();
 	int index = 0;
 
@@ -59,7 +57,8 @@ public class GManager_CheckOrders extends JPanel {
 	// Object[][] orders9;
 	// Object[][] orders10;
 	public GManager_CheckOrders() {
-		this.setBackground(new Color(250, 240, 230));
+		this.setOpaque(false);
+		//this.setBackground(new Color(250, 240, 230));
 		// this.setLayout(null);
 		// search.setBounds(20, 20, 100, 20);
 		// searchButton.setBounds(150, 20, 100, 20);
@@ -70,8 +69,9 @@ public class GManager_CheckOrders extends JPanel {
 		// // numLabel.setBounds(50, 100, width, height);
 		this.setLayout(null);
 		tablePanel.setLayout(null);
-		tablePanel.setBounds(135, 10, 600, 400);
-		tablePanel.setBackground(new Color(250, 240, 230));
+		tablePanel.setBounds(135, 10, 535, 370);
+		//tablePanel.setBackground(new Color(250, 240, 230));
+		tablePanel.setOpaque(false);
 		this.add(tablePanel);
 //		order1Button.setText("寄件单");
 //		order1Button.setBounds(10, 10, 120, 30);
@@ -93,21 +93,23 @@ public class GManager_CheckOrders extends JPanel {
 //		order9Button.setBounds(10, 250, 120, 30);
 //		order10Button.setText("付款单");
 //		order10Button.setBounds(10, 280, 120, 30);
-		sureButton.setBounds(570, 420, 120, 30);
+		sureButton.setBounds(550, 390, 120, 30);
 		sureButton.setBorderPainted(false);
 		sureButton.setIcon(new ImageIcon("photo/GCheckOrders.png"));
 		order1Button.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				if(TestIfConnect.ifConnect()){
 				getCheckOrderVO(1);
+				}
 			}
 		});
 		order2Button.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				if(TestIfConnect.ifConnect()){
 				getCheckOrderVO(2);
+				}
 			}
 		});
 		order3Button.addActionListener(new ActionListener() {
@@ -194,6 +196,7 @@ public class GManager_CheckOrders extends JPanel {
 		if(index>0){
 			tablePanel.removeAll();}
 		ArrayList<GenerateVO> list = mService.getCheckOrder(index);
+		String[] head = {"  ", "单据号", "当前状态", "最后处理人", "详情"};
 		Object[][] values = new Object[list.size()][5];
 		int i = 0;
 		for (GenerateVO vo : list) {
@@ -204,8 +207,9 @@ public class GManager_CheckOrders extends JPanel {
 			values[i][4] = new String("1");
 			i++;
 		}
-		table = new MyTable(values);
-		
+	//	tableModel = new DefaultTableModel(values,new String[]{"  ", "单据号", "当前状态", "最后处理人", "详情"});
+		table = new MyTable2(values);
+		//table.setBounds(0,0,535, 370);
 		tablePanel.add(table);
 		tablePanel.repaint();
 	}
@@ -230,7 +234,7 @@ public class GManager_CheckOrders extends JPanel {
 			ArrayList<IDVO> list = new ArrayList<IDVO>();
 			int count = table.tableModel.getRowCount();
 			for(int i=0;i<count;i++){
-				boolean flag = (Boolean) table.tableModel.getValueAt(i, 0);
+				boolean flag = (Boolean)table.tableModel.getValueAt(i, 0);
 				if(flag){
 					IDVO vo = new IDVO((String)table.tableModel.getValueAt(i, 1));
 					list.add(vo);

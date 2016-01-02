@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import nju.ztww.ui.finance.EditSearch;
+import nju.ztww.ui.main.SwiftController;
 import nju.ztww.ui.user.CheckOrdersUI;
 import nju.ztww.ui.user.PersonalMesageUI;
 import nju.ztww.ui.user.ThemeLabelUI;
@@ -18,7 +19,7 @@ public class TestCourierUI {
 	static JFrame frame =null;
 	CourierMenuUI MenuPanel = new CourierMenuUI();
 	ThemeLabelUI Theme = new ThemeLabelUI();
-	private static int type = 2;
+	private static int type = 1;
 
 	static Courier_OrderInputUI OrderInput = new Courier_OrderInputUI();
 	static Courier_AcceptUI Accept = new Courier_AcceptUI();
@@ -33,11 +34,12 @@ public class TestCourierUI {
 		// frame.setLocation((width-900)/2, (height-600)/2);
 		// frame.setResizable(false);
 
-		MenuPanel.setBounds(0, 100, 150, 600);
-		Theme.setBounds(150, 0, 750, 60);
-		OrderInput.setBounds(150, 100, 750, 450);
-		Accept.setBounds(150, 100, 750, 450);
-		editSearch.setBounds(150, 100, 750, 450);
+		MenuPanel.setBounds(25, 150, 150, 320);
+		Theme.setBounds(200, 0, 670, 120);
+		OrderInput.setBounds(200,120,670,410);
+		Accept.setBounds(200,120,670,410);
+		editSearch.setBounds(200,120,670,410);
+		Accept.setOpaque(false);
 		
 
 		// frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -55,38 +57,43 @@ public class TestCourierUI {
 	public static void changePanel(int i) {
 		removePanel();
 		if (i == 1) {
-			frame.getContentPane().add(OrderInput);
+			SwiftController.bg.add(OrderInput);
 			OrderInput.setVisible(true);
 			type = 1;
 		} else if (i == 2) {
-			frame.getContentPane().add(Accept);
+			SwiftController.bg.add(Accept);
 			Accept.setVisible(true);
 			type = 2;
 		} else if (i == 3) {
-			frame.getContentPane().add(editSearch);
+			SwiftController.bg.add(editSearch);
 			editSearch.setVisible(true);
 			type = 3;
 		} else if (i == 4) {
 			personalMessagePanel = new PersonalMesageUI();
-			personalMessagePanel.setBounds(150, 100, 750, 450);
-			 frame.getContentPane().add(personalMessagePanel);	 
+			personalMessagePanel.setBounds(200,120,670,410);
+			SwiftController.bg.add(personalMessagePanel);	 
 			type = 4;
 		}
+		SwiftController.bg.repaint();
 	}
 
 	public static void removePanel() {
+//		OrderInput.setVisible(false);
+//		Accept.setVisible(false);
+//		editSearch.setVisible(false);
+//		personalMessagePanel.setVisible(false);
 		if (type == 1) {
 			OrderInput.setVisible(false);
-			frame.remove(OrderInput);
+			SwiftController.bg.remove(OrderInput);
 		} else if (type == 2) {
 			Accept.setVisible(false);
-			frame.remove(Accept);
+			SwiftController.bg.remove(Accept);
 		} else if (type == 3) {
 			editSearch.setVisible(false);
-			frame.remove(editSearch);
+			SwiftController.bg.remove(editSearch);
 		} else if (type == 4) {
 			personalMessagePanel.setVisible(false);
-			 frame.remove(personalMessagePanel);
+			SwiftController.bg.remove(personalMessagePanel);
 		}
 	}
 

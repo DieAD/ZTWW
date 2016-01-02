@@ -30,9 +30,9 @@ public class ThemeLabelUI extends JPanel implements Runnable{
 		JButton buttonsetip=new JButton("ip设置");
 		buttonsetip.addActionListener(iplistemer);
 		t.start();
-		time.setBounds(513, 28, 250, 35);
+		time.setBounds(420, 25, 250, 65);
 		time.setFont(new Font(Font.DIALOG,0,14));
-		time.setForeground(new Color(135,51,36));
+		time.setForeground(new Color(225,225,225));
 		this.setLayout(null);
 		this.add(time);
 	}
@@ -53,8 +53,8 @@ public class ThemeLabelUI extends JPanel implements Runnable{
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
 		
-		Image lable=new ImageIcon("photo/theme.png").getImage();
-		g.drawImage(lable, 0,0,null);
+     	Image lable=new ImageIcon("photo2/theme.png").getImage();
+		g.drawImage(lable, 0,25,null);
 		
 	}
 

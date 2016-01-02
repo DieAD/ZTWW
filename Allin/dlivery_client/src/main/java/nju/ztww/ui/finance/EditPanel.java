@@ -1,6 +1,7 @@
 package nju.ztww.ui.finance;
 
 import java.awt.Color;
+
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,7 +22,7 @@ public class EditPanel extends JPanel {
        public DefaultTableModel tableModel; 
        public MyTable editTable;
        protected String[]  columnNames ={"账户名称","账户余额"};
-       protected Object[][] initInfo = {{new String("000000001"),new Double(1000.23)}};
+       protected Object[][] initInfo = null;
        protected int nodeHeight =30;
        protected int rowHeight  =25;
        protected MyButton button1 = new MyButton('a');

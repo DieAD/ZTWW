@@ -29,6 +29,7 @@ import confligUI.MyTextField;
 import nju.ztww.service.UserService;
 import nju.ztww.serviceimpl.OrderServiceImpl;
 import nju.ztww.serviceimpl.UserLoginImpl;
+import nju.ztww.ui.main.TestIfConnect;
 import nju.ztww.vo.ManaUserVO;
 
 public class UserManageUI extends JPanel{
@@ -272,6 +273,7 @@ public class UserManageUI extends JPanel{
 
 		
 		public void actionPerformed(ActionEvent e) {
+			if(TestIfConnect.ifConnect()){
 			int SEX=0;
 			if(sex.getText().equals("男")){
 				SEX=0;
@@ -297,6 +299,7 @@ public class UserManageUI extends JPanel{
 			
 			addDlg.dispose();
 			sureChangeButton.removeActionListener(sureChange);
+		}
 		}
     };
 	
@@ -509,7 +512,7 @@ public class UserManageUI extends JPanel{
 
 		
 		public void actionPerformed(ActionEvent e) {
-
+			if(TestIfConnect.ifConnect()){
 			// TODO Auto-generated method stub
 			Vector<String> row = new Vector<String>();
 			row.add(name.getText());
@@ -539,6 +542,7 @@ public class UserManageUI extends JPanel{
 			
 			addDlg.dispose();
 			sureAddButton.removeActionListener(sureAdd);
+		}
 		}
 	};
 

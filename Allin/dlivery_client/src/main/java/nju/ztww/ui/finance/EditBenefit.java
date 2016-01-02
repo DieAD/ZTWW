@@ -23,8 +23,8 @@ public class EditBenefit extends EditPanel {
 		
 		super(strings,objects);
 		this.setBackground(new Color(250, 240, 230));
-		this.scrollPane.setBounds(0,25,750,375);   //——by zyz 
-		this.header.setBounds(0, 0, 750, 25);
+		this.scrollPane.setBounds(0,25,670,325);   //——by zyz 
+		this.header.setBounds(0, 0, 670, 25);
 		this.add(header);
 		this.remove(button1);
 		this.remove(button3);
@@ -42,6 +42,8 @@ public class EditBenefit extends EditPanel {
 	    public Header(){
 	    	this.add(label1);
 	    	label1.setText(info);
+	    	label1.setForeground(new Color(255,255,255));
+	    	this.setOpaque(false);
 	    }
 		
 	}

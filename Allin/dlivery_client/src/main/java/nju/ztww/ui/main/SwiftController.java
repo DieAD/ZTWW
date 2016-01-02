@@ -1,8 +1,10 @@
 package nju.ztww.ui.main;
 
 import java.util.ArrayList;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
 import nju.ztww.service.UserService;
 import nju.ztww.serviceimpl.UserLoginImpl;
 import nju.ztww.ui.commodity.ClerkOfCenterUi;
@@ -37,18 +39,23 @@ public class SwiftController {
 	private UserService userService = new UserLoginImpl();//by zyz
 	private int id;
 	private boolean jump = true;
+//	Image icon2=new ImageIcon("photo2/bg.png").getImage();
+	public static BGPanel bg = new BGPanel();
+//	bg.setIcon(new ImageIcon("photo/bg.png"));
+//	bg.setBounds(0, 0, 900, 600);
 	public SwiftController(JFrame frame){
 		this.frame = frame;
+		
 	}
 	
 	private void initPanel(){
-		courierUI = new TestCourierUI(frame);
-		businessUI = new TextBussinessUI(frame);
-		financeUI =  new FinanceUI(frame);
-		GMUI = new TestGManagerUI(frame);
-		storageUI = new StorageUi();
-		ccUI = new ClerkOfCenterUi();
-		MUI = new TextManageUI();
+//		courierUI = new TestCourierUI(frame);
+//		businessUI = new TextBussinessUI(frame);
+//		financeUI =  new FinanceUI(frame);
+//		GMUI = new TestGManagerUI(frame);
+//		storageUI = new StorageUi();
+//		ccUI = new ClerkOfCenterUi();
+//		MUI = new TextManageUI();
 		
 	}
 	public void switchUI(){
@@ -61,19 +68,20 @@ public class SwiftController {
 
 		switch(id){
 		case 0: jump = false;break;
-		case 1: panelList = courierUI.getPanelList();
+		case 1: courierUI = new TestCourierUI(frame);;panelList = courierUI.getPanelList();
 		otherAnnounceUI=new AnnounceUI();panelList.add(otherAnnounceUI);break;
-		case 2: panelList = businessUI.getPanelList();
+		case 2: businessUI = new TextBussinessUI(frame);panelList = businessUI.getPanelList();
 		otherAnnounceUI=new AnnounceUI();panelList.add(otherAnnounceUI);break;
-		case 3: panelList = ccUI.getPanelList();
+		case 3:ccUI = new ClerkOfCenterUi(); panelList = ccUI.getPanelList();
 		otherAnnounceUI=new AnnounceUI();panelList.add(otherAnnounceUI);break;
-		case 4: panelList = storageUI.getPanelList();
+		case 4:storageUI = new StorageUi(); panelList = storageUI.getPanelList();
 		otherAnnounceUI=new AnnounceUI();panelList.add(otherAnnounceUI);break;
-		case 5: panelList = financeUI.getPanelList();
+		case 5:financeUI =  new FinanceUI(frame); panelList = financeUI.getPanelList();
 		otherAnnounceUI=new AnnounceUI();panelList.add(otherAnnounceUI);break;
-		case 6: panelList = GMUI.getPanelList();
+		case 6:GMUI = new TestGManagerUI(frame); panelList = GMUI.getPanelList();
 		announceForManageUI = new AnnounceForManageUI();panelList.add(announceForManageUI);break;
-		case 7: panelList = MUI.getPanelList();
+		case 7:MUI = new TextManageUI();
+		 panelList = MUI.getPanelList();
 		otherAnnounceUI=new AnnounceUI();panelList.add(otherAnnounceUI);break;
 		default:{System.out.println("Switch UI error!");jump = false;}break;
 		
@@ -90,11 +98,22 @@ public class SwiftController {
 		switchUI();
 	   if(jump){ 
 		   frame.getContentPane().removeAll();
+		  // frame.add(icon2);
+//		   bg.setIcon(new ImageIcon("photo2/bg.png"));
+		   bg.setBounds(0, 0, 900, 600);
+		   
+		  
+		  // frame.repaint();
 		   for(JPanel panel : panelList){
 	    //	panel.setVisible(true);
-			   frame.add(panel);
-			   frame.getContentPane().repaint();
+			   panel.setOpaque(false);
+			   panel.setBorder(null);
+			   bg.add(panel);
+			   bg.repaint();
 	    }
+		   userInfoUI.setOpaque(true);
+		   frame.add(bg);
+		   frame.repaint();
 	   }else{
 		   jump = true;
 	   }

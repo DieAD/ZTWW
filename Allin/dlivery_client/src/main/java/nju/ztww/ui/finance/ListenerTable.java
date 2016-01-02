@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import nju.ztww.ui.main.SwiftController;
+
 public class ListenerTable implements ActionListener {
 	 private JFrame frame;
 	 private JPanel panel;
@@ -41,11 +43,11 @@ public class ListenerTable implements ActionListener {
 			p.setVisible(false);
 		}
 		EditPanel init = new EditInit(new String[]{"账号","创建时间","创建人","是否使用中"}, null);
-		init.setBounds(150,100,750,450);
+		init.setBounds(200,120,670,410);
 		init.setVisible(true);
 		list.add(init);
-	    frame.add(init);
-	    frame.repaint();
+		SwiftController.bg.add(init);
+		SwiftController.bg.repaint();
 	}
 	
 	public void special2(){
@@ -53,11 +55,11 @@ public class ListenerTable implements ActionListener {
 			p.setVisible(false);
 		}
 		EditPanel search = new EditSearch();
-		search.setBounds(150,100,750,450);
+		search.setBounds(200,120,670,410);
 		search.setVisible(true);
 		list.add(search);
-	    frame.add(search);
-	    frame.repaint();
+		SwiftController.bg.add(search);
+		SwiftController.bg.repaint();
 	}
 
 }

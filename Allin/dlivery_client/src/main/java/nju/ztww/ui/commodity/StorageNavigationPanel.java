@@ -74,7 +74,7 @@ public class StorageNavigationPanel extends JPanel {
 	MyButton LogoutButton;//退出登录
 	final ImageIcon In = new ImageIcon("photo/in.png");
 	final ImageIcon Out = new ImageIcon("photo/out.png");
-	final ImageIcon Check = new ImageIcon("photo/check.png");
+	final ImageIcon Check = new ImageIcon("photo/CheckStorage.png");
 	final ImageIcon pan = new ImageIcon("photo/pan.png");
 	ImageIcon tiaozheng=new ImageIcon("photo/SeperateAdjust.png");
 	ImageIcon yourMessage = new ImageIcon("photo/PersonInfo.png");
@@ -83,7 +83,7 @@ public class StorageNavigationPanel extends JPanel {
 	
 	ImageIcon In2 = new ImageIcon("photo/in2.png");
 	ImageIcon Out2 = new ImageIcon("photo/out2.png");
-	ImageIcon Check2 = new ImageIcon("photo/check2.png");
+	ImageIcon Check2 = new ImageIcon("photo/CheckStorage2.png");
 	ImageIcon pan2 = new ImageIcon("photo/pan2.png");
 	ImageIcon tiaozheng2=new ImageIcon("photo/SeperateAdjust2.png");
 	ImageIcon yourMessage2 = new ImageIcon("photo/PersonInfo2.png");

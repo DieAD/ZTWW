@@ -35,7 +35,7 @@ public class BusinessUI extends JPanel{
 	ImageIcon DriverManage=new ImageIcon("photo/DriverManage.png");
 	ImageIcon YourMessage=new ImageIcon("photo/PersonInfo.png");
 	ImageIcon CheckOrder = new ImageIcon("photo/CheckOrder.png");
-	ImageIcon Deliver = new ImageIcon("photo/Deliver.png");
+	ImageIcon Deliver = new ImageIcon("photo/SendGood.png");
 	ImageIcon Logout = new ImageIcon("photo/Logout.png");
 	
 	ImageIcon CarLoading2=new ImageIcon("photo/CarLoading2.png");
@@ -44,7 +44,7 @@ public class BusinessUI extends JPanel{
 	ImageIcon CarManage2=new ImageIcon("photo/CarManage2.png");
 	ImageIcon DriverManage2=new ImageIcon("photo/DriverManage2.png");
 	ImageIcon YourMessage2=new ImageIcon("photo/PersonInfo2.png");
-	ImageIcon Deliver2 = new ImageIcon("photo/Deliver2.png");
+	ImageIcon Deliver2 = new ImageIcon("photo/SendGood2.png");
 	ImageIcon CheckOrder2 = new ImageIcon("photo/CheckOrder2.png");
 	int panel = 0;
 	public BusinessUI(){
