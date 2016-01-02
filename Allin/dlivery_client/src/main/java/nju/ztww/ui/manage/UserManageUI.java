@@ -40,8 +40,8 @@ public class UserManageUI extends JPanel{
 	 private MyButton addButton=new MyButton('b');
 	 private MyButton deleteButton=new MyButton('c');
 	 private MyButton changeButton=new MyButton('a');
-	 MyButton sureAddButto = new MyButton();
-	 MyButton sureChangeButto = new MyButton();
+	 MyButton sureAddButton = new MyButton();
+	 MyButton sureChangeButton = new MyButton();
 	 MyDialog addDlg;
 	 
 	 MyLabel IDLabel = new MyLabel("ID");
@@ -237,9 +237,9 @@ public class UserManageUI extends JPanel{
 //            positionLabel.setBounds(50, 180, 150, 20);
             position.setText(userVO.getPosition());
 //            position.setBounds(100, 180, 150, 20);
-            sureChangeButton.setBounds(200, 280, 80, 30);
+            sureChangeButton.setBounds(250, 280, 80, 30);
             sureChangeButton.setIcon(new ImageIcon("photo/S"));
-            sureChangeButton.setIcon(new ImageIcon("photo/MSureModify.png"));
+            sureChangeButton.setIcon(new ImageIcon("photo/Sure.png"));
             sureChangeButton.addActionListener(sureChange);
             
             addDlg.add(onLineLabel);
@@ -477,8 +477,8 @@ public class UserManageUI extends JPanel{
             onLine.setBounds(370, 235, 150, 25);
             positionLabel.setBounds(50, 200, 150, 25);
             position.setBounds(100, 200, 150, 25);
-            sureAddButton.setBounds(200, 290, 150, 40);
-            sureAddButton.setIcon(new ImageIcon("photo/MSureAdd.png"));
+            sureAddButton.setBounds(250, 290, 80, 30);
+            sureAddButton.setIcon(new ImageIcon("photo/Sure.png"));
             sureAddButton.addActionListener(sureAdd);
             
             addDlg.add(onLineLabel);

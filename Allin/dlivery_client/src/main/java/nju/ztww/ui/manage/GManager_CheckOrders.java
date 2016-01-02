@@ -100,6 +100,7 @@ public class GManager_CheckOrders extends JPanel {
 
 			public void actionPerformed(ActionEvent e) {
 				if(TestIfConnect.ifConnect()){
+					GManager_CheckOrders.this.sureButton.setVisible(true);
 				getCheckOrderVO(1);
 				}
 			}
@@ -108,6 +109,7 @@ public class GManager_CheckOrders extends JPanel {
 
 			public void actionPerformed(ActionEvent e) {
 				if(TestIfConnect.ifConnect()){
+					GManager_CheckOrders.this.sureButton.setVisible(true);
 				getCheckOrderVO(2);
 				}
 			}
@@ -116,6 +118,7 @@ public class GManager_CheckOrders extends JPanel {
 
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				GManager_CheckOrders.this.sureButton.setVisible(true);
 				getCheckOrderVO(3);
 			}
 		});
@@ -123,6 +126,7 @@ public class GManager_CheckOrders extends JPanel {
 
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				GManager_CheckOrders.this.sureButton.setVisible(true);
 				getCheckOrderVO(4);
 			}
 		});
@@ -137,6 +141,7 @@ public class GManager_CheckOrders extends JPanel {
 //				tablePanel.removeAll();
 //				tablePanel.add(table);
 //				tablePanel.repaint();
+				GManager_CheckOrders.this.sureButton.setVisible(true);
 				getCheckOrderVO(5);
 			}
 		});
@@ -144,6 +149,7 @@ public class GManager_CheckOrders extends JPanel {
 
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				GManager_CheckOrders.this.sureButton.setVisible(true);
 				getCheckOrderVO(6);
 			}
 		});
@@ -151,6 +157,7 @@ public class GManager_CheckOrders extends JPanel {
 
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				GManager_CheckOrders.this.sureButton.setVisible(true);
 				getCheckOrderVO(7);
 			}
 		});
@@ -158,6 +165,7 @@ public class GManager_CheckOrders extends JPanel {
 
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				GManager_CheckOrders.this.sureButton.setVisible(true);
 				getCheckOrderVO(8);
 			}
 		});
@@ -165,6 +173,7 @@ public class GManager_CheckOrders extends JPanel {
 
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				GManager_CheckOrders.this.sureButton.setVisible(true);
 				getCheckOrderVO(9);
 			}
 		});
@@ -172,6 +181,7 @@ public class GManager_CheckOrders extends JPanel {
 
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				GManager_CheckOrders.this.sureButton.setVisible(true);
 				getCheckOrderVO(10);
 			}
 		});
@@ -187,6 +197,7 @@ public class GManager_CheckOrders extends JPanel {
 		this.add(order9Button);
 		this.add(order10Button);
 		this.add(sureButton);
+		sureButton.setVisible(false);
 		sureButton.addActionListener(new Listener());
 		
 	}
