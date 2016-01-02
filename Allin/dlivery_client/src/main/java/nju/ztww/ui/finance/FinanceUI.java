@@ -99,6 +99,7 @@ public class FinanceUI  {
     }
     
     public ArrayList<JPanel> getPanelList(){
+    	//list.add(new JPanel());
     	list.add(Theme);
     	list.add(menuePanel);
     	//list.add(personInfo);

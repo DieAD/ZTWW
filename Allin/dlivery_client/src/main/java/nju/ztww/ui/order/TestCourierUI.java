@@ -1,6 +1,9 @@
 package nju.ztww.ui.order;
 
+import java.awt.Component;
+import java.awt.Rectangle;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -110,5 +113,64 @@ public class TestCourierUI {
 	public TestCourierUI(JFrame frame){
 		this.frame  = frame;
 		init();
+	}
+	public void xiaoGuo(final JPanel panel,final JPanel centerPanel) {
+		panel.setBounds(0, 0, centerPanel.getWidth(), centerPanel.getHeight());// 设置滑动初始位置
+		int count = centerPanel.getComponentCount();// 获取centerPanel中控件数
+		List list = new ArrayList();//
+		for (Component comp : centerPanel.getComponents()) {
+			list.add(comp);// 给list赋值
+		}
+		if (count > 0) {// 如果centerPanel中控件数大于0就执行效果
+			for (int i = 0; i < count; i++) {
+				Component comp = centerPanel.getComponent(i);// 获得该位置的控件
+
+				if (comp instanceof JPanel) {// 判断控件类型
+					final JPanel currentPanel = (JPanel) comp;// 获得当前panel
+					if (currentPanel != panel) {
+
+						new Thread() {
+
+							public void run() {
+
+								Rectangle rec = currentPanel.getBounds();// 获得当前面板的位置信息
+								int y = -centerPanel.getWidth();
+
+								for (int i = 0; i <= centerPanel.getWidth(); i += 20) {
+									// 设置面板位置
+									currentPanel.setBounds(i, 0,
+											centerPanel.getWidth(),
+											centerPanel.getHeight());
+									panel.setBounds(y, 0,
+											centerPanel.getWidth(),
+											centerPanel.getHeight());
+									try {
+										Thread.sleep(10);
+									} catch (InterruptedException e) {
+										// TODO Auto-generated catch block
+										e.printStackTrace();
+									}
+									y += 20;
+								}
+
+								centerPanel.remove(currentPanel);// 移除當前面板
+
+								panel.setBounds(0, 0, centerPanel.getWidth(),
+										centerPanel.getHeight());
+
+							}
+						}.start();
+						break;
+					}
+				}
+			}
+		}
+//
+//		if (!list.contains(panel)) {
+//			centerPanel.add(panel);// 添加要切换的面板
+//		}
+
+		centerPanel.validate();// 重构内容面板
+		centerPanel.repaint();// 重绘内容面板
 	}
 }
