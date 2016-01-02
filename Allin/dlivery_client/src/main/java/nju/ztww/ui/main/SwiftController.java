@@ -44,6 +44,7 @@ public class SwiftController {
 	private boolean jump = true;
 //	Image icon2=new ImageIcon("photo2/bg.png").getImage();
 	public static BGPanel bg = new BGPanel();
+	
 //	bg.setIcon(new ImageIcon("photo/bg.png"));
 //	bg.setBounds(0, 0, 900, 600);
 	public SwiftController(JFrame frame){
@@ -106,10 +107,13 @@ public class SwiftController {
 		  
 	   if(jump){ 
 		   frame.getContentPane().removeAll();
+		   bg.setBounds(0, 0, 900, 600);
 		   frame.setContentPane(bg);
+//		   bg.repaint();
+//		   frame.repaint();
 		  // frame.add(icon2);
 //		   bg.setIcon(new ImageIcon("photo2/bg.png"));
-		   bg.setBounds(0, 0, 900, 600);
+		  // bg.setBounds(0, 0, 900, 600);
 		   
 		  
 		  // frame.repaint();

@@ -38,6 +38,7 @@ public class INIT extends JPanel {
 		this.setLayout(null);
 		this.home = home;
 		setUp();
+		this.setOpaque(false);
 	}
 
 	public void setUp() {
@@ -89,17 +90,18 @@ public class INIT extends JPanel {
 
 		public ButtonPanel() {
 			this.setLayout(null);
+			this.setOpaque(false);
 			button1.setBounds(10, 10, 80, 30);
 			button2.setBounds(10, 50, 80, 30);
 			button3.setBounds(10, 90, 80, 30);
 			button4.setBounds(10, 130, 80, 30);
 			button5.setBounds(10, 170, 80, 30);
 			button6.setBounds(10, 210, 80, 30);
-			button1.setIcon(new ImageIcon("photo/InitOrga.png"));
-			button2.setIcon(new ImageIcon("photo/InitStaff.png"));
-			button3.setIcon(new ImageIcon("photo/InitCars.png"));
-			button4.setIcon(new ImageIcon("photo/InitStorage.png"));
-			button5.setIcon(new ImageIcon("photo/InitAccount.png"));
+			button1.setIcon(new ImageIcon("photo2/InitOrga.png"));
+			button2.setIcon(new ImageIcon("photo2/InitStaff.png"));
+			button3.setIcon(new ImageIcon("photo2/InitCars.png"));
+			button4.setIcon(new ImageIcon("photo2/InitStorage.png"));
+			button5.setIcon(new ImageIcon("photo2/InitAccount.png"));
 			button6.setIcon(new ImageIcon("photo/InitReturn.png"));
 
 			this.add(button1);
@@ -107,12 +109,14 @@ public class INIT extends JPanel {
 			this.add(button3);
 			this.add(button4);
 			this.add(button5);
-			this.add(button6);
+			//this.add(button6);
 		}
 
 		public void paintComponent(Graphics g) {
 			super.paintComponent(g);
-			g.drawImage(background, 0, 0, null);
+			Image background=new ImageIcon("photo2/graybg.png").getImage();
+			g.drawImage(background, 0,0,null);
+			//this.setOpaque(false);
 		}
 	}
 

@@ -1,18 +1,21 @@
 package nju.ztww.ui.finance;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 
+import confligUI.MyDialog;
 import confligUI.MyTextField;
 
-public class DialogInfo extends JDialog {
-	JButton button1 = new JButton("确定");
+public class DialogInfo extends MyDialog {
+	JButton button1 = new JButton("");
     public DialogInfo(){
 	this.setLayout(null);   
 	this.setContentPane(new mainPanel());
@@ -22,6 +25,7 @@ public class DialogInfo extends JDialog {
    	button1.setBounds(100,170, 80, 30);
    	button1.addActionListener(new Listener(this));
    	this.add(button1);
+   	button1.setIcon(new ImageIcon("photo/sure.png"));
    	//this.pack();
     Toolkit kit = Toolkit.getDefaultToolkit();              //定义工具包  
 	 Dimension screenSize = kit.getScreenSize();             //获取屏幕的尺寸  
@@ -40,7 +44,9 @@ public class DialogInfo extends JDialog {
 		   this.setBounds(0,0,300, 250);
 		   info.setBounds(100, 70, 80, 40);
 		   info.setEnabled(false);
+		   info.setForeground(Color.BLACK);
 		   this.add(info);
+		   this.setOpaque(false);
 	   }
    }
    

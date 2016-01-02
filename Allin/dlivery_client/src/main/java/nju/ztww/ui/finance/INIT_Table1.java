@@ -20,9 +20,10 @@ public class INIT_Table1 extends EditPanel {
 	   super(strings,objects);
 	   button1.addActionListener(new Listener());
 	   button3.addActionListener(new Listener2());
-	   add.setIcon(new ImageIcon("photo/return.png"));
+	   add.setIcon(new ImageIcon("photo2/back(1).png"));
 	   this.add(button3);
 	   this.add(add);
+	   this.setOpaque(false);
    }
    
    
