@@ -10,7 +10,9 @@ public class MyLabel extends JLabel {
 	public MyLabel(String str){
 		super(str);
 		this.setFont(myFont);
-		this.setForeground(new Color(255,255,255));
+
+		this.setForeground(new Color(225,225,225));
+
 	}
 	
 	public MyLabel(){

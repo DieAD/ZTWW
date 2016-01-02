@@ -26,7 +26,7 @@ import javax.swing.plaf.metal.MetalComboBoxUI;
 
 public class MyComboBox<E> extends JComboBox {
 	Font myFont = new Font("微软雅黑", Font.PLAIN, 15);
-	Border border = new LineBorder(new Color(155, 122, 90));
+	Border border = new LineBorder(new Color(44,76,120));
 	private DefaultListCellRenderer defaultCellRenderer = new DefaultListCellRenderer();
 
 	public MyComboBox() {
@@ -34,7 +34,7 @@ public class MyComboBox<E> extends JComboBox {
 		init();
 		this.setFont(myFont);
 		this.setBorder(border);
-		this.setBackground(new Color(250, 240, 230));
+		this.setBackground(new Color(225,225,225));
 	}
 
 	public MyComboBox(ComboBoxModel aModel) {
@@ -42,7 +42,7 @@ public class MyComboBox<E> extends JComboBox {
 		init();
 		this.setFont(myFont);
 		this.setBorder(border);
-		this.setBackground(new Color(250, 240, 230));
+		this.setBackground(new Color(225,225,225));
 	}
 
 	public MyComboBox(final Object items[]) {
@@ -50,7 +50,7 @@ public class MyComboBox<E> extends JComboBox {
 		init();
 		this.setFont(myFont);
 		this.setBorder(border);
-		this.setBackground(new Color(250, 240, 230));
+		this.setBackground(new Color(225,225,225));
 	}
 
 	public MyComboBox(Vector<?> items) {
@@ -58,7 +58,7 @@ public class MyComboBox<E> extends JComboBox {
 		init();
 		this.setFont(myFont);
 		this.setBorder(border);
-		this.setBackground(new Color(250, 240, 230));
+		this.setBackground(new Color(225,225,225));
 	}
 
 	@Override
@@ -122,12 +122,12 @@ public class MyComboBox<E> extends JComboBox {
 					.getListCellRendererComponent(list, value, index,
 							isSelected, cellHasFocus);
 			if (isSelected) {
-				renderer.setBackground(new Color(208,168,125));//选择时鼠标滑动颜色
+				renderer.setBackground(new Color(44,76,120));//选择时鼠标滑动颜色
 				renderer.setForeground(Color.WHITE);
 			} else {
 				renderer.setBackground(Color.WHITE);
 			}
-			list.setSelectionBackground(new Color(208,168,125));//选中后一栏颜色
+			list.setSelectionBackground(new Color(225,225,225));//选中后一栏颜色
 			list.setBorder(null);
 			// renderer.setFont(XUtil.defaultComboBoxFont);
 //			renderer.setHorizontalAlignment(JLabel.CENTER);

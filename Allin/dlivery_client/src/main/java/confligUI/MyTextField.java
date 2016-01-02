@@ -13,8 +13,8 @@ import javax.swing.border.LineBorder;
 
 public class MyTextField extends JTextField {
 	Font myFont = new Font("微软雅黑", Font.PLAIN, 15);
-	Border border2 = new LineBorder(new Color(165,163,162), 1, true);
-	Border border1  = new LineBorder(new Color(155,122,90),1,true);
+	Border border2 = new LineBorder(new Color(44,76,120), 1, true);
+	Border border1  = new LineBorder(new Color(225,225,225),1,true);
 	public MyTextField(){
 		super();
 		this.setFont(myFont);
