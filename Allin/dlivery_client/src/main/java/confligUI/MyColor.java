@@ -1,9 +1,7 @@
 package confligUI;
 
-public enum MyColor {
-R(255),G(255),B(255);
-int num;
-MyColor(int num){
-	this.num=  num;
-}
+import java.awt.Color;
+
+public class MyColor {
+public static Color Red = new Color(255,255,255);
 }

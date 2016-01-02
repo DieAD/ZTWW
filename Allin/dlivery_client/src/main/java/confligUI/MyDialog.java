@@ -20,7 +20,8 @@ public class MyDialog extends JDialog{
 	public MyDialog(){
 		
 		super();
-		this.getContentPane().setBackground(new Color(MyColor.R.num,MyColor.G.num,MyColor.B.num));
+		
+		this.getContentPane().setBackground(MyColor.Red);
 //		this.setLayout(new GridLayout(0,1));
 //		this.setLayout(new FlowLayout());
 //		this.setBackground(new Color(250, 240, 230));
