@@ -6,6 +6,11 @@ import java.awt.event.MouseListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
+/**
+ * @author Administrator
+ * 继承JButton类，并设置符合本系统新的特性
+ *
+ */
 public class MyButton extends JButton {
 	int width = 40;
 	int n;
@@ -13,6 +18,9 @@ public class MyButton extends JButton {
 	public MyButton(){
 		this.setBorderPainted(false);
 	}
+	/**
+	 * @param a，区别表示增、删、改、查、提交
+	 */
 	public MyButton(char a){
 		this.setBorderPainted(false);
 		switch (a) {
@@ -36,6 +44,9 @@ public class MyButton extends JButton {
 		}
 	}
 	
+	/**
+	 * @param n，用于导航，设置不同button在导航页面中的不同位置
+	 */
 	public MyButton(int n){
 		this.n=n;
 		this.setBorderPainted(false);
@@ -44,10 +55,18 @@ public class MyButton extends JButton {
 		this.addMouseListener(nevigation);
 	}
 	
+	/**
+	 * MyButton的私有方法，计算设置导航button的大小
+	 * @param width，设置button的宽度
+	 * @param n，输入第几个button的位置
+	 * @return button在该导航界面的height
+	 */
 	private int setLocate(int width, int n){
 		return n*width;
 	}
-	
+	/**
+	 * 设置导航界面中panel的鼠标监听事件
+	 */
 	MouseListener nevigation = new MouseListener() {
 		
 		public void mouseReleased(MouseEvent e) {

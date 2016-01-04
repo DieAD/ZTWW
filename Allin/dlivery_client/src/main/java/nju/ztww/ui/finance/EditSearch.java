@@ -24,6 +24,7 @@ public class EditSearch extends EditPanel {
 		init();
 		this.setVisible(false);
 		this.setOpaque(false);
+       // this.setBounds(200,120,670,410);
 	}
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);

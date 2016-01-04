@@ -68,7 +68,7 @@ public class MyTable extends JTable{
 	            tc.setCellRenderer(new RowRenderer());
 	        }
 	    }
-	 private class RowRenderer extends DefaultTableCellRenderer 
+	 public class RowRenderer extends DefaultTableCellRenderer 
 	    {
 	        public Component getTableCellRendererComponent(JTable t, Object value,
 	                    boolean isSelected, boolean hasFocus, int row, int column) 

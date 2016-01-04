@@ -24,12 +24,12 @@ public class CheckOrder {
 		}
 		return stringist;
 	}
-   public static void main(String[]args){
-	   CheckOrder co=new CheckOrder();
-	   DBForTraceForm  dbfortraceform=new DBForTraceForm ();
-	   ArrayList<TracePO> stringist=new ArrayList<TracePO>();
-	   stringist=co.findTrace("000000002") ;
-   }
+//   public static void main(String[]args){
+//	   CheckOrder co=new CheckOrder();
+//	   DBForTraceForm  dbfortraceform=new DBForTraceForm ();
+//	   ArrayList<TracePO> stringist=new ArrayList<TracePO>();
+//	   stringist=co.findTrace("000000002") ;
+//   }
 public void modifyBaoJing(String idofcenter, String number) {
 	// TODO Auto-generated method stub
 	dbfortraceform.init();

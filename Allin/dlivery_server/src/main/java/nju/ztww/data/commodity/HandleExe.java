@@ -34,6 +34,7 @@ public void changeExeAddStock(ArrayList<String> list) {
 			 stockdo.setPai(entrylist.get(j).getPai());
 			 stockdo.setJia(entrylist.get(j).getJia());
 			 stockdo.setWei(entrylist.get(j).getWei());
+			 stockdo.setIdofcenter(idofcenter);
 			 stocklist.add(stockdo);
 		 }
 		 dbentry.update(entrylist, "entryform");//表名之后要改

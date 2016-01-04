@@ -25,7 +25,7 @@ public class EditBusiness extends EditPanel{
     Header header = new Header();
     MyLabel label1 = new MyLabel("付款单：",JLabel.LEFT);
     MyLabel label2 = new MyLabel("收款单：",JLabel.LEFT);
-    EditPanel scrollPanel2 = new EditPanel(new String[]{"收款日期","收款金额","收款快递员","订单条形码"},null);
+    public EditPanel scrollPanel2 = new EditPanel(new String[]{"收款日期","收款金额","收款快递员","订单条形码"},null);
 	public EditBusiness(String[] strings,Object[][] objects){
 		super(strings,objects);
 		this.setBackground(new Color(250, 240, 230));
@@ -40,6 +40,7 @@ public class EditBusiness extends EditPanel{
 		label2.setForeground(new Color(255,255,255));
 		this.scrollPane.setBounds(0, 50, 670, 175);
 		scrollPanel2.setBounds(0, 250, 670, 160);
+		scrollPanel2.scrollPane.setBounds(0, 0, 670, 160);
 		scrollPanel2.setOpaque(false);
 //		this.scrollPane.setBackground(new Color(250, 240, 230));
 //		scrollPanel2.setBackground(new Color(250, 240, 230)); //by zyz

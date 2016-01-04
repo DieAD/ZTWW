@@ -122,6 +122,8 @@ public class GManager_ViewFormsUI extends JPanel {
 			}
 		});
 		businessPanel.setBounds(0, 35, 670, 375);
+//		businessPanel.scrollPanel2.setBounds(0, 250, 670, 125);
+//		businessPanel.scrollPanel2.scrollPane.setBounds(0, 250, 670, 125);
 		benefitPanel.setBounds(0, 35, 670, 375);
 		businessPanel.setOpaque(false);
 		benefitPanel.setOpaque(false);
@@ -136,9 +138,9 @@ public class GManager_ViewFormsUI extends JPanel {
 		this.add(businessPanel);
 		this.add(benefitPanel);
 		//this.add(benefitPanel.button2);
-		benefitPanel.setBounds(5, 30, 665, 375);
-		benefitPanel.scrollPane.setBounds(0, 30, 670, 340);
-		benefitPanel.button2.setLocation(580, 340);
+		benefitPanel.setBounds(5, 30, 665, 380);
+		benefitPanel.scrollPane.setBounds(0, 30, 665, 320);
+		benefitPanel.button2.setLocation(580, 350);
 //		benefitPanel.button2.setBounds(500, 350, 120, 30);
 		benefitPanel.setVisible(false);
 		this.cost.addMouseListener(new ListenerForCost());

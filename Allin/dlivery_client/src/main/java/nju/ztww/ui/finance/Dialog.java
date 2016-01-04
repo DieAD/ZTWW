@@ -5,6 +5,7 @@ import javax.swing.JPanel;
 
 public class Dialog extends JDialog {
 	DialogPanelmain mainPanel;
+	
     public Dialog(JPanel panel){
     	mainPanel = new DialogPanelmain(panel,this);
     	this.setContentPane(mainPanel);

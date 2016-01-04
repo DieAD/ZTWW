@@ -80,8 +80,8 @@ public String getLastidofcenter(String idofcenter) {
 	return index;
 	
 }
- public static void main(String[]args){
-	StorageListIn sli=new StorageListIn();
-	sli.getLastidofcenter("ss");
- }
+// public static void main(String[]args){
+//	StorageListIn sli=new StorageListIn();
+//	sli.getLastidofcenter("ss");
+// }
 }

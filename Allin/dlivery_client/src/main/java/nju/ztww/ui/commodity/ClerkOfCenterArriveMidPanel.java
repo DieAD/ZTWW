@@ -109,7 +109,7 @@ public class ClerkOfCenterArriveMidPanel extends JPanel{
 			dlg.setSize(new Dimension(520, 550));
             dlg.setLocation((screenSize.width-700)/2, (screenSize.height-600)/2);
             
-            Object[][] p = {{"123456"} };
+            Object[][] p =null;
 
 			 //字段名称
 			 String[] n = { "快递单号","完整", "丢失", "损坏"};

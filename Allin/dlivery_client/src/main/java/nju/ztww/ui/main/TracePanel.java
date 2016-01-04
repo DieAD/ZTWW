@@ -43,10 +43,10 @@ public class TracePanel extends JPanel {
     public void getTrace(){
     	ArrayList<TracePO> traceList = checkOrder.findTrace(id);
     	int size = traceList.size();
-//    	trace = new String[size];
-//    	for(int i=0;i<size;i++){
-//    		trace[i] = traceList.get(i).getTrace();
-//    	}
+    	trace = new String[size];
+    	for(int i=0;i<size;i++){
+    		trace[i] = traceList.get(i).getTrace();
+    	}
     }
     public TracePanel(String id){
     	this.id = id;

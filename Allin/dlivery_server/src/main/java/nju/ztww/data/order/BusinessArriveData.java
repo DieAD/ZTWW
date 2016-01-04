@@ -1,6 +1,8 @@
 package nju.ztww.data.order;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import nju.ztww.DBHelper.DBForHollReciForm;
 import nju.ztww.DBHelper.DBForTraceForm;
@@ -77,7 +79,13 @@ public class BusinessArriveData {
 	   String place=nowPlace.findBusinessPlace(list.get(0).getId());
 	   TraceFormDO traceFormDO=new TraceFormDO();
 	   traceFormDO.setGoodsid(number);
-	   traceFormDO.setTrace(place);
+	   //settime
+	    SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String time = df.format(new Date());
+//		String id = number;
+//		String place = mailingTrackPO.getTrack().substring(0, 3);
+	   
+	   traceFormDO.setTrace(time+"          "+place+"已接收");
 	   dBForTraceForm.insert(traceFormDO, "tracetable");
 	   dbHelper.close();
 	   dBForTraceForm.close();

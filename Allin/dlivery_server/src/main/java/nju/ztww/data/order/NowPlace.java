@@ -5,7 +5,7 @@ public class NowPlace {
 	
 	public String findCity(String ID){
 		
-		if(ID=="025"){
+		if(ID=="001"){
 			return "北京";
 		}else if(ID=="035"){
 			return "上海";

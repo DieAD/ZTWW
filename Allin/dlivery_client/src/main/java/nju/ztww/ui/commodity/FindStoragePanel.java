@@ -93,6 +93,7 @@ public class FindStoragePanel extends JPanel {
 	   DefaultTableModel defaultTableModel ;
 	   static MyTable table;
 	   
+	   
 	   java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit()
 				.getScreenSize();
 	   private OrderServiceImpl orderServiceImpl=new OrderServiceImpl();
@@ -138,25 +139,32 @@ public class FindStoragePanel extends JPanel {
 				  String[] n = { "快递编号","入库日期", "目的地", "区号", "排号", "架号" ,"位号","状态","选择"};
 			  
 			  //创建表格: 建立一个显示二维数组数据的表格，且可以显示列的名称。 
-//				  defaultTableModel=new DefaultTableModel(p,n){
-//					  public Class getColumnClass(int column) {
-//				            for (int row = 0; row < getRowCount(); row++)  {
-//				                Object o = getValueAt(row, column);
-//				                if(column==8){
-//				                	return Boolean.class;
-//				                }
-//				                if (o != null)
-//				                {
-//				                    return o.getClass();
-//				                }
-//				            }
-//
-//				            return Object.class;
-//				        }
+				     
+				  defaultTableModel=new DefaultTableModel(p,n){
+					  public Class getColumnClass(int column) {
+				            for (int row = 0; row < getRowCount(); row++)  {
+				                Object o = getValueAt(row, column);
+				                if(column==8){
+				                	return Boolean.class;
+				                }
+				                if (o != null)
+				                {
+				                    return o.getClass();
+				                }
+				            }
+
+				            return Object.class;
+				        }
+					
+				  };
+				  table = new MyTable( defaultTableModel); 
+//				  TableColumn tc1 = table.getColumnModel().getColumn(8);
 //					
-//				  };
-//			  defaultTableModel = new DefaultTableModel( playerInfo,Names); 
-			  table = new MyTable(new DefaultTableModel(p,n));       //字段名称
+//				  JCheckBox	checkBox = new JCheckBox();
+//				  tc1.setCellEditor(new DefaultCellEditor(checkBox));
+			 // defaultTableModel = new DefaultTableModel( p,n); 
+				 
+			   //字段名称
 //			  Dimension size = table.getTableHeader().getPreferredSize();
 //		
 //			  size.height = 30;//设置新的表头高度40
@@ -336,7 +344,7 @@ public class FindStoragePanel extends JPanel {
 
 					public void actionPerformed(ActionEvent e) {
 						if(TestIfConnect.ifConnect()){
-						defaultTableModel.setRowCount(0);
+						//defaultTableModel.setRowCount(0);
 						getStorage=commodityListServiceImpl.getStock(UserInfoUI.getUserID().substring(0,5));
 						for(StorageListLineofInVO storageListLineofInVO:getStorage){
 							Vector<String> row = new Vector(9);

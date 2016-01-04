@@ -33,10 +33,10 @@ public class Login extends JFrame{
 	//
 	
 	int x = 100;
-	int y = 300;
-	int iy = 300;
+	int y = 400;
+	int iy = 400;
 	//
-	Image icon1=new ImageIcon("photo2/feidie.png").getImage();
+	Image icon1=new ImageIcon("Trace/icon(1).png").getImage();
 	//Image icon2=new ImageIcon("photo/Login2.png").getImage();
 	Border border2 = new LineBorder(new Color(44,76,120), 1, true);
 	Border border1 = new LineBorder(new Color(225,225,225),1,true);

@@ -94,6 +94,7 @@ public class DBForEntryForm extends DB{
 
 	public ArrayList<EntryFormDO> queryByID(String ID, String tableName,String idofcenter) {
 		ArrayList<EntryFormDO> list = new ArrayList<EntryFormDO>();
+		//+" and idofcenter="+idofcenter
 		String sql = "select * from " + tableName + " where goodsid=" + ID+" and idofcenter="+idofcenter;
 		try {
 			Statement stmt = conn.createStatement();
@@ -124,7 +125,7 @@ public class DBForEntryForm extends DB{
 	public String insert(ArrayList<EntryFormDO> list, String tableName) {
 		String sql = "insert into "
 				+ tableName
-				+ "(goodsid,entrytime,address,qu,pai,jia,wei,id,exe,state)values(?,?,?,?,?,?,?,?,?,?)";
+				+ "(goodsid,entrytime,address,qu,pai,jia,wei,id,exe,state,idofcenter)values(?,?,?,?,?,?,?,?,?,?,?)";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			for (EntryFormDO form : list) {
@@ -138,6 +139,7 @@ public class DBForEntryForm extends DB{
 				pstmt.setString(8, form.getId());
 				pstmt.setInt(9, form.getExe());
 				pstmt.setInt(10, form.getState());
+				pstmt.setString(11, form.getIdofcenter());
 
 				pstmt.executeUpdate();
 			}
@@ -244,7 +246,7 @@ public class DBForEntryForm extends DB{
 	}
 	public ArrayList<EntryFormDO> queryByCenterID(String ID, String tableName,String idofcenter) {
 		ArrayList<EntryFormDO> list = new ArrayList<EntryFormDO>();
-		String sql = "select * from " + tableName + " where id=" + ID+" where idofcenter"+idofcenter;
+		String sql = "select * from " + tableName + " where id=" + ID+" and idofcenter="+idofcenter;
 		try {
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);

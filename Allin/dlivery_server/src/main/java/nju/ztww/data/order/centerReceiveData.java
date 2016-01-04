@@ -1,6 +1,8 @@
 package nju.ztww.data.order;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import nju.ztww.DBHelper.DBForCenterreciForm;
 import nju.ztww.DBHelper.DBForTraceForm;
@@ -63,8 +65,12 @@ public class centerReceiveData {
  	   String number=list.get(0).getTransferNumber();
  	   String place=nowPlace.findTransferPlace(list.get(0).getId());
  	   TraceFormDO traceFormDO=new TraceFormDO();
+ 	 // "          "
+ 	    SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String time = df.format(new Date());
+		
  	   traceFormDO.setGoodsid(number);
- 	   traceFormDO.setTrace(place);
+ 	   traceFormDO.setTrace(time+"          "+place+"已到达");
  	   dBForTraceForm.insert(traceFormDO, "tracetable");
  	   dbHelper.close();
 	   dBForTraceForm.close();
